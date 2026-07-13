@@ -17,25 +17,36 @@
   body{font-family:"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
   a{text-decoration:none;color:inherit;}
 
-  header{background:var(--fnac-rouge);color:var(--blanc);padding:14px 30px;display:flex;align-items:center;gap:18px;box-shadow:0 2px 8px rgba(0,0,0,.15);position:sticky;top:0;z-index:20;}
-  header a.hublogo{display:flex;align-items:center;}
-  header a.hublogo img{height:44px;background:var(--blanc);padding:6px 10px;border-radius:6px;transition:transform .15s;}
-  header a.hublogo:hover img{transform:scale(1.05);}
-  header .lauralogo{height:40px;background:var(--blanc);padding:6px 10px;border-radius:6px;}
-  header .titles h1{font-size:1.3rem;font-weight:700;letter-spacing:.4px;}
-  header .titles .sub{font-size:.78rem;color:#ffd9db;font-weight:500;margin-top:2px;}
-  .back{margin-left:auto;color:var(--blanc);font-size:.85rem;border:1px solid rgba(255,255,255,.55);padding:8px 15px;border-radius:8px;transition:background .15s;white-space:nowrap;}
-  .back:hover{background:rgba(255,255,255,.15);}
-  @media(max-width:640px){header .titles .sub{display:none;} header{gap:12px;padding:12px 16px;}}
+  /* ---------- BANDEAU HUB (retour index sur logo FNAC DARTY) ---------- */
+  .hubbar{background:var(--fnac-rouge);padding:12px 22px;display:flex;align-items:center;gap:16px;text-decoration:none;position:sticky;top:0;z-index:20;}
+  .hubbar img{height:38px;background:#fff;padding:5px 9px;border-radius:6px;transition:transform .15s;}
+  .hubbar:hover img{transform:scale(1.05);}
+  .hubbar .txt{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
 
-  .hero{background:linear-gradient(120deg,#c98f52 0%,var(--primary) 55%,#e7bd8d 100%);padding:34px 22px 30px;text-align:center;}
-  .hero h2{color:#fff;font-size:1.35rem;margin-bottom:6px;text-shadow:0 1px 2px rgba(0,0,0,.15);}
+  .hero{background:linear-gradient(120deg,#c98f52 0%,var(--primary) 55%,#e7bd8d 100%);padding:40px 22px 32px;text-align:center;}
+  .hero-logo{height:52px;background:#fff;padding:8px 16px;border-radius:10px;margin-bottom:16px;box-shadow:0 4px 16px rgba(0,0,0,.2);}
+  .hero h2{color:#fff;font-size:1.5rem;margin-bottom:6px;text-shadow:0 1px 2px rgba(0,0,0,.15);}
   .hero p{color:#4a3719;font-size:.9rem;}
   .searchwrap{max-width:680px;margin:20px auto 0;position:relative;}
   .searchwrap input{width:100%;padding:15px 46px 15px 18px;font-size:16px;border:none;border-radius:12px;box-shadow:0 6px 22px rgba(0,0,0,.22);outline:none;}
   .searchwrap .ic{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:18px;}
 
   main{max-width:1080px;margin:0 auto;padding:22px clamp(14px,4vw,34px) 60px;}
+
+  /* ---------- BANDEAU SYNCHRO EXCEL ---------- */
+  .sync{display:flex;flex-wrap:wrap;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-left:5px solid #1d7145;border-radius:12px;padding:12px 16px;margin-bottom:16px;box-shadow:0 2px 6px rgba(0,0,0,.05);}
+  .sync .xls-ic{flex:0 0 auto;width:40px;height:40px;border-radius:9px;background:var(--xls);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;letter-spacing:.3px;}
+  .sync .sy-main{flex:1;min-width:180px;}
+  .sync .sy-title{font-weight:700;font-size:.92rem;display:flex;align-items:center;gap:8px;}
+  .sync .live{width:9px;height:9px;border-radius:50%;background:#1d7145;box-shadow:0 0 0 0 rgba(29,113,69,.5);animation:pulse 2s infinite;flex:0 0 auto;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(29,113,69,.5);}70%{box-shadow:0 0 0 8px rgba(29,113,69,0);}100%{box-shadow:0 0 0 0 rgba(29,113,69,0);}}
+  .sync .sy-file{font-size:.76rem;color:var(--muted);margin-top:2px;}
+  .sync .sy-file b{color:var(--ink);font-weight:600;}
+  .sync .sy-stats{display:flex;gap:18px;flex-wrap:wrap;}
+  .sync .stat{text-align:center;}
+  .sync .stat .num{font-weight:800;font-size:1.15rem;color:var(--primary-d);line-height:1;}
+  .sync .stat .lbl{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-top:3px;}
+  @media(max-width:560px){.sync .sy-stats{width:100%;justify-content:space-around;border-top:1px solid var(--line);padding-top:10px;}}
   .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
   .chip{border:1px solid var(--line);background:#fff;color:var(--ink);font-size:.8rem;font-weight:600;padding:7px 13px;border-radius:20px;cursor:pointer;transition:.12s;}
   .chip:hover{border-color:var(--primary);}
@@ -68,19 +79,14 @@
 </style>
 </head>
 <body>
-<header>
-  <a class="hublogo" href="index.html" title="Retour au HUB Drive Constructeurs">
-    <img class="brand" src="IMAGES/FNAC DARTY.png" alt="Fnac Darty — Retour au HUB">
-  </a>
-  <img class="lauralogo" src="IMAGES/LAURASTAR.png" alt="Laurastar" onerror="this.style.display='none'">
-  <div class="titles">
-    <h1>Espace Laurastar</h1>
-    <div class="sub">Recherche directe — SharePoint SAVVY · Distributor Lounge</div>
-  </div>
-  <a class="back" href="index.html">← Retour au HUB</a>
-</header>
+<!-- ===== BANDEAU HUB (retour index sur logo FNAC DARTY) ===== -->
+<a class="hubbar" href="index.html" title="Retour au HUB Drive Constructeurs">
+  <img src="IMAGES/FNAC DARTY.png" alt="Fnac Darty — Retour au HUB">
+  <span class="txt">← HUB Drive Constructeurs</span>
+</a>
 
 <div class="hero">
+  <img class="hero-logo" src="IMAGES/LAURASTAR.png" alt="Laurastar" onerror="this.style.display='none'">
   <h2>Rechercher une pièce, un modèle, une référence</h2>
   <p>Éclatés, listes de pièces détachées et documents — liens directs vers le SharePoint SAVVY</p>
   <div class="searchwrap">
@@ -90,6 +96,18 @@
 </div>
 
 <main>
+  <div class="sync">
+    <div class="xls-ic">XLSX</div>
+    <div class="sy-main">
+      <div class="sy-title"><span class="live"></span>Synchronisé avec le fichier Excel</div>
+      <div class="sy-file">Source : <b>Laurastar_SAVVY.xlsx</b> · export SharePoint SAVVY · dernière synchro le <b id="syncDate">13/07/2026</b></div>
+    </div>
+    <div class="sy-stats">
+      <div class="stat"><div class="num">331</div><div class="lbl">Éléments</div></div>
+      <div class="stat"><div class="num">111</div><div class="lbl">Dossiers</div></div>
+      <div class="stat"><div class="num">220</div><div class="lbl">Fichiers</div></div>
+    </div>
+  </div>
   <div class="chips" id="chips"></div>
   <div class="tools">
     <div class="seg" id="typeSeg">
