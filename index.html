@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HUB Drive Constructeurs</title>
+<style>
+  :root{
+    --rouge:#D4151B;
+    --orange:#EEA31E;
+    --noir:#000000;
+    --blanc:#FFFFFF;
+    --gris:#A6A6A6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Segoe UI",Arial,Helvetica,sans-serif;
+    background:var(--blanc);
+    color:var(--noir);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+  header{
+    background:var(--rouge);
+    color:var(--blanc);
+    padding:18px 32px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+  }
+  header img.brand{
+    height:44px;
+    background:var(--blanc);
+    padding:6px 10px;
+    border-radius:6px;
+  }
+  header h1{
+    font-size:1.5rem;
+    font-weight:700;
+    letter-spacing:.5px;
+  }
+  .intro{
+    text-align:center;
+    padding:36px 20px 8px;
+  }
+  .intro h2{
+    font-size:1.35rem;
+    color:var(--noir);
+    font-weight:600;
+  }
+  .intro p{
+    color:var(--gris);
+    margin-top:8px;
+    font-size:.95rem;
+  }
+  .grid{
+    flex:1;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:26px;
+    padding:32px clamp(20px,5vw,64px) 56px;
+    max-width:1200px;
+    margin:0 auto;
+    width:100%;
+  }
+  .tile{
+    --marque:var(--gris);        /* couleur de marque, définie par tuile */
+    --marque2:var(--gris);       /* couleur secondaire de marque */
+    position:relative;
+    background:var(--blanc);
+    border:2px solid #eee;
+    border-top:5px solid var(--marque);
+    border-radius:14px;
+    padding:28px 20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    text-decoration:none;
+    color:var(--noir);
+    box-shadow:0 3px 10px rgba(0,0,0,.06);
+    transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
+    min-height:170px;
+    cursor:pointer;
+  }
+  .tile:hover{
+    transform:scale(1.04);
+    border-color:var(--marque);
+    box-shadow:0 8px 22px rgba(0,0,0,.14);
+  }
+  .tile span{
+    padding:3px 12px;
+    border-radius:20px;
+    background:var(--marque);
+    color:#fff;
+  }
+  .tile img{
+    max-width:150px;
+    max-height:70px;
+    object-fit:contain;
+  }
+  .tile span{
+    font-weight:600;
+    font-size:1rem;
+    letter-spacing:.5px;
+  }
+  .tile.disabled{
+    opacity:.75;
+  }
+  .tile .badge{
+    font-size:.72rem;
+    color:var(--gris);
+    font-weight:500;
+  }
+  footer{
+    background:var(--noir);
+    color:var(--blanc);
+    text-align:center;
+    padding:14px;
+    font-size:.8rem;
+  }
+  footer span{color:var(--orange);font-weight:600;}
+</style>
+</head>
+<body>
+
+<header>
+  <img class="brand" src="IMAGES/FNAC DARTY.png" alt="Fnac Darty">
+  <h1>HUB Drive Constructeurs</h1>
+</header>
+
+<section class="intro">
+  <h2>Accès aux Drive / SharePoint constructeurs</h2>
+  <p>Cliquez sur le logo d'une marque pour accéder à son espace.</p>
+</section>
+
+<main class="grid" id="grid"></main>
+
+<footer>Espace interne <span>Fnac Darty</span></footer>
+
+<script>
+  // === Liste des marques : ajoutez simplement une ligne pour une nouvelle marque ===
+  // url : mettez "#" tant que le lien Drive/SharePoint n'est pas connu.
+  const marques = [
+    { nom:"DREAME",    logo:"IMAGES/DREAME.png",    url:"dreame.html",    couleur:"#2669C2" },
+    { nom:"LAURASTAR", logo:"IMAGES/LAURASTAR.png", url:"laurastar.html", couleur:"#DEA468" },
+    { nom:"ROBOROCK",  logo:"IMAGES/ROBOROCK.png",  url:"roborock.html",  couleur:"#EA0029" },
+    { nom:"TINECO",    logo:"IMAGES/TINECO.png",    url:"tineco.html",    couleur:"#00327D" },
+  ];
+
+  const grid = document.getElementById("grid");
+  marques.forEach(m => {
+    const actif = m.url && m.url !== "#";
+    const externe = /^https?:/i.test(m.url);
+    const a = document.createElement("a");
+    a.className = "tile" + (actif ? "" : " disabled");
+    a.href = m.url;
+    if (m.couleur) a.style.setProperty("--marque", m.couleur);
+    if (externe) { a.target = "_blank"; a.rel = "noopener"; }
+    a.innerHTML = `
+      <img src="${m.logo}" alt="${m.nom}">
+      <span>${m.nom}</span>
+      ${actif ? "" : '<span class="badge">Lien à venir</span>'}
+    `;
+    if (!actif) a.addEventListener("click", e => e.preventDefault());
+    grid.appendChild(a);
+  });
+</script>
+
+</body>
+</html>

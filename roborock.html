@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roborock — Espace constructeur</title>
+<style>
+  :root{
+    --primary:#EA0029;   /* Rouge Roborock */
+    --secondary:#808080; /* Gris logo Roborock */
+    --noir:#000000;
+    --blanc:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Segoe UI",Arial,sans-serif;background:#f6f7f9;color:var(--noir);min-height:100vh;}
+  header{background:var(--primary);color:var(--blanc);padding:18px 32px;display:flex;align-items:center;gap:20px;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+  header img{height:42px;background:var(--blanc);padding:6px 10px;border-radius:6px;}
+  header h1{font-size:1.35rem;font-weight:700;}
+  .back{margin-left:auto;color:var(--blanc);text-decoration:none;font-size:.9rem;border:1px solid rgba(255,255,255,.6);padding:7px 14px;border-radius:6px;transition:background .15s;}
+  .back:hover{background:rgba(255,255,255,.18);}
+  main{max-width:1000px;margin:0 auto;padding:36px clamp(18px,5vw,48px) 60px;}
+  h2{font-size:1.15rem;color:var(--primary);border-left:5px solid var(--primary);padding-left:12px;margin:34px 0 18px;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+  .card{background:var(--blanc);border:2px solid #eaeaea;border-radius:12px;padding:20px;text-decoration:none;color:var(--noir);font-weight:600;display:flex;align-items:center;gap:12px;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:transform .15s,border-color .15s;}
+  .card:hover{transform:translateY(-3px);border-color:var(--primary);}
+  .card .dot{width:12px;height:12px;border-radius:50%;background:var(--primary);flex:0 0 auto;}
+  .card.disabled{opacity:.65;}
+  .card.disabled .dot{background:var(--secondary);}
+  .checklist{background:var(--blanc);border:2px solid #eaeaea;border-radius:12px;padding:8px 22px;}
+  .checklist label{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid #f0f0f0;cursor:pointer;font-size:.98rem;}
+  .checklist label:last-child{border-bottom:none;}
+  .checklist input[type=checkbox]{width:20px;height:20px;accent-color:var(--primary);cursor:pointer;flex:0 0 auto;}
+  .checklist input:checked + span{text-decoration:line-through;color:var(--secondary);}
+</style>
+</head>
+<body>
+<header>
+  <img src="IMAGES/ROBOROCK.png" alt="Roborock">
+  <h1>Espace Roborock</h1>
+  <a class="back" href="index.html">← Retour au HUB</a>
+</header>
+<main>
+  <h2>Ressources</h2>
+  <div class="cards">
+    <a class="card disabled" href="#"><span class="dot"></span>Drive Roborock</a>
+    <a class="card disabled" href="#"><span class="dot"></span>SharePoint</a>
+    <a class="card disabled" href="#"><span class="dot"></span>Catalogue &amp; Tarifs</a>
+    <a class="card disabled" href="#"><span class="dot"></span>Documentation technique</a>
+    <a class="card disabled" href="#"><span class="dot"></span>Contacts SAV</a>
+  </div>
+
+  <h2>Checklist dossier</h2>
+  <div class="checklist">
+    <label><input type="checkbox"><span>Fiches produits reçues</span></label>
+    <label><input type="checkbox"><span>Tarifs à jour</span></label>
+    <label><input type="checkbox"><span>Visuels HD disponibles</span></label>
+    <label><input type="checkbox"><span>Documentation SAV validée</span></label>
+    <label><input type="checkbox"><span>Contrat / accords signés</span></label>
+  </div>
+</main>
+</body>
+</html>
