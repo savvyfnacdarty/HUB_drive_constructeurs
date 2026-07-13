@@ -17,12 +17,16 @@
   body{font-family:"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
   a{text-decoration:none;color:inherit;}
 
-  header{background:var(--primary);color:#3a2c15;padding:16px 30px;display:flex;align-items:center;gap:18px;box-shadow:0 2px 8px rgba(0,0,0,.15);position:sticky;top:0;z-index:20;}
-  header img{height:40px;background:var(--blanc);padding:6px 10px;border-radius:6px;}
-  header h1{font-size:1.25rem;font-weight:700;}
-  header .sub{font-size:.78rem;color:#6b501f;font-weight:500;margin-top:2px;}
-  .back{margin-left:auto;color:#3a2c15;font-size:.85rem;border:1px solid rgba(0,0,0,.35);padding:8px 15px;border-radius:8px;transition:background .15s;white-space:nowrap;}
-  .back:hover{background:rgba(0,0,0,.10);}
+  header{background:var(--fnac-rouge);color:var(--blanc);padding:14px 30px;display:flex;align-items:center;gap:18px;box-shadow:0 2px 8px rgba(0,0,0,.15);position:sticky;top:0;z-index:20;}
+  header a.hublogo{display:flex;align-items:center;}
+  header a.hublogo img{height:44px;background:var(--blanc);padding:6px 10px;border-radius:6px;transition:transform .15s;}
+  header a.hublogo:hover img{transform:scale(1.05);}
+  header .lauralogo{height:40px;background:var(--blanc);padding:6px 10px;border-radius:6px;}
+  header .titles h1{font-size:1.3rem;font-weight:700;letter-spacing:.4px;}
+  header .titles .sub{font-size:.78rem;color:#ffd9db;font-weight:500;margin-top:2px;}
+  .back{margin-left:auto;color:var(--blanc);font-size:.85rem;border:1px solid rgba(255,255,255,.55);padding:8px 15px;border-radius:8px;transition:background .15s;white-space:nowrap;}
+  .back:hover{background:rgba(255,255,255,.15);}
+  @media(max-width:640px){header .titles .sub{display:none;} header{gap:12px;padding:12px 16px;}}
 
   .hero{background:linear-gradient(120deg,#c98f52 0%,var(--primary) 55%,#e7bd8d 100%);padding:34px 22px 30px;text-align:center;}
   .hero h2{color:#fff;font-size:1.35rem;margin-bottom:6px;text-shadow:0 1px 2px rgba(0,0,0,.15);}
@@ -65,8 +69,11 @@
 </head>
 <body>
 <header>
-  <img src="IMAGES/LAURASTAR.png" alt="Laurastar" onerror="this.style.display='none'">
-  <div>
+  <a class="hublogo" href="index.html" title="Retour au HUB Drive Constructeurs">
+    <img class="brand" src="IMAGES/FNAC DARTY.png" alt="Fnac Darty — Retour au HUB">
+  </a>
+  <img class="lauralogo" src="IMAGES/LAURASTAR.png" alt="Laurastar" onerror="this.style.display='none'">
+  <div class="titles">
     <h1>Espace Laurastar</h1>
     <div class="sub">Recherche directe — SharePoint SAVVY · Distributor Lounge</div>
   </div>
