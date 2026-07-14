@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PEM — Petit Électro-Ménager · SAV Dreame · Fnac Darty</title>
+<style>
+  :root{
+    /* Header HUB (rouge Fnac Darty) */
+    --rouge:#D4151B;
+    --orange:#EEA31E;
+    /* Accents Dreame */
+    --dreame:#2669C2;
+    --dreame-2:#1B4E97;
+    --dreame-bg:#EAF1FB;
+    --dreame-bd:#C4D9F4;
+    /* Neutres */
+    --bg:#F1F3F6;
+    --surface:#FFFFFF;
+    --border:#DDE1E8;
+    --text:#1A1E2A;
+    --text-2:#4A5068;
+    --muted:#8891A8;
+    --r-md:8px; --r-lg:14px;
+    --tr:.16s cubic-bezier(.4,0,.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Segoe UI",system-ui,Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+  /* ===== BANDEAU HUB (rouge Fnac Darty) ===== */
+  .hubbar{
+    background:var(--rouge);padding:11px 22px;
+    display:flex;align-items:center;gap:16px;
+    position:sticky;top:0;z-index:20;
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+  }
+  .hubbar .home{display:flex;align-items:center;gap:14px;text-decoration:none;flex-shrink:0;}
+  .hubbar img{height:36px;background:#fff;padding:5px 9px;border-radius:6px;transition:transform .15s;}
+  .hubbar:hover img{transform:scale(1.05);}
+  .hubbar .txt{color:#fff;font-weight:700;font-size:14px;letter-spacing:.3px;}
+
+  /* ===== HERO marque Dreame ===== */
+  .hero{
+    background:linear-gradient(120deg,#1B4E97 0%,var(--dreame) 60%,#4A8AD4 100%);
+    padding:40px 22px 30px;text-align:center;color:#fff;
+  }
+  .hero-logo{
+    height:52px;background:#fff;padding:8px 16px;border-radius:10px;
+    margin-bottom:18px;box-shadow:0 4px 16px rgba(0,0,0,.2);
+  }
+  .hero .eyebrow{
+    font-size:.95rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+    margin-bottom:6px;text-shadow:0 1px 2px rgba(0,0,0,.15);
+  }
+  .hero p{color:rgba(255,255,255,.9);font-size:.92rem;}
+  .hero nav{display:flex;gap:8px;justify-content:center;margin-top:22px;flex-wrap:wrap;}
+  .hero nav a{
+    color:#fff;text-decoration:none;font-size:.88rem;font-weight:600;
+    padding:9px 18px;border-radius:var(--r-md);
+    background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.45);
+    transition:var(--tr);
+  }
+  .hero nav a:hover{background:rgba(255,255,255,.28);}
+  .hero nav a.active{background:#fff;color:var(--dreame-2);border-color:#fff;}
+
+  /* ===== GRILLE RACCOURCIS ===== */
+  main{max-width:1000px;margin:0 auto;padding:28px 24px 60px;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;}
+  .card{
+    background:var(--surface);border:1.5px solid var(--border);
+    border-top:4px solid var(--dreame);border-radius:var(--r-lg);
+    padding:24px 22px;text-decoration:none;color:var(--text);
+    display:flex;flex-direction:column;gap:14px;
+    box-shadow:0 2px 6px rgba(0,0,0,.05);transition:var(--tr);min-height:150px;
+  }
+  .card:hover{transform:translateY(-3px);border-color:var(--dreame);box-shadow:0 10px 26px rgba(38,105,194,.18);}
+  .card .ic{
+    width:48px;height:48px;border-radius:12px;
+    background:var(--dreame-bg);border:1px solid var(--dreame-bd);
+    display:flex;align-items:center;justify-content:center;color:var(--dreame);flex-shrink:0;
+  }
+  .card .ttl{font-size:1.1rem;font-weight:700;}
+  .card .desc{font-size:.85rem;color:var(--text-2);line-height:1.5;}
+  .card .go{margin-top:auto;font-size:.8rem;font-weight:700;color:var(--dreame);display:inline-flex;align-items:center;gap:6px;}
+
+  footer{background:#000;color:#fff;text-align:center;padding:14px;font-size:.8rem;}
+  footer span{color:var(--orange);font-weight:600;}
+</style>
+</head>
+<body>
+
+<div class="hubbar">
+  <a class="home" href="../index.html" title="Retour au HUB Drive Constructeurs">
+    <img src="assets/FNAC DARTY.png" alt="Fnac Darty — Retour au HUB">
+    <span class="txt">← HUB Drive Constructeurs</span>
+  </a>
+</div>
+
+<div class="hero">
+  <img class="hero-logo" src="assets/DREAME.png" alt="Dreame" onerror="this.style.display='none'">
+  <div class="eyebrow">Petit Électro-Ménager</div>
+  <p>Accès rapide aux ressources techniques SAV Dreame &amp; Mova.</p>
+  <nav>
+    <a href="dreame.html">Recherche</a>
+    <a href="lecteur_bom.html">Lecteur BOM</a>
+    <a href="pem.html" class="active">PEM</a>
+  </nav>
+</div>
+
+<main>
+  <div class="cards">
+
+    <a class="card" href="index_fault_codes.html">
+      <div class="ic">
+        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+      </div>
+      <div class="ttl">Codes Erreurs</div>
+      <div class="desc">Rechercher un code défaut et sa procédure de résolution.</div>
+      <span class="go">Ouvrir →</span>
+    </a>
+
+    <a class="card" href="calibration_index_MAJ.html">
+      <div class="ic">
+        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      </div>
+      <div class="ttl">Calibrage</div>
+      <div class="desc">Procédures de calibration robots (IMU, LDS, caméras…).</div>
+      <span class="go">Ouvrir →</span>
+    </a>
+
+    <a class="card" href="bulletin_service.html">
+      <div class="ic">
+        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
+      </div>
+      <div class="ttl">Bulletin Service</div>
+      <div class="desc">Bulletins et notes techniques SAV Dreame.</div>
+      <span class="go">Ouvrir →</span>
+    </a>
+
+    <a class="card" href="bit_test_single.html">
+      <div class="ic">
+        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+      </div>
+      <div class="ttl">BIT Test</div>
+      <div class="desc">Tests unitaires composants (robots Dreame &amp; Mova).</div>
+      <span class="go">Ouvrir →</span>
+    </a>
+
+  </div>
+</main>
+
+<footer>Espace interne <span>Fnac Darty</span> · SAV Dreame</footer>
+
+</body>
+</html>

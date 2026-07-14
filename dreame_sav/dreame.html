@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Recherche GEM &amp; TV — Drive constructeur Dreame</title>
+<style>
+/* ── TOKENS ── */
+:root{
+  --bg:#F3F4F6; --surface:#FFFFFF; --border:#E5E7EB; --border2:#D1D5DB;
+  --text:#111827; --text-2:#6B7280; --text-3:#9CA3AF;
+  --accent:#2669C2; --accent-h:#1B4E97; --accent-bg:#EAF1FB; --accent-bd:#C4D9F4;
+  --blue:#3B82F6; --blue-bg:#EFF6FF; --blue-bd:#BFDBFE; --blue-text:#1D4ED8;
+  --red:#EF4444; --red-bg:#FEF2F2; --green:#22C55E; --green-bg:#F0FDF4;
+  --radius:12px; --radius-sm:8px;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg:0 4px 24px rgba(0,0,0,.12),0 16px 48px rgba(0,0,0,.08);
+  --transition:all .18s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+/* HEADER */
+.header{background:var(--surface);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+.header-brand{display:flex;align-items:center;gap:10px;}
+.logo-fnac{background:#F59E0B;color:#1a1a1a;font-weight:900;font-size:12px;padding:3px 8px;border-radius:4px;}
+.logo-darty{background:#E30613;color:#fff;font-weight:900;font-size:12px;padding:3px 8px;border-radius:4px;}
+.header-title{font-size:13px;color:var(--text-2);border-left:1px solid var(--border2);padding-left:12px;margin-left:4px;}
+.header-title b{color:var(--text);font-weight:600;}
+.header-right{display:flex;align-items:center;gap:10px;}
+.badge{padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;background:rgba(34,197,94,.1);color:#16A34A;border:1px solid rgba(34,197,94,.25);}
+.badge.loading{background:rgba(107,114,128,.1);color:var(--text-2);border-color:var(--border);}
+.badge.error{background:rgba(239,68,68,.1);color:var(--red);border-color:rgba(239,68,68,.25);}
+.btn-import{padding:6px 14px;background:var(--surface);color:var(--text-2);border:1px solid var(--border2);border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:var(--transition);display:inline-flex;align-items:center;gap:6px;}
+.btn-import:hover{border-color:var(--accent);color:var(--accent-h);background:var(--accent-bg);}
+
+/* HERO */
+.hero{background:var(--surface);border-bottom:1px solid var(--border);padding:36px 24px 24px;display:flex;flex-direction:column;align-items:center;}
+.hero-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent-h);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';flex:1;height:1px;background:var(--accent-bd);max-width:60px;}
+.hero h1{font-size:26px;font-weight:800;margin-bottom:6px;text-align:center;letter-spacing:-.4px;}
+.hero p{font-size:14px;color:var(--text-2);margin-bottom:18px;text-align:center;}
+.search-box{width:100%;max-width:640px;display:flex;align-items:center;background:var(--bg);border:2px solid var(--border2);border-radius:14px;overflow:hidden;transition:border-color .2s,box-shadow .2s;}
+.search-box:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px rgba(245,158,11,.12);}
+.search-icon{padding:0 14px;color:var(--text-3);font-size:17px;flex-shrink:0;}
+.search-input{flex:1;padding:13px 0;background:transparent;border:none;outline:none;font-size:15px;color:var(--text);font-family:inherit;}
+.search-input::placeholder{color:var(--text-3);}
+.btn-clear{padding:8px 14px;margin:6px;background:var(--surface);color:var(--text-3);border:none;border-radius:9px;cursor:pointer;font-size:14px;font-weight:700;transition:var(--transition);}
+.btn-clear:hover{background:var(--border);color:var(--text);}
+
+/* CATEGORY BAR */
+.catbar{width:100%;max-width:820px;margin:16px auto 0;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
+.catchip{padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;background:var(--bg);color:var(--text-2);border:1px solid var(--border);cursor:pointer;transition:var(--transition);}
+.catchip:hover{border-color:var(--accent);color:var(--accent-h);}
+.catchip.active{background:var(--accent);color:#1a1a1a;border-color:var(--accent);}
+
+/* MAIN */
+.content-wrap{max-width:760px;width:100%;margin:0 auto;padding:20px 16px 60px;}
+.results-header{font-size:12px;color:var(--text-3);margin-bottom:10px;padding:0 2px;}
+.results-header b{color:var(--text-2);}
+.ri-card{margin-bottom:8px;}
+.ri{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:var(--transition);box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.ri.ri-hasbom{border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom-color:var(--accent-bd);}
+.ri-bom{display:flex;flex-direction:column;gap:6px;padding:8px 12px 10px;background:var(--accent-bg);border:1px solid var(--accent-bd);border-top:none;border-radius:0 0 var(--radius) var(--radius);}
+.ri-bom-item{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.ri-bom-ic{font-size:14px;flex-shrink:0;}
+.ri-bom-name{flex:1;min-width:120px;font-size:12px;font-weight:600;color:#92400E;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ri-bom-btn{flex-shrink:0;padding:5px 11px;border-radius:7px;font-size:11px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px;transition:var(--transition);}
+.ri-bom-btn.preview{background:var(--blue-bg);color:var(--blue-text);border:1px solid var(--blue-bd);}
+.ri-bom-btn.preview:hover{background:#DBEAFE;}
+.ri-bom-btn.dl{background:var(--accent);color:#1a1a1a;border:1px solid var(--accent);}
+.ri-bom-btn.dl:hover{background:var(--accent-h);}
+.ri-bom-more{font-size:11px;color:#92400E;opacity:.85;padding-top:2px;}
+.ri:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);}
+.ri-avatar{width:40px;height:40px;background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.ri-avatar.res{background:var(--blue-bg);border-color:var(--blue-bd);}
+.ri-info{flex:1;min-width:0;}
+.ri-name{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ri-ref{font-size:11px;color:var(--text-3);font-family:monospace;margin-top:2px;}
+.ri-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px;}
+.tag{padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600;background:var(--bg);color:var(--text-2);border:1px solid var(--border);}
+.tag.fam{background:var(--blue-bg);color:var(--blue-text);border-color:var(--blue-bd);}
+.tag.docs{background:#F5F3FF;color:#5B21B6;border-color:#DDD6FE;}
+.tag.bom-ok{background:#ECFDF5;color:#065F46;border-color:#A7F3D0;}
+.tag.res{background:#FEF3C7;color:#92400E;border-color:#FDE68A;}
+.ri-action{flex-shrink:0;padding:7px 13px;font-size:12px;font-weight:600;border-radius:8px;border:1px solid var(--blue-bd);background:var(--blue-bg);color:var(--blue-text);text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:var(--transition);white-space:nowrap;}
+.ri-action:hover{background:#DBEAFE;}
+.hl{background:rgba(245,158,11,.3);border-radius:2px;padding:0 2px;}
+.empty-state{background:var(--surface);border:1px dashed var(--border2);border-radius:var(--radius);padding:40px;text-align:center;}
+.empty-state-icon{font-size:40px;margin-bottom:12px;}
+.empty-state h3{font-size:15px;font-weight:600;color:var(--text-2);margin-bottom:4px;}
+.empty-state p{font-size:13px;color:var(--text-3);}
+
+/* DETAIL */
+.detail-view{display:flex;flex-direction:column;gap:16px;}
+.detail-back{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:600;color:var(--text-2);cursor:pointer;transition:var(--transition);align-self:flex-start;}
+.detail-back:hover{border-color:var(--accent);color:var(--accent-h);}
+.detail-header{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;display:flex;align-items:center;gap:14px;}
+.detail-avatar{width:52px;height:52px;background:var(--accent-bg);border:2px solid var(--accent-bd);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+.detail-title-wrap{flex:1;min-width:0;}
+.detail-product{font-size:18px;font-weight:800;}
+.detail-ref{font-size:12px;color:var(--text-3);font-family:monospace;margin-top:3px;word-break:break-word;}
+.btn-sp-header{flex-shrink:0;padding:9px 16px;background:var(--blue-bg);color:var(--blue-text);border:1px solid var(--blue-bd);border-radius:10px;font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:var(--transition);}
+.btn-sp-header:hover{background:#DBEAFE;}
+
+/* TYPE SECTIONS */
+.type-section{margin-bottom:4px;}
+.section-head{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--text-2);display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.section-head .count{background:var(--bg);color:var(--text-3);padding:1px 7px;border-radius:10px;font-size:10px;border:1px solid var(--border);}
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;}
+.doc-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;transition:var(--transition);display:flex;align-items:flex-start;gap:10px;color:inherit;}
+.doc-card:hover{border-color:#818CF8;box-shadow:0 2px 10px rgba(99,102,241,.1);}
+.doc-card.bom{background:var(--accent-bg);border-color:var(--accent-bd);}
+.doc-card.bom:hover{border-color:var(--accent);}
+.doc-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.doc-body{flex:1;min-width:0;}
+.doc-type{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;}
+.doc-name{font-size:12px;color:var(--text-2);line-height:1.4;word-break:break-word;}
+.doc-ext{font-size:10px;color:var(--text-3);margin-top:3px;font-family:monospace;}
+.doc-actions{display:flex;gap:6px;margin-top:9px;}
+.doc-btn{flex:1;padding:6px 8px;border-radius:7px;font-size:11px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:4px;transition:var(--transition);cursor:pointer;}
+.doc-btn.preview{background:var(--blue-bg);color:var(--blue-text);border:1px solid var(--blue-bd);}
+.doc-btn.preview:hover{background:#DBEAFE;}
+.doc-btn.dl{background:var(--accent);color:#1a1a1a;border:1px solid var(--accent);}
+.doc-btn.dl:hover{background:var(--accent-h);border-color:var(--accent-h);}
+.no-docs{text-align:center;padding:20px;color:var(--text-3);font-size:13px;background:var(--bg);border-radius:8px;border:1px dashed var(--border);}
+
+/* MODAL */
+.modal-backdrop{position:fixed;inset:0;background:rgba(17,24,39,.5);z-index:600;display:flex;align-items:center;justify-content:center;padding:16px;animation:fadeBg .2s ease;}
+.modal-backdrop.hidden{display:none;}
+@keyframes fadeBg{from{opacity:0}to{opacity:1}}
+.modal{background:var(--surface);border-radius:16px;padding:28px;width:100%;max-width:500px;box-shadow:var(--shadow-lg);position:relative;animation:scaleIn .18s ease;}
+@keyframes scaleIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--text-3);font-size:17px;cursor:pointer;padding:6px;border-radius:7px;transition:var(--transition);}
+.modal-close:hover{background:var(--bg);color:var(--text);}
+.modal h3{font-size:16px;font-weight:700;margin-bottom:5px;}
+.modal-sub{font-size:13px;color:var(--text-2);margin-bottom:16px;line-height:1.55;}
+.modal-sub code{background:var(--bg);padding:1px 5px;border-radius:4px;font-size:12px;}
+.import-format{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:11.5px;color:var(--text-2);line-height:1.7;margin-bottom:14px;}
+.import-format strong{color:var(--text);font-size:12px;}
+.import-drop{border:2px dashed var(--border2);border-radius:10px;padding:24px 20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);margin-bottom:12px;}
+.import-drop:hover,.import-drop.over{border-color:var(--accent);background:var(--accent-bg);}
+.import-drop-icon{font-size:32px;margin-bottom:7px;}
+.import-drop-text{font-size:13px;color:var(--text-2);margin-bottom:10px;line-height:1.5;}
+.btn-import-pick{padding:8px 18px;background:var(--accent);color:#1a1a1a;font-weight:700;font-size:13px;border:none;border-radius:8px;cursor:pointer;}
+.btn-import-pick:hover{background:var(--accent-h);}
+.import-result{font-size:13px;border-radius:8px;padding:11px 14px;line-height:1.6;}
+.import-result.ok{background:var(--green-bg);color:#166534;border:1px solid #BBF7D0;}
+.import-result.err{background:var(--red-bg);color:#991B1B;border:1px solid #FECACA;}
+
+@media(max-width:560px){
+  .hero h1{font-size:20px;}
+  .detail-header{flex-wrap:wrap;}
+  .btn-sp-header{width:100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<style id="fdhub-css">
+.fdtop{background:#D4151B;padding:8px 20px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:9999;box-shadow:0 2px 6px rgba(0,0,0,.15);font-family:'Segoe UI',Arial,sans-serif;}
+.fdtop .fdtop-home{display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0;}
+.fdtop .fdtop-home img{height:28px;background:#fff;padding:4px 8px;border-radius:5px;display:block;}
+.fdtop .fdtop-txt{color:#fff;font-weight:700;font-size:13px;letter-spacing:.3px;}
+.fdtop .fdtop-right{margin-left:auto;display:flex;align-items:center;gap:10px;}
+.fdband{background:linear-gradient(120deg,#1B4E97 0%,#2669C2 60%,#4A8AD4 100%);padding:22px 20px 18px;text-align:center;font-family:'Segoe UI',Arial,sans-serif;}
+.fdband .fdband-logo{height:44px;background:#fff;padding:7px 14px;border-radius:9px;box-shadow:0 4px 14px rgba(0,0,0,.2);display:block;margin:0 auto 14px;}
+.fdband nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.fdband nav a{color:#fff;text-decoration:none;font-size:.86rem;font-weight:600;padding:8px 18px;border-radius:8px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.45);transition:.15s;}
+.fdband nav a:hover{background:rgba(255,255,255,.28);}
+.fdband nav a.active{background:#fff;color:#1B4E97;border-color:#fff;}
+</style>
+<div class="fdtop">
+  <a class="fdtop-home" href="../index.html" title="Retour au HUB Drive Constructeurs">
+    <img src="assets/FNAC DARTY.png" alt="Fnac Darty"><span class="fdtop-txt">&larr; HUB Drive Constructeurs</span>
+  </a>
+  <div class="fdtop-right"><div class="badge loading" id="catalogBadge">&#8987; Chargement&#8230;</div><button class="btn-import" onclick="openImportModal()">&#128229; Importer l&#39;export</button></div>
+</div>
+<div class="fdband">
+  <img class="fdband-logo" src="assets/DREAME.png" alt="Dreame" onerror="this.style.display='none'">
+  <nav>
+    <a href="dreame.html" class="active">Recherche</a>
+    <a href="lecteur_bom.html">Lecteur BOM</a>
+    <a href="pem.html">PEM</a>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Recherche documentaire</div>
+  <h1>Produits GEM &amp; TV — Drive constructeur</h1>
+  <p>Cherche par référence (TDL…, XC…, TAL…), nom commercial, catégorie ou nom de fichier.</p>
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="q" class="search-input"
+           placeholder="TDL2517AB, Z6000, X1 Ultra, EZ60, Washer, BOM…"
+           oninput="doSearch()" autofocus autocomplete="off">
+    <button class="btn-clear" onclick="clearSearch()" title="Effacer">✕</button>
+  </div>
+  <div class="catbar" id="catbar"></div>
+</section>
+
+<!-- CONTENU -->
+<div class="content-wrap"><div id="mainContent"></div></div>
+
+<!-- IMPORT MODAL -->
+<div class="modal-backdrop hidden" id="importModal" onclick="if(event.target===this)closeImportModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeImportModal()">✕</button>
+    <h3>📥 Importer l'export du Drive</h3>
+    <p class="modal-sub">Charge l'export du Drive constructeur au format <code>.csv</code> ou <code>.xlsx</code>.</p>
+    <div class="import-format">
+      <strong>Colonnes attendues :</strong><br>
+      <code>Chemin</code> · <code>Nom</code> · <code>Type</code> · <code>Lien</code><br>
+      <span style="opacity:.75">Type = <code>Dossier (racine)</code> / <code>Dossier</code> / <code>Fichier</code></span>
+    </div>
+    <div class="import-drop" id="importDrop"
+         ondragover="importDzOver(event)" ondragleave="importDzLeave()" ondrop="importDzDrop(event)"
+         onclick="pickCatalogFile()">
+      <div class="import-drop-icon">📂</div>
+      <div class="import-drop-text">Glisse le fichier ici ou clique pour le sélectionner</div>
+      <button class="btn-import-pick" onclick="pickCatalogFile();event.stopPropagation()">Choisir un fichier</button>
+    </div>
+    <div id="importResult" style="display:none"></div>
+  </div>
+</div>
+<input type="file" id="catalogFileInput" accept=".csv,.xlsx,.xls,.xlsm" style="display:none">
+
+<script>
+// ══════════════════════════════════════════════════════
+//  CONFIG — à personnaliser
+// ══════════════════════════════════════════════════════
+// URL du fichier catalogue hébergé sur GitHub Pages (export du Drive).
+// Remplace par ton URL réelle (ex : https://savvyfnacdarty.github.io/gem-tv-search/Export_GEM_TV_Drive.xlsx)
+// Accepte un .xlsx (feuille "Export" ciblée automatiquement) ou un .csv.
+const GITHUB_CATALOG_URL = 'Export_GEM_TV_Drive.xlsx';
+const SHEETJS_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+
+// ── Détection des références produit ──
+const REF_RE = /^[A-Z]{2,4}\d{3,}[A-Z]{0,3}$/;
+
+// ── Traduction FR des catégories (l'anglais/chinois reste cherchable) ──
+const CAT_FR = {
+  'Monitor':'Écran',
+  'TV':'Téléviseur',
+  'Coffee machine':'Machine à café',
+  'Range Hood':'Hotte aspirante',
+  'Induction Hobs':'Plaque à induction',
+  'Washer & Clothes dryer':'Lave-linge & sèche-linge',
+  'Refrigerator':'Réfrigérateur',
+  'Dishwasher':'Lave-vaisselle',
+  'Wet&Dry Vacuum':'Aspirateur eau & poussière',
+  'Wet & Dry Vacuum':'Aspirateur eau & poussière',
+  'Major appliances':'Gros électroménager',
+  'Steam Oven':'Four vapeur',
+  'Air conditionor':'Climatiseur',
+  'Air conditioner':'Climatiseur',
+  'Major appliance installation instruction':'Installation GEM',
+};
+function catFr(c){ if(!c) return c; if(CAT_FR[c]) return CAT_FR[c]; const k=Object.keys(CAT_FR).find(x=>x.toLowerCase()===String(c).toLowerCase()); return k?CAT_FR[k]:c; }
+
+// ── Glossaire de traduction des titres (dossiers + fichiers) ──
+// Affichage uniquement : l'original reste en infobulle et cherchable.
+const TR_ZH=[
+  ['大家电安装相关资料','matériel installation GEM'],['安装视频说明','notice vidéo installation'],
+  ['门体组件拆卸','démontage ensemble porte'],['上盖板后板拆卸','démontage capot / panneau arrière'],
+  ['排气口转动电机拆卸','démontage moteur volet d’évacuation'],['蒸汽发生器组件拆卸','démontage générateur vapeur'],
+  ['内胆温度传感器拆卸','démontage sonde température cuve'],['水箱微动开关拆卸','démontage micro-switch réservoir'],
+  ['西南欧蒸烤箱拆卸说明','notice démontage four vapeur (Europe SO)'],['西南欧蒸烤箱维修等级','niveau réparation four vapeur (Europe SO)'],
+  ['散热风扇拆卸','démontage ventilateur'],['温控器拆卸','démontage thermostat'],['电磁阀拆卸','démontage électrovanne'],
+  ['控制板拆卸','démontage carte commande'],['电源板拆卸','démontage carte alimentation'],['电源线拆卸','démontage câble alimentation'],
+  ['吸油烟机维修手册','manuel réparation hotte'],['中国追觅科技','Dreame Technology'],['爆炸图清单','liste vues éclatées'],
+  ['安装说明','notice d’installation'],['使用视频','vidéo d’utilisation'],['拆机视频','vidéo de démontage'],
+  ['维修手册','manuel de réparation'],['维修等级','niveau de réparation'],['洗衣机原始','lave-linge (origine)'],
+  ['大家电','gros électroménager'],['西南欧','Europe du Sud-Ouest'],['显示器','écran'],['电磁灶','plaque à induction'],
+  ['吸油烟机','hotte aspirante'],['移动空调','climatiseur portable'],['咖啡机','machine à café'],['蒸烤箱','four vapeur'],
+  ['洗衣机','lave-linge'],['干衣机','sèche-linge'],['冰箱','réfrigérateur'],['空调','climatiseur'],['电视','téléviseur'],
+  ['追觅','Dreame'],['售后','SAV'],['拆卸','démontage'],['爆炸图','vue éclatée'],['视频','vidéo'],['中文','chinois'],
+  ['德语','allemand'],['荷比卢','Benelux'],['表','tableau'],['旧','ancien'],
+];
+const TR_PHRASES=[
+  ['installation environment survey','étude environnement d’installation'],['installation enviroment survey','étude environnement d’installation'],
+  ['portable air conditionor','climatiseur portable'],['portable air conditioner','climatiseur portable'],['portable ac','climatiseur portable'],
+  ['installation instruction','instructions d’installation'],['installation materials','matériel d’installation'],
+  ['installation requirement','prérequis d’installation'],['installation video','vidéo d’installation'],['installation issue','problème d’installation'],
+  ['clothes dryer','sèche-linge'],['range hood','hotte aspirante'],['steam oven','four vapeur'],
+  ['induction hobs','plaque à induction'],['induction hob','plaque à induction'],
+  ['user manual','manuel utilisateur'],['service manual','manuel SAV'],['maintenance manual','manuel d’entretien'],['repair manual','manuel de réparation'],
+  ['service bom list','liste BOM SAV'],['bom list','liste BOM'],['service video','vidéo SAV'],
+  ['disassembly video','vidéo de démontage'],['dismantle video','vidéo de démontage'],
+  ['how to use video','vidéo mode d’emploi'],['how to use','mode d’emploi'],['exploded view','vue éclatée'],['spare parts','pièces détachées'],
+  ['power board','carte d’alimentation'],['control board','carte de commande'],['door direction','sens de porte'],
+  ['product introduction','présentation produit'],['service level','niveau SAV'],['repair level','niveau de réparation'],
+  ['southwest europe','Europe du Sud-Ouest'],['air conditionor','climatiseur'],['air conditioner','climatiseur'],
+];
+const TR_WORDS=[
+  ['washer','lave-linge'],['dryer','sèche-linge'],['dishwasher','lave-vaisselle'],['refrigerator','réfrigérateur'],
+  ['oven','four'],['steam','vapeur'],['hood','hotte'],['monitor','écran'],['television','téléviseur'],
+  ['removal','démontage'],['disassembly','démontage'],['dismantling','démontage'],['dismantle','démontage'],
+  ['assembly','assemblage'],['exploded','éclatée'],['door','porte'],['doors','portes'],['board','carte'],
+  ['power','alimentation'],['level','niveau'],['list','liste'],['service','SAV'],['user','utilisateur'],
+  ['specification','spécifications'],['introduction','présentation'],['product','produit'],['materials','matériel'],['material','matériel'],
+  ['issue','problème'],['requirement','prérequis'],['environment','environnement'],['enviroment','environnement'],['survey','étude'],
+  ['coffee','café'],['parts','pièces'],['spare','détachées'],['manual','manuel'],['video','vidéo'],['guide','guide'],['change','changement'],
+  ['and','et'],['the',''],['for','pour'],['with','avec'],['new','nouveau'],['old','ancien'],
+];
+function trTitle(s){
+  if(!s) return s;
+  let t=String(s);
+  for(const [a,b] of TR_ZH) t=t.split(a).join(b);
+  for(const [a,b] of TR_PHRASES) t=t.replace(new RegExp('\\b'+a.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','gi'),b);
+  for(const [a,b] of TR_WORDS) t=t.replace(new RegExp('\\b'+a+'\\b','gi'),b);
+  t=t.replace(/\s{2,}/g,' ').trim();
+  return t.charAt(0).toUpperCase()+t.slice(1);
+}
+
+// ══════════════════════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════════════════════
+let ENTRIES = [];        // produits + ressources
+let CATEGORIES = [];     // catégories nettoyées distinctes
+let ACTIVE_CAT = null;   // filtre catégorie
+let CURRENT_VIEW = 'search';
+let LAST_QUERY = '';
+let LAST_MODIFIED = '';   // date de dernière modif du catalogue (header Last-Modified)
+
+// ══════════════════════════════════════════════════════
+//  UTILITAIRES
+// ══════════════════════════════════════════════════════
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function hl(text,q){
+  if(!q) return esc(text);
+  const toks=q.split(/\s+/).filter(Boolean).map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));
+  if(!toks.length) return esc(text);
+  return esc(text).replace(new RegExp('('+toks.join('|')+')','gi'),'<span class="hl">$1</span>');
+}
+function fileExt(name){const m=String(name).split('.');return m.length>1?m.pop().toLowerCase():'';}
+// ── Liens Google Drive : aperçu + téléchargement direct ──
+function driveId(url){const m=String(url).match(/\/d\/([A-Za-z0-9_-]{10,})/)||String(url).match(/[?&]id=([A-Za-z0-9_-]{10,})/);return m?m[1]:null;}
+function docKind(url){if(/docs\.google\.com\/spreadsheets/.test(url))return 'spreadsheets';if(/docs\.google\.com\/presentation/.test(url))return 'presentation';if(/docs\.google\.com\/document/.test(url))return 'document';return 'file';}
+function previewUrl(url){const id=driveId(url);if(!id)return url;const k=docKind(url);return k==='file'?'https://drive.google.com/file/d/'+id+'/preview':'https://docs.google.com/'+k+'/d/'+id+'/preview';}
+function downloadUrl(url){const id=driveId(url);if(!id)return url;return 'https://drive.google.com/uc?export=download&id='+id;}
+function stripCJK(s){return String(s).replace(/[　-鿿＀-￯]/g,'').replace(/\s{2,}/g,' ').trim().replace(/[_\-·&]+$/,'').replace(/^[_\-·&\s]+/,'').trim();}
+// Nettoie un libellé de catégorie : garde les segments (séparés par _) contenant du latin
+function cleanCat(raw){const keep=String(raw).split('_').map(s=>s.trim()).filter(s=>/[A-Za-z]/.test(s));return (stripCJK(keep.join(' '))||stripCJK(raw)||raw).replace(/\s{2,}/g,' ').trim();}
+function loadScript(url){return new Promise((res,rej)=>{const s=document.createElement('script');s.src=url;s.onload=res;s.onerror=()=>rej(new Error('CDN '+url));document.head.appendChild(s);});}
+async function ensureSheetJS(){if(typeof XLSX==='undefined')await loadScript(SHEETJS_CDN);}
+
+// ── Types de documents ──
+const DOC_TYPES={
+  bom:               {icon:'📋',label:'BOM / Pièces détachées',color:'#D97706',order:1},
+  exploded_view:     {icon:'💥',label:'Vue éclatée',           color:'#DC2626',order:2},
+  maintenance_manual:{icon:'🔧',label:'Manuel SAV / Réparation',color:'#7C3AED',order:3},
+  user_manual:       {icon:'📖',label:'Notice / Manuel',       color:'#059669',order:4},
+  spec:              {icon:'📐',label:'Spécifications',        color:'#0891B2',order:5},
+  video:             {icon:'🎬',label:'Vidéo (démontage / SAV)',color:'#2563EB',order:6},
+  ppt:               {icon:'📑',label:'Présentation',          color:'#9333EA',order:7},
+  excel:             {icon:'📊',label:'Excel',                 color:'#16A34A',order:8},
+  word:              {icon:'📝',label:'Word',                  color:'#1D4ED8',order:9},
+  pdf:               {icon:'📄',label:'PDF',                   color:'#EA580C',order:10},
+  image:             {icon:'🖼️',label:'Image',                color:'#0891B2',order:11},
+  archive:           {icon:'🗜️',label:'Archive',              color:'#6B7280',order:12},
+  other:             {icon:'📎',label:'Autre document',        color:'#6B7280',order:13},
+};
+function guessType(nom){
+  const n=(nom||'').toLowerCase();
+  if(/\bbom\b|nomenclat|bill.?of.?mat|物料清单|物料表/.test(n))                 return 'bom';
+  if(/exploded|éclat|eclat|爆炸图|拆解图|分解图/.test(n))                       return 'exploded_view';
+  if(/service.?manual|repair|维修手册|maintenance.?manual|拆机手册/.test(n))    return 'maintenance_manual';
+  if(/user.?manual|notice|user.?guide|使用说明|用户手册|使用手册/.test(n))       return 'user_manual';
+  if(/\bspec\b|specification|参数|规格/.test(n))                               return 'spec';
+  if(/\.(mp4|mov|avi|mkv|webm|m4v)$/.test(n)||/video|视频|démont|demont|disassembly|拆机|拆解/.test(n)) return 'video';
+  if(/\.(pptx?|odp)$/.test(n))                    return 'ppt';
+  if(/\.(xlsx?|xlsm|ods|csv)$/.test(n))           return 'excel';
+  if(/\.(docx?|odt|rtf|txt)$/.test(n))            return 'word';
+  if(/\.pdf$/.test(n))                            return 'pdf';
+  if(/\.(jpe?g|png|gif|bmp|svg|webp|heic)$/.test(n)) return 'image';
+  if(/\.(zip|rar|7z|tar|gz)$/.test(n))            return 'archive';
+  return 'other';
+}
+
+// ══════════════════════════════════════════════════════
+//  PARSEUR CSV (RFC 4180 léger)
+// ══════════════════════════════════════════════════════
+// Choisit la bonne feuille d'un classeur xlsx : "Export" en priorité,
+// sinon la 1re feuille contenant un en-tête Chemin/Nom (ignore "Feuille 1" vide, files cachées…)
+function pickCatalogSheet(wb){
+  const byName=wb.SheetNames.find(n=>/^export$/i.test(n));
+  if(byName) return byName;
+  for(const n of wb.SheetNames){
+    const a=XLSX.utils.sheet_to_json(wb.Sheets[n],{header:1,defval:''});
+    for(let i=0;i<Math.min(a.length,6);i++){
+      const row=(a[i]||[]).map(x=>String(x).toLowerCase());
+      if(row.some(x=>x.includes('chemin')||x==='path')&&row.some(x=>x==='nom'||x==='name')) return n;
+    }
+  }
+  return wb.SheetNames[0];
+}
+
+function parseCSV(text){
+  if(text.charCodeAt(0)===0xFEFF)text=text.slice(1); // BOM
+  const rows=[];let row=[],cur='',q=false;
+  for(let i=0;i<text.length;i++){
+    const c=text[i];
+    if(q){
+      if(c==='"'){ if(text[i+1]==='"'){cur+='"';i++;} else q=false; }
+      else cur+=c;
+    }else{
+      if(c==='"')q=true;
+      else if(c===','){row.push(cur);cur='';}
+      else if(c==='\n'){row.push(cur);rows.push(row);row=[];cur='';}
+      else if(c==='\r'){/* ignore */}
+      else cur+=c;
+    }
+  }
+  if(cur!==''||row.length){row.push(cur);rows.push(row);}
+  return rows;
+}
+
+// ══════════════════════════════════════════════════════
+//  CONSTRUCTION DE L'INDEX  (aoa -> ENTRIES)
+//  aoa = tableau de lignes [Chemin, Nom, Type, Lien]
+// ══════════════════════════════════════════════════════
+function buildIndex(aoa){
+  if(!aoa.length) return {error:'Fichier vide.'};
+  // détection ligne d'en-tête
+  const norm=s=>String(s==null?'':s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').trim();
+  let hdr=-1;
+  for(let i=0;i<Math.min(aoa.length,10);i++){
+    const r=(aoa[i]||[]).map(norm);
+    if(r.some(x=>x.includes('chemin')||x==='path')&&r.some(x=>x==='nom'||x==='name')&&r.some(x=>x==='type')) {hdr=i;break;}
+  }
+  if(hdr<0) hdr=0;
+  const H=(aoa[hdr]||[]).map(norm);
+  const ci={
+    chemin:H.findIndex(x=>x.includes('chemin')||x==='path'),
+    nom:   H.findIndex(x=>x==='nom'||x==='name'||x.includes('fichier')),
+    type:  H.findIndex(x=>x==='type'),
+    lien:  H.findIndex(x=>x==='lien'||x==='url'||x.includes('link')),
+  };
+  if(ci.nom<0) ci.nom=1;
+  if(ci.chemin<0) ci.chemin=0;
+  if(ci.type<0) ci.type=2;
+  if(ci.lien<0) ci.lien=3;
+
+  // lecture des lignes
+  const folders=[]; // {full, chemin, nom, lien}
+  const files=[];   // {chemin, nom, lien}
+  for(let i=hdr+1;i<aoa.length;i++){
+    const r=aoa[i]||[];
+    const chemin=String(r[ci.chemin]||'').trim();
+    const nom=String(r[ci.nom]||'').trim();
+    const type=String(r[ci.type]||'').trim().toLowerCase();
+    const lien=String(r[ci.lien]||'').trim();
+    if(!nom) continue;
+    const full=chemin?chemin+'/'+nom:nom;
+    if(type.startsWith('dossier')) folders.push({full,chemin,nom,lien});
+    else if(type.startsWith('fichier')) files.push({chemin,nom,lien});
+  }
+
+  // catégorie = 2e segment du chemin complet (le 1er = racine "Major appliances_…")
+  function catOf(full){
+    const seg=full.split('/');
+    const raw=seg.length>=2?seg[1]:(seg[0]||'');
+    return {raw, clean:cleanCat(raw)};
+  }
+  // référence(s) contenue(s) dans un nom de dossier produit -> {refs, name} ou null
+  function refsOf(nom){
+    // 1) codes entre crochets chinois : 【GE2505&GE2605】 A4000&B4000 , 【P2225】A1
+    const b=nom.match(/^【([^】]+)】\s*(.*)$/);
+    if(b){
+      const refs=b[1].split(/[&+、,，\s]+/).map(s=>s.trim()).filter(Boolean);
+      if(refs.length) return {refs:refs, name:(b[2]||b[1])};
+    }
+    // 2) ancien format : code(s) avant le premier '_'  (TDL2510AB_… , XB2527+…)
+    const head=nom.split('_')[0];
+    const parts=head.split('+').map(s=>s.trim());
+    if(parts.length&&parts.every(p=>REF_RE.test(p))) return {refs:parts, name:nom.slice(head.length).replace(/^_+/,'')};
+    return null;
+  }
+  function commName(raw){ const c=stripCJK(String(raw).replace(/_/g,' · ')); return c||stripCJK(raw)||String(raw); }
+
+  // 1) entrées PRODUIT (dossiers avec référence)
+  const entriesByPath={};
+  for(const f of folders){
+    const ro=refsOf(f.nom);
+    if(!ro) continue;
+    const c=catOf(f.full);
+    entriesByPath[f.full]={
+      isProduct:true, path:f.full, refs:ro.refs, refStr:ro.refs.join(' / '),
+      name:commName(ro.name)||f.nom, rawName:f.nom,
+      cat:c.clean, catRaw:c.raw, folderUrl:f.lien, docs:[]
+    };
+  }
+  // tri des chemins produit par longueur décroissante (plus profond d'abord)
+  const productPaths=Object.keys(entriesByPath).sort((a,b)=>b.length-a.length);
+
+  // 2) rattachement des fichiers
+  const folderUrlByPath={};
+  folders.forEach(f=>folderUrlByPath[f.full]=f.lien);
+  for(const file of files){
+    const parent=file.chemin;
+    // produit dont le chemin est parent (égal ou ancêtre)
+    let prod=null;
+    for(const p of productPaths){
+      if(parent===p||parent.startsWith(p+'/')){prod=p;break;}
+    }
+    const doc={name:file.nom,url:file.lien,type:guessType(file.nom)};
+    if(prod){ entriesByPath[prod].docs.push(doc); continue; }
+    // sinon : ressource de catégorie, groupée par dossier parent
+    if(!parent) continue;
+    if(!entriesByPath[parent]){
+      const c=catOf(parent);
+      const leaf=parent.split('/').pop();
+      entriesByPath[parent]={
+        isProduct:false, path:parent, refs:[], refStr:'',
+        name:stripCJK(leaf)||leaf, rawName:leaf,
+        cat:c.clean, catRaw:c.raw, folderUrl:folderUrlByPath[parent]||'', docs:[]
+      };
+    }
+    entriesByPath[parent].docs.push(doc);
+  }
+
+  const entries=Object.values(entriesByPath).filter(e=>e.docs.length>0||e.isProduct);
+  // catégories distinctes (ordre d'apparition)
+  const seen=new Set(), cats=[];
+  entries.forEach(e=>{if(e.cat&&!seen.has(e.cat)){seen.add(e.cat);cats.push(e.cat);}});
+  cats.sort((a,b)=>a.localeCompare(b,'fr'));
+  return {entries, cats};
+}
+
+// ══════════════════════════════════════════════════════
+//  CHARGEMENT
+// ══════════════════════════════════════════════════════
+async function loadFromUrl(url){
+  const controller=new AbortController();const tid=setTimeout(()=>controller.abort(),12000);
+  // Anti-cache : paramètre unique + no-store pour toujours récupérer la version en ligne
+  const bust=url+(url.includes('?')?'&':'?')+'_='+Date.now();
+  const resp=await fetch(bust,{signal:controller.signal,cache:'no-store'});clearTimeout(tid);
+  if(!resp.ok) throw new Error('HTTP '+resp.status);
+  LAST_MODIFIED=resp.headers.get('Last-Modified')||'';
+  let aoa;
+  if(/\.(xlsx|xls|xlsm)(\?|$)/i.test(url)){
+    await ensureSheetJS();
+    const wb=XLSX.read(await resp.arrayBuffer(),{type:'array'});
+    aoa=XLSX.utils.sheet_to_json(wb.Sheets[pickCatalogSheet(wb)],{header:1,defval:''});
+  }else{
+    aoa=parseCSV(await resp.text());
+  }
+  applyIndex(buildIndex(aoa),'GitHub');
+}
+function applyIndex(res,src){
+  if(res.error) throw new Error(res.error);
+  ENTRIES=res.entries; CATEGORIES=res.cats; ACTIVE_CAT=null;
+  const nbProd=ENTRIES.filter(e=>e.isProduct).length;
+  const badge=document.getElementById('catalogBadge');
+  badge.className='badge'; badge.style.cursor='pointer';
+  let maj='';
+  if(LAST_MODIFIED){ const d=new Date(LAST_MODIFIED); if(!isNaN(d)) maj=' · MàJ '+d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'2-digit'}); }
+  badge.textContent='✅ '+nbProd+' produits'+maj;
+  badge.title='Catalogue synchronisé'+(LAST_MODIFIED?(' — dernière mise à jour : '+new Date(LAST_MODIFIED).toLocaleString('fr-FR')):'')+' · Cliquer pour re-synchroniser';
+  badge.onclick=()=>{ badge.className='badge loading'; badge.textContent='🔄 Synchronisation…'; badge.title=''; autoLoad(); };
+  renderCatBar();
+  if(CURRENT_VIEW==='search') doSearch();
+  return nbProd;
+}
+async function autoLoad(){
+  const badge=document.getElementById('catalogBadge');
+  try{
+    await loadFromUrl(GITHUB_CATALOG_URL);
+  }catch(e){
+    badge.className='badge error';
+    badge.textContent=(location.protocol==='file:'?'⚠ Ouvre via Importer':'⚠ '+(e.message||'Erreur'));
+  }
+}
+
+// ══════════════════════════════════════════════════════
+//  BARRE CATÉGORIES
+// ══════════════════════════════════════════════════════
+function renderCatBar(){
+  const bar=document.getElementById('catbar');
+  if(!CATEGORIES.length){bar.innerHTML='';return;}
+  let html='<div class="catchip'+(ACTIVE_CAT===null?' active':'')+'" onclick="setCat(null)">Toutes</div>';
+  html+=CATEGORIES.map(c=>'<div class="catchip'+(ACTIVE_CAT===c?' active':'')+'" title="'+esc(c)+'" onclick="setCat(\''+c.replace(/'/g,"\\'")+'\')">'+esc(catFr(c))+'</div>').join('');
+  bar.innerHTML=html;
+}
+function setCat(c){ACTIVE_CAT=c;renderCatBar();CURRENT_VIEW='search';doSearch();}
+
+// ══════════════════════════════════════════════════════
+//  RECHERCHE
+// ══════════════════════════════════════════════════════
+function clearSearch(){document.getElementById('q').value='';LAST_QUERY='';document.getElementById('q').focus();CURRENT_VIEW='search';doSearch();}
+
+function entryHaystack(e){
+  return (e.refStr+' '+e.name+' '+trTitle(e.name)+' '+e.rawName+' '+e.cat+' '+catFr(e.cat)+' '+e.catRaw+' '+e.docs.map(d=>d.name+' '+trTitle(d.name)).join(' ')).toLowerCase();
+}
+function doSearch(){
+  const q=document.getElementById('q').value.trim().toLowerCase();
+  LAST_QUERY=q;CURRENT_VIEW='search';
+  const wrap=document.getElementById('mainContent');
+  let list=ENTRIES;
+  if(ACTIVE_CAT) list=list.filter(e=>e.cat===ACTIVE_CAT);
+  if(q){
+    const toks=q.split(/\s+/).filter(Boolean);
+    list=list.filter(e=>{const h=entryHaystack(e);return toks.every(t=>h.includes(t));});
+  }
+  // produits d'abord, puis par nom
+  list=list.slice().sort((a,b)=>(b.isProduct-a.isProduct)||a.name.localeCompare(b.name,'fr'));
+
+  if(!q&&!ACTIVE_CAT){
+    wrap.innerHTML='<div class="empty-state"><div class="empty-state-icon">🔍</div><h3>'+ENTRIES.filter(e=>e.isProduct).length+' produits indexés</h3><p>Tape une référence, un nom commercial ou choisis une catégorie ci-dessus.</p></div>';
+    return;
+  }
+  if(!list.length){
+    wrap.innerHTML='<div class="empty-state"><div class="empty-state-icon">🔍</div><h3>Aucun résultat'+(q?' pour "'+esc(q)+'"':'')+'</h3><p>Essaie une autre référence ou vérifie l\'orthographe.</p></div>';
+    return;
+  }
+  const plural=list.length>1;
+  wrap.innerHTML='<div class="results-header"><b>'+list.length+'</b> résultat'+(plural?'s':'')+' — clique pour voir les documents</div>'+
+    list.map((e,i)=>{
+      const idx=ENTRIES.indexOf(e);
+      const nb=e.docs.length;
+      const hasBom=e.docs.some(d=>d.type==='bom');
+      const tags=[
+        e.cat?'<span class="tag fam">'+esc(catFr(e.cat))+'</span>':'',
+        e.isProduct?'':'<span class="tag res">Ressources</span>',
+        hasBom?'<span class="tag bom-ok">📋 BOM</span>':'',
+        nb>0?'<span class="tag docs">'+nb+' doc'+(nb>1?'s':'')+'</span>':''
+      ].filter(Boolean).join('');
+      const openBtn=e.folderUrl?'<a class="ri-action" href="'+esc(e.folderUrl)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">📂 Drive</a>':'';
+      // Documents à afficher sous le résultat :
+      //  - si recherche texte : les fichiers dont le NOM correspond (toutes les BOM en plus)
+      //  - sinon : uniquement la/les BOM du dossier
+      const toks=q?q.split(/\s+/).filter(Boolean):[];
+      const boms=e.docs.filter(d=>d.type==='bom');
+      let show;
+      if(toks.length){
+        const matched=e.docs.filter(d=>{const hh=(d.name+' '+trTitle(d.name)).toLowerCase();return toks.every(t=>hh.includes(t));});
+        const set=new Set(matched);
+        show=matched.concat(boms.filter(b=>!set.has(b)));
+      } else { show=boms; }
+      const MAXD=6, extra=show.length-MAXD, shown=show.slice(0,MAXD);
+      const docHtml=shown.map(d=>{
+        const t=(DOC_TYPES[d.type]||DOC_TYPES.other);
+        return '<div class="ri-bom-item">'+
+          '<span class="ri-bom-ic">'+t.icon+'</span>'+
+          '<span class="ri-bom-name" title="'+esc(d.name)+'">'+hl(trTitle(d.name),q)+'</span>'+
+          '<a class="ri-bom-btn preview" href="'+esc(previewUrl(d.url))+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">👁 Aperçu</a>'+
+          '<a class="ri-bom-btn dl" href="'+esc(downloadUrl(d.url))+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">⬇ Télécharger</a>'+
+        '</div>';
+      }).join('')+(extra>0?'<div class="ri-bom-more">+ '+extra+' autre'+(extra>1?'s':'')+' document'+(extra>1?'s':'')+' — cliquer pour ouvrir le dossier</div>':'');
+      return '<div class="ri-card">'+
+        '<div class="ri'+(show.length?' ri-hasbom':'')+'" onclick="openDetail('+idx+')">'+
+          '<div class="ri-avatar'+(e.isProduct?'':' res')+'">'+(e.isProduct?'📦':'📁')+'</div>'+
+          '<div class="ri-info">'+
+            '<div class="ri-name" title="'+esc(e.name||e.rawName)+'">'+hl(trTitle(e.name||e.rawName),q)+'</div>'+
+            (e.refStr?'<div class="ri-ref">'+hl(e.refStr,q)+'</div>':'')+
+            '<div class="ri-tags">'+tags+'</div>'+
+          '</div>'+openBtn+
+        '</div>'+
+        (show.length?'<div class="ri-bom">'+docHtml+'</div>':'')+
+      '</div>';
+    }).join('');
+}
+
+// ══════════════════════════════════════════════════════
+//  DÉTAIL — documents à plat, classés par type
+// ══════════════════════════════════════════════════════
+function openDetail(idx){
+  const e=ENTRIES[idx];if(!e)return;
+  CURRENT_VIEW='detail';
+  let html='<div class="detail-view">';
+  html+='<button class="detail-back" onclick="backToSearch()">← Retour aux résultats</button>';
+  html+='<div class="detail-header">'+
+    '<div class="detail-avatar">'+(e.isProduct?'📦':'📁')+'</div>'+
+    '<div class="detail-title-wrap">'+
+      '<div class="detail-product" title="'+esc(e.name||e.rawName)+'">'+esc(trTitle(e.name||e.rawName))+'</div>'+
+      '<div class="detail-ref">'+esc(e.refStr?e.refStr+' · ':'')+esc(catFr(e.cat)||'')+(e.rawName&&e.rawName!==e.name?' · '+esc(e.rawName):'')+'</div>'+
+    '</div>'+
+    (e.folderUrl?'<a class="btn-sp-header" href="'+esc(e.folderUrl)+'" target="_blank" rel="noopener">📂 Ouvrir le dossier Drive</a>':'')+
+  '</div>';
+
+  const docs=e.docs||[];
+  if(!docs.length){
+    html+='<div class="no-docs">Aucun fichier dans ce dossier.</div>';
+  }else{
+    // regroupe par type, dans l'ordre défini
+    const groups={};
+    docs.forEach(d=>{(groups[d.type]=groups[d.type]||[]).push(d);});
+    Object.keys(groups).sort((a,b)=>(DOC_TYPES[a]||DOC_TYPES.other).order-(DOC_TYPES[b]||DOC_TYPES.other).order)
+    .forEach(type=>{
+      const t=DOC_TYPES[type]||DOC_TYPES.other;
+      const arr=groups[type];
+      html+='<div class="type-section">'+
+        '<div class="section-head"><span>'+t.icon+' '+esc(t.label)+'</span><span class="count">'+arr.length+'</span></div>'+
+        '<div class="doc-grid">'+
+        arr.map(d=>{
+          const ext=fileExt(d.name);
+          return '<div class="doc-card'+(type==='bom'?' bom':'')+'">'+
+            '<div class="doc-icon">'+t.icon+'</div>'+
+            '<div class="doc-body">'+
+              '<div class="doc-type" style="color:'+t.color+'">'+esc(t.label)+'</div>'+
+              '<div class="doc-name" title="'+esc(d.name)+'">'+esc(trTitle(d.name))+'</div>'+
+              (ext?'<div class="doc-ext">.'+esc(ext)+'</div>':'')+
+              '<div class="doc-actions">'+
+                '<a class="doc-btn preview" href="'+esc(previewUrl(d.url))+'" target="_blank" rel="noopener">👁 Aperçu</a>'+
+                '<a class="doc-btn dl" href="'+esc(downloadUrl(d.url))+'" target="_blank" rel="noopener">⬇ Télécharger</a>'+
+              '</div>'+
+            '</div></div>';
+        }).join('')+
+        '</div></div>';
+    });
+  }
+  html+='</div>';
+  document.getElementById('mainContent').innerHTML=html;
+  window.scrollTo({top:document.querySelector('.content-wrap').offsetTop-20,behavior:'smooth'});
+}
+function backToSearch(){CURRENT_VIEW='search';doSearch();}
+
+// ══════════════════════════════════════════════════════
+//  IMPORT MANUEL
+// ══════════════════════════════════════════════════════
+function openImportModal(){document.getElementById('importModal').classList.remove('hidden');document.getElementById('importResult').style.display='none';}
+function closeImportModal(){document.getElementById('importModal').classList.add('hidden');}
+function pickCatalogFile(){document.getElementById('catalogFileInput').click();}
+document.getElementById('catalogFileInput').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(f)handleCatalogFile(f);e.target.value='';});
+function importDzOver(e){e.preventDefault();document.getElementById('importDrop').classList.add('over');}
+function importDzLeave(){document.getElementById('importDrop').classList.remove('over');}
+function importDzDrop(e){e.preventDefault();importDzLeave();const f=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];if(f)handleCatalogFile(f);}
+
+async function handleCatalogFile(file){
+  const rd=document.getElementById('importResult');rd.style.display='none';
+  const btn=document.querySelector('.btn-import-pick');if(btn){btn.textContent='Chargement…';btn.disabled=true;}
+  try{
+    let aoa;
+    if(/\.(xlsx|xls|xlsm)$/i.test(file.name)){
+      await ensureSheetJS();
+      const wb=XLSX.read(await file.arrayBuffer(),{type:'array'});
+      aoa=XLSX.utils.sheet_to_json(wb.Sheets[pickCatalogSheet(wb)],{header:1,defval:''});
+    }else{
+      aoa=parseCSV(await file.text());
+    }
+    const res=buildIndex(aoa);
+    const nbProd=applyIndex(res,'import');
+    rd.className='import-result ok';
+    rd.innerHTML='✅ <strong>'+nbProd+' produits</strong> et <strong>'+ENTRIES.length+' dossiers</strong> chargés depuis <em>'+esc(file.name)+'</em>.';
+    rd.style.display='block';
+    setTimeout(closeImportModal,900);
+  }catch(err){
+    rd.className='import-result err';
+    rd.innerHTML='⚠️ Erreur : '+esc(err.message||String(err));
+    rd.style.display='block';
+  }finally{if(btn){btn.textContent='Choisir un fichier';btn.disabled=false;}}
+}
+
+// ══════════════════════════════════════════════════════
+//  CLAVIER + INIT
+// ══════════════════════════════════════════════════════
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    if(!document.getElementById('importModal').classList.contains('hidden'))closeImportModal();
+    else if(CURRENT_VIEW==='detail')backToSearch();
+  }
+});
+document.addEventListener('DOMContentLoaded',autoLoad);
+</script>
+</body>
+</html>
