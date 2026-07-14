@@ -19,6 +19,14 @@
 .clear-btn:hover{background:var(--fd-red);color:#fff}
 .toolbar-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .toolbar-actions{display:flex;gap:8px;flex-wrap:wrap}
+.report-fields{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
+.report-fields .rf{display:flex;flex-direction:column;gap:4px;min-width:120px;flex:1}
+.report-fields .rf label{font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+.report-fields .rf input{border:2px solid var(--border);border-radius:8px;padding:8px 10px;font-size:.92rem;background:var(--surface);color:var(--text);outline:none;transition:border-color .2s}
+.report-fields .rf input:focus{border-color:var(--fd-red)}
+.report-fields .rf-btn{align-self:stretch;display:flex;align-items:flex-end}
+.btn-export{background:var(--fd-red);color:#fff;border:none;border-radius:8px;padding:10px 16px;font-size:.9rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:filter .2s}
+.btn-export:hover{filter:brightness(1.08)}
 .progress-wrap{flex:1;min-width:220px;display:flex;align-items:center;gap:10px}
 .progress-num{font-size:.8rem;font-weight:700;color:var(--text-2);white-space:nowrap}
 .progress-num em{font-style:normal;color:var(--muted);font-weight:600}
@@ -30,6 +38,10 @@
 .test-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-sm);overflow:hidden;transition:border-color var(--tr),box-shadow var(--tr)}
 .test-card.open{border-color:var(--fd-red);box-shadow:var(--shadow-md)}
 .test-card.done{border-left:4px solid var(--green)}
+.test-card.na{border-left:4px solid var(--orange);background:var(--orange-bg)}
+.test-card.na .test-num{background:var(--orange)}
+.test-card.na .test-name{color:var(--orange)}
+.test-card.na .mini-badge.na-badge{background:var(--orange);color:#fff}
 .test-header{display:flex;align-items:center;gap:14px;padding:14px 18px;cursor:pointer;user-select:none}
 .test-num{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:#0f3460;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700}
 .test-card.done .test-num{background:var(--green)}
@@ -61,9 +73,10 @@
 .video-embed{position:relative;width:100%;max-width:640px;aspect-ratio:16/9;border-radius:10px;overflow:hidden;border:2px solid var(--border);background:#000}
 .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 @supports not (aspect-ratio:16/9){.video-embed{height:0;padding-bottom:56.25%}}
-.done-row{display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:14px;border-top:1px dashed var(--border)}
+.done-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1px dashed var(--border)}
 .done-row label{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.88rem;font-weight:600;color:var(--text-2)}
 .done-row input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--green)}
+.done-row .na-label input[type=checkbox]{accent-color:var(--orange)}
 .src-banner{max-width:960px;margin:12px auto 0;padding:0 16px}
 .src-inner{display:flex;align-items:center;gap:10px;font-size:.78rem;color:var(--muted);background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:8px 14px}
 .src-inner .dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0}
@@ -130,6 +143,12 @@
   <div class="search-box">
     <input type="text" id="searchInput" placeholder="Filtrer un test (ex: gyroscope, TOF, brosse&hellip;)" autocomplete="off" oninput="render()"/>
     <button id="clearBtn" class="clear-btn" onclick="clearSearch()" title="Effacer" style="display:none">&times;</button>
+  </div>
+  <div class="report-fields">
+    <div class="rf"><label for="rfSn">S/N</label><input type="text" id="rfSn" placeholder="N&deg; de s&eacute;rie" autocomplete="off" oninput="saveFields()"/></div>
+    <div class="rf"><label for="rfDossier">N&deg; dossier</label><input type="text" id="rfDossier" placeholder="N&deg; de dossier" autocomplete="off" oninput="saveFields()"/></div>
+    <div class="rf"><label for="rfTech">N&deg; tech</label><input type="text" id="rfTech" placeholder="Identifiant technicien" autocomplete="off" oninput="saveFields()"/></div>
+    <div class="rf-btn"><button class="btn-export" onclick="exportReport()" title="G&eacute;n&eacute;rer un rapport imprimable / PDF">&#128424; Exporter le rapport</button></div>
   </div>
   <div class="toolbar-row">
     <div class="progress-wrap">
@@ -479,11 +498,92 @@ function vimeoEmbed(url){
 function slug(s){ return String(s).trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
 
 const LS_DONE = 'fd_bit_single_done';
+const LS_NA   = 'fd_bit_single_na';
 let doneSet = new Set();
+let naSet   = new Set();
 (function(){ try{ const r=localStorage.getItem(LS_DONE); if(r) doneSet=new Set(JSON.parse(r)); }catch(e){} })();
+(function(){ try{ const r=localStorage.getItem(LS_NA);   if(r) naSet  =new Set(JSON.parse(r)); }catch(e){} })();
 function saveDone(){ try{ localStorage.setItem(LS_DONE, JSON.stringify([...doneSet])); }catch(e){} }
-function toggleDone(id, on){ if(on) doneSet.add(id); else doneSet.delete(id); saveDone(); render(); }
-function resetDone(){ doneSet.clear(); saveDone(); render(); showToast('Progression réinitialisée'); }
+function saveNa(){   try{ localStorage.setItem(LS_NA,   JSON.stringify([...naSet]));   }catch(e){} }
+/* Cocher « Test effectué » ou « Non concerné » referme la fiche. */
+function toggleDone(id, on){ if(on){ doneSet.add(id); openSet.delete(id); } else doneSet.delete(id); saveDone(); render(); }
+function toggleNa(id, on){   if(on){ naSet.add(id);   openSet.delete(id); } else naSet.delete(id);   saveNa();   render(); }
+function resetDone(){ doneSet.clear(); naSet.clear(); saveDone(); saveNa(); render(); showToast('Progression réinitialisée'); }
+
+/* --- Champs rapport (S/N, dossier, tech) : persistés dans le navigateur --- */
+const LS_FIELDS = 'fd_bit_single_fields';
+function saveFields(){
+  try{
+    localStorage.setItem(LS_FIELDS, JSON.stringify({
+      sn: (document.getElementById('rfSn')||{}).value || '',
+      dossier: (document.getElementById('rfDossier')||{}).value || '',
+      tech: (document.getElementById('rfTech')||{}).value || ''
+    }));
+  }catch(e){}
+}
+function loadFields(){
+  try{
+    const f = JSON.parse(localStorage.getItem(LS_FIELDS)||'{}');
+    if(document.getElementById('rfSn')) document.getElementById('rfSn').value = f.sn||'';
+    if(document.getElementById('rfDossier')) document.getElementById('rfDossier').value = f.dossier||'';
+    if(document.getElementById('rfTech')) document.getElementById('rfTech').value = f.tech||'';
+  }catch(e){}
+}
+
+/* --- Export d'un rapport imprimable (PDF via impression navigateur) --- */
+function exportReport(){
+  const sn = ((document.getElementById('rfSn')||{}).value||'').trim();
+  const dossier = ((document.getElementById('rfDossier')||{}).value||'').trim();
+  const tech = ((document.getElementById('rfTech')||{}).value||'').trim();
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('fr-FR') + ' ' + now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+  let nDone=0, nNa=0, nTodo=0;
+  const rows = TESTS.map((t,i)=>{
+    let statut, cls;
+    if(doneSet.has(t.id)){ statut='Effectué'; cls='ok'; nDone++; }
+    else if(naSet.has(t.id)){ statut='Non concerné'; cls='na'; nNa++; }
+    else { statut='Non traité'; cls='todo'; nTodo++; }
+    return '<tr><td class="c-num">'+(i+1)+'</td><td>'+escHtml(t.name)+'</td><td class="st '+cls+'">'+statut+'</td></tr>';
+  }).join('');
+  const field = (lbl,val)=>'<div class="rp-field"><span class="rp-lbl">'+lbl+'</span><span class="rp-val">'+escHtml(val||'—')+'</span></div>';
+  const html = '<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8">'
+    + '<title>Rapport BIT Test'+(sn?' - '+escHtml(sn):'')+'</title><style>'
+    + '*{box-sizing:border-box}body{font-family:"Segoe UI",Arial,sans-serif;color:#1a1a2e;margin:0;padding:28px 32px;font-size:13px}'
+    + '.rp-head{display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid #D4151B;padding-bottom:12px;margin-bottom:18px}'
+    + '.rp-head h1{font-size:19px;margin:0;color:#0f3460}.rp-head .rp-sub{font-size:11px;color:#666;margin-top:3px}'
+    + '.rp-head .rp-brand{font-size:15px;font-weight:800;color:#D4151B}'
+    + '.rp-fields{display:flex;flex-wrap:wrap;gap:10px 26px;background:#f6f7f9;border:1px solid #e2e5ea;border-radius:8px;padding:12px 16px;margin-bottom:18px}'
+    + '.rp-field{display:flex;flex-direction:column;gap:2px}.rp-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#888;font-weight:700}'
+    + '.rp-val{font-size:14px;font-weight:700}'
+    + '.rp-summary{display:flex;gap:10px;margin-bottom:16px}'
+    + '.rp-chip{flex:1;text-align:center;border-radius:8px;padding:10px;font-weight:700}'
+    + '.rp-chip .n{display:block;font-size:22px}.rp-chip .l{font-size:10px;text-transform:uppercase;letter-spacing:.4px}'
+    + '.rp-chip.ok{background:#e6f4ea;color:#1e7e34}.rp-chip.na{background:#fff3e0;color:#e07b00}.rp-chip.todo{background:#f0f1f3;color:#555}'
+    + 'table{width:100%;border-collapse:collapse;font-size:12.5px}'
+    + 'th{background:#0f3460;color:#fff;text-align:left;padding:8px 10px;font-size:11px;text-transform:uppercase;letter-spacing:.3px}'
+    + 'td{padding:7px 10px;border-bottom:1px solid #e5e7eb}.c-num{width:34px;color:#999;text-align:center}'
+    + '.st{font-weight:700;white-space:nowrap;width:120px}.st.ok{color:#1e7e34}.st.na{color:#e07b00}.st.todo{color:#999}'
+    + 'tr:nth-child(even) td{background:#fafbfc}'
+    + '.rp-foot{margin-top:22px;font-size:10.5px;color:#999;display:flex;justify-content:space-between;border-top:1px solid #e5e7eb;padding-top:8px}'
+    + '.rp-sign{margin-top:26px;display:flex;gap:40px}.rp-sign div{flex:1;border-top:1px solid #333;padding-top:5px;font-size:11px;color:#555}'
+    + '@media print{body{padding:0}.rp-noprint{display:none}}'
+    + '</style></head><body>'
+    + '<div class="rp-head"><div><h1>Rapport de test BIT &mdash; Robot Dreame / MOVA</h1><div class="rp-sub">SAV PEM &middot; BIT Test Single &middot; ' + escHtml(dateStr) + '</div></div><div class="rp-brand">FNAC&middot;DARTY</div></div>'
+    + '<div class="rp-fields">' + field('N&deg; de s&eacute;rie (S/N)', sn) + field('N&deg; de dossier', dossier) + field('N&deg; technicien', tech) + field('Date', dateStr) + '</div>'
+    + '<div class="rp-summary">'
+    +   '<div class="rp-chip ok"><span class="n">'+nDone+'</span><span class="l">Effectu&eacute;s</span></div>'
+    +   '<div class="rp-chip na"><span class="n">'+nNa+'</span><span class="l">Non concern&eacute;s</span></div>'
+    +   '<div class="rp-chip todo"><span class="n">'+nTodo+'</span><span class="l">Non trait&eacute;s</span></div>'
+    + '</div>'
+    + '<table><thead><tr><th>#</th><th>Test</th><th>Statut</th></tr></thead><tbody>' + rows + '</tbody></table>'
+    + '<div class="rp-sign"><div>Signature technicien</div><div>Observations</div></div>'
+    + '<div class="rp-foot"><span>' + TESTS.length + ' tests &middot; ' + escHtml(dateStr) + '</span><span>HUB Drive Constructeurs &middot; Fnac Darty</span></div>'
+    + '<script>window.onload=function(){setTimeout(function(){window.print();},250);};<\/script>'
+    + '</body></html>';
+  const w = window.open('', '_blank');
+  if(!w){ showToast('Autorisez les pop-ups pour exporter le rapport'); return; }
+  w.document.open(); w.document.write(html); w.document.close();
+}
 
 const LS_THEME='fd_sav_theme';
 function toggleTheme(){ const n=document.documentElement.dataset.theme==='dark'?'light':'dark'; applyTheme(n); try{localStorage.setItem(LS_THEME,n);}catch(e){} }
@@ -575,19 +675,24 @@ function render(){
       const idx = TESTS.indexOf(t)+1;
       const isOpen = openSet.has(t.id);
       const isDone = doneSet.has(t.id);
+      const isNa   = naSet.has(t.id);
       const nImg = (t.images||[]).length;
       const hasVid = !!t.video;
       let badges='';
       if(nImg) badges += '<span class="mini-badge img">&#128247; '+nImg+'</span>';
       if(hasVid) badges += '<span class="mini-badge vid">&#9654; vid&eacute;o</span>';
       if(isDone) badges += '<span class="mini-badge" style="background:var(--green-bg);color:var(--green)">&#10003;</span>';
+      if(isNa) badges += '<span class="mini-badge na-badge" style="background:var(--orange);color:#fff">N/C</span>';
       let body='';
       body += msgHtml(t.infos);
       if(t.effectue) body += '<div class="tb-section"><div class="tb-title">R&eacute;sultat attendu / test effectu&eacute;</div><div class="result-box">'+escHtml(t.effectue)+'</div></div>';
       body += mediaHtml(t);
       if(!(t.infos||[]).length && !t.effectue && !nImg && !hasVid) body += '<div class="tb-section" style="color:var(--muted);font-size:.85rem">Aucune ressource renseign&eacute;e pour ce test dans l&#39;Excel.</div>';
-      body += '<div class="done-row"><label><input type="checkbox" '+(isDone?'checked':'')+' onchange="toggleDone(&#39;'+t.id+'&#39;,this.checked)"> Test effectu&eacute;</label></div>';
-      return '<div class="test-card'+(isOpen?' open':'')+(isDone?' done':'')+'" id="card-'+t.id+'">'
+      body += '<div class="done-row">'
+        + '<label><input type="checkbox" '+(isDone?'checked':'')+' onchange="toggleDone(&#39;'+t.id+'&#39;,this.checked)"> Test effectu&eacute;</label>'
+        + '<label class="na-label"><input type="checkbox" '+(isNa?'checked':'')+' onchange="toggleNa(&#39;'+t.id+'&#39;,this.checked)"> Non concern&eacute;</label>'
+        + '</div>';
+      return '<div class="test-card'+(isOpen?' open':'')+((isDone||isNa)?' done':'')+(isNa&&!isDone?' na':'')+'" id="card-'+t.id+'">'
         + '<div class="test-header" onclick="toggleCard(&#39;'+t.id+'&#39;)">'
         +   '<div class="test-num">'+idx+'</div>'
         +   '<div class="test-titles"><div class="test-name">'+escHtml(t.name)+'</div><div class="test-desc">'+escHtml(t.desc)+'</div></div>'
@@ -598,9 +703,10 @@ function render(){
         + '</div>';
     }).join('');
   }
-  document.getElementById('doneCount').textContent = doneSet.size;
+  const treated = new Set([...doneSet, ...naSet]);
+  document.getElementById('doneCount').textContent = treated.size;
   document.getElementById('totalCount').textContent = TESTS.length;
-  const pct = TESTS.length ? Math.round(doneSet.size/TESTS.length*100) : 0;
+  const pct = TESTS.length ? Math.round(treated.size/TESTS.length*100) : 0;
   document.getElementById('progFill').style.width = pct+'%';
 }
 
@@ -645,7 +751,7 @@ async function loadExcel(){
   }
   render();
 }
-document.addEventListener('DOMContentLoaded', loadExcel);
+document.addEventListener('DOMContentLoaded', function(){ loadFields(); loadExcel(); });
 </script>
 </body>
 </html>
