@@ -512,7 +512,12 @@ function saveNa(){   try{ localStorage.setItem(LS_NA,   JSON.stringify([...naSet
 /* Cocher « Test effectué » ou « Non concerné » referme la fiche. */
 function toggleDone(id, on){ if(on){ doneSet.add(id); openSet.delete(id); } else doneSet.delete(id); saveDone(); render(); }
 function toggleNa(id, on){   if(on){ naSet.add(id);   openSet.delete(id); } else naSet.delete(id);   saveNa();   render(); }
-function resetDone(){ doneSet.clear(); naSet.clear(); saveDone(); saveNa(); render(); showToast('Progression réinitialisée'); }
+function resetDone(){
+  doneSet.clear(); naSet.clear(); saveDone(); saveNa();
+  ['rfSn','rfDossier','rfTech','rfComment'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
+  saveFields();
+  render(); showToast('Progression et infos export réinitialisées');
+}
 
 /* --- Champs rapport (S/N, dossier, tech) : persistés dans le navigateur --- */
 const LS_FIELDS = 'fd_bit_single_fields';
