@@ -21,6 +21,9 @@
 .toolbar-actions{display:flex;gap:8px;flex-wrap:wrap}
 .report-fields{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
 .report-fields .rf{display:flex;flex-direction:column;gap:4px;min-width:120px;flex:1}
+.report-fields .rf-full{flex-basis:100%;min-width:100%}
+.report-fields .rf textarea{border:2px solid var(--border);border-radius:8px;padding:8px 10px;font-size:.92rem;background:var(--surface);color:var(--text);outline:none;resize:vertical;min-height:56px;font-family:inherit;transition:border-color .2s}
+.report-fields .rf textarea:focus{border-color:var(--fd-red)}
 .report-fields .rf label{font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
 .report-fields .rf input{border:2px solid var(--border);border-radius:8px;padding:8px 10px;font-size:.92rem;background:var(--surface);color:var(--text);outline:none;transition:border-color .2s}
 .report-fields .rf input:focus{border-color:var(--fd-red)}
@@ -148,6 +151,7 @@
     <div class="rf"><label for="rfSn">S/N</label><input type="text" id="rfSn" placeholder="N&deg; de s&eacute;rie" autocomplete="off" oninput="saveFields()"/></div>
     <div class="rf"><label for="rfDossier">N&deg; dossier</label><input type="text" id="rfDossier" placeholder="N&deg; de dossier" autocomplete="off" oninput="saveFields()"/></div>
     <div class="rf"><label for="rfTech">N&deg; tech</label><input type="text" id="rfTech" placeholder="Identifiant technicien" autocomplete="off" oninput="saveFields()"/></div>
+    <div class="rf rf-full"><label for="rfComment">Commentaire</label><textarea id="rfComment" placeholder="Observations, remarques, pi&egrave;ces remplac&eacute;es&hellip;" oninput="saveFields()"></textarea></div>
     <div class="rf-btn"><button class="btn-export" onclick="exportReport()" title="G&eacute;n&eacute;rer un rapport imprimable / PDF">&#128424; Exporter le rapport</button></div>
   </div>
   <div class="toolbar-row">
@@ -517,7 +521,8 @@ function saveFields(){
     localStorage.setItem(LS_FIELDS, JSON.stringify({
       sn: (document.getElementById('rfSn')||{}).value || '',
       dossier: (document.getElementById('rfDossier')||{}).value || '',
-      tech: (document.getElementById('rfTech')||{}).value || ''
+      tech: (document.getElementById('rfTech')||{}).value || '',
+      comment: (document.getElementById('rfComment')||{}).value || ''
     }));
   }catch(e){}
 }
@@ -527,6 +532,7 @@ function loadFields(){
     if(document.getElementById('rfSn')) document.getElementById('rfSn').value = f.sn||'';
     if(document.getElementById('rfDossier')) document.getElementById('rfDossier').value = f.dossier||'';
     if(document.getElementById('rfTech')) document.getElementById('rfTech').value = f.tech||'';
+    if(document.getElementById('rfComment')) document.getElementById('rfComment').value = f.comment||'';
   }catch(e){}
 }
 
@@ -535,6 +541,7 @@ function exportReport(){
   const sn = ((document.getElementById('rfSn')||{}).value||'').trim();
   const dossier = ((document.getElementById('rfDossier')||{}).value||'').trim();
   const tech = ((document.getElementById('rfTech')||{}).value||'').trim();
+  const comment = ((document.getElementById('rfComment')||{}).value||'').trim();
   const now = new Date();
   const dateStr = now.toLocaleDateString('fr-FR') + ' ' + now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
   let nDone=0, nNa=0, nTodo=0;
@@ -566,6 +573,8 @@ function exportReport(){
     + 'tr:nth-child(even) td{background:#fafbfc}'
     + '.rp-foot{margin-top:22px;font-size:10.5px;color:#999;display:flex;justify-content:space-between;border-top:1px solid #e5e7eb;padding-top:8px}'
     + '.rp-sign{margin-top:26px;display:flex;gap:40px}.rp-sign div{flex:1;border-top:1px solid #333;padding-top:5px;font-size:11px;color:#555}'
+    + '.rp-comment{margin-top:18px;border:1px solid #e2e5ea;border-radius:8px;padding:12px 16px;background:#fffdf6}'
+    + '.rp-comment .rp-lbl{display:block;margin-bottom:5px}.rp-comment p{margin:0;white-space:pre-wrap;font-size:12.5px;line-height:1.5}'
     + '@media print{body{padding:0}.rp-noprint{display:none}}'
     + '</style></head><body>'
     + '<div class="rp-head"><div><h1>Rapport de test BIT &mdash; Robot Dreame / MOVA</h1><div class="rp-sub">SAV PEM &middot; BIT Test Single &middot; ' + escHtml(dateStr) + '</div></div><div class="rp-brand">FNAC&middot;DARTY</div></div>'
@@ -576,6 +585,7 @@ function exportReport(){
     +   '<div class="rp-chip todo"><span class="n">'+nTodo+'</span><span class="l">Non trait&eacute;s</span></div>'
     + '</div>'
     + '<table><thead><tr><th>#</th><th>Test</th><th>Statut</th></tr></thead><tbody>' + rows + '</tbody></table>'
+    + (comment ? '<div class="rp-comment"><span class="rp-lbl">Commentaire</span><p>' + escHtml(comment) + '</p></div>' : '')
     + '<div class="rp-sign"><div>Signature technicien</div><div>Observations</div></div>'
     + '<div class="rp-foot"><span>' + TESTS.length + ' tests &middot; ' + escHtml(dateStr) + '</span><span>HUB Drive Constructeurs &middot; Fnac Darty</span></div>'
     + '<script>window.onload=function(){setTimeout(function(){window.print();},250);};<\/script>'
