@@ -912,9 +912,16 @@ function bsBuildEmbedUrl(item) {   // conserve (non utilise) : renvoie le lien G
   return item.lien || '#';
 }
 
-/* Lien de téléchargement forcé (endpoint download.aspx → Content-Disposition: attachment) */
+/* Lien de téléchargement forcé : transforme le lien Google Docs en URL d'export
+   (Content-Disposition: attachment) pour déclencher un vrai enregistrement. */
 function bsBuildDownloadLink(item) {
-  return item.lien || '#';   // Google Docs : même lien que l'ouverture
+  const url = item.lien || '';
+  let m;
+  if ((m = url.match(/\/presentation\/d\/([^/]+)/))) return `https://docs.google.com/presentation/d/${m[1]}/export/pptx`;
+  if ((m = url.match(/\/document\/d\/([^/]+)/)))      return `https://docs.google.com/document/d/${m[1]}/export?format=docx`;
+  if ((m = url.match(/\/spreadsheets\/d\/([^/]+)/)))  return `https://docs.google.com/spreadsheets/d/${m[1]}/export?format=xlsx`;
+  if ((m = url.match(/\/file\/d\/([^/]+)/)))          return `https://drive.google.com/uc?export=download&id=${m[1]}`;
+  return url || '#';
 }
 
 const BS_ICON_PPT = '<svg width="46" height="46" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3a1.5 1.5 0 010 3H9v-3zm0 0v5"/></svg>';
