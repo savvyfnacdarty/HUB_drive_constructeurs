@@ -10,6 +10,7 @@
      JSZip = lecture du .pptx · pdf.js = lecture du .pdf. Chargées depuis CDN. -->
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <style>
 /* ══════════════════════════════════════════════════════════════
    PAGE — BULLETIN SERVICE
@@ -259,6 +260,16 @@
 ══════════════════════════════════════════════════════════════ -->
 <main class="main-wrap">
 
+  <!-- ── Bandeau de synchronisation Excel ── -->
+  <div class="bs-sync-bar" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 14px;padding:10px 14px;border:1px solid var(--fd-border,#e3e3e3);border-radius:10px;background:var(--fd-card,#fff);font-size:13px;">
+    <span id="bsSyncDot" style="width:10px;height:10px;border-radius:50%;background:#c98a00;flex:none;"></span>
+    <span id="bsSyncTxt" style="flex:1;min-width:200px;">Initialisation…</span>
+    <label style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid #E62E2E;color:#E62E2E;border-radius:8px;font-weight:600;white-space:nowrap;">
+      ↥ Charger l\'export
+      <input id="bsXlsxPick" type="file" accept=".xlsx,.xls" hidden>
+    </label>
+  </div>
+
   <!-- ── 1. Recherche ── -->
   <div class="bs-search-wrapper">
     <input type="text" id="bsSearch" class="bs-search-input" autocomplete="off"
@@ -362,7 +373,7 @@
             <div class="bs-doc-name" id="bsDocName"></div>
             <span class="bs-badge" id="bsDocBadge"></span>
             <p class="bs-doc-msg">
-              L'aperçu visuel SharePoint n'est pas disponible en local (SharePoint bloque l'affichage hors de son site).
+              L'aperçu visuel intégré n'est pas disponible ici.
               <strong>Importez le fichier</strong> (.pptx / .pdf) pour générer ici un aperçu <strong>slide par slide, traductible d'un clic</strong>. Vous pouvez aussi ouvrir ou télécharger le document.
             </p>
             <div class="bs-preview-actions">
@@ -458,90 +469,64 @@ function showToast(msg) {
    Colonnes : Nom / Modifié / Modifié par / Type d'élément / Chemin d'accès.
    Lignes issues directement du fichier Excel (70 bulletins).
 ══════════════════════════════════════════════════════════════ */
-const bulletinServiceData = [
-  {"nom": "[R2513]Matrix 10 Ultra——Robot Error Warning(Battery failure).pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "【R9419A】L40s Pro Ultra Left drive wheel error.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "ALL Lawn mower hidden menu notes.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Aqua 10 series Base station waterway description.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Aqua10 Series common issues.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Aqua10 Series common issues——Robot water leakage problem.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Aqua10 Ultra Roller Complete—— Mop cover error.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Base Station Charging Contact Oxidation Issue.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "H12 Pro&G10 Pro&Mova X4 Pro no water flow issues.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "H12 Pro&G10 Pro&Mova X4 Pro Water Pump Different Versions.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "H14 Pro Cleaning fluid leaking.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "H14H15 series Wet and dry vacuum wiring tools.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "H15 Pro Dirty Water Tank Different Versions.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "H15 Pro falsely reports water shortage in the clean water tank.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "H15 Pro Heat No water output problem.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "H15 PRO Heat The water pump is working but not producing water.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "H15 series Water leaks inside to the floor brush problem.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "L10s Pro Ultra-Heat R2338 Hot Water Module New and Old.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "L10s Ultra Gen2 Abnormal water level in Cleaning plate.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "L20 Ultra Dust bag detection sensor.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "L20 Ultra mop motor continues to swing out.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "L40 Base station New and Old Version.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "L40 Ultra AE_ R2579 Checkerboard calibration failure issue.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "L40 Ultra AE_R2579 Mop extend or Recharge failure, Side brush tangled & not working problem.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "L50 Pro Ultra Base station New and Old Version.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Lawn mower Radar calibration has no response or times out for a long time.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Lawn mowers A series Radar hardware failure.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "LDS calibration.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "M50 Ultra Handle & Main Board PCBA Update.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Matrix 10 Ultra and Aqua10 series models New serial port tool.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Matrix 10 Ultra Cannot Power-On Issue.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Matrix10 Ultra Base station waterway description.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Mop Washing Noise Repair Case&Robot water outlet Repair Case.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Mother board repair notice for model ：X40 Ultra、X40 Ultra Complete、L40 Ultra.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Motherboard Different platforms.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "MOVA VIAX Series Lawn Mower Running Test.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "MOVA Z50 Ultra Recharge failure troubleshooting.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "New model calibration tips.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "New products, Air purifiers, Humidifiers, Dehumidifiers, Fans, repair solutions..pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Quick Troubleshooting for H15 Series Robotic Arm Issues.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Repair scenario for replacing the SOC board or MCU board.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Repair scenario for the LDS malfunction issue of Dreame A  series.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Robot Battery abnormal problem.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Robot serial port tool test item update.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Robot Vacuum Light plane Calibration.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Robot Vacuum Test Area Upgrade.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Robotic Pool Cleaner Camera Calibration.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Robotic Pool Cleaner Repair Notes.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Technical notification —— Dreame Lawn mower.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "The motherboards and core boards of the above models have new and old versions.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Tof Cliff Sensor Calibration.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Update PIN removal tool.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Window Cleaning Robot Common issues.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "X30 series APP water test.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "X40 L40 series side brush motor short circuit problem.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "X40 Master Station cleaning fluid switch soft rubber.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "X40 series APP water test.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "X50 Base station structure.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "X50 L50 Matrix10 series side brush motor short circuit problem.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "X50 New accessory.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "X50 obstacle crossing.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "X50 Robot internal water pump test.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "X50 Robot structure.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "X50 series APP water test.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "X50 Ultra Complete Base station New and Old Version.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "X50 Ultra complete does not turn on.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "X50 Voice Control.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Z20 and Z30 different versions attention.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Z20, Z30, Z40 series Main suction port is loose problem.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"},
-  {"nom": "Z60 Ultra Roller Complete Leaks water during mopping.pptx", "modifie": "2026-06-25", "modifiePar": "LECONTE Jerome", "typeElement": "Élément", "cheminAcces": "sites/SAVVY_FNACDARTY/Documents partages/DREAME_Referent/DREAME/Bulletin Service"}
-];
+let bulletinServiceData = [];
+const EXCEL_FILE    = "Export_GEM_TV_Drive.xlsx";
+const TARGET_FOLDER = "After-sales information/TIPS/Technical notification2";
 
-/* ──────────────────────────────────────────────────────────────
-   (Optionnel) CHARGEMENT XLSX EN DIRECT
-   Pour charger « 20260625_Bulletin service.xlsx » au lieu du tableau ci-dessus,
-   ajoutez dans <head> : <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></scr+ipt> puis :
-     const res = await fetch('images/Manuel_tech/20260625_Bulletin service.xlsx');
-     const wb  = XLSX.read(await res.arrayBuffer(), { type:'array' });
-     const rows = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], {defval:''})
-       .map(r => ({ nom:r['Nom'], modifie:r['Modifié'], modifiePar:r['Modifié par'],
-                    typeElement:r["Type d'élément"], cheminAcces:r["Chemin d'accès"] }));
-     bulletinServiceData.length = 0; bulletinServiceData.push(...rows); initBulletins();
-─────────────────────────────────────────────────────────────── */
+function bsSetSync(state, msg) {
+  const dot = document.getElementById('bsSyncDot');
+  const txt = document.getElementById('bsSyncTxt');
+  if (dot) dot.style.background = state === 'ok' ? '#1d7145' : state === 'err' ? '#E62E2E' : '#c98a00';
+  if (txt) txt.innerHTML = msg;
+}
+
+/* Transforme un classeur XLSX (ArrayBuffer) en liste filtree sur TARGET_FOLDER. */
+function bsParseWorkbook(buf) {
+  const wb  = XLSX.read(buf, { type:'array' });
+  const ws  = wb.Sheets[wb.SheetNames[0]];              // 1re feuille = « Export »
+  const aoa = XLSX.utils.sheet_to_json(ws, { header:1, defval:'' });
+  if (!aoa.length) throw new Error('Feuille vide.');
+  const head  = aoa[0].map(h => String(h).trim().toLowerCase());
+  const iPath = head.indexOf('chemin'), iName = head.indexOf('nom'),
+        iType = head.indexOf('type'),   iLink = head.indexOf('lien');
+  const out = [];
+  for (let r = 1; r < aoa.length; r++) {
+    const row  = aoa[r] || [];
+    const path = String(row[iPath] || '').trim();
+    const type = String(row[iType] || '').trim();
+    if (path === TARGET_FOLDER && /fichier/i.test(type)) {
+      out.push({
+        nom:         String(row[iName] || '').trim(),
+        cheminAcces: path,
+        typeElement: type,
+        lien:        String(row[iLink] || '').trim()
+      });
+    }
+  }
+  return out;
+}
+
+function bsApplyWorkbook(buf, lastMod) {
+  const rows = bsParseWorkbook(buf);
+  if (!rows.length) throw new Error('Aucun fichier dans « ' + TARGET_FOLDER + ' ».');
+  bulletinServiceData = rows;
+  bsSetSync('ok', 'Synchronise avec <b>' + EXCEL_FILE + '</b> &middot; ' + rows.length + ' fichiers' + (lastMod ? ' &middot; ' + lastMod : ''));
+  initBulletins();
+}
+
+async function loadBulletinExcel() {
+  bsSetSync('load', 'Chargement de <b>' + EXCEL_FILE + '</b>…');
+  try {
+    const res = await fetch(EXCEL_FILE, { cache:'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const buf = await res.arrayBuffer();
+    let lm = res.headers.get('Last-Modified');
+    if (lm) { const d = new Date(lm); if (!isNaN(d)) lm = 'maj ' + d.toLocaleDateString('fr-FR'); }
+    bsApplyWorkbook(buf, lm);
+  } catch (e) {
+    bsSetSync('err', 'Lecture auto impossible (' + (e.message || e) + '). En local, cliquez « Charger l\'export ».');
+  }
+}
 
 /* ══════════════════════════════════════════════════════════════
    NORMALISATION (tolérance casse / espaces / tirets / underscores
@@ -579,13 +564,7 @@ function bsCleanName(nom) {
    2. LIENS SHAREPOINT (ouverture du document)
 ══════════════════════════════════════════════════════════════ */
 function bsBuildOpenLink(item) {
-  let cleanPath = item.cheminAcces || '';
-  if (cleanPath.startsWith('sites/')) cleanPath = cleanPath.substring(6);
-  const encodedPath = cleanPath.split('/').map(p => encodeURIComponent(p)).join('/');
-  const encodedName = encodeURIComponent(item.nom);
-  const t = bsFileType(item.nom);
-  const viewer = t === 'pdf' ? ':b:' : t === 'ppt' ? ':p:' : ':w:';  // :p: PPT · :b: PDF · :w: Word
-  return `https://groupefnac.sharepoint.com/${viewer}/r/sites/${encodedPath}/${encodedName}?csf=1&web=1`;
+  return item.lien || '#';   // lien direct Google Docs (colonne « Lien » de l'export)
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -618,7 +597,7 @@ function initBulletins() {
     _type:   bsFileType(item.nom),
     _errors: bsExtractErrorCodes(item.nom),
     _models: bsExtractModels(item.nom),
-    _hay:    bsNormalize((item.nom||'') + ' ' + (item.cheminAcces||'') + ' ' + (item.modifiePar||''))
+    _hay:    bsNormalize((item.nom||'') + ' ' + (item.cheminAcces||'') + ' ' + (item.lien||''))
   }));
   renderFilters();
   renderResults();
@@ -691,8 +670,7 @@ function bsCardEl(item) {
     </div>
     ${tags ? `<div class="bs-tags">${tags}</div>` : ''}
     <div class="bs-meta">
-      <div class="bs-meta-row"><span>Modifié</span><span>${esc(item.modifie)}</span></div>
-      <div class="bs-meta-row"><span>Modifié par</span><span>${esc(item.modifiePar)}</span></div>
+      <div class="bs-meta-row"><span>Type</span><span>${esc(item.typeElement||'Fichier')}</span></div>
       <div class="bs-meta-row"><span>Chemin</span><span class="bs-path">${esc(item.cheminAcces)}</span></div>
     </div>
     <div class="bs-actions">
@@ -930,22 +908,13 @@ if (window.pdfjsLib) {
     'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
 }
 
-function bsBuildEmbedUrl(item) {
-  let cleanPath = item.cheminAcces || '';
-  if (cleanPath.startsWith('sites/')) cleanPath = cleanPath.substring(6);
-  const encodedPath = cleanPath.split('/').map(p => encodeURIComponent(p)).join('/');
-  const encodedName = encodeURIComponent(item.nom);
-  const viewer = item._type === 'pdf' ? ':b:' : item._type === 'ppt' ? ':p:' : ':w:';
-  return `https://groupefnac.sharepoint.com/${viewer}/r/sites/${encodedPath}/${encodedName}?csf=1&web=1&action=embedview`;
+function bsBuildEmbedUrl(item) {   // conserve (non utilise) : renvoie le lien Google Docs
+  return item.lien || '#';
 }
 
 /* Lien de téléchargement forcé (endpoint download.aspx → Content-Disposition: attachment) */
 function bsBuildDownloadLink(item) {
-  let cleanPath = item.cheminAcces || '';
-  if (cleanPath.startsWith('sites/')) cleanPath = cleanPath.substring(6);
-  const siteName  = encodeURIComponent(cleanPath.split('/')[0]);
-  const sourceUrl = encodeURIComponent('/sites/' + cleanPath + '/' + item.nom);
-  return `https://groupefnac.sharepoint.com/sites/${siteName}/_layouts/15/download.aspx?SourceUrl=${sourceUrl}`;
+  return item.lien || '#';   // Google Docs : même lien que l'ouverture
 }
 
 const BS_ICON_PPT = '<svg width="46" height="46" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3a1.5 1.5 0 010 3H9v-3zm0 0v5"/></svg>';
@@ -1251,7 +1220,21 @@ document.getElementById('bsFileImport').addEventListener('change', e => {
   if (e.target.files && e.target.files[0]) bsHandleFileImport(e.target.files[0]);
   e.target.value = '';  // permet de ré-importer le même fichier
 });
-initBulletins();
+
+// Fallback local : charger manuellement l'export xlsx
+document.getElementById('bsXlsxPick').addEventListener('change', e => {
+  const file = e.target.files && e.target.files[0];
+  if (!file) return;
+  const rd = new FileReader();
+  rd.onload = () => {
+    try { bsApplyWorkbook(rd.result, file.lastModified ? 'maj ' + new Date(file.lastModified).toLocaleDateString('fr-FR') : null); }
+    catch (err) { bsSetSync('err', 'Fichier illisible : ' + (err.message || err)); }
+  };
+  rd.readAsArrayBuffer(file);
+  e.target.value = '';
+});
+
+loadBulletinExcel();
 </script>
 </body>
 </html>
