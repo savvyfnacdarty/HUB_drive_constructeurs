@@ -173,12 +173,13 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 .fdband nav a{color:#fff;text-decoration:none;font-size:.86rem;font-weight:600;padding:8px 18px;border-radius:8px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.45);transition:.15s;}
 .fdband nav a:hover{background:rgba(255,255,255,.28);}
 .fdband nav a.active{background:#fff;color:#1B4E97;border-color:#fff;}
+.fdband-sync{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px;}
 </style>
 <div class="fdtop">
   <a class="fdtop-home" href="../index.html" title="Retour au HUB Drive Constructeurs">
     <img src="assets/FNAC DARTY.png" alt="Fnac Darty"><span class="fdtop-txt">&larr; HUB Drive Constructeurs</span>
   </a>
-  <div class="fdtop-right"><div class="badge loading" id="catalogBadge">&#8987; Chargement&#8230;</div><button class="btn-import" onclick="openImportModal()">&#128229; Importer l&#39;export</button></div>
+  <div class="fdtop-right"></div>
 </div>
 <div class="fdband">
   <img class="fdband-logo" src="assets/DREAME.png" alt="Dreame" onerror="this.style.display='none'">
@@ -187,17 +188,18 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
     <a href="lecteur_bom.html">Lecteur BOM</a>
     <a href="pem.html">PEM</a>
   </nav>
+  <div class="fdband-sync"><div class="badge loading" id="catalogBadge">&#8987; Chargement&#8230;</div><button class="btn-import" onclick="openImportModal()">&#128229; Importer l&#39;export</button></div>
 </div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">Recherche documentaire</div>
-  <h1>Produits GEM &amp; TV — Drive constructeur</h1>
+  <h1>Documentation Constructeur &amp; Ressources SAV</h1>
   <p>Cherche par référence (TDL…, XC…, TAL…), nom commercial, catégorie ou nom de fichier.</p>
   <div class="search-box">
     <span class="search-icon">🔍</span>
     <input type="text" id="q" class="search-input"
-           placeholder="TDL2517AB, Z6000, X1 Ultra, EZ60, Washer, BOM…"
+           placeholder="Projet ID, référence produit (TDL2517AB, Z6000), nom commercial, BOM…"
            oninput="doSearch()" autofocus autocomplete="off">
     <button class="btn-clear" onclick="clearSearch()" title="Effacer">✕</button>
   </div>
@@ -261,7 +263,7 @@ const CAT_FR = {
   'Air conditioner':'Climatiseur',
   'Major appliance installation instruction':'Installation GEM',
 };
-function catFr(c){ if(!c) return c; if(CAT_FR[c]) return CAT_FR[c]; const k=Object.keys(CAT_FR).find(x=>x.toLowerCase()===String(c).toLowerCase()); return k?CAT_FR[k]:c; }
+function catFr(c){ if(!c) return c; if(CAT_FR[c]) return CAT_FR[c]; const k=Object.keys(CAT_FR).find(x=>x.toLowerCase()===String(c).toLowerCase()); if(k) return CAT_FR[k]; return trTitle(c); /* repli : traduction mot-à-mot EN/ZH → FR */ }
 
 // ── Glossaire de traduction des titres (dossiers + fichiers) ──
 // Affichage uniquement : l'original reste en infobulle et cherchable.
@@ -640,8 +642,15 @@ function doSearch(){
       let show;
       if(toks.length){
         const matched=e.docs.filter(d=>{const hh=(d.name+' '+trTitle(d.name)).toLowerCase();return toks.every(t=>hh.includes(t));});
-        const set=new Set(matched);
-        show=matched.concat(boms.filter(b=>!set.has(b)));
+        if(e.isProduct){
+          // dossier PRODUIT : ses documents lui appartiennent → on peut compléter avec ses BOM
+          const set=new Set(matched);
+          show=matched.concat(boms.filter(b=>!set.has(b)));
+        } else {
+          // dossier RESSOURCE partagé (plusieurs produits) : n'afficher QUE les documents
+          // dont le nom correspond à la recherche, pour ne pas montrer les BOM d'autres produits
+          show=matched;
+        }
       } else { show=boms; }
       const MAXD=6, extra=show.length-MAXD, shown=show.slice(0,MAXD);
       const docHtml=shown.map(d=>{
