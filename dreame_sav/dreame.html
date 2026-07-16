@@ -379,7 +379,7 @@ const DOC_TYPES={
 function bomVer(name){const m=String(name).match(/[_\s]v\s*([0-9]+(?:\.[0-9]+)*)/i);return m?parseFloat(m[1]):-1;}
 function guessType(nom){
   const n=(nom||'').toLowerCase();
-  if(/\bbom\b|nomenclat|bill.?of.?mat|物料清单|物料表/.test(n))                 return 'bom';
+  if(/(^|[^a-z0-9])bom([^a-z0-9]|$)|nomenclat|bill.?of.?mat|物料清单|物料表/.test(n)) return 'bom';
   if(/exploded|éclat|eclat|爆炸图|拆解图|分解图/.test(n))                       return 'exploded_view';
   if(/service.?manual|repair|维修手册|maintenance.?manual|拆机手册/.test(n))    return 'maintenance_manual';
   if(/user.?manual|notice|user.?guide|使用说明|用户手册|使用手册/.test(n))       return 'user_manual';
