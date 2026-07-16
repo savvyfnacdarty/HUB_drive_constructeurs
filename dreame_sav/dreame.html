@@ -368,6 +368,8 @@ const DOC_TYPES={
   archive:           {icon:'🗜️',label:'Archive',              color:'#6B7280',order:12},
   other:             {icon:'📎',label:'Autre document',        color:'#6B7280',order:13},
 };
+// Extrait le numéro de version d'un nom (V1.3 -> 1.3), -1 si absent
+function bomVer(name){const m=String(name).match(/[_\s]v\s*([0-9]+(?:\.[0-9]+)*)/i);return m?parseFloat(m[1]):-1;}
 function guessType(nom){
   const n=(nom||'').toLowerCase();
   if(/\bbom\b|nomenclat|bill.?of.?mat|物料清单|物料表/.test(n))                 return 'bom';
@@ -652,6 +654,8 @@ function doSearch(){
           show=matched;
         }
       } else { show=boms; }
+      // BOM en tête (version la plus récente d'abord) pour qu'elles restent visibles avant la troncature
+      show=show.slice().sort((a,b)=>((a.type==='bom')?0:1)-((b.type==='bom')?0:1) || bomVer(b.name)-bomVer(a.name));
       const MAXD=6, extra=show.length-MAXD, shown=show.slice(0,MAXD);
       const docHtml=shown.map(d=>{
         const t=(DOC_TYPES[d.type]||DOC_TYPES.other);
