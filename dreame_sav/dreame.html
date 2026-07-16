@@ -115,6 +115,13 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 .doc-card:hover{border-color:#818CF8;box-shadow:0 2px 10px rgba(99,102,241,.1);}
 .doc-card.bom{background:var(--accent-bg);border-color:var(--accent-bd);}
 .doc-card.bom:hover{border-color:var(--accent);}
+.doc-card.bom-new{background:#ECFDF5;border-color:#A7F3D0;}
+.doc-card.bom-new:hover{border-color:#34D399;box-shadow:0 2px 10px rgba(16,185,129,.15);}
+.doc-card.bom-old{background:#FFF7ED;border-color:#FED7AA;}
+.doc-card.bom-old:hover{border-color:#FB923C;box-shadow:0 2px 10px rgba(245,158,11,.15);}
+.bom-badge{display:inline-block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;padding:2px 7px;border-radius:8px;margin-bottom:5px;}
+.bom-badge.new{background:#10B981;color:#fff;}
+.bom-badge.old{background:#F59E0B;color:#fff;}
 .doc-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
 .doc-body{flex:1;min-width:0;}
 .doc-type{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;}
@@ -708,14 +715,25 @@ function openDetail(idx){
     .forEach(type=>{
       const t=DOC_TYPES[type]||DOC_TYPES.other;
       const arr=groups[type];
+      // Pour les BOM : repérer la version la plus récente (vert) vs antérieures (orange)
+      const isBom=type==='bom';
+      const maxV=isBom?Math.max(...arr.map(d=>bomVer(d.name))):-1;
       html+='<div class="type-section">'+
         '<div class="section-head"><span>'+t.icon+' '+esc(t.label)+'</span><span class="count">'+arr.length+'</span></div>'+
         '<div class="doc-grid">'+
         arr.map(d=>{
           const ext=fileExt(d.name);
-          return '<div class="doc-card'+(type==='bom'?' bom':'')+'">'+
+          const v=isBom?bomVer(d.name):-1;
+          let cls=isBom?' bom':'', badge='';
+          if(isBom&&maxV>=0){
+            const isNew=(v===maxV);
+            cls=isNew?' bom bom-new':' bom bom-old';
+            badge='<div class="bom-badge '+(isNew?'new':'old')+'">'+(isNew?'✓ Dernière version':'Version antérieure')+'</div>';
+          }
+          return '<div class="doc-card'+cls+'">'+
             '<div class="doc-icon">'+t.icon+'</div>'+
             '<div class="doc-body">'+
+              badge+
               '<div class="doc-type" style="color:'+t.color+'">'+esc(t.label)+'</div>'+
               '<div class="doc-name" title="'+esc(d.name)+'">'+esc(trTitle(d.name))+'</div>'+
               (ext?'<div class="doc-ext">.'+esc(ext)+'</div>':'')+
