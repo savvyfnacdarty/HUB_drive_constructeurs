@@ -300,6 +300,43 @@ body{font-family:var(--font-ui);background:var(--bg);color:var(--text);min-heigh
 .fdband nav a{color:#fff;text-decoration:none;font-size:.86rem;font-weight:600;padding:8px 18px;border-radius:8px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.45);transition:.15s;}
 .fdband nav a:hover{background:rgba(255,255,255,.28);}
 .fdband nav a.active{background:#fff;color:#1B4E97;border-color:#fff;}
+
+/* ── Onglets de mode (Import local / Consultation directe) ── */
+.mode-tabs{display:flex;gap:8px;margin-bottom:18px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-md);padding:6px;width:fit-content;max-width:100%;}
+.mode-tab{flex:0 0 auto;border:none;background:transparent;color:var(--muted);font-family:inherit;font-size:13.5px;font-weight:700;padding:9px 18px;border-radius:calc(var(--r-md) - 4px);cursor:pointer;transition:.15s;white-space:nowrap;}
+.mode-tab:hover{color:var(--text);}
+.mode-tab.active{background:var(--surface);color:var(--fd-navy,#1B4E97);box-shadow:var(--shadow-sm);}
+[data-theme="dark"] .mode-tab.active{color:#93c5fd;}
+
+/* ── Panneau Consultation directe Google Sheets ── */
+.drive-panel{background:var(--surface);border:2px dashed var(--border);border-radius:var(--r-lg,14px);padding:26px 28px;margin-bottom:20px;}
+.drive-title{font-size:16px;font-weight:800;margin-bottom:4px;}
+.drive-sub{font-size:12.5px;color:var(--muted);margin-bottom:16px;}
+.drive-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px;}
+.drive-url{flex:1 1 320px;height:40px;border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface-2);color:var(--text);font-family:var(--font-mono);font-size:12.5px;padding:0 12px;transition:border-color var(--tr);}
+.drive-url:focus{outline:none;border-color:var(--fd-yellow,#f3c300);}
+.drive-btn{height:40px;border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface-2);color:var(--text);font-family:inherit;font-size:13px;font-weight:700;padding:0 16px;cursor:pointer;transition:.15s;white-space:nowrap;}
+.drive-btn:hover{background:var(--surface-3);}
+.drive-btn.primary{background:#1B4E97;border-color:#1B4E97;color:#fff;}
+.drive-btn.primary:hover{background:#163f7a;}
+.drive-btn:disabled{opacity:.55;cursor:wait;}
+.drive-saved{height:40px;border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface-2);color:var(--text);font-family:inherit;font-size:13px;padding:0 10px;max-width:280px;}
+.drive-auto{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;user-select:none;}
+.drive-status{display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;margin-top:14px;padding:10px 14px;border-radius:var(--r-md);background:var(--surface-2);border:1px solid var(--border);flex-wrap:wrap;}
+.drive-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;background:#9ca3af;}
+.drive-dot.ok{background:#16a34a;box-shadow:0 0 0 3px rgba(22,163,74,.18);}
+.drive-dot.loading{background:#d97706;box-shadow:0 0 0 3px rgba(217,119,6,.18);animation:drivePulse 1s infinite alternate;}
+.drive-dot.err{background:#dc2626;box-shadow:0 0 0 3px rgba(220,38,38,.18);}
+@keyframes drivePulse{from{opacity:.5;}to{opacity:1;}}
+.drive-error{margin-top:12px;padding:12px 16px;border-radius:var(--r-md);background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.35);color:#b91c1c;font-size:12.5px;line-height:1.55;}
+[data-theme="dark"] .drive-error{color:#fca5a5;}
+.drive-help{margin-top:12px;font-size:11.5px;color:var(--muted-2);line-height:1.5;}
+.drive-note{margin-top:12px;padding:10px 14px;border-radius:var(--r-md);background:rgba(217,119,6,.08);border:1px solid rgba(217,119,6,.35);color:#92400e;font-size:12px;line-height:1.5;}
+[data-theme="dark"] .drive-note{color:#fcd34d;}
+.drive-api{margin-top:10px;border:1px solid var(--border);border-radius:var(--r-md);padding:10px 14px;background:var(--surface-2);}
+.drive-api summary{cursor:pointer;font-size:12px;font-weight:700;color:var(--muted);user-select:none;}
+.drive-api summary:hover{color:var(--text);}
+.drive-api[open] summary{margin-bottom:4px;}
 </style>
 <div class="fdtop">
   <a class="fdtop-home" href="../index.html" title="Retour au HUB Drive Constructeurs">
@@ -319,6 +356,44 @@ body{font-family:var(--font-ui);background:var(--bg);color:var(--text);min-heigh
 
 <!-- ══════════ MAIN ══════════ -->
 <main class="main-wrap">
+
+  <div class="mode-tabs" id="modeTabs" role="tablist">
+    <button class="mode-tab active" id="tabLocal" onclick="switchMode('local')">📥 Téléchargement / Importation</button>
+    <button class="mode-tab" id="tabDrive" onclick="switchMode('drive')">☁️ Consultation directe</button>
+  </div>
+
+  <div class="drive-panel" id="drivePanel" style="display:none;">
+    <div class="drive-title">☁️ Consultation directe du Google Sheets</div>
+    <div class="drive-sub">Collez le lien du fichier BOM partagé sur Google Drive : les données sont lues directement en ligne, sans téléchargement ni import manuel.</div>
+    <div class="drive-row">
+      <input type="url" class="drive-url" id="driveUrl" placeholder="https://docs.google.com/spreadsheets/d/…" spellcheck="false"/>
+      <button class="drive-btn primary" id="btnDriveLoad" onclick="loadFromDrive()">⚡ Charger</button>
+    </div>
+    <div class="drive-row">
+      <select class="drive-saved" id="driveSaved" onchange="onSavedPick(this.value)"><option value="">— BOM mémorisées —</option></select>
+      <button class="drive-btn" id="btnDriveSave" onclick="saveDriveUrl()" title="Mémoriser l'URL actuelle pour la retrouver dans la liste">★ Mémoriser</button>
+      <button class="drive-btn" id="btnDriveDel" onclick="deleteDriveUrl()" title="Retirer la BOM sélectionnée de la liste">🗑</button>
+      <label class="drive-auto"><input type="checkbox" id="driveAuto" onchange="saveDriveAuto()"> Recharger automatiquement à l'ouverture</label>
+    </div>
+    <details class="drive-api" id="driveApiBox">
+      <summary>⚙ Option : clé API Google — version complète en consultation directe (photos, feuilles, références barrées)</summary>
+      <div class="drive-row" style="margin-top:8px;">
+        <input type="password" class="drive-url" id="driveApiKey" placeholder="AIza… (clé API Google Cloud)" spellcheck="false" autocomplete="off"/>
+        <button class="drive-btn" onclick="saveDriveApiKey()">💾 Enregistrer</button>
+      </div>
+      <div class="drive-help" style="margin-top:4px;">
+        À créer une seule fois : <b>console.cloud.google.com</b> → créer un projet → « API et services » → activer <b>Google Drive API</b> et <b>Google Sheets API</b> → « Identifiants » → « Créer des identifiants » → <b>Clé API</b>. Par sécurité, restreignez la clé à ces deux APIs uniquement. Elle est enregistrée uniquement dans le navigateur de ce poste et ne donne accès qu'aux documents déjà partagés par lien.
+      </div>
+    </details>
+    <div class="drive-status" id="driveStatus" style="display:none;">
+      <span class="drive-dot" id="driveDot"></span>
+      <span id="driveStatusTxt">—</span>
+      <button class="drive-btn" id="btnDriveRefresh" onclick="loadFromDrive(true)" style="display:none;height:32px;padding:0 12px;font-size:12px;">🔄 Actualiser</button>
+    </div>
+    <div class="drive-error" id="driveError" style="display:none;"></div>
+    <div class="drive-note" id="driveNote" style="display:none;"></div>
+    <div class="drive-help">ℹ️ Le document Google Sheets doit être partagé en « <b>Tous les utilisateurs disposant du lien</b> » (rôle Lecteur). Sinon, Google bloque la lecture directe — utilisez alors l'onglet Téléchargement / Importation.</div>
+  </div>
 
   <div class="upload-zone" id="uploadZone">
     <input type="file" id="bomFile" accept=".xlsx"/>
@@ -1067,21 +1142,389 @@ function parseSheet(sheetName){
 }
 
 /* ═══ CHARGEMENT FICHIER ═══ */
+async function loadWorkbookFromAB(ab){
+  setLoading(true,'Extraction des images embarquées…');
+  currentEmbedded=await extractImages(ab);
+  setLoading(true,'Analyse du formatage (pièces barrées)…');
+  currentStruck=await extractStrike(ab);
+  setLoading(true,'Chargement du classeur…');
+  currentWorkbook=XLSX.read(ab,{type:'array'});
+  setLoading(false);
+  if(currentWorkbook.SheetNames.length>1) showSheetPicker(currentWorkbook.SheetNames);
+  else parseSheet(currentWorkbook.SheetNames[0]);
+}
 async function parseBOM(file){
   setLoading(true,'Lecture du fichier Excel…'); hideResults(); currentFileName=file.name;
   try{
     const ab=await file.arrayBuffer();
-    setLoading(true,'Extraction des images embarquées…');
-    currentEmbedded=await extractImages(ab);
-    setLoading(true,'Analyse du formatage (pièces barrées)…');
-    currentStruck=await extractStrike(ab);
-    setLoading(true,'Chargement du classeur…');
-    currentWorkbook=XLSX.read(ab,{type:'array'});
-    setLoading(false);
-    if(currentWorkbook.SheetNames.length>1) showSheetPicker(currentWorkbook.SheetNames);
-    else parseSheet(currentWorkbook.SheetNames[0]);
+    await loadWorkbookFromAB(ab);
   }catch(err){console.error(err);setLoading(false);alert('Erreur lecture : '+err.message);}
 }
+
+/* ══════════════════════════════════════════════════════════════
+   CONSULTATION DIRECTE GOOGLE SHEETS
+   → lit le classeur via l'export xlsx natif de Google
+     (conserve photos embarquées + pièces barrées), avec repli
+     CSV (données seules) si l'export xlsx est bloqué.
+══════════════════════════════════════════════════════════════ */
+const LS_DRIVE_URLS='fd_bom_drive_urls_v1', LS_DRIVE_LAST='fd_bom_drive_last_v1',
+      LS_DRIVE_AUTO='fd_bom_drive_auto_v1', LS_DRIVE_MODE='fd_bom_mode_v1';
+let driveBusy=false, driveAutoDone=false, driveLastSync=null;
+
+function switchMode(m){
+  document.getElementById('tabLocal').classList.toggle('active',m==='local');
+  document.getElementById('tabDrive').classList.toggle('active',m==='drive');
+  document.getElementById('uploadZone').style.display=m==='local'?'':'none';
+  document.getElementById('drivePanel').style.display=m==='drive'?'':'none';
+  try{localStorage.setItem(LS_DRIVE_MODE,m);}catch(e){}
+  if(m==='drive'&&!driveAutoDone&&document.getElementById('driveAuto').checked){
+    driveAutoDone=true;
+    const last=(function(){try{return localStorage.getItem(LS_DRIVE_LAST)||'';}catch(e){return '';}})();
+    if(last&&!driveBusy) loadFromDrive();
+  }
+}
+
+/* — Extraction de l'identifiant depuis l'URL — */
+function extractSheetInfo(url){
+  url=String(url||'').trim();
+  let m=url.match(/\/spreadsheets\/d\/e\/([A-Za-z0-9_-]+)/);
+  if(m) return {type:'pub',id:m[1]};
+  m=url.match(/\/spreadsheets\/(?:u\/\d+\/)?d\/([A-Za-z0-9_-]{20,})/);
+  if(m) return {type:'std',id:m[1]};
+  m=url.match(/[?&#]id=([A-Za-z0-9_-]{20,})/);
+  if(m) return {type:'std',id:m[1]};
+  if(/^[A-Za-z0-9_-]{25,80}$/.test(url)) return {type:'std',id:url};
+  return null;
+}
+function driveExportUrls(info){
+  const gid=info.gid?('&gid='+info.gid):'';
+  if(info.type==='pub') return {
+    xlsx:'https://docs.google.com/spreadsheets/d/e/'+info.id+'/pub?output=xlsx',
+    csv:'https://docs.google.com/spreadsheets/d/e/'+info.id+'/pub?output=csv'+gid
+  };
+  return {
+    xlsx:'https://docs.google.com/spreadsheets/d/'+info.id+'/export?format=xlsx',
+    csv:'https://docs.google.com/spreadsheets/d/'+info.id+'/gviz/tq?tqx=out:csv'+gid
+  };
+}
+/* — JSONP gviz : contourne totalement CORS (fonctionne aussi en file://) — */
+let gvizSeq=0;
+function gvizJsonp(info,timeoutMs){
+  return new Promise((resolve,reject)=>{
+    if(info.type==='pub'){reject(new Error('jsonp indisponible pour les liens publiés'));return;}
+    const cb='__fdGviz'+(++gvizSeq);
+    const s=document.createElement('script');
+    const t=setTimeout(()=>{cleanup();reject(new Error('accès refusé ou délai dépassé'));},timeoutMs||25000);
+    function cleanup(){clearTimeout(t);try{delete window[cb];}catch(e){}s.remove();}
+    window[cb]=resp=>{cleanup();if(resp&&resp.status==='error')reject(new Error('accès refusé : '+((resp.errors&&resp.errors[0]&&resp.errors[0].reason)||'gviz')));else resolve(resp);};
+    s.src='https://docs.google.com/spreadsheets/d/'+info.id+'/gviz/tq?tqx=out:json;responseHandler:'+cb+(info.gid?('&gid='+info.gid):'');
+    s.onerror=()=>{cleanup();reject(new Error('accès refusé (script bloqué)'));};
+    document.head.appendChild(s);
+  });
+}
+function gvizRespToRawData(resp){
+  const t=resp&&resp.table;
+  if(!t||!t.rows) throw new Error('réponse gviz invalide');
+  const rawData=[];
+  const labels=(t.cols||[]).map(c=>String((c&&c.label)||'').trim());
+  if(labels.some(l=>l)) rawData.push(labels);
+  t.rows.forEach(r=>{rawData.push((r.c||[]).map(c=>{if(!c)return '';if(c.f!=null)return String(c.f);if(c.v==null)return '';return String(c.v);}));});
+  return rawData;
+}
+/* — Mémoire des gid connus par document (s'enrichit à chaque URL d'onglet collée) — */
+const LS_DRIVE_GIDS='fd_bom_drive_gids_v1';
+function getKnownGids(docId){try{const m=JSON.parse(localStorage.getItem(LS_DRIVE_GIDS)||'{}');return (m[docId]||[]).map(String);}catch(e){return [];}}
+function addKnownGids(docId,gids){try{const m=JSON.parse(localStorage.getItem(LS_DRIVE_GIDS)||'{}');const cur=new Set((m[docId]||[]).map(String));gids.forEach(g=>cur.add(String(g)));m[docId]=Array.from(cur);localStorage.setItem(LS_DRIVE_GIDS,JSON.stringify(m));}catch(e){}}
+
+/* — Sondage des feuilles via gid (JSONP) : reconstruit le classeur multi-feuilles — */
+async function gvizProbeSheets(info){
+  const found=[], sigs=new Set();
+  const probeOne=async(gid,timeout)=>{
+    try{
+      const resp=await gvizJsonp({type:info.type,id:info.id,gid:gid},timeout||9000);
+      const raw=gvizRespToRawData(resp);
+      if(!raw.length||!raw.some(r=>r.some(c=>String(c).trim()))) return;
+      const sig=JSON.stringify(raw.slice(0,4)).slice(0,600)+'|'+raw.length;
+      if(sigs.has(sig)) return;      // gid invalide retombant sur une feuille déjà vue
+      sigs.add(sig); found.push({gid:parseInt(gid,10)||0,raw:raw});
+    }catch(e){/* gid inexistant : on ignore */}
+  };
+  /* 1) la première feuille d'abord (référence anti-doublon : les gid invalides retombent dessus) */
+  await probeOne('0',12000);
+  /* 2) puis gid de l'URL + gid mémorisés + balayage 1..30, en parallèle */
+  const candidates=[];
+  if(info.gid!=null&&info.gid!==''&&info.gid!=='0') candidates.push(String(info.gid));
+  getKnownGids(info.id).forEach(g=>{if(g!=='0'&&candidates.indexOf(g)===-1)candidates.push(g);});
+  for(let g=1;g<=30;g++){const s=String(g);if(candidates.indexOf(s)===-1)candidates.push(s);}
+  let idx=0;
+  const worker=async()=>{while(idx<candidates.length){await probeOne(candidates[idx++]);}};
+  await Promise.all([worker(),worker(),worker(),worker()]);
+  if(!found.length) return null;
+  addKnownGids(info.id,found.map(f=>f.gid));
+  found.sort((a,b)=>a.gid-b.gid);
+  const wb={SheetNames:[],Sheets:{}};
+  found.forEach((f,i)=>{
+    let hint='';
+    outer: for(const row of f.raw){for(const cell of row){const v=String(cell||'').replace(/\s+/g,' ').trim();if(v){hint=v.slice(0,22);break outer;}}}
+    let name='F'+(i+1)+(hint?' · '+hint:''); const base=name; let n=2;
+    while(wb.SheetNames.indexOf(name)!==-1) name=base+' ('+(n++)+')';
+    wb.SheetNames.push(name); wb.Sheets[name]=XLSX.utils.aoa_to_sheet(f.raw);
+  });
+  return wb;
+}
+
+/* — Applique un classeur issu du Drive (sans images ; barrés si fournis par l'API) — */
+function applyDriveWorkbook(wb,struck){
+  hideResults(); currentFileName='Google Sheets (lecture directe)';
+  currentEmbedded={}; currentStruck=struck||{};
+  currentWorkbook=wb; setLoading(false);
+  if(wb.SheetNames.length>1) showSheetPicker(wb.SheetNames);
+  else parseSheet(wb.SheetNames[0]);
+}
+
+/* — API Google Sheets v4 (clé API) : vrais noms d'onglets + barrés — */
+const LS_DRIVE_APIKEY='fd_bom_drive_apikey_v1';
+/* Clé par défaut du service (restreinte aux APIs Drive + Sheets, lecture de documents
+   publics uniquement). Un technicien peut la remplacer via le panneau ⚙ ci-dessus. */
+const DRIVE_APIKEY_DEFAULT='AIzaSyDCC1y3Yxv0o1fOra39G57tpeAsUmXcJxQ';
+function saveDriveApiKey(){
+  const k=document.getElementById('driveApiKey').value.trim();
+  try{if(k)localStorage.setItem(LS_DRIVE_APIKEY,k);else localStorage.removeItem(LS_DRIVE_APIKEY);}catch(e){}
+  showToast(k?'✓ Clé API enregistrée sur ce poste':'Clé API effacée');
+}
+/* — API Google Drive v3 (clé API) : télécharge le xlsx BRUT si le document est un
+     fichier Excel stocké sur Drive → expérience complète (photos + barrés + feuilles) — */
+async function loadViaDriveApi(info,key){
+  /* nom réel du fichier (métadonnées) — facultatif */
+  let fname='';
+  try{
+    const mres=await fetchWithTimeout('https://www.googleapis.com/drive/v3/files/'+info.id+'?fields=name&key='+encodeURIComponent(key),15000);
+    if(mres.ok){const mj=await mres.json();fname=mj.name||'';}
+  }catch(e){}
+  const url='https://www.googleapis.com/drive/v3/files/'+info.id+'?alt=media&key='+encodeURIComponent(key);
+  const res=await fetchWithTimeout(url,120000);
+  if(!res.ok){
+    let msg='HTTP '+res.status;
+    try{const j=await res.json();if(j.error&&j.error.message)msg+=' — '+j.error.message;}catch(e){}
+    throw new Error('Drive '+msg);
+  }
+  const ab=await res.arrayBuffer();
+  const u8=new Uint8Array(ab.slice(0,2));
+  if(!(u8[0]===0x50&&u8[1]===0x4B)) throw new Error('Drive : pas un fichier Excel natif');
+  return {ab:ab,name:fname};
+}
+async function loadViaSheetsApi(info,key){
+  const url='https://sheets.googleapis.com/v4/spreadsheets/'+info.id
+    +'?key='+encodeURIComponent(key)
+    +'&fields=sheets(properties(title,sheetId),data(startRow,startColumn,rowData(values(formattedValue,effectiveFormat.textFormat.strikethrough))))'
+    +'&includeGridData=true';
+  const res=await fetchWithTimeout(url,60000);
+  if(!res.ok){
+    let msg='HTTP '+res.status;
+    try{const j=await res.json();if(j.error&&j.error.message)msg+=' — '+j.error.message;}catch(e){}
+    throw new Error('API '+msg);
+  }
+  const j=await res.json();
+  if(!j.sheets||!j.sheets.length) throw new Error('API : aucune feuille renvoyée');
+  const wb={SheetNames:[],Sheets:{}}; const struckAll={};
+  j.sheets.forEach(sh=>{
+    const title=(sh.properties&&sh.properties.title)||('Feuille '+(wb.SheetNames.length+1));
+    const gd=(sh.data&&sh.data[0])||{};
+    const rows=gd.rowData||[]; const r0=gd.startRow||0, c0=gd.startColumn||0;
+    const aoa=[]; const struck={};
+    for(let i=0;i<r0;i++) aoa.push([]);
+    rows.forEach((r,ri)=>{
+      const vals=(r&&r.values)||[];
+      const line=new Array(c0).fill('');
+      vals.forEach(v=>line.push((v&&v.formattedValue!=null)?String(v.formattedValue):''));
+      aoa.push(line);
+      vals.forEach((v,ci)=>{
+        if(v&&v.effectiveFormat&&v.effectiveFormat.textFormat&&v.effectiveFormat.textFormat.strikethrough){
+          const rr=r0+ri; (struck[rr]=struck[rr]||new Set()).add(c0+ci);
+        }
+      });
+    });
+    if(!aoa.some(l=>l.some(c=>String(c).trim()))) return; // feuille vide : ignorée
+    let name=title, n=2;
+    while(wb.SheetNames.indexOf(name)!==-1) name=title+' ('+(n++)+')';
+    wb.SheetNames.push(name); wb.Sheets[name]=XLSX.utils.aoa_to_sheet(aoa);
+    if(Object.keys(struck).length) struckAll[name]=struck;
+  });
+  if(!wb.SheetNames.length) throw new Error('API : document vide');
+  return {wb:wb,struck:struckAll};
+}
+async function fetchWithTimeout(url,ms){
+  const ctl=new AbortController(); const t=setTimeout(()=>ctl.abort(),ms||30000);
+  try{return await fetch(url,{signal:ctl.signal,redirect:'follow'});}
+  finally{clearTimeout(t);}
+}
+
+/* — Statut de connexion — */
+function fmtSync(d){return d.toLocaleDateString('fr-FR')+' à '+d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});}
+function setDriveStatus(state,msg){
+  const box=document.getElementById('driveStatus'), dot=document.getElementById('driveDot'),
+        txt=document.getElementById('driveStatusTxt'), btn=document.getElementById('btnDriveRefresh');
+  box.style.display='flex'; dot.className='drive-dot '+(state==='ok'?'ok':state==='loading'?'loading':'err');
+  txt.textContent=msg;
+  btn.style.display=(state==='ok'||(state==='err'&&driveLastSync))?'inline-block':'none';
+  document.getElementById('btnDriveLoad').disabled=state==='loading';
+}
+function setDriveError(html){const e=document.getElementById('driveError');if(html){e.innerHTML=html;e.style.display='block';}else{e.style.display='none';}}
+function setDriveNote(html){const n=document.getElementById('driveNote');if(html){n.innerHTML=html;n.style.display='block';}else{n.style.display='none';}}
+function driveErrMessage(err){
+  const s=String((err&&err.message)||err||'');
+  if(/abort/i.test(s)) return 'Délai d\'attente dépassé. Vérifiez votre connexion internet puis réessayez.';
+  if(/HTTP 404/.test(s)) return 'Document introuvable (erreur 404). L\'URL est invalide ou le document a été supprimé / déplacé.';
+  if(/HTTP 40[13]/.test(s)||/accès/i.test(s)) return 'Accès refusé par Google. Le document n\'est pas partagé publiquement : demandez au propriétaire de régler le partage sur « Tous les utilisateurs disposant du lien » (rôle Lecteur).';
+  if(/HTTP (5\d\d)/.test(s)) return 'Google Drive est momentanément indisponible ('+s.match(/HTTP (5\d\d)/)[1]+'). Réessayez dans quelques instants.';
+  return 'Impossible d\'accéder au document. Causes possibles : partage insuffisant (doit être « Tous les utilisateurs disposant du lien »), document déplacé ou supprimé, connexion internet indisponible, ou requête bloquée par un proxy / VPN d\'entreprise (essayez en désactivant le VPN).';
+}
+
+/* — Chargement principal — */
+async function loadFromDrive(){
+  if(driveBusy) return;
+  const rawUrl=document.getElementById('driveUrl').value.trim();
+  setDriveError(''); setDriveNote('');
+  if(!rawUrl){setDriveError('Collez d\'abord l\'URL du Google Sheets (ou choisissez une BOM mémorisée).');return;}
+  const info=extractSheetInfo(rawUrl);
+  if(!info){setDriveError('URL non reconnue. Attendu : un lien Google Sheets de la forme <b>https://docs.google.com/spreadsheets/d/…</b>');return;}
+  const gidM=rawUrl.match(/[#?&]gid=(\d+)/); info.gid=gidM?gidM[1]:null;
+  driveBusy=true;
+  const urls=driveExportUrls(info);
+  setDriveStatus('loading','Connexion au Google Sheets…');
+  try{
+    let degraded=false;
+    /* 1) export xlsx natif (conserve photos + pièces barrées) */
+    try{
+      const res=await fetchWithTimeout(urls.xlsx);
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      const ct=(res.headers.get('content-type')||'').toLowerCase();
+      if(ct.includes('text/html')) throw new Error('accès refusé (page de connexion Google)');
+      const ab=await res.arrayBuffer();
+      const u8=new Uint8Array(ab.slice(0,2));
+      if(!(u8[0]===0x50&&u8[1]===0x4B)) throw new Error('réponse inattendue (pas un fichier Excel)');
+      hideResults(); currentFileName='Google Sheets (lecture directe)';
+      await loadWorkbookFromAB(ab);
+    }catch(exlsx){
+      let noteMsg='', done=false;
+      /* 2) APIs Google (si clé fournie) */
+      const apiKey=(document.getElementById('driveApiKey').value||'').trim();
+      if(apiKey&&info.type!=='pub'){
+        /* 2a) Drive v3 alt=media : si le doc est un fichier Excel stocké sur Drive,
+               on récupère le xlsx BRUT → version complète (photos + barrés + feuilles) */
+        setDriveStatus('loading','Téléchargement via l\'API Google Drive…');
+        try{
+          const r=await loadViaDriveApi(info,apiKey);
+          hideResults(); currentFileName=r.name||'Google Sheets (lecture directe)';
+          await loadWorkbookFromAB(r.ab);
+          done=true;
+          noteMsg='✅ Lecture en ligne via l\'<b>API Google Drive</b> : version <b>complète</b> — photos, feuilles et références barrées, comme en import local.';
+        }catch(eDrive){
+          console.warn('Drive API:',eDrive);
+          /* 2b) Sheets v4 : document Google Sheets natif → vrais noms d'onglets + barrés */
+          setDriveStatus('loading','Lecture via l\'API Google Sheets…');
+          try{
+            const r=await loadViaSheetsApi(info,apiKey);
+            applyDriveWorkbook(r.wb,r.struck);
+            degraded=true; done=true;
+            noteMsg='ℹ Lecture en ligne via l\'<b>API Google Sheets</b> : noms d\'onglets réels et <b>références barrées</b> disponibles. Seules les <b>photos</b> restent indisponibles (limitation Google) — pour les photos : onglet Téléchargement / Importation.';
+          }catch(eapi){
+            console.warn('Sheets API:',eapi);
+            setDriveError('⚠ APIs Google indisponibles (Drive : '+escHtml(String(eDrive.message||eDrive))+' · Sheets : '+escHtml(String(eapi.message||eapi))+'). Vérifiez la clé et que les APIs <b>Google Drive</b> et <b>Google Sheets</b> sont activées dans le projet Google Cloud. Passage en mode dégradé…');
+          }
+        }
+      }
+      /* 3) repli JSONP gviz multi-feuilles : contourne CORS / file:// / proxy strict */
+      if(!done&&info.type!=='pub'){
+        setDriveStatus('loading','Détection des feuilles du document…');
+        let probed=null;
+        try{probed=await gvizProbeSheets(info);}catch(e){probed=null;}
+        if(probed&&probed.SheetNames.length){
+          applyDriveWorkbook(probed);
+          degraded=true; done=true;
+        }
+      }
+      /* 4) repli CSV (fetch) : feuille liée seule */
+      if(!done){
+        const res2=await fetchWithTimeout(urls.csv);
+        if(!res2.ok) throw new Error('HTTP '+res2.status);
+        const ct2=(res2.headers.get('content-type')||'').toLowerCase();
+        const text=await res2.text();
+        if(ct2.includes('text/html')||/^\s*</.test(text)) throw (exlsx instanceof Error?exlsx:new Error('accès refusé'));
+        applyDriveWorkbook(XLSX.read(text,{type:'string'}));
+        degraded=true;
+      }
+      if(!noteMsg) noteMsg='⚠ Mode dégradé (lecture en ligne) : données à jour, mais <b>photos</b> et <b>références barrées</b> indisponibles dans ce mode. Les feuilles détectées apparaissent dans le sélecteur ci-dessous. <b>Une feuille manque ?</b> Ouvrez-la dans Google Sheets, copiez l\'URL de l\'onglet (elle contient <b>#gid=…</b>), collez-la ici et rechargez : la feuille sera ajoutée et <b>mémorisée définitivement</b> pour ce document. 💡 Astuce : renseignez une <b>clé API Google</b> (option ci-dessus) pour retrouver les vrais noms d\'onglets et les références barrées. Pour les photos : onglet Téléchargement / Importation.';
+      setDriveNote(noteMsg);
+    }
+    driveLastSync=new Date();
+    setDriveStatus('ok','Connecté — synchronisé le '+fmtSync(driveLastSync));
+    showToast('✓ BOM synchronisée depuis Google Drive');
+    try{localStorage.setItem(LS_DRIVE_LAST,rawUrl);}catch(e){}
+  }catch(err){
+    console.warn('loadFromDrive:',err);
+    setLoading(false);
+    setDriveStatus('err',driveLastSync?('Hors ligne — dernière synchro le '+fmtSync(driveLastSync)):'Non connecté');
+    setDriveError('❌ '+driveErrMessage(err));
+  }finally{
+    driveBusy=false;
+    document.getElementById('btnDriveLoad').disabled=false;
+  }
+}
+
+/* — BOM mémorisées — */
+function getSavedUrls(){try{const a=JSON.parse(localStorage.getItem(LS_DRIVE_URLS)||'[]');return Array.isArray(a)?a:[];}catch(e){return [];}}
+function renderSavedUrls(sel){
+  const s=document.getElementById('driveSaved');
+  s.innerHTML='<option value="">— BOM mémorisées —</option>';
+  getSavedUrls().forEach(e=>{
+    const o=document.createElement('option'); o.value=e.url; o.textContent='📌 '+e.name; s.appendChild(o);
+  });
+  if(sel) s.value=sel;
+}
+function saveDriveUrl(){
+  const url=document.getElementById('driveUrl').value.trim();
+  if(!url||!extractSheetInfo(url)){setDriveError('Collez d\'abord une URL Google Sheets valide avant de mémoriser.');return;}
+  const name=prompt('Nom pour cette BOM (ex : « Dreame L10s Ultra ») :');
+  if(!name||!name.trim()) return;
+  const list=getSavedUrls().filter(e=>e.url!==url);
+  list.push({name:name.trim(),url:url});
+  try{localStorage.setItem(LS_DRIVE_URLS,JSON.stringify(list));}catch(e){}
+  renderSavedUrls(url); showToast('✓ BOM mémorisée : '+name.trim());
+}
+function deleteDriveUrl(){
+  const s=document.getElementById('driveSaved');
+  if(!s.value){setDriveError('Sélectionnez d\'abord une BOM mémorisée dans la liste pour la retirer.');return;}
+  const list=getSavedUrls().filter(e=>e.url!==s.value);
+  try{localStorage.setItem(LS_DRIVE_URLS,JSON.stringify(list));}catch(e){}
+  renderSavedUrls(); showToast('BOM retirée de la liste');
+}
+function onSavedPick(url){
+  if(!url) return;
+  document.getElementById('driveUrl').value=url;
+  loadFromDrive();
+}
+function saveDriveAuto(){try{localStorage.setItem(LS_DRIVE_AUTO,document.getElementById('driveAuto').checked?'1':'0');}catch(e){}}
+
+/* — Restauration au démarrage — */
+(function initDrive(){
+  try{
+    renderSavedUrls();
+    const last=localStorage.getItem(LS_DRIVE_LAST)||'';
+    if(last){document.getElementById('driveUrl').value=last;const s=document.getElementById('driveSaved');if([...s.options].some(o=>o.value===last))s.value=last;}
+    document.getElementById('driveAuto').checked=localStorage.getItem(LS_DRIVE_AUTO)!=='0';
+    const apik=localStorage.getItem(LS_DRIVE_APIKEY)||DRIVE_APIKEY_DEFAULT;
+    if(apik) document.getElementById('driveApiKey').value=apik;
+    /* Ouverture directe depuis la page Recherche : lecteur_bom.html?bom=<id ou url> */
+    const bomParam=new URLSearchParams(location.search).get('bom');
+    if(bomParam){
+      document.getElementById('driveUrl').value=/^https?:/i.test(bomParam)?bomParam:('https://docs.google.com/spreadsheets/d/'+bomParam+'/edit');
+      driveAutoDone=true;
+      switchMode('drive');
+      loadFromDrive();
+    } else if(localStorage.getItem(LS_DRIVE_MODE)==='drive') switchMode('drive');
+  }catch(e){}
+})();
 
 /* ═══ HELPERS UI ═══ */
 function setLoading(on,msg=''){document.getElementById('loadingBar').classList.toggle('active',on);if(msg)document.getElementById('loadingMsg').textContent=msg;}

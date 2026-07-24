@@ -359,6 +359,8 @@ function driveId(url){const m=String(url).match(/\/d\/([A-Za-z0-9_-]{10,})/)||St
 function docKind(url){if(/docs\.google\.com\/spreadsheets/.test(url))return 'spreadsheets';if(/docs\.google\.com\/presentation/.test(url))return 'presentation';if(/docs\.google\.com\/document/.test(url))return 'document';return 'file';}
 function previewUrl(url){const id=driveId(url);if(!id)return url;const k=docKind(url);return k==='file'?'https://drive.google.com/file/d/'+id+'/preview':'https://docs.google.com/'+k+'/d/'+id+'/preview';}
 function downloadUrl(url){const id=driveId(url);if(!id)return url;return 'https://drive.google.com/uc?export=download&id='+id;}
+// Ouvre une BOM directement dans le Lecteur BOM (consultation directe, sans téléchargement)
+function bomReaderUrl(url){const id=driveId(url);return 'lecteur_bom.html?bom='+encodeURIComponent(id||url);}
 function stripCJK(s){return String(s).replace(/[　-鿿＀-￯]/g,'').replace(/\s{2,}/g,' ').trim().replace(/[_\-·&]+$/,'').replace(/^[_\-·&\s]+/,'').trim();}
 // Nettoie un libellé de catégorie : garde les segments (séparés par _) contenant du latin
 function cleanCat(raw){const keep=String(raw).split('_').map(s=>s.trim()).filter(s=>/[A-Za-z]/.test(s));return (stripCJK(keep.join(' '))||stripCJK(raw)||raw).replace(/\s{2,}/g,' ').trim();}
@@ -675,7 +677,9 @@ function doSearch(){
         return '<div class="ri-bom-item">'+
           '<span class="ri-bom-ic">'+t.icon+'</span>'+
           '<span class="ri-bom-name" title="'+esc(d.name)+'">'+hl(trTitle(d.name),q)+'</span>'+
-          '<a class="ri-bom-btn preview" href="'+esc(previewUrl(d.url))+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">👁 Aperçu</a>'+
+          (d.type==='bom'
+            ?'<a class="ri-bom-btn preview" href="'+esc(bomReaderUrl(d.url))+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">📋 Lecteur BOM</a>'
+            :'<a class="ri-bom-btn preview" href="'+esc(previewUrl(d.url))+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">👁 Aperçu</a>')+
           '<a class="ri-bom-btn dl" href="'+esc(downloadUrl(d.url))+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">⬇ Télécharger</a>'+
         '</div>';
       }).join('')+(extra>0?'<div class="ri-bom-more">+ '+extra+' autre'+(extra>1?'s':'')+' document'+(extra>1?'s':'')+' — cliquer pour ouvrir le dossier</div>':'');
@@ -744,7 +748,9 @@ function openDetail(idx){
               '<div class="doc-name" title="'+esc(d.name)+'">'+esc(trTitle(d.name))+'</div>'+
               (ext?'<div class="doc-ext">.'+esc(ext)+'</div>':'')+
               '<div class="doc-actions">'+
-                '<a class="doc-btn preview" href="'+esc(previewUrl(d.url))+'" target="_blank" rel="noopener">👁 Aperçu</a>'+
+                (isBom
+                  ?'<a class="doc-btn preview" href="'+esc(bomReaderUrl(d.url))+'" target="_blank" rel="noopener">📋 Lecteur BOM</a>'
+                  :'<a class="doc-btn preview" href="'+esc(previewUrl(d.url))+'" target="_blank" rel="noopener">👁 Aperçu</a>')+
                 '<a class="doc-btn dl" href="'+esc(downloadUrl(d.url))+'" target="_blank" rel="noopener">⬇ Télécharger</a>'+
               '</div>'+
             '</div></div>';
