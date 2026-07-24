@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ Aspirateurs balais laveurs — PEM · SAV Dreame · Fnac Darty</title>
+<style>
+  :root{
+    --rouge:#D4151B; --orange:#EEA31E;
+    --dreame:#2669C2; --dreame-2:#1B4E97; --dreame-bg:#EAF1FB; --dreame-bd:#C4D9F4;
+    --bg:#F1F3F6; --surface:#FFFFFF; --border:#DDE1E8;
+    --text:#1A1E2A; --text-2:#4A5068; --muted:#8891A8;
+    --r-md:8px; --r-lg:14px; --tr:.16s cubic-bezier(.4,0,.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Segoe UI",system-ui,Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+  .hubbar{background:var(--rouge);padding:11px 22px;display:flex;align-items:center;gap:16px;
+    position:sticky;top:0;z-index:20;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+  .hubbar .home{display:flex;align-items:center;gap:14px;text-decoration:none;flex-shrink:0;}
+  .hubbar img{height:36px;background:#fff;padding:5px 9px;border-radius:6px;transition:transform .15s;}
+  .hubbar:hover img{transform:scale(1.05);}
+  .hubbar .txt{color:#fff;font-weight:700;font-size:14px;letter-spacing:.3px;}
+
+  .hero{background:linear-gradient(120deg,#1B4E97 0%,var(--dreame) 60%,#4A8AD4 100%);
+    padding:34px 22px 26px;text-align:center;color:#fff;}
+  .hero-logo{height:46px;background:#fff;padding:7px 14px;border-radius:10px;margin-bottom:14px;
+    box-shadow:0 4px 16px rgba(0,0,0,.2);}
+  .hero .eyebrow{font-size:.9rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+  .hero h1{font-size:1.5rem;font-weight:800;margin-bottom:6px;}
+  .hero p{color:rgba(255,255,255,.9);font-size:.9rem;}
+  .hero nav{display:flex;gap:8px;justify-content:center;margin-top:20px;flex-wrap:wrap;}
+  .hero nav a{color:#fff;text-decoration:none;font-size:.86rem;font-weight:600;padding:8px 16px;
+    border-radius:var(--r-md);background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.45);transition:var(--tr);}
+  .hero nav a:hover{background:rgba(255,255,255,.28);}
+  .hero nav a.active{background:#fff;color:var(--dreame-2);border-color:#fff;}
+
+  main{max-width:1060px;margin:0 auto;padding:24px 20px 60px;}
+
+  .toolbar{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-lg);
+    padding:16px 18px;box-shadow:0 2px 6px rgba(0,0,0,.05);margin-bottom:20px;
+    position:sticky;top:58px;z-index:10;}
+  .search{position:relative;margin-bottom:14px;}
+  .search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted);}
+  .search input{width:100%;padding:11px 38px 11px 40px;font-size:.95rem;font-family:inherit;
+    border:1.5px solid var(--border);border-radius:var(--r-md);background:#FAFBFC;color:var(--text);outline:none;transition:var(--tr);}
+  .search input:focus{border-color:var(--dreame);background:#fff;box-shadow:0 0 0 3px rgba(38,105,194,.12);}
+  .search .clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:none;background:none;
+    color:var(--muted);cursor:pointer;font-size:1.2rem;line-height:1;padding:4px 8px;display:none;}
+
+  .filters{display:flex;flex-direction:column;gap:10px;}
+  .frow{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;}
+  .flabel{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);
+    padding-top:7px;min-width:64px;}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;flex:1;}
+  .chip{font-family:inherit;font-size:.8rem;font-weight:600;padding:6px 13px;border-radius:100px;cursor:pointer;
+    background:#F4F6F9;border:1.5px solid var(--border);color:var(--text-2);transition:var(--tr);white-space:nowrap;}
+  .chip:hover{border-color:var(--dreame);color:var(--dreame);}
+  .chip.on{background:var(--dreame);border-color:var(--dreame);color:#fff;}
+
+  .count{font-size:.82rem;color:var(--text-2);margin:0 4px 12px;}
+  .count b{color:var(--dreame);}
+
+  .group{margin-bottom:22px;}
+  .gtitle{display:flex;align-items:center;gap:9px;font-size:.78rem;font-weight:800;text-transform:uppercase;
+    letter-spacing:1px;color:var(--dreame-2);margin:0 4px 10px;}
+  .gtitle::after{content:"";flex:1;height:1.5px;background:var(--dreame-bd);}
+
+  .qa{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-lg);
+    margin-bottom:9px;overflow:hidden;transition:var(--tr);}
+  .qa:hover{border-color:var(--dreame-bd);}
+  .qa[open]{border-color:var(--dreame);box-shadow:0 4px 16px rgba(38,105,194,.12);}
+  .qa summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;
+    font-size:.95rem;font-weight:600;line-height:1.45;}
+  .qa summary::-webkit-details-marker{display:none;}
+  .qa summary::after{content:"";flex-shrink:0;width:8px;height:8px;margin:6px 0 0 auto;
+    border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:var(--tr);}
+  .qa[open] summary::after{transform:rotate(-135deg);border-color:var(--dreame);}
+  .qa summary .badge{flex-shrink:0;font-size:.66rem;font-weight:800;letter-spacing:.4px;text-transform:uppercase;
+    background:var(--dreame-bg);color:var(--dreame-2);border:1px solid var(--dreame-bd);
+    padding:3px 8px;border-radius:5px;margin-top:2px;}
+  .body{padding:0 18px 16px 18px;}
+  .body .ans{font-size:.9rem;line-height:1.65;color:var(--text-2);white-space:pre-wrap;
+    border-left:3px solid var(--dreame-bd);padding-left:14px;}
+  .body .ans a{color:var(--dreame);}
+  .models{display:flex;gap:5px;flex-wrap:wrap;margin-top:12px;padding-left:17px;}
+  .models span{font-size:.7rem;font-weight:700;background:#F4F6F9;border:1px solid var(--border);
+    color:var(--text-2);padding:3px 8px;border-radius:100px;}
+  mark{background:#FFF1A8;color:inherit;border-radius:2px;padding:0 1px;}
+
+  .empty{text-align:center;padding:50px 20px;color:var(--muted);}
+  .empty svg{margin-bottom:12px;opacity:.5;}
+  .empty b{display:block;color:var(--text-2);font-size:1rem;margin-bottom:4px;}
+
+  footer{background:#000;color:#fff;text-align:center;padding:14px;font-size:.8rem;}
+  footer span{color:var(--orange);font-weight:600;}
+
+  @media(max-width:640px){
+    .toolbar{position:static;} .flabel{min-width:auto;padding-top:0;}
+    .frow{flex-direction:column;gap:6px;} .hero h1{font-size:1.2rem;}
+  }
+  @media print{
+    .hubbar,.hero,.toolbar,footer{display:none;} .qa{break-inside:avoid;} .body{display:block!important;}
+  }
+</style>
+<script data-goatcounter="https://hub-drive-fnac.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+
+<div class="hubbar">
+  <a class="home" href="../index.html" title="Retour au HUB Drive Constructeurs">
+    <img src="assets/FNAC DARTY.png" alt="Fnac Darty — Retour au HUB">
+    <span class="txt">← HUB Drive Constructeurs</span>
+  </a>
+</div>
+
+<div class="hero">
+  <img class="hero-logo" src="assets/DREAME.png" alt="Dreame" onerror="this.style.display='none'">
+  <div class="eyebrow">Petit Électro-Ménager</div>
+  <h1>FAQ Aspirateurs balais laveurs</h1>
+  <p>Questions fréquentes et dépannage — gammes H11, H12, M12 et H15.</p>
+  <nav>
+    <a href="dreame.html">Recherche</a>
+    <a href="lecteur_bom.html">Lecteur BOM</a>
+    <a href="robot_laveur.html">🤖 Robot laveur</a>
+    <a href="aspirateur_balai_laveur.html" class="active">🧹 Aspirateur balai laveur</a>
+  </nav>
+</div>
+
+<main>
+  <div class="toolbar">
+    <div class="search">
+      <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M20 20l-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Rechercher un symptôme, une pièce, un code…" autocomplete="off">
+      <button class="clear" id="clr" title="Effacer">&times;</button>
+    </div>
+    <div class="filters">
+      <div class="frow"><div class="flabel">Modèle</div><div class="chips" id="fm"></div></div>
+      <div class="frow"><div class="flabel">Thème</div><div class="chips" id="fc"></div></div>
+    </div>
+  </div>
+
+  <div class="count" id="cnt"></div>
+  <div id="list"></div>
+</main>
+
+<footer>Espace interne <span>Fnac Darty</span> · SAV Dreame — FAQ PEM</footer>
+
+<script>
+const FAQ = [
+{"m": ["H11", "H11 MAX", "H12", "H12 Pro", "M12", "H12 Dual", "H12 Core"], "c": "Dépannage", "q": "Pourquoi la charge est-elle lente ?", "a": "Explication : si l'appareil est mis en charge après une utilisation prolongée en forte puissance ou par temps chaud, la protection contre la surchauffe peut s'activer et allonger le temps de charge.\n\nDiagnostic : vérifier que l'adaptateur secteur d'origine est bien utilisé.\n• Adaptateur non d'origine → recommander l'adaptateur Dreame d'origine (testé en usine, garantit sécurité et stabilité).\n• Adaptateur d'origine → orienter vers une prise en charge SAV.", "en": "Why the robot charging slowly?"},
+{"m": ["H11", "H11 MAX", "H12", "H12 Pro", "M12", "H12 Dual", "H12 Core"], "c": "Dépannage", "q": "Pourquoi y a-t-il de l'eau dans le circuit / la brosse / le réservoir d'eau propre au déballage ?", "a": "Chaque machine est contrôlée avant sortie d'usine. Ces gouttes d'eau sont un résidu du test de contrôle qualité.", "en": "Why is there water in the pipeline/brush roller/ clean water tank after unpacked?"},
+{"m": ["H11", "H11 MAX", "H12", "H12 Pro", "M12", "H12 Dual", "H12 Core"], "c": "Dépannage", "q": "Pourquoi y a-t-il des débris ressemblant à des cheveux au déballage ?", "a": "La plupart des pièces sont injectées puis emballées dans des sachets PE placés dans des cartons. Des poussières ou fibres du carton peuvent se déposer sur le sachet PE ou sur la machine.", "en": "why is there hair-like debris after unpacked."},
+{"m": ["H11", "H11 MAX", "H12", "H12 Pro", "M12", "H12 Dual", "H12 Core"], "c": "Dépannage", "q": "Pourquoi la puissance d'aspiration faiblit-elle ?", "a": "1. Le filtre est trop humide ou colmaté : nettoyer puis sécher complètement le filtre et le bac avant utilisation.\n2. La brosse rouleau, son capot ou le filtre ne sont pas correctement en place : vérifier et remonter correctement.\n3. Vérifier si la brosse est entourée de cheveux et nettoyer les saletés au niveau de la sortie de la brosse.\n4. Vérifier l'absence de corps étrangers ou d'obstruction dans les conduits (conduit d'air, conduit du bac à eau sale).", "en": "Why does the suction power become weak?"},
+{"m": ["H11", "H11 MAX", "H12", "H12 Pro", "M12", "H12 Dual", "H12 Core"], "c": "Dépannage", "q": "Pourquoi la machine fait-elle un bruit anormal ?", "a": "Procéder aux vérifications suivantes :\n1. Si l'orifice d'aspiration est obstrué : retirer la brosse rouleau et nettoyer la brosse ainsi que l'ouverture du conduit.\n2. Si le filtre situé au-dessus du bac à eau sale est colmaté ou humide : nettoyer le conduit du bac à eau sale et garder le filtre propre et sec.", "en": "Why does the vacuum make the strange noise?"},
+{"m": ["H11", "H11 MAX", "H12", "H12 Pro", "M12", "H12 Dual", "H12 Core"], "c": "Dépannage", "q": "Fuite du réservoir d'eau propre", "a": "1. Retirer le réservoir d'eau propre rempli, essuyer l'extérieur et vérifier s'il fuit encore. Si oui, le raccord du réservoir est probablement défectueux : remplacer le réservoir.\n2. Si le réservoir lui-même ne fuit pas, vérifier son montage. Un réservoir mal enclenché provoque une fuite ; un remontage correct résout le problème.\n3. Si les deux points ci-dessus sont conformes, vérifier que le ressort situé au niveau de l'orifice de sortie sous le réservoir revient bien en position ; l'actionner manuellement pour le remettre en place.", "en": "Clear water tank leakage"},
+{"m": ["H11", "H11 MAX", "H12", "H12 Pro", "M12", "H12 Dual", "H12 Core"], "c": "Dépannage", "q": "Pourquoi l'anneau lumineux reste-t-il orange / rouge en permanence ?", "a": "1. Une quantité excessive de détergent dans le réservoir d'eau propre (plus d'un bouchon) peut faire afficher orange/rouge alors que le sol n'est pas sale.\n2. Le circuit est fortement encrassé et doit être nettoyé.\n3. Les saletés aspirées adhèrent à l'électrode du bac à eau sale et faussent la détection.\n4. En fonctionnement normal, un filtre trop humide augmente la résistance de l'air : l'aspiration diminue et l'eau sale n'est plus aspirée jusqu'au capteur du conduit d'entrée de la brosse, ce qui fait passer l'anneau à l'orange/rouge. Remplacer par un filtre sec.", "en": "Why is the light ring always on orange/red?"},
+{"m": ["H11", "H11 MAX", "H12", "H12 Pro", "M12", "H12 Dual", "H12 Core"], "c": "Dépannage", "q": "Des traces d'eau restent sur la grande roue : est-ce gênant ?", "a": "En cours d'utilisation, la grande roue est en contact avec l'eau au sol et laisse de légères traces en avançant. Cela n'affecte pas le fonctionnement.", "en": "Does it affect use during the cleaning process, there are residual water marks on the large wheel?"},
+{"m": ["H11", "H11 MAX"], "c": "Dépannage", "q": "L'auto-nettoyage ne se lance pas", "a": "Causes possibles :\n1. Brosse rouleau bloquée par de gros débris.\n2. Machine non posée sur sa base de charge.\n3. Machine sur la base mais pas en charge (base non alimentée ou mauvais contact).\n4. Batterie inférieure à 10 % (inférieure à 30 % pour l'auto-nettoyage en profondeur).\n5. Bac à eau sale plein ou mal positionné.\n6. Réservoir d'eau propre mal positionné ou vide.\n\nSolutions :\n1. Vérifier la brosse rouleau et la nettoyer si elle est bloquée.\n2. Poser la machine sur la base et l'alimenter.\n3. Rétablir l'alimentation ou repositionner la machine sur la base.\n4. Vider et remettre correctement le bac à eau sale.\n5. Remplir et remettre correctement le réservoir d'eau propre.", "en": "Does not work when self-cleaning"},
+{"m": ["H11", "H11 MAX", "H12", "H12 Pro", "M12", "H12 Dual", "H12 Core"], "c": "Dépannage", "q": "La machine ne change pas de mode / vitesse", "a": "1. Mauvais contact entre la poignée et le corps : rebrancher la poignée en l'enfonçant à fond jusqu'au « clic ».\n2. La machine n'est pas allumée : appuyer sur le bouton Marche.\n3. Sur la base, la machine est en veille profonde : appuyer sur le bouton Marche pour la réveiller.", "en": "Machine cannot switch gears"},
+{"m": ["H11", "H11 MAX", "H12", "H12 Pro", "M12", "H12 Dual", "H12 Core"], "c": "Dépannage", "q": "Débordement de mousse sur la base pendant l'auto-nettoyage", "a": "En cas de mousse abondante, réduire la dose de détergent.\nPar ailleurs, une brosse neuve est plus volumineuse : pendant l'auto-nettoyage, les poils battent une plus grande surface d'eau et génèrent davantage de mousse. Le phénomène s'atténue au fil des utilisations.", "en": "Foam overflow on the base when self-cleaning"},
+{"m": ["H11", "H11 MAX", "H12", "H12 Pro", "M12", "H12 Dual", "H12 Core"], "c": "Dépannage", "q": "La brosse rouleau ne tourne pas au démarrage", "a": "Retirer la brosse rouleau, redémarrer la machine et observer si l'axe tourne. S'il ne tourne pas, prise en charge SAV nécessaire. Si l'axe tourne, tester avec une brosse rouleau neuve.", "en": "Start the machine, the roller brush does not turn"},
+{"m": ["H11", "H11 MAX", "H12", "H12 Pro", "M12", "H12 Dual", "H12 Core"], "c": "Dépannage", "q": "Le capot de brosse rouleau est sale", "a": "Le capot de brosse est rinçable. S'il est encrassé, le déposer, le brosser avec la brossette fournie, le rincer à l'eau puis le remonter.", "en": "Rolling brush cover is dirty"},
+{"m": ["H11", "H11 MAX", "H12", "H12 Pro", "M12", "H12 Dual", "H12 Core"], "c": "Dépannage", "q": "Conduit obstrué", "a": "Si la machine signale une obstruction du circuit, procéder ainsi :\n1. Vérifier la dose de détergent : 10 ml pour un réservoir d'eau propre.\n2. Retirer le bac à eau sale et la brosse rouleau, essuyer l'entrée et le conduit avec un chiffon humide.\n3. Vérifier que le conduit du bac à eau sale n'est pas bouché ; le nettoyer si nécessaire.\n4. Extraire la cartouche filtrante du haut du bac à eau sale, la nettoyer à l'eau, la sécher complètement puis la remonter (ne jamais remonter une cartouche humide).", "en": "Clogged pipe"},
+{"m": ["H11"], "c": "Info produit", "q": "Quelle surface la machine peut-elle nettoyer en une fois ?", "a": "L'autonomie du H11 est de 30 min. Il peut nettoyer environ 160 m² en une seule utilisation.", "en": "How much area can the machine clean at a time"},
+{"m": ["H11", "H11 MAX"], "c": "Info produit", "q": "Quelle est la durée de vie de la batterie ?", "a": "À raison d'une utilisation tous les deux jours, la batterie fonctionne normalement pendant 3 à 5 ans.", "en": "How long is the life of the battery"},
+{"m": ["H11", "H11 MAX", "H12", "H12 Pro", "M12", "H12 Dual", "H12 Core"], "c": "Info produit", "q": "Durée de vie des consommables", "a": "Brosse rouleau : il est conseillé d'alterner entre deux brosses. Les brosses peuvent être nettoyées puis séchées avant réutilisation. Durée de vie d'environ 3 à 6 mois.\nFiltre / cartouche : pour conserver les performances de nettoyage, remplacer la cartouche tous les 3 à 6 mois.", "en": "Service life of consumables"},
+{"m": ["H11", "H11 MAX", "H12", "H12 Pro", "M12", "H12 Dual", "H12 Core"], "c": "Info produit", "q": "Peut-on utiliser un détergent d'une autre marque ?", "a": "Ne pas utiliser de solution nettoyante autre que Dreame.\nLe détergent Dreame est développé et testé spécifiquement : il n'endommage pas les pièces de précision internes. Les détergents d'autres marques ont une composition inconnue et risquent d'endommager la machine.", "en": "Whether can use other brands of cleaning solution"},
+{"m": ["H11", "H11 MAX", "H12", "H12 Pro", "M12", "H12 Dual", "H12 Core"], "c": "Info produit", "q": "Traces d'eau laissées par les roues pendant le nettoyage", "a": "Les roues sont en contact avec l'eau présente au sol ; en poussant la machine vers l'avant, de légères traces d'eau restent visibles. Ce phénomène est normal et n'affecte pas le fonctionnement. En cas de traces sales, essuyer après utilisation. Il est conseillé de réduire la vitesse de passage.", "en": "In cleaning process, the floor residual roller water stains"},
+{"m": ["H11", "H11 MAX", "H12", "H12 Pro", "M12", "H12 Dual", "H12 Core"], "c": "Info produit", "q": "L'ensemble brosse rouleau peut-il être lavé ?", "a": "Le corps de l'appareil et l'ensemble brosse rouleau comportent des éléments conducteurs : ne jamais les immerger dans l'eau ou tout autre liquide.", "en": "Can the roller brush assembly of the vacuum be washed?"},
+{"m": ["H11"], "c": "Info produit", "q": "Combien de boutons possède le H11 et à quoi servent-ils ?", "a": "Marche/Arrêt : appui bref pour allumer, nouvel appui pour éteindre.\nAuto-nettoyage : appui bref pour lancer l'auto-nettoyage, appui long pour l'auto-nettoyage en profondeur.\nNiveau d'aspiration : la machine démarre par défaut en mode Standard ; appuyer pour passer en mode Turbo selon le besoin.\nAssistance vocale : appui bref pour activer/désactiver les annonces vocales et régler le volume ; appui long pour changer de langue.", "en": "How many buttons does the H11 have, and what are they for?"},
+{"m": ["H11"], "c": "Info produit", "q": "Comment lancer l'auto-nettoyage du H11 ?", "a": "L'auto-nettoyage n'est possible que si la machine est en charge et que la batterie dépasse 10 %.\nPlacer la machine à la verticale sur sa base de charge après le nettoyage et s'assurer que le réservoir d'eau propre est rempli.\nAppuyer brièvement sur le bouton d'auto-nettoyage en haut de la poignée : le témoin d'auto-nettoyage s'allume à l'écran et le cycle démarre.\nLa charge reprend automatiquement à la fin du cycle.", "en": "How to do the self-clean for H11"},
+{"m": ["H11"], "c": "Info produit", "q": "Quelles différences entre H11 et H11 MAX ?", "a": "1. Le H11 MAX dispose de la détection intelligente de saleté : il ajuste automatiquement la puissance, le débit d'eau et l'aspiration selon le degré de salissure du sol.\n2. Écran : le H11 MAX affiche un anneau de saleté qui passe du rouge à l'orange puis au vert selon le niveau d'encrassement.\n3. Modes : H11 MAX = Automatique + Aspiration d'eau ; H11 = Standard + Turbo.\n4. Batterie : H11 MAX = 4000 mAh / 36 min d'autonomie ; H11 = 2500 mAh / 30 min.", "en": "What’s the difference between H11?"},
+{"m": ["H11 MAX"], "c": "Info produit", "q": "Quelle surface la machine peut-elle nettoyer en une fois ?", "a": "L'autonomie du H11 MAX est de 36 min. Il peut nettoyer environ 200 m² en une seule utilisation.", "en": "How much area can the machine clean at a time"},
+{"m": ["H11 MAX"], "c": "Info produit", "q": "Combien de boutons possède le H11 MAX et à quoi servent-ils ?", "a": "Marche/Arrêt : appui bref pour allumer, nouvel appui pour éteindre.\nAuto-nettoyage : appui bref pour lancer l'auto-nettoyage, appui long pour l'auto-nettoyage en profondeur.\nAspiration d'eau : appuyer pour lancer le mode aspiration d'eau, nouvel appui pour revenir en mode automatique.\nAssistance vocale : appui bref pour activer/désactiver les annonces vocales et régler le volume ; appui long pour changer de langue.", "en": "How many buttons does the H11 MAX have, and what are they for?"},
+{"m": ["H11 MAX"], "c": "Info produit", "q": "Comment lancer l'auto-nettoyage du H11 MAX ?", "a": "L'auto-nettoyage n'est possible que si la machine est en charge et que la batterie dépasse 10 %.\nPlacer la machine à la verticale sur sa base de charge après le nettoyage et s'assurer que le réservoir d'eau propre est rempli.\nAppuyer brièvement sur le bouton d'auto-nettoyage en haut de la poignée : le témoin s'allume à l'écran et le cycle démarre.\nLa charge reprend automatiquement à la fin du cycle.", "en": "How to do the self-clean for H11 MAX"},
+{"m": ["H11 MAX"], "c": "Info produit", "q": "Quelles différences entre H11 MAX et H11 ?", "a": "1. Le H11 MAX dispose de la détection intelligente de saleté : il ajuste automatiquement la puissance, le débit d'eau et l'aspiration selon le degré de salissure du sol.\n2. Écran : le H11 MAX affiche un anneau de saleté qui passe du rouge à l'orange puis au vert selon le niveau d'encrassement.\n3. Modes : H11 MAX = Automatique + Aspiration d'eau ; H11 = Standard + Turbo.\n4. Batterie : H11 MAX = 4000 mAh / 36 min d'autonomie ; H11 = 2500 mAh / 30 min.", "en": "What’s the difference between H11Max & H11?"},
+{"m": ["H12 Pro", "M12"], "c": "Dépannage", "q": "Fuite d'eau sur le bord / le dessous / la sortie d'air du bac à eau sale pendant l'utilisation", "a": "Vérifications à effectuer :\n1. Le filtre doit être parfaitement sec après nettoyage.\n2. Un choc de la machine contre un pied de table ou un mur fait remonter l'eau du bac à eau sale et peut la faire pénétrer dans le moteur.\n3. Des mouvements de va-et-vient trop brusques provoquent le même phénomène.\n4. Un angle d'utilisation trop faible (machine trop couchée) fait entrer l'eau sale dans le moteur.", "en": "when in use，water leaks from the edge/bottom/air outlet of the dirty water tank."},
+{"m": ["H12 Pro", "H12 Dual"], "c": "Dépannage", "q": "Pourquoi la brosse rouleau ne sèche-t-elle pas ?", "a": "Le séchage fonctionne-t-il après l'auto-nettoyage ?\n• Oui, mais mal : vérifier que la brosse rouleau n'est pas bloquée par un corps étranger. Maintenir le bouton d'auto-nettoyage 3 secondes pour vérifier que le mode séchage démarre. S'il démarre normalement, observer à l'usage ; si le problème persiste après ces contrôles, prise en charge SAV.\n• Non : vérifier que la brosse rouleau n'est pas bloquée par un corps étranger. Si le problème persiste après nettoyage, prise en charge SAV.", "en": "Why can't the roller brush be dried?"},
+{"m": ["H12 Pro", "H12 Dual"], "c": "Dépannage", "q": "Pourquoi le mode séchage est-il bruyant ?", "a": "Vérifier l'absence de corps étranger au niveau de l'orifice d'aspiration principal. Ouvrir le capot de brosse, retirer la brosse rouleau et nettoyer l'orifice d'aspiration principal ainsi que le conduit.", "en": "Why does drying mode make the big noise?"},
+{"m": ["H12 Pro"], "c": "Info produit", "q": "Comment utiliser le H12 Pro ?", "a": "Vidéo de démonstration : https://youtu.be/kmTfcQbs5Ek", "en": "How to use H12 Pro?"},
+{"m": ["H12 Core"], "c": "Info produit", "q": "Qu'est-ce que le réglage automatique de l'aspiration ?", "a": "Détection intelligente de la saleté associée à la variation automatique de puissance : l'aspiration et le débit d'eau s'ajustent automatiquement.", "en": "What is suction power adjustment"},
+{"m": ["H12 Dual"], "c": "Dépannage", "q": "L'écran affiche E1 à E7 / H1 à H7 / F1 à F6", "a": "Retirer la machine de la base et l'éteindre, attendre 15 secondes puis la redémarrer.\nSi le défaut persiste, prise en charge SAV.", "en": "The screen display will show\nE1/E2/E3/E4/E5/E6/E7/H1/H2/H3/H4/H5/H6/H7/F1/F2/F3/F4/F5/F6"},
+{"m": ["H12 Dual"], "c": "Dépannage", "q": "L'écran affiche F7", "a": "La protection contre la surchauffe s'est déclenchée. Attendre 30 minutes avant de redémarrer la machine.", "en": "The screen display will show F7"},
+{"m": ["H12 Dual"], "c": "Dépannage", "q": "Fuite d'eau sur le bord ou le dessous du bac à eau sale / à la sortie d'air / résidus d'eau au niveau de l'aspirateur à main", "a": "1. Vérifier la présence de la cartouche filtrante et son état : elle doit être parfaitement sèche après nettoyage.\n2. Un choc contre un pied de table ou un mur fait remonter l'eau du bac à eau sale et peut la faire pénétrer dans le moteur.\n3. Des mouvements de va-et-vient trop brusques provoquent le même phénomène.\n4. Un angle d'utilisation trop faible fait entrer l'eau sale dans le moteur.\n\nMaintenir un angle d'inclinaison supérieur à 40° entre le corps de la machine et le sol pour éviter tout retour d'eau sale. Si de l'eau a pénétré dans la machine, la laisser sécher naturellement avant réutilisation.", "en": "Leakage of water at the edge or bottom of the sewage tank when in use/leakage of water at the air outlet/water residue from the handheld vacuum parts"},
+{"m": ["H12 Dual"], "c": "Info produit", "q": "Montage et démontage de l'aspirateur à main et du bac à poussière (version 2-en-1)", "a": "Vidéo de démonstration : https://n.miaopai.com/v2/media/kxfDY2sDGqdOqA3SQExVesoKqpImxhJ-", "en": "Handheld vacuum and dust cup Installation and disassembly of the 2-in-1 wet and dry vacuum"},
+{"m": ["H12 Dual"], "c": "Info produit", "q": "Montage et démontage du support de rangement des accessoires (version 2-en-1)", "a": "Vidéo de démonstration : https://n.miaopai.com/v2/media/hnYiu6Zrl2n0CbzLTDH2aDAv5Ks1GN2s", "en": "Accessory Storage installation and disassembly of the 2-in-1 wet and dry vacuum"},
+{"m": ["H12 FlexReach"], "c": "Batterie & charge", "q": "Autonomie de 50 minutes", "a": "Le H12 FlexReach est équipé de 6 cellules pour un total de 4000 mAh, avec un système intelligent de variation de fréquence économe en énergie. En mode silencieux, il nettoie en continu pendant environ 50 minutes ; les modes automatique et puissant sont également disponibles.\nEn mode silencieux, la surface nettoyable atteint environ 300 m².", "en": "50-minute long battery life"},
+{"m": ["H12 FlexReach"], "c": "Batterie & charge", "q": "Durée de vie de la batterie", "a": "La durée de vie dépend des conditions d'utilisation. À raison d'un nettoyage tous les 2 jours, la batterie fonctionne normalement pendant 3 à 5 ans.\nTestée en laboratoire, elle supporte environ 1 000 cycles de charge. Sur la base d'un nettoyage complet du logement tous les 2 jours, soit 15 fois par mois et environ 200 fois par an, la batterie tient 4 à 5 ans.", "en": "Battery service life"},
+{"m": ["H12 FlexReach"], "c": "Batterie & charge", "q": "Différence entre batterie « soft pack » et « hard pack »", "a": "À capacité égale, l'autonomie est quasiment identique et le temps de charge diffère peu à température ambiante.\nLes batteries soft pack sont plus légères, ont une durée de vie plus longue et se rechargent plus rapidement en environnement chaud.", "en": "Differences between hard upholstery and soft upholstery"},
+{"m": ["H12 FlexReach"], "c": "Batterie & charge", "q": "Comment charger l'appareil ?", "a": "Placer la machine en position verticale. Raccorder la base de charge à l'adaptateur et brancher sur le secteur. Poser la machine sur la base : lorsque l'icône de charge s'allume à l'écran, la charge démarre et le niveau de batterie s'affiche en pourcentage. Une fois la charge terminée, l'écran s'éteint automatiquement au bout de 10 minutes.", "en": "How to charge？"},
+{"m": ["H12 FlexReach"], "c": "Batterie & charge", "q": "La machine se coupe-t-elle automatiquement une fois chargée ?", "a": "Oui. La machine coupe l'alimentation et passe en veille 10 minutes après la fin de la charge : elle ne consomme plus d'électricité.", "en": "Will the machine automatically power off when fully charged?"},
+{"m": ["H12 FlexReach"], "c": "Caractéristiques", "q": "Caractéristiques principales du H12 FlexReach", "a": "• Aspiration 18 000 Pa : puissance cyclonique qui élimine facilement les débris secs et humides.\n• Brosse rouleau zéro emmêlement : peignes-lames en PPA suisse qui évitent l'enroulement, même avec 1 000 cheveux longs mouillés de 50 cm.\n• Position à plat 180° : aspiration maintenue sans perte de puissance, nettoyage complet sous les lits.\n• Séchage air chaud 90 °C pendant 30 min : le flux d'air chaud assainit et maintient l'ensemble du circuit sec pour éviter les odeurs.\n• Autonomie 50 min : batterie 6 cellules 4000 mAh, jusqu'à 50 minutes en mode silencieux.\n• Détection de saleté : mesure en temps réel du niveau d'encrassement du sol et sélection automatique du mode, pour économiser eau et batterie.", "en": "Features of H12 FlexReach"},
+{"m": ["H12 FlexReach"], "c": "Caractéristiques", "q": "En quelle matière sont les peignes-lames coupe-cheveux ?", "a": "En PPA haute performance, développé en collaboration avec un partenaire suisse.\nGrâce à un traitement spécifique, il conserve une rigidité, une précision et une stabilité élevées ainsi qu'une résistance à la fatigue et au fluage, même en conditions sévères : températures continues de 200 °C, humidité, graisses, corrosion chimique. Ce matériau est utilisé dans l'aéronautique et les dispositifs médicaux.", "en": "What material is the serrated blade made of?"},
+{"m": ["H12 FlexReach"], "c": "Caractéristiques", "q": "Comment fonctionne le peigne-lame coupe-cheveux ?", "a": "La forme des dents du peigne a été revue : la partie haute épouse la brosse rouleau, la partie basse est allongée et le dos est affûté. Les dents, plus longues, plus serrées et plus acérées, accrochent et coupent les cheveux plus facilement. Combinée à la logique de rotation avant/arrière, cette conception accélère la coupe, et l'aspiration cyclonique 18 000 Pa évacue efficacement les cheveux.", "en": "What is the principle of the serrated blade for cutting hair, and how is it achieved?"},
+{"m": ["H12 FlexReach"], "c": "Caractéristiques", "q": "Les peignes-lames abîment-ils le sol, la brosse ou les composants ?", "a": "Non. Les peignes-lames sont encastrés et n'entrent pas en contact direct avec le sol. Les arêtes coupantes sont placées au dos des dents et ne touchent pas les poils de la brosse.\nEntièrement intégrés, ils ne sont pas visibles sans démontage. Ils ne sont pas en acier : aucun risque de coupure pour l'utilisateur ni de dommage pour le sol ou le bloc-brosse.", "en": "Will the hair-cutting serrated blade damage the floor, roller brush, and components?"},
+{"m": ["H12 FlexReach"], "c": "Caractéristiques", "q": "Le « zéro cheveu emmêlé » est-il réellement atteint ?", "a": "L'absence d'emmêlement repose sur quatre étapes complémentaires : peigner, couper, aspirer, laver.\nLa technologie anti-emmêlement TangleCut™ de Dreame combine ces quatre actions. Au-delà des peignes-lames, le diamètre de la brosse rouleau et l'optimisation du conduit d'air ont également été revus. En usage domestique, même les foyers générant beaucoup de cheveux sont couverts.", "en": "Can it really achieve zero hair tangling?"},
+{"m": ["H12 FlexReach"], "c": "Caractéristiques", "q": "Les peignes-lames doivent-ils être remplacés ?", "a": "Non. Réalisés en PPA haute performance et validés par un test d'endurance de 300 heures, ils ne nécessitent pas de remplacement au cours de la vie du produit.", "en": "Do the hair-cutting serrated blades need to be replaced?"},
+{"m": ["H12 FlexReach"], "c": "Caractéristiques", "q": "Comment est réalisée la séparation eau / air ?", "a": "Par une technologie de séparation à trajets séparés : en s'appuyant sur l'aérodynamique, le gaz et le liquide circulent sur des trajets distincts dans un environnement de vide et de dépression, ce qui permet d'extraire l'air tout en retenant l'eau.", "en": "How to achieve true separation of water and air? / How to achieve true separation?"},
+{"m": ["H12 FlexReach"], "c": "Caractéristiques", "q": "Quelle est la hauteur en position couchée ?", "a": "14 cm en position couchée, la brosse de sol mesurant 9,6 cm de haut. Ce format ultra-plat, de la hauteur d'un téléphone, permet d'accéder facilement sous les lits, canapés, tables basses et meubles TV.", "en": "What is the lying height?"},
+{"m": ["H12 FlexReach"], "c": "Caractéristiques", "q": "Où se situe le réservoir d'eau propre du H12 FlexReach ? Laisse-t-il des traces d'eau ?", "a": "Le réservoir d'eau propre est intégré à la brosse de sol. Il s'agit d'un réservoir de type caisson étanche, dont la conception s'inspire des systèmes d'étanchéité de sous-marin, ce qui évite les traces d'eau pendant le lavage.\nIl utilise plusieurs couches de matériaux d'étanchéité. Les orifices d'entrée et de sortie d'eau sont intégrés en un seul bloc, avec une sortie convergente encastrée qui épouse la brosse de sol pour une continuité parfaite du circuit d'eau.", "en": "Where is the clean water tank of the H12 FlexReach located? Is there a lot of water residue?"},
+{"m": ["H12 FlexReach"], "c": "Caractéristiques", "q": "Puissance d'aspiration de 18 000 Pa", "a": "Le H12 FlexReach est équipé d'un moteur brushless de 400 W tournant jusqu'à 100 400 tr/min, générant une aspiration de 18 000 Pa pour un nettoyage en profondeur des sols.", "en": "18,000 Pa strong suction power"},
+{"m": ["H12 FlexReach"], "c": "Caractéristiques", "q": "Dimensions du H12 FlexReach — hors base (L × l × H)", "a": "275 × 279 × 1160 mm", "en": "Dimensions of H12 FlexReach body - excluding base (length * width * height)"},
+{"m": ["H12 FlexReach"], "c": "Caractéristiques", "q": "Dimensions du H12 FlexReach — avec base (L × l × H)", "a": "309 × 363 × 1186 mm", "en": "Dimensions of H12 FlexReach body - including base (length * width * height)"},
+{"m": ["H12 FlexReach"], "c": "Caractéristiques", "q": "Poids du produit — sans base de charge", "a": "5,1 kg", "en": "Product weight - without charging dock"},
+{"m": ["H12 FlexReach"], "c": "Caractéristiques", "q": "Poids du produit — avec base de charge", "a": "6,2 kg", "en": "Product weight - with charging dock"},
+{"m": ["H12 FlexReach"], "c": "Caractéristiques", "q": "Capacité du réservoir d'eau propre", "a": "780 ml. En raison des chocs de transport et des variations de température et de pression en environnement de test, la capacité peut légèrement varier, sans aucune incidence sur le fonctionnement.", "en": "Clean water tank"},
+{"m": ["H12 FlexReach"], "c": "Caractéristiques", "q": "Capacité du bac à eau sale", "a": "700 ml (480 ml en position couchée).", "en": "Dirty water tank"},
+{"m": ["H12 FlexReach"], "c": "Consommables & entretien", "q": "Comment la brosse rouleau conserve-t-elle sa forme sans se déformer ?", "a": "Les poils et le corps du rouleau utilisent des matériaux plus durables. Les poils subissent un prétraitement qui les rend résistants au lavage et au séchage à haute température, ce qui maintient une efficacité de nettoyage constante dans le temps.\nLes poils sont en polyester-nylon renforcé, traité spécifiquement et stabilisé par une technologie de mise en forme durable : ils sont prétraités en usine à plus de 100 °C sous haute pression.\nLe corps du rouleau est réalisé dans un plastique plus résistant à la chaleur, qui ne s'aplatit pas et ne se déforme pas même après un usage prolongé.", "en": "How does the roller brush maintain its shape without deformation?"},
+{"m": ["H12 FlexReach"], "c": "Consommables & entretien", "q": "Quelle différence entre la brosse rouleau haute température et les précédentes ?", "a": "La brosse haute température ne se déforme pas après des lavages et séchages répétés à haute température, sans perte d'efficacité, et retient mieux l'eau.\n1. Durabilité supérieure : pas de déformation au lavage/séchage à chaud, poils qui restent souples, déployés et élastiques, donc pouvoir nettoyant préservé.\n2. Absorption d'eau supérieure : moins de résidus d'eau au sol, séchage plus rapide après passage, réduisant le risque de glissade pour les enfants et les personnes âgées.", "en": "What is the difference between the high-temperature-resistant roller brush and the previous ones?"},
+{"m": ["H12 FlexReach"], "c": "Consommables & entretien", "q": "La raclette se déforme-t-elle ou s'abîme-t-elle avec les lavages et séchages à haute température ?", "a": "Non. La nouvelle raclette utilise un polymère haute performance résistant à la chaleur et à l'usure, qui ne se déforme pas facilement.\nCette raclette développée par Dreame reste stable après un usage prolongé en lavage et séchage à haute température. Elle a passé 30 000 cycles d'essai en laboratoire, démontrant une bonne résistance à l'usure et à la déchirure.", "en": "Will the water scraper deform or get damaged easily when exposed to high-temperature washing and drying?"},
+{"m": ["H12 FlexReach"], "c": "Consommables & entretien", "q": "Que contient l'emballage du H12 FlexReach ?", "a": "Corps de l'appareil, ensemble poignée, base de charge, brossette de nettoyage, notice d'utilisation, brosse rouleau de rechange, filtre de rechange, solution nettoyante.", "en": "What items come with the H12 FlexReach package?"},
+{"m": ["H12 FlexReach"], "c": "Consommables & entretien", "q": "Durée de vie des consommables du H12 FlexReach", "a": "Pour préserver l'efficacité de nettoyage, remplacer les consommables selon l'usage.\nIl est conseillé de disposer de deux jeux de consommables utilisés en alternance. En règle générale, remplacer la brosse rouleau et le filtre tous les 3 à 6 mois.", "en": "Service life of H12 FlexReach consumables"},
+{"m": ["H12 FlexReach"], "c": "Consommables & entretien", "q": "Remplacement de la brosse rouleau", "a": "1. La brosse rouleau livrée avec la machine est déjà équipée de son embout ; la brosse de rechange en est dépourvue.\n2. Lors du remplacement, retirer l'embout de la brosse d'origine et le monter sur la brosse de rechange.", "en": "Roller Brush Replacement"},
+{"m": ["H12 FlexReach"], "c": "Consommables & entretien", "q": "Détergents d'autres marques", "a": "La solution nettoyante Dreame a été développée et testée spécifiquement. La composition des détergents d'autres marques est inconnue et leurs composants acides peuvent endommager les durites silicone et le moteur de la machine. Utiliser exclusivement la solution nettoyante Dreame.", "en": "Cleaning fluids from other brands"},
+{"m": ["H12 FlexReach"], "c": "Consommables & entretien", "q": "Comment doser la solution nettoyante ?", "a": "Verser un bouchon de solution nettoyante dans le réservoir d'eau propre, puis agiter avant utilisation.", "en": "How to use the cleaning solution？"},
+{"m": ["H12 FlexReach"], "c": "Consommables & entretien", "q": "Comment nettoyer le bac à eau sale ?", "a": "Machine éteinte, appuyer sur le bouton de déverrouillage du bac à eau sale et le retirer. Vider l'eau sale, rincer le bac à l'eau claire et frotter la paroi intérieure avec la brossette fournie.", "en": "How to clean the dirty water tank？"},
+{"m": ["H12 FlexReach"], "c": "Consommables & entretien", "q": "Nettoyage et entretien du filtre", "a": "Après utilisation, retirer le filtre et le laisser sécher rapidement. S'il est très encrassé, le rincer à l'eau claire et attendre le séchage complet avant réutilisation. Il est conseillé d'alterner avec le filtre de rechange.", "en": "Filter cleaning / Filter maintenance"},
+{"m": ["H12 FlexReach"], "c": "Divers", "q": "Pourquoi la roue d'assistance recule-t-elle légèrement à l'extinction ?", "a": "Ce léger recul sert à évacuer l'eau résiduelle éventuelle, afin que le sol sèche plus vite après le passage.", "en": "Why does the wheel (assist wheel) move backward a little when the machine is turned off?"},
+{"m": ["H12 FlexReach"], "c": "Divers", "q": "Un nettoyeur de sol peut-il nettoyer les tapis ?", "a": "Sur les tapis à poils courts et les paillassons, la machine fonctionne normalement sans signaler d'obstruction. Avec une brosse rouleau propre, elle peut les nettoyer. Utiliser de préférence le mode aspiration d'eau.", "en": "Can a floor cleaning machine clean carpets?"},
+{"m": ["H12 FlexReach"], "c": "Divers", "q": "Le sol est très humide après le passage / traces d'eau nombreuses", "a": "En cas d'excès d'eau au sol, sélectionner le mode aspiration d'eau.", "en": "The floor is very wet after mopping / There are many water stains / Can it only suck water without discharging water?"},
+{"m": ["H12 FlexReach"], "c": "Fonctions & réglages", "q": "Principe de l'auto-nettoyage", "a": "Le H12 FlexReach utilise un système d'auto-nettoyage à flux d'air chaud. Pendant le cycle, une résistance de 300 W chauffe rapidement l'air et porte la surface de la brosse rouleau à 90 °C.", "en": "Self-Cleaning Function Introduction"},
+{"m": ["H12 FlexReach"], "c": "Fonctions & réglages", "q": "Combien de modes de séchage existe-t-il et comment les changer ?", "a": "Le H12 FlexReach propose un séchage de 30 minutes à 90 °C.", "en": "How many drying modes are there? And how to switch them?"},
+{"m": ["H12 FlexReach"], "c": "Fonctions & réglages", "q": "Le séchage peut-il être lancé seul ?", "a": "Oui : maintenir le bouton d'auto-nettoyage appuyé pour lancer le mode séchage indépendant de 30 minutes.", "en": "Can it dry independently?"},
+{"m": ["H12 FlexReach"], "c": "Fonctions & réglages", "q": "Quel est le niveau sonore du séchage ?", "a": "Le séchage rapide silencieux à 63 dB(A) produit un bruit comparable à celui d'un ventilateur domestique, sur une durée n'excédant pas 5 minutes : il peut être utilisé de jour comme de nuit.\n\nLe séchage à température constante ne fait pas appel au moteur principal, il ne génère donc pas de bruit haute fréquence.", "en": "How loud is the drying noise, and does it affect sleep?"},
+{"m": ["H12 FlexReach"], "c": "Fonctions & réglages", "q": "La température reste-t-elle constante pendant le séchage ?", "a": "La résistance 300 W porte rapidement l'air à 90 °C et maintient l'ensemble de la machine au sec pour éviter les odeurs.\nContrairement à certains appareils dont la température fluctue pendant le séchage rapide (seulement 70 °C par endroits, ce qui sèche mal la brosse), ce modèle maintient une température constante supérieure à 70 °C tout au long du cycle, avec un pic de séchage rapide à 90 °C.", "en": "Does it maintain continuous high-temperature drying during the drying process?"},
+{"m": ["H12 FlexReach"], "c": "Fonctions & réglages", "q": "Que comprend le système d'interaction intelligente ?", "a": "① Détection intelligente de saleté : l'anneau lumineux indique le niveau d'encrassement et la machine ajuste automatiquement l'aspiration et le débit d'eau — lavage léger sur saleté légère, lavage intensif sur saleté importante.\n② Affichage intelligent : l'écran LED regroupe l'état de fonctionnement sur un seul écran, complété par des annonces vocales.", "en": "What functions are included in the intelligent interaction?"},
+{"m": ["H12 FlexReach"], "c": "Fonctions & réglages", "q": "Variation de puissance intelligente", "a": "Le H12 FlexReach embarque un système de détection de saleté à variation de fréquence de nouvelle génération, avec une précision de détection de l'ordre du micron. Il ajuste à la fois l'aspiration et le débit d'eau selon le degré de salissure.", "en": "Intelligent frequency conversion"},
+{"m": ["H12 FlexReach"], "c": "Fonctions & réglages", "q": "Anneau lumineux de détection de saleté", "a": "L'anneau lumineux indique le niveau d'encrassement et la machine ajuste automatiquement aspiration et débit d'eau.\n• Grosses particules (croquettes, grains de maïs, farine, morceaux de papier…) : niveau rouge.\n• Particules moyennes (flocons d'avoine, café moulu, miettes de biscuit) : niveau orange.\n• Liquides (sauce soja claire ou foncée…) : niveau orange ou rouge.\n• Cheveux : niveau orange ou rouge.", "en": "Intelligent dirt-sensing halo"},
+{"m": ["H12 FlexReach"], "c": "Fonctions & réglages", "q": "Écran « smiley »", "a": "L'écran smiley du H12 FlexReach affiche la détection de saleté sous forme d'un arc orienté vers le bas. L'écran intelligent et les annonces vocales offrent une double information immédiate.", "en": "Smiley screen"},
+{"m": ["H12 FlexReach"], "c": "Fonctions & réglages", "q": "Les boutons du H12 FlexReach", "a": "Le H12 FlexReach compte quatre boutons :\n• Marche/Arrêt (poignée)\n• Changement de mode (poignée)\n• Auto-nettoyage (poignée)\n• Commande vocale (corps de l'appareil)", "en": "The buttons of the H12 FlexReach"},
+{"m": ["H12 FlexReach"], "c": "Fonctions & réglages", "q": "Bouton Marche/Arrêt", "a": "Contrôle le fonctionnement de la machine : appui bref pour allumer, nouvel appui bref pour éteindre.", "en": "Power On/Off Button"},
+{"m": ["H12 FlexReach"], "c": "Fonctions & réglages", "q": "Bouton de changement de mode", "a": "Chaque appui fait passer successivement par quatre modes : Intelligent, Puissant, Aspiration d'eau, Silencieux.", "en": "Mode Switch Button"},
+{"m": ["H12 FlexReach"], "c": "Fonctions & réglages", "q": "Bouton d'auto-nettoyage", "a": "Active ou désactive l'auto-nettoyage. Un appui bref lance le cycle (le bouton n'est actif que si la machine est en charge et la batterie ≥ 20 %). Un appui bref pendant le cycle l'interrompt.", "en": "Self-Cleaning Button"},
+{"m": ["H12 FlexReach"], "c": "Fonctions & réglages", "q": "Bouton vocal", "a": "• Appui bref : fait défiler les quatre options « Volume faible / Volume élevé / Voix désactivée / Voix activée ».\n• Appui long : réinitialise le réseau et annonce « En attente de configuration réseau ».", "en": "Voice Button"},
+{"m": ["H12 FlexReach"], "c": "Fonctions & réglages", "q": "Réglages vocaux et Wi-Fi", "a": "Un appui bref active la voix ou règle le volume.\nUn appui long lance ou relance la configuration réseau, avec l'annonce « En attente de configuration réseau ».\nLe volume et la langue se règlent depuis l'application.", "en": "Voice operation prompts"},
+{"m": ["H12 FlexReach"], "c": "Fonctions & réglages", "q": "Réinitialisation d'usine", "a": "Maintenir simultanément le bouton vocal et le bouton d'auto-nettoyage : l'annonce « Réglages d'usine restaurés » confirme la réinitialisation.", "en": "Factory reset"},
+{"m": ["M12"], "c": "Dépannage", "q": "Le M12 ne s'allume pas ou ne réagit pas après allumage", "a": "Cas 1 : écran éteint, machine inerte.\n1. Vérifier le montage de la poignée : la rebrancher jusqu'au « clic ».\n2. Vérifier le montage de l'aspirateur à main : le démonter et le remonter.\n3. Batterie faible : charger complètement avant utilisation.\n\nCas 2 : écran allumé mais la machine ne fonctionne pas.\nLa machine est-elle en position verticale ? Le M12 dispose d'un arrêt automatique en position verticale : il faut l'incliner pour qu'il fonctionne.", "en": "Why can't the M12 be turned on or there is no response after turning it on?"},
+{"m": ["M12"], "c": "Dépannage", "q": "Pourquoi l'auto-nettoyage du M12 ne fonctionne-t-il pas ?", "a": "Vérifications :\n1. Vérifier que la brosse rouleau n'est pas bloquée par un corps étranger ; la nettoyer.\n2. S'assurer que le réservoir d'eau propre contient de l'eau et est correctement installé, que le bac à eau sale est vide et correctement installé, et que l'aspirateur à main est correctement monté.\n3. La machine doit être posée sur sa base de charge, la base alimentée, et la batterie supérieure à 15 %.", "en": "Why is the M12 not self-cleaning?"},
+{"m": ["M12"], "c": "Dépannage", "q": "L'écran affiche E1/E2/E3/E4/E5/E6/E7/H1/H2/H3/H4/H5/H6", "a": "Retirer la machine de la base et l'éteindre, attendre 15 secondes puis la redémarrer.\nSi le défaut persiste, prise en charge SAV.", "en": "The screen display will show E1/E2/E3/E4/E5/E6/E7/H1/H2/H3/H4/H5/H6."},
+{"m": ["M12"], "c": "Dépannage", "q": "L'écran affiche H7", "a": "La protection contre la surchauffe s'est déclenchée. Attendre 30 minutes avant de redémarrer la machine.", "en": "The screen display will show H7."},
+{"m": ["M12"], "c": "Info produit", "q": "L'aspirateur à main du M12 est-il compatible avec les brosses d'autres aspirateurs balais ?", "a": "Oui, à condition que le raccord soit mécaniquement compatible.", "en": "Can the M12 handle vacuum be used in common with the brush of other cordless stick vacuum?"},
+{"m": ["M12"], "c": "Info produit", "q": "L'aspirateur à main du M12 est-il compatible avec les cyclones et filtres d'autres aspirateurs balais ?", "a": "Non.", "en": "Can the M12 handle vacuum be used in common with cyclone assembly and  filter of other cordless stick vacuum?"},
+{"m": ["M12"], "c": "Info produit", "q": "Comment choisir le niveau d'aspiration ?", "a": "Appuyer brièvement sur le bouton de mode de l'aspirateur à main pour basculer entre le mode Standard et le mode Turbo selon le besoin.", "en": "How can select suction levels?"},
+{"m": ["M12"], "c": "Info produit", "q": "Comment nettoyer le bac à poussière ?", "a": "Appuyer sur le bouton de déverrouillage du bac à poussière et le retirer. Extraire le filtre et l'ensemble cyclone du bac, puis vider le bac.", "en": "How can cleaning the Dust Cup Assembly？"},
+{"m": ["M12"], "c": "Info produit", "q": "Le bac à poussière peut-il être lavé à l'eau ?", "a": "Oui, le rincer à l'eau claire puis le sécher complètement avant réutilisation.", "en": "Can the dust cup be cleaned with water?"},
+{"m": ["M12"], "c": "Info produit", "q": "La brosse rouleau peut-elle être lavée à l'eau ?", "a": "Retirer les cheveux et débris enroulés autour de la brosse rouleau avec la brossette fournie. Rincer la brosse rouleau à l'eau claire et la sécher complètement. Ne pas rincer l'ensemble bloc-brosse à l'eau.", "en": "Can  the brush roller be clean with water？"},
+{"m": ["M12"], "c": "Info produit", "q": "Comment démonter la machine pour la remettre dans son carton ?", "a": "Insérer verticalement l'extrémité de la poignée dans l'orifice situé sur le dessus de l'appareil, comme indiqué, jusqu'au « clic ».", "en": "How to disassemble the machine and put it back in the box?"},
+{"m": ["M12"], "c": "Info produit", "q": "Le M12 peut-il être utilisé sur moquette ?", "a": "Le M12 s'utilise en aspirateur à main : la moquette peut être nettoyée avec la mini-brosse motorisée (brosse anti-acariens).", "en": "Can the M12 be used on carpet?"},
+{"m": ["M12"], "c": "Info produit", "q": "Comment installer le suceur plat ?", "a": "1. Appuyer sur le bouton de déverrouillage pour extraire l'aspirateur à main.\n2. Installer l'ensemble bac à poussière.\n3. Emboîter le suceur plat jusqu'au « clic ».\n\nRemarque : si le suceur plat est monté directement sur le bac à poussière, il risque de ne pas s'emboîter complètement car l'autre extrémité du bac n'est pas maintenue.", "en": "How can install the  Crevice Nozzle?"},
+{"m": ["M12"], "c": "Info produit", "q": "Comment utiliser le M12 ?", "a": "Vidéo de démonstration : https://youtu.be/7BFSxTTMGjg", "en": "How to use M12?"},
+{"m": ["H15S"], "c": "Batterie & charge", "q": "Autonomie", "a": "Le H15S est équipé de 6 cellules de 4000 mAh et d'un système intelligent de variation de fréquence économe en énergie. Autonomie de nettoyage continu :\n• Mode silencieux : environ 50 minutes (jusqu'à 300 m²)\n• Mode intelligent : environ 35 minutes (jusqu'à 200 m²)\n• Mode puissant : environ 27 minutes", "en": "60min long battery life"},
+{"m": ["H15S"], "c": "Batterie & charge", "q": "Durée de vie de la batterie", "a": "La durée de vie dépend des conditions d'utilisation. La machine complète a passé un test d'endurance de 300 heures : à raison d'un nettoyage par jour de 10 à 15 minutes, une durée de vie de 3 à 5 ans est attendue.\nLa batterie, testée en laboratoire, supporte environ 1 000 cycles de charge. Sur la base d'un nettoyage complet du logement tous les 2 jours, soit 15 fois par mois et environ 200 fois par an, elle tient 4 à 5 ans.", "en": "Battery life"},
+{"m": ["H15S"], "c": "Batterie & charge", "q": "Différence entre batterie « soft pack » et « hard pack »", "a": "À capacité égale, l'autonomie est quasiment identique et le temps de charge diffère peu à température ambiante.\nLes batteries soft pack sont plus légères, ont une durée de vie plus longue et se rechargent plus rapidement en environnement chaud.", "en": "The difference between hard pack and soft pack"},
+{"m": ["H15S"], "c": "Batterie & charge", "q": "Comment charger l'appareil ?", "a": "Placer la machine en position verticale. Raccorder la base de charge à l'adaptateur et brancher sur le secteur. Poser la machine sur la base : lorsque l'icône de charge s'allume à l'écran, la charge démarre et le niveau de batterie s'affiche en pourcentage. Une fois la charge terminée, l'écran s'éteint automatiquement au bout de 10 minutes.", "en": "How to Charge"},
+{"m": ["H15S"], "c": "Batterie & charge", "q": "La machine se coupe-t-elle automatiquement une fois chargée ?", "a": "Oui. 10 minutes après la fin de la charge, la machine bascule en mode faible consommation et reste en veille sans consommer d'électricité.", "en": "Will the machine automatically shut off after it is fully charged?"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Caractéristiques principales du H15S", "a": "• Bras robotisé IA : détection intelligente et pression active pour éliminer en un passage les salissures dans les angles et les traces d'eau au sol, sans résidu.\n• Aspiration 21 000 Pa : puissance cyclonique qui élimine facilement les débris secs et humides.\n• Brosse rouleau zéro emmêlement : peignes-lames en PPA suisse efficaces même avec 1 000 cheveux longs mouillés de 50 cm.\n• Position à plat 180° : aucune perte d'aspiration en position couchée, nettoyage sous le lit en un passage.\n• Séchage 90 °C en 5 min : air chaud à 90 °C, circuit complet maintenu sec.\n• Autonomie jusqu'à 50 min : batterie 6 cellules 4000 mAh en mode silencieux.\n• Application connectée : réglage libre de l'aspiration, du débit d'eau et des modes personnalisés.", "en": "H15S Features"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Quel est le principe du bras robotisé IA ? Comment le nettoyage des bords et l'absence de traces d'eau sont-ils obtenus ?", "a": "Grâce à un algorithme de prédiction d'accélération par IA, la machine détecte précisément la direction et la vitesse de déplacement. À la poussée vers l'avant, le bras s'abaisse automatiquement pour capter les salissures dans les angles (couverture des coins à 100 %) ; combiné à une brosse rouleau sans contact de chaque côté, l'appareil obtient un dépoussiérage au ras des plinthes sur trois côtés.\nRéalisé en matériau à mémoire de forme souple, le bras réagit en 0,2 s. Au retour en arrière, il s'abaisse et racle les traces d'eau au sol en temps réel pour un séchage rapide.", "en": "What is the principle of the Lingbu AI robotic arm? How to achieve zero edge stain removal and zero water stain residue?"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Le bras robotisé appuie-t-il en permanence pendant le lavage ?", "a": "Oui. Selon la vitesse de déplacement de la machine, le logiciel pilote l'algorithme de prédiction par IA et le bras réagit en quelques millisecondes : il s'abaisse automatiquement à la poussée pour capter les salissures au ras des bords, et à nouveau au retour pour racler les traces d'eau en temps réel.", "en": "Will the robotic arm keep pressing down during the floor scrubbing process?"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Le bras robotisé peut-il être désactivé ?", "a": "1. Maintenir le bouton de changement de mode 3 secondes pour activer/désactiver manuellement le bras.\n2. Dans l'application : [Réglages de l'appareil] → [Bras robotisé] permet d'activer/désactiver la fonction dans les modes Intelligent / Aspiration d'eau / Puissant / Personnalisé.\n3. Le bras est désactivé par défaut en mode Puissant.", "en": "Can the robotic arm be turned off?"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Le bras robotisé raye-t-il le sol ?", "a": "Non. Le bras robotisé Dreame utilise un matériau souple à mémoire de forme qui épouse le sol en temps réel et présente une bonne glisse. Les ingénieurs Dreame ont réalisé 60 000 tests sur différents types de parquets et carrelages, sans aucun dommage sur les revêtements.", "en": "Will the robotic arm scratch the floor?"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Le bras robotisé s'use-t-il rapidement ?", "a": "Non. Il est réalisé en polymère haute performance résistant à l'usure et à la corrosion chimique, avec une résistance élevée à la traction. Les 60 000 tests menés sur différents revêtements n'ont pas entraîné d'usure affectant son fonctionnement. Le bras est garanti 2 ans.", "en": "Will the robotic arm wear out easily?"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Comment nettoyer le bras robotisé ?", "a": "1. Le bras est nettoyé pendant le cycle d'auto-nettoyage.\n2. Il peut également être démonté et nettoyé manuellement.", "en": "How to clean the robotic arm?"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Vitesse d'abaissement du bras", "a": "Le temps d'abaissement du bras du H15S est inférieur ou égal à 0,2 s, ce qui permet de capter les salissures très rapidement.", "en": "Lifting speed"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Force d'appui au sol", "a": "Le bras robotisé du H15S maintient une pression de 8 N sur le sol, ce qui permet de décoller efficacement les salissures.", "en": "Downward pressure cleaning power"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Comment fonctionne le peigne-lame coupe-cheveux ?", "a": "La forme des dents du peigne a été revue : la partie haute épouse la brosse rouleau, la partie basse est allongée et le dos est affûté. Les dents, plus longues, plus serrées et plus acérées, accrochent et coupent les cheveux plus facilement. Combinée à la logique de rotation avant/arrière, cette conception accélère la coupe, et l'aspiration cyclonique 21 000 Pa évacue efficacement les cheveux.", "en": "What is the principle of toothed blade cutting? How is it achieved?"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "En quelle matière sont les peignes-lames coupe-cheveux ?", "a": "En PPA haute performance, développé avec un partenaire suisse.\nAprès traitement spécifique, il conserve une rigidité, une précision et une stabilité élevées ainsi qu'une résistance à la fatigue et au fluage, même en conditions sévères : températures continues de 200 °C, humidité, graisses, corrosion chimique. Ce matériau est utilisé dans l'aéronautique et les dispositifs médicaux.", "en": "What material are the teeth blades made of?"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Les peignes-lames abîment-ils le sol, la brosse ou les composants ?", "a": "Non. Les peignes-lames sont encastrés et n'entrent pas en contact direct avec le sol. Les arêtes coupantes sont placées au dos des dents et ne touchent pas les poils de la brosse.\nEntièrement intégrés, ils ne sont pas visibles sans démontage. Ils ne sont pas en acier : aucun risque de coupure pour l'utilisateur ni de dommage pour le sol ou le bloc-brosse.", "en": "Will the hair-cutting teeth damage the floor, roller brush and components?"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Le « zéro cheveu emmêlé » est-il réellement atteint ?", "a": "L'absence d'emmêlement repose sur quatre étapes complémentaires : peigner, couper, aspirer, laver.\nLa technologie anti-emmêlement TangleCut™ de Dreame combine ces quatre actions. Au-delà des peignes-lames, le diamètre de la brosse rouleau et l'optimisation du conduit d'air ont également été revus. En usage domestique, même les foyers générant beaucoup de cheveux sont couverts.", "en": "Is it really possible to achieve zero entanglement?"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Les peignes-lames doivent-ils être remplacés ?", "a": "Non. Réalisés en PPA haute performance et validés par un test d'endurance de 300 heures, ils ne nécessitent pas de remplacement au cours de la vie du produit.", "en": "Do the cutting teeth need to be replaced?"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Comment est réalisée la séparation eau / air ?", "a": "Par une technologie de séparation à trajets séparés : en s'appuyant sur l'aérodynamique, le gaz et le liquide circulent sur des trajets distincts dans un environnement de vide et de dépression, ce qui permet d'extraire l'air tout en retenant l'eau.", "en": "How to achieve true water-gas separation? / How to achieve true separation?"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Quelle est la hauteur en position couchée ?", "a": "14 cm en position couchée, la brosse de sol mesurant 9,6 cm de haut. Ce format ultra-plat, de la hauteur d'un téléphone, permet d'accéder facilement sous les lits, canapés, tables basses et meubles TV.", "en": "What is the lying height?"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Où se situe le réservoir d'eau propre du H15S ?", "a": "Le réservoir d'eau propre est intégré à la brosse de sol. Il s'agit d'un réservoir de type caisson étanche, dont la conception s'inspire des systèmes d'étanchéité de sous-marin, ce qui évite les traces d'eau pendant le lavage.\nIl utilise plusieurs couches de matériaux d'étanchéité. Les orifices d'entrée et de sortie d'eau sont intégrés en un seul bloc, avec une sortie convergente encastrée qui épouse la brosse de sol.", "en": "Where is the fresh water tank of H15S?"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Puissance d'aspiration de 21 000 Pa", "a": "Le H15S est équipé d'un moteur brushless de 350 W tournant jusqu'à 130 000 tr/min, générant une aspiration de 21 000 Pa pour un nettoyage en profondeur des sols.", "en": "21000Pa high suction power"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Dimensions du H15S — hors base (L × l × H)", "a": "275 × 279 × 1160 mm", "en": "H15S body size - without base (length * width * height)"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Dimensions du H15S — avec base (L × l × H)", "a": "318 × 380 × 1220 mm", "en": "H15S body size - including base (length * width * height)"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Poids du produit — sans base de charge", "a": "5,4 kg", "en": "Product weight - without charging station"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Poids du produit — avec base de charge", "a": "8 kg", "en": "Product weight - with charging stand"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Capacité du réservoir d'eau propre", "a": "780 ml. En raison des chocs de transport et des variations de température et de pression en environnement de test, la capacité peut légèrement varier, sans aucune incidence sur le fonctionnement.", "en": "Fresh water tank"},
+{"m": ["H15S"], "c": "Caractéristiques", "q": "Capacité du bac à eau sale", "a": "700 ml (450 ml en position couchée).", "en": "Wastewater tank"},
+{"m": ["H15S"], "c": "Consommables & entretien", "q": "Comment la brosse rouleau conserve-t-elle sa forme sans se déformer ?", "a": "Les poils et le corps du rouleau utilisent des matériaux plus durables. Les poils subissent un prétraitement qui les rend résistants au lavage et au séchage à haute température, sans perte d'efficacité de nettoyage.\nLes poils sont en polyester renforcé, traité spécifiquement et stabilisé par une technologie de mise en forme durable : ils sont prétraités en usine à plus de 100 °C sous haute pression.\nLe corps du rouleau est réalisé dans un plastique plus résistant à la chaleur, qui ne s'aplatit pas après un usage prolongé.", "en": "How to keep the roller brush from deforming?"},
+{"m": ["H15S"], "c": "Consommables & entretien", "q": "Quelle différence entre la brosse rouleau haute température et les précédentes ?", "a": "La brosse haute température ne se déforme pas après des lavages et séchages répétés à haute température, sans perte d'efficacité, et retient mieux l'eau.\n1. Durabilité supérieure : pas de déformation au lavage/séchage à chaud, poils qui restent souples, déployés et élastiques.\n2. Absorption d'eau supérieure : moins de traces d'eau au sol, séchage plus rapide après passage, réduisant le risque de glissade pour les enfants et les personnes âgées.", "en": "Is there any difference between the high temperature resistant roller brush and the previous roller brush?"},
+{"m": ["H15S"], "c": "Consommables & entretien", "q": "La raclette se déforme-t-elle ou s'abîme-t-elle avec les lavages et séchages à haute température ?", "a": "Non. La nouvelle raclette utilise un polymère haute performance résistant à la chaleur et à l'usure, qui ne se déforme pas facilement.\nCette raclette développée par Dreame reste stable après un usage prolongé en lavage et séchage à haute température. Elle a passé 30 000 cycles d'essai en laboratoire, démontrant une bonne résistance à l'usure et à la déchirure.", "en": "Will the wiper blade be easily deformed or damaged when washed or dried at high temperatures?"},
+{"m": ["H15S"], "c": "Consommables & entretien", "q": "Que contient l'emballage du H15S ?", "a": "Corps de l'appareil, ensemble poignée, base de charge, notice d'utilisation, brosse rouleau de rechange, filtre de rechange, solution nettoyante, brossette de nettoyage.", "en": "What does the H15S come with?"},
+{"m": ["H15S"], "c": "Consommables & entretien", "q": "Durée de vie des consommables du H15S", "a": "Pour préserver l'efficacité de nettoyage, remplacer les consommables selon l'usage. Il est conseillé de disposer de deux jeux utilisés en alternance. En règle générale, remplacer la brosse rouleau et la cartouche filtrante tous les 3 à 6 mois.", "en": "H15S consumables life"},
+{"m": ["H15S"], "c": "Consommables & entretien", "q": "Remplacement de la brosse rouleau", "a": "1. La brosse rouleau livrée avec la machine est déjà équipée de son embout ; la brosse de rechange en est dépourvue.\n2. Lors du remplacement, retirer l'embout de la brosse d'origine et le monter sur la brosse de rechange.", "en": "Roller brush replacement"},
+{"m": ["H15S"], "c": "Consommables & entretien", "q": "Détergents d'autres marques", "a": "La solution nettoyante Dreame a été développée et testée spécifiquement. La composition des détergents d'autres marques est inconnue et leurs composants acides peuvent endommager les durites silicone et le moteur de la machine. Utiliser exclusivement la solution nettoyante Dreame.", "en": "Other brands of cleaning fluid"},
+{"m": ["H15S"], "c": "Consommables & entretien", "q": "Comment doser la solution nettoyante ?", "a": "Verser un bouchon de solution nettoyante dans le réservoir d'eau propre, puis agiter avant utilisation.", "en": "How to use cleaning solution"},
+{"m": ["H15S"], "c": "Consommables & entretien", "q": "Comment nettoyer le bac à eau sale ?", "a": "Machine éteinte, appuyer sur le bouton de déverrouillage du bac à eau sale et le retirer. Vider l'eau sale, rincer le bac à l'eau claire et frotter la paroi intérieure avec la brossette fournie.", "en": "How to Clean a Sewage Tank"},
+{"m": ["H15S"], "c": "Consommables & entretien", "q": "Nettoyage et entretien du filtre", "a": "Après utilisation, retirer la cartouche filtrante et la laisser sécher rapidement. Si elle est très encrassée, la rincer à l'eau claire et attendre le séchage complet avant réutilisation. Il est conseillé d'alterner avec la cartouche de rechange.", "en": "Filter cleaning/filter maintenance"},
+{"m": ["H15S"], "c": "Divers", "q": "Un nettoyeur de sol peut-il nettoyer les tapis ?", "a": "Sur les tapis à poils courts et les paillassons, la machine fonctionne normalement sans blocage. Avec une brosse rouleau propre, elle peut les nettoyer. Utiliser de préférence le mode aspiration d'eau.", "en": "Can a floor scrubber clean carpets?"},
+{"m": ["H15S"], "c": "Divers", "q": "Le sol est très humide après le passage / traces d'eau nombreuses", "a": "En cas d'excès d'eau au sol, sélectionner le mode aspiration d'eau. Ce mode correspond au « lavage à sec » : il aspire l'eau sans en diffuser.", "en": "The floor is very wet after mopping/there are a lot of water stains/can I just suck it out without the water?"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Principe de l'auto-nettoyage thermique", "a": "Le H15S utilise un système d'auto-nettoyage à flux d'air chaud. Pendant le cycle, une résistance de 600 W chauffe rapidement l'air et porte la surface de la brosse rouleau à 90 °C.", "en": "Self-cleaning function introduction"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Le séchage peut-il être lancé seul ?", "a": "Oui : maintenir le bouton d'auto-nettoyage appuyé pour lancer le mode séchage indépendant de 30 minutes.", "en": "Can it be dried alone?"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Combien de modes de séchage existe-t-il et comment les changer ?", "a": "Le mode de séchage par défaut du H15S est de 85 °C pendant 30 minutes. Le mode 90 °C en 5 minutes se sélectionne dans l'application.", "en": "How many drying modes are there? How do I switch?"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Quel est le niveau sonore du séchage ?", "a": "Le séchage rapide silencieux à 63 dB(A) produit un bruit comparable à celui d'un ventilateur domestique, sur une durée n'excédant pas 5 minutes : il peut être utilisé de jour comme de nuit.\nCe séchage à température constante ne fait pas appel au moteur principal et ne génère donc pas de bruit haute fréquence.", "en": "How loud is the drying noise? Will it affect my sleep?"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "La température reste-t-elle constante pendant le séchage ?", "a": "La résistance 600 W porte rapidement l'air à 90 °C et maintient l'ensemble de la machine au sec pour éviter les odeurs.\nContrairement à certains appareils dont la température fluctue pendant le séchage rapide (seulement 70 °C par endroits, ce qui sèche mal la brosse), le H15S maintient une température constante supérieure à 70 °C tout au long du cycle, avec un pic de séchage rapide à 90 °C.", "en": "Does the high temperature continue during the drying process?"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Le lavage et le séchage à haute température consomment-ils beaucoup d'électricité ?", "a": "Non. Grâce au séchage ultra-rapide, chaque cycle de lavage et séchage consomme environ 0,045 kWh.", "en": "Does high-temperature washing and drying consume electricity?"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Que comprend le système d'interaction intelligente ?", "a": "① Détection intelligente de saleté : l'anneau lumineux indique le niveau d'encrassement et la machine ajuste automatiquement l'aspiration et le débit d'eau.\n② Affichage intelligent : l'écran LED regroupe l'état de fonctionnement, complété par des annonces vocales.\n③ Application connectée : suivi de l'état de nettoyage, réglages de préférences, alertes de remplacement des consommables et mises à jour OTA.", "en": "What functions does intelligent interaction include?"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Échec de connexion au réseau (application)", "a": "1. Mot de passe Wi-Fi incorrect : vérifier le mot de passe.\n2. L'appareil ne prend pas en charge les réseaux 5 GHz : vérifier que le Wi-Fi est en 2,4 GHz.\n3. L'appareil n'est peut-être pas en mode appairage : quitter puis relancer l'application et suivre les instructions.", "en": "Network connection failed (APP)"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Personnalisation des modes (application)", "a": "Le H15S est compatible avec l'application Dreame Home, qui permet de régler ses préférences :\n① Mode silencieux (activé par défaut, accessible même sans connexion à l'application) : aspiration modérée et faible niveau sonore.\n② Mode personnalisé : réglage libre de l'aspiration, du débit d'eau, etc.", "en": "Custom functions (APP)"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Réglages du bras robotisé (application)", "a": "1. Maintenir le bouton de changement de mode 3 secondes pour activer/désactiver manuellement le bras.\n2. Dans l'application : [Réglages de l'appareil] → [Bras robotisé] pour activer/désactiver la fonction dans les modes Intelligent / Aspiration d'eau / Puissant / Personnalisé.\n3. Le bras est désactivé par défaut en mode Puissant.", "en": "Robot arm settings (APP)"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Activer le séchage 5 minutes (application)", "a": "Dans l'application : [Réglages lavage & séchage] → [Séchage ultra-rapide] permet de basculer sur le séchage de 5 minutes.", "en": "5min drying start (APP)"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Changement de langue (application)", "a": "Le volume et la langue se règlent depuis l'application.", "en": "Language switch (APP)"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Variation de puissance intelligente", "a": "Le H15S embarque un système de détection de saleté à variation de fréquence de nouvelle génération, avec une précision de détection de l'ordre du micron. Il ajuste l'aspiration et le débit d'eau selon le degré de salissure.", "en": "Intelligent frequency conversion"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Anneau lumineux de détection de saleté", "a": "L'anneau lumineux indique le niveau d'encrassement et la machine ajuste automatiquement aspiration et débit d'eau.\n• Grosses particules (croquettes, grains de maïs, farine, morceaux de papier…) : niveau rouge.\n• Particules moyennes (flocons d'avoine, café moulu, miettes de biscuit) : niveau orange.\n• Liquides (sauce soja claire ou foncée…) : niveau orange ou rouge.\n• Cheveux : niveau orange ou rouge.", "en": "Smart dirt sensing halo"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Écran « smiley »", "a": "L'écran smiley du H15S affiche la détection de saleté sous forme d'un arc en partie basse. L'écran intelligent et les annonces vocales offrent une double information immédiate.", "en": "Smiley screen"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Les boutons du H15S", "a": "Le H15S compte quatre boutons :\n• Marche/Arrêt (poignée)\n• Changement de mode (poignée)\n• Auto-nettoyage (poignée)\n• Commande vocale (corps de l'appareil)", "en": "H15S buttons"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Bouton Marche/Arrêt", "a": "Contrôle le fonctionnement de la machine : appui bref pour allumer, nouvel appui bref pour éteindre.", "en": "On/Off key"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Bouton de changement de mode", "a": "1. Appui bref : bascule successivement entre les quatre modes Intelligent, Puissant, Aspiration d'eau et Personnalisé.\n2. Appui long (3 s) : active ou désactive le bras robotisé.", "en": "Mode switch key"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Bouton d'auto-nettoyage", "a": "1. Appui bref : lance ou interrompt l'auto-nettoyage (le bouton n'est actif que si la machine est en charge et la batterie ≥ 20 %).\n2. Appui long : lance le séchage de 30 minutes.", "en": "Self-cleaning button"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Bouton vocal / Wi-Fi", "a": "Appui bref : active la voix ou règle le volume.\nAppui long : lance ou relance la configuration réseau, avec l'annonce « En attente de configuration réseau ».\nLe volume et la langue se règlent depuis l'application.", "en": "Voice Button"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Activer / désactiver le mode haute altitude", "a": "Maintenir simultanément le bouton de mode et le bouton vocal pendant 3 secondes pour entrer ou sortir du mode haute altitude.", "en": "Enter/Exit High Altitude Mode"},
+{"m": ["H15S"], "c": "Fonctions & réglages", "q": "Réinitialisation d'usine", "a": "Maintenir simultanément le bouton vocal/Wi-Fi et le bouton d'auto-nettoyage : l'annonce « Réglages d'usine restaurés » confirme la réinitialisation.", "en": "Restore factory settings"}
+];
+
+const MODELS = ['H11','H11 MAX','H12','H12 Pro','H12 Core','H12 Dual','H12 FlexReach','M12','H15S'];
+const CATS = ['Dépannage','Info produit','Fonctions & réglages','Consommables & entretien','Caractéristiques','Batterie & charge','Divers'];
+
+let fModel = null, fCat = null, query = '';
+
+const $ = s => document.querySelector(s);
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+
+function buildChips(el, items, get, set){
+  el.innerHTML = '';
+  const all = document.createElement('button');
+  all.className = 'chip'; all.textContent = 'Tous';
+  all.onclick = () => { set(null); render(); };
+  el.appendChild(all);
+  items.forEach(v => {
+    const b = document.createElement('button');
+    b.className = 'chip'; b.textContent = v; b.dataset.v = v;
+    b.onclick = () => { set(get() === v ? null : v); render(); };
+    el.appendChild(b);
+  });
+}
+
+function syncChips(el, cur){
+  [...el.children].forEach((b,i) => {
+    b.classList.toggle('on', i === 0 ? cur === null : b.dataset.v === cur);
+  });
+}
+
+function highlight(text, terms){
+  let out = esc(text);
+  terms.forEach(t => {
+    if (t.length < 2) return;
+    const re = new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
+    out = out.replace(re, '<mark>$1</mark>');
+  });
+  return out.replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+}
+
+function render(){
+  syncChips($('#fm'), fModel);
+  syncChips($('#fc'), fCat);
+  $('#clr').style.display = query ? 'block' : 'none';
+
+  const terms = norm(query).split(/\s+/).filter(Boolean);
+  const hits = FAQ.filter(it => {
+    if (fModel && !it.m.includes(fModel)) return false;
+    if (fCat && it.c !== fCat) return false;
+    if (!terms.length) return true;
+    const hay = norm(it.q + ' ' + it.a + ' ' + it.en + ' ' + it.m.join(' '));
+    return terms.every(t => hay.includes(t));
+  });
+
+  $('#cnt').innerHTML = '<b>' + hits.length + '</b> question' + (hits.length > 1 ? 's' : '') +
+    (fModel ? ' · ' + esc(fModel) : '') + (fCat ? ' · ' + esc(fCat) : '');
+
+  const list = $('#list');
+  if (!hits.length){
+    list.innerHTML = '<div class="empty"><svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M20 20l-3.5-3.5"/></svg><b>Aucun résultat</b>Essayez un autre terme ou retirez un filtre.</div>';
+    return;
+  }
+
+  const raw = terms.length ? query.trim().split(/\s+/) : [];
+  let html = '';
+  CATS.forEach(cat => {
+    const grp = hits.filter(h => h.c === cat);
+    if (!grp.length) return;
+    html += '<div class="group"><div class="gtitle">' + esc(cat) + ' · ' + grp.length + '</div>';
+    grp.forEach(it => {
+      const open = terms.length && hits.length <= 6 ? ' open' : '';
+      html += '<details class="qa"' + open + '><summary>' +
+        (fModel ? '' : '<span class="badge">' + esc(it.m.length > 2 ? 'Multi' : it.m[0]) + '</span>') +
+        '<span>' + highlight(it.q, raw) + '</span></summary>' +
+        '<div class="body"><div class="ans">' + highlight(it.a, raw) + '</div>' +
+        '<div class="models">' + it.m.map(m => '<span>' + esc(m) + '</span>').join('') + '</div></div></details>';
+    });
+    html += '</div>';
+  });
+  list.innerHTML = html;
+}
+
+buildChips($('#fm'), MODELS, () => fModel, v => fModel = v);
+buildChips($('#fc'), CATS, () => fCat, v => fCat = v);
+$('#q').addEventListener('input', e => { query = e.target.value; render(); });
+$('#clr').onclick = () => { query = ''; $('#q').value = ''; $('#q').focus(); render(); };
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && document.activeElement !== $('#q')){ e.preventDefault(); $('#q').focus(); }
+  if (e.key === 'Escape'){ $('#clr').onclick(); }
+});
+render();
+</script>
+</body>
+</html>

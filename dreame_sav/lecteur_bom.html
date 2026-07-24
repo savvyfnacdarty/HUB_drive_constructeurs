@@ -107,7 +107,7 @@ body{font-family:var(--font-ui);background:var(--bg);color:var(--text);min-heigh
 
 /* ── Grille de tuiles ── */
 .tiles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;}
-.tile-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;cursor:pointer;transition:transform var(--tr),box-shadow var(--tr),border-color var(--tr);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;}
+.tile-card{position:relative;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;cursor:pointer;transition:transform var(--tr),box-shadow var(--tr),border-color var(--tr);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;}
 .tile-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--fd-red);}
 .tile-card.has-photo{border-color:var(--border-strong);}
 .tile-img-wrap{aspect-ratio:1/1;background:var(--surface-2);display:flex;align-items:center;justify-content:center;padding:14px;border-bottom:1px solid var(--rule);flex-shrink:0;overflow:hidden;}
@@ -122,6 +122,53 @@ body{font-family:var(--font-ui);background:var(--bg);color:var(--text);min-heigh
 .no-tiles-msg{grid-column:1/-1;padding:56px 24px;text-align:center;color:var(--muted);font-size:13px;}
 .tile-repere{display:inline-block;margin-top:5px;padding:2px 9px;border-radius:10px;background:var(--accent-yellow-glow);border:1px solid var(--fd-yellow);color:#9a6a00;font-size:11px;font-weight:700;align-self:flex-start;font-family:var(--font-mono);}
 [data-theme="dark"] .tile-repere{color:var(--fd-yellow);}
+
+/* ── Désignation française (traduite auto) ── */
+.tile-desc-fr{font-size:12.5px;color:#2563eb;font-weight:600;line-height:1.4;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.tile-desc-fr::before{content:"🇫🇷 ";font-weight:400;}
+[data-theme="dark"] .tile-desc-fr{color:#60a5fa;}
+.full-table td.td-fr{color:#2563eb;font-weight:600;white-space:normal;}
+[data-theme="dark"] .full-table td.td-fr{color:#60a5fa;}
+.modal-field.fr .modal-field-value{color:#2563eb;font-weight:600;}
+[data-theme="dark"] .modal-field.fr .modal-field-value{color:#60a5fa;}
+.modal-field.dup .modal-field-value{color:#ea580c;font-weight:700;}
+
+/* ── Doublons de désignation ── */
+.tile-card.is-dup{border-color:#ea580c;box-shadow:0 0 0 2px rgba(234,88,12,.28),var(--shadow-sm);}
+.tile-card.is-dup:hover{border-color:#ea580c;box-shadow:0 0 0 2px rgba(234,88,12,.4),var(--shadow-md);}
+.tile-dup-badge{position:absolute;top:8px;left:8px;z-index:3;background:#ea580c;color:#fff;font-size:10px;font-weight:800;letter-spacing:.3px;padding:3px 8px;border-radius:10px;box-shadow:var(--shadow-sm);display:inline-flex;align-items:center;gap:4px;text-transform:uppercase;}
+.full-table tr.row-dup td:first-child{box-shadow:inset 4px 0 0 #ea580c;}
+.dup-cell-flag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:9px;background:#fff7ed;color:#ea580c;border:1px solid #fed7aa;font-size:10px;font-weight:800;vertical-align:middle;}
+[data-theme="dark"] .dup-cell-flag{background:rgba(234,88,12,.15);}
+
+/* ── Pièces barrées / obsolètes (strikethrough Excel) ── */
+.tile-card.is-struck{border-color:#dc2626 !important;box-shadow:0 0 0 2px rgba(220,38,38,.30),var(--shadow-sm);}
+.tile-card.is-struck:hover{border-color:#dc2626 !important;box-shadow:0 0 0 2px rgba(220,38,38,.46),var(--shadow-md);}
+.tile-card.is-struck .tile-img-wrap{opacity:.72;}
+.tile-struck-badge{position:absolute;top:8px;left:8px;z-index:4;background:#dc2626;color:#fff;font-size:10px;font-weight:800;letter-spacing:.3px;padding:3px 8px;border-radius:10px;box-shadow:var(--shadow-sm);display:inline-flex;align-items:center;gap:4px;text-transform:uppercase;}
+.tile-card.is-struck .tile-ref,.tile-card.is-struck .tile-desc,.tile-card.is-struck .tile-desc-fr{text-decoration:line-through;text-decoration-color:rgba(220,38,38,.75);}
+.tile-card.is-struck .tile-desc,.tile-card.is-struck .tile-desc-fr{color:#b91c1c;}
+.repl-chip{display:inline-flex;align-items:center;gap:4px;margin-top:5px;padding:3px 9px;border-radius:9px;font-size:11px;font-weight:700;align-self:flex-start;cursor:pointer;transition:all var(--tr);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.repl-chip.active{background:#ecfdf5;border:1px solid #6ee7b7;color:#047857;}
+.repl-chip.active:hover{background:#d1fae5;}
+.repl-chip.obsolete{background:#fef2f2;border:1px solid #fecaca;color:#b91c1c;}
+.repl-chip.obsolete:hover{background:#fee2e2;}
+[data-theme="dark"] .repl-chip.active{background:rgba(4,120,87,.20);}
+[data-theme="dark"] .repl-chip.obsolete{background:rgba(185,28,28,.20);}
+@keyframes tileFlash{0%,100%{box-shadow:0 0 0 2px rgba(37,99,235,0),var(--shadow-sm);}30%{box-shadow:0 0 0 5px rgba(37,99,235,.55),var(--shadow-lg);}}
+.tile-card.flash{animation:tileFlash 1.2s ease;}
+.full-table tr.row-struck td{color:#b91c1c;}
+.full-table tr.row-struck td:first-child{box-shadow:inset 4px 0 0 #dc2626;}
+.full-table tr.row-struck td.td-ref,.full-table tr.row-struck td.td-fr{text-decoration:line-through;}
+.struck-cell-flag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:9px;background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;font-size:10px;font-weight:800;vertical-align:middle;}
+[data-theme="dark"] .struck-cell-flag{background:rgba(185,28,28,.18);}
+.modal-field.struck .modal-field-value{color:#b91c1c;font-weight:700;}
+
+/* ── Bouton retour aux onglets & statut traduction ── */
+.btn-back-sheets{height:42px;padding:0 16px;border-radius:var(--r-md);border:1.5px solid var(--fd-red);background:var(--surface);color:var(--fd-red);font-size:13px;font-weight:700;transition:all var(--tr);white-space:nowrap;display:inline-flex;align-items:center;gap:6px;}
+.btn-back-sheets:hover{background:var(--accent-glow);}
+.xlate-status{display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#2563eb;background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.25);padding:6px 11px;border-radius:var(--r-md);white-space:nowrap;}
+[data-theme="dark"] .xlate-status{color:#60a5fa;}
 
 /* ── Panneau vue éclatée ── */
 .diagram-panel{background:var(--surface);border:1.5px solid var(--fd-yellow);border-radius:var(--r-lg);padding:14px 16px;margin:16px 0;box-shadow:var(--shadow-sm);}
@@ -265,7 +312,8 @@ body{font-family:var(--font-ui);background:var(--bg);color:var(--text);min-heigh
   <nav>
     <a href="dreame.html">Recherche</a>
     <a href="lecteur_bom.html" class="active">Lecteur BOM</a>
-    <a href="pem.html">PEM</a>
+    <a href="robot_laveur.html">🤖 Robot laveur</a>
+    <a href="aspirateur_balai_laveur.html">🧹 Aspirateur balai laveur</a>
   </nav>
 </div>
 
@@ -326,6 +374,8 @@ body{font-family:var(--font-ui);background:var(--bg);color:var(--text);min-heigh
         </button>
       </div>
       <div class="stats-badge" id="statsBadge">0 pièce(s)</div>
+      <div class="xlate-status" id="xlateStatus"><div class="spinner"></div><span id="xlateStatusTxt">Traduction FR…</span></div>
+      <button class="btn-back-sheets" id="btnBackSheets" style="display:none;" onclick="backToSheets()">↩ Retour aux onglets</button>
     </div>
     <div id="tileView"><div class="tiles-grid" id="tilesGrid"></div></div>
     <div id="tableView" style="display:none;">
@@ -347,6 +397,7 @@ body{font-family:var(--font-ui);background:var(--bg);color:var(--text);min-heigh
         <input type="text" class="fallback-search" id="fallbackSearch" placeholder="Rechercher dans toutes les colonnes…"/>
       </div>
       <div class="fallback-stats" id="fallbackStats">—</div>
+      <button class="btn-back-sheets" id="btnBackSheetsFb" style="display:none;" onclick="backToSheets()">↩ Retour aux onglets</button>
     </div>
     <div class="fallback-table-wrap"><table class="fallback-table"><thead id="fbThead"></thead><tbody id="fbTbody"></tbody></table></div>
   </div>
@@ -409,6 +460,7 @@ function loadJSZip(){return new Promise((resolve,reject)=>{if(typeof JSZip!=='un
 let allRows=[],filteredRows=[];
 let currentSort='photo',viewMode='tiles';
 let currentWorkbook=null,currentEmbedded={},currentFileName='';
+let currentStruck={};
 let currentDiagrams=[];
 let toastTimer=null;
 let fbRawData=[],fbRawHeaders=[],fbRawImgs={},fbRawImgCol=-1;
@@ -510,6 +562,68 @@ async function extractImages(arrayBuffer){
   }catch(e){console.warn('extractImages failed:',e);return {};}
 }
 
+/* ══════════════════════════════════════════════════════════════
+   DÉTECTION DES CELLULES BARRÉES (strikethrough)
+   → lit styles.xml (polices barrées + cellXfs.fontId) puis chaque
+     feuille pour repérer les cellules dont le style est barré.
+   → renvoie par feuille : { indexLigne0based : Set(colonnes barrées) }
+     (le sentinel -1 = ligne entièrement barrée via style de ligne)
+══════════════════════════════════════════════════════════════ */
+function colToIdx(letters){let n=0;for(let i=0;i<letters.length;i++){n=n*26+(letters.charCodeAt(i)-64);}return n-1;}
+async function extractStrike(arrayBuffer){
+  try{
+    await loadJSZip();
+    const zip=await JSZip.loadAsync(arrayBuffer).catch(()=>null); if(!zip) return {};
+    const stylesFile=zip.file('xl/styles.xml'); if(!stylesFile) return {};
+    const stXml=await stylesFile.async('text');
+    // 1) polices barrées
+    const fontsBlock=(stXml.match(/<fonts\b[^>]*>([\s\S]*?)<\/fonts>/)||[])[1]||'';
+    const fontStrike=[]; let fm; const fontRe=/<font\b[^>]*\/>|<font\b[^>]*>([\s\S]*?)<\/font>/g;
+    while((fm=fontRe.exec(fontsBlock))!==null){ const inner=fm[1]||''; fontStrike.push(/<strike\b[^>]*\/?>/.test(inner)); }
+    // 2) cellXfs → strike via fontId
+    const xfsBlock=(stXml.match(/<cellXfs\b[^>]*>([\s\S]*?)<\/cellXfs>/)||[])[1]||'';
+    const xfStrike=[]; let xm; const xfRe=/<xf\b[^>]*\/>|<xf\b[^>]*>[\s\S]*?<\/xf>/g;
+    while((xm=xfRe.exec(xfsBlock))!==null){ const fidM=xm[0].match(/fontId="(\d+)"/); const fid=fidM?parseInt(fidM[1],10):0; xfStrike.push(!!fontStrike[fid]); }
+    if(!xfStrike.some(Boolean)) return {}; // aucun style barré dans le classeur
+    // 3) résolution feuilles → chemin (comme extractImages)
+    const wbFile=zip.file('xl/workbook.xml'); if(!wbFile) return {};
+    const wbXml=await wbFile.async('text');
+    const sheets=[]; let m; const shRe=/<sheet\b[^>]*>/g;
+    while((m=shRe.exec(wbXml))!==null){ const nM=m[0].match(/\bname="([^"]*)"/), rM=m[0].match(/\br:id="([^"]+)"/)||m[0].match(/\brelationships:id="([^"]+)"/i); if(nM&&rM) sheets.push({name:nM[1],rId:rM[1]}); }
+    if(!sheets.length) return {};
+    const wbRelsFile=zip.file('xl/_rels/workbook.xml.rels'); if(!wbRelsFile) return {};
+    const wbRelsXml=await wbRelsFile.async('text'); const wbRels={}; const relRe=/<Relationship\b[^>]*>/g;
+    while((m=relRe.exec(wbRelsXml))!==null){ const iM=m[0].match(/\bId="([^"]+)"/), tM=m[0].match(/\bTarget="([^"]+)"/); if(iM&&tM) wbRels[iM[1]]=tM[1]; }
+    const out={};
+    for(const s of sheets){
+      const target=wbRels[s.rId]; if(!target) continue;
+      const shPath=target.replace(/^\//,'').startsWith('xl/')?target.replace(/^\//,''):'xl/'+target.replace(/^\.\.\//,'');
+      const shFile=zip.file(shPath); if(!shFile) continue;
+      const shXml=await shFile.async('text');
+      const rowMap={};
+      const rowRe=/<row\b([^>]*)>([\s\S]*?)<\/row>/g; let rm;
+      while((rm=rowRe.exec(shXml))!==null){
+        const rowAttrs=rm[1]||'', cells=rm[2]||'';
+        const rnM=rowAttrs.match(/\br="(\d+)"/); if(!rnM) continue;
+        const excelRow=parseInt(rnM[1],10);
+        const struckCols=new Set();
+        // ligne entièrement barrée (style de ligne)
+        const rsM=rowAttrs.match(/\bs="(\d+)"/);
+        if(/customFormat="1"/.test(rowAttrs)&&rsM&&xfStrike[parseInt(rsM[1],10)]) struckCols.add(-1);
+        const cRe=/<c\b([^>]*)\/>|<c\b([^>]*)>[\s\S]*?<\/c>/g; let cm;
+        while((cm=cRe.exec(cells))!==null){
+          const attrs=cm[1]||cm[2]||''; const sM=attrs.match(/\bs="(\d+)"/); if(!sM) continue;
+          if(!xfStrike[parseInt(sM[1],10)]) continue;
+          const rM=attrs.match(/\br="([A-Z]+)\d+"/); if(rM) struckCols.add(colToIdx(rM[1]));
+        }
+        if(struckCols.size) rowMap[excelRow-1]=struckCols;
+      }
+      if(Object.keys(rowMap).length) out[s.name]=rowMap;
+    }
+    return out;
+  }catch(e){console.warn('extractStrike failed:',e);return {};}
+}
+
 /* ═══ DÉTECTION FUZZY ═══ */
 const KW={
   ref:['料号','备件号','配件号','零件号','部件号','物料编号','物料号','编号','material code','material no','material number','part number','part no','reference','référence','ref','article','sku','p/n','item number','item no','item code','part#','part id','component code','numéro','numero','code article'],
@@ -550,10 +664,107 @@ function sortRows(){
   else if(currentSort==='desc') allRows.sort((a,b)=>normalize(a.desc).localeCompare(normalize(b.desc)));
 }
 
+/* ═══ RETOUR AUX ONGLETS ═══ */
+function toggleBackToSheetsBtn(){
+  const multi=!!(currentWorkbook&&currentWorkbook.SheetNames&&currentWorkbook.SheetNames.length>1);
+  ['btnBackSheets','btnBackSheetsFb'].forEach(id=>{const b=document.getElementById(id);if(b)b.style.display=multi?'inline-flex':'none';});
+}
+function backToSheets(){
+  if(!currentWorkbook) return;
+  xlateToken++; setXlateStatus(false);           // annule une éventuelle traduction en cours
+  ['normalView','fallbackView','rawView'].forEach(id=>document.getElementById(id).style.display='none');
+  document.getElementById('detectBanner').classList.remove('active');
+  document.getElementById('rawHint').classList.remove('active');
+  document.getElementById('btnShowRaw').classList.remove('active-raw');
+  document.getElementById('btnShowRaw').textContent='📊 Mode secours — Tableau Excel brut';
+  const dp=document.getElementById('diagramPanel'); if(dp){dp.style.display='none';}
+  showSheetPicker(currentWorkbook.SheetNames);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ═══ DÉTECTION DES DOUBLONS (désignation FR, repli sur source) ═══ */
+function computeDuplicates(){
+  const map={};
+  allRows.forEach(r=>{const key=normalize(r.descFr||r.desc||''); r._dupKey=key; if(key){(map[key]=map[key]||[]).push(r);}});
+  const groupId={}; let gid=0;
+  allRows.forEach(r=>{
+    const arr=map[r._dupKey];
+    if(r._dupKey&&arr&&arr.length>1){
+      r.isDup=true; if(!(r._dupKey in groupId))groupId[r._dupKey]=++gid; r.dupGroup=groupId[r._dupKey]; r.dupCount=arr.length;
+      const sibs=arr.filter(x=>x!==r);
+      r.activeSiblings=sibs.filter(x=>!x.struck).map(x=>x.ref);
+      r.struckSiblings=sibs.filter(x=>x.struck).map(x=>x.ref);
+    } else {r.isDup=false;r.dupGroup=0;r.dupCount=0;r.activeSiblings=[];r.struckSiblings=[];}
+  });
+}
+/* Fait défiler jusqu'à une référence et la fait clignoter (mise en évidence du doublon) */
+function focusRef(ref){
+  const target=allRows.find(r=>r.ref===ref); if(!target) return;
+  if(viewMode!=='tiles') switchView('tiles');
+  if(!filteredRows.some(r=>r.ref===ref)){ document.getElementById('bomSearch').value=''; renderTiles(); }
+  requestAnimationFrame(()=>{
+    const el=[...document.querySelectorAll('.tile-card')].find(c=>c.dataset.ref===ref);
+    if(el){ el.scrollIntoView({behavior:'smooth',block:'center'}); el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); }
+  });
+}
+
+/* ═══ TRADUCTION FR AUTOMATIQUE (outil de traduction en ligne, aucune table manuelle) ═══ */
+const LS_XLATE='fd_bom_fr_cache_v1';
+let frCache={};
+try{frCache=JSON.parse(localStorage.getItem(LS_XLATE)||'{}')||{};}catch(e){frCache={};}
+function saveFrCache(){try{const ks=Object.keys(frCache);if(ks.length>6000){const t={};ks.slice(-5000).forEach(k=>t[k]=frCache[k]);frCache=t;}localStorage.setItem(LS_XLATE,JSON.stringify(frCache));}catch(e){}}
+let xlateToken=0;
+function setXlateStatus(on,remaining){const el=document.getElementById('xlateStatus');if(!el)return;el.style.display=on?'inline-flex':'none';const t=document.getElementById('xlateStatusTxt');if(t)t.textContent='Traduction FR…'+(remaining?(' '+remaining):'');}
+function rerenderCurrent(){const nv=document.getElementById('normalView');if(nv&&nv.style.display!=='none'){if(viewMode==='tiles')renderTiles();else renderFullTable();}}
+function srcDesign(r){return (r.desc&&r.desc.trim())||(r.desc2&&r.desc2.trim())||'';}
+function xlateSrcLang(t){return /[㐀-鿿豈-﫿]/.test(t)?'zh-CN':'en';}
+async function mymemoryTranslate(text){
+  const url='https://api.mymemory.translated.net/get?q='+encodeURIComponent(text.slice(0,480))+'&langpair='+xlateSrcLang(text)+'|fr';
+  const res=await fetch(url); if(!res.ok) throw new Error('mm '+res.status);
+  const j=await res.json(); const tr=j&&j.responseData&&j.responseData.translatedText;
+  if(!tr||/MYMEMORY WARNING|QUERY LENGTH LIMIT|INVALID/i.test(tr)) throw new Error('mm bad');
+  return tr.trim();
+}
+async function googleTranslate(text){
+  const url='https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=fr&dt=t&q='+encodeURIComponent(text);
+  const res=await fetch(url); if(!res.ok) throw new Error('g '+res.status);
+  const data=await res.json(); if(!data||!data[0]) throw new Error('g bad');
+  return data[0].map(s=>s&&s[0]?s[0]:'').join('').trim();
+}
+async function translateOne(text){
+  try{return await mymemoryTranslate(text);}catch(e){try{return await googleTranslate(text);}catch(e2){return '';}}
+}
+async function runFrTranslation(){
+  const token=++xlateToken;
+  // 1) applique immédiatement le cache existant
+  allRows.forEach(r=>{const s=srcDesign(r);if(s&&frCache[s])r.descFr=frCache[s];});
+  computeDuplicates(); rerenderCurrent();
+  // 2) liste des désignations à traduire (uniques, avec lettres, non déjà en cache)
+  const seen=new Set(), todo=[];
+  allRows.forEach(r=>{const s=srcDesign(r);if(s&&!frCache[s]&&!seen.has(s)&&/[A-Za-z㐀-鿿]/.test(s)){seen.add(s);todo.push(s);}});
+  if(!todo.length){setXlateStatus(false);return;}
+  let remaining=todo.length, done=0, idx=0; setXlateStatus(true,remaining);
+  const worker=async()=>{
+    while(idx<todo.length){
+      if(token!==xlateToken) return;
+      const s=todo[idx++];
+      const fr=await translateOne(s);
+      if(token!==xlateToken) return;
+      if(fr){frCache[s]=fr;allRows.forEach(r=>{if(srcDesign(r)===s)r.descFr=fr;});}
+      done++; remaining--;
+      if(done%6===0){saveFrCache();computeDuplicates();rerenderCurrent();}
+      setXlateStatus(remaining>0,remaining);
+    }
+  };
+  await Promise.all(Array.from({length:Math.min(4,todo.length)},()=>worker()));
+  if(token!==xlateToken) return;
+  saveFrCache(); computeDuplicates(); rerenderCurrent(); setXlateStatus(false);
+}
+
 /* ═══ TUILES ═══ */
 function applyFilter(){
   const q=normalize(document.getElementById('bomSearch').value);
-  filteredRows=q?allRows.filter(r=>normalize(r.ref).includes(q)||normalize(r.desc).includes(q)||normalize(r.desc2||'').includes(q)||normalize(r.expl||'').includes(q)||(r.extra||[]).some(([,v])=>normalize(v).includes(q))):[...allRows];
+  filteredRows=q?allRows.filter(r=>normalize(r.ref).includes(q)||normalize(r.desc).includes(q)||normalize(r.descFr||'').includes(q)||normalize(r.desc2||'').includes(q)||normalize(r.expl||'').includes(q)||(r.extra||[]).some(([,v])=>normalize(v).includes(q))):[...allRows];
   document.getElementById('statsBadge').textContent=`${filteredRows.length} / ${allRows.length} pièce(s)`;
 }
 function renderTiles(){
@@ -561,7 +772,10 @@ function renderTiles(){
   const grid=document.getElementById('tilesGrid'); grid.innerHTML='';
   if(!filteredRows.length){grid.innerHTML='<div class="no-tiles-msg">Aucun résultat</div>';return;}
   filteredRows.forEach((row,i)=>{
-    const card=document.createElement('div'); card.className='tile-card'+(row.imgSrc?' has-photo':'');
+    const card=document.createElement('div'); card.className='tile-card'+(row.imgSrc?' has-photo':'')+(row.isDup?' is-dup':'')+(row.struck?' is-struck':'');
+    card.dataset.ref=row.ref;
+    if(row.struck){const sb=document.createElement('div'); sb.className='tile-struck-badge'; sb.textContent='⊘ Barré'; sb.title='Référence barrée dans le BOM (obsolète)'; card.appendChild(sb);}
+    else if(row.isDup){const dupB=document.createElement('div'); dupB.className='tile-dup-badge'; dupB.textContent='⧉ Doublon'; dupB.title=(row.dupCount||2)+' pièces partagent la même désignation'; card.appendChild(dupB);}
     const imgWrap=document.createElement('div'); imgWrap.className='tile-img-wrap';
     if(row.imgSrc){const img=document.createElement('img'); img.src=row.imgSrc; img.className='tile-img'; img.alt=row.ref; img.loading='lazy'; imgWrap.appendChild(img);}
     else imgWrap.innerHTML='<div class="tile-ph-icon"><svg width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>Pas de photo</div>';
@@ -570,6 +784,16 @@ function renderTiles(){
     const refEl=document.createElement('div'); refEl.className='tile-ref'; refEl.textContent=row.ref;
     const descEl=document.createElement('div'); descEl.className='tile-desc'; descEl.textContent=row.desc||'—';
     body.appendChild(refEl); body.appendChild(descEl);
+    if(row.descFr){const fr=document.createElement('div'); fr.className='tile-desc-fr'; fr.textContent=row.descFr; fr.title=row.descFr; body.appendChild(fr);}
+    if(row.struck&&row.activeSiblings&&row.activeSiblings.length){
+      const chip=document.createElement('span'); chip.className='repl-chip active';
+      chip.textContent='➜ Actif : '+row.activeSiblings.join(', '); chip.title='Cliquer pour voir la pièce active de même désignation';
+      chip.addEventListener('click',e=>{e.stopPropagation();focusRef(row.activeSiblings[0]);}); body.appendChild(chip);
+    } else if(!row.struck&&row.struckSiblings&&row.struckSiblings.length){
+      const chip=document.createElement('span'); chip.className='repl-chip obsolete';
+      chip.textContent='⊘ Remplace : '+row.struckSiblings.join(', '); chip.title='Références barrées remplacées par cette pièce';
+      chip.addEventListener('click',e=>{e.stopPropagation();focusRef(row.struckSiblings[0]);}); body.appendChild(chip);
+    }
     if(row.expl){const rp=document.createElement('span'); rp.className='tile-repere'; rp.textContent='⊙ Repère '+row.expl; body.appendChild(rp);}
     if(row.qty){const q=document.createElement('span'); q.className='tile-qty'; q.textContent='Qté : '+row.qty; body.appendChild(q);}
     card.appendChild(body);
@@ -581,6 +805,7 @@ function renderTiles(){
 /* ═══ TABLEAU PARSÉ ═══ */
 function getTableColumns(){
   const cols=[{key:'imgSrc',label:'Photo',type:'img'},{key:'ref',label:'Référence',type:'ref'},{key:'desc',label:'Désignation',type:'text'}];
+  if(allRows.some(r=>r.descFr)) cols.push({key:'descFr',label:'Désignation FR',type:'fr'});
   if(allRows.some(r=>r.expl)) cols.splice(2,0,{key:'expl',label:'Repère',type:'text'});
   if(allRows.some(r=>r.desc2)) cols.push({key:'desc2',label:'Désig. ZH/EN',type:'text'});
   if(allRows.some(r=>r.qty)) cols.push({key:'qty',label:'Qté',type:'text'});
@@ -598,6 +823,8 @@ function renderFullTable(){
   if(!filteredRows.length){tbody.innerHTML=`<tr><td colspan="${cols.length}" style="padding:40px;text-align:center;color:var(--muted)">Aucun résultat</td></tr>`;return;}
   filteredRows.forEach((row,i)=>{
     const tr=document.createElement('tr');
+    if(row.isDup) tr.classList.add('row-dup');
+    if(row.struck) tr.classList.add('row-struck');
     cols.forEach(col=>{
       const td=document.createElement('td');
       if(col.type==='img'){
@@ -605,7 +832,7 @@ function renderFullTable(){
         if(row.imgSrc){const img=document.createElement('img'); img.src=row.imgSrc; img.alt=row.ref; img.addEventListener('click',e=>{e.stopPropagation();openLightbox(row.imgSrc);}); td.appendChild(img);}
         else td.innerHTML='<div class="ph"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>';
       } else if(col.key==='__extra__'){const e=(row.extra||[]).find(([k])=>k===col.extraKey);td.textContent=e?e[1]:'—';td.title=td.textContent;}
-      else{td.textContent=row[col.key]||'—';td.title=td.textContent;if(col.type==='ref')td.className='td-ref';}
+      else{td.textContent=row[col.key]||'—';td.title=td.textContent;if(col.type==='ref'){td.className='td-ref';if(row.struck){const fs=document.createElement('span');fs.className='struck-cell-flag';fs.textContent='⊘ Barré';td.appendChild(document.createTextNode(' '));td.appendChild(fs);}if(row.isDup){const fl=document.createElement('span');fl.className='dup-cell-flag';fl.textContent='⧉ Doublon';td.appendChild(document.createTextNode(' '));td.appendChild(fl);}}if(col.type==='fr')td.className='td-fr';}
       tr.appendChild(td);
     });
     tr.addEventListener('click',()=>openModal(i));
@@ -720,7 +947,7 @@ function openModal(filteredIdx){
   else{imgEl.style.display='none';imgEl.onclick=null;noImgEl.style.display='flex';}
   document.getElementById('modalRef').textContent=row.ref;
   document.getElementById('modalCopyBtn').onclick=()=>copyToClipboard(row.ref);
-  const items=[['Désignation',row.desc||'—','full'],row.desc2?['Désignation (ZH/EN)',row.desc2,'full']:null,row.expl?['Repère (vue éclatée)',row.expl,'']:null,row.qty?['Quantité',row.qty,'']:null,row.level?['Niveau de réparation',row.level,'']:null,...(row.extra||[]).map(([k,v])=>[k,v,''])].filter(Boolean);
+  const items=[row.struck?['⊘ Référence barrée (obsolète)',(row.activeSiblings&&row.activeSiblings.length?('Pièce active de même désignation : '+row.activeSiblings.join(', ')):'Aucune pièce active de même désignation'),'full struck']:null,(!row.struck&&row.struckSiblings&&row.struckSiblings.length)?['Remplace (références barrées)',row.struckSiblings.join(', '),'full struck']:null,row.isDup?['⚠ Doublon de désignation',(row.dupCount||2)+' pièces partagent la désignation « '+(row.descFr||row.desc)+' »','full dup']:null,['Désignation',row.desc||'—','full'],row.descFr?['Désignation FR (traduction auto)',row.descFr,'full fr']:null,row.desc2?['Désignation (ZH/EN)',row.desc2,'full']:null,row.expl?['Repère (vue éclatée)',row.expl,'']:null,row.qty?['Quantité',row.qty,'']:null,row.level?['Niveau de réparation',row.level,'']:null,...(row.extra||[]).map(([k,v])=>[k,v,''])].filter(Boolean);
   document.getElementById('modalFields').innerHTML=items.map(([label,value,cls])=>`<div class="modal-field ${cls}"><div class="modal-field-label">${escHtml(label)}</div><div class="modal-field-value">${escHtml(value||'—')}</div></div>`).join('');
   document.getElementById('partModal').classList.add('active');
   document.body.style.overflow='hidden';
@@ -785,6 +1012,7 @@ function parseSheet(sheetName){
     const rawData=XLSX.utils.sheet_to_json(sheet,{header:1,defval:''});
     const emb=currentEmbedded[sheetName]||{rows:{},col:-1,diagrams:[]};
     const sheetImgs=emb.rows||{}; const imgCol=(emb.col==null?-1:emb.col);
+    const struckInfo=currentStruck[sheetName]||{};
     rawSheetData=rawData; rawSheetImgs=sheetImgs; rawSheetImgCol=imgCol; rawSheetName=sheetName;
     currentDiagrams=emb.diagrams||[]; renderDiagrams();
     document.getElementById('rawHint').classList.add('active');
@@ -794,6 +1022,7 @@ function parseSheet(sheetName){
       setLoading(false);
       showDetectBanner(false,`Colonnes non identifiées — "${currentFileName}" feuille "${sheetName}"`);
       renderFallback(rawData,sheetImgs,imgCol);
+      toggleBackToSheetsBtn();
       return;
     }
     const {headerRow,colMap}=detection;
@@ -815,10 +1044,13 @@ function parseSheet(sheetName){
       const usedCols=new Set([colMap.ref,colMap.desc1,colMap.desc2,colMap.qty,colMap.level,colMap.img,colMap.expl].filter(c=>c!=null&&c!==-1));
       const extra=[];
       rawHeaders.forEach((h,c)=>{if(!usedCols.has(c)&&h&&String(row[c]||'').trim())extra.push([String(h).trim(),String(row[c]).trim()]);});
-      allRows.push({ref,desc,desc2,qty,level,expl,imgSrc:sheetImgs[r]||null,extra});
+      const sc=struckInfo[r];
+      const struck=!!(sc&&(sc.has(-1)||sc.has(colMap.ref)||(colMap.desc1!=null&&colMap.desc1!==-1&&sc.has(colMap.desc1))||(colMap.desc2!=null&&colMap.desc2!==-1&&sc.has(colMap.desc2))));
+      allRows.push({ref,desc,desc2,qty,level,expl,imgSrc:sheetImgs[r]||null,extra,struck});
     }
     currentSort='photo'; document.getElementById('sortSelect').value='photo';
     allRows.sort((a,b)=>(b.imgSrc?1:0)-(a.imgSrc?1:0));
+    computeDuplicates();
     setLoading(false);
     const photoCount=allRows.filter(r=>r.imgSrc).length;
     showDetectBanner(true,`"${sheetName}" — ${allRows.length} pièce(s)${photoCount?` · ${photoCount} photo(s)`:''}`,colMap,rawHeaders,imgCol);
@@ -828,7 +1060,9 @@ function parseSheet(sheetName){
     document.getElementById('btnTable').classList.remove('active');
     document.getElementById('tileView').style.display='block';
     document.getElementById('tableView').style.display='none';
+    toggleBackToSheetsBtn();
     renderTiles();
+    runFrTranslation();
   }catch(err){console.error(err);setLoading(false);alert('Erreur : '+err.message);}
 }
 
@@ -839,6 +1073,8 @@ async function parseBOM(file){
     const ab=await file.arrayBuffer();
     setLoading(true,'Extraction des images embarquées…');
     currentEmbedded=await extractImages(ab);
+    setLoading(true,'Analyse du formatage (pièces barrées)…');
+    currentStruck=await extractStrike(ab);
     setLoading(true,'Chargement du classeur…');
     currentWorkbook=XLSX.read(ab,{type:'array'});
     setLoading(false);
@@ -856,6 +1092,8 @@ function hideResults(){
   document.getElementById('btnShowRaw').classList.remove('active-raw');
   document.getElementById('btnShowRaw').textContent='📊 Mode secours — Tableau Excel brut';
   const dp=document.getElementById('diagramPanel'); if(dp){dp.style.display='none';dp.innerHTML='';}
+  xlateToken++; setXlateStatus(false);
+  ['btnBackSheets','btnBackSheetsFb'].forEach(id=>{const b=document.getElementById(id);if(b)b.style.display='none';});
   currentDiagrams=[]; allRows=[]; filteredRows=[];
 }
 function showDetectBanner(ok,title,colMap,rawHeaders,imgCol){
