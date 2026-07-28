@@ -92,6 +92,8 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 .empty-state-icon{font-size:42px;margin-bottom:12px;}
 .empty-state h3{font-size:16px;font-weight:600;color:var(--text-2);margin-bottom:4px;}
 .empty-state p{font-size:13px;color:var(--text-3);}
+.ri-maint{width:100%;margin-top:9px;padding:9px 12px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:9px;font-size:12px;color:#92400E;line-height:1.5;display:flex;gap:8px;align-items:flex-start;white-space:pre-line;}
+.ri-maint b{flex-shrink:0;}
 
 /* MODAL IMPORT */
 .modal-backdrop{position:fixed;inset:0;background:rgba(17,24,39,.5);z-index:600;display:flex;align-items:center;justify-content:center;padding:16px;}
@@ -214,7 +216,9 @@ function buildIndex(wb){
   for(let r=docRange.s.r+1;r<=docRange.e.r;r++){
     const modelCell=docWs[XLSX.utils.encode_cell({r:r,c:0})];
     if(!modelCell||modelCell.v==null||String(modelCell.v).trim()==='')continue;
-    docList.push({model:String(modelCell.v).trim(),link:cellLink(docWs,r,1),video:cellLink(docWs,r,2)});
+    const maintCell=docWs[XLSX.utils.encode_cell({r:r,c:1})];
+    const maint=maintCell&&maintCell.v!=null?String(maintCell.v).trim():'';
+    docList.push({model:String(modelCell.v).trim(),maint:maint,link:cellLink(docWs,r,2),video:cellLink(docWs,r,3)});
   }
   const aliasMap={};
   docList.forEach((d,i)=>{
@@ -252,7 +256,7 @@ function buildIndex(wb){
     entries.push({
       sn:sn, spn:String(r[3]==null?'':r[3]).trim(),
       model:model, modelfull:String(r[5]==null?'':r[5]).trim(), series:series,
-      folder:doc?doc.link:'', video:doc?doc.video:''
+      folder:doc?doc.link:'', video:doc?doc.video:'', maint:doc?doc.maint:''
     });
   }
   return {entries};
@@ -325,6 +329,7 @@ function doSearch(){
                   :'<span class="ri-btn off" title="Aucun dossier Drive associé à cette série">📁 Indisponible</span>');
       const openBtn=fid?'<a class="ri-btn docs" href="'+esc(e.folder)+'" target="_blank" rel="noopener" title="Ouvrir le dossier dans Google Drive">↗</a>':'';
       const vidBtn=e.video?'<a class="ri-btn video" href="'+esc(e.video)+'" target="_blank" rel="noopener">🎬 Démontage</a>':'';
+      const maintBlock=e.maint?'<div class="ri-maint"><b>⚠️</b><span>'+esc(e.maint)+'</span></div>':'';
       return '<div class="ri-card">'+
         '<div class="ri">'+
           '<div class="ri-avatar">🤖</div>'+
@@ -338,6 +343,7 @@ function doSearch(){
             '</div>'+
           '</div>'+
           '<div class="ri-actions">'+filesBtn+openBtn+vidBtn+'</div>'+
+          maintBlock+
         '</div>'+
         (fid?'<div class="files-panel" id="fp'+i+'" style="display:none"></div>':'')+
       '</div>';
