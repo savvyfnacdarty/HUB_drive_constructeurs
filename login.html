@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connexion — HUB Drive Constructeurs</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px 36px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.4);
+  }
+  .card h1 { font-size: 1.3rem; color: #0f172a; margin-bottom: 6px; text-align: center; }
+  .card p.sub { color: #64748b; font-size: .85rem; text-align: center; margin-bottom: 26px; }
+  label { display: block; font-size: .8rem; font-weight: 600; color: #334155; margin: 14px 0 5px; }
+  input {
+    width: 100%; padding: 11px 13px; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .95rem; outline: none;
+  }
+  input:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,.15); }
+  button {
+    width: 100%; margin-top: 22px; padding: 12px;
+    background: #2563eb; color: #fff; border: none; border-radius: 8px;
+    font-size: .95rem; font-weight: 600; cursor: pointer;
+  }
+  button:hover { background: #1d4ed8; }
+  button:disabled { background: #93c5fd; cursor: wait; }
+  .error {
+    display: none; margin-top: 14px; padding: 10px 12px;
+    background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca;
+    border-radius: 8px; font-size: .82rem;
+  }
+</style>
+</head>
+<body>
+  <form class="card" id="loginForm">
+    <h1>🔒 HUB Drive Constructeurs</h1>
+    <p class="sub">Accès réservé — merci de vous identifier</p>
+    <label for="email">Identifiant</label>
+    <input type="email" id="email" autocomplete="username" required>
+    <label for="password">Mot de passe</label>
+    <input type="password" id="password" autocomplete="current-password" required>
+    <button type="submit" id="btn">Se connecter</button>
+    <div class="error" id="error"></div>
+  </form>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="auth-config.js"></script>
+<script>
+  firebase.initializeApp(window.FIREBASE_CONFIG);
+
+  var dest = new URLSearchParams(location.search).get("from") || "index.html";
+  // Sécurité : uniquement des chemins relatifs internes
+  if (/^\/\/|^https?:/i.test(dest)) dest = "index.html";
+
+  // Déjà connecté → redirection directe
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) location.replace(dest);
+  });
+
+  document.getElementById("loginForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var btn = document.getElementById("btn");
+    var err = document.getElementById("error");
+    btn.disabled = true;
+    err.style.display = "none";
+    firebase.auth()
+      .signInWithEmailAndPassword(
+        document.getElementById("email").value.trim(),
+        document.getElementById("password").value
+      )
+      .then(function () { location.replace(dest); })
+      .catch(function () {
+        btn.disabled = false;
+        err.textContent = "Identifiant ou mot de passe incorrect.";
+        err.style.display = "block";
+      });
+  });
+</script>
+</body>
+</html>
