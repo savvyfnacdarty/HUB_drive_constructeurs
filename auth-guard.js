@@ -6,6 +6,11 @@
   if (!src) return;
   var base = src.replace(/auth-guard\.js.*$/, "");
 
+  // Bypass en local : fichier ouvert directement (file://) ou servi depuis localhost
+  var isLocal = location.protocol === "file:" ||
+    /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  if (isLocal) return;
+
   // Masque la page tant que l'authentification n'est pas confirmée
   document.documentElement.style.visibility = "hidden";
 
