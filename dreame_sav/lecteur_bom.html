@@ -132,6 +132,10 @@ body{font-family:var(--font-ui);background:var(--bg);color:var(--text);min-heigh
 [data-theme="dark"] .full-table td.td-fr{color:#60a5fa;}
 .modal-field.fr .modal-field-value{color:#2563eb;font-weight:600;}
 [data-theme="dark"] .modal-field.fr .modal-field-value{color:#60a5fa;}
+.modal-field.levelfr .modal-field-value{color:#dc2626;font-weight:700;}
+[data-theme="dark"] .modal-field.levelfr .modal-field-value{color:#f87171;}
+.modal-field-value-fr{font-size:12.5px;color:#2563eb;font-weight:600;line-height:1.4;margin-top:2px;}
+[data-theme="dark"] .modal-field-value-fr{color:#60a5fa;}
 .modal-field.dup .modal-field-value{color:#ea580c;font-weight:700;}
 
 /* ── Doublons de désignation ── */
@@ -164,6 +168,17 @@ body{font-family:var(--font-ui);background:var(--bg);color:var(--text);min-heigh
 .struck-cell-flag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:9px;background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;font-size:10px;font-weight:800;vertical-align:middle;}
 [data-theme="dark"] .struck-cell-flag{background:rgba(185,28,28,.18);}
 .modal-field.struck .modal-field-value{color:#b91c1c;font-weight:700;}
+
+/* ── Alerte de pose spécifique (référence particulière) ── */
+.tile-card.has-alert{border-color:#d97706 !important;box-shadow:0 0 0 2px rgba(217,119,6,.30),var(--shadow-sm);}
+.tile-alert-badge{position:absolute;top:8px;right:8px;z-index:5;background:#d97706;color:#fff;font-size:10px;font-weight:800;letter-spacing:.3px;padding:3px 8px;border-radius:10px;box-shadow:var(--shadow-sm);display:inline-flex;align-items:center;gap:4px;text-transform:uppercase;}
+.modal-field.alert{background:#fff7ed;border:1px solid #fdba74;border-radius:var(--r-md);padding:10px 14px;}
+[data-theme="dark"] .modal-field.alert{background:rgba(217,119,6,.14);border-color:rgba(217,119,6,.4);}
+.modal-field.alert .modal-field-label{color:#b45309;}
+.modal-field.alert .modal-field-value{color:#9a3412;font-weight:600;}
+.modal-field.alert .modal-field-value a{color:#c2410c;font-weight:700;text-decoration:underline;}
+[data-theme="dark"] .modal-field.alert .modal-field-value{color:#fdba74;}
+[data-theme="dark"] .modal-field.alert .modal-field-value a{color:#fb923c;}
 
 /* ── Bouton retour aux onglets & statut traduction ── */
 .btn-back-sheets{height:42px;padding:0 16px;border-radius:var(--r-md);border:1.5px solid var(--fd-red);background:var(--surface);color:var(--fd-red);font-size:13px;font-weight:700;transition:all var(--tr);white-space:nowrap;display:inline-flex;align-items:center;gap:6px;}
@@ -532,6 +547,16 @@ function toggleTheme(){
 const JSZIP_FB='https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js';
 function loadJSZip(){return new Promise((resolve,reject)=>{if(typeof JSZip!=='undefined')return resolve();const s=document.createElement('script');s.src=JSZIP_FB;s.onload=resolve;s.onerror=()=>reject(new Error('JSZip introuvable'));document.head.appendChild(s);});}
 
+/* ═══ ALERTES SPÉCIFIQUES PAR RÉFÉRENCE ═══ */
+// Ajouter ici toute référence nécessitant une alerte de pose particulière.
+const REF_ALERTS={
+  '20020100011722':{
+    text:'Pose spécifique pour cette pièce : consultez la procédure avant intervention.',
+    url:'https://fnacdarty.mayday.fr/desk/parametric/default/contents/6a6a0bd8479b8859ec6b1d59'
+  }
+};
+function refAlert(ref){return REF_ALERTS[normalize(ref)]||null;}
+
 /* ═══ ÉTAT GLOBAL ═══ */
 let allRows=[],filteredRows=[];
 let currentSort='photo',viewMode='tiles';
@@ -793,6 +818,9 @@ let xlateToken=0;
 function setXlateStatus(on,remaining){const el=document.getElementById('xlateStatus');if(!el)return;el.style.display=on?'inline-flex':'none';const t=document.getElementById('xlateStatusTxt');if(t)t.textContent='Traduction FR…'+(remaining?(' '+remaining):'');}
 function rerenderCurrent(){const nv=document.getElementById('normalView');if(nv&&nv.style.display!=='none'){if(viewMode==='tiles')renderTiles();else renderFullTable();}}
 function srcDesign(r){return (r.desc&&r.desc.trim())||(r.desc2&&r.desc2.trim())||'';}
+function srcLevel(r){return (r.level&&String(r.level).trim())||'';}
+function isCJK(s){return /[㐀-鿿豈-﫿]/.test(s||'');}
+function cjkFr(v){const s=String(v||'').trim();if(!s||!isCJK(s))return null;const fr=frCache[s];return (fr&&fr.trim().toLowerCase()!==s.toLowerCase())?fr:null;}
 function xlateSrcLang(t){return /[㐀-鿿豈-﫿]/.test(t)?'zh-CN':'en';}
 async function mymemoryTranslate(text){
   const url='https://api.mymemory.translated.net/get?q='+encodeURIComponent(text.slice(0,480))+'&langpair='+xlateSrcLang(text)+'|fr';
@@ -813,11 +841,16 @@ async function translateOne(text){
 async function runFrTranslation(){
   const token=++xlateToken;
   // 1) applique immédiatement le cache existant
-  allRows.forEach(r=>{const s=srcDesign(r);if(s&&frCache[s])r.descFr=frCache[s];});
+  allRows.forEach(r=>{const s=srcDesign(r);if(s&&frCache[s])r.descFr=frCache[s];const lv=srcLevel(r);if(lv&&frCache[lv])r.levelFr=frCache[lv];});
   computeDuplicates(); rerenderCurrent();
-  // 2) liste des désignations à traduire (uniques, avec lettres, non déjà en cache)
+  // 2) liste des désignations + niveaux de réparation à traduire (uniques, avec lettres, non déjà en cache)
   const seen=new Set(), todo=[];
-  allRows.forEach(r=>{const s=srcDesign(r);if(s&&!frCache[s]&&!seen.has(s)&&/[A-Za-z㐀-鿿]/.test(s)){seen.add(s);todo.push(s);}});
+  allRows.forEach(r=>{
+    const s=srcDesign(r);if(s&&!frCache[s]&&!seen.has(s)&&/[A-Za-z㐀-鿿]/.test(s)){seen.add(s);todo.push(s);}
+    const lv=srcLevel(r);if(lv&&!frCache[lv]&&!seen.has(lv)&&/[A-Za-z㐀-鿿]/.test(lv)){seen.add(lv);todo.push(lv);}
+    const d2=String(r.desc2||'').trim();if(d2&&isCJK(d2)&&!frCache[d2]&&!seen.has(d2)){seen.add(d2);todo.push(d2);}
+    (r.extra||[]).forEach(([,v])=>{const val=String(v||'').trim();if(val&&isCJK(val)&&!frCache[val]&&!seen.has(val)){seen.add(val);todo.push(val);}});
+  });
   if(!todo.length){setXlateStatus(false);return;}
   let remaining=todo.length, done=0, idx=0; setXlateStatus(true,remaining);
   const worker=async()=>{
@@ -826,7 +859,7 @@ async function runFrTranslation(){
       const s=todo[idx++];
       const fr=await translateOne(s);
       if(token!==xlateToken) return;
-      if(fr){frCache[s]=fr;allRows.forEach(r=>{if(srcDesign(r)===s)r.descFr=fr;});}
+      if(fr){frCache[s]=fr;allRows.forEach(r=>{if(srcDesign(r)===s)r.descFr=fr;if(srcLevel(r)===s)r.levelFr=fr;});}
       done++; remaining--;
       if(done%6===0){saveFrCache();computeDuplicates();rerenderCurrent();}
       setXlateStatus(remaining>0,remaining);
@@ -848,10 +881,12 @@ function renderTiles(){
   const grid=document.getElementById('tilesGrid'); grid.innerHTML='';
   if(!filteredRows.length){grid.innerHTML='<div class="no-tiles-msg">Aucun résultat</div>';return;}
   filteredRows.forEach((row,i)=>{
-    const card=document.createElement('div'); card.className='tile-card'+(row.imgSrc?' has-photo':'')+(row.isDup?' is-dup':'')+(row.struck?' is-struck':'');
+    const rowAlert=refAlert(row.ref);
+    const card=document.createElement('div'); card.className='tile-card'+(row.imgSrc?' has-photo':'')+(row.isDup?' is-dup':'')+(row.struck?' is-struck':'')+(rowAlert?' has-alert':'');
     card.dataset.ref=row.ref;
     if(row.struck){const sb=document.createElement('div'); sb.className='tile-struck-badge'; sb.textContent='⊘ Barré'; sb.title='Référence barrée dans le BOM (obsolète)'; card.appendChild(sb);}
     else if(row.isDup){const dupB=document.createElement('div'); dupB.className='tile-dup-badge'; dupB.textContent='⧉ Doublon'; dupB.title=(row.dupCount||2)+' pièces partagent la même désignation'; card.appendChild(dupB);}
+    if(rowAlert){const ab=document.createElement('div'); ab.className='tile-alert-badge'; ab.textContent='⚠ Pose spécifique'; ab.title=rowAlert.text; card.appendChild(ab);}
     const imgWrap=document.createElement('div'); imgWrap.className='tile-img-wrap';
     if(row.imgSrc){const img=document.createElement('img'); img.src=row.imgSrc; img.className='tile-img'; img.alt=row.ref; img.loading='lazy'; imgWrap.appendChild(img);}
     else imgWrap.innerHTML='<div class="tile-ph-icon"><svg width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>Pas de photo</div>';
@@ -1023,8 +1058,9 @@ function openModal(filteredIdx){
   else{imgEl.style.display='none';imgEl.onclick=null;noImgEl.style.display='flex';}
   document.getElementById('modalRef').textContent=row.ref;
   document.getElementById('modalCopyBtn').onclick=()=>copyToClipboard(row.ref);
-  const items=[row.struck?['⊘ Référence barrée (obsolète)',(row.activeSiblings&&row.activeSiblings.length?('Pièce active de même désignation : '+row.activeSiblings.join(', ')):'Aucune pièce active de même désignation'),'full struck']:null,(!row.struck&&row.struckSiblings&&row.struckSiblings.length)?['Remplace (références barrées)',row.struckSiblings.join(', '),'full struck']:null,row.isDup?['⚠ Doublon de désignation',(row.dupCount||2)+' pièces partagent la désignation « '+(row.descFr||row.desc)+' »','full dup']:null,['Désignation',row.desc||'—','full'],row.descFr?['Désignation FR (traduction auto)',row.descFr,'full fr']:null,row.desc2?['Désignation (ZH/EN)',row.desc2,'full']:null,row.expl?['Repère (vue éclatée)',row.expl,'']:null,row.qty?['Quantité',row.qty,'']:null,row.level?['Niveau de réparation',row.level,'']:null,...(row.extra||[]).map(([k,v])=>[k,v,''])].filter(Boolean);
-  document.getElementById('modalFields').innerHTML=items.map(([label,value,cls])=>`<div class="modal-field ${cls}"><div class="modal-field-label">${escHtml(label)}</div><div class="modal-field-value">${escHtml(value||'—')}</div></div>`).join('');
+  const rowAlert=refAlert(row.ref);
+  const items=[rowAlert?['⚠ Alerte pose spécifique',escHtml(rowAlert.text)+' <a href="'+rowAlert.url+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">Voir la procédure ↗</a>','full alert',null,true]:null,row.struck?['⊘ Référence barrée (obsolète)',(row.activeSiblings&&row.activeSiblings.length?('Pièce active de même désignation : '+row.activeSiblings.join(', ')):'Aucune pièce active de même désignation'),'full struck']:null,(!row.struck&&row.struckSiblings&&row.struckSiblings.length)?['Remplace (références barrées)',row.struckSiblings.join(', '),'full struck']:null,row.isDup?['⚠ Doublon de désignation',(row.dupCount||2)+' pièces partagent la désignation « '+(row.descFr||row.desc)+' »','full dup']:null,['Désignation',row.desc||'—','full'],row.descFr?['Désignation FR (traduction auto)',row.descFr,'full fr']:null,row.desc2?['Désignation (ZH/EN)',row.desc2,'full',cjkFr(row.desc2)]:null,row.expl?['Repère (vue éclatée)',row.expl,'']:null,row.qty?['Quantité',row.qty,'']:null,row.level?['Niveau de réparation',row.level,'']:null,(row.levelFr&&row.levelFr.trim().toLowerCase()!==String(row.level||'').trim().toLowerCase())?['Niveau de réparation (traduction FR)',row.levelFr,'full levelfr']:null,...(row.extra||[]).map(([k,v])=>[k,v,'',cjkFr(v)])].filter(Boolean);
+  document.getElementById('modalFields').innerHTML=items.map(([label,value,cls,fr,raw])=>`<div class="modal-field ${cls}"><div class="modal-field-label">${escHtml(label)}</div><div class="modal-field-value">${raw?value:escHtml(value||'—')}</div>${fr?`<div class="modal-field-value-fr">🇫🇷 ${escHtml(fr)}</div>`:''}</div>`).join('');
   document.getElementById('partModal').classList.add('active');
   document.body.style.overflow='hidden';
 }
