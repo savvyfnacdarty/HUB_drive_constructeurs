@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script src="auth-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Recherche KB articles — Drive constructeur iRobot</title>
+<style>
+/* ── TOKENS — charte iRobot ── */
+:root{
+  --bg:#FFFFFF; --surface:#FFFFFF; --surface-2:#F3F4F6; --border:#E5E7EB; --border2:#D1D5DB;
+  --text:#111827; --text-2:#6B7280; --text-3:#9CA3AF;
+  --accent:#64A70B; --accent-h:#4F8709; --accent-bg:#EEF7E0; --accent-bd:#CFE7A8;
+  --tech:#393F45; --tech-h:#2B3035;
+  --warn:#F59E0B; --warn-bg:#FFF7E6; --warn-bd:#FDE1A6; --warn-text:#92400E;
+  --error:#DC2626; --error-bg:#FDECEC; --error-bd:#F5B7B7;
+  --blue:#3B82F6; --blue-bg:#EFF6FF; --blue-bd:#BFDBFE; --blue-text:#1D4ED8;
+  --green:#22C55E; --green-bg:#F0FDF4;
+  --radius:12px; --radius-sm:8px;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg:0 4px 24px rgba(0,0,0,.12),0 16px 48px rgba(0,0,0,.08);
+  --transition:all .18s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+/* HEADER BAND (cohérent avec le HUB) */
+.fdtop{background:var(--tech);padding:8px 20px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:9999;box-shadow:0 2px 6px rgba(0,0,0,.15);}
+.fdtop-home{display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0;}
+.fdtop-home img{height:26px;background:#fff;padding:4px 8px;border-radius:5px;display:block;}
+.fdtop-txt{color:#fff;font-weight:700;font-size:13px;letter-spacing:.3px;}
+.fdband{background:linear-gradient(120deg,var(--tech) 0%,#20242A 55%,var(--accent) 135%);padding:20px 20px 16px;text-align:center;}
+.fdband-logo{height:40px;background:#fff;padding:6px 12px;border-radius:9px;box-shadow:0 4px 14px rgba(0,0,0,.25);display:block;margin:0 auto 12px;}
+.fdband nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.fdband nav a{color:#fff;text-decoration:none;font-size:.86rem;font-weight:600;padding:8px 18px;border-radius:8px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.4);transition:.15s;}
+.fdband nav a:hover{background:rgba(255,255,255,.28);}
+.fdband nav a.active{background:#fff;color:var(--accent-h);border-color:#fff;}
+.fdband-sync{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px;}
+.badge{padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;background:rgba(100,167,11,.22);color:#EAFBEF;border:1px solid rgba(255,255,255,.35);}
+.badge.loading{background:rgba(255,255,255,.14);color:#fff;}
+.badge.error{background:rgba(220,38,38,.28);color:#fff;border-color:rgba(255,255,255,.4);}
+.btn-import{padding:6px 14px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:var(--transition);display:inline-flex;align-items:center;gap:6px;}
+.btn-import:hover{background:rgba(255,255,255,.28);}
+
+/* HERO */
+.hero{background:var(--surface);border-bottom:1px solid var(--border);padding:32px 24px 22px;display:flex;flex-direction:column;align-items:center;}
+.hero-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent-h);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';flex:1;height:1px;background:var(--accent-bd);max-width:60px;}
+.hero h1{font-size:25px;font-weight:800;margin-bottom:6px;text-align:center;letter-spacing:-.4px;color:var(--accent-h);}
+.hero p{font-size:14px;color:var(--text-2);margin-bottom:18px;text-align:center;max-width:640px;}
+.search-box{width:100%;max-width:640px;display:flex;align-items:center;background:var(--surface-2);border:2px solid var(--border2);border-radius:14px;overflow:hidden;transition:border-color .2s,box-shadow .2s;}
+.search-box:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px rgba(100,167,11,.15);}
+.search-icon{padding:0 14px;color:var(--text-3);font-size:17px;flex-shrink:0;}
+.search-input{flex:1;padding:14px 0;background:transparent;border:none;outline:none;font-size:16px;color:var(--text);font-family:inherit;}
+.search-input::placeholder{color:var(--text-3);}
+.btn-clear{padding:8px 14px;margin:6px;background:var(--surface);color:var(--text-3);border:none;border-radius:9px;cursor:pointer;font-size:14px;font-weight:700;transition:var(--transition);}
+.btn-clear:hover{background:var(--border);color:var(--text);}
+
+/* MODEL TABS */
+.model-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;max-width:720px;margin:18px auto 0;}
+.model-tab{padding:8px 16px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface);color:var(--text-2);font-size:13px;font-weight:600;cursor:pointer;transition:var(--transition);}
+.model-tab:hover{border-color:var(--accent-bd);color:var(--accent-h);}
+.model-tab.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+/* BANNIÈRE AVERTISSEMENT (bulletin de service) */
+.warn-banner{max-width:820px;margin:20px auto 0;padding:14px 18px;background:var(--warn-bg);border:1px solid var(--warn-bd);border-radius:var(--radius);display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.warn-banner .wi{font-size:22px;flex-shrink:0;}
+.warn-banner .wt{flex:1;min-width:200px;font-size:13px;color:var(--warn-text);line-height:1.5;}
+.warn-banner .wt b{display:block;font-size:14px;margin-bottom:2px;}
+.warn-banner a.wbtn{padding:8px 14px;background:var(--warn);color:#fff;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;}
+.warn-banner a.wbtn:hover{background:#D97E06;}
+
+/* MAIN */
+.content-wrap{max-width:820px;width:100%;margin:0 auto;padding:20px 16px 40px;}
+.results-header{font-size:12px;color:var(--text-3);margin-bottom:10px;padding:0 2px;}
+.results-header b{color:var(--text-2);}
+.ri-card{margin-bottom:9px;}
+.ri{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;display:flex;align-items:center;gap:14px;transition:var(--transition);box-shadow:0 1px 3px rgba(0,0,0,.04);flex-wrap:wrap;}
+.ri:hover{border-color:var(--accent-bd);box-shadow:var(--shadow);}
+.ri-avatar{width:44px;height:44px;background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.ri-info{flex:1;min-width:200px;}
+.ri-name{font-size:15px;font-weight:700;line-height:1.35;}
+.ri-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;}
+.tag{padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;border:1px solid var(--border);background:var(--surface-2);color:var(--text-2);}
+.tag.cat-accent{background:var(--accent-bg);color:var(--accent-h);border-color:var(--accent-bd);}
+.tag.cat-tech{background:var(--tech);color:#fff;border-color:var(--tech);}
+.tag.cat-error{background:var(--error-bg);color:var(--error);border-color:var(--error-bd);}
+.tag.model{background:#fff;color:var(--text-3);border-color:var(--border2);font-family:monospace;text-transform:none;}
+.hl{background:rgba(100,167,11,.22);border-radius:2px;padding:0 2px;}
+.ri-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.ri-btn{padding:9px 14px;font-size:13px;font-weight:600;border-radius:9px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:var(--transition);white-space:nowrap;cursor:pointer;border:1px solid transparent;}
+.ri-btn.docs{background:var(--accent);color:#fff;border-color:var(--accent);}
+.ri-btn.docs:hover{background:var(--accent-h);}
+.empty-state{background:var(--surface);border:1px dashed var(--border2);border-radius:var(--radius);padding:44px;text-align:center;}
+.empty-state-icon{font-size:42px;margin-bottom:12px;}
+.empty-state h3{font-size:16px;font-weight:600;color:var(--text-2);margin-bottom:4px;}
+.empty-state p{font-size:13px;color:var(--text-3);}
+
+/* DOCUMENTS (encadré technique) */
+.docs-section{max-width:820px;margin:0 auto 56px;padding:0 16px;}
+.docs-title{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.docs-title h2{font-size:15px;font-weight:800;color:#fff;background:var(--tech);padding:8px 16px;border-radius:8px 8px 0 0;}
+.docs-panel{background:var(--tech);border-radius:0 12px 12px 12px;padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;}
+.doc-card{background:#fff;border-radius:9px;padding:12px 14px;display:flex;align-items:center;gap:10px;text-decoration:none;transition:var(--transition);box-shadow:0 1px 3px rgba(0,0,0,.1);}
+.doc-card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.18);}
+.doc-icon{font-size:22px;flex-shrink:0;}
+.doc-txt{min-width:0;}
+.doc-name{font-size:12.5px;font-weight:700;color:var(--text);line-height:1.3;}
+.doc-sub{font-size:11px;color:var(--text-3);margin-top:2px;}
+
+/* MODAL IMPORT */
+.modal-backdrop{position:fixed;inset:0;background:rgba(17,24,39,.5);z-index:600;display:flex;align-items:center;justify-content:center;padding:16px;}
+.modal-backdrop.hidden{display:none;}
+.modal{background:var(--surface);border-radius:16px;padding:28px;width:100%;max-width:480px;box-shadow:var(--shadow-lg);position:relative;}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--text-3);font-size:17px;cursor:pointer;padding:6px;border-radius:7px;}
+.modal-close:hover{background:var(--surface-2);color:var(--text);}
+.modal h3{font-size:16px;font-weight:700;margin-bottom:5px;}
+.modal-sub{font-size:13px;color:var(--text-2);margin-bottom:16px;line-height:1.55;}
+.modal-sub code{background:var(--surface-2);padding:1px 5px;border-radius:4px;font-size:12px;}
+.import-drop{border:2px dashed var(--border2);border-radius:10px;padding:24px 20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--surface-2);margin-bottom:12px;}
+.import-drop:hover,.import-drop.over{border-color:var(--accent);background:var(--accent-bg);}
+.import-drop-icon{font-size:32px;margin-bottom:7px;}
+.import-drop-text{font-size:13px;color:var(--text-2);margin-bottom:10px;line-height:1.5;}
+.btn-import-pick{padding:8px 18px;background:var(--accent);color:#fff;font-weight:700;font-size:13px;border:none;border-radius:8px;cursor:pointer;}
+.btn-import-pick:hover{background:var(--accent-h);}
+.import-result{font-size:13px;border-radius:8px;padding:11px 14px;line-height:1.6;}
+.import-result.ok{background:var(--green-bg);color:#166534;border:1px solid #BBF7D0;}
+.import-result.err{background:var(--error-bg);color:#991B1B;border:1px solid #F5B7B7;}
+
+@media(max-width:560px){.hero h1{font-size:20px;}.ri-actions{width:100%;}.ri-btn{flex:1;justify-content:center;}}
+</style>
+<!-- ===== Compteur de consultations (GoatCounter) =====
+     Remplacer hub-drive-fnac par le code du site cree sur goatcounter.com
+     Tableau de bord prive : https://hub-drive-fnac.goatcounter.com  -->
+<script data-goatcounter="https://hub-drive-fnac.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- ===== Fin compteur ===== -->
+</head>
+<body>
+
+<div class="fdtop">
+  <a class="fdtop-home" href="index.html" title="Retour au HUB Drive Constructeurs">
+    <img src="IMAGES/FNAC DARTY.png" onerror="this.style.display='none'" alt="Fnac Darty"><span class="fdtop-txt">&larr; HUB Drive Constructeurs</span>
+  </a>
+</div>
+<div class="fdband">
+  <img class="fdband-logo" src="IMAGES/IROBOT.png" alt="iRobot" onerror="this.style.display='none'">
+  <nav>
+    <a href="irobot.html" class="active">Recherche KB articles</a>
+    <a href="irobot-bom.html">Lecteur de BOM (codic)</a>
+    <a href="https://assistance.irobot.fr" target="_blank" rel="noopener">Assistance iRobot officielle ↗</a>
+  </nav>
+  <div class="fdband-sync">
+    <div class="badge loading" id="badge">&#8987; Chargement&#8230;</div>
+    <button class="btn-import" onclick="openImportModal()">&#128229; Importer l'Excel</button>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-eyebrow">Base de connaissances SAV</div>
+  <h1>Trouver un article KB Roomba®</h1>
+  <p>Choisissez un modèle puis tapez un mot-clé (titre, catégorie, ID d'article) pour retrouver l'article d'assistance iRobot correspondant.</p>
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="q" class="search-input" placeholder="Ex. Wi-Fi, bac, erreur 33, ClearView…" oninput="doSearch()" autocomplete="off">
+    <button class="btn-clear" onclick="clearSearch()" title="Effacer">✕</button>
+  </div>
+  <div class="model-tabs" id="modelTabs"></div>
+</section>
+
+<div class="warn-banner">
+  <div class="wi">⚠️</div>
+  <div class="wt"><b>Bulletin de service en cours</b>Erreurs 33 / 1010 / Error 16 — Roomba® Combo, modèles 2025 &amp; 2026.</div>
+  <a class="wbtn" href="iRobot/Bulletin%20de%20Service%20-%20Erreur%2033%2C%20Erreur%201010%20%26%20Error%2016%20-%20Roomba%202025%20%26%202026%20.zip">📥 Télécharger le bulletin</a>
+</div>
+
+<div class="content-wrap"><div id="main"></div></div>
+
+<div class="docs-section">
+  <div class="docs-title"><h2>📁 Documents du dossier iRobot</h2></div>
+  <div class="docs-panel">
+    <a class="doc-card" href="iRobot/Roomba%C2%AE%20205%20Vac%20Combo.docx">
+      <div class="doc-icon">📄</div>
+      <div class="doc-txt"><div class="doc-name">Roomba® 205 Vac Combo</div><div class="doc-sub">Fiche produit · .docx</div></div>
+    </a>
+    <a class="doc-card" href="iRobot/OG205VacandCombofrFR.pdf">
+      <div class="doc-icon">📕</div>
+      <div class="doc-txt"><div class="doc-name">OG205 Vac and Combo (FR)</div><div class="doc-sub">Guide officiel · .pdf</div></div>
+    </a>
+    <a class="doc-card" href="iRobot/Erreur%20517%20Roomba.docx">
+      <div class="doc-icon">📄</div>
+      <div class="doc-txt"><div class="doc-name">Erreur 517 Roomba</div><div class="doc-sub">Procédure · .docx</div></div>
+    </a>
+    <a class="doc-card" href="iRobot/Tarifs%20Darty%20%20Roomba%20Combo%20705c.xlsx">
+      <div class="doc-icon">📊</div>
+      <div class="doc-txt"><div class="doc-name">Tarifs Darty Roomba Combo 705c</div><div class="doc-sub">Grille tarifaire · .xlsx</div></div>
+    </a>
+    <a class="doc-card" href="iRobot/Bulletin%20de%20Service%20-%20Erreur%2033%2C%20Erreur%201010%20%26%20Error%2016%20-%20Roomba%202025%20%26%202026%20.zip">
+      <div class="doc-icon">📦</div>
+      <div class="doc-txt"><div class="doc-name">Bulletin de service — Erreurs 33/1010/16</div><div class="doc-sub">Combo 2025 &amp; 2026 · .zip</div></div>
+    </a>
+  </div>
+</div>
+
+<!-- IMPORT MODAL -->
+<div class="modal-backdrop hidden" id="importModal" onclick="if(event.target===this)closeImportModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeImportModal()">✕</button>
+    <h3>📥 Importer le fichier Excel</h3>
+    <p class="modal-sub">Charge le fichier <code>KB articles 2025.xlsx</code> (onglets <code>105, 205, 405, 505</code>, <code>705 V</code>, <code>705C</code>).</p>
+    <div class="import-drop" id="importDrop" ondragover="dzOver(event)" ondragleave="dzLeave()" ondrop="dzDrop(event)" onclick="pickFile()">
+      <div class="import-drop-icon">📂</div>
+      <div class="import-drop-text">Glisse le fichier ici ou clique pour le sélectionner</div>
+      <button class="btn-import-pick" onclick="pickFile();event.stopPropagation()">Choisir un fichier</button>
+    </div>
+    <div id="importResult" style="display:none"></div>
+  </div>
+</div>
+<input type="file" id="fileInput" accept=".xlsx,.xls,.xlsm" style="display:none">
+
+<script>
+const XLSX_URL='iRobot/KB articles 2025.xlsx';
+const SHEETJS_CDN='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+
+const MODELS=[
+  {key:'ALL',  label:'Tous'},
+  {key:'105',  label:'105'},
+  {key:'205',  label:'205'},
+  {key:'405',  label:'405'},
+  {key:'505',  label:'505'},
+  {key:'705V', label:'705 V'},
+  {key:'705C', label:'705C'},
+];
+let CUR_MODEL='ALL';
+let BYMODEL={};   // { '105':[...], '205':[...], ... , 'ALL':[...] }
+
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function hl(t,q){if(!q)return esc(t);const toks=q.split(/\s+/).filter(Boolean).map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));if(!toks.length)return esc(t);return esc(t).replace(new RegExp('('+toks.join('|')+')','gi'),'<span class="hl">$1</span>');}
+function loadScript(u){return new Promise((res,rej)=>{const s=document.createElement('script');s.src=u;s.onload=res;s.onerror=()=>rej(new Error('CDN '+u));document.head.appendChild(s);});}
+async function ensureSheetJS(){if(typeof XLSX==='undefined')await loadScript(SHEETJS_CDN);}
+
+function catClass(cat){
+  const c=(cat||'').toUpperCase();
+  if(c.indexOf('ERROR')>=0||c.indexOf('EMERGENCY')>=0)return 'cat-error';
+  if(c.indexOf('CARE')>=0)return 'cat-tech';
+  if(c.indexOf('POPULAR')>=0)return 'cat-accent';
+  return '';
+}
+
+// ── Construit l'index à partir du classeur ──
+function buildIndex(wb){
+  const byModel={'105':[],'205':[],'405':[],'505':[],'705V':[],'705C':[]};
+
+  const s1=wb.Sheets['105, 205, 405, 505'];
+  if(s1){
+    const rows=XLSX.utils.sheet_to_json(s1,{header:1,defval:''});
+    const modelCols=[{k:'105',i:2},{k:'205',i:3},{k:'405',i:4},{k:'505',i:5}];
+    for(let r=1;r<rows.length;r++){
+      const row=rows[r];
+      const category=String(row[0]||'').trim();
+      const title=String(row[1]||'').trim();
+      if(!title)continue;
+      const id=row[6];
+      const url=String(row[7]||'').trim();
+      modelCols.forEach(mc=>{
+        if(String(row[mc.i]||'').trim().toLowerCase()==='yes'){
+          byModel[mc.k].push({category,title,id,url,model:mc.k});
+        }
+      });
+    }
+  }
+  const sV=wb.Sheets['705 V'];
+  if(sV){
+    const rows=XLSX.utils.sheet_to_json(sV,{header:1,defval:''});
+    for(let r=1;r<rows.length;r++){
+      const row=rows[r];
+      const title=String(row[1]||'').trim();
+      if(!title)continue;
+      byModel['705V'].push({category:String(row[0]||'').trim(),title,id:row[2],url:String(row[3]||'').trim(),model:'705V'});
+    }
+  }
+  const sC=wb.Sheets['705C'];
+  if(sC){
+    const rows=XLSX.utils.sheet_to_json(sC,{header:1,defval:''});
+    for(let r=1;r<rows.length;r++){
+      const row=rows[r];
+      const title=String(row[1]||'').trim();
+      if(!title)continue;
+      byModel['705C'].push({category:String(row[0]||'').trim(),title,id:row[2],url:String(row[3]||'').trim(),model:'705C'});
+    }
+  }
+  byModel.ALL=[].concat(byModel['105'],byModel['205'],byModel['405'],byModel['505'],byModel['705V'],byModel['705C']);
+  return byModel;
+}
+
+function renderTabs(){
+  const wrap=document.getElementById('modelTabs');
+  wrap.innerHTML=MODELS.map(m=>{
+    const n=(BYMODEL[m.key]||[]).length;
+    return '<button class="model-tab'+(m.key===CUR_MODEL?' active':'')+'" onclick="selectModel(\''+m.key+'\')">'+esc(m.label)+(n?' · '+n:'')+'</button>';
+  }).join('');
+}
+function selectModel(key){CUR_MODEL=key;renderTabs();doSearch();}
+
+function applyIndex(res){
+  BYMODEL=res;
+  const total=BYMODEL.ALL.length;
+  const badge=document.getElementById('badge');
+  badge.className='badge';badge.textContent='✅ '+total+' articles indexés';
+  renderTabs();
+  doSearch();
+  return total;
+}
+
+async function loadFromUrl(url){
+  await ensureSheetJS();
+  const bust=url+(url.includes('?')?'&':'?')+'_='+Date.now();
+  const resp=await fetch(bust,{cache:'no-store'});
+  if(!resp.ok)throw new Error('HTTP '+resp.status);
+  const wb=XLSX.read(await resp.arrayBuffer(),{type:'array'});
+  applyIndex(buildIndex(wb));
+}
+async function autoLoad(){
+  const badge=document.getElementById('badge');
+  try{await loadFromUrl(XLSX_URL);}
+  catch(e){badge.className='badge error';badge.textContent=(location.protocol==='file:'?'⚠ Ouvre via « Importer »':'⚠ '+(e.message||'Erreur'));renderTabs();}
+}
+
+function clearSearch(){document.getElementById('q').value='';document.getElementById('q').focus();doSearch();}
+function haystack(e){return (e.title+' '+e.category+' '+e.id).toLowerCase();}
+
+function doSearch(){
+  const q=document.getElementById('q').value.trim().toLowerCase();
+  const wrap=document.getElementById('main');
+  let list=BYMODEL[CUR_MODEL]||[];
+  if(q){const toks=q.split(/\s+/).filter(Boolean);list=list.filter(e=>{const h=haystack(e);return toks.every(t=>h.includes(t));});}
+
+  if(!q){
+    wrap.innerHTML='<div class="empty-state"><div class="empty-state-icon">🔍</div><h3>'+list.length+' article'+(list.length>1?'s':'')+' pour « '+esc(MODELS.find(m=>m.key===CUR_MODEL)?.label||'')+' »</h3><p>Tapez un mot-clé pour filtrer (titre, catégorie ou n° d\'article).</p></div>';
+    return;
+  }
+  if(!list.length){
+    wrap.innerHTML='<div class="empty-state"><div class="empty-state-icon">🤷</div><h3>Aucun résultat pour « '+esc(q)+' »</h3><p>Essayez un autre mot-clé ou changez de modèle.</p></div>';
+    return;
+  }
+  const shown=list.slice(0,300);
+  wrap.innerHTML='<div class="results-header"><b>'+list.length+'</b> résultat'+(list.length>1?'s':'')+(list.length>300?' (300 affichés)':'')+'</div>'+
+    shown.map(e=>{
+      const cc=catClass(e.category);
+      return '<div class="ri-card">'+
+        '<div class="ri">'+
+          '<div class="ri-avatar">📄</div>'+
+          '<div class="ri-info">'+
+            '<div class="ri-name">'+hl(e.title,q)+'</div>'+
+            '<div class="ri-tags">'+
+              (e.category?'<span class="tag '+cc+'">'+hl(e.category,q)+'</span>':'')+
+              (CUR_MODEL==='ALL'?'<span class="tag model">'+esc(e.model)+'</span>':'')+
+              (e.id?'<span class="tag model">#'+esc(e.id)+'</span>':'')+
+            '</div>'+
+          '</div>'+
+          '<div class="ri-actions">'+
+            (e.url?'<a class="ri-btn docs" href="'+esc(e.url)+'" target="_blank" rel="noopener">🔗 Ouvrir l\'article</a>':'')+
+          '</div>'+
+        '</div>'+
+      '</div>';
+    }).join('');
+}
+
+// ── Import manuel ──
+function openImportModal(){document.getElementById('importModal').classList.remove('hidden');document.getElementById('importResult').style.display='none';}
+function closeImportModal(){document.getElementById('importModal').classList.add('hidden');}
+function pickFile(){document.getElementById('fileInput').click();}
+document.getElementById('fileInput').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(f)handleFile(f);e.target.value='';});
+function dzOver(e){e.preventDefault();document.getElementById('importDrop').classList.add('over');}
+function dzLeave(){document.getElementById('importDrop').classList.remove('over');}
+function dzDrop(e){e.preventDefault();dzLeave();const f=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];if(f)handleFile(f);}
+async function handleFile(file){
+  const rd=document.getElementById('importResult');rd.style.display='none';
+  try{
+    await ensureSheetJS();
+    const wb=XLSX.read(await file.arrayBuffer(),{type:'array'});
+    const n=applyIndex(buildIndex(wb));
+    rd.className='import-result ok';rd.innerHTML='✅ <strong>'+n+' articles</strong> chargés depuis <em>'+esc(file.name)+'</em>.';rd.style.display='block';
+    setTimeout(closeImportModal,900);
+  }catch(err){rd.className='import-result err';rd.innerHTML='⚠️ Erreur : '+esc(err.message||String(err));rd.style.display='block';}
+}
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!document.getElementById('importModal').classList.contains('hidden'))closeImportModal();});
+renderTabs();
+document.addEventListener('DOMContentLoaded',autoLoad);
+</script>
+</body>
+</html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script src="auth-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Lecteur de BOM — Recherche par Codic — iRobot</title>
+<style>
+/* ── TOKENS — charte iRobot (reprise d'irobot.html) ── */
+:root{
+  --bg:#FFFFFF; --surface:#FFFFFF; --surface-2:#F3F4F6; --border:#E5E7EB; --border2:#D1D5DB;
+  --text:#111827; --text-2:#6B7280; --text-3:#9CA3AF;
+  --accent:#64A70B; --accent-h:#4F8709; --accent-bg:#EEF7E0; --accent-bd:#CFE7A8;
+  --tech:#393F45; --tech-h:#2B3035;
+  --warn:#F59E0B; --warn-bg:#FFF7E6; --warn-bd:#FDE1A6; --warn-text:#92400E;
+  --error:#DC2626; --error-bg:#FDECEC; --error-bd:#F5B7B7;
+  --blue:#3B82F6; --blue-bg:#EFF6FF; --blue-bd:#BFDBFE; --blue-text:#1D4ED8;
+  --green:#22C55E; --green-bg:#F0FDF4;
+  --radius:12px; --radius-sm:8px;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg:0 4px 24px rgba(0,0,0,.12),0 16px 48px rgba(0,0,0,.08);
+  --transition:all .18s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+.fdtop{background:var(--tech);padding:8px 20px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:9999;box-shadow:0 2px 6px rgba(0,0,0,.15);}
+.fdtop-home{display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0;}
+.fdtop-home img{height:26px;background:#fff;padding:4px 8px;border-radius:5px;display:block;}
+.fdtop-txt{color:#fff;font-weight:700;font-size:13px;letter-spacing:.3px;}
+.fdband{background:linear-gradient(120deg,var(--tech) 0%,#20242A 55%,var(--accent) 135%);padding:20px 20px 16px;text-align:center;}
+.fdband-logo{height:40px;background:#fff;padding:6px 12px;border-radius:9px;box-shadow:0 4px 14px rgba(0,0,0,.25);display:block;margin:0 auto 12px;}
+.fdband nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.fdband nav a{color:#fff;text-decoration:none;font-size:.86rem;font-weight:600;padding:8px 18px;border-radius:8px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.4);transition:.15s;}
+.fdband nav a:hover{background:rgba(255,255,255,.28);}
+.fdband nav a.active{background:#fff;color:var(--accent-h);border-color:#fff;}
+.fdband-sync{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px;}
+.badge{padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;background:rgba(100,167,11,.22);color:#EAFBEF;border:1px solid rgba(255,255,255,.35);}
+.badge.loading{background:rgba(255,255,255,.14);color:#fff;}
+.badge.error{background:rgba(220,38,38,.28);color:#fff;border-color:rgba(255,255,255,.4);}
+.btn-import{padding:6px 14px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:var(--transition);display:inline-flex;align-items:center;gap:6px;}
+.btn-import:hover{background:rgba(255,255,255,.28);}
+
+.hero{background:var(--surface);border-bottom:1px solid var(--border);padding:32px 24px 22px;display:flex;flex-direction:column;align-items:center;}
+.hero-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent-h);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';flex:1;height:1px;background:var(--accent-bd);max-width:60px;}
+.hero h1{font-size:25px;font-weight:800;margin-bottom:6px;text-align:center;letter-spacing:-.4px;color:var(--accent-h);}
+.hero p{font-size:14px;color:var(--text-2);margin-bottom:18px;text-align:center;max-width:640px;}
+.search-box{width:100%;max-width:640px;display:flex;align-items:center;background:var(--surface-2);border:2px solid var(--border2);border-radius:14px;overflow:hidden;transition:border-color .2s,box-shadow .2s;}
+.search-box:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px rgba(100,167,11,.15);}
+.search-icon{padding:0 14px;color:var(--text-3);font-size:17px;flex-shrink:0;}
+.search-input{flex:1;padding:14px 0;background:transparent;border:none;outline:none;font-size:16px;color:var(--text);font-family:inherit;}
+.search-input::placeholder{color:var(--text-3);}
+.btn-clear{padding:8px 14px;margin:6px;background:var(--surface);color:var(--text-3);border:none;border-radius:9px;cursor:pointer;font-size:14px;font-weight:700;transition:var(--transition);}
+.btn-clear:hover{background:var(--border);color:var(--text);}
+.hero-hint{font-size:12px;color:var(--text-3);margin-top:10px;text-align:center;max-width:640px;}
+.hero-hint b{color:var(--text-2);}
+
+.content-wrap{max-width:860px;width:100%;margin:0 auto;padding:20px 16px 56px;}
+.results-header{font-size:12px;color:var(--text-3);margin-bottom:12px;padding:0 2px;}
+.results-header b{color:var(--text-2);}
+
+.grp{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.grp-head{background:var(--accent-bg);border-bottom:1px solid var(--accent-bd);padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.grp-codic{font-family:monospace;font-size:13px;font-weight:800;color:var(--accent-h);background:#fff;border:1px solid var(--accent-bd);padding:4px 10px;border-radius:8px;}
+.grp-name{flex:1;min-width:160px;font-size:15px;font-weight:700;color:var(--text);}
+.grp-count{font-size:12px;font-weight:600;color:var(--text-2);}
+.grp-body{padding:6px 12px;}
+
+.pi{display:flex;align-items:center;gap:14px;padding:11px 8px;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.pi:last-child{border-bottom:none;}
+.pi-thumb{width:44px;height:44px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);object-fit:contain;flex-shrink:0;cursor:zoom-in;padding:2px;}
+.pi-thumb.ph{display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--text-3);cursor:default;}
+.pi-sku{font-family:monospace;font-size:12.5px;font-weight:800;color:var(--tech);background:var(--surface-2);border:1px solid var(--border);border-radius:7px;padding:5px 9px;flex-shrink:0;min-width:78px;text-align:center;}
+.pi-info{flex:1;min-width:200px;}
+.pi-desc{font-size:13.5px;font-weight:600;line-height:1.35;}
+.pi-sub{font-size:11.5px;color:var(--text-3);margin-top:3px;}
+.pi-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px;}
+.tag{padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:.2px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-2);}
+.hl{background:rgba(100,167,11,.28);border-radius:2px;padding:0 2px;}
+
+.empty-state{background:var(--surface);border:1px dashed var(--border2);border-radius:var(--radius);padding:44px;text-align:center;}
+.empty-state-icon{font-size:42px;margin-bottom:12px;}
+.empty-state h3{font-size:16px;font-weight:600;color:var(--text-2);margin-bottom:4px;}
+.empty-state p{font-size:13px;color:var(--text-3);}
+
+.modal-backdrop{position:fixed;inset:0;background:rgba(17,24,39,.5);z-index:600;display:flex;align-items:center;justify-content:center;padding:16px;}
+.modal-backdrop.hidden{display:none;}
+.modal{background:var(--surface);border-radius:16px;padding:28px;width:100%;max-width:480px;box-shadow:var(--shadow-lg);position:relative;}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--text-3);font-size:17px;cursor:pointer;padding:6px;border-radius:7px;}
+.modal-close:hover{background:var(--surface-2);color:var(--text);}
+.modal h3{font-size:16px;font-weight:700;margin-bottom:5px;}
+.modal-sub{font-size:13px;color:var(--text-2);margin-bottom:16px;line-height:1.55;}
+.modal-sub code{background:var(--surface-2);padding:1px 5px;border-radius:4px;font-size:12px;}
+.import-drop{border:2px dashed var(--border2);border-radius:10px;padding:24px 20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--surface-2);margin-bottom:12px;}
+.import-drop:hover,.import-drop.over{border-color:var(--accent);background:var(--accent-bg);}
+.import-drop-icon{font-size:32px;margin-bottom:7px;}
+.import-drop-text{font-size:13px;color:var(--text-2);margin-bottom:10px;line-height:1.5;}
+.btn-import-pick{padding:8px 18px;background:var(--accent);color:#fff;font-weight:700;font-size:13px;border:none;border-radius:8px;cursor:pointer;}
+.btn-import-pick:hover{background:var(--accent-h);}
+.import-result{font-size:13px;border-radius:8px;padding:11px 14px;line-height:1.6;}
+.import-result.ok{background:var(--green-bg);color:#166534;border:1px solid #BBF7D0;}
+.import-result.err{background:var(--error-bg);color:#991B1B;border:1px solid #F5B7B7;}
+
+#lightbox{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.9);align-items:center;justify-content:center;cursor:zoom-out;backdrop-filter:blur(6px);}
+#lightbox.active{display:flex;}
+#lightboxImg{max-width:92vw;max-height:90vh;object-fit:contain;border-radius:10px;box-shadow:0 32px 80px rgba(0,0,0,.5);pointer-events:none;}
+#lightboxClose{position:fixed;top:18px;right:22px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.25);color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;transition:background .18s;z-index:2001;}
+#lightboxClose:hover{background:rgba(255,255,255,.25);}
+
+@media(max-width:560px){.hero h1{font-size:20px;}.pi-sku{min-width:64px;}}
+</style>
+<script data-goatcounter="https://hub-drive-fnac.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+
+<div class="fdtop">
+  <a class="fdtop-home" href="index.html" title="Retour au HUB Drive Constructeurs">
+    <img src="IMAGES/FNAC DARTY.png" onerror="this.style.display='none'" alt="Fnac Darty"><span class="fdtop-txt">&larr; HUB Drive Constructeurs</span>
+  </a>
+</div>
+<div class="fdband">
+  <img class="fdband-logo" src="IMAGES/IROBOT.png" alt="iRobot" onerror="this.style.display='none'">
+  <nav>
+    <a href="irobot.html">Recherche KB articles</a>
+    <a href="irobot-bom.html" class="active">Lecteur de BOM (codic)</a>
+    <a href="https://assistance.irobot.fr" target="_blank" rel="noopener">Assistance iRobot officielle ↗</a>
+  </nav>
+  <div class="fdband-sync">
+    <div class="badge loading" id="badge">&#8987; Chargement&#8230;</div>
+    <button class="btn-import" onclick="openImportModal()">&#128229; Importer l'Excel</button>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-eyebrow">Nomenclature pièces détachées</div>
+  <h1>Lecteur de BOM Roomba® — Recherche par Codic</h1>
+  <p>Entrez un codic Darty (ex. 8065195), un nom de produit (ex. « 205 combo ») ou une référence pièce pour retrouver toutes les pièces détachées associées.</p>
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="q" class="search-input" list="codicList" placeholder="Ex. 8065195, 705 combo, X100040…" oninput="doSearch()" autocomplete="off">
+    <button class="btn-clear" onclick="clearSearch()" title="Effacer">✕</button>
+  </div>
+  <datalist id="codicList"></datalist>
+  <div class="hero-hint" id="hint"></div>
+</section>
+
+<div class="content-wrap"><div id="main"></div></div>
+
+<div class="modal-backdrop hidden" id="importModal" onclick="if(event.target===this)closeImportModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeImportModal()">✕</button>
+    <h3>📥 Importer le fichier Excel</h3>
+    <p class="modal-sub">Charge le fichier <code>Tarifs Darty - Correspondance Codic 2026.xlsx</code> (onglets <code>Recap piece-codic</code> et <code>correspondance ref codic</code>).</p>
+    <div class="import-drop" id="importDrop" ondragover="dzOver(event)" ondragleave="dzLeave()" ondrop="dzDrop(event)" onclick="pickFile()">
+      <div class="import-drop-icon">📂</div>
+      <div class="import-drop-text">Glisse le fichier ici ou clique pour le sélectionner</div>
+      <button class="btn-import-pick" onclick="pickFile();event.stopPropagation()">Choisir un fichier</button>
+    </div>
+    <div id="importResult" style="display:none"></div>
+  </div>
+</div>
+<input type="file" id="fileInput" accept=".xlsx,.xls,.xlsm" style="display:none">
+
+<div id="lightbox"><button id="lightboxClose" title="Fermer (Échap)">✕</button><img id="lightboxImg" src="" alt=""/></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+const XLSX_URL='iRobot/Tarifs Darty - Correspondance Codic 2026.xlsx';
+const SHEETJS_CDN='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+const JSZIP_FB='https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js';
+const RECAP_SHEET='Recap piece-codic';
+const PROD_SHEET='correspondance ref codic';
+const PHOTO_SHEET='Spare Part New Product 2025';
+
+let CODIC_TO_PARTS={};   // { '8065195':[{sku,skuDesc,prodDesc,models}, ...] }
+let CODIC_TO_PRODUCT={}; // { '8065195':'ROOMBA MAX 705 COMBO' }
+let SKU_TO_IMG={};       // { 'X100040':'data:image/png;base64,...' }
+let ALL_CODICS=[];
+let TOTAL_PARTS=0;
+
+function loadJSZip(){return new Promise((resolve,reject)=>{if(typeof JSZip!=='undefined')return resolve();const s=document.createElement('script');s.src=JSZIP_FB;s.onload=resolve;s.onerror=()=>reject(new Error('JSZip introuvable'));document.head.appendChild(s);});}
+
+// ── Extrait les images embarquées (ancrées par ligne) de chaque feuille, via le zip xlsx brut ──
+async function extractImages(arrayBuffer){
+  try{
+    await loadJSZip();
+    const zip=await JSZip.loadAsync(arrayBuffer).catch(()=>null);
+    if(!zip)return {};
+    const mediaFiles=Object.keys(zip.files).filter(p=>/^xl\/media\//.test(p));
+    const mediaMap={};
+    await Promise.all(mediaFiles.map(p=>{
+      const fname=p.split('/').pop();
+      const ext=(fname.split('.').pop()||'').toLowerCase();
+      const mime={png:'image/png',jpg:'image/jpeg',jpeg:'image/jpeg',gif:'image/gif',bmp:'image/bmp',webp:'image/webp',svg:'image/svg+xml'}[ext]||'application/octet-stream';
+      return zip.file(p).async('base64').then(b64=>{mediaMap[fname]='data:'+mime+';base64,'+b64;});
+    }));
+    if(!Object.keys(mediaMap).length)return {};
+    const wbFile=zip.file('xl/workbook.xml'); if(!wbFile)return {};
+    const wbXml=await wbFile.async('text');
+    const sheets=[]; let m;
+    const shRe=/<sheet\b[^>]*>/g;
+    while((m=shRe.exec(wbXml))!==null){
+      const nM=m[0].match(/\bname="([^"]*)"/), rM=m[0].match(/\br:id="([^"]+)"/)||m[0].match(/\brelationships:id="([^"]+)"/i);
+      if(nM&&rM)sheets.push({name:nM[1],rId:rM[1]});
+    }
+    if(!sheets.length)return {};
+    const wbRelsFile=zip.file('xl/_rels/workbook.xml.rels'); if(!wbRelsFile)return {};
+    const wbRelsXml=await wbRelsFile.async('text');
+    const wbRels={};
+    const relRe=/<Relationship\b[^>]*>/g;
+    while((m=relRe.exec(wbRelsXml))!==null){
+      const iM=m[0].match(/\bId="([^"]+)"/), tM=m[0].match(/\bTarget="([^"]+)"/);
+      if(iM&&tM)wbRels[iM[1]]=tM[1];
+    }
+    const out={};
+    for(const s of sheets){
+      const target=wbRels[s.rId]; if(!target)continue;
+      const shPath=target.replace(/^\//,'').startsWith('xl/')?target.replace(/^\//,''):'xl/'+target.replace(/^\.\.\//,'');
+      const shRelsFile=zip.file(shPath.replace(/([^/]+)$/,'_rels/$1.rels')); if(!shRelsFile)continue;
+      const shRelsXml=await shRelsFile.async('text');
+      let drTarget=null; relRe.lastIndex=0;
+      while((m=relRe.exec(shRelsXml))!==null){
+        if(!/drawing/i.test(m[0]))continue;
+        const tM=m[0].match(/\bTarget="([^"]+)"/); if(tM){drTarget=tM[1];break;}
+      }
+      if(!drTarget)continue;
+      const drPath=drTarget.replace(/^\//,'').startsWith('xl/')?drTarget.replace(/^\//,''):'xl/'+drTarget.replace(/^\.\.\//,'');
+      const drFile=zip.file(drPath); if(!drFile)continue;
+      const drXml=await drFile.async('text');
+      const drRelsFile=zip.file(drPath.replace(/([^/]+)$/,'_rels/$1.rels')); if(!drRelsFile)continue;
+      const drRelsXml=await drRelsFile.async('text');
+      const drRels={}; relRe.lastIndex=0;
+      while((m=relRe.exec(drRelsXml))!==null){
+        const iM=m[0].match(/\bId="([^"]+)"/), tM=m[0].match(/\bTarget="([^"]+)"/);
+        if(iM&&tM)drRels[iM[1]]=tM[1].split('/').pop();
+      }
+      const rowMap={};
+      // openpyxl écrit ces balises sans préfixe "xdr:" (namespace par défaut) ; Excel les écrit avec.
+      const ancRe=/<(?:xdr:)?(twoCellAnchor|oneCellAnchor|absoluteAnchor)\b[^>]*>([\s\S]*?)<\/(?:xdr:)?\1>/g;
+      let am;
+      while((am=ancRe.exec(drXml))!==null){
+        const inner=am[2];
+        const fromM=inner.match(/<(?:xdr:)?from>[\s\S]*?<(?:xdr:)?row>(\d+)<\/(?:xdr:)?row>/);
+        const blipM=inner.match(/(?:r|relationships):embed="([^"]+)"/);
+        if(!fromM||!blipM)continue;
+        const row=parseInt(fromM[1],10), fname=drRels[blipM[1]];
+        if(!fname||!mediaMap[fname])continue;
+        if(!rowMap[row])rowMap[row]=mediaMap[fname]; // 1ère image de la ligne
+      }
+      if(Object.keys(rowMap).length)out[s.name]={rows:rowMap};
+    }
+    return out;
+  }catch(e){console.warn('extractImages failed:',e);return {};}
+}
+
+// ── Construit sku -> image à partir de la feuille photos + de l'index d'images extrait ──
+function buildSkuImages(wb,embedded){
+  const map={};
+  const emb=embedded&&embedded[PHOTO_SHEET];
+  const sPhoto=wb.Sheets[PHOTO_SHEET];
+  if(!emb||!sPhoto)return map;
+  const rows=XLSX.utils.sheet_to_json(sPhoto,{header:1,defval:''});
+  rows.forEach((row,i)=>{
+    const sku=String(row[0]||'').trim();
+    if(sku&&emb.rows[i])map[sku]=emb.rows[i];
+  });
+  return map;
+}
+
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function hl(t,q){if(!q)return esc(t);const toks=q.split(/\s+/).filter(Boolean).map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));if(!toks.length)return esc(t);return esc(t).replace(new RegExp('('+toks.join('|')+')','gi'),'<span class="hl">$1</span>');}
+function loadScript(u){return new Promise((res,rej)=>{const s=document.createElement('script');s.src=u;s.onload=res;s.onerror=()=>rej(new Error('CDN '+u));document.head.appendChild(s);});}
+async function ensureSheetJS(){if(typeof XLSX==='undefined')await loadScript(SHEETJS_CDN);}
+
+// ── Construit l'index à partir du classeur ──
+function buildIndex(wb){
+  const codicToParts={};
+  const codicToProduct={};
+
+  const sProd=wb.Sheets[PROD_SHEET];
+  if(sProd){
+    const rows=XLSX.utils.sheet_to_json(sProd,{header:1,defval:''});
+    rows.forEach(row=>{
+      const name=String(row[0]||'').trim();
+      const codicRaw=row[1];
+      if(!name||codicRaw===''||codicRaw===undefined)return;
+      const codicStr=String(codicRaw).trim();
+      if(/^\d+$/.test(codicStr))codicToProduct[codicStr]=name;
+    });
+  }
+
+  const sRecap=wb.Sheets[RECAP_SHEET];
+  let total=0;
+  if(sRecap){
+    const rows=XLSX.utils.sheet_to_json(sRecap,{header:1,defval:''});
+    for(let r=1;r<rows.length;r++){
+      const row=rows[r];
+      const sku=String(row[0]||'').trim();
+      if(!sku)continue;
+      const skuDesc=String(row[1]||'').trim();
+      const prodDesc=String(row[2]||'').trim();
+      const models=String(row[3]||'').trim();
+      const codicsRaw=String(row[4]||'').trim();
+      if(!codicsRaw)continue;
+      const codics=codicsRaw.split('/').map(x=>x.trim()).filter(Boolean);
+      codics.forEach(c=>{
+        if(c==='Non trouve'||c==='Non trouvé')return;
+        if(!/^\d+$/.test(c))return;
+        (codicToParts[c]=codicToParts[c]||[]).push({sku,skuDesc,prodDesc,models});
+        total++;
+      });
+    }
+  }
+  return {codicToParts,codicToProduct,total};
+}
+
+function refreshDatalist(){
+  const dl=document.getElementById('codicList');
+  dl.innerHTML=ALL_CODICS.map(c=>'<option value="'+esc(c)+'">'+esc(CODIC_TO_PRODUCT[c]||'')+'</option>').join('');
+}
+
+function applyIndex(res){
+  CODIC_TO_PARTS=res.codicToParts;
+  CODIC_TO_PRODUCT=res.codicToProduct;
+  SKU_TO_IMG=res.skuToImg||{};
+  ALL_CODICS=Object.keys(CODIC_TO_PARTS).sort();
+  TOTAL_PARTS=res.total;
+  const nPhotos=Object.keys(SKU_TO_IMG).length;
+  const badge=document.getElementById('badge');
+  badge.className='badge';badge.textContent='✅ '+ALL_CODICS.length+' codics · '+TOTAL_PARTS+' correspondances pièce'+(nPhotos?' · '+nPhotos+' photos':'');
+  refreshDatalist();
+  doSearch();
+}
+
+async function loadFromUrl(url){
+  await ensureSheetJS();
+  const bust=url+(url.includes('?')?'&':'?')+'_='+Date.now();
+  const resp=await fetch(encodeURI(bust),{cache:'no-store'});
+  if(!resp.ok)throw new Error('HTTP '+resp.status);
+  const ab=await resp.arrayBuffer();
+  const wb=XLSX.read(ab,{type:'array'});
+  const embedded=await extractImages(ab).catch(()=>({}));
+  const res=buildIndex(wb);
+  res.skuToImg=buildSkuImages(wb,embedded);
+  applyIndex(res);
+}
+async function autoLoad(){
+  const badge=document.getElementById('badge');
+  try{await loadFromUrl(XLSX_URL);}
+  catch(e){badge.className='badge error';badge.textContent=(location.protocol==='file:'?'⚠ Ouvre via « Importer »':'⚠ '+(e.message||'Erreur'));}
+}
+
+function clearSearch(){document.getElementById('q').value='';document.getElementById('q').focus();doSearch();}
+
+function matchCodics(q){
+  const qn=q.replace(/\s+/g,'');
+  if(/^\d+$/.test(qn)){
+    // recherche numérique : codic exact, puis codic contenant la saisie
+    const exact=ALL_CODICS.filter(c=>c===qn);
+    if(exact.length)return exact;
+    return ALL_CODICS.filter(c=>c.includes(qn));
+  }
+  const ql=q.toLowerCase();
+  // recherche par nom de produit
+  let m=ALL_CODICS.filter(c=>(CODIC_TO_PRODUCT[c]||'').toLowerCase().includes(ql));
+  if(m.length)return m;
+  // recherche par référence / description de pièce
+  const set=new Set();
+  ALL_CODICS.forEach(c=>{
+    (CODIC_TO_PARTS[c]||[]).forEach(p=>{
+      const h=(p.sku+' '+p.skuDesc+' '+p.prodDesc).toLowerCase();
+      if(h.includes(ql))set.add(c);
+    });
+  });
+  return Array.from(set);
+}
+
+function doSearch(){
+  const qRaw=document.getElementById('q').value.trim();
+  const wrap=document.getElementById('main');
+  const hint=document.getElementById('hint');
+
+  if(!qRaw){
+    hint.innerHTML=ALL_CODICS.length?('<b>'+ALL_CODICS.length+'</b> codics indexés · <b>'+TOTAL_PARTS+'</b> correspondances pièce'):'';
+    wrap.innerHTML='<div class="empty-state"><div class="empty-state-icon">🔎</div><h3>Recherchez un codic, un produit ou une pièce</h3><p>Tapez un numéro de codic (ex. 8065195), un nom de modèle (ex. « 105 combo ») ou une réf. pièce (ex. X100040).</p></div>';
+    return;
+  }
+  hint.innerHTML='';
+  const codics=matchCodics(qRaw);
+  if(!codics.length){
+    wrap.innerHTML='<div class="empty-state"><div class="empty-state-icon">🤷</div><h3>Aucun résultat pour « '+esc(qRaw)+' »</h3><p>Vérifiez le numéro de codic ou essayez un mot-clé produit.</p></div>';
+    return;
+  }
+  const sorted=codics.sort();
+  wrap.innerHTML='<div class="results-header"><b>'+sorted.length+'</b> codic'+(sorted.length>1?'s':'')+' trouvé'+(sorted.length>1?'s':'')+'</div>'+
+    sorted.map(c=>{
+      const parts=(CODIC_TO_PARTS[c]||[]).slice().sort((a,b)=>a.sku.localeCompare(b.sku));
+      const prodName=CODIC_TO_PRODUCT[c]||'Produit non identifié';
+      return '<div class="grp">'+
+        '<div class="grp-head">'+
+          '<span class="grp-codic">'+hl(c,qRaw)+'</span>'+
+          '<span class="grp-name">'+hl(prodName,qRaw)+'</span>'+
+          '<span class="grp-count">'+parts.length+' pièce'+(parts.length>1?'s':'')+'</span>'+
+        '</div>'+
+        '<div class="grp-body">'+
+          parts.map(p=>{
+            const img=SKU_TO_IMG[p.sku];
+            return '<div class="pi">'+
+            (img?'<img class="pi-thumb" src="'+img+'" alt="" onclick="openLightbox(\''+img.replace(/'/g,"\\'")+'\')">':'<div class="pi-thumb ph">🤖</div>')+
+            '<div class="pi-sku">'+hl(p.sku,qRaw)+'</div>'+
+            '<div class="pi-info">'+
+              '<div class="pi-desc">'+hl(p.skuDesc||p.prodDesc,qRaw)+'</div>'+
+              '<div class="pi-sub">'+esc(p.prodDesc)+'</div>'+
+              '<div class="pi-tags">'+esc(p.models).split(';').map(m=>m.trim()).filter(Boolean).map(m=>'<span class="tag">'+esc(m)+'</span>').join('')+'</div>'+
+            '</div>'+
+          '</div>';
+          }).join('')+
+        '</div>'+
+      '</div>';
+    }).join('');
+}
+
+// ── Import manuel ──
+function openImportModal(){document.getElementById('importModal').classList.remove('hidden');document.getElementById('importResult').style.display='none';}
+function closeImportModal(){document.getElementById('importModal').classList.add('hidden');}
+function pickFile(){document.getElementById('fileInput').click();}
+document.getElementById('fileInput').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(f)handleFile(f);e.target.value='';});
+function dzOver(e){e.preventDefault();document.getElementById('importDrop').classList.add('over');}
+function dzLeave(){document.getElementById('importDrop').classList.remove('over');}
+function dzDrop(e){e.preventDefault();dzLeave();const f=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];if(f)handleFile(f);}
+async function handleFile(file){
+  const rd=document.getElementById('importResult');rd.style.display='none';
+  try{
+    await ensureSheetJS();
+    const ab=await file.arrayBuffer();
+    const wb=XLSX.read(ab,{type:'array'});
+    const embedded=await extractImages(ab).catch(()=>({}));
+    const res=buildIndex(wb);
+    res.skuToImg=buildSkuImages(wb,embedded);
+    applyIndex(res);
+    rd.className='import-result ok';rd.innerHTML='✅ <strong>'+ALL_CODICS.length+' codics</strong> chargés depuis <em>'+esc(file.name)+'</em>.';rd.style.display='block';
+    setTimeout(closeImportModal,900);
+  }catch(err){rd.className='import-result err';rd.innerHTML='⚠️ Erreur : '+esc(err.message||String(err));rd.style.display='block';}
+}
+
+// ── Lightbox photo ──
+function openLightbox(src){document.getElementById('lightboxImg').src=src;document.getElementById('lightbox').classList.add('active');}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('active');}
+document.getElementById('lightbox').addEventListener('click',closeLightbox);
+document.getElementById('lightboxClose').addEventListener('click',e=>{e.stopPropagation();closeLightbox();});
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    if(document.getElementById('lightbox').classList.contains('active'))closeLightbox();
+    else if(!document.getElementById('importModal').classList.contains('hidden'))closeImportModal();
+  }
+});
+document.addEventListener('DOMContentLoaded',autoLoad);
+</script>
+</body>
+</html>
