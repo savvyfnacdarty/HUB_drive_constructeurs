@@ -47,58 +47,101 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 .hero-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent-h);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
 .hero-eyebrow::before,.hero-eyebrow::after{content:'';flex:1;height:1px;background:var(--accent-bd);max-width:60px;}
 .hero h1{font-size:25px;font-weight:800;margin-bottom:6px;text-align:center;letter-spacing:-.4px;}
-.hero p{font-size:14px;color:var(--text-2);margin-bottom:18px;text-align:center;max-width:620px;}
+.hero p{font-size:14px;color:var(--text-2);margin-bottom:18px;text-align:center;max-width:640px;}
 .search-box{width:100%;max-width:640px;display:flex;align-items:center;background:var(--bg);border:2px solid var(--border2);border-radius:14px;overflow:hidden;transition:border-color .2s,box-shadow .2s;}
 .search-box:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px rgba(234,0,41,.12);}
 .search-icon{padding:0 14px;color:var(--text-3);font-size:17px;flex-shrink:0;}
-.search-input{flex:1;padding:14px 0;background:transparent;border:none;outline:none;font-size:16px;color:var(--text);font-family:inherit;text-transform:uppercase;letter-spacing:.5px;}
-.search-input::placeholder{color:var(--text-3);text-transform:none;letter-spacing:0;}
+.search-input{flex:1;padding:14px 0;background:transparent;border:none;outline:none;font-size:16px;color:var(--text);font-family:inherit;letter-spacing:.3px;}
+.search-input::placeholder{color:var(--text-3);letter-spacing:0;}
 .btn-clear{padding:8px 14px;margin:6px;background:var(--surface);color:var(--text-3);border:none;border-radius:9px;cursor:pointer;font-size:14px;font-weight:700;transition:var(--transition);}
 .btn-clear:hover{background:var(--border);color:var(--text);}
+
 /* MAIN */
-.content-wrap{max-width:820px;width:100%;margin:0 auto;padding:20px 16px 60px;}
+.content-wrap{max-width:860px;width:100%;margin:0 auto;padding:20px 16px 60px;}
 .results-header{font-size:12px;color:var(--text-3);margin-bottom:10px;padding:0 2px;}
 .results-header b{color:var(--text-2);}
-.ri-card{margin-bottom:9px;}
+.ri-card{margin-bottom:10px;}
 .ri{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;display:flex;align-items:center;gap:14px;transition:var(--transition);box-shadow:0 1px 3px rgba(0,0,0,.04);flex-wrap:wrap;}
 .ri.open{border-bottom-left-radius:0;border-bottom-right-radius:0;border-color:var(--accent-bd);}
 .ri:hover{border-color:var(--accent-bd);box-shadow:var(--shadow);}
-/* Panneau liste des fichiers du dossier Drive */
-.files-panel{border:1px solid var(--accent-bd);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;overflow:hidden;}
-.files-panel .fp-bar{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--accent-bg);font-size:12px;color:var(--accent-h);font-weight:600;flex-wrap:wrap;}
-.files-panel .fp-bar a{margin-left:auto;font-size:11px;color:var(--accent-h);text-decoration:underline;}
-.files-panel iframe{width:100%;height:340px;border:none;display:block;background:#fafafa;}
-.ri-btn.files{background:var(--accent-bg);color:var(--accent-h);border-color:var(--accent-bd);}
-.ri-btn.files:hover{background:#fbd9df;}
-.ri-btn.files.on{background:var(--accent);color:#fff;border-color:var(--accent);}
 .ri-avatar{width:44px;height:44px;background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.ri-avatar.res{background:var(--blue-bg);border-color:var(--blue-bd);}
 .ri-info{flex:1;min-width:180px;}
 .ri-sn{font-size:11px;color:var(--accent-h);font-family:'SF Mono',Consolas,monospace;font-weight:700;letter-spacing:1px;}
 .ri-name{font-size:16px;font-weight:700;margin-top:1px;}
-.ri-sub{font-size:12px;color:var(--text-2);margin-top:2px;line-height:1.4;}
+.ri-sub{font-size:12px;color:var(--text-2);margin-top:2px;line-height:1.4;word-break:break-word;}
 .ri-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;}
 .tag{padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600;background:var(--bg);color:var(--text-2);border:1px solid var(--border);}
 .tag.fam{background:var(--accent-bg);color:var(--accent-h);border-color:var(--accent-bd);}
 .tag.spn{background:#F5F3FF;color:#5B21B6;border-color:#DDD6FE;font-family:monospace;}
+.tag.docs{background:var(--blue-bg);color:var(--blue-text);border-color:var(--blue-bd);}
+.tag.approx{background:#FFFBEB;color:#92400E;border-color:#FDE68A;}
 .ri-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
 .ri-btn{padding:9px 14px;font-size:13px;font-weight:600;border-radius:9px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:var(--transition);white-space:nowrap;cursor:pointer;border:1px solid transparent;}
-.ri-btn.docs{background:var(--accent);color:#fff;border-color:var(--accent);}
-.ri-btn.docs:hover{background:var(--accent-h);}
-.ri-btn.video{background:var(--blue-bg);color:var(--blue-text);border-color:var(--blue-bd);}
-.ri-btn.video:hover{background:#DBEAFE;}
+.ri-btn.docs{background:var(--accent-bg);color:var(--accent-h);border-color:var(--accent-bd);}
+.ri-btn.docs:hover{background:#fbd9df;}
+.ri-btn.docs.on{background:var(--accent);color:#fff;border-color:var(--accent);}
+.ri-btn.parts{background:var(--blue-bg);color:var(--blue-text);border-color:var(--blue-bd);}
+.ri-btn.parts:hover{background:#DBEAFE;}
+.ri-btn.parts.on{background:var(--blue);color:#fff;border-color:var(--blue);}
+.ri-btn.drive{background:var(--bg);color:var(--text-2);border-color:var(--border2);}
+.ri-btn.drive:hover{border-color:var(--accent);color:var(--accent-h);}
 .ri-btn.off{background:var(--bg);color:var(--text-3);border-color:var(--border);cursor:not-allowed;}
 .hl{background:rgba(234,0,41,.18);border-radius:2px;padding:0 2px;}
 .empty-state{background:var(--surface);border:1px dashed var(--border2);border-radius:var(--radius);padding:44px;text-align:center;}
 .empty-state-icon{font-size:42px;margin-bottom:12px;}
 .empty-state h3{font-size:16px;font-weight:600;color:var(--text-2);margin-bottom:4px;}
 .empty-state p{font-size:13px;color:var(--text-3);}
-.ri-maint{width:100%;margin-top:9px;padding:9px 12px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:9px;font-size:12px;color:#92400E;line-height:1.5;display:flex;gap:8px;align-items:flex-start;white-space:pre-line;}
-.ri-maint b{flex-shrink:0;}
+
+/* Aperçus de correspondance (docs / pièces qui matchent la recherche) */
+.ri-hits{width:100%;display:flex;flex-direction:column;gap:5px;margin-top:9px;padding-top:9px;border-top:1px dashed var(--border);}
+.ri-hit{display:flex;align-items:center;gap:8px;font-size:12px;flex-wrap:wrap;}
+.ri-hit-ic{flex-shrink:0;}
+.ri-hit-name{flex:1;min-width:140px;color:var(--text-2);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.mini-btn{flex-shrink:0;padding:4px 10px;border-radius:7px;font-size:11px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px;transition:var(--transition);border:1px solid transparent;}
+.mini-btn.preview{background:var(--blue-bg);color:var(--blue-text);border-color:var(--blue-bd);}
+.mini-btn.preview:hover{background:#DBEAFE;}
+.mini-btn.dl{background:var(--accent);color:#fff;border-color:var(--accent);}
+.mini-btn.dl:hover{background:var(--accent-h);}
+
+/* Panneau documents */
+.panel{border:1px solid var(--accent-bd);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:#fff;overflow:hidden;padding:12px 14px;}
+.panel .p-bar{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--accent-h);font-weight:700;flex-wrap:wrap;margin-bottom:10px;}
+.panel .p-bar a{margin-left:auto;font-size:11px;color:var(--accent-h);text-decoration:underline;}
+.type-section{margin-bottom:10px;}
+.section-head{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--text-2);display:flex;align-items:center;gap:7px;margin-bottom:6px;}
+.section-head .count{background:var(--bg);color:var(--text-3);padding:0 7px;border-radius:10px;font-size:10px;border:1px solid var(--border);}
+.doc-row{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:8px;flex-wrap:wrap;}
+.doc-row:hover{background:var(--bg);}
+.doc-row .d-ic{flex-shrink:0;font-size:15px;}
+.doc-row .d-name{flex:1;min-width:150px;font-size:12.5px;color:var(--text);word-break:break-word;line-height:1.35;}
+.no-docs{text-align:center;padding:14px;color:var(--text-3);font-size:12.5px;background:var(--bg);border-radius:8px;border:1px dashed var(--border);}
+
+/* Panneau pièces (BoM) */
+.panel.parts{border-color:var(--blue-bd);}
+.panel.parts .p-bar{color:var(--blue-text);}
+.parts-filter{width:100%;padding:8px 12px;border:1px solid var(--border2);border-radius:8px;font-size:13px;font-family:inherit;outline:none;margin-bottom:8px;}
+.parts-filter:focus{border-color:var(--blue);}
+.parts-table{width:100%;border-collapse:collapse;font-size:12px;}
+.parts-table th{text-align:left;padding:6px 8px;background:var(--bg);color:var(--text-2);font-size:10px;text-transform:uppercase;letter-spacing:.5px;position:sticky;top:0;}
+.parts-table td{padding:6px 8px;border-top:1px solid var(--border);vertical-align:top;}
+.parts-table td.pn{font-family:monospace;font-weight:700;color:#5B21B6;white-space:nowrap;}
+.parts-table td.price{white-space:nowrap;text-align:right;font-weight:600;}
+.parts-scroll{max-height:340px;overflow:auto;border:1px solid var(--border);border-radius:8px;}
+.lvl{display:inline-block;padding:1px 7px;border-radius:6px;font-size:10px;font-weight:700;}
+.lvl.L0{background:#F0FDF4;color:#166534;}
+.lvl.L1{background:#FFFBEB;color:#92400E;}
+.lvl.L2{background:#FEF2F2;color:#991B1B;}
+.lvl.Lx{background:var(--bg);color:var(--text-2);}
+
+/* Documents généraux */
+.gen-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;margin-top:14px;}
+.gen-title{font-size:13px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px;margin-bottom:8px;}
 
 /* MODAL IMPORT */
 .modal-backdrop{position:fixed;inset:0;background:rgba(17,24,39,.5);z-index:600;display:flex;align-items:center;justify-content:center;padding:16px;}
 .modal-backdrop.hidden{display:none;}
-.modal{background:var(--surface);border-radius:16px;padding:28px;width:100%;max-width:480px;box-shadow:var(--shadow-lg);position:relative;}
+.modal{background:var(--surface);border-radius:16px;padding:28px;width:100%;max-width:500px;box-shadow:var(--shadow-lg);position:relative;}
 .modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--text-3);font-size:17px;cursor:pointer;padding:6px;border-radius:7px;}
 .modal-close:hover{background:var(--bg);color:var(--text);}
 .modal h3{font-size:16px;font-weight:700;margin-bottom:5px;}
@@ -117,7 +160,6 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 @media(max-width:560px){.hero h1{font-size:20px;}.ri-actions{width:100%;}.ri-btn{flex:1;justify-content:center;}}
 </style>
 <!-- ===== Compteur de consultations (GoatCounter) =====
-     Remplacer hub-drive-fnac par le code du site cree sur goatcounter.com
      Tableau de bord prive : https://hub-drive-fnac.goatcounter.com  -->
 <script data-goatcounter="https://hub-drive-fnac.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
@@ -138,17 +180,17 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
   </nav>
   <div class="fdband-sync">
     <div class="badge loading" id="badge">&#8987; Chargement&#8230;</div>
-    <button class="btn-import" onclick="openImportModal()">&#128229; Importer l'Excel</button>
+    <button class="btn-import" onclick="openImportModal()">&#128229; Importer un Excel</button>
   </div>
 </div>
 
 <section class="hero">
   <div class="hero-eyebrow">Identification produit par n° de série</div>
   <h1>Trouver la documentation d'un produit Roborock</h1>
-  <p>Saisissez les <b>5 premiers caractères du numéro de série</b> (préfixe SN) — ou un nom de modèle / série — pour retrouver le produit et ses documents Drive.</p>
+  <p>Saisissez le <b>préfixe SN</b> (5 premiers caractères du n° de série), un <b>modèle</b>, un nom de code (famille) ou un <b>n° de pièce</b> pour retrouver la version du produit, ses documents Drive et ses pièces détachées.</p>
   <div class="search-box">
     <span class="search-icon">🔍</span>
-    <input type="text" id="q" class="search-input" placeholder="Préfixe SN (ex. R29NE), modèle (Q75), série (Q7)…" oninput="doSearch()" autofocus autocomplete="off">
+    <input type="text" id="q" class="search-input" placeholder="Préfixe SN (ex. RHZEG), modèle (Q10 Max+), famille (Talc), pièce (9.01.4927)…" oninput="doSearch()" autofocus autocomplete="off">
     <button class="btn-clear" onclick="clearSearch()" title="Effacer">✕</button>
   </div>
 </section>
@@ -159,213 +201,552 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 <div class="modal-backdrop hidden" id="importModal" onclick="if(event.target===this)closeImportModal()">
   <div class="modal">
     <button class="modal-close" onclick="closeImportModal()">✕</button>
-    <h3>📥 Importer le fichier Excel</h3>
-    <p class="modal-sub">Charge le fichier <code>SN prefix checking list.xlsx</code> (onglets <code>Base_SN_Ref</code> et <code>Doc20250918</code>).</p>
+    <h3>📥 Importer un fichier Excel</h3>
+    <p class="modal-sub">Accepte les deux fichiers (détection automatique) :<br>
+      · <code>FRoborock - Docs RR - FNAC DARTY - Suivi ajout.xlsx</code> (onglet <code>Export</code> — documents Drive)<br>
+      · <code>Service BoM-CE-FnacDarty.xlsx</code> (préfixes SN, versions &amp; pièces)</p>
     <div class="import-drop" id="importDrop" ondragover="dzOver(event)" ondragleave="dzLeave()" ondrop="dzDrop(event)" onclick="pickFile()">
       <div class="import-drop-icon">📂</div>
-      <div class="import-drop-text">Glisse le fichier ici ou clique pour le sélectionner</div>
-      <button class="btn-import-pick" onclick="pickFile();event.stopPropagation()">Choisir un fichier</button>
+      <div class="import-drop-text">Glisse le(s) fichier(s) ici ou clique pour les sélectionner<br><b>Astuce :</b> tu peux sélectionner les deux fichiers en même temps</div>
+      <button class="btn-import-pick" onclick="pickFile();event.stopPropagation()">Choisir un ou deux fichiers</button>
     </div>
     <div id="importResult" style="display:none"></div>
   </div>
 </div>
-<input type="file" id="fileInput" accept=".xlsx,.xls,.xlsm" style="display:none">
+<input type="file" id="fileInput" accept=".xlsx,.xls,.xlsm" multiple style="display:none">
 
 <script>
-const XLSX_URL='Roborock/SN prefix checking list.xlsx';
+// ══════════════════════════════════════════════════════
+//  CONFIG
+// ══════════════════════════════════════════════════════
+const DOCS_URL='Roborock/FRoborock - Docs RR - FNAC DARTY - Suivi ajout.xlsx';
+const BOM_URL='Roborock/Service BoM-CE-FnacDarty.xlsx';
 const SHEETJS_CDN='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
 
-let ENTRIES=[];        // {sn, spn, model, modelfull, series, folder, video}
+// Associations manuelles (préfixe SN → nom exact du dossier docs), prioritaire sur l'heuristique
+const MANUAL_MATCH={};
 
-// ID d'un dossier Google Drive à partir de son URL (pour l'aperçu intégré)
-function driveFolderId(url){const m=String(url).match(/\/folders\/([A-Za-z0-9_-]{10,})/)||String(url).match(/[?&]id=([A-Za-z0-9_-]{10,})/);return m?m[1]:'';}
+// ══════════════════════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════════════════════
+let DOCS=null;      // {root, folders:[{name,full,lien,files:[{name,url,type}]}], general:[files]}
+let BOM=null;       // [{sn, prodno, model, english, station, family, parts:[{no,name,moq,level,price}]}]
+let ENTRIES=[];     // fiches affichées (versions BoM + dossiers docs sans version)
+let LAST_MODIFIED='';
 
+// ══════════════════════════════════════════════════════
+//  UTILITAIRES
+// ══════════════════════════════════════════════════════
 function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function hl(t,q){if(!q)return esc(t);const toks=q.split(/\s+/).filter(Boolean).map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));if(!toks.length)return esc(t);return esc(t).replace(new RegExp('('+toks.join('|')+')','gi'),'<span class="hl">$1</span>');}
 function loadScript(u){return new Promise((res,rej)=>{const s=document.createElement('script');s.src=u;s.onload=res;s.onerror=()=>rej(new Error('CDN '+u));document.head.appendChild(s);});}
 async function ensureSheetJS(){if(typeof XLSX==='undefined')await loadScript(SHEETJS_CDN);}
 
-// ── Normalisation pour l'association série/modèle → documents ──
-function norm(s){
-  return String(s).toLowerCase()
-    .replace(/（[^）]*）/g,'').replace(/\([^)]*\)/g,'')  // contenu entre parenthèses
-    .replace(/q\s*revo/g,'qrevo')
-    .replace(/[^a-z0-9]/g,'');
+// ── Liens Google Drive : aperçu + téléchargement direct (repris de Dreame) ──
+function driveId(url){const m=String(url).match(/\/d\/([A-Za-z0-9_-]{10,})/)||String(url).match(/[?&]id=([A-Za-z0-9_-]{10,})/);return m?m[1]:null;}
+function docKind(url){if(/docs\.google\.com\/spreadsheets/.test(url))return 'spreadsheets';if(/docs\.google\.com\/presentation/.test(url))return 'presentation';if(/docs\.google\.com\/document/.test(url))return 'document';return 'file';}
+function previewUrl(url){const id=driveId(url);if(!id)return url;const k=docKind(url);return k==='file'?'https://drive.google.com/file/d/'+id+'/preview':'https://docs.google.com/'+k+'/d/'+id+'/preview';}
+function downloadUrl(url){const id=driveId(url);if(!id)return url;return 'https://drive.google.com/uc?export=download&id='+id;}
+function driveFolderId(url){const m=String(url).match(/\/folders\/([A-Za-z0-9_-]{10,})/)||String(url).match(/[?&]id=([A-Za-z0-9_-]{10,})/);return m?m[1]:'';}
+
+// ── Types de documents (repris de Dreame) ──
+const DOC_TYPES={
+  bom:               {icon:'📋',label:'BOM / Pièces détachées',order:1},
+  exploded_view:     {icon:'💥',label:'Vue éclatée / Vis',order:2},
+  maintenance_manual:{icon:'🔧',label:'Manuel SAV / Réparation',order:3},
+  user_manual:       {icon:'📖',label:'Notice / Manuel',order:4},
+  spec:              {icon:'📐',label:'Spécifications',order:5},
+  video:             {icon:'🎬',label:'Vidéo (démontage / SAV)',order:6},
+  ppt:               {icon:'📑',label:'Présentation',order:7},
+  excel:             {icon:'📊',label:'Excel',order:8},
+  word:              {icon:'📝',label:'Word',order:9},
+  pdf:               {icon:'📄',label:'PDF',order:10},
+  image:             {icon:'🖼️',label:'Image',order:11},
+  archive:           {icon:'🗜️',label:'Archive',order:12},
+  other:             {icon:'📎',label:'Autre document',order:13},
+};
+function guessType(nom){
+  const n=(nom||'').toLowerCase();
+  if(/(^|[^a-z0-9])bom([^a-z0-9]|$)|nomenclat|bill.?of.?mat|物料清单|物料表/.test(n)) return 'bom';
+  if(/exploded|éclat|eclat|screw|爆炸图|拆解图|分解图/.test(n))                    return 'exploded_view';
+  if(/service.?manual|repair|维修手册|maintenance.?manual|拆机手册/.test(n))    return 'maintenance_manual';
+  if(/user.?manual|notice|user.?guide|使用说明|用户手册|使用手册/.test(n))       return 'user_manual';
+  if(/\bspec\b|specification|参数|规格/.test(n))                               return 'spec';
+  if(/\.(mp4|mov|avi|mkv|webm|m4v)$/.test(n)||/video|视频|démont|demont|disassembly|calibration.?guide.?video|拆机|拆解/.test(n)) return 'video';
+  if(/\.(pptx?|odp)$/.test(n))                    return 'ppt';
+  if(/\.(xlsx?|xlsm|ods|csv)$/.test(n))           return 'excel';
+  if(/\.(docx?|odt|rtf|txt)$/.test(n))            return 'word';
+  if(/\.pdf$/.test(n))                            return 'pdf';
+  if(/\.(jpe?g|png|gif|bmp|svg|webp|heic)$/.test(n)) return 'image';
+  if(/\.(zip|rar|7z|tar|gz)$/.test(n))            return 'archive';
+  return 'other';
 }
 
-// Lit la valeur + le lien hypertexte d'une cellule (r,c indexés à 0)
-function cellLink(ws,r,c){
-  const ref=XLSX.utils.encode_cell({r:r,c:c});
-  const cell=ws[ref];
-  if(!cell)return '';
-  if(cell.l&&cell.l.Target)return String(cell.l.Target).trim();
-  const v=cell.v;
-  return (v!=null&&/^https?:\/\//i.test(String(v).trim()))?String(v).trim():'';
-}
-
-// ── Construit l'index à partir du classeur ──
-function buildIndex(wb){
-  const baseWs=wb.Sheets['Base_SN_Ref'];
-  const docWs=wb.Sheets['Doc20250918'];
-  if(!baseWs)throw new Error('Onglet "Base_SN_Ref" introuvable');
-  if(!docWs)throw new Error('Onglet "Doc20250918" introuvable');
-
-  // 1) Onglet Doc → aliasMap
-  const docRange=XLSX.utils.decode_range(docWs['!ref']);
-  const docList=[];
-  for(let r=docRange.s.r+1;r<=docRange.e.r;r++){
-    const modelCell=docWs[XLSX.utils.encode_cell({r:r,c:0})];
-    if(!modelCell||modelCell.v==null||String(modelCell.v).trim()==='')continue;
-    const maintCell=docWs[XLSX.utils.encode_cell({r:r,c:1})];
-    const maint=maintCell&&maintCell.v!=null?String(maintCell.v).trim():'';
-    docList.push({model:String(modelCell.v).trim(),maint:maint,link:cellLink(docWs,r,2),video:cellLink(docWs,r,3)});
-  }
-  const aliasMap={};
-  docList.forEach((d,i)=>{
-    const aliases=new Set();
-    const base=d.model.replace(/（[^）]*）/g,'');
-    base.split('/').forEach(p=>aliases.add(p));
-    (d.model.match(/（([^）]*)）/g)||[]).forEach(g=>{g.replace(/[（）]/g,'').split('/').forEach(p=>aliases.add(p));});
-    aliases.add(d.model);aliases.add(base);
-    aliases.forEach(a=>{const n=norm(a);if(n&&!(n in aliasMap))aliasMap[n]=i;});
-  });
-  // alias manuels
-  const manual={'o1':'Onyx1'};
-  Object.keys(manual).forEach(k=>{const idx=docList.findIndex(d=>d.model===manual[k]);if(idx>=0&&!(k in aliasMap))aliasMap[k]=idx;});
-
-  function matchDoc(series,model){
-    for(const key of [series,model]){
-      if(!key)continue;const n=norm(key);if(n in aliasMap)return docList[aliasMap[n]];
+// ══════════════════════════════════════════════════════
+//  INDEX DOCS — onglet "Export" (Chemin / Nom / Type / Lien)
+// ══════════════════════════════════════════════════════
+function pickDocsSheet(wb){
+  const byName=wb.SheetNames.find(n=>/^export$/i.test(n));
+  if(byName) return byName;
+  for(const n of wb.SheetNames){
+    const a=XLSX.utils.sheet_to_json(wb.Sheets[n],{header:1,defval:''});
+    for(let i=0;i<Math.min(a.length,6);i++){
+      const row=(a[i]||[]).map(x=>String(x).toLowerCase());
+      if(row.some(x=>x.includes('chemin'))&&row.some(x=>x==='nom')) return n;
     }
-    const ns=norm(series);let best=null;
-    for(const a in aliasMap){if(a===ns)return docList[aliasMap[a]];}
-    for(const a in aliasMap){if(a.length>=3&&(ns.startsWith(a)||a.startsWith(ns))){if(!best||a.length>best.len)best={i:aliasMap[a],len:a.length};}}
-    return best?docList[best.i]:null;
   }
+  return wb.SheetNames[0];
+}
+function isDocsWorkbook(wb){
+  for(const n of wb.SheetNames){
+    const a=XLSX.utils.sheet_to_json(wb.Sheets[n],{header:1,defval:''});
+    for(let i=0;i<Math.min(a.length,6);i++){
+      const row=(a[i]||[]).map(x=>String(x).toLowerCase());
+      if(row.some(x=>x.includes('chemin'))&&row.some(x=>x==='nom')) return true;
+    }
+  }
+  return false;
+}
+function buildDocsIndex(wb){
+  const aoa=XLSX.utils.sheet_to_json(wb.Sheets[pickDocsSheet(wb)],{header:1,defval:''});
+  // en-tête
+  const normH=s=>String(s==null?'':s).toLowerCase().trim();
+  let hdr=0;
+  for(let i=0;i<Math.min(aoa.length,10);i++){
+    const r=(aoa[i]||[]).map(normH);
+    if(r.some(x=>x.includes('chemin'))&&r.some(x=>x==='nom')){hdr=i;break;}
+  }
+  const H=(aoa[hdr]||[]).map(normH);
+  const ci={
+    chemin:Math.max(0,H.findIndex(x=>x.includes('chemin')||x==='path')),
+    nom:Math.max(1,H.findIndex(x=>x==='nom'||x==='name')),
+    type:Math.max(2,H.findIndex(x=>x==='type')),
+    lien:Math.max(3,H.findIndex(x=>x==='lien'||x==='url'||x.includes('link'))),
+  };
+  let root='';
+  const allFolders=[],allFiles=[];
+  for(let i=hdr+1;i<aoa.length;i++){
+    const r=aoa[i]||[];
+    const chemin=String(r[ci.chemin]||'').trim();
+    const nom=String(r[ci.nom]||'').trim();
+    const type=String(r[ci.type]||'').trim().toLowerCase();
+    const lien=String(r[ci.lien]||'').trim();
+    if(!nom)continue;
+    if(type.startsWith('dossier')&&type.includes('racine')){root=nom;continue;}
+    if(type.startsWith('dossier'))allFolders.push({chemin,nom,lien});
+    else if(type.startsWith('fichier'))allFiles.push({chemin,nom,lien});
+  }
+  if(!root)root=allFolders.length?allFolders[0].chemin.split('/')[0]:'';
+  // dossiers produit = dossiers directement sous la racine (dédoublonnés : dossier + raccourci du même nom)
+  const folders=[];const byName={};
+  for(const f of allFolders){
+    if(f.chemin!==root)continue;
+    if(byName[f.nom]){if(!byName[f.nom].lien&&f.lien)byName[f.nom].lien=f.lien;continue;}
+    const o={name:f.nom,full:root+'/'+f.nom,lien:f.lien,files:[]};
+    byName[f.nom]=o;folders.push(o);
+  }
+  // rattachement des fichiers au dossier produit (dossier lui-même ou sous-dossier)
+  const sorted=folders.slice().sort((a,b)=>b.full.length-a.full.length);
+  const general=[];
+  for(const file of allFiles){
+    const doc={name:file.nom,url:file.lien,type:guessType(file.nom)};
+    if(file.chemin===root){general.push(doc);continue;}
+    const owner=sorted.find(f=>file.chemin===f.full||file.chemin.startsWith(f.full+'/'));
+    if(owner)owner.files.push(doc);
+  }
+  folders.forEach(f=>f.files.sort((a,b)=>(DOC_TYPES[a.type]||DOC_TYPES.other).order-(DOC_TYPES[b.type]||DOC_TYPES.other).order));
+  return {root,folders,general};
+}
 
-  // 2) Onglet Base → lignes SN valides (col C=2 … G=6)
-  const rows=XLSX.utils.sheet_to_json(baseWs,{header:1,defval:''});
-  const skip={'sn prefix':1,'lien':1,'vidéo de démontage':1,'vidéo de demontage':1};
-  const entries=[];
-  for(const r of rows){
-    const sn=String(r[2]==null?'':r[2]).trim();
-    if(!sn||skip[sn.toLowerCase()])continue;
-    const series=String(r[6]==null?'':r[6]).trim();
-    const model=String(r[4]==null?'':r[4]).trim();
-    const doc=matchDoc(series,model);
-    entries.push({
-      sn:sn, spn:String(r[3]==null?'':r[3]).trim(),
-      model:model, modelfull:String(r[5]==null?'':r[5]).trim(), series:series,
-      folder:doc?doc.link:'', video:doc?doc.video:'', maint:doc?doc.maint:''
+// ══════════════════════════════════════════════════════
+//  INDEX BoM — SN Prefix / Product Name / Product Model / Part No.
+// ══════════════════════════════════════════════════════
+function findBomSheet(wb){
+  for(const n of wb.SheetNames){
+    const a=XLSX.utils.sheet_to_json(wb.Sheets[n],{header:1,defval:''});
+    for(let i=0;i<Math.min(a.length,5);i++){
+      if((a[i]||[]).some(x=>String(x).toLowerCase().includes('sn prefix'))) return {name:n,hdr:i,aoa:a};
+    }
+  }
+  return null;
+}
+function isBomWorkbook(wb){return !!findBomSheet(wb);}
+function buildBomIndex(wb){
+  const s=findBomSheet(wb);
+  if(!s)throw new Error('Colonne "SN Prefix" introuvable');
+  const H=(s.aoa[s.hdr]||[]).map(x=>String(x).toLowerCase());
+  const col=(...keys)=>{for(const k of keys){const i=H.findIndex(x=>x.includes(k));if(i>=0)return i;}return -1;};
+  const ci={
+    sn:col('sn prefix'),
+    prodno:col('product name'),        // "Product No.: Product Name" = 8.01.xxxx
+    english:col('english name'),
+    station:col('station type'),
+    model:H.findIndex(x=>x==='product model'||x.includes('product model')),
+    family:col('family'),
+    partno:col('part no'),
+    partname:col('part english name','part name'),
+    moq:col('moq'),
+    level:col('repair level'),
+    price:col('salesprice','sales price','price'),
+  };
+  const bySn={};
+  for(let i=s.hdr+1;i<s.aoa.length;i++){
+    const r=s.aoa[i]||[];
+    const sn=String(r[ci.sn]||'').trim();
+    if(!sn)continue;
+    if(!bySn[sn])bySn[sn]={
+      sn:sn,
+      prodno:String(r[ci.prodno]||'').trim(),
+      model:String(r[ci.model]||'').trim(),
+      english:String(r[ci.english]||'').trim(),
+      station:String(r[ci.station]||'').trim(),
+      family:String(r[ci.family]||'').trim(),
+      parts:[]
+    };
+    const pn=String(r[ci.partno]||'').trim();
+    if(pn)bySn[sn].parts.push({
+      no:pn,
+      name:String(r[ci.partname]||'').trim(),
+      moq:String(r[ci.moq]||'').trim(),
+      level:String(r[ci.level]||'').trim(),
+      price:r[ci.price]
     });
   }
-  return {entries};
+  const list=Object.values(bySn);
+  list.forEach(v=>v.parts.sort((a,b)=>a.no.localeCompare(b.no)));
+  list.sort((a,b)=>a.model.localeCompare(b.model,'fr')||a.sn.localeCompare(b.sn));
+  return list;
 }
 
-function applyIndex(res){
-  ENTRIES=res.entries;
-  const withDoc=ENTRIES.filter(e=>e.folder).length;
-  const badge=document.getElementById('badge');
-  badge.className='badge';badge.textContent='✅ '+ENTRIES.length+' réf. · '+withDoc+' avec docs';
+// ══════════════════════════════════════════════════════
+//  ASSOCIATION version BoM ↔ dossier docs
+// ══════════════════════════════════════════════════════
+function normKey(s){
+  s=String(s).toLowerCase().replace(/q\s*revo/g,'qrevo');
+  return s.replace(/[^a-z0-9+]/g,'').replace(/\+/g,'plus');
+}
+// 'Qrevo0 MaxV' → ['Qrevo MaxV'] : le chiffre collé en fin de mot code la version matérielle.
+// Génère les variantes en retirant ce chiffre (un mot à la fois), sans toucher aux chiffres
+// faisant partie du nom (Q7, F25, H60…).
+function modelVariants(model){
+  const toks=String(model).split(' ');
+  const out=[];
+  toks.forEach((t,i)=>{
+    const m2=t.match(/^([A-Za-z]+.*?[A-Za-z])(\d)(\+?)$/);
+    if(m2){const c=toks.slice();c[i]=m2[1]+m2[3];out.push(c.join(' '));}
+  });
+  return out;
+}
+function aliasesOfFolder(folder){
+  const al=new Set();
+  const f=String(folder).replace(/（/g,'(').replace(/）/g,')');
+  const parens=(f.match(/\(([^()]*)\)/g)||[]).map(x=>x.slice(1,-1));
+  const base=f.replace(/\([^()]*\)/g,'');
+  base.split(/[\/&]/).forEach(seg=>{seg=seg.trim();if(seg)al.add(seg);});
+  parens.forEach(g=>g.split(/[\/&]/).forEach(seg=>{seg=seg.trim();if(seg)al.add(seg);}));
+  // combinaisons base+variante : 'Q10(V/VF)(+)' → Q10V, Q10VF, Q10+…
+  const re=/([A-Za-z0-9 ]+?)\(([^()]*)\)/g;let m;
+  while((m=re.exec(f))){
+    const b=m[1].trim().split('/').pop().split('&').pop().trim();
+    m[2].split(/[\/&]/).forEach(v=>{v=v.trim();if(b&&v)al.add(b+v);});
+  }
+  al.add(f);al.add(base);
+  const out=new Set();
+  al.forEach(a=>{const n=normKey(a);if(n)out.add(n);});
+  return out;
+}
+function candidatesOf(model,family){
+  const fam=String(family).replace(/（/g,'(').replace(/）/g,')');
+  const raw=[fam.replace(/\([^()]*\)/g,'').trim(),fam]
+    .concat((fam.match(/\(([^()]*)\)/g)||[]).map(x=>x.slice(1,-1)))
+    .concat(modelVariants(model)).concat([model]);
+  const seen=[];
+  raw.forEach(x=>{const n=normKey(x);if(n&&!seen.includes(n))seen.push(n);});
+  return seen;
+}
+function matchFolder(version,folders,folderAliases){
+  if(MANUAL_MATCH[version.sn]){
+    const f=folders.find(x=>x.name===MANUAL_MATCH[version.sn]);
+    if(f)return {folder:f,approx:false};
+  }
+  const cl=candidatesOf(version.model,version.family);
+  for(const c of cl){
+    for(let i=0;i<folders.length;i++){
+      if(folderAliases[i].has(c))return {folder:folders[i],approx:false};
+    }
+  }
+  // repli : préfixe commun le plus long (association approximative)
+  let best=null;
+  for(const c of cl){
+    for(let i=0;i<folders.length;i++){
+      folderAliases[i].forEach(a=>{
+        if(a.length>=4&&c.length>=4&&(a.startsWith(c)||c.startsWith(a))){
+          if(!best||a.length>best.len)best={i:i,len:a.length};
+        }
+      });
+    }
+  }
+  return best?{folder:folders[best.i],approx:true}:{folder:null,approx:false};
+}
+
+// ══════════════════════════════════════════════════════
+//  CONSTRUCTION DES FICHES
+// ══════════════════════════════════════════════════════
+function rebuildEntries(){
+  ENTRIES=[];
+  const folders=DOCS?DOCS.folders:[];
+  const folderAliases=folders.map(f=>aliasesOfFolder(f.name));
+  const used=new Set();
+  if(BOM){
+    for(const v of BOM){
+      const m=DOCS?matchFolder(v,folders,folderAliases):{folder:null,approx:false};
+      if(m.folder)used.add(m.folder.name);
+      ENTRIES.push({kind:'version',sn:v.sn,model:v.model,variants:modelVariants(v.model),english:v.english,
+        station:v.station,family:v.family,prodno:v.prodno,parts:v.parts,
+        folder:m.folder,approx:m.approx});
+    }
+  }
+  // dossiers docs sans version BoM associée → fiches "docs seulement"
+  for(const f of folders){
+    if(!used.has(f.name))ENTRIES.push({kind:'docs',sn:'',model:f.name,variants:[],english:'',
+      station:'',family:'',prodno:'',parts:[],folder:f,approx:false});
+  }
+  updateBadge();
   doSearch();
-  return ENTRIES.length;
+}
+function updateBadge(){
+  const badge=document.getElementById('badge');
+  if(!BOM&&!DOCS)return;
+  const nv=BOM?BOM.length:0;
+  const nf=DOCS?DOCS.folders.length:0;
+  const np=BOM?BOM.reduce((s,v)=>s+v.parts.length,0):0;
+  let maj='';
+  if(LAST_MODIFIED){const d=new Date(LAST_MODIFIED);if(!isNaN(d))maj=' · MàJ '+d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'2-digit'});}
+  if(!BOM||!BOM.length){
+    badge.className='badge error';
+    badge.textContent='⚠ '+nf+' dossiers docs — importer « Service BoM » pour la recherche par SN';
+  }else if(!DOCS){
+    badge.className='badge error';
+    badge.textContent='⚠ '+nv+' versions SN — importer « Suivi ajout » pour les documents';
+  }else{
+    badge.className='badge';
+    badge.textContent='✅ '+nv+' versions SN · '+nf+' dossiers docs · '+np+' pièces'+maj;
+  }
+  badge.title='Cliquer pour re-synchroniser';
+  badge.style.cursor='pointer';
+  badge.onclick=()=>{badge.className='badge loading';badge.textContent='🔄 Synchronisation…';autoLoad();};
 }
 
-async function loadFromUrl(url){
-  await ensureSheetJS();
+// ══════════════════════════════════════════════════════
+//  CHARGEMENT
+// ══════════════════════════════════════════════════════
+async function fetchWb(url){
   const bust=url+(url.includes('?')?'&':'?')+'_='+Date.now();
   const resp=await fetch(bust,{cache:'no-store'});
-  if(!resp.ok)throw new Error('HTTP '+resp.status);
-  const wb=XLSX.read(await resp.arrayBuffer(),{type:'array'});
-  applyIndex(buildIndex(wb));
+  if(!resp.ok)throw new Error('HTTP '+resp.status+' — '+url.split('/').pop());
+  const lm=resp.headers.get('Last-Modified');
+  if(lm&&(!LAST_MODIFIED||new Date(lm)>new Date(LAST_MODIFIED)))LAST_MODIFIED=lm;
+  return XLSX.read(await resp.arrayBuffer(),{type:'array'});
 }
 async function autoLoad(){
   const badge=document.getElementById('badge');
-  try{await loadFromUrl(XLSX_URL);}
-  catch(e){badge.className='badge error';badge.textContent=(location.protocol==='file:'?'⚠ Ouvre via « Importer »':'⚠ '+(e.message||'Erreur'));}
-}
-
-function clearSearch(){document.getElementById('q').value='';document.getElementById('q').focus();doSearch();}
-
-function haystack(e){return (e.sn+' '+e.model+' '+e.modelfull+' '+e.series+' '+e.spn).toLowerCase();}
-
-// Affiche / masque la liste des fichiers du dossier Drive (aperçu intégré)
-function toggleFiles(i,fid,btn){
-  const panel=document.getElementById('fp'+i);
-  const card=btn.closest('.ri-card').querySelector('.ri');
-  if(!panel)return;
-  const open=panel.style.display!=='none';
-  if(open){panel.style.display='none';btn.classList.remove('on');card.classList.remove('open');return;}
-  if(!panel.dataset.loaded){
-    panel.innerHTML='<div class="fp-bar">📂 Fichiers du dossier — cliquez sur un fichier pour l\'ouvrir'+
-      '<a href="https://drive.google.com/drive/folders/'+fid+'" target="_blank" rel="noopener">Ouvrir dans Drive ↗</a></div>'+
-      '<iframe loading="lazy" src="https://drive.google.com/embeddedfolderview?id='+fid+'#list"></iframe>';
-    panel.dataset.loaded='1';
+  try{
+    await ensureSheetJS();
+    const [rd,rb]=await Promise.allSettled([fetchWb(DOCS_URL),fetchWb(BOM_URL)]);
+    if(rd.status==='fulfilled')DOCS=buildDocsIndex(rd.value);
+    if(rb.status==='fulfilled')BOM=buildBomIndex(rb.value);
+    if(!DOCS&&!BOM)throw new Error((rd.reason&&rd.reason.message)||'Erreur de chargement');
+    rebuildEntries();
+    if(rd.status==='rejected'||rb.status==='rejected'){
+      badge.className='badge error';
+      badge.textContent='⚠ Chargement partiel — '+(rd.status==='rejected'?'docs':'BoM')+' indisponible';
+    }
+  }catch(e){
+    badge.className='badge error';
+    badge.textContent=(location.protocol==='file:'?'⚠ Ouvre via « Importer »':'⚠ '+(e.message||'Erreur'));
   }
-  panel.style.display='block';btn.classList.add('on');card.classList.add('open');
 }
+
+// ══════════════════════════════════════════════════════
+//  RECHERCHE
+// ══════════════════════════════════════════════════════
+function clearSearch(){document.getElementById('q').value='';document.getElementById('q').focus();doSearch();}
+function haystack(e){
+  let h=e.sn+' '+e.model+' '+e.variants.join(' ')+' '+e.english+' '+e.family+' '+e.prodno+' '+e.station;
+  if(e.folder)h+=' '+e.folder.name+' '+e.folder.files.map(f=>f.name).join(' ');
+  if(e.parts.length)h+=' '+e.parts.map(p=>p.no+' '+p.name).join(' ');
+  return h.toLowerCase();
+}
+function matchToks(text,toks){const t=String(text).toLowerCase();return toks.every(x=>t.includes(x));}
 
 function doSearch(){
   const q=document.getElementById('q').value.trim().toLowerCase();
   const wrap=document.getElementById('main');
-  let list=ENTRIES;
-  if(q){const toks=q.split(/\s+/).filter(Boolean);list=list.filter(e=>{const h=haystack(e);return toks.every(t=>h.includes(t));});}
+  const nv=ENTRIES.filter(e=>e.kind==='version').length;
 
   if(!q){
-    wrap.innerHTML='<div class="empty-state"><div class="empty-state-icon">🔍</div><h3>'+ENTRIES.length+' références indexées</h3><p>Tapez un préfixe SN (5 caractères), un modèle ou une série pour commencer.</p></div>';
+    wrap.innerHTML='<div class="empty-state"><div class="empty-state-icon">🔍</div><h3>'+nv+' versions produit indexées</h3><p>Tapez un préfixe SN (5 caractères), un modèle, une famille ou un n° de pièce pour commencer.</p></div>'+generalDocsHtml();
     return;
   }
+  const toks=q.split(/\s+/).filter(Boolean);
+  let list=ENTRIES.filter(e=>{const h=haystack(e);return toks.every(t=>h.includes(t));});
+  // versions d'abord, puis les fiches docs
+  list=list.slice().sort((a,b)=>((a.kind==='version')?0:1)-((b.kind==='version')?0:1));
+
   if(!list.length){
-    wrap.innerHTML='<div class="empty-state"><div class="empty-state-icon">🤷</div><h3>Aucun résultat pour « '+esc(q)+' »</h3><p>Vérifiez le préfixe SN ou essayez un nom de modèle.</p></div>';
+    const bomMissing=(!BOM||!BOM.length);
+    const snLike=/^r[a-z0-9]{3,4}$/i.test(q);
+    const hint=(bomMissing&&snLike)
+      ?'La recherche par préfixe SN nécessite le fichier <b>Service BoM-CE-FnacDarty.xlsx</b>, qui n\'est pas chargé. Cliquez sur <b>« Importer un Excel »</b> en haut de page pour le charger.'
+      :'Vérifiez le préfixe SN, le modèle ou le n° de pièce.';
+    wrap.innerHTML='<div class="empty-state"><div class="empty-state-icon">'+(bomMissing&&snLike?'⚠️':'🤷')+'</div><h3>Aucun résultat pour « '+esc(q)+' »</h3><p>'+hint+'</p></div>';
     return;
   }
-  const shown=list.slice(0,300);
-  wrap.innerHTML='<div class="results-header"><b>'+list.length+'</b> résultat'+(list.length>1?'s':'')+(list.length>300?' (300 affichés)':'')+'</div>'+
-    shown.map((e,i)=>{
-      const fid=driveFolderId(e.folder);
-      const filesBtn=fid
-        ?'<button class="ri-btn files" onclick="toggleFiles('+i+',\''+fid+'\',this)">📂 Fichiers du dossier</button>'
-        :(e.folder?'<a class="ri-btn docs" href="'+esc(e.folder)+'" target="_blank" rel="noopener">📁 Ouvrir</a>'
-                  :'<span class="ri-btn off" title="Aucun dossier Drive associé à cette série">📁 Indisponible</span>');
-      const openBtn=fid?'<a class="ri-btn docs" href="'+esc(e.folder)+'" target="_blank" rel="noopener" title="Ouvrir le dossier dans Google Drive">↗</a>':'';
-      const vidBtn=e.video?'<a class="ri-btn video" href="'+esc(e.video)+'" target="_blank" rel="noopener">🎬 Démontage</a>':'';
-      const maintBlock=e.maint?'<div class="ri-maint"><b>⚠️</b><span>'+esc(e.maint)+'</span></div>':'';
+  const shown=list.slice(0,50);
+  wrap.innerHTML='<div class="results-header"><b>'+list.length+'</b> résultat'+(list.length>1?'s':'')+(list.length>50?' (50 affichés)':'')+'</div>'+
+    shown.map(e=>{
+      const idx=ENTRIES.indexOf(e);
+      const nd=e.folder?e.folder.files.length:0;
+      const np=e.parts.length;
+      const docsBtn=e.folder
+        ?'<button class="ri-btn docs" id="bd'+idx+'" onclick="togglePanel('+idx+',\'docs\')">📄 Documents ('+nd+')</button>'
+        :'<span class="ri-btn off" title="Aucun dossier Drive associé à cette version">📄 Docs indisponibles</span>';
+      const partsBtn=np?'<button class="ri-btn parts" id="bp'+idx+'" onclick="togglePanel('+idx+',\'parts\')">🧩 Pièces ('+np+')</button>':'';
+      const driveBtn=(e.folder&&e.folder.lien)?'<a class="ri-btn drive" href="'+esc(e.folder.lien)+'" target="_blank" rel="noopener" title="Ouvrir le dossier dans Google Drive">↗ Drive</a>':'';
+      // aperçus : docs / pièces correspondant à la recherche (hors match SN/modèle)
+      const hits=[];
+      if(e.folder)e.folder.files.forEach(f=>{if(matchToks(f.name,toks))hits.push({t:'doc',d:f});});
+      e.parts.forEach(p=>{if(matchToks(p.no+' '+p.name,toks))hits.push({t:'part',d:p});});
+      const hitHtml=hits.length&&hits.length<=30?('<div class="ri-hits">'+hits.slice(0,4).map(h=>{
+        if(h.t==='doc'){const t=DOC_TYPES[h.d.type]||DOC_TYPES.other;
+          return '<div class="ri-hit"><span class="ri-hit-ic">'+t.icon+'</span><span class="ri-hit-name" title="'+esc(h.d.name)+'">'+hl(h.d.name,q)+'</span>'+
+            '<a class="mini-btn preview" href="'+esc(previewUrl(h.d.url))+'" target="_blank" rel="noopener">👁 Aperçu</a>'+
+            '<a class="mini-btn dl" href="'+esc(downloadUrl(h.d.url))+'" target="_blank" rel="noopener">⬇</a></div>';}
+        return '<div class="ri-hit"><span class="ri-hit-ic">🧩</span><span class="ri-hit-name">'+hl(h.d.no+' — '+h.d.name,q)+'</span>'+
+          '<span class="lvl '+lvlClass(h.d.level)+'">'+esc(h.d.level||'—')+'</span>'+(h.d.price!=null&&h.d.price!==''?'<span style="font-weight:700;font-size:12px">'+fmtPrice(h.d.price)+'</span>':'')+'</div>';
+      }).join('')+(hits.length>4?'<div style="font-size:11px;color:var(--text-3)">+ '+(hits.length-4)+' autre'+(hits.length>5?'s':'')+' correspondance'+(hits.length>5?'s':'')+' — voir les panneaux ci-dessus</div>':'')+'</div>'):'';
       return '<div class="ri-card">'+
-        '<div class="ri">'+
-          '<div class="ri-avatar">🤖</div>'+
+        '<div class="ri" id="ri'+idx+'">'+
+          '<div class="ri-avatar'+(e.kind==='docs'?' res':'')+'">'+(e.kind==='docs'?'📁':'🤖')+'</div>'+
           '<div class="ri-info">'+
-            '<div class="ri-sn">SN '+hl(e.sn,q)+'</div>'+
+            (e.sn?'<div class="ri-sn">SN '+hl(e.sn,q)+'</div>':'')+
             '<div class="ri-name">'+hl(e.model||'—',q)+'</div>'+
-            (e.modelfull?'<div class="ri-sub">'+hl(e.modelfull,q)+'</div>':'')+
+            (e.english?'<div class="ri-sub">'+hl(e.english,q)+'</div>':(e.kind==='docs'?'<div class="ri-sub">Dossier de documentation (pas de version BoM associée)</div>':''))+
             '<div class="ri-tags">'+
-              (e.series?'<span class="tag fam">Série '+hl(e.series,q)+'</span>':'')+
-              (e.spn?'<span class="tag spn">'+hl(e.spn,q)+'</span>':'')+
+              (e.family?'<span class="tag fam">Famille '+hl(e.family,q)+'</span>':'')+
+              (e.prodno?'<span class="tag spn">'+hl(e.prodno,q)+'</span>':'')+
+              (e.station?'<span class="tag">'+hl(e.station,q)+'</span>':'')+
+              (e.folder&&e.kind==='version'?'<span class="tag docs" title="'+esc(e.folder.name)+'">📂 '+esc(shorten(e.folder.name,38))+'</span>':'')+
+              (e.approx?'<span class="tag approx" title="Association docs déduite par rapprochement de noms — à vérifier">≈ association approx.</span>':'')+
             '</div>'+
           '</div>'+
-          '<div class="ri-actions">'+filesBtn+openBtn+vidBtn+'</div>'+
-          maintBlock+
+          '<div class="ri-actions">'+docsBtn+partsBtn+driveBtn+'</div>'+
+          hitHtml+
         '</div>'+
-        (fid?'<div class="files-panel" id="fp'+i+'" style="display:none"></div>':'')+
+        '<div id="pnl'+idx+'" style="display:none"></div>'+
       '</div>';
     }).join('');
 }
+function shorten(s,n){s=String(s);return s.length>n?s.slice(0,n-1)+'…':s;}
+function lvlClass(l){return /^l[0-2]$/i.test(String(l).trim())?String(l).trim().toUpperCase():'Lx';}
+function fmtPrice(p){const n=parseFloat(p);return isNaN(n)?esc(p):n.toFixed(2)+' €';}
 
-// ── Import manuel ──
+// ══════════════════════════════════════════════════════
+//  PANNEAUX (documents / pièces) — rendus à la demande
+// ══════════════════════════════════════════════════════
+function togglePanel(idx,mode){
+  const e=ENTRIES[idx];if(!e)return;
+  const pnl=document.getElementById('pnl'+idx);
+  const card=document.getElementById('ri'+idx);
+  const bd=document.getElementById('bd'+idx),bp=document.getElementById('bp'+idx);
+  const open=pnl.style.display!=='none'&&pnl.dataset.mode===mode;
+  if(bd)bd.classList.remove('on');if(bp)bp.classList.remove('on');
+  if(open){pnl.style.display='none';pnl.dataset.mode='';card.classList.remove('open');return;}
+  pnl.innerHTML=mode==='docs'?docsPanelHtml(e):partsPanelHtml(e,idx);
+  pnl.dataset.mode=mode;
+  pnl.style.display='block';card.classList.add('open');
+  if(mode==='docs'&&bd)bd.classList.add('on');
+  if(mode==='parts'&&bp)bp.classList.add('on');
+}
+function docRowHtml(d){
+  const t=DOC_TYPES[d.type]||DOC_TYPES.other;
+  return '<div class="doc-row"><span class="d-ic">'+t.icon+'</span><span class="d-name" title="'+esc(d.name)+'">'+esc(d.name)+'</span>'+
+    '<a class="mini-btn preview" href="'+esc(previewUrl(d.url))+'" target="_blank" rel="noopener">👁 Aperçu</a>'+
+    '<a class="mini-btn dl" href="'+esc(downloadUrl(d.url))+'" target="_blank" rel="noopener">⬇ Télécharger</a></div>';
+}
+function docsPanelHtml(e){
+  const f=e.folder;
+  let html='<div class="panel"><div class="p-bar">📂 '+esc(f.name)+
+    (f.lien?'<a href="'+esc(f.lien)+'" target="_blank" rel="noopener">Ouvrir dans Drive ↗</a>':'')+'</div>';
+  if(!f.files.length){html+='<div class="no-docs">Aucun fichier listé dans l\'export pour ce dossier.</div>';}
+  else{
+    const groups={};
+    f.files.forEach(d=>{(groups[d.type]=groups[d.type]||[]).push(d);});
+    Object.keys(groups).sort((a,b)=>(DOC_TYPES[a]||DOC_TYPES.other).order-(DOC_TYPES[b]||DOC_TYPES.other).order)
+      .forEach(type=>{
+        const t=DOC_TYPES[type]||DOC_TYPES.other;
+        html+='<div class="type-section"><div class="section-head"><span>'+t.icon+' '+esc(t.label)+'</span><span class="count">'+groups[type].length+'</span></div>'+
+          groups[type].map(docRowHtml).join('')+'</div>';
+      });
+  }
+  return html+'</div>';
+}
+function partsPanelHtml(e,idx){
+  return '<div class="panel parts"><div class="p-bar">🧩 Pièces détachées — '+esc(e.model)+' (SN '+esc(e.sn)+') · '+e.parts.length+' réf.</div>'+
+    '<input class="parts-filter" id="pf'+idx+'" placeholder="Filtrer les pièces (n° ou désignation)…" oninput="renderParts('+idx+')">'+
+    '<div class="parts-scroll" id="pt'+idx+'">'+partsTableHtml(e.parts)+'</div></div>';
+}
+function partsTableHtml(parts){
+  return '<table class="parts-table"><thead><tr><th>Part No.</th><th>Désignation</th><th>Niveau</th><th>MOQ</th><th style="text-align:right">Prix</th></tr></thead><tbody>'+
+    parts.map(p=>'<tr><td class="pn">'+esc(p.no)+'</td><td>'+esc(p.name)+'</td>'+
+      '<td><span class="lvl '+lvlClass(p.level)+'">'+esc(p.level||'—')+'</span></td>'+
+      '<td>'+esc(p.moq)+'</td><td class="price">'+(p.price!=null&&p.price!==''?fmtPrice(p.price):'—')+'</td></tr>').join('')+
+    '</tbody></table>';
+}
+function renderParts(idx){
+  const e=ENTRIES[idx];if(!e)return;
+  const f=document.getElementById('pf'+idx).value.trim().toLowerCase();
+  const toks=f.split(/\s+/).filter(Boolean);
+  const list=toks.length?e.parts.filter(p=>matchToks(p.no+' '+p.name+' '+p.level,toks)):e.parts;
+  document.getElementById('pt'+idx).innerHTML=list.length?partsTableHtml(list):'<div class="no-docs">Aucune pièce ne correspond.</div>';
+}
+
+// ══════════════════════════════════════════════════════
+//  DOCUMENTS GÉNÉRAUX (racine du Drive)
+// ══════════════════════════════════════════════════════
+function generalDocsHtml(){
+  if(!DOCS||!DOCS.general.length)return '';
+  return '<div class="gen-card"><div class="gen-title">📌 Documents généraux Roborock <span class="count" style="font-size:10px;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0 7px;color:var(--text-3)">'+DOCS.general.length+'</span></div>'+
+    DOCS.general.map(docRowHtml).join('')+'</div>';
+}
+
+// ══════════════════════════════════════════════════════
+//  IMPORT MANUEL (détection auto docs / BoM)
+// ══════════════════════════════════════════════════════
 function openImportModal(){document.getElementById('importModal').classList.remove('hidden');document.getElementById('importResult').style.display='none';}
 function closeImportModal(){document.getElementById('importModal').classList.add('hidden');}
 function pickFile(){document.getElementById('fileInput').click();}
-document.getElementById('fileInput').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(f)handleFile(f);e.target.value='';});
+document.getElementById('fileInput').addEventListener('change',e=>{if(e.target.files&&e.target.files.length)handleFiles(e.target.files);e.target.value='';});
 function dzOver(e){e.preventDefault();document.getElementById('importDrop').classList.add('over');}
 function dzLeave(){document.getElementById('importDrop').classList.remove('over');}
-function dzDrop(e){e.preventDefault();dzLeave();const f=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];if(f)handleFile(f);}
-async function handleFile(file){
+function dzDrop(e){e.preventDefault();dzLeave();if(e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files.length)handleFiles(e.dataTransfer.files);}
+async function handleFiles(files){
   const rd=document.getElementById('importResult');rd.style.display='none';
   try{
     await ensureSheetJS();
-    const wb=XLSX.read(await file.arrayBuffer(),{type:'array'});
-    const n=applyIndex(buildIndex(wb));
-    rd.className='import-result ok';rd.innerHTML='✅ <strong>'+n+' références</strong> chargées depuis <em>'+esc(file.name)+'</em>.';rd.style.display='block';
-    setTimeout(closeImportModal,900);
+    const msgs=[];
+    for(const file of files){
+      const wb=XLSX.read(await file.arrayBuffer(),{type:'array'});
+      if(isBomWorkbook(wb)){BOM=buildBomIndex(wb);msgs.push('<strong>'+BOM.length+' versions SN</strong> (BoM) — <em>'+esc(file.name)+'</em>');}
+      else if(isDocsWorkbook(wb)){DOCS=buildDocsIndex(wb);msgs.push('<strong>'+DOCS.folders.length+' dossiers docs</strong> — <em>'+esc(file.name)+'</em>');}
+      else msgs.push('⚠️ Format non reconnu — <em>'+esc(file.name)+'</em>');
+    }
+    rebuildEntries();
+    let warn='';
+    if(!BOM||!BOM.length)warn='<br>⚠️ Il manque encore <strong>Service BoM-CE-FnacDarty.xlsx</strong> (recherche par préfixe SN &amp; pièces).';
+    else if(!DOCS)warn='<br>⚠️ Il manque encore <strong>FRoborock - Docs RR … Suivi ajout.xlsx</strong> (documents Drive).';
+    rd.className='import-result ok';rd.innerHTML='✅ '+msgs.join('<br>')+warn;rd.style.display='block';
+    if(!warn)setTimeout(closeImportModal,1200);
   }catch(err){rd.className='import-result err';rd.innerHTML='⚠️ Erreur : '+esc(err.message||String(err));rd.style.display='block';}
 }
 
