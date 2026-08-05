@@ -89,6 +89,10 @@
   .side .dt{font-size:.7rem;color:var(--muted);}
   .side .go{font-size:.72rem;font-weight:700;color:var(--secondary);border:1px solid var(--secondary);padding:4px 10px;border-radius:16px;white-space:nowrap;}
   .row:hover .go{background:var(--secondary);color:#fff;}
+  .side .acts{display:flex;gap:6px;}
+  .side .go:hover{background:var(--secondary);color:#fff;}
+  .side .dl{font-size:.72rem;font-weight:700;color:var(--primary);border:1px solid var(--primary);padding:4px 10px;border-radius:16px;white-space:nowrap;transition:.12s;}
+  .side .dl:hover{background:var(--primary);color:#fff;}
   .row.folder:hover{border-color:var(--fold);box-shadow:0 3px 12px rgba(177,72,102,.22);}
   .row.folder .go{color:var(--fold);border-color:var(--fold);}
   .row.folder:hover .go{background:var(--fold);color:#fff;}
@@ -182,6 +186,9 @@ function encPath(p){ return p.split('/').map(encodeURIComponent).join('/'); }
 function linkOf(path,name,isFolder){ const full = path + '/' + name;
   if(isFolder){ return LIB + '?id=' + encodeURIComponent('/'+full) + '&viewid=' + VIEW; }
   return SP + encPath(full); }
+/* Téléchargement forcé via l'endpoint download.aspx de SharePoint */
+function dlOf(it){ return SP + 'sites/SAVVY_FNACDARTY/_layouts/15/download.aspx?SourceUrl='
+  + encodeURIComponent('/' + it.p + '/' + it.n); }
 
 /* ---------- Utilitaires ---------- */
 function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
@@ -339,14 +346,21 @@ function clearAll(){ term=''; qEl.value=''; curCat='all'; curDocType='all'; curF
 /* Mise en évidence des termes recherchés */
 function hi(s){ if(!term) return esc(s); const words=term.split(/\s+/).filter(Boolean); let out=esc(s);
   words.forEach(w=>{ const rx=new RegExp('('+w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'); out=out.replace(rx,'<mark>$1</mark>'); }); return out; }
-function fileRow(it, showCrumb){ const ec=extClass(it); const row=document.createElement('a');
-  row.className='row'; row.href=it.u; row.target='_blank'; row.rel='noopener';
+function fileRow(it, showCrumb){ const ec=extClass(it); const row=document.createElement('div');
+  row.className='row';
+  row.onclick=()=>window.open(it.u,'_blank','noopener');   /* clic sur la carte = aperçu */
   let sub;
   if(showCrumb){ sub='<b>'+esc(it.cat)+'</b>'+(it.fa?' · '+esc(it.fa):'')+' · '+hi(relOf(it.p)||ROOTLABEL); }
   else { sub=(it.fa?'<b>'+esc(it.fa)+'</b>':'') + (it.t?((it.fa?' · ':'')+esc(it.t)):''); }
+  const dlUrl = dlOf(it);
   row.innerHTML='<div class="ext '+ec.c+'">'+ec.t+'</div>'+
     '<div class="meta"><div class="nm">'+hi(it.n)+'</div><div class="bc">'+(sub||'&nbsp;')+'</div></div>'+
-    '<div class="side">'+(it.d?'<span class="dt">'+esc(it.d)+'</span>':'')+'<span class="go">Ouvrir ↗</span></div>';
+    '<div class="side">'+(it.d?'<span class="dt">'+esc(it.d)+'</span>':'')+
+      '<div class="acts">'+
+        '<a class="go" href="'+esc(it.u)+'" target="_blank" rel="noopener" title="Ouvrir l\'aperçu dans un nouvel onglet">Aperçu ↗</a>'+
+        '<a class="dl" href="'+esc(dlUrl)+'" title="Télécharger le fichier">Télécharger ⬇</a>'+
+      '</div></div>';
+  row.querySelectorAll('.acts a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
   return row; }
 
 function render(){ filtersActive() ? renderFlat() : renderBrowse(); }
