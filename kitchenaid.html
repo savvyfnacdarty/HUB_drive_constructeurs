@@ -122,7 +122,7 @@
 <div class="hero">
   <img class="hero-logo" src="kitchenaid/logo_Kitchenaid.jpg" alt="KitchenAid" onerror="this.style.display='none'">
   <h2>Rechercher un document, un modèle, une référence</h2>
-  <p>Service Playbook — garanties, vues éclatées, tarifs pièces et manuels, liens directs vers le Drive</p>
+  <p>Service Playbook — garanties, vues éclatées, tarifs pièces et manuels, liens directs vers le SharePoint SAVVY</p>
   <div class="searchwrap">
     <input id="q" type="search" autocomplete="off" placeholder="Ex : 5KSM70, warranty, espresso, pricelist, stand mixer...">
     <span class="ic">🔎</span>
@@ -135,7 +135,7 @@
     <div class="xls-ic">XLSX</div>
     <div class="sy-main">
       <div class="sy-title"><span class="live" id="syncDot"></span><span id="syncTitle">Chargement du fichier Excel…</span></div>
-      <div class="sy-file">Source : <b>Kitchenaid Service Playbook - Export.xlsx</b> · export Drive KitchenAid · <span id="syncDate">—</span></div>
+      <div class="sy-file">Source : <b>Kitchenaid Service Playbook - Export.xlsx</b> · export SharePoint SAVVY · <span id="syncDate">—</span></div>
       <label class="sy-upload">↥ Prévisualiser un autre export<input id="filePick" type="file" accept=".xlsx,.xls" hidden></label>
     </div>
     <div class="sy-stats">
@@ -157,7 +157,7 @@
 </main>
 
 <footer>
-  Données synchronisées depuis l'export du Drive KitchenAid (Service Playbook). Les liens ouvrent directement le document ou le dossier dans un nouvel onglet (accès Drive requis).
+  Données synchronisées depuis SharePoint SAVVY (KitchenAid Service Playbook). Les liens ouvrent directement le document ou le dossier sur groupefnac.sharepoint.com (connexion requise).
 </footer>
 
 <!-- ===== Bouton retour en haut ===== -->
@@ -168,11 +168,20 @@
 /* =====================================================================
    KitchenAid — Service Playbook
    Lecture au runtime de kitchenaid/Kitchenaid Service Playbook - Export.xlsx
-   (feuille "Export" : Chemin | Nom | Type | Lien | Dernière modification)
-   Même moteur que les autres pages du HUB (recherche, filtres, arborescence).
+   (export SharePoint SAVVY : Nom | Modifié | Modifié par | État de
+   validation | Type d'élément | Chemin d'accès)
+   Les liens sont reconstruits depuis le chemin, comme laurastar.html.
    ===================================================================== */
 const EXCEL_FILE = "kitchenaid/Kitchenaid Service Playbook - Export.xlsx";
-const ROOTLABEL  = "Service Playbook";
+const ROOTLABEL  = "Service Playbook";                 /* libellé affiché   */
+const ROOTPATH   = "Documents partages/KitchenAid";    /* racine dans les chemins */
+const SP   = "https://groupefnac.sharepoint.com/";
+const LIB  = "https://groupefnac.sharepoint.com/sites/SAVVY_FNACDARTY/Documents%20partages/Forms/AllItems.aspx";
+const VIEW = "4B095B6C-E238-4145-AEAC-58FC81495ECD";
+function encPath(p){ return p.split('/').map(encodeURIComponent).join('/'); }
+function linkOf(path,name,isFolder){ const full = path + '/' + name;
+  if(isFolder){ return LIB + '?id=' + encodeURIComponent('/'+full) + '&viewid=' + VIEW; }
+  return SP + encPath(full); }
 
 /* ---------- Utilitaires ---------- */
 function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
@@ -192,10 +201,10 @@ function extClass(it){ if(it.f) return {c:'fold', t:'📁'};
 function typeLabel(it){ if(it.f) return '';
   const c = extClass(it).c;
   return {pdf:'PDF', doc:'Word', xls:'Excel', ppt:'PowerPoint', oth:'Autre'}[c] || 'Autre'; }
-/* Catégorie = 1er segment du chemin après "Service Playbook" */
+/* Catégorie = 1er segment du chemin après la racine KitchenAid */
 function relOf(p){ if(!p) return '';
-  let r = p; const i = p.indexOf(ROOTLABEL);
-  if(i>=0) r = p.slice(i+ROOTLABEL.length);
+  let r = p; const i = p.indexOf(ROOTPATH);
+  if(i>=0) r = p.slice(i+ROOTPATH.length);
   return r.replace(/^\/+/,'').replace(/\/+$/,'').trim(); }
 function catOf(it){ const rel = relOf(it.p);
   if(!rel) return it.f ? it.n.trim() : 'Général';
@@ -212,30 +221,29 @@ function famOf(it){ const rel = relOf(it.p);
 
 /* ---------- Construction des données depuis la feuille Excel ---------- */
 function buildFromAoA(aoa){
-  /* Recherche de la ligne d'en-têtes (Nom / Chemin / Lien) */
+  /* Recherche de la ligne d'en-têtes (Nom / Chemin d'accès) */
   let hr=-1;
   for(let i=0;i<Math.min(aoa.length,10);i++){
     const row=(aoa[i]||[]).map(c=>String(c==null?'':c).trim().toLowerCase());
-    if(row.includes('nom') && row.some(c=>c.includes('lien'))){ hr=i; break; } }
-  if(hr<0) throw new Error('En-têtes introuvables (Nom / Lien) dans le fichier Excel.');
+    if(row.includes('nom') && row.some(c=>c.includes('chemin'))){ hr=i; break; } }
+  if(hr<0) throw new Error('En-têtes introuvables (Nom / Chemin) dans le fichier Excel.');
   const H=aoa[hr].map(c=>String(c==null?'':c).trim().toLowerCase());
   const iNom=H.indexOf('nom');
   const iPath=H.findIndex(c=>c.includes('chemin'));
   const iType=H.findIndex(c=>c.includes('type'));
-  const iLien=H.findIndex(c=>c.includes('lien'));
-  const iMod=H.findIndex(c=>c.includes('modif'));
-  const out=[]; const seen=new Set();          /* dédoublonnage par lien */
+  const iMod=H.findIndex(c=>c.includes('modif'));   /* "Modifié" (avant "Modifié par") */
+  const out=[]; const seen=new Set();          /* dédoublonnage par chemin complet */
   for(let i=hr+1;i<aoa.length;i++){
     const r=aoa[i]||[]; const name=r[iNom];
     if(name==null||String(name).trim()==='') continue;
-    const lien=String(r[iLien]==null?'':r[iLien]).trim();
-    if(!lien) continue;
-    if(seen.has(lien)) continue;               /* doublon -> ignoré */
-    seen.add(lien);
     const typ=String(r[iType]==null?'':r[iType]).trim().toLowerCase();
     const path=String(r[iPath]==null?'':r[iPath]).trim();
+    if(!path) continue;
     const isFolder = typ.startsWith('dossier');
-    const o={ n:String(name).trim(), p:path, u:lien, f:isFolder?1:0,
+    const key=path+'/'+String(name).trim();
+    if(seen.has(key)) continue;                /* doublon -> ignoré */
+    seen.add(key);
+    const o={ n:String(name).trim(), p:path, u:linkOf(path,String(name).trim(),isFolder), f:isFolder?1:0,
               d:(iMod>=0?fmtDate(r[iMod]):'') };
     o.cat=catOf(o); o.fa=famOf(o); o.t=typeLabel(o);
     out.push(o); }
