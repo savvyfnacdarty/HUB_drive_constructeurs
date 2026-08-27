@@ -38,6 +38,8 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 .fdband nav a{color:#fff;text-decoration:none;font-size:.86rem;font-weight:600;padding:8px 18px;border-radius:8px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.4);transition:.15s;}
 .fdband nav a:hover{background:rgba(255,255,255,.28);}
 .fdband nav a.active{background:#fff;color:var(--accent-h);border-color:#fff;}
+.fdband nav a.faq{background:var(--accent);border-color:var(--accent);color:#fff;}
+.fdband nav a.faq:hover{background:var(--accent-h);border-color:var(--accent-h);}
 .fdband-sync{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px;}
 .badge{padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;background:rgba(100,167,11,.22);color:#EAFBEF;border:1px solid rgba(255,255,255,.35);}
 .badge.loading{background:rgba(255,255,255,.14);color:#fff;}
@@ -149,8 +151,8 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 <div class="fdband">
   <img class="fdband-logo" src="IMAGES/IROBOT.png" alt="iRobot" onerror="this.style.display='none'">
   <nav>
-    <a href="irobot.html" class="active">Recherche KB articles</a>
     <a href="irobot-bom.html">Lecteur de BOM (codic)</a>
+    <a href="iRobot/FAQ_IROBOT_Support_FR.html" class="faq">FAQ Support (FR)</a>
     <a href="https://assistance.irobot.fr" target="_blank" rel="noopener">Assistance iRobot officielle ↗</a>
   </nav>
   <div class="fdband-sync">
@@ -182,6 +184,10 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 <div class="docs-section">
   <div class="docs-title"><h2>📁 Documents du dossier iRobot</h2></div>
   <div class="docs-panel">
+    <a class="doc-card" href="iRobot/FAQ_IROBOT_Support_FR.html">
+      <div class="doc-icon">❓</div>
+      <div class="doc-txt"><div class="doc-name">FAQ Support iRobot (FR)</div><div class="doc-sub">Base de connaissances · liens FR · .html</div></div>
+    </a>
     <a class="doc-card" href="iRobot/Roomba%C2%AE%20205%20Vac%20Combo.docx">
       <div class="doc-icon">📄</div>
       <div class="doc-txt"><div class="doc-name">Roomba® 205 Vac Combo</div><div class="doc-sub">Fiche produit · .docx</div></div>
@@ -210,7 +216,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
   <div class="modal">
     <button class="modal-close" onclick="closeImportModal()">✕</button>
     <h3>📥 Importer le fichier Excel</h3>
-    <p class="modal-sub">Charge le fichier <code>KB articles 2025.xlsx</code> (onglets <code>105, 205, 405, 505</code>, <code>705 V</code>, <code>705C</code>).</p>
+    <p class="modal-sub">Charge le fichier <code>2026 KB list.xlsx</code> (onglets <code>Mini</code>, <code>115C</code>, <code>415C</code>, <code>515C and 575C</code>, <code>715V and 775C</code>).</p>
     <div class="import-drop" id="importDrop" ondragover="dzOver(event)" ondragleave="dzLeave()" ondrop="dzDrop(event)" onclick="pickFile()">
       <div class="import-drop-icon">📂</div>
       <div class="import-drop-text">Glisse le fichier ici ou clique pour le sélectionner</div>
@@ -222,17 +228,16 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 <input type="file" id="fileInput" accept=".xlsx,.xls,.xlsm" style="display:none">
 
 <script>
-const XLSX_URL='iRobot/KB articles 2025.xlsx';
+const XLSX_URL='iRobot/2026%20KB%20list.xlsx';
 const SHEETJS_CDN='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
 
 const MODELS=[
   {key:'ALL',  label:'Tous'},
-  {key:'105',  label:'105'},
-  {key:'205',  label:'205'},
-  {key:'405',  label:'405'},
-  {key:'505',  label:'505'},
-  {key:'705V', label:'705 V'},
-  {key:'705C', label:'705C'},
+  {key:'MINI', label:'Mini'},
+  {key:'115C', label:'115C'},
+  {key:'415C', label:'415C'},
+  {key:'515C', label:'515C / 575C'},
+  {key:'715',  label:'715V / 775C'},
 ];
 let CUR_MODEL='ALL';
 let BYMODEL={};   // { '105':[...], '205':[...], ... , 'ALL':[...] }
@@ -246,53 +251,36 @@ function catClass(cat){
   const c=(cat||'').toUpperCase();
   if(c.indexOf('ERROR')>=0||c.indexOf('EMERGENCY')>=0)return 'cat-error';
   if(c.indexOf('CARE')>=0)return 'cat-tech';
-  if(c.indexOf('POPULAR')>=0)return 'cat-accent';
+  if(c.indexOf('POPULAR')>=0||c.indexOf('NOUVEAU')>=0)return 'cat-accent';
   return '';
 }
 
-// ── Construit l'index à partir du classeur ──
+// ── Construit l'index à partir du classeur 2026 KB list.xlsx ──
+const SHEET_MAP=[
+  {sheet:'Mini',          key:'MINI'},
+  {sheet:'115C',          key:'115C'},
+  {sheet:'415C',          key:'415C'},
+  {sheet:'515C and 575C', key:'515C'},
+  {sheet:'715V and 775C', key:'715'},
+];
 function buildIndex(wb){
-  const byModel={'105':[],'205':[],'405':[],'505':[],'705V':[],'705C':[]};
-
-  const s1=wb.Sheets['105, 205, 405, 505'];
-  if(s1){
-    const rows=XLSX.utils.sheet_to_json(s1,{header:1,defval:''});
-    const modelCols=[{k:'105',i:2},{k:'205',i:3},{k:'405',i:4},{k:'505',i:5}];
+  const byModel={};
+  SHEET_MAP.forEach(sm=>{byModel[sm.key]=[];});
+  SHEET_MAP.forEach(sm=>{
+    const sh=wb.Sheets[sm.sheet];
+    if(!sh)return;
+    const rows=XLSX.utils.sheet_to_json(sh,{header:1,defval:''});
     for(let r=1;r<rows.length;r++){
       const row=rows[r];
-      const category=String(row[0]||'').trim();
-      const title=String(row[1]||'').trim();
+      const title=String(row[0]||'').trim();
       if(!title)continue;
-      const id=row[6];
-      const url=String(row[7]||'').trim();
-      modelCols.forEach(mc=>{
-        if(String(row[mc.i]||'').trim().toLowerCase()==='yes'){
-          byModel[mc.k].push({category,title,id,url,model:mc.k});
-        }
-      });
+      const isNew=String(row[1]||'').trim().toLowerCase()==='yes';
+      const id=String(row[2]||'').trim();
+      const url=String(row[3]||'').trim(); // lien assistance FR
+      byModel[sm.key].push({title,id,url,model:sm.key,category:isNew?'Nouveau 2026':''});
     }
-  }
-  const sV=wb.Sheets['705 V'];
-  if(sV){
-    const rows=XLSX.utils.sheet_to_json(sV,{header:1,defval:''});
-    for(let r=1;r<rows.length;r++){
-      const row=rows[r];
-      const title=String(row[1]||'').trim();
-      if(!title)continue;
-      byModel['705V'].push({category:String(row[0]||'').trim(),title,id:row[2],url:String(row[3]||'').trim(),model:'705V'});
-    }
-  }
-  const sC=wb.Sheets['705C'];
-  if(sC){
-    const rows=XLSX.utils.sheet_to_json(sC,{header:1,defval:''});
-    for(let r=1;r<rows.length;r++){
-      const row=rows[r];
-      const title=String(row[1]||'').trim();
-      if(!title)continue;
-      byModel['705C'].push({category:String(row[0]||'').trim(),title,id:row[2],url:String(row[3]||'').trim(),model:'705C'});
-    }
-  }
-  byModel.ALL=[].concat(byModel['105'],byModel['205'],byModel['405'],byModel['505'],byModel['705V'],byModel['705C']);
+  });
+  byModel.ALL=[].concat.apply([],SHEET_MAP.map(sm=>byModel[sm.key]));
   return byModel;
 }
 
@@ -357,7 +345,7 @@ function doSearch(){
             '<div class="ri-name">'+hl(e.title,q)+'</div>'+
             '<div class="ri-tags">'+
               (e.category?'<span class="tag '+cc+'">'+hl(e.category,q)+'</span>':'')+
-              (CUR_MODEL==='ALL'?'<span class="tag model">'+esc(e.model)+'</span>':'')+
+              (CUR_MODEL==='ALL'?'<span class="tag model">'+esc((MODELS.find(m=>m.key===e.model)||{}).label||e.model)+'</span>':'')+
               (e.id?'<span class="tag model">#'+esc(e.id)+'</span>':'')+
             '</div>'+
           '</div>'+
