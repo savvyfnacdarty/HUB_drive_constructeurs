@@ -37,6 +37,8 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 .fdband nav a{color:#fff;text-decoration:none;font-size:.86rem;font-weight:600;padding:8px 18px;border-radius:8px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.4);transition:.15s;}
 .fdband nav a:hover{background:rgba(255,255,255,.28);}
 .fdband nav a.active{background:#fff;color:var(--accent-h);border-color:#fff;}
+.fdband nav a.faq{background:var(--accent);border-color:var(--accent);color:#fff;}
+.fdband nav a.faq:hover{background:var(--accent-h);border-color:var(--accent-h);}
 .fdband-sync{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px;}
 .badge{padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;background:rgba(100,167,11,.22);color:#EAFBEF;border:1px solid rgba(255,255,255,.35);}
 .badge.loading{background:rgba(255,255,255,.14);color:#fff;}
@@ -129,7 +131,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
   <img class="fdband-logo" src="IMAGES/IROBOT.png" alt="iRobot" onerror="this.style.display='none'">
   <nav>
     <a href="irobot-bom.html" class="active">Lecteur de BOM (codic)</a>
-    <a href="iRobot/FAQ_IROBOT_Support_FR.html">FAQ Support (FR)</a>
+    <a href="iRobot/FAQ_IROBOT_Support_FR.html" class="faq">FAQ Support (FR)</a>
     <a href="https://assistance.irobot.fr" target="_blank" rel="noopener">Assistance iRobot officielle ↗</a>
   </nav>
   <div class="fdband-sync">
