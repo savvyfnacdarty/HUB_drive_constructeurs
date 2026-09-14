@@ -75,6 +75,56 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 .ri-bom-btn.dl{background:var(--accent);color:#1a1a1a;border:1px solid var(--accent);}
 .ri-bom-btn.dl:hover{background:var(--accent-h);}
 .ri-bom-more{font-size:11px;color:#92400E;opacity:.85;padding-top:2px;}
+/* Menu déroulant "tous les documents" sous un résultat Drive */
+.ri-all{margin-top:4px;border-top:1px dashed var(--accent-bd);padding-top:6px;}
+.ri-all>summary{cursor:pointer;list-style:none;font-size:11px;font-weight:700;color:#92400E;display:flex;align-items:center;gap:6px;user-select:none;}
+.ri-all>summary::-webkit-details-marker{display:none;}
+.ri-all>summary::before{content:'▸';font-size:12px;transition:transform .15s;}
+.ri-all[open]>summary::before{transform:rotate(90deg);}
+.ri-all>summary:hover{color:#78350F;}
+.ri-all-body{display:flex;flex-direction:column;gap:6px;padding-top:6px;}
+.ri-all-grp{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-3);margin-top:4px;}
+/* Bloc BOM Quick Lookup (Google Sheet Dreame) */
+.bq{margin-bottom:14px;border:1px solid #FDE68A;border-radius:var(--radius);background:#FFFBEB;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.bq>summary{cursor:pointer;list-style:none;padding:12px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;user-select:none;}
+.bq>summary::-webkit-details-marker{display:none;}
+.bq>summary::before{content:'▸';font-size:14px;color:#92400E;transition:transform .15s;}
+.bq[open]>summary::before{transform:rotate(90deg);}
+.bq-title{font-weight:800;font-size:14px;color:#78350F;}
+.bq-count{font-size:11px;font-weight:600;color:#92400E;background:#FEF3C7;border:1px solid #FDE68A;padding:2px 8px;border-radius:8px;}
+.bq-link{margin-left:auto;font-size:12px;font-weight:600;color:var(--blue-text);text-decoration:none;background:var(--blue-bg);border:1px solid var(--blue-bd);padding:5px 11px;border-radius:7px;}
+.bq-link:hover{background:#DBEAFE;}
+.bq-body{padding:0 12px 12px;display:flex;flex-direction:column;gap:6px;}
+.bq-empty{font-size:12px;color:#92400E;font-style:italic;padding:0 4px 4px;}
+.bqp{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm,8px);}
+.bqp>summary{cursor:pointer;list-style:none;padding:10px 12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;user-select:none;}
+.bqp>summary::-webkit-details-marker{display:none;}
+.bqp>summary::before{content:'▸';font-size:12px;color:var(--text-3);transition:transform .15s;}
+.bqp[open]>summary::before{transform:rotate(90deg);}
+.bqp>summary:hover{background:var(--bg);}
+.bqp-ic{font-size:16px;}
+.bqp-model{font-weight:700;font-size:14px;}
+.bqp-model.alt{font-size:12px;font-weight:600;color:var(--text-2);}
+.bqp-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.tag.proj{background:#FEF3C7;color:#92400E;border-color:#FDE68A;}
+.tag.brand{background:#F5F3FF;color:#5B21B6;border-color:#DDD6FE;}
+.tag.swap{background:#FEE2E2;color:#991B1B;border-color:#FECACA;}
+.bqp-body{padding:4px 12px 12px;display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--border);}
+.bqb{border:1px solid var(--border);border-radius:8px;padding:8px 10px;}
+.bqb.bom{background:#FFFBEB;border-color:#FDE68A;}
+.bqb-h{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text-2);margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.bqb-h .n{background:var(--surface);color:var(--text-3);padding:0 6px;border-radius:8px;font-size:9px;border:1px solid var(--border);}
+.bq-item{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:3px 0;}
+.bq-item+.bq-item{border-top:1px dashed rgba(0,0,0,.06);}
+.bq-item-name{flex:1;min-width:140px;font-size:12px;font-weight:600;color:#1f2937;word-break:break-word;}
+.bq-note{font-size:12px;color:var(--text-2);font-style:italic;padding:2px 0;}
+.bq-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.bq-chip{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;background:var(--surface);border:1px solid var(--border);color:var(--text);max-width:100%;}
+.bq-chip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.bq-chip:hover{border-color:var(--accent);background:var(--accent-bg);}
+.bq-chip.txt{background:transparent;border-style:dashed;color:var(--text-2);font-weight:500;cursor:default;}
+.bq-more{font-size:12px;color:#92400E;padding:4px;}
+.bq-more a{color:var(--blue-text);font-weight:600;}
 .ri:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);}
 .ri-avatar{width:40px;height:40px;background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
 .ri-avatar.res{background:var(--blue-bg);border-color:var(--blue-bd);}
@@ -636,12 +686,14 @@ function doSearch(){
     wrap.innerHTML='<div class="empty-state"><div class="empty-state-icon">🔍</div><h3>'+ENTRIES.filter(e=>e.isProduct).length+' produits indexés</h3><p>Tape une référence, un nom commercial ou choisis une catégorie ci-dessus.</p></div>';
     return;
   }
+  // Résultats du Google Sheet « BOM Quick Lookup » (même moteur que l'onglet Recherche BOM)
+  const bomHtml=q?bomLookupHtml(q):'';
   if(!list.length){
-    wrap.innerHTML='<div class="empty-state"><div class="empty-state-icon">🔍</div><h3>Aucun résultat'+(q?' pour "'+esc(q)+'"':'')+'</h3><p>Essaie une autre référence ou vérifie l\'orthographe.</p></div>';
+    wrap.innerHTML=bomHtml+'<div class="empty-state"><div class="empty-state-icon">🔍</div><h3>Aucun dossier Drive'+(q?' pour "'+esc(q)+'"':'')+'</h3><p>Essaie une autre référence ou vérifie l\'orthographe.</p></div>';
     return;
   }
   const plural=list.length>1;
-  wrap.innerHTML='<div class="results-header"><b>'+list.length+'</b> résultat'+(plural?'s':'')+' — clique pour voir les documents</div>'+
+  wrap.innerHTML=bomHtml+'<div class="results-header"><b>'+list.length+'</b> dossier'+(plural?'s':'')+' Drive — clique pour voir les documents</div>'+
     list.map((e,i)=>{
       const idx=ENTRIES.indexOf(e);
       const nb=e.docs.length;
@@ -674,7 +726,7 @@ function doSearch(){
       // BOM en tête (version la plus récente d'abord) pour qu'elles restent visibles avant la troncature
       show=show.slice().sort((a,b)=>((a.type==='bom')?0:1)-((b.type==='bom')?0:1) || bomVer(b.name)-bomVer(a.name));
       const MAXD=6, extra=show.length-MAXD, shown=show.slice(0,MAXD);
-      const docHtml=shown.map(d=>{
+      const docLine=d=>{
         const t=(DOC_TYPES[d.type]||DOC_TYPES.other);
         return '<div class="ri-bom-item">'+
           '<span class="ri-bom-ic">'+t.icon+'</span>'+
@@ -684,9 +736,20 @@ function doSearch(){
             :'<a class="ri-bom-btn preview" href="'+esc(previewUrl(d.url))+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">👁 Aperçu</a>')+
           '<a class="ri-bom-btn dl" href="'+esc(downloadUrl(d.url))+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">⬇ Télécharger</a>'+
         '</div>';
-      }).join('')+(extra>0?'<div class="ri-bom-more">+ '+extra+' autre'+(extra>1?'s':'')+' document'+(extra>1?'s':'')+' — cliquer pour ouvrir le dossier</div>':'');
+      };
+      // Menu déroulant : l'ensemble des documents du dossier, groupés par type
+      const shownSet=new Set(shown);
+      const rest=e.docs.filter(d=>!shownSet.has(d)).slice().sort((a,b)=>((DOC_TYPES[a.type]||DOC_TYPES.other).order-(DOC_TYPES[b.type]||DOC_TYPES.other).order)||bomVer(b.name)-bomVer(a.name)||a.name.localeCompare(b.name,'fr'));
+      let allHtml='';
+      if(rest.length){
+        let lastType=null;
+        allHtml='<details class="ri-all" onclick="event.stopPropagation()"><summary>'+(shown.length?'Voir les '+rest.length+' autre'+(rest.length>1?'s':'')+' document'+(rest.length>1?'s':'')+' du dossier':'Voir les '+rest.length+' document'+(rest.length>1?'s':'')+' du dossier')+'</summary><div class="ri-all-body">'+
+          rest.map(d=>{const t=(DOC_TYPES[d.type]||DOC_TYPES.other);let g='';if(t!==lastType){lastType=t;g='<div class="ri-all-grp">'+t.icon+' '+esc(t.label)+'</div>';}return g+docLine(d);}).join('')+
+        '</div></details>';
+      }
+      const docHtml=shown.map(docLine).join('')+allHtml;
       return '<div class="ri-card">'+
-        '<div class="ri'+(show.length?' ri-hasbom':'')+'" onclick="openDetail('+idx+')">'+
+        '<div class="ri'+((show.length||rest.length)?' ri-hasbom':'')+'" onclick="openDetail('+idx+')">'+
           '<div class="ri-avatar'+(e.isProduct?'':' res')+'">'+(e.isProduct?'📦':'📁')+'</div>'+
           '<div class="ri-info">'+
             '<div class="ri-name" title="'+esc(e.name||e.rawName)+'">'+hl(trTitle(e.name||e.rawName),q)+'</div>'+
@@ -694,9 +757,127 @@ function doSearch(){
             '<div class="ri-tags">'+tags+'</div>'+
           '</div>'+openBtn+
         '</div>'+
-        (show.length?'<div class="ri-bom">'+docHtml+'</div>':'')+
+        ((show.length||rest.length)?'<div class="ri-bom">'+docHtml+'</div>':'')+
       '</div>';
     }).join('');
+}
+
+// ══════════════════════════════════════════════════════
+//  BOM QUICK LOOKUP (Google Sheet Dreame → data/bom_lookup.json)
+//  Même logique de recherche que bom_lookup.html (onglet « Recherche BOM »)
+// ══════════════════════════════════════════════════════
+const BOM_DATA_URL='data/bom_lookup.json';
+const BOM_MAX=12;
+let BOM_ROWS=[], BOM_LOADED=false;
+const BOM_FAM={
+  'robot vacuum':{fr:'Robot aspirateur',ic:'🤖'},'wet&dry vacuum':{fr:'Aspirateur balai laveur',ic:'🧽'},
+  'cordless stick vacuum':{fr:'Aspirateur balai',ic:'🧹'},'roboticmower':{fr:'Robot tondeuse',ic:'🌱'},
+  'robotic pool cleaner':{fr:'Robot piscine',ic:'🏊'},'window cleaning robot':{fr:'Robot lave-vitres',ic:'🪟'},
+  'home appliances':{fr:'Électroménager (café…)',ic:'☕'},'hair dryer':{fr:'Sèche-cheveux',ic:'💨'},
+  'water hookup kit for auto refil':{fr:'Kit raccordement eau',ic:'🚰'},'air purifier':{fr:'Purificateur d’air',ic:'🌬️'},
+};
+function bomFam(name){return BOM_FAM[String(name).toLowerCase().trim()]||{fr:name,ic:'📦'};}
+function bomNorm(s){return String(s??'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
+function bomCompact(s){return bomNorm(s).replace(/[\s_\-–—\/&().,:;【】\[\]]+/g,'');}
+function bomDocKind(u){if(/docs\.google\.com\/spreadsheets/.test(u))return 'spreadsheets';if(/docs\.google\.com\/presentation/.test(u))return 'presentation';if(/docs\.google\.com\/document/.test(u))return 'document';if(/drive\.google\.com\/drive\/(u\/\d+\/)?folders/.test(u))return 'folder';return 'file';}
+function bomPreview(u){const id=driveId(u);if(!id)return u;const k=bomDocKind(u);if(k==='folder')return u;return k==='file'?'https://drive.google.com/file/d/'+id+'/preview':'https://docs.google.com/'+k+'/d/'+id+'/preview';}
+function bomIsFile(it){return !!it.u&&(bomDocKind(it.u)==='spreadsheets'||/\.xlsx?$/i.test(it.t||''));}
+function bomIcon(it){
+  const u=it.u||'',t=it.t||'';
+  if(!u) return '📝';
+  const k=bomDocKind(u);
+  if(k==='folder') return '📂';
+  if(k==='spreadsheets'||/\.xlsx?$/i.test(t)) return '📗';
+  if(k==='presentation'||/\.pptx?$/i.test(t)) return '📙';
+  if(k==='document'||/\.docx?$/i.test(t)) return '📘';
+  if(/\.pdf$/i.test(t)) return '📕';
+  if(/\.(mp4|mov|avi|mkv)$/i.test(t)||/youtu/.test(u)) return '🎬';
+  if(/\.(png|jpe?g|gif|webp)$/i.test(t)) return '🖼️';
+  return '📄';
+}
+async function loadBomLookup(){
+  try{
+    const res=await fetch(BOM_DATA_URL+'?t='+Date.now(),{cache:'no-store'});
+    if(!res.ok) throw new Error(res.status);
+    const data=await res.json();
+    BOM_ROWS=[];
+    (data.families||[]).forEach(f=>{
+      (f.rows||[]).forEach(r=>{
+        const hay=[f.name,bomFam(f.name).fr,r.brand,r.cat,...(r.model||[]),...(r.project||[]),
+          ...(r.bom||[]).map(x=>x.t),...(r.repair||[]).map(x=>x.t),...(r.notif||[]).map(x=>x.t),...(r.extra||[]).map(x=>x.t)].join(' ');
+        BOM_ROWS.push({fam:f.name,r,hay:bomNorm(hay),hayc:bomCompact(hay)});
+      });
+    });
+    BOM_LOADED=true;
+    if(CURRENT_VIEW==='search'&&LAST_QUERY) doSearch();
+  }catch(e){ /* silencieux : la page reste utilisable sans le JSON */ BOM_LOADED=false; }
+}
+function bomSearch(qRaw){
+  const toks=bomNorm(qRaw).split(/\s+/).filter(Boolean);
+  if(!toks.length) return [];
+  let list=BOM_ROWS.filter(x=>toks.every(t=>x.hay.includes(t)||x.hayc.includes(bomCompact(t))));
+  const q=bomCompact(qRaw);
+  const score=x=>{
+    const proj=(x.r.project||[]).map(bomCompact), mod=(x.r.model||[]).map(bomCompact);
+    if(proj.includes(q)||mod.includes(q)) return 0;
+    if(proj.some(p=>p.startsWith(q))||mod.some(m=>m.startsWith(q))) return 1;
+    if(proj.some(p=>p.includes(q))||mod.some(m=>m.includes(q))) return 2;
+    return 3;
+  };
+  return list.map(x=>[score(x),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
+}
+function bomItemHtml(it,q,isBom){
+  if(!it.u) return '<div class="bq-note">'+hl(it.t,q)+'</div>';
+  let btns='';
+  if(isBom&&bomIsFile(it)) btns+='<a class="ri-bom-btn preview" href="'+esc(bomReaderUrl(it.u))+'" target="_blank" rel="noopener">📋 Lecteur BOM</a>';
+  if(bomDocKind(it.u)==='folder') btns+='<a class="ri-bom-btn preview" href="'+esc(it.u)+'" target="_blank" rel="noopener">📂 Ouvrir le dossier</a>';
+  else{
+    btns+='<a class="ri-bom-btn preview" href="'+esc(bomPreview(it.u))+'" target="_blank" rel="noopener">👁 Aperçu</a>';
+    if(driveId(it.u)) btns+='<a class="ri-bom-btn dl" href="'+esc(downloadUrl(it.u))+'" target="_blank" rel="noopener">⬇ Télécharger</a>';
+  }
+  return '<div class="bq-item"><span class="ri-bom-ic">'+bomIcon(it)+'</span><span class="bq-item-name" title="'+esc(it.t)+'">'+hl(it.t,q)+'</span>'+btns+'</div>';
+}
+function bomChips(items,q){
+  return '<div class="bq-chips">'+items.map(it=>{
+    if(!it.u) return '<span class="bq-chip txt" title="'+esc(it.t)+'">'+bomIcon(it)+' <span>'+hl(it.t,q)+'</span></span>';
+    const href=bomDocKind(it.u)==='folder'?it.u:bomPreview(it.u);
+    return '<a class="bq-chip" href="'+esc(href)+'" target="_blank" rel="noopener" title="'+esc(it.t)+'">'+bomIcon(it)+' <span>'+hl(it.t,q)+'</span></a>';
+  }).join('')+'</div>';
+}
+function bomBlock(cls,title,count,inner){return '<div class="bqb '+cls+'"><div class="bqb-h">'+title+' <span class="n">'+count+'</span></div>'+inner+'</div>';}
+function bomCardHtml(x,q,open){
+  const r=x.r, fi=bomFam(x.fam), models=r.model||[];
+  const swap=(r.bom||[]).some(b=>!b.u&&/no repair|replacement instead|swap|以换代修/i.test(b.t));
+  const head='<summary><span class="bqp-ic">'+fi.ic+'</span>'+
+    models.map((m,i)=>'<span class="bqp-model'+(i?' alt':'')+'">'+hl(m,q)+'</span>').join('')+(models.length?'':'<span class="bqp-model alt">—</span>')+
+    '<span class="bqp-tags"><span class="tag fam">'+esc(fi.fr)+'</span>'+
+      (r.brand?'<span class="tag brand">'+esc(r.brand)+'</span>':'')+(r.cat?'<span class="tag">'+esc(r.cat)+'</span>':'')+
+      (r.project||[]).map(p=>'<span class="tag proj">'+hl(p,q)+'</span>').join('')+
+      (swap?'<span class="tag swap">Échange standard</span>':'')+
+      ((r.bom||[]).some(b=>b.u)?'<span class="tag bom-ok">📋 BOM</span>':'')+
+    '</span></summary>';
+  const bom=r.bom||[],rep=r.repair||[],notif=r.notif||[],extra=r.extra||[];
+  let body='';
+  if(bom.length) body+=bomBlock('bom','📋 BOM / Pièces détachées',bom.filter(b=>b.u).length,bom.map(b=>bomItemHtml(b,q,true)).join(''));
+  if(rep.length) body+=bomBlock('','🛠 Informations réparation',rep.filter(b=>b.u).length,bomChips(rep,q));
+  if(notif.length) body+=bomBlock('','📢 Notifications techniques',notif.filter(b=>b.u).length,notif.map(b=>bomItemHtml(b,q,false)).join(''));
+  if(extra.length) body+=bomBlock('','🔗 Autres liens',extra.length,bomChips(extra,q));
+  if(!body) body='<div class="bq-note">Aucun document référencé pour ce modèle.</div>';
+  return '<details class="bqp"'+(open?' open':'')+'>'+head+'<div class="bqp-body">'+body+'</div></details>';
+}
+function bomLookupHtml(q){
+  if(!BOM_LOADED) return '';
+  const res=bomSearch(q);
+  const link='<a class="bq-link" href="bom_lookup.html?q='+encodeURIComponent(q)+'" onclick="event.stopPropagation()">Ouvrir dans Recherche BOM →</a>';
+  if(!res.length){
+    return '<details class="bq"><summary><span class="bq-title">📋 Recherche BOM</span><span class="bq-count">0 résultat</span>'+link+'</summary>'+
+      '<div class="bq-body"><div class="bq-empty">Aucun modèle ni numéro de projet correspondant dans le Google Sheet BOM Quick Lookup.</div></div></details>';
+  }
+  const slice=res.slice(0,BOM_MAX), more=res.length-slice.length;
+  return '<details class="bq" open><summary><span class="bq-title">📋 Recherche BOM</span><span class="bq-count">'+res.length+' résultat'+(res.length>1?'s':'')+'</span>'+link+'</summary>'+
+    '<div class="bq-body">'+slice.map((x,i)=>bomCardHtml(x,q,i===0||slice.length<=3)).join('')+
+    (more>0?'<div class="bq-more">+ '+more+' autre'+(more>1?'s':'')+' résultat'+(more>1?'s':'')+' — <a href="bom_lookup.html?q='+encodeURIComponent(q)+'">tout voir dans Recherche BOM →</a></div>':'')+
+    '</div></details>';
 }
 
 // ══════════════════════════════════════════════════════
@@ -811,7 +992,7 @@ document.addEventListener('keydown',e=>{
     else if(CURRENT_VIEW==='detail')backToSearch();
   }
 });
-document.addEventListener('DOMContentLoaded',autoLoad);
+document.addEventListener('DOMContentLoaded',()=>{autoLoad();loadBomLookup();});
 </script>
 </body>
 </html>
