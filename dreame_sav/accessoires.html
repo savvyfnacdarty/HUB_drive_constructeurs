@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script src="../auth-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Références Accessoires (consommable) — Dreame</title>
+<!--
+  Recherche de références accessoires / consommables Dreame-MOVA.
+  Source : « Accessories List-xxxxxxxx.xlsx » (Drive Dreame › After-sales information › TIPS),
+  lu via l'API Drive v3 (même clé que lecteur_bom.html / calibrage_guide.html).
+  Tous les onglets du classeur sont indexés. Le résultat (lignes + vignettes) est gardé en cache
+  dans le navigateur (IndexedDB) : le gros fichier (~40 Mo, images) n'est re-téléchargé que
+  lorsque sa date de modification sur le Drive change.
+  Nouvelle version du fichier (nouveau nom / nouvel ID) → modifier CONFIG.DRIVE_ID ci-dessous,
+  ou utiliser « Mettre à jour » › coller le lien Drive / glisser-déposer le .xlsx.
+-->
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"
+        onerror="document.write('<script src=\'../dreame/lib/xlsx.full.min.js\'><\/script>')"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+:root{
+  --bg:#F3F4F6; --surface:#FFFFFF; --border:#E5E7EB; --border2:#D1D5DB;
+  --text:#111827; --text-2:#6B7280; --text-3:#9CA3AF;
+  --accent:#2669C2; --accent-h:#1B4E97; --accent-bg:#EAF1FB; --accent-bd:#C4D9F4;
+  --blue-bg:#EFF6FF; --blue-bd:#BFDBFE; --blue-text:#1D4ED8;
+  --red:#EF4444; --red-bg:#FEF2F2; --green-bg:#F0FDF4;
+  --radius:12px; --radius-sm:8px;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg:0 4px 24px rgba(0,0,0,.12),0 16px 48px rgba(0,0,0,.08);
+  --transition:all .18s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+a{color:inherit;}
+.badge{padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;background:rgba(34,197,94,.1);color:#16A34A;border:1px solid rgba(34,197,94,.25);}
+.badge.loading{background:rgba(107,114,128,.1);color:var(--text-2);border-color:var(--border);}
+.badge.error{background:rgba(239,68,68,.1);color:var(--red);border-color:rgba(239,68,68,.25);}
+.btn-import{padding:6px 14px;background:var(--surface);color:var(--text-2);border:1px solid var(--border2);border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:var(--transition);display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-family:inherit;}
+.btn-import:hover{border-color:var(--accent);color:var(--accent-h);background:var(--accent-bg);}
+.progress{width:100%;max-width:420px;height:6px;background:rgba(255,255,255,.25);border-radius:4px;overflow:hidden;margin:10px auto 0;display:none;}
+.progress.on{display:block;}
+.progress>div{height:100%;width:0;background:#fff;transition:width .2s;}
+
+/* HERO */
+.hero{background:var(--surface);border-bottom:1px solid var(--border);padding:36px 24px 24px;display:flex;flex-direction:column;align-items:center;}
+.hero-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent-h);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';flex:1;height:1px;background:var(--accent-bd);max-width:60px;}
+.hero h1{font-size:26px;font-weight:800;margin-bottom:6px;text-align:center;letter-spacing:-.4px;}
+.hero p{font-size:14px;color:var(--text-2);margin-bottom:18px;text-align:center;max-width:680px;}
+.search-box{width:100%;max-width:640px;display:flex;align-items:center;background:var(--bg);border:2px solid var(--border2);border-radius:14px;overflow:hidden;transition:border-color .2s,box-shadow .2s;}
+.search-box:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px rgba(38,105,194,.12);}
+.search-icon{padding:0 14px;color:var(--text-3);font-size:17px;flex-shrink:0;}
+.search-input{flex:1;padding:13px 0;background:transparent;border:none;outline:none;font-size:15px;color:var(--text);font-family:inherit;min-width:0;}
+.search-input::placeholder{color:var(--text-3);}
+.btn-clear{padding:8px 14px;margin:6px;background:var(--surface);color:var(--text-3);border:none;border-radius:9px;cursor:pointer;font-size:14px;font-weight:700;transition:var(--transition);}
+.btn-clear:hover{background:var(--border);color:var(--text);}
+.catbar{width:100%;max-width:960px;margin:16px auto 0;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
+.catchip{padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;background:var(--bg);color:var(--text-2);border:1px solid var(--border);cursor:pointer;transition:var(--transition);font-family:inherit;}
+.catchip:hover{border-color:var(--accent);color:var(--accent-h);}
+.catchip.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+.catchip .n{opacity:.6;font-weight:500;margin-left:3px;}
+.catchip.zero{opacity:.45;}
+
+/* MAIN */
+.content-wrap{max-width:900px;width:100%;margin:0 auto;padding:20px 16px 60px;}
+.results-header{font-size:12px;color:var(--text-3);margin-bottom:10px;padding:0 2px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+.results-header b{color:var(--text-2);}
+.fam-head{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--accent-h);margin:18px 2px 8px;display:flex;align-items:center;gap:8px;}
+.fam-head .count{background:var(--surface);color:var(--text-3);padding:1px 7px;border-radius:10px;font-size:10px;border:1px solid var(--border);text-transform:none;letter-spacing:0;}
+
+/* Carte accessoire */
+.pc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,.04);transition:var(--transition);}
+.pc:hover{border-color:var(--accent-bd);box-shadow:var(--shadow);}
+.pc-top{display:flex;align-items:flex-start;gap:14px;}
+.pc-img{width:84px;height:84px;flex-shrink:0;border:1px solid var(--border);border-radius:10px;background:#fff center/contain no-repeat;cursor:zoom-in;}
+.pc-img.none{background:var(--accent-bg);border-color:var(--accent-bd);display:flex;align-items:center;justify-content:center;font-size:30px;cursor:default;}
+.pc-info{flex:1;min-width:0;}
+.pc-title{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;}
+.pc-ref{font-family:Consolas,monospace;font-size:17px;font-weight:800;color:var(--accent-h);}
+.pc-name{font-size:15px;font-weight:700;}
+.pc-cn{font-size:11px;color:var(--text-3);margin-top:1px;}
+.pc-meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;align-items:center;}
+.tag{padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600;background:var(--bg);color:var(--text-2);border:1px solid var(--border);}
+.tag.fam{background:var(--blue-bg);color:var(--blue-text);border-color:var(--blue-bd);}
+.tag.cat{background:#F5F3FF;color:#5B21B6;border-color:#DDD6FE;}
+.tag.price{background:var(--green-bg);color:#166534;border-color:#BBF7D0;font-size:11px;}
+.ids{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:6px;margin-top:10px;}
+.id{background:#FFFBEB;border:1px solid #FDE68A;border-radius:var(--radius-sm);padding:5px 9px;display:flex;align-items:center;gap:6px;min-width:0;}
+.id-l{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#92400E;flex-shrink:0;}
+.id-v{font-family:Consolas,monospace;font-size:12px;font-weight:600;color:#1f2937;flex:1;min-width:0;word-break:break-all;}
+.cp{border:none;background:transparent;cursor:pointer;font-size:12px;opacity:.55;padding:2px;flex-shrink:0;}
+.cp:hover{opacity:1;}
+.compat{margin-top:10px;}
+.compat-h{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text-2);margin-bottom:5px;}
+.mchips{display:flex;flex-wrap:wrap;gap:4px;}
+.mchip{padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600;background:var(--bg);border:1px solid var(--border);color:var(--text);}
+.mchip.hit{background:rgba(245,158,11,.22);border-color:rgba(245,158,11,.6);}
+.mchip.linked{text-decoration:none;display:inline-flex;align-items:center;gap:5px;cursor:pointer;}
+.mchip.linked:hover{border-color:var(--accent);background:var(--accent-bg);}
+.mchip .pid{font-family:Consolas,monospace;font-size:10px;font-weight:700;color:var(--accent-h);background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:4px;padding:0 4px;}
+.mchip.phit .pid{background:rgba(245,158,11,.35);border-color:rgba(245,158,11,.7);color:#78350F;}
+.bomlink{background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:var(--radius);padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.6;}
+.bomlink b{color:var(--accent-h);}
+.bomlink .pj{font-family:Consolas,monospace;font-weight:700;}
+.bomlink a{color:var(--accent-h);font-weight:600;}
+.mchip.more{cursor:pointer;color:var(--accent-h);border-style:dashed;background:var(--surface);font-family:inherit;}
+.note{margin-top:8px;font-size:12px;color:#92400E;background:#FFFBEB;border-left:3px solid #F59E0B;padding:5px 9px;border-radius:0 6px 6px 0;}
+details.more-info{margin-top:10px;border-top:1px dashed var(--border);padding-top:8px;}
+details.more-info summary{cursor:pointer;font-size:11px;font-weight:700;color:var(--text-2);list-style:none;}
+details.more-info summary::-webkit-details-marker{display:none;}
+details.more-info summary::before{content:'▸ ';}
+details.more-info[open] summary::before{content:'▾ ';}
+.kv{display:grid;grid-template-columns:minmax(140px,auto) 1fr;gap:3px 12px;margin-top:6px;font-size:12px;}
+.kv dt{color:var(--text-3);}
+.kv dd{color:var(--text);word-break:break-word;}
+.hl{background:rgba(245,158,11,.35);border-radius:2px;padding:0 1px;}
+.empty-state{background:var(--surface);border:1px dashed var(--border2);border-radius:var(--radius);padding:40px;text-align:center;}
+.empty-state-icon{font-size:40px;margin-bottom:12px;}
+.empty-state h3{font-size:15px;font-weight:600;color:var(--text-2);margin-bottom:4px;}
+.empty-state p{font-size:13px;color:var(--text-3);line-height:1.6;}
+.more{display:block;width:100%;padding:10px;margin-top:6px;background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:13px;font-weight:600;color:var(--accent-h);cursor:pointer;font-family:inherit;}
+.more:hover{background:var(--accent-bg);}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#111827;color:#fff;padding:8px 16px;border-radius:8px;font-size:13px;z-index:900;opacity:0;transition:opacity .2s;pointer-events:none;}
+.toast.on{opacity:1;}
+
+/* MODALS */
+.modal-backdrop{position:fixed;inset:0;background:rgba(17,24,39,.5);z-index:600;display:flex;align-items:center;justify-content:center;padding:16px;}
+.modal-backdrop.hidden{display:none;}
+.modal{background:var(--surface);border-radius:16px;padding:28px;width:100%;max-width:560px;box-shadow:var(--shadow-lg);position:relative;max-height:92vh;overflow:auto;}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--text-3);font-size:17px;cursor:pointer;padding:6px;border-radius:7px;}
+.modal-close:hover{background:var(--bg);color:var(--text);}
+.modal h3{font-size:16px;font-weight:700;margin-bottom:5px;}
+.modal-sub{font-size:13px;color:var(--text-2);margin-bottom:14px;line-height:1.55;}
+.modal-sub code{background:var(--bg);padding:1px 5px;border-radius:4px;font-size:12px;}
+.row{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
+.row input{flex:1;min-width:200px;padding:8px 10px;border:1px solid var(--border2);border-radius:8px;font-size:13px;font-family:inherit;}
+.btn-pick{padding:8px 16px;background:var(--accent);color:#fff;font-weight:700;font-size:13px;border:none;border-radius:8px;cursor:pointer;font-family:inherit;}
+.btn-pick:hover{background:var(--accent-h);}
+.import-drop{border:2px dashed var(--border2);border-radius:10px;padding:22px 20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);margin-bottom:12px;}
+.import-drop:hover,.import-drop.over{border-color:var(--accent);background:var(--accent-bg);}
+.import-drop-icon{font-size:32px;margin-bottom:7px;}
+.import-drop-text{font-size:13px;color:var(--text-2);line-height:1.5;}
+.import-result{font-size:13px;border-radius:8px;padding:11px 14px;line-height:1.6;}
+.import-result.ok{background:var(--green-bg);color:#166534;border:1px solid #BBF7D0;}
+.import-result.err{background:var(--red-bg);color:#991B1B;border:1px solid #FECACA;}
+.import-result.info{background:var(--bg);color:var(--text-2);border:1px solid var(--border);}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:700;display:flex;align-items:center;justify-content:center;cursor:zoom-out;padding:20px;}
+.lightbox.hidden{display:none;}
+.lightbox img{max-width:95vw;max-height:90vh;background:#fff;border-radius:10px;}
+
+@media(max-width:560px){ .hero h1{font-size:20px;} .pc-img{width:60px;height:60px;} .kv{grid-template-columns:1fr;} }
+</style>
+<!-- ===== Compteur de consultations (GoatCounter) =====
+     Tableau de bord prive : https://hub-drive-fnac.goatcounter.com  -->
+<script data-goatcounter="https://hub-drive-fnac.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- ===== Fin compteur ===== -->
+</head>
+<body>
+
+<!-- HEADER -->
+<style id="fdhub-css">
+.fdtop{background:#D4151B;padding:8px 20px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:9999;box-shadow:0 2px 6px rgba(0,0,0,.15);font-family:'Segoe UI',Arial,sans-serif;}
+.fdtop .fdtop-home{display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0;}
+.fdtop .fdtop-home img{height:28px;background:#fff;padding:4px 8px;border-radius:5px;display:block;}
+.fdtop .fdtop-txt{color:#fff;font-weight:700;font-size:13px;letter-spacing:.3px;}
+.fdtop .fdtop-right{margin-left:auto;display:flex;align-items:center;gap:10px;}
+.fdband{background:linear-gradient(120deg,#1B4E97 0%,#2669C2 60%,#4A8AD4 100%);padding:22px 20px 18px;text-align:center;font-family:'Segoe UI',Arial,sans-serif;}
+.fdband .fdband-logo{height:44px;background:#fff;padding:7px 14px;border-radius:9px;box-shadow:0 4px 14px rgba(0,0,0,.2);display:block;margin:0 auto 14px;}
+.fdband nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.fdband nav a{color:#fff;text-decoration:none;font-size:.86rem;font-weight:600;padding:8px 18px;border-radius:8px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.45);transition:.15s;}
+.fdband nav a:hover{background:rgba(255,255,255,.28);}
+.fdband nav a.active{background:#fff;color:#1B4E97;border-color:#fff;}
+.fdband-sync{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px;}
+</style>
+<div class="fdtop">
+  <a class="fdtop-home" href="../index.html" title="Retour au HUB Drive Constructeurs">
+    <img src="assets/FNAC DARTY.png" alt="Fnac Darty"><span class="fdtop-txt">&larr; HUB Drive Constructeurs</span>
+  </a>
+  <div class="fdtop-right"></div>
+</div>
+<div class="fdband">
+  <img class="fdband-logo" src="assets/DREAME.png" alt="Dreame" onerror="this.style.display='none'">
+  <nav>
+    <a href="dreame.html">Recherche</a>
+    <a href="accessoires.html" class="active">🧩 Références Accessoires (consommable)</a>
+    <a href="robot_laveur.html">🤖 Robot laveur</a>
+    <a href="aspirateur_balai_laveur.html">🧹 Aspirateur balai laveur</a>
+  </nav>
+  <div class="fdband-sync">
+    <div class="badge loading" id="dataBadge">&#8987; Chargement&#8230;</div>
+    <a class="btn-import" id="srcLink" href="#" target="_blank" rel="noopener">☁️ Fichier source (Drive)</a>
+    <button class="btn-import" onclick="openImportModal()">&#128260; Mettre à jour</button>
+  </div>
+  <div class="progress" id="progress"><div></div></div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Accessories List · Dreame / MOVA</div>
+  <h1>Références Accessoires (consommable)</h1>
+  <p>Recherche dans <b>tous les onglets</b> du fichier Accessories List : référence accessoire (RMB1, RMSRB0…), Part No, EAN, nom (brosse, filtre, sac…) modèle compatible (L10s Ultra, X40…) ou <b>numéro de projet</b> (R2469A, W2213… — lien avec la Recherche BOM).</p>
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="q" class="search-input" placeholder="Référence, Part No, EAN, accessoire, modèle ou n° de projet (R2469A)…" oninput="onQuery()" autofocus autocomplete="off">
+    <button class="btn-clear" onclick="clearSearch()" title="Effacer">✕</button>
+  </div>
+  <div class="catbar" id="catbar"></div>
+</section>
+
+<div class="content-wrap"><div id="mainContent"></div></div>
+
+<!-- MODAL MISE À JOUR -->
+<div class="modal-backdrop hidden" id="importModal" onclick="if(event.target===this)closeImportModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeImportModal()">✕</button>
+    <h3>🔄 Mettre à jour la liste d'accessoires</h3>
+    <p class="modal-sub">Par défaut la page relit le fichier sur le Drive Dreame quand il a changé. Si Dreame publie une <b>nouvelle version</b> (nouveau nom, ex. <code>Accessories List-2026xxxx</code>), colle son lien Drive ci-dessous. Tu peux aussi glisser-déposer le .xlsx téléchargé.</p>
+    <div class="row">
+      <input type="text" id="driveUrl" placeholder="https://docs.google.com/spreadsheets/d/…  ou  https://drive.google.com/file/d/…">
+      <button class="btn-pick" onclick="loadFromLink()">Charger</button>
+    </div>
+    <div class="row" style="margin-top:-4px">
+      <button class="btn-import" onclick="forceDrive()">⟳ Relire le fichier Drive actuel</button>
+      <button class="btn-import" onclick="resetDriveId()" id="btnResetId" style="display:none">↺ Revenir au fichier par défaut</button>
+    </div>
+    <div class="import-drop" id="dropZone" onclick="document.getElementById('fileInput').click()">
+      <div class="import-drop-icon">📥</div>
+      <div class="import-drop-text">Glisser-déposer <b>Accessories List-….xlsx</b> ici<br>ou cliquer pour choisir le fichier</div>
+      <input type="file" id="fileInput" accept=".xlsx,.xlsm,.xls" style="display:none" onchange="if(this.files[0])loadFromFile(this.files[0])">
+    </div>
+    <div id="importResult"></div>
+  </div>
+</div>
+
+<div class="lightbox hidden" id="lightbox" onclick="this.classList.add('hidden')"><img alt=""></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================================
+   CONFIG
+   ===================================================================== */
+const CONFIG = {
+  // Accessories List-20260409.xlsx — Drive Dreame › After-sales information › TIPS
+  DRIVE_ID: "1PRseu0yIBFIdw8JuvIEJkFhE4JdMbfag",
+  DRIVE_API_KEY: "AIzaSyDCC1y3Yxv0o1fOra39G57tpeAsUmXcJxQ",   // même clé que lecteur_bom / calibrage_guide
+  THUMB_PX: 220,          // taille max des vignettes gardées en cache
+  PAGE: 40,               // cartes affichées avant « voir plus »
+  MAX_MODELS: 14          // modèles compatibles visibles avant « +N »
+};
+const LS_ID = "fd_acc_drive_id_v1";
+const DB_NAME = "fd_accessoires", DB_STORE = "kv", DB_KEY = "data_v1";
+
+/* =====================================================================
+   ÉTAT
+   ===================================================================== */
+let DATA = null;          // {fileName, modifiedTime, source, generated, sheets:[{name,title,count}], rows:[…]}
+let IMG = {};             // imgId -> objectURL
+let activeSheet = "";     // filtre onglet
+let shown = CONFIG.PAGE;
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const norm = s => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+const squash = s => norm(s).replace(/[\s\-_./\\()（）:：,，+]+/g, "");
+const hasCJK = s => /[㐀-鿿豈-﫿]/.test(s || "");
+
+function driveId() { try { return localStorage.getItem(LS_ID) || CONFIG.DRIVE_ID; } catch (e) { return CONFIG.DRIVE_ID; } }
+function setBadge(txt, cls) { const b = $("#dataBadge"); b.className = "badge" + (cls ? " " + cls : ""); b.innerHTML = txt; }
+function setProgress(p) { const el = $("#progress"); if (p == null) { el.classList.remove("on"); return; } el.classList.add("on"); el.firstElementChild.style.width = Math.round(p * 100) + "%"; }
+function toast(t) { const el = $("#toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toast._t); toast._t = setTimeout(() => el.classList.remove("on"), 1400); }
+function fmtDate(iso) { try { return new Date(iso).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" }); } catch (e) { return iso || ""; } }
+
+/* =====================================================================
+   CACHE (IndexedDB)
+   ===================================================================== */
+function idb() {
+  return new Promise((res, rej) => {
+    const r = indexedDB.open(DB_NAME, 1);
+    r.onupgradeneeded = () => r.result.createObjectStore(DB_STORE);
+    r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
+  });
+}
+async function cacheGet() {
+  try { const db = await idb(); return await new Promise((res, rej) => { const t = db.transaction(DB_STORE).objectStore(DB_STORE).get(DB_KEY); t.onsuccess = () => res(t.result || null); t.onerror = () => rej(t.error); }); }
+  catch (e) { return null; }
+}
+async function cachePut(v) {
+  try { const db = await idb(); await new Promise((res, rej) => { const t = db.transaction(DB_STORE, "readwrite"); t.objectStore(DB_STORE).put(v, DB_KEY); t.oncomplete = res; t.onerror = () => rej(t.error); }); }
+  catch (e) { console.warn("[Cache] écriture impossible :", e); }
+}
+
+/* =====================================================================
+   DRIVE
+   ===================================================================== */
+const driveBase = id => `https://www.googleapis.com/drive/v3/files/${id}`;
+async function driveMeta(id) {
+  const r = await fetch(`${driveBase(id)}?fields=name,modifiedTime,size&supportsAllDrives=true&key=${encodeURIComponent(CONFIG.DRIVE_API_KEY)}`, { cache: "no-cache" });
+  if (!r.ok) throw new Error(`Drive HTTP ${r.status}`);
+  return r.json();
+}
+async function driveDownload(id, sizeHint) {
+  const r = await fetch(`${driveBase(id)}?alt=media&supportsAllDrives=true&key=${encodeURIComponent(CONFIG.DRIVE_API_KEY)}`, { cache: "no-cache" });
+  if (!r.ok) throw new Error(`Drive HTTP ${r.status}`);
+  const total = +r.headers.get("content-length") || +sizeHint || 0;
+  if (!r.body || !r.body.getReader) return await r.arrayBuffer();
+  const reader = r.body.getReader(); const parts = []; let got = 0;
+  for (;;) {
+    const { done, value } = await reader.read(); if (done) break;
+    parts.push(value); got += value.length;
+    if (total) setProgress(Math.min(.95, got / total * .85));
+    setBadge(`&#8987; Téléchargement… ${(got / 1048576).toFixed(1)}${total ? " / " + (total / 1048576).toFixed(1) : ""} Mo`, "loading");
+  }
+  const buf = new Uint8Array(got); let o = 0; for (const p of parts) { buf.set(p, o); o += p.length; }
+  return buf.buffer;
+}
+function extractDriveId(s) {
+  s = String(s || "").trim();
+  let m = s.match(/\/d\/([a-zA-Z0-9_-]{20,})/) || s.match(/[?&]id=([a-zA-Z0-9_-]{20,})/);
+  if (m) return m[1];
+  if (/^[a-zA-Z0-9_-]{20,}$/.test(s)) return s;
+  return null;
+}
+
+/* =====================================================================
+   PARSING DU CLASSEUR
+   ===================================================================== */
+const RX = {
+  ref: /^\s*model\s*$/i,
+  compat: /model|适用|机型/i,
+  part: /part\s*n|料号|物料/i,
+  ean: /\bean\b|条码/i,
+  hs: /hs\s*code/i,
+  qty: /number\s*in\s*the\s*box/i,
+  pic: /picture|图片|图示/i,
+  remark: /^\s*(备注|remark|remarks|note|notes|comment)\s*$/i,
+  price: /\b(fob|rrp|ddp|msrp|price)\b/i
+};
+
+function cellText(v) {
+  if (v == null) return "";
+  if (typeof v === "number") return Number.isInteger(v) ? String(v) : String(+v.toFixed(4));
+  if (v instanceof Date) return v.toLocaleDateString("fr-FR");
+  return String(v).replace(/\\\*/g, "*").replace(/\r/g, "").trim();
+}
+
+/** Remplit les cellules fusionnées avec la valeur du coin haut-gauche. */
+function fillMerges(ws) {
+  (ws["!merges"] || []).forEach(m => {
+    const tl = ws[XLSX.utils.encode_cell(m.s)];
+    if (!tl) return;
+    for (let r = m.s.r; r <= m.e.r; r++) for (let c = m.s.c; c <= m.e.c; c++) {
+      if (r === m.s.r && c === m.s.c) continue;
+      const a = XLSX.utils.encode_cell({ r, c });
+      if (!ws[a] || ws[a].v == null || ws[a].v === "") ws[a] = { t: tl.t, v: tl.v, w: tl.w, _merged: true };
+    }
+  });
+}
+
+function findHeaderRow(aoa) {
+  for (let r = 0; r < Math.min(aoa.length, 12); r++) {
+    const row = aoa[r].map(cellText);
+    if (row.some(c => RX.ref.test(c)) && row.some(c => RX.ean.test(c) || RX.part.test(c))) return r;
+  }
+  for (let r = 0; r < Math.min(aoa.length, 12); r++) {
+    const row = aoa[r].map(cellText);
+    if (row.some(c => RX.part.test(c) || RX.ean.test(c))) return r;
+  }
+  return -1;
+}
+
+function mapColumns(hdr, grp) {
+  const col = { names: [], prices: [], extras: [] };
+  hdr.forEach((h, i) => {
+    const g = grp[i] || "";
+    if (!h && !g) return;
+    if (col.ref == null && RX.ref.test(h)) { col.ref = i; return; }
+    if (/^\s*name\s*$/i.test(h) || /^名称$/.test(h)) { col.names.push(i); return; }
+    if (col.part == null && RX.part.test(h)) { col.part = i; return; }
+    if (col.ean == null && RX.ean.test(h)) { col.ean = i; return; }
+    if (col.hs == null && RX.hs.test(h)) { col.hs = i; return; }
+    if (col.qty == null && RX.qty.test(h)) { col.qty = i; return; }
+    if (col.pic == null && RX.pic.test(h)) { col.pic = i; return; }
+    if (col.remark == null && RX.remark.test(h)) { col.remark = i; return; }
+    if (RX.price.test(h) || (RX.price.test(g) && !h)) { col.prices.push({ i, label: h || g }); return; }
+    if (col.compat == null && RX.compat.test(h)) { col.compat = i; return; }
+    // Colonne libre : libellé anglais de la ligne de groupe si l'en-tête est en chinois
+    let label = h;
+    if ((!h || hasCJK(h)) && g && !hasCJK(g)) label = g + (h && h !== g ? ` (${h})` : "");
+    if (!label) return;
+    col.extras.push({ i, label });
+  });
+  // Colonne sans en-tête juste après les tailles/avant les prix = remarques (备注 absent)
+  return col;
+}
+
+/** Images : dessins ancrés (xl/drawings) + images dans cellule WPS (xl/cellimages.xml). */
+async function extractImages(zip, wb) {
+  const out = { bySheetRow: {}, byDispId: {}, blobs: {} };
+  if (!zip) return out;
+  const P = new DOMParser();
+  const readXml = async p => { const f = zip.file(p); return f ? P.parseFromString(await f.async("string"), "application/xml") : null; };
+  const rels = async p => {
+    const dir = p.substring(0, p.lastIndexOf("/")), base = p.substring(p.lastIndexOf("/") + 1);
+    const x = await readXml(`${dir}/_rels/${base}.rels`); const m = {};
+    if (x) [...x.getElementsByTagName("Relationship")].forEach(r => { m[r.getAttribute("Id")] = resolvePath(dir, r.getAttribute("Target")); });
+    return m;
+  };
+  const byLocal = (el, name) => [...el.getElementsByTagName("*")].filter(e => e.localName === name);
+  const embedOf = el => { const b = byLocal(el, "blip")[0]; return b && (b.getAttribute("r:embed") || b.getAttributeNS("http://schemas.openxmlformats.org/officeDocument/2006/relationships", "embed")); };
+
+  // 1) dessins ancrés par feuille
+  const wbx = await readXml("xl/workbook.xml"); const wbRels = await rels("xl/workbook.xml");
+  if (wbx) {
+    for (const s of byLocal(wbx, "sheet")) {
+      const name = s.getAttribute("name");
+      const rid = s.getAttribute("r:id") || s.getAttributeNS("http://schemas.openxmlformats.org/officeDocument/2006/relationships", "id");
+      const sp = wbRels[rid]; if (!sp) continue;
+      const sRels = await rels(sp);
+      for (const dp of Object.values(sRels).filter(p => /drawings\/drawing\d*\.xml$/.test(p))) {
+        const dx = await readXml(dp); if (!dx) continue; const dRels = await rels(dp);
+        for (const a of [...byLocal(dx, "twoCellAnchor"), ...byLocal(dx, "oneCellAnchor"), ...byLocal(dx, "absoluteAnchor")]) {
+          const from = byLocal(a, "from")[0]; const emb = embedOf(a); if (!from || !emb || !dRels[emb]) continue;
+          const row = +byLocal(from, "row")[0].textContent;
+          const key = name + "|" + row;
+          (out.bySheetRow[key] = out.bySheetRow[key] || []).push(dRels[emb]);
+        }
+      }
+    }
+  }
+  // 2) images dans cellule (WPS / Excel DISPIMG)
+  const ci = await readXml("xl/cellimages.xml");
+  if (ci) {
+    const cRels = await rels("xl/cellimages.xml");
+    byLocal(ci, "pic").forEach(p => {
+      const nv = byLocal(p, "cNvPr")[0]; const emb = embedOf(p);
+      if (nv && emb && cRels[emb]) out.byDispId[nv.getAttribute("name")] = cRels[emb];
+    });
+  }
+  return out;
+}
+function resolvePath(dir, target) {
+  if (target.startsWith("/")) return target.slice(1);
+  const parts = (dir + "/" + target).split("/"); const st = [];
+  parts.forEach(p => { if (p === "..") st.pop(); else if (p && p !== ".") st.push(p); });
+  return st.join("/");
+}
+async function makeThumb(blob) {
+  try {
+    const bmp = await createImageBitmap(blob);
+    const k = Math.min(1, CONFIG.THUMB_PX / Math.max(bmp.width, bmp.height));
+    const c = document.createElement("canvas"); c.width = Math.max(1, Math.round(bmp.width * k)); c.height = Math.max(1, Math.round(bmp.height * k));
+    const g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); g.drawImage(bmp, 0, 0, c.width, c.height);
+    return await new Promise(res => c.toBlob(b => res(b || blob), "image/jpeg", .82));
+  } catch (e) { return blob; }   // format non décodable (emf…) : on garde tel quel
+}
+
+async function parseWorkbook(buf, meta) {
+  setBadge("&#8987; Lecture du classeur…", "loading"); setProgress(.88);
+  await new Promise(r => setTimeout(r, 30));
+  const wb = XLSX.read(buf, { type: "array", cellFormula: true, cellDates: true, cellStyles: false });
+  let zip = null; try { if (window.JSZip) zip = await JSZip.loadAsync(buf); } catch (e) { console.warn("[Images] zip illisible :", e); }
+  let imgs = { bySheetRow: {}, byDispId: {} };
+  try { imgs = await extractImages(zip, wb); } catch (e) { console.warn("[Images] extraction impossible :", e); }
+
+  const rows = [], sheets = [], usedMedia = new Set();
+  wb.SheetNames.forEach(sn => {
+    const ws = wb.Sheets[sn]; if (!ws || !ws["!ref"]) return;
+    fillMerges(ws);
+    const aoa = XLSX.utils.sheet_to_json(ws, { header: 1, raw: true, defval: "", blankrows: true });
+    const h = findHeaderRow(aoa);
+    const title = cellText((aoa[0] || [])[0]);
+    let count = 0;
+    if (h < 0) { sheets.push({ name: sn, title, count: 0, skipped: true }); return; }
+    const hdr = aoa[h].map(cellText), grp = (aoa[h - 1] || []).map(cellText);
+    const col = mapColumns(hdr, grp);
+    const catCol = col.names.length > 1 ? col.names[0] : null;
+    const nameCol = col.names.length ? col.names[col.names.length - 1] : null;
+    let lastCat = "";
+    for (let r = h + 1; r < aoa.length; r++) {
+      const row = aoa[r]; const g = i => (i == null ? "" : cellText(row[i]));
+      const ref = g(col.ref), part = g(col.part), ean = g(col.ean), name = g(nameCol);
+      let cat = g(catCol); if (cat) lastCat = cat; else cat = lastCat;
+      if (!ref && !part && !ean) continue;
+      if (RX.ref.test(ref) || RX.part.test(part)) continue;              // en-tête répété
+      if (/information of sellable/i.test(cat) && !ref) continue;
+      const it = {
+        sheet: sn, r, ref, part, ean, hs: g(col.hs), qty: g(col.qty), name, cat: cat === name ? "" : cat,
+        compat: g(col.compat), remark: g(col.remark),
+        prices: col.prices.map(p => ({ l: p.label, v: g(p.i) })).filter(p => p.v),
+        extras: col.extras.map(e => ({ l: e.label, v: g(e.i) })).filter(e => e.v && e.v !== "-"),
+        img: null
+      };
+      // image : ancrée sur la ligne, ou DISPIMG dans la colonne Picture
+      let media = (imgs.bySheetRow[sn + "|" + r] || [])[0];
+      if (!media && col.pic != null) {
+        const c = ws[XLSX.utils.encode_cell({ r, c: col.pic })];
+        const m = c && String(c.f || c.v || "").match(/DISPIMG\(\s*"([^"]+)"/i);
+        if (m && imgs.byDispId[m[1]]) media = imgs.byDispId[m[1]];
+      }
+      if (media) { it.img = media; usedMedia.add(media); }
+      rows.push(it); count++;
+    }
+    sheets.push({ name: sn, title, count });
+  });
+
+  // vignettes
+  const blobs = {}; let n = 0; const list = [...usedMedia];
+  for (const p of list) {
+    n++; if (n % 10 === 0) { setBadge(`&#8987; Vignettes ${n}/${list.length}…`, "loading"); setProgress(.9 + .1 * n / list.length); }
+    const f = zip && zip.file(p); if (!f) continue;
+    const ext = (p.split(".").pop() || "").toLowerCase();
+    const type = { png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", gif: "image/gif", webp: "image/webp", bmp: "image/bmp" }[ext];
+    if (!type) continue;
+    blobs[p] = await makeThumb(new Blob([await f.async("uint8array")], { type }));
+  }
+  rows.forEach(it => { if (it.img && !blobs[it.img]) it.img = null; });
+  return { fileName: meta.name || "", modifiedTime: meta.modifiedTime || "", source: meta.source || "", driveId: meta.driveId || "", generated: new Date().toISOString(), sheets, rows, blobs };
+}
+
+/* =====================================================================
+   LIEN MODÈLE ↔ N° DE PROJET (data/bom_lookup.json, même source que Recherche / Recherche BOM)
+   Les modèles compatibles du fichier accessoires sont écrits collés (« L10sUltraGen2 ») :
+   on compare des clés normalisées (sans espaces, sans préfixe Dreame/MOVA), puis une clé
+   « lâche » (sans (UK)/(CH), couleur, Kit/Set/Complete, suffixe -A) si la 1re ne donne rien.
+   ===================================================================== */
+const BOM_JSON = "data/bom_lookup.json";
+let BOMIX = null;   // {k0:Map(key -> [{fam,model,projects}]), k1:Map, proj:Map(PROJ -> [{fam,model,projects}])}
+const CJK_RX = /[㐀-鿿豈-﫿]+/g;
+function mkey0(s) {
+  s = String(s || "").toLowerCase().replace(/\((the difference|与)[\s\S]*$/, "");
+  return squash(s).replace(/^(dreame|mova)/, "");
+}
+function mkey1(s) {
+  s = String(s || "").toLowerCase().replace(/[（(][^)）]*[)）]/g, "").replace(CJK_RX, "").trim()
+    .replace(/[-_ ](a|r)$/, "").replace(/(complete|white|black|kit|set|pearl)/g, "").replace(/\s*&\s*$/, "");
+  return squash(s).replace(/^(dreame|mova)/, "");
+}
+async function loadBomIndex() {
+  try {
+    const r = await fetch(BOM_JSON, { cache: "no-cache" }); if (!r.ok) throw new Error("HTTP " + r.status);
+    const j = await r.json();
+    const ix = { k0: new Map(), k1: new Map(), proj: new Map() };
+    const add = (m, k, e) => { if (!k) return; const a = m.get(k) || []; if (!a.includes(e)) a.push(e); m.set(k, a); };
+    (j.families || []).forEach(f => (f.rows || []).forEach(row => {
+      const projects = (row.project || []).map(p => String(p).trim()).filter(Boolean);
+      const models = (row.model || []).filter(m => m && !/discontinuation/i.test(m));
+      if (!projects.length || !models.length) return;
+      const e = { fam: f.name, model: models[0], models, projects };
+      models.forEach(m => m.split("/").forEach(part => { add(ix.k0, mkey0(part), e); add(ix.k1, mkey1(part), e); }));
+      projects.forEach(pj => pj.split("/").forEach(x => add(ix.proj, squash(x), e)));
+    }));
+    BOMIX = ix;
+  } catch (e) { console.warn("[BOM] lien projets indisponible :", e.message); BOMIX = null; }
+}
+/** Familles BOM correspondant à un onglet du fichier accessoires (pour lever les ambiguïtés : R10 robot piscine ≠ R10 aspirateur balai). */
+function famsForSheet(sheet, d) {
+  const t = norm(sheet + " " + (((d || DATA || {}).sheets || []).find(x => x.name === sheet) || {}).title);
+  if (/pool/.test(t)) return ["Robotic Pool Cleaner"];
+  if (/mower|tondeuse/.test(t)) return ["Roboticmower"];
+  if (/window/.test(t)) return ["Window Cleaning Robot"];
+  if (/air purifier/.test(t)) return ["Air Purifier"];
+  if (/hair/.test(t)) return ["Hair dryer"];
+  if (/robot vacuum/.test(t)) return ["Robot Vacuum", "Water Hookup Kit for Auto Refil"];
+  if (/wet|carpet/.test(t)) return ["Wet&dry Vacuum"];
+  if (/stick/.test(t)) return ["Cordless Stick Vacuum"];
+  return null;
+}
+function linkModel(name, fams) {
+  if (!BOMIX) return null;
+  const pick = arr => { if (!arr) return null; const f = fams ? arr.filter(e => fams.includes(e.fam)) : arr; return f.length ? f : null; };
+  // hors famille de l'onglet : accepté seulement si le nom n'est pas ambigu (une seule famille BOM)
+  const loose = arr => arr && new Set(arr.map(e => e.fam)).size === 1 ? arr : null;
+  const a0 = BOMIX.k0.get(mkey0(name)), a1 = BOMIX.k1.get(mkey1(name));
+  const hits = pick(a0) || pick(a1) || loose(a0) || loose(a1);
+  if (!hits) return null;
+  const projects = [...new Set(hits.flatMap(e => e.projects))];
+  return { projects, models: [...new Set(hits.map(e => e.model))], fam: hits[0].fam };
+}
+/** Projets correspondant à la requête (exact, sinon préfixe ≥ 4 caractères). */
+function projectHits(qsq) {
+  if (!BOMIX || !qsq || qsq.length < 4 || !/\d/.test(qsq)) return [];
+  let e = BOMIX.proj.get(qsq);
+  if (!e) { e = []; BOMIX.proj.forEach((v, k) => { if (k.startsWith(qsq)) v.forEach(x => { if (!e.includes(x)) e.push(x); }); }); }
+  return e || [];
+}
+
+/* =====================================================================
+   CHARGEMENT
+   ===================================================================== */
+function useData(d, origin) {
+  Object.values(IMG).forEach(u => URL.revokeObjectURL(u)); IMG = {};
+  Object.entries(d.blobs || {}).forEach(([k, b]) => { try { IMG[k] = URL.createObjectURL(b); } catch (e) {} });
+  d.rows.forEach(it => prepRow(it, d));
+  DATA = d;
+  const nImg = Object.keys(IMG).length;
+  setBadge(`✓ ${d.rows.length} références · ${d.sheets.filter(s => s.count).length} onglets${nImg ? " · " + nImg + " photos" : ""}${origin ? " · " + origin : ""}`);
+  $("#dataBadge").title = `${d.fileName || "Accessories List"}${d.modifiedTime ? "\nModifié sur le Drive le " + fmtDate(d.modifiedTime) : ""}\nIndexé le ${fmtDate(d.generated)}`;
+  renderChips(); render();
+}
+function prepRow(it, d) {
+  it._models = splitModels(it.compat);
+  const fams = famsForSheet(it.sheet, d);
+  it._links = it._models.map(m => linkModel(m, fams));
+  it._proj = [...new Set(it._links.flatMap(l => l ? l.projects : []))];
+  it._nameEn = cleanName(it.name); it._nameCn = hasCJK(it.name) ? it.name : "";
+  it._catEn = cleanName(it.cat);
+  const all = [it.ref, it.part, it.ean, it.name, it.cat, it.compat, it.remark, it.sheet, it.hs, ...it._proj].join(" ");
+  it._hay = norm(all); it._sq = squash(all);
+  it._ids = [it.ref, ...String(it.part).split(/[\s:：,，;/]+/), ...String(it.ean).split(/[\s:：,，;/]+/)].map(squash).filter(Boolean);
+  it._msq = it._models.map(squash);
+  it._psq = it._proj.map(squash);
+}
+function splitModels(s) { return String(s || "").split(/[\/\n,，;；、]+/).map(x => x.trim()).filter(Boolean); }
+function cleanName(s) {
+  s = String(s || ""); if (!hasCJK(s)) return s.trim();
+  const en = s.replace(/[㐀-鿿豈-﫿　-〿（），：（）【】「」]+/g, " ").replace(/^[\s\-–—:\/|]+|[\s\-–—:\/|]+$/g, "").replace(/\s{2,}/g, " ").trim();
+  return /[a-z]/i.test(en) ? en : s.trim();
+}
+
+async function loadDrive(force) {
+  const id = driveId();
+  $("#srcLink").href = `https://drive.google.com/file/d/${id}/view`;
+  let meta;
+  try { meta = await driveMeta(id); }
+  catch (e) {
+    console.warn("[Drive] métadonnées inaccessibles :", e.message);
+    if (!DATA) showNoData(`Drive Dreame inaccessible (${esc(e.message)}).`);
+    else setBadge($("#dataBadge").innerHTML.replace(/ · (cache|Drive).*$/, "") + " · cache (Drive injoignable)");
+    return;
+  }
+  if (!force && DATA && DATA.driveId === id && DATA.modifiedTime === meta.modifiedTime) {
+    useData(DATA, "à jour"); return;
+  }
+  try {
+    setBadge("&#8987; Téléchargement du fichier Drive…", "loading"); setProgress(.02);
+    const buf = await driveDownload(id, meta.size);
+    const d = await parseWorkbook(buf, { name: meta.name, modifiedTime: meta.modifiedTime, source: "drive", driveId: id });
+    if (!d.rows.length) throw new Error("aucune référence trouvée dans le classeur");
+    await cachePut(d); useData(d, "Drive " + fmtDate(meta.modifiedTime));
+  } catch (e) {
+    console.error(e);
+    if (!DATA) showNoData(`Lecture du fichier Drive impossible (${esc(e.message)}).`);
+    else setBadge("⚠ Mise à jour Drive échouée — données en cache", "error");
+  } finally { setProgress(null); }
+}
+
+async function init() {
+  const q = new URLSearchParams(location.search).get("q"); if (q) $("#q").value = q;
+  $("#srcLink").href = `https://drive.google.com/file/d/${driveId()}/view`;
+  if (!window.XLSX) { showNoData("Bibliothèque SheetJS introuvable (CDN bloqué)."); return; }
+  await loadBomIndex();
+  const c = await cacheGet();
+  if (c && c.rows && c.rows.length) useData(c, "cache");
+  else { setBadge("&#8987; Première lecture du fichier Drive…", "loading"); renderLoading(); }
+  loadDrive(false);
+}
+
+function showNoData(reason) {
+  setBadge("⚠ Données indisponibles", "error");
+  $("#mainContent").innerHTML = `<div class="empty-state"><div class="empty-state-icon">📦</div><h3>Liste d'accessoires non chargée</h3>
+    <p>${reason}<br>Clique sur <b>🔄 Mettre à jour</b> pour glisser-déposer le fichier <b>Accessories List-….xlsx</b> téléchargé depuis le Drive Dreame.</p></div>`;
+}
+function renderLoading() {
+  $("#mainContent").innerHTML = `<div class="empty-state"><div class="empty-state-icon">⏳</div><h3>Chargement de la liste d'accessoires…</h3>
+    <p>Premier chargement : le fichier (~40 Mo avec les photos) est téléchargé une fois puis gardé en cache dans ce navigateur.</p></div>`;
+}
+
+/* =====================================================================
+   RECHERCHE
+   ===================================================================== */
+function tokens(q) { return norm(q).split(/\s+/).filter(Boolean); }
+function score(it, toks, qsq) {
+  let s = 0;
+  for (const t of toks) {
+    const ts = squash(t);
+    if (!(it._hay.includes(t) || (ts && it._sq.includes(ts)))) return -1;
+  }
+  if (!qsq) return 1;
+  if (squash(it.ref) === qsq) s += 1000;
+  else if (it._ids.includes(qsq)) s += 900;
+  else if (squash(it.ref).startsWith(qsq)) s += 600;
+  else if (it._ids.some(x => x.startsWith(qsq))) s += 500;
+  if (it._psq.includes(qsq)) s += 700;
+  else if (qsq.length >= 4 && it._psq.some(p => p.startsWith(qsq))) s += 450;
+  if (it._msq.includes(qsq)) s += 400;
+  else if (it._msq.some(m => m.includes(qsq))) s += 150;
+  if (norm(it._nameEn).includes(norm($("#q").value.trim()))) s += 100;
+  return s + 1;
+}
+let _t; function onQuery() { clearTimeout(_t); _t = setTimeout(() => { shown = CONFIG.PAGE; renderChips(); render(); syncUrl(); }, 120); }
+function clearSearch() { $("#q").value = ""; shown = CONFIG.PAGE; renderChips(); render(); syncUrl(); $("#q").focus(); }
+function syncUrl() { const q = $("#q").value.trim(); const u = new URL(location.href); if (q) u.searchParams.set("q", q); else u.searchParams.delete("q"); history.replaceState(null, "", u); }
+
+function matches() {
+  const q = $("#q").value.trim(); const toks = tokens(q), qsq = squash(q);
+  const res = [];
+  DATA.rows.forEach(it => { const s = toks.length ? score(it, toks, qsq) : 1; if (s > 0) res.push({ it, s }); });
+  if (toks.length) res.sort((a, b) => b.s - a.s);
+  return res;
+}
+
+function renderChips() {
+  if (!DATA) return;
+  const q = $("#q").value.trim(); const all = matches();
+  const cnt = {}; all.forEach(({ it }) => cnt[it.sheet] = (cnt[it.sheet] || 0) + 1);
+  const chips = [`<button class="catchip${activeSheet ? "" : " active"}" onclick="pickSheet('')">Tous les onglets<span class="n">${all.length}</span></button>`];
+  DATA.sheets.filter(s => s.count).forEach(s => {
+    const n = cnt[s.name] || 0;
+    chips.push(`<button class="catchip${activeSheet === s.name ? " active" : ""}${q && !n ? " zero" : ""}" onclick="pickSheet(${esc(JSON.stringify(s.name))})" title="${esc(s.title)}">${esc(s.name)}<span class="n">${n}</span></button>`);
+  });
+  $("#catbar").innerHTML = chips.join("");
+}
+function pickSheet(s) { activeSheet = activeSheet === s ? "" : s; shown = CONFIG.PAGE; renderChips(); render(); }
+
+function hl(text, toks) {
+  let h = esc(text); if (!toks.length || !text) return h;
+  const rx = toks.filter(t => t.length > 1).map(t => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+  if (!rx) return h;
+  return h.replace(new RegExp(`(${rx})`, "gi"), '<span class="hl">$1</span>');
+}
+
+function render() {
+  if (!DATA) return;
+  const q = $("#q").value.trim(); const toks = tokens(q);
+  let res = matches(); const total = res.length;
+  if (activeSheet) res = res.filter(x => x.it.sheet === activeSheet);
+  const main = $("#mainContent");
+  if (!q && !activeSheet) {
+    main.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🔎</div><h3>Tape une référence, un Part No, un EAN ou un modèle</h3>
+      <p>${DATA.rows.length} accessoires indexés dans ${DATA.sheets.filter(s => s.count).length} onglets.<br>Ou clique sur un onglet ci-dessus pour parcourir sa liste.</p>
+      <p style="margin-top:10px;font-size:11px">Fichier : ${esc(DATA.fileName || "Accessories List")}${DATA.modifiedTime ? " · modifié le " + fmtDate(DATA.modifiedTime) : ""}</p></div>`;
+    return;
+  }
+  if (!res.length) {
+    main.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🤷</div><h3>Aucune référence trouvée${activeSheet ? " dans « " + esc(activeSheet) + " »" : ""}</h3>
+      <p>${activeSheet && total ? `${total} résultat(s) dans les autres onglets — <a href="#" onclick="pickSheet('');return false">tout afficher</a>.` : "Essaie une partie de la référence (ex. RMB), le modèle (L10s) ou un mot-clé anglais (brush, filter, mop…)."}</p></div>`;
+    return;
+  }
+  const head = bomBanner(q) + `<div class="results-header"><span><b>${res.length}</b> référence${res.length > 1 ? "s" : ""}${activeSheet ? " dans « " + esc(activeSheet) + " »" : " dans tous les onglets"}</span><span>${esc(DATA.fileName || "")}</span></div>`;
+  const slice = res.slice(0, shown); let html = head, curSheet = null;
+  const grouped = !q;   // sans recherche : groupé par onglet (ordre du fichier)
+  slice.forEach(({ it }) => {
+    if (grouped && it.sheet !== curSheet) { curSheet = it.sheet; html += `<div class="fam-head">${esc(it.sheet)}</div>`; }
+    html += card(it, toks);
+  });
+  if (res.length > shown) html += `<button class="more" onclick="shown+=${CONFIG.PAGE * 2};render()">Afficher plus (${res.length - shown} restantes)</button>`;
+  main.innerHTML = html;
+}
+
+function bomBanner(q) {
+  const qsq = squash(q); const hits = projectHits(qsq);
+  if (!hits.length) return "";
+  const byModel = new Map(); hits.forEach(e => { const k = e.model + "|" + e.fam; const a = byModel.get(k) || { e, pj: [] }; e.projects.forEach(p => { if (squash(p).startsWith(qsq) && !a.pj.includes(p)) a.pj.push(p); }); byModel.set(k, a); });
+  const items = [...byModel.values()].slice(0, 6).map(({ e, pj }) =>
+    `<span class="pj">${esc(pj.join(", "))}</span> = <b>${esc(e.models.join(" / "))}</b> <span style="color:var(--text-3)">(${esc(e.fam)})</span> · <a href="bom_lookup.html?q=${encodeURIComponent(pj[0] || e.projects[0])}">Recherche BOM ›</a>`);
+  return `<div class="bomlink">🔗 N° de projet reconnu — accessoires compatibles avec :<br>${items.join("<br>")}${byModel.size > 6 ? `<br>… et ${byModel.size - 6} autre(s)` : ""}</div>`;
+}
+function modelChip(m, link, isHit, qsq) {
+  if (!link) return `<span class="mchip${isHit ? " hit" : ""}">${esc(m)}</span>`;
+  const ph = qsq.length >= 4 && link.projects.some(p => squash(p).startsWith(qsq));
+  const main = (ph && link.projects.find(p => squash(p).startsWith(qsq))) || link.projects[0];
+  const more = link.projects.length > 1 ? ` +${link.projects.length - 1}` : "";
+  const title = `${link.models.join(" / ")} (${link.fam})\nN° de projet : ${link.projects.join(", ")}\nClic : ouvrir dans Recherche BOM`;
+  return `<a class="mchip linked${isHit || ph ? " hit" : ""}${ph ? " phit" : ""}" href="bom_lookup.html?q=${encodeURIComponent(main)}" title="${esc(title)}">${esc(m)}<span class="pid">${esc(main)}${more}</span></a>`;
+}
+function idBox(label, v, toks) {
+  if (!v) return "";
+  const pretty = String(v).replace(/国际版\s*[:：]\s*/g, " · Intl : ").replace(/新主体\s*[:：]\s*/g, " · Nouvelle entité : ").replace(/\s{2,}/g, " ").trim();
+  const copyVal = String(v).split(/[\s:：]+/)[0];
+  return `<div class="id"><span class="id-l">${label}</span><span class="id-v">${hl(pretty, toks)}</span><button class="cp" title="Copier ${esc(copyVal)}" onclick="copyTxt(${esc(JSON.stringify(copyVal))})">📋</button></div>`;
+}
+function card(it, toks) {
+  const qsq = squash($("#q").value.trim());
+  const img = it.img && IMG[it.img]
+    ? `<div class="pc-img" style="background-image:url('${IMG[it.img]}')" onclick="zoom('${IMG[it.img]}')"></div>`
+    : `<div class="pc-img none">🧩</div>`;
+  const rrp = it.prices.find(p => /rrp|msrp/i.test(p.l));
+  const models = it._models; let mh = "";
+  if (models.length) {
+    const hit = m => toks.some(t => t.length > 1 && (norm(m).includes(t) || (squash(t) && squash(m).includes(squash(t)))));
+    const phit = i => { const l = it._links[i]; return !!(l && qsq.length >= 4 && l.projects.some(p => squash(p).startsWith(qsq))); };
+    const order = models.map((m, i) => i).sort((a, b) => (phit(b) * 2 + hit(models[b])) - (phit(a) * 2 + hit(models[a])));
+    const chip = i => modelChip(models[i], it._links[i], hit(models[i]), qsq);
+    const nLinked = it._links.filter(Boolean).length;
+    const vis = order.slice(0, CONFIG.MAX_MODELS), rest = order.length - vis.length;
+    mh = `<div class="compat"><div class="compat-h">Modèles compatibles (${models.length})${nLinked ? ` · <span style="color:var(--accent-h);text-transform:none;letter-spacing:0">${nLinked} relié${nLinked > 1 ? "s" : ""} à un n° de projet</span>` : ""}</div><div class="mchips">${vis.map(chip).join("")}${rest > 0 ? `<button class="mchip more" onclick='this.parentNode.innerHTML=${esc(JSON.stringify(order.map(chip).join("")))}'>+${rest}</button>` : ""}</div></div>`;
+  }
+  const kv = [];
+  if (it.hs) kv.push(["HS Code", it.hs]);
+  it.prices.forEach(p => kv.push([p.l, p.v]));
+  it.extras.forEach(e => kv.push([e.l, e.v]));
+  kv.push(["Onglet / ligne", `${it.sheet} · ligne ${it.r + 1}`]);
+  return `<div class="pc"><div class="pc-top">${img}<div class="pc-info">
+    <div class="pc-title">${it.ref ? `<span class="pc-ref">${hl(it.ref, toks)}</span>` : ""}<span class="pc-name">${hl(it._nameEn || it._catEn || "—", toks)}</span></div>
+    ${it._nameCn && it._nameCn !== it._nameEn ? `<div class="pc-cn">${esc(it._nameCn)}</div>` : ""}
+    <div class="pc-meta"><span class="tag fam">${esc(it.sheet)}</span>${it._catEn && it._catEn !== it._nameEn ? `<span class="tag cat">${hl(it._catEn, toks)}</span>` : ""}${it.qty ? `<span class="tag">×${esc(it.qty)} par boîte</span>` : ""}${rrp ? `<span class="tag price">PVC conseillé ${esc(rrp.v)}</span>` : ""}</div>
+  </div></div>
+  <div class="ids">${idBox("Réf.", it.ref, toks)}${idBox("Part No", it.part, toks)}${idBox("EAN", it.ean, toks)}</div>
+  ${mh}
+  ${it.remark ? `<div class="note">📝 ${esc(it.remark)}</div>` : ""}
+  <details class="more-info"><summary>Logistique, prix &amp; détails</summary><dl class="kv">${kv.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl></details>
+  </div>`;
+}
+function copyTxt(t) { (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast("Copié : " + t)).catch(() => toast(t)); }
+function zoom(u) { const lb = $("#lightbox"); lb.querySelector("img").src = u; lb.classList.remove("hidden"); }
+
+/* =====================================================================
+   MODAL MISE À JOUR
+   ===================================================================== */
+function openImportModal() {
+  $("#importModal").classList.remove("hidden"); $("#importResult").innerHTML = "";
+  $("#btnResetId").style.display = driveId() !== CONFIG.DRIVE_ID ? "" : "none";
+}
+function closeImportModal() { $("#importModal").classList.add("hidden"); }
+function result(html, cls) { $("#importResult").innerHTML = `<div class="import-result ${cls}">${html}</div>`; }
+async function forceDrive() { result("⏳ Relecture du fichier Drive…", "info"); await loadDrive(true); result(DATA ? `✓ ${DATA.rows.length} références chargées.` : "✕ Échec — voir le message en haut.", DATA ? "ok" : "err"); }
+async function loadFromLink() {
+  const id = extractDriveId($("#driveUrl").value);
+  if (!id) { result("✕ Lien Drive non reconnu.", "err"); return; }
+  try { localStorage.setItem(LS_ID, id); } catch (e) {}
+  result("⏳ Lecture du nouveau fichier…", "info"); await loadDrive(true);
+  if (DATA && DATA.driveId === id) result(`✓ ${esc(DATA.fileName)} — ${DATA.rows.length} références. Ce lien est mémorisé dans ce navigateur (pour tous les utilisateurs : modifier <code>CONFIG.DRIVE_ID</code> dans la page).`, "ok");
+  else result("✕ Fichier illisible via l'API Drive (partage « tous avec le lien » requis). Télécharge-le et glisse-le ci-dessous.", "err");
+}
+function resetDriveId() { try { localStorage.removeItem(LS_ID); } catch (e) {} openImportModal(); forceDrive(); }
+async function loadFromFile(file) {
+  result(`⏳ Lecture de ${esc(file.name)}…`, "info");
+  try {
+    const buf = await file.arrayBuffer();
+    const d = await parseWorkbook(buf, { name: file.name, modifiedTime: new Date(file.lastModified).toISOString(), source: "fichier", driveId: "local" });
+    if (!d.rows.length) throw new Error("aucune référence trouvée (en-têtes « Model » / « EAN » introuvables)");
+    await cachePut(d); useData(d, "fichier local");
+    result(`✓ ${esc(file.name)} — ${d.rows.length} références dans ${d.sheets.filter(s => s.count).length} onglets.<br><small>Gardé en cache dans ce navigateur. À la prochaine modification du fichier Drive, la version Drive reprendra la main.</small>`, "ok");
+  } catch (e) { console.error(e); result("✕ " + esc(e.message), "err"); }
+  finally { setProgress(null); }
+}
+(function () {
+  const dz = $("#dropZone");
+  ["dragenter", "dragover"].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add("over"); }));
+  ["dragleave", "drop"].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove("over"); }));
+  dz.addEventListener("drop", e => { const f = e.dataTransfer.files[0]; if (f) loadFromFile(f); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") { closeImportModal(); $("#lightbox").classList.add("hidden"); } });
+})();
+
+init();
+</script>
+</body>
+</html>

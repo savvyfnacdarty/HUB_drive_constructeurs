@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script src="../auth-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aspirateur balai laveur — SAV Dreame · Fnac Darty</title>
+<style>
+  :root{
+    /* Header HUB (rouge Fnac Darty) */
+    --rouge:#D4151B;
+    --orange:#EEA31E;
+    /* Accents Dreame */
+    --dreame:#2669C2;
+    --dreame-2:#1B4E97;
+    --dreame-bg:#EAF1FB;
+    --dreame-bd:#C4D9F4;
+    /* Neutres */
+    --bg:#F1F3F6;
+    --surface:#FFFFFF;
+    --border:#DDE1E8;
+    --text:#1A1E2A;
+    --text-2:#4A5068;
+    --muted:#8891A8;
+    --r-md:8px; --r-lg:14px;
+    --tr:.16s cubic-bezier(.4,0,.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Segoe UI",system-ui,Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+  /* ===== BANDEAU HUB (rouge Fnac Darty) ===== */
+  .hubbar{
+    background:var(--rouge);padding:11px 22px;
+    display:flex;align-items:center;gap:16px;
+    position:sticky;top:0;z-index:20;
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+  }
+  .hubbar .home{display:flex;align-items:center;gap:14px;text-decoration:none;flex-shrink:0;}
+  .hubbar img{height:36px;background:#fff;padding:5px 9px;border-radius:6px;transition:transform .15s;}
+  .hubbar:hover img{transform:scale(1.05);}
+  .hubbar .txt{color:#fff;font-weight:700;font-size:14px;letter-spacing:.3px;}
+
+  /* ===== HERO marque Dreame ===== */
+  .hero{
+    background:linear-gradient(120deg,#1B4E97 0%,var(--dreame) 60%,#4A8AD4 100%);
+    padding:40px 22px 30px;text-align:center;color:#fff;
+  }
+  .hero-logo{
+    height:52px;background:#fff;padding:8px 16px;border-radius:10px;
+    margin-bottom:18px;box-shadow:0 4px 16px rgba(0,0,0,.2);
+  }
+  .hero .eyebrow{
+    font-size:.95rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+    margin-bottom:6px;text-shadow:0 1px 2px rgba(0,0,0,.15);
+  }
+  .hero p{color:rgba(255,255,255,.9);font-size:.92rem;}
+  .hero nav{display:flex;gap:8px;justify-content:center;margin-top:22px;flex-wrap:wrap;}
+  .hero nav a{
+    color:#fff;text-decoration:none;font-size:.88rem;font-weight:600;
+    padding:9px 18px;border-radius:var(--r-md);
+    background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.45);
+    transition:var(--tr);
+  }
+  .hero nav a:hover{background:rgba(255,255,255,.28);}
+  .hero nav a.active{background:#fff;color:var(--dreame-2);border-color:#fff;}
+
+  /* ===== GRILLE RACCOURCIS ===== */
+  main{max-width:1000px;margin:0 auto;padding:28px 24px 60px;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;}
+  .card{
+    background:var(--surface);border:1.5px solid var(--border);
+    border-top:4px solid var(--dreame);border-radius:var(--r-lg);
+    padding:24px 22px;text-decoration:none;color:var(--text);
+    display:flex;flex-direction:column;gap:14px;
+    box-shadow:0 2px 6px rgba(0,0,0,.05);transition:var(--tr);min-height:150px;
+  }
+  .card:hover{transform:translateY(-3px);border-color:var(--dreame);box-shadow:0 10px 26px rgba(38,105,194,.18);}
+  .card .ic{
+    width:48px;height:48px;border-radius:12px;
+    background:var(--dreame-bg);border:1px solid var(--dreame-bd);
+    display:flex;align-items:center;justify-content:center;color:var(--dreame);flex-shrink:0;
+  }
+  .card .ttl{font-size:1.1rem;font-weight:700;}
+  .card .desc{font-size:.85rem;color:var(--text-2);line-height:1.5;}
+  .card .go{margin-top:auto;font-size:.8rem;font-weight:700;color:var(--dreame);display:inline-flex;align-items:center;gap:6px;}
+
+  footer{background:#000;color:#fff;text-align:center;padding:14px;font-size:.8rem;}
+  footer span{color:var(--orange);font-weight:600;}
+</style>
+<!-- ===== Compteur de consultations (GoatCounter) =====
+     Tableau de bord prive : https://hub-drive-fnac.goatcounter.com  -->
+<script data-goatcounter="https://hub-drive-fnac.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- ===== Fin compteur ===== -->
+</head>
+<body>
+
+<div class="hubbar">
+  <a class="home" href="../index.html" title="Retour au HUB Drive Constructeurs">
+    <img src="assets/FNAC DARTY.png" alt="Fnac Darty — Retour au HUB">
+    <span class="txt">← HUB Drive Constructeurs</span>
+  </a>
+</div>
+
+<div class="hero">
+  <img class="hero-logo" src="assets/DREAME.png" alt="Dreame" onerror="this.style.display='none'">
+  <div class="eyebrow">Petit Électro-Ménager</div>
+  <p>Ressources techniques SAV — aspirateurs balais laveurs Dreame &amp; Mova.</p>
+  <nav>
+    <a href="dreame.html">Recherche</a>
+    <a href="lecteur_bom.html">Lecteur BOM</a>
+    <a href="accessoires.html">🧩 Références Accessoires (consommable)</a>
+    <a href="robot_laveur.html">🤖 Robot laveur</a>
+    <a href="aspirateur_balai_laveur.html" class="active">🧹 Aspirateur balai laveur</a>
+  </nav>
+</div>
+
+<main>
+  <div class="cards">
+
+    <a class="card" href="faq_pem.html">
+      <div class="ic">
+        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <div class="ttl">FAQ Aspirateurs balais laveurs</div>
+      <div class="desc">Questions fréquentes et dépannage (H11, H12, M12, H15).</div>
+      <span class="go">Ouvrir →</span>
+    </a>
+
+  </div>
+</main>
+
+<footer>Espace interne <span>Fnac Darty</span> · SAV Dreame</footer>
+
+</body>
+</html>

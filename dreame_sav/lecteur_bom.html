@@ -349,6 +349,10 @@ body{font-family:var(--font-ui);background:var(--bg);color:var(--text);min-heigh
 .drive-help{margin-top:12px;font-size:11.5px;color:var(--muted-2);line-height:1.5;}
 .drive-note{margin-top:12px;padding:10px 14px;border-radius:var(--r-md);background:rgba(217,119,6,.08);border:1px solid rgba(217,119,6,.35);color:#92400e;font-size:12px;line-height:1.5;}
 [data-theme="dark"] .drive-note{color:#fcd34d;}
+.drive-cfg{border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface-2);margin-bottom:12px;}
+.drive-cfg>summary{cursor:pointer;padding:12px 16px;font-size:13px;font-weight:700;color:var(--text);user-select:none;}
+.drive-cfg>summary:hover{color:var(--accent,var(--text));}
+.drive-cfg-body{padding:0 16px 14px;}
 .drive-api{margin-top:10px;border:1px solid var(--border);border-radius:var(--r-md);padding:10px 14px;background:var(--surface-2);}
 .drive-api summary{cursor:pointer;font-size:12px;font-weight:700;color:var(--muted);user-select:none;}
 .drive-api summary:hover{color:var(--text);}
@@ -363,9 +367,8 @@ body{font-family:var(--font-ui);background:var(--bg);color:var(--text);min-heigh
 <div class="fdband">
   <img class="fdband-logo" src="assets/DREAME.png" alt="Dreame" onerror="this.style.display='none'">
   <nav>
-    <a href="dreame.html">Recherche</a>
-    <a href="bom_lookup.html">📋 Recherche BOM</a>
-    <a href="lecteur_bom.html" class="active">Lecteur BOM</a>
+    <a href="dreame.html" class="active">Recherche</a>
+    <a href="accessoires.html">🧩 Références Accessoires (consommable)</a>
     <a href="robot_laveur.html">🤖 Robot laveur</a>
     <a href="aspirateur_balai_laveur.html">🧹 Aspirateur balai laveur</a>
   </nav>
@@ -381,25 +384,30 @@ body{font-family:var(--font-ui);background:var(--bg);color:var(--text);min-heigh
 
   <div class="drive-panel" id="drivePanel" style="display:none;">
     <div class="drive-title">☁️ Consultation directe du Google Sheets</div>
-    <div class="drive-sub">Collez le lien du fichier BOM partagé sur Google Drive : les données sont lues directement en ligne, sans téléchargement ni import manuel.</div>
-    <div class="drive-row">
-      <input type="url" class="drive-url" id="driveUrl" placeholder="https://docs.google.com/spreadsheets/d/…" spellcheck="false"/>
-      <button class="drive-btn primary" id="btnDriveLoad" onclick="loadFromDrive()">⚡ Charger</button>
-    </div>
-    <div class="drive-row">
-      <select class="drive-saved" id="driveSaved" onchange="onSavedPick(this.value)"><option value="">— BOM mémorisées —</option></select>
-      <button class="drive-btn" id="btnDriveSave" onclick="saveDriveUrl()" title="Mémoriser l'URL actuelle pour la retrouver dans la liste">★ Mémoriser</button>
-      <button class="drive-btn" id="btnDriveDel" onclick="deleteDriveUrl()" title="Retirer la BOM sélectionnée de la liste">🗑</button>
-      <label class="drive-auto"><input type="checkbox" id="driveAuto" onchange="saveDriveAuto()"> Recharger automatiquement à l'ouverture</label>
-    </div>
-    <details class="drive-api" id="driveApiBox">
-      <summary>⚙ Option : clé API Google — version complète en consultation directe (photos, feuilles, références barrées)</summary>
-      <div class="drive-row" style="margin-top:8px;">
-        <input type="password" class="drive-url" id="driveApiKey" placeholder="AIza… (clé API Google Cloud)" spellcheck="false" autocomplete="off"/>
-        <button class="drive-btn" onclick="saveDriveApiKey()">💾 Enregistrer</button>
+    <details class="drive-cfg" id="driveCfgBox">
+      <summary>🔗 Paramètres de la source — lien Google Sheets, BOM mémorisées, clé API</summary>
+      <div class="drive-cfg-body">
+      <div class="drive-sub">Collez le lien du fichier BOM partagé sur Google Drive : les données sont lues directement en ligne, sans téléchargement ni import manuel.</div>
+      <div class="drive-row">
+        <input type="url" class="drive-url" id="driveUrl" placeholder="https://docs.google.com/spreadsheets/d/…" spellcheck="false"/>
+        <button class="drive-btn primary" id="btnDriveLoad" onclick="loadFromDrive()">⚡ Charger</button>
       </div>
-      <div class="drive-help" style="margin-top:4px;">
-        À créer une seule fois : <b>console.cloud.google.com</b> → créer un projet → « API et services » → activer <b>Google Drive API</b> et <b>Google Sheets API</b> → « Identifiants » → « Créer des identifiants » → <b>Clé API</b>. Par sécurité, restreignez la clé à ces deux APIs uniquement. Elle est enregistrée uniquement dans le navigateur de ce poste et ne donne accès qu'aux documents déjà partagés par lien.
+      <div class="drive-row">
+        <select class="drive-saved" id="driveSaved" onchange="onSavedPick(this.value)"><option value="">— BOM mémorisées —</option></select>
+        <button class="drive-btn" id="btnDriveSave" onclick="saveDriveUrl()" title="Mémoriser l'URL actuelle pour la retrouver dans la liste">★ Mémoriser</button>
+        <button class="drive-btn" id="btnDriveDel" onclick="deleteDriveUrl()" title="Retirer la BOM sélectionnée de la liste">🗑</button>
+        <label class="drive-auto"><input type="checkbox" id="driveAuto" onchange="saveDriveAuto()"> Recharger automatiquement à l'ouverture</label>
+      </div>
+      <details class="drive-api" id="driveApiBox">
+        <summary>⚙ Option : clé API Google — version complète en consultation directe (photos, feuilles, références barrées)</summary>
+        <div class="drive-row" style="margin-top:8px;">
+          <input type="password" class="drive-url" id="driveApiKey" placeholder="AIza… (clé API Google Cloud)" spellcheck="false" autocomplete="off"/>
+          <button class="drive-btn" onclick="saveDriveApiKey()">💾 Enregistrer</button>
+        </div>
+        <div class="drive-help" style="margin-top:4px;">
+          À créer une seule fois : <b>console.cloud.google.com</b> → créer un projet → « API et services » → activer <b>Google Drive API</b> et <b>Google Sheets API</b> → « Identifiants » → « Créer des identifiants » → <b>Clé API</b>. Par sécurité, restreignez la clé à ces deux APIs uniquement. Elle est enregistrée uniquement dans le navigateur de ce poste et ne donne accès qu'aux documents déjà partagés par lien.
+        </div>
+      </details>
       </div>
     </details>
     <div class="drive-status" id="driveStatus" style="display:none;">
@@ -736,6 +744,42 @@ const KW={
   expl:['爆炸图序号','爆炸图','分解图序号','分解图','exploded view num','exploded view no','exploded view number','exploded view','exploded','repère','repere','callout','no. on drawing','item no on'],
 };
 function normalize(s){return String(s).replace(/[\r\n]+/g,' ').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').trim();}
+
+/* ═══ REPLI POSITIONNEL (colonnes non identifiées par leur nom) ═══
+   Quand fuzzyDetect() échoue (en-têtes absents, renommés ou non reconnus), on
+   suppose l'ordre de colonnes standard des exports BOM Dreame (capture du
+   23/09/2026) :
+     0 序号_Num · 1 品牌_Brand · 2 售后备件料号_Material Code (RÉFÉRENCE) ·
+     3 机器版本_Version · 4 颜色_color · 5 售后备件名称(中文名称) ·
+     6 售后备件名称(英文名称)_Part Name · 7 适用机型_Universal model ·
+     8 整机料号_Product SKU · 9 项目号_Project Num · 10 包装方式_Packing method ·
+     11 PDM对应包材组件 · 12 借用项目 · 13 图片_Picture · 14 售后备件子项 ·
+     15 维修等级_Repair Level · 16 备注_Remarks ·
+     17 配件直发(无需拆螺丝) Parts/Sales access · 18 售后BOM用量 · 19 物料属性 ·
+     20 物料分类_Material Type · 21 物料是否可以下单 · 22 后续动作 · 23 替代料号
+   La colonne référence (index 2, "售后备件料号_Material Code") est validée par
+   une règle générale : une référence pièce fait 14 caractères, uniquement des
+   chiffres, et commence par "200". */
+const DEFAULT_COL_ORDER={ref:2,desc1:5,desc2:6,qty:18,level:15,img:13,expl:-1};
+const REF_PATTERN=/^200\d{11}$/; // 14 chiffres, préfixe 200
+function looksLikeRef(v){return REF_PATTERN.test(String(v||'').trim());}
+function positionalDetect(rawData){
+  let headerRow=-1;
+  for(let r=0;r<rawData.length;r++){ if(rawData[r]&&rawData[r].some(c=>String(c||'').trim())){headerRow=r;break;} }
+  if(headerRow===-1) return null;
+  const refIdx=DEFAULT_COL_ORDER.ref;
+  if(rawData[headerRow].length<=refIdx) return null; // pas assez de colonnes pour ce format
+  // Vérifie le contenu de la colonne supposée "référence" sur les lignes suivantes
+  let checked=0,matched=0;
+  for(let r=headerRow+1;r<rawData.length&&checked<20;r++){
+    const row=rawData[r]; if(!row||!row.some(c=>String(c||'').trim())) continue;
+    const v=row[refIdx]; if(v===undefined||v===null||v==='') continue;
+    checked++; if(looksLikeRef(v)) matched++;
+  }
+  if(checked===0||matched/checked<0.5) return null; // pas assez de références au format attendu
+  return {headerRow,colMap:{...DEFAULT_COL_ORDER},positional:true};
+}
+
 function fuzzyDetect(rawData){
   let best={headerRow:-1,colMap:null,score:0};
   for(let r=0;r<Math.min(30,rawData.length);r++){
@@ -1130,7 +1174,8 @@ function parseSheet(sheetName){
     currentDiagrams=emb.diagrams||[]; renderDiagrams();
     document.getElementById('rawHint').classList.add('active');
     colFilters=[];
-    const detection=fuzzyDetect(rawData);
+    let detection=fuzzyDetect(rawData);
+    if(!detection) detection=positionalDetect(rawData);
     if(!detection){
       setLoading(false);
       showDetectBanner(false,`Colonnes non identifiées — "${currentFileName}" feuille "${sheetName}"`);
@@ -1166,7 +1211,10 @@ function parseSheet(sheetName){
     computeDuplicates();
     setLoading(false);
     const photoCount=allRows.filter(r=>r.imgSrc).length;
-    showDetectBanner(true,`"${sheetName}" — ${allRows.length} pièce(s)${photoCount?` · ${photoCount} photo(s)`:''}`,colMap,rawHeaders,imgCol);
+    const bannerTitle=detection.positional
+      ?`⚠ En-têtes non reconnus — ordre de colonnes par défaut appliqué · "${sheetName}" — ${allRows.length} pièce(s)${photoCount?` · ${photoCount} photo(s)`:''}`
+      :`"${sheetName}" — ${allRows.length} pièce(s)${photoCount?` · ${photoCount} photo(s)`:''}`;
+    showDetectBanner(!detection.positional,bannerTitle,colMap,rawHeaders,imgCol,true);
     document.getElementById('normalView').style.display='block';
     viewMode='tiles';
     document.getElementById('btnTiles').classList.add('active');
@@ -1577,12 +1625,12 @@ function hideResults(){
   ['btnBackSheets','btnBackSheetsFb'].forEach(id=>{const b=document.getElementById(id);if(b)b.style.display='none';});
   currentDiagrams=[]; allRows=[]; filteredRows=[];
 }
-function showDetectBanner(ok,title,colMap,rawHeaders,imgCol){
+function showDetectBanner(ok,title,colMap,rawHeaders,imgCol,forceChips){
   const banner=document.getElementById('detectBanner');
   banner.className='detect-banner active '+(ok?'detect-ok':'detect-warn');
   document.getElementById('detectTitle').textContent=title;
   const chips=document.getElementById('detectChips'); chips.innerHTML='';
-  if(ok&&colMap&&rawHeaders){
+  if((ok||forceChips)&&colMap&&rawHeaders){
     const colNames={ref:'Référence',expl:'Repère',desc1:'Désignation',desc2:'Désig.2',qty:'Quantité',level:'Niveau',img:'Image'};
     Object.entries(colNames).forEach(([k,label])=>{
       const idx=colMap[k]; if(idx===-1||idx==null) return;

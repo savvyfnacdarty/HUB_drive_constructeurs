@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script src="../auth-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Recherche BOM — Drive constructeur Dreame</title>
+<style>
+:root{
+  --bg:#F3F4F6; --surface:#FFFFFF; --border:#E5E7EB; --border2:#D1D5DB;
+  --text:#111827; --text-2:#6B7280; --text-3:#9CA3AF;
+  --accent:#2669C2; --accent-h:#1B4E97; --accent-bg:#EAF1FB; --accent-bd:#C4D9F4;
+  --blue:#3B82F6; --blue-bg:#EFF6FF; --blue-bd:#BFDBFE; --blue-text:#1D4ED8;
+  --red:#EF4444; --red-bg:#FEF2F2; --green:#22C55E; --green-bg:#F0FDF4;
+  --radius:12px; --radius-sm:8px;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg:0 4px 24px rgba(0,0,0,.12),0 16px 48px rgba(0,0,0,.08);
+  --transition:all .18s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+a{color:inherit;}
+.badge{padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;background:rgba(34,197,94,.1);color:#16A34A;border:1px solid rgba(34,197,94,.25);}
+.badge.loading{background:rgba(107,114,128,.1);color:var(--text-2);border-color:var(--border);}
+.badge.error{background:rgba(239,68,68,.1);color:var(--red);border-color:rgba(239,68,68,.25);}
+.btn-import{padding:6px 14px;background:var(--surface);color:var(--text-2);border:1px solid var(--border2);border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:var(--transition);display:inline-flex;align-items:center;gap:6px;text-decoration:none;}
+.btn-import:hover{border-color:var(--accent);color:var(--accent-h);background:var(--accent-bg);}
+
+/* HERO */
+.hero{background:var(--surface);border-bottom:1px solid var(--border);padding:36px 24px 24px;display:flex;flex-direction:column;align-items:center;}
+.hero-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent-h);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';flex:1;height:1px;background:var(--accent-bd);max-width:60px;}
+.hero h1{font-size:26px;font-weight:800;margin-bottom:6px;text-align:center;letter-spacing:-.4px;}
+.hero p{font-size:14px;color:var(--text-2);margin-bottom:18px;text-align:center;}
+.search-box{width:100%;max-width:640px;display:flex;align-items:center;background:var(--bg);border:2px solid var(--border2);border-radius:14px;overflow:hidden;transition:border-color .2s,box-shadow .2s;}
+.search-box:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px rgba(38,105,194,.12);}
+.search-icon{padding:0 14px;color:var(--text-3);font-size:17px;flex-shrink:0;}
+.search-input{flex:1;padding:13px 0;background:transparent;border:none;outline:none;font-size:15px;color:var(--text);font-family:inherit;min-width:0;}
+.search-input::placeholder{color:var(--text-3);}
+.btn-clear{padding:8px 14px;margin:6px;background:var(--surface);color:var(--text-3);border:none;border-radius:9px;cursor:pointer;font-size:14px;font-weight:700;transition:var(--transition);}
+.btn-clear:hover{background:var(--border);color:var(--text);}
+.catbar{width:100%;max-width:900px;margin:16px auto 0;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
+.catchip{padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;background:var(--bg);color:var(--text-2);border:1px solid var(--border);cursor:pointer;transition:var(--transition);}
+.catchip:hover{border-color:var(--accent);color:var(--accent-h);}
+.catchip.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+.catchip .n{opacity:.6;font-weight:500;margin-left:3px;}
+
+/* MAIN */
+.content-wrap{max-width:860px;width:100%;margin:0 auto;padding:20px 16px 60px;}
+.results-header{font-size:12px;color:var(--text-3);margin-bottom:10px;padding:0 2px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+.results-header b{color:var(--text-2);}
+.fam-head{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--accent-h);margin:18px 2px 8px;display:flex;align-items:center;gap:8px;}
+.fam-head .count{background:var(--surface);color:var(--text-3);padding:1px 7px;border-radius:10px;font-size:10px;border:1px solid var(--border);text-transform:none;letter-spacing:0;}
+.fam-head .sub{font-weight:500;text-transform:none;letter-spacing:0;color:var(--text-3);}
+
+/* Ressources générales de la famille */
+.gen{background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:var(--radius);padding:12px 16px;margin-bottom:14px;}
+.gen summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--accent-h);list-style:none;display:flex;align-items:center;gap:8px;}
+.gen summary::-webkit-details-marker{display:none;}
+.gen summary::before{content:'▸';font-size:12px;transition:transform .15s;}
+.gen[open] summary::before{transform:rotate(90deg);}
+.gen-body{margin-top:10px;display:flex;flex-direction:column;gap:8px;}
+
+/* Carte produit */
+.pc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,.04);transition:var(--transition);}
+.pc:hover{border-color:var(--accent-bd);box-shadow:var(--shadow);}
+.pc-top{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;}
+.pc-avatar{width:40px;height:40px;background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.pc-info{flex:1;min-width:200px;}
+.pc-models{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;}
+.pc-model{font-size:15px;font-weight:700;}
+.pc-model.alt{font-size:13px;font-weight:600;color:var(--text-2);}
+.pc-meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px;align-items:center;}
+.tag{padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600;background:var(--bg);color:var(--text-2);border:1px solid var(--border);}
+.tag.fam{background:var(--blue-bg);color:var(--blue-text);border-color:var(--blue-bd);}
+.tag.proj{font-family:Consolas,monospace;font-size:11px;background:#FEF3C7;color:#92400E;border-color:#FDE68A;}
+.tag.brand{background:#F5F3FF;color:#5B21B6;border-color:#DDD6FE;}
+.tag.swap{background:var(--red-bg);color:#991B1B;border-color:#FECACA;}
+.pc-body{margin-top:10px;display:flex;flex-direction:column;gap:8px;}
+.blk{border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 12px;}
+.blk.bom{background:#FFFBEB;border-color:#FDE68A;}
+.blk-h{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text-2);margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.blk-h .count{background:var(--surface);color:var(--text-3);padding:0 6px;border-radius:8px;font-size:9px;border:1px solid var(--border);}
+.item{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:3px 0;}
+.item+.item{border-top:1px dashed rgba(0,0,0,.06);}
+.item-ic{font-size:14px;flex-shrink:0;}
+.item-name{flex:1;min-width:140px;font-size:12px;font-weight:600;color:#1f2937;word-break:break-word;}
+.item-note{font-size:12px;color:var(--text-2);font-style:italic;padding:2px 0;}
+.btn{flex-shrink:0;padding:5px 11px;border-radius:7px;font-size:11px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px;transition:var(--transition);border:1px solid transparent;white-space:nowrap;}
+.btn.reader{background:var(--accent);color:#fff;border-color:var(--accent);}
+.btn.reader:hover{background:var(--accent-h);}
+.btn.preview{background:var(--blue-bg);color:var(--blue-text);border-color:var(--blue-bd);}
+.btn.preview:hover{background:#DBEAFE;}
+.btn.dl{background:var(--surface);color:var(--text-2);border-color:var(--border2);}
+.btn.dl:hover{border-color:var(--accent);color:var(--accent-h);}
+.chips{display:flex;flex-wrap:wrap;gap:6px;}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;background:var(--surface);border:1px solid var(--border2);color:var(--text);transition:var(--transition);max-width:100%;}
+.chip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.chip:hover{border-color:var(--accent);color:var(--accent-h);background:var(--accent-bg);}
+.chip.txt{background:transparent;border-style:dashed;color:var(--text-2);font-weight:500;cursor:default;}
+.hl{background:rgba(245,158,11,.35);border-radius:2px;padding:0 1px;}
+.empty-state{background:var(--surface);border:1px dashed var(--border2);border-radius:var(--radius);padding:40px;text-align:center;}
+.empty-state-icon{font-size:40px;margin-bottom:12px;}
+.empty-state h3{font-size:15px;font-weight:600;color:var(--text-2);margin-bottom:4px;}
+.empty-state p{font-size:13px;color:var(--text-3);}
+.more{display:block;width:100%;padding:10px;margin-top:6px;background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:13px;font-weight:600;color:var(--accent-h);cursor:pointer;}
+.more:hover{background:var(--accent-bg);}
+
+/* MODAL */
+.modal-backdrop{position:fixed;inset:0;background:rgba(17,24,39,.5);z-index:600;display:flex;align-items:center;justify-content:center;padding:16px;}
+.modal-backdrop.hidden{display:none;}
+.modal{background:var(--surface);border-radius:16px;padding:28px;width:100%;max-width:540px;box-shadow:var(--shadow-lg);position:relative;max-height:92vh;overflow:auto;}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--text-3);font-size:17px;cursor:pointer;padding:6px;border-radius:7px;}
+.modal-close:hover{background:var(--bg);color:var(--text);}
+.modal h3{font-size:16px;font-weight:700;margin-bottom:5px;}
+.modal-sub{font-size:13px;color:var(--text-2);margin-bottom:14px;line-height:1.55;}
+.modal-sub code,.import-format code{background:var(--bg);padding:1px 5px;border-radius:4px;font-size:12px;}
+.import-format{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:12px;color:var(--text-2);line-height:1.7;margin-bottom:14px;}
+.import-format ol{padding-left:18px;}
+.import-format strong{color:var(--text);}
+.import-drop{border:2px dashed var(--border2);border-radius:10px;padding:22px 20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);margin-bottom:12px;}
+.import-drop:hover,.import-drop.over{border-color:var(--accent);background:var(--accent-bg);}
+.import-drop-icon{font-size:32px;margin-bottom:7px;}
+.import-drop-text{font-size:13px;color:var(--text-2);margin-bottom:10px;line-height:1.5;}
+.btn-import-pick{padding:8px 18px;background:var(--accent);color:#fff;font-weight:700;font-size:13px;border:none;border-radius:8px;cursor:pointer;}
+.btn-import-pick:hover{background:var(--accent-h);}
+.import-result{font-size:13px;border-radius:8px;padding:11px 14px;line-height:1.6;}
+.import-result.ok{background:var(--green-bg);color:#166534;border:1px solid #BBF7D0;}
+.import-result.err{background:var(--red-bg);color:#991B1B;border:1px solid #FECACA;}
+.import-result a.btn-import{margin-top:8px;}
+
+@media(max-width:560px){ .hero h1{font-size:20px;} .item-name{min-width:100%;} }
+</style>
+<!-- ===== Compteur de consultations (GoatCounter) =====
+     Tableau de bord prive : https://hub-drive-fnac.goatcounter.com  -->
+<script data-goatcounter="https://hub-drive-fnac.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- ===== Fin compteur ===== -->
+</head>
+<body>
+
+<!-- HEADER -->
+<style id="fdhub-css">
+.fdtop{background:#D4151B;padding:8px 20px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:9999;box-shadow:0 2px 6px rgba(0,0,0,.15);font-family:'Segoe UI',Arial,sans-serif;}
+.fdtop .fdtop-home{display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0;}
+.fdtop .fdtop-home img{height:28px;background:#fff;padding:4px 8px;border-radius:5px;display:block;}
+.fdtop .fdtop-txt{color:#fff;font-weight:700;font-size:13px;letter-spacing:.3px;}
+.fdtop .fdtop-right{margin-left:auto;display:flex;align-items:center;gap:10px;}
+.fdband{background:linear-gradient(120deg,#1B4E97 0%,#2669C2 60%,#4A8AD4 100%);padding:22px 20px 18px;text-align:center;font-family:'Segoe UI',Arial,sans-serif;}
+.fdband .fdband-logo{height:44px;background:#fff;padding:7px 14px;border-radius:9px;box-shadow:0 4px 14px rgba(0,0,0,.2);display:block;margin:0 auto 14px;}
+.fdband nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.fdband nav a{color:#fff;text-decoration:none;font-size:.86rem;font-weight:600;padding:8px 18px;border-radius:8px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.45);transition:.15s;}
+.fdband nav a:hover{background:rgba(255,255,255,.28);}
+.fdband nav a.active{background:#fff;color:#1B4E97;border-color:#fff;}
+.fdband-sync{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px;}
+</style>
+<div class="fdtop">
+  <a class="fdtop-home" href="../index.html" title="Retour au HUB Drive Constructeurs">
+    <img src="assets/FNAC DARTY.png" alt="Fnac Darty"><span class="fdtop-txt">&larr; HUB Drive Constructeurs</span>
+  </a>
+  <div class="fdtop-right"></div>
+</div>
+<div class="fdband">
+  <img class="fdband-logo" src="assets/DREAME.png" alt="Dreame" onerror="this.style.display='none'">
+  <nav>
+    <a href="dreame.html">Recherche</a>
+    <a href="bom_lookup.html" class="active">📋 Recherche BOM</a>
+    <a href="lecteur_bom.html">Lecteur BOM</a>
+    <a href="accessoires.html">🧩 Références Accessoires (consommable)</a>
+    <a href="robot_laveur.html">🤖 Robot laveur</a>
+    <a href="aspirateur_balai_laveur.html">🧹 Aspirateur balai laveur</a>
+  </nav>
+  <div class="fdband-sync">
+    <div class="badge loading" id="dataBadge">&#8987; Chargement&#8230;</div>
+    <a class="btn-import" id="srcLink" href="#" target="_blank" rel="noopener">☁️ Google Sheet source</a>
+    <button class="btn-import" onclick="openImportModal()">&#128260; Mettre à jour</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">BOM Quick Lookup · Dreame / MOVA</div>
+  <h1>Recherche BOM &amp; ressources réparation</h1>
+  <p>Cherche par modèle (L10s Ultra, H12 Pro, A1…), numéro de projet (R2469A, W2213…), nom de fichier BOM ou note technique.</p>
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="q" class="search-input" placeholder="Modèle, numéro de projet (R2469A, W2213, V2312…), BOM, notification…" oninput="doSearch()" autofocus autocomplete="off">
+    <button class="btn-clear" onclick="clearSearch()" title="Effacer">✕</button>
+  </div>
+  <div class="catbar" id="catbar"></div>
+</section>
+
+<div class="content-wrap"><div id="mainContent"></div></div>
+
+<!-- MODAL MISE À JOUR -->
+<div class="modal-backdrop hidden" id="importModal" onclick="if(event.target===this)closeImportModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeImportModal()">✕</button>
+    <h3>🔄 Mettre à jour depuis le Google Sheet</h3>
+    <p class="modal-sub">Les données affichées proviennent du fichier <code>data/bom_lookup.json</code>, généré à partir du Google Sheet <b>BOM Quick Lookup</b> de Dreame. L'export « page web » est utilisé (et non le .xlsx) car il conserve <b>tous</b> les liens d'une cellule.</p>
+    <div class="import-format">
+      <strong>Procédure :</strong>
+      <ol>
+        <li>Ouvrir le <a id="srcLink2" href="#" target="_blank" rel="noopener">Google Sheet source</a></li>
+        <li>Menu <b>Fichier → Télécharger → Page web (.html, zip)</b></li>
+        <li>Déposer le <code>.zip</code> ci-dessous : l'aperçu se met à jour immédiatement</li>
+        <li>Cliquer <b>Télécharger bom_lookup.json</b> et remplacer <code>dreame_sav/data/bom_lookup.json</code>, puis publier (push GitHub)</li>
+      </ol>
+    </div>
+    <div class="import-drop" id="importDrop" ondragover="dzOver(event)" ondragleave="dzLeave()" ondrop="dzDrop(event)" onclick="pickFile()">
+      <div class="import-drop-icon">🗜️</div>
+      <div class="import-drop-text">Glisse le fichier <b>.zip</b> ici ou clique pour le sélectionner</div>
+      <button class="btn-import-pick" onclick="pickFile();event.stopPropagation()">Choisir le .zip</button>
+    </div>
+    <div id="importResult" style="display:none"></div>
+  </div>
+</div>
+<input type="file" id="fileInput" accept=".zip" style="display:none">
+
+<script>
+// ══════════════════════════════════════════════════════
+//  CONFIG
+// ══════════════════════════════════════════════════════
+const DATA_URL   = 'data/bom_lookup.json';
+const SHEET_ID   = '15u69yfrqn3HqEwoemv8_UUgd-74wPeFdJhsD0YMc4dQ';
+const SHEET_URL  = 'https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/edit';
+const JSZIP_CDN  = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+const PAGE_SIZE  = 30;
+
+// Libellés FR des familles (onglets du Google Sheet) + icône
+const FAM = {
+  'robot vacuum':                    {fr:'Robot aspirateur',          ic:'🤖'},
+  'wet&dry vacuum':                  {fr:'Aspirateur balai laveur',   ic:'🧽'},
+  'cordless stick vacuum':           {fr:'Aspirateur balai',          ic:'🧹'},
+  'roboticmower':                    {fr:'Robot tondeuse',            ic:'🌱'},
+  'robotic pool cleaner':            {fr:'Robot piscine',             ic:'🏊'},
+  'window cleaning robot':           {fr:'Robot lave-vitres',         ic:'🪟'},
+  'home appliances':                 {fr:'Électroménager (café…)',    ic:'☕'},
+  'hair dryer':                      {fr:'Sèche-cheveux',             ic:'💨'},
+  'water hookup kit for auto refil': {fr:'Kit raccordement eau',      ic:'🚰'},
+  'air purifier':                    {fr:'Purificateur d’air',        ic:'🌬️'},
+};
+function famInfo(name){const k=String(name).toLowerCase().trim();return FAM[k]||{fr:name,ic:'📦'};}
+
+// ── Utilitaires liens Google ──
+function driveId(url){const m=String(url).match(/\/d\/([A-Za-z0-9_-]{10,})/)||String(url).match(/[?&]id=([A-Za-z0-9_-]{10,})/);return m?m[1]:null;}
+function docKind(url){if(/docs\.google\.com\/spreadsheets/.test(url))return 'spreadsheets';if(/docs\.google\.com\/presentation/.test(url))return 'presentation';if(/docs\.google\.com\/document/.test(url))return 'document';if(/drive\.google\.com\/drive\/(u\/\d+\/)?folders/.test(url))return 'folder';return 'file';}
+function previewUrl(url){const id=driveId(url);if(!id)return url;const k=docKind(url);if(k==='folder')return url;return k==='file'?'https://drive.google.com/file/d/'+id+'/preview':'https://docs.google.com/'+k+'/d/'+id+'/preview';}
+function downloadUrl(url){const id=driveId(url);if(!id)return url;return 'https://drive.google.com/uc?export=download&id='+id;}
+function bomReaderUrl(url){const id=driveId(url);return 'lecteur_bom.html?bom='+encodeURIComponent(id||url);}
+function iconFor(item){
+  const u=item.u||'', t=item.t||'';
+  if(!u) return '📝';
+  const k=docKind(u);
+  if(k==='folder') return '📂';
+  if(k==='presentation'||/\.pptx?$/i.test(t)) return '📊';
+  if(k==='spreadsheets'||/\.xlsx?$/i.test(t)) return '📗';
+  if(k==='document'||/\.docx?$/i.test(t)) return '📄';
+  if(/\.(mp4|mov|avi)$/i.test(t)) return '🎬';
+  if(/\.pdf$/i.test(t)) return '📕';
+  if(/dreametech\.com/.test(u)) return '🌐';
+  return '🔗';
+}
+function isBomFile(item){return !!item.u && (docKind(item.u)==='spreadsheets' || /\.xlsx?$/i.test(item.t||''));}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function norm(s){return String(s??'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
+function compact(s){return norm(s).replace(/[\s_\-–—\/&().,:;【】\[\]]+/g,'');}
+function hl(text,q){
+  if(!q) return esc(text);
+  const toks=q.split(/\s+/).filter(Boolean).map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));
+  if(!toks.length) return esc(text);
+  const re=new RegExp('('+toks.join('|')+')','gi');
+  return esc(text).replace(re,'<span class="hl">$1</span>');
+}
+
+// ══════════════════════════════════════════════════════
+//  ÉTAT
+// ══════════════════════════════════════════════════════
+let DATA=null, ROWS=[], activeFam='', shown=PAGE_SIZE;
+
+function setBadge(cls,txt){const b=document.getElementById('dataBadge');b.className='badge '+cls;b.innerHTML=txt;}
+
+function ingest(data,label){
+  DATA=data; ROWS=[];
+  (data.families||[]).forEach(f=>{
+    (f.rows||[]).forEach(r=>{
+      const hay=[f.name,famInfo(f.name).fr,r.brand,r.cat,...(r.model||[]),...(r.project||[]),
+        ...(r.bom||[]).map(x=>x.t),...(r.repair||[]).map(x=>x.t),...(r.notif||[]).map(x=>x.t),...(r.extra||[]).map(x=>x.t)].join(' ');
+      ROWS.push({fam:f.name, r, hay:norm(hay), hayc:compact(hay)});
+    });
+  });
+  document.getElementById('srcLink').href=data.source||SHEET_URL;
+  document.getElementById('srcLink2').href=data.source||SHEET_URL;
+  const nb=ROWS.length, nf=(data.families||[]).length;
+  setBadge('', '✓ '+nb+' produits · '+nf+' familles'+(data.generated?' · MAJ '+esc(data.generated):'')+(label?' · '+label:''));
+  renderCatbar(); doSearch();
+}
+
+async function loadData(){
+  try{
+    const res=await fetch(DATA_URL+'?t='+Date.now(),{cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    ingest(await res.json(),'');
+  }catch(e){
+    setBadge('error','⚠ Données introuvables ('+esc(e.message)+')');
+    document.getElementById('mainContent').innerHTML='<div class="empty-state"><div class="empty-state-icon">📭</div><h3>Aucune donnée chargée</h3><p>Le fichier <code>data/bom_lookup.json</code> est introuvable. Utilise « Mettre à jour » pour charger l’export du Google Sheet.</p></div>';
+  }
+}
+
+// ── Barre des familles ──
+function renderCatbar(){
+  const bar=document.getElementById('catbar');
+  const fams=(DATA.families||[]).filter(f=>(f.rows||[]).length);
+  bar.innerHTML='<span class="catchip'+(activeFam===''?' active':'')+'" onclick="setFam(\'\')">Toutes <span class="n">'+ROWS.length+'</span></span>'+
+    fams.map(f=>{const i=famInfo(f.name);return '<span class="catchip'+(activeFam===f.name?' active':'')+'" onclick="setFam('+JSON.stringify(f.name).replace(/"/g,'&quot;')+')">'+i.ic+' '+esc(i.fr)+' <span class="n">'+f.rows.length+'</span></span>';}).join('');
+}
+function setFam(n){activeFam=(activeFam===n)?'':n;shown=PAGE_SIZE;renderCatbar();doSearch();}
+function clearSearch(){document.getElementById('q').value='';shown=PAGE_SIZE;doSearch();document.getElementById('q').focus();}
+
+// ── Recherche ──
+function matches(row,toks){
+  return toks.every(t=>row.hay.includes(t)||row.hayc.includes(compact(t)));
+}
+function doSearch(){
+  if(!DATA) return;
+  const qRaw=document.getElementById('q').value.trim();
+  const toks=norm(qRaw).split(/\s+/).filter(Boolean);
+  let list=ROWS.filter(x=>!activeFam||x.fam===activeFam);
+  if(toks.length) list=list.filter(x=>matches(x,toks));
+  // tri : correspondance exacte projet/modèle en premier
+  if(toks.length){
+    const q=compact(qRaw);
+    const score=x=>{
+      const proj=(x.r.project||[]).map(compact), mod=(x.r.model||[]).map(compact);
+      if(proj.includes(q)||mod.includes(q)) return 0;
+      if(proj.some(p=>p.startsWith(q))||mod.some(m=>m.startsWith(q))) return 1;
+      if(proj.some(p=>p.includes(q))||mod.some(m=>m.includes(q))) return 2;
+      return 3;
+    };
+    list=list.map(x=>[score(x),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
+  }
+  render(list,qRaw);
+}
+
+// ── Rendu ──
+function itemHtml(item,q,opts={}){
+  if(!item.u) return '<div class="item-note">'+hl(item.t,q)+'</div>';
+  const ic=iconFor(item), bom=isBomFile(item);
+  let btns='';
+  if(bom&&opts.bom) btns+='<a class="btn reader" href="'+esc(bomReaderUrl(item.u))+'" target="_blank" rel="noopener">📋 Lecteur BOM</a>';
+  if(docKind(item.u)==='folder') btns+='<a class="btn preview" href="'+esc(item.u)+'" target="_blank" rel="noopener">📂 Ouvrir le dossier</a>';
+  else{
+    btns+='<a class="btn preview" href="'+esc(previewUrl(item.u))+'" target="_blank" rel="noopener">👁 Aperçu</a>';
+    if(driveId(item.u)) btns+='<a class="btn dl" href="'+esc(downloadUrl(item.u))+'" target="_blank" rel="noopener">⬇ Télécharger</a>';
+  }
+  return '<div class="item"><span class="item-ic">'+ic+'</span><span class="item-name" title="'+esc(item.t)+'">'+hl(item.t,q)+'</span>'+btns+'</div>';
+}
+function chipsHtml(items,q){
+  return '<div class="chips">'+items.map(it=>{
+    if(!it.u) return '<span class="chip txt" title="'+esc(it.t)+'">'+iconFor(it)+' <span>'+hl(it.t,q)+'</span></span>';
+    const href=docKind(it.u)==='folder'?it.u:previewUrl(it.u);
+    return '<a class="chip" href="'+esc(href)+'" target="_blank" rel="noopener" title="'+esc(it.t)+'">'+iconFor(it)+' <span>'+hl(it.t,q)+'</span></a>';
+  }).join('')+'</div>';
+}
+function block(cls,title,count,inner){
+  return '<div class="blk '+cls+'"><div class="blk-h">'+title+' <span class="count">'+count+'</span></div>'+inner+'</div>';
+}
+function cardHtml(x,q,showFam){
+  const r=x.r, fi=famInfo(x.fam);
+  const models=(r.model||[]);
+  const swap=[...(r.bom||[])].some(b=>!b.u&&/no repair|replacement instead|swap|以换代修/i.test(b.t));
+  const head='<div class="pc-top"><div class="pc-avatar">'+fi.ic+'</div><div class="pc-info">'+
+    '<div class="pc-models">'+models.map((m,i)=>'<span class="pc-model'+(i?' alt':'')+'">'+hl(m,q)+'</span>').join('')+(models.length?'':'<span class="pc-model alt">—</span>')+'</div>'+
+    '<div class="pc-meta">'+
+      (showFam?'<span class="tag fam">'+esc(fi.fr)+'</span>':'')+
+      (r.brand?'<span class="tag brand">'+esc(r.brand)+'</span>':'')+
+      (r.cat?'<span class="tag">'+esc(r.cat)+'</span>':'')+
+      (r.project||[]).map(p=>'<span class="tag proj">'+hl(p,q)+'</span>').join('')+
+      (swap?'<span class="tag swap">Échange standard (pas de réparation)</span>':'')+
+    '</div></div></div>';
+  let body='';
+  const bom=r.bom||[], rep=r.repair||[], notif=r.notif||[], extra=r.extra||[];
+  if(bom.length) body+=block('bom','📋 BOM / Pièces détachées',bom.filter(b=>b.u).length,bom.map(b=>itemHtml(b,q,{bom:true})).join(''));
+  if(rep.length) body+=block('','🛠 Informations réparation',rep.filter(b=>b.u).length,chipsHtml(rep,q));
+  if(notif.length) body+=block('','📢 Notifications techniques',notif.filter(b=>b.u).length,notif.map(b=>itemHtml(b,q)).join(''));
+  if(extra.length) body+=block('','🔗 Autres liens',extra.length,chipsHtml(extra,q));
+  if(!body) body='<div class="item-note">Aucun document référencé pour ce modèle.</div>';
+  return '<div class="pc">'+head+'<div class="pc-body">'+body+'</div></div>';
+}
+function generalHtml(f,q){
+  const g=f.general||{}; const parts=[];
+  if((g.bom||[]).length) parts.push(block('bom','📋 Dossier BOM de la famille',g.bom.filter(b=>b.u).length,g.bom.map(b=>itemHtml(b,q,{bom:true})).join('')));
+  if((g.repair||[]).length) parts.push(block('','🛠 Réparation — ressources générales',g.repair.filter(b=>b.u).length,chipsHtml(g.repair,q)));
+  if((g.notif||[]).length) parts.push(block('','📢 Notifications techniques — toutes les gammes',g.notif.filter(b=>b.u).length,g.notif.map(b=>itemHtml(b,q)).join('')));
+  if((g.extra||[]).length) parts.push(block('','🔗 Autres liens',g.extra.length,chipsHtml(g.extra,q)));
+  if(!parts.length) return '';
+  const fi=famInfo(f.name);
+  return '<details class="gen"'+(q?'':' open')+'><summary>'+fi.ic+' Ressources générales — '+esc(fi.fr)+' <span class="tag">'+esc(f.name)+'</span></summary><div class="gen-body">'+parts.join('')+'</div></details>';
+}
+function render(list,q){
+  const el=document.getElementById('mainContent');
+  let html='';
+  if(activeFam){
+    const f=(DATA.families||[]).find(f=>f.name===activeFam);
+    if(f) html+=generalHtml(f,q);
+  }
+  html+='<div class="results-header"><span><b>'+list.length+'</b> produit'+(list.length>1?'s':'')+(q?' pour « '+esc(q)+' »':'')+(activeFam?' · '+esc(famInfo(activeFam).fr):'')+'</span>'+
+        '<span>Source : <a href="'+esc((DATA.source||SHEET_URL))+'" target="_blank" rel="noopener">BOM Quick Lookup (Google Sheet)</a></span></div>';
+  if(!list.length){
+    html+='<div class="empty-state"><div class="empty-state-icon">🔎</div><h3>Aucun résultat</h3><p>Essaie avec le numéro de projet (ex. R2469, W2213) ou une partie du nom de modèle.</p></div>';
+    el.innerHTML=html; return;
+  }
+  const slice=list.slice(0,shown);
+  if(!activeFam){
+    // regroupé par famille (ordre du classeur)
+    const order=(DATA.families||[]).map(f=>f.name);
+    const groups=new Map();
+    slice.forEach(x=>{if(!groups.has(x.fam))groups.set(x.fam,[]);groups.get(x.fam).push(x);});
+    [...groups.keys()].sort((a,b)=>order.indexOf(a)-order.indexOf(b)).forEach(fam=>{
+      const fi=famInfo(fam), arr=groups.get(fam);
+      html+='<div class="fam-head">'+fi.ic+' '+esc(fi.fr)+' <span class="sub">'+esc(fam)+'</span><span class="count">'+arr.length+'</span></div>';
+      html+=arr.map(x=>cardHtml(x,q,false)).join('');
+    });
+  } else {
+    html+=slice.map(x=>cardHtml(x,q,false)).join('');
+  }
+  if(list.length>shown) html+='<button class="more" onclick="shown+='+PAGE_SIZE+';doSearch()">Afficher plus ('+(list.length-shown)+' restants)</button>';
+  el.innerHTML=html;
+}
+
+// ══════════════════════════════════════════════════════
+//  MISE À JOUR : parsing de l'export « page web (.zip) » du Google Sheet
+//  (même logique que build_bom_lookup.py)
+// ══════════════════════════════════════════════════════
+function openImportModal(){document.getElementById('importModal').classList.remove('hidden');}
+function closeImportModal(){document.getElementById('importModal').classList.add('hidden');}
+function pickFile(){document.getElementById('fileInput').click();}
+function dzOver(e){e.preventDefault();document.getElementById('importDrop').classList.add('over');}
+function dzLeave(){document.getElementById('importDrop').classList.remove('over');}
+function dzDrop(e){e.preventDefault();dzLeave();const f=e.dataTransfer.files[0];if(f)handleZip(f);}
+document.getElementById('fileInput').addEventListener('change',e=>{if(e.target.files[0])handleZip(e.target.files[0]);e.target.value='';});
+function showResult(cls,html){const r=document.getElementById('importResult');r.style.display='block';r.className='import-result '+cls;r.innerHTML=html;}
+function loadScript(src){return new Promise((ok,ko)=>{if(window.JSZip)return ok();const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=()=>ko(new Error('Chargement JSZip impossible'));document.head.appendChild(s);});}
+
+function cellItems(td){
+  const items=[]; let buf=[];
+  const flush=()=>{const s=buf.join('').replace(/\s+/g,' ').trim();if(s)items.push({t:s,u:null});buf=[];};
+  const walk=node=>{
+    node.childNodes.forEach(ch=>{
+      if(ch.nodeType===3){buf.push(ch.nodeValue);return;}
+      if(ch.nodeType!==1) return;
+      const tag=ch.tagName.toLowerCase();
+      if(tag==='br') flush();
+      else if(tag==='a'&&ch.getAttribute('href')){flush();const t=ch.textContent.replace(/\s+/g,' ').trim();if(t)items.push({t,u:ch.getAttribute('href')});}
+      else if(tag==='svg'||tag==='script'||tag==='style') return;
+      else walk(ch);
+    });
+  };
+  walk(td); flush(); return items;
+}
+function gridRows(table){
+  const grid=[], spans=new Map();
+  [...table.querySelectorAll('tr')].forEach((tr,r)=>{
+    const row=[]; let c=0;
+    const cells=[...tr.children].filter(x=>/^(td|th)$/i.test(x.tagName)&&!x.classList.contains('row-headers-background'));
+    cells.forEach(td=>{
+      while(spans.has(r+','+c)){row.push(spans.get(r+','+c));spans.delete(r+','+c);c++;}
+      const rs=+td.getAttribute('rowspan')||1, cs=+td.getAttribute('colspan')||1;
+      row.push(td);
+      for(let dr=0;dr<rs;dr++)for(let dc=0;dc<cs;dc++){if(dr||dc)spans.set((r+dr)+','+(c+dc),td);}
+      c+=cs;
+    });
+    while(spans.has(r+','+c)){row.push(spans.get(r+','+c));spans.delete(r+','+c);c++;}
+    grid.push(row);
+  });
+  return grid;
+}
+function parseSheet(name,html){
+  const doc=new DOMParser().parseFromString(html,'text/html');
+  const table=doc.querySelector('table'); if(!table) return null;
+  const rows=gridRows(table);
+  const txtOf=td=>td?td.textContent.replace(/\s+/g,' ').trim():'';
+  const hdrI=rows.findIndex(r=>r.some(td=>txtOf(td).toLowerCase()==='model'));
+  if(hdrI<0) return null;
+  const headers=rows[hdrI].map(td=>txtOf(td).toLowerCase());
+  const col=(...names)=>{for(const n of names){const i=headers.findIndex(h=>h.startsWith(n));if(i>=0)return i;}return -1;};
+  const ci={no:col('no'),brand:col('brand'),cat:col('catagory','category'),model:col('model'),project:col('project'),bom:col('bom'),repair:col('repair'),notif:col('technical')};
+  const known=new Set(Object.values(ci).filter(v=>v>=0));
+  const fam={name,general:{bom:[],repair:[],notif:[],extra:[]},rows:[]};
+  let prev=null;
+  for(const r of rows.slice(hdrI+1)){
+    const td=k=>ci[k]>=0?r[ci[k]]:null;
+    const txt=k=>txtOf(td(k));
+    const lines=k=>{const c=td(k);if(!c)return [];const clone=c.cloneNode(true);clone.querySelectorAll('br').forEach(b=>b.replaceWith('\n'));return clone.textContent.split('\n').map(s=>s.replace(/\s+/g,' ').trim()).filter(Boolean);};
+    const items=k=>td(k)?cellItems(td(k)):[];
+    const model=txt('model'), project=lines('project');
+    const extra=[]; r.forEach((c,i)=>{if(!known.has(i)&&c)extra.push(...cellItems(c).filter(x=>x.u));});
+    if(model.toUpperCase()==='ALL'||(!model&&project[0]&&project[0].toUpperCase()==='ALL')){
+      fam.general={bom:items('bom'),repair:items('repair'),notif:items('notif'),extra}; continue;
+    }
+    const bom=items('bom'),repair=items('repair'),notif=items('notif');
+    if(!model&&!project.length&&!bom.length&&!repair.length&&!notif.length) continue;
+    const row={no:txt('no'),brand:txt('brand'),cat:txt('cat'),model:lines('model'),project,bom,repair,notif,extra};
+    if(!row.model.length&&prev){row.model=[...prev.model];row.cont=true;}
+    fam.rows.push(row); prev=row;
+  }
+  return fam;
+}
+async function handleZip(file){
+  showResult('ok','⏳ Lecture de l’archive…');
+  try{
+    await loadScript(JSZIP_CDN);
+    const zip=await JSZip.loadAsync(file);
+    const names=Object.keys(zip.files).filter(n=>/\.html?$/i.test(n)&&!zip.files[n].dir);
+    if(!names.length) throw new Error('Aucune page .html dans l’archive (export « Page web » attendu).');
+    const fams=[];
+    for(const n of names){
+      const html=await zip.files[n].async('string');
+      const f=parseSheet(n.replace(/^.*\//,'').replace(/\.html?$/i,''),html);
+      if(f) fams.push(f);
+    }
+    if(!fams.length) throw new Error('Aucun onglet reconnu (colonne « Model » introuvable).');
+    const data={source:SHEET_URL,sheetId:SHEET_ID,generated:new Date().toISOString().slice(0,10),families:fams};
+    ingest(data,'aperçu local');
+    const blob=new Blob([JSON.stringify(data,null,1)],{type:'application/json'});
+    const url=URL.createObjectURL(blob);
+    const nb=fams.reduce((a,f)=>a+f.rows.length,0);
+    showResult('ok','✅ <b>'+nb+' produits</b> dans <b>'+fams.length+' familles</b> : '+fams.map(f=>esc(f.name)+' ('+f.rows.length+')').join(', ')+'.<br>L’aperçu est actif sur cette page (non enregistré).<br>'+
+      '<a class="btn-import" href="'+url+'" download="bom_lookup.json">⬇ Télécharger bom_lookup.json</a> → à copier dans <code>dreame_sav/data/</code> puis publier.');
+  }catch(e){showResult('err','❌ '+esc(e.message||e));}
+}
+
+// ── Démarrage ──
+(function(){
+  const p=new URLSearchParams(location.search); const q=p.get('q'); if(q) document.getElementById('q').value=q;
+  document.getElementById('srcLink').href=SHEET_URL; document.getElementById('srcLink2').href=SHEET_URL;
+  loadData();
+})();
+</script>
+</body>
+</html>

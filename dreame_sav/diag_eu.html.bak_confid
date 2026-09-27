@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script src="../auth-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Consultation des erreurs du robot en ligne — Dreame</title>
+<!--
+  Onglet « Consultation des erreurs du robot en ligne » (hub Dreame).
+  Lien vers l'outil constructeur After-Sale Diag (diag-eu.dreame.tech) + identifiants + notice rapide.
+  Notice tirée de diag-eu_info/info_anomalie_en_memoire.pptx (SOP of After-Sale Diagnosis Tool, 31/07/2026).
+  Captures : diag-eu_info/img/etape2.jpg, etape3.jpg, etape4.jpg
+  Changement d'identifiants → modifier le bloc « IDENTIFIANTS » ci-dessous.
+-->
+<style>
+:root{
+  --bg:#F3F4F6; --surface:#FFFFFF; --border:#E5E7EB; --border2:#D1D5DB;
+  --text:#111827; --text-2:#6B7280; --text-3:#9CA3AF;
+  --accent:#2669C2; --accent-h:#1B4E97; --accent-bg:#EAF1FB; --accent-bd:#C4D9F4;
+  --radius:12px; --radius-sm:8px;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+a{color:inherit;}
+
+.hero{background:var(--surface);border-bottom:1px solid var(--border);padding:36px 24px 28px;display:flex;flex-direction:column;align-items:center;}
+.hero-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent-h);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';flex:1;height:1px;background:var(--accent-bd);width:60px;}
+.hero h1{font-size:26px;font-weight:800;margin-bottom:6px;text-align:center;letter-spacing:-.4px;}
+.hero p{font-size:14px;color:var(--text-2);text-align:center;max-width:680px;line-height:1.55;}
+
+.content-wrap{max-width:960px;width:100%;margin:0 auto;padding:22px 16px 60px;}
+
+/* Carte d'accès */
+.access{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:22px 24px;display:grid;grid-template-columns:1fr auto;gap:18px 28px;align-items:center;}
+.access h2{font-size:15px;font-weight:700;margin-bottom:4px;}
+.access .url{font-family:Consolas,monospace;font-size:13px;color:var(--text-2);word-break:break-all;}
+.btn-go{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;background:var(--accent);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none;white-space:nowrap;transition:.15s;}
+.btn-go:hover{background:var(--accent-h);}
+.creds{grid-column:1 / -1;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.cred{background:#FFFBEB;border:1px solid #FDE68A;border-radius:var(--radius-sm);padding:10px 12px;display:flex;align-items:center;gap:10px;min-width:0;}
+.cred-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#92400E;flex-shrink:0;width:92px;}
+.cred-v{font-family:Consolas,monospace;font-size:16px;font-weight:700;color:#1f2937;flex:1;min-width:0;word-break:break-all;}
+.cp{border:1px solid #FDE68A;background:#fff;cursor:pointer;font-size:12px;font-weight:600;color:#92400E;padding:5px 10px;border-radius:6px;flex-shrink:0;font-family:inherit;}
+.cp:hover{background:#FEF3C7;}
+.confid{grid-column:1 / -1;font-size:12px;color:var(--text-2);}
+
+/* Notice */
+.sec-h{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--accent-h);margin:30px 2px 12px;display:flex;align-items:center;gap:8px;}
+.sec-h::after{content:'';flex:1;height:1px;background:var(--accent-bd);}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.step-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.num{width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.step h3{font-size:16px;font-weight:700;}
+.step ol,.step ul{margin:6px 0 4px 22px;font-size:14px;line-height:1.7;}
+.step p{font-size:14px;line-height:1.6;color:var(--text);}
+.step .shot{display:block;width:100%;margin-top:12px;border:1px solid var(--border);border-radius:10px;cursor:zoom-in;background:#fff;}
+.tip{margin-top:10px;font-size:13px;color:#92400E;background:#FFFBEB;border-left:3px solid #F59E0B;padding:7px 11px;border-radius:0 6px 6px 0;line-height:1.55;}
+.info{margin-top:10px;font-size:13px;color:#1D4ED8;background:#EFF6FF;border-left:3px solid #3B82F6;padding:7px 11px;border-radius:0 6px 6px 0;line-height:1.55;}
+kbd,.k{font-family:Consolas,monospace;font-size:12px;background:var(--bg);border:1px solid var(--border2);border-radius:4px;padding:1px 6px;font-weight:600;}
+table.cols{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px;}
+table.cols th,table.cols td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--border);vertical-align:top;}
+table.cols th{color:var(--text-2);font-weight:600;width:170px;}
+.src{margin-top:18px;font-size:12px;color:var(--text-3);text-align:center;}
+.src a{color:var(--accent-h);}
+
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#111827;color:#fff;padding:8px 16px;border-radius:8px;font-size:13px;z-index:900;opacity:0;transition:opacity .2s;pointer-events:none;}
+.toast.on{opacity:1;}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:700;display:flex;align-items:center;justify-content:center;cursor:zoom-out;padding:20px;}
+.lightbox.hidden{display:none;}
+.lightbox img{max-width:96vw;max-height:92vh;background:#fff;border-radius:10px;}
+
+@media(max-width:640px){
+  .hero h1{font-size:20px;}
+  .access{grid-template-columns:1fr;}
+  .btn-go{justify-content:center;}
+  .creds{grid-template-columns:1fr;}
+  .cred-l{width:auto;}
+  table.cols th{width:auto;}
+}
+</style>
+<!-- ===== Compteur de consultations (GoatCounter) =====
+     Tableau de bord prive : https://hub-drive-fnac.goatcounter.com  -->
+<script data-goatcounter="https://hub-drive-fnac.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- ===== Fin compteur ===== -->
+</head>
+<body>
+
+<!-- HEADER -->
+<style id="fdhub-css">
+.fdtop{background:#D4151B;padding:8px 20px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:9999;box-shadow:0 2px 6px rgba(0,0,0,.15);font-family:'Segoe UI',Arial,sans-serif;}
+.fdtop .fdtop-home{display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0;}
+.fdtop .fdtop-home img{height:28px;background:#fff;padding:4px 8px;border-radius:5px;display:block;}
+.fdtop .fdtop-txt{color:#fff;font-weight:700;font-size:13px;letter-spacing:.3px;}
+.fdtop .fdtop-right{margin-left:auto;display:flex;align-items:center;gap:10px;}
+.fdband{background:linear-gradient(120deg,#1B4E97 0%,#2669C2 60%,#4A8AD4 100%);padding:22px 20px 18px;text-align:center;font-family:'Segoe UI',Arial,sans-serif;}
+.fdband .fdband-logo{height:44px;background:#fff;padding:7px 14px;border-radius:9px;box-shadow:0 4px 14px rgba(0,0,0,.2);display:block;margin:0 auto 14px;}
+.fdband nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.fdband nav a{color:#fff;text-decoration:none;font-size:.86rem;font-weight:600;padding:8px 18px;border-radius:8px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.45);transition:.15s;}
+.fdband nav a:hover{background:rgba(255,255,255,.28);}
+.fdband nav a.active{background:#fff;color:#1B4E97;border-color:#fff;}
+</style>
+<div class="fdtop">
+  <a class="fdtop-home" href="../index.html" title="Retour au HUB Drive Constructeurs">
+    <img src="assets/FNAC DARTY.png" alt="Fnac Darty"><span class="fdtop-txt">&larr; HUB Drive Constructeurs</span>
+  </a>
+  <div class="fdtop-right"></div>
+</div>
+<div class="fdband">
+  <img class="fdband-logo" src="assets/DREAME.png" alt="Dreame" onerror="this.style.display='none'">
+  <nav>
+    <a href="dreame.html">Recherche</a>
+    <a href="accessoires.html">🧩 Références Accessoires (consommable)</a>
+    <a href="robot_laveur.html" class="active">🤖 Robot laveur</a>
+    <a href="aspirateur_balai_laveur.html">🧹 Aspirateur balai laveur</a>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Serveur Web Dreame · After-Sale Diag</div>
+  <h1>Consultation des erreurs du robot en ligne</h1>
+  <p>Lire à distance les anomalies gardées en mémoire par un robot Dreame / Mova (code d'erreur, date, nombre d'occurrences) à partir de son <b>SN</b> ou de son <b>DID</b>.</p>
+</section>
+
+<div class="content-wrap">
+
+  <!-- ===== ACCÈS + IDENTIFIANTS ===== -->
+  <div class="access">
+    <div>
+      <h2>Outil constructeur « After-Sale Diag »</h2>
+      <div class="url">https://diag-eu.dreame.tech/#/</div>
+    </div>
+    <a class="btn-go" href="https://diag-eu.dreame.tech/#/" target="_blank" rel="noopener">🔗 Ouvrir l'outil de diagnostic ↗</a>
+    <div class="creds">
+      <div class="cred"><span class="cred-l">Compte</span><span class="cred-v" id="cLogin">fct_eu_user_15</span><button class="cp" onclick="copy('cLogin')">Copier</button></div>
+      <div class="cred"><span class="cred-l">Mot de passe</span><span class="cred-v" id="cPwd">UB84DW8CSP</span><button class="cp" onclick="copy('cPwd')">Copier</button></div>
+    </div>
+    <div class="confid">🔒 Identifiants partagés Fnac Darty — usage interne SAV uniquement, ne pas communiquer au client.</div>
+  </div>
+
+  <!-- ===== NOTICE ===== -->
+  <div class="sec-h">Notice rapide d'utilisation</div>
+
+  <div class="step">
+    <div class="step-head"><div class="num">1</div><h3>Récupérer le SN ou le DID du robot</h3></div>
+    <ul>
+      <li><b>Carte mère d'origine :</b> le numéro de série (SN) est sur l'étiquette QR code sous le couvercle du robot.</li>
+      <li><b>Carte mère remplacée :</b> l'étiquette ne correspond plus — il faut lire le SN ou le DID dans le menu caché de l'application Dreamehome :</li>
+    </ul>
+    <ol>
+      <li>Le client ouvre l'application et entre dans son robot, puis appuie sur le menu <span class="k">⋮</span> (en haut à droite).</li>
+      <li>Appuyer sur <b>« Historique de nettoyage »</b>.</li>
+      <li>Appuyer <b>10 fois</b> sur le compteur en haut (<i>zone totale / durée / cycles</i>), même s'il est vide.</li>
+      <li>L'écran <b>network information</b> s'ouvre : relever la ligne <span class="k">did</span> ou <span class="k">sn</span>.</li>
+    </ol>
+    <img class="shot" src="diag-eu_info/img/etape2.jpg" alt="Étiquette SN sous le couvercle et menu caché de l'application pour lire le did / sn" onclick="zoom(this)">
+  </div>
+
+  <div class="step">
+    <div class="step-head"><div class="num">2</div><h3>Se connecter et saisir le SN ou le DID</h3></div>
+    <ol>
+      <li>Cliquer sur <b>Ouvrir l'outil de diagnostic</b> ci-dessus et se connecter avec le compte et le mot de passe.</li>
+      <li>Au besoin, passer l'interface en français avec le bouton de langue en haut à droite (<span class="k">中</span> → <b>Français</b>).</li>
+      <li>Dans <b>Diagnostic des pannes</b>, choisir l'onglet <span class="k">SN</span> ou <span class="k">DID</span> selon le numéro relevé.</li>
+      <li>Coller le numéro puis cliquer sur <b>Query / Rechercher</b>.</li>
+    </ol>
+    <div class="info">L'onglet <b>Code d'autorisation</b> (Auth) et l'<b>Assistant de port série FCT</b> ne servent pas pour cette consultation.</div>
+    <img class="shot" src="diag-eu_info/img/etape3.jpg" alt="Écran de recherche After-Sale Diag : choix SN/DID, saisie et bouton Query" onclick="zoom(this)">
+  </div>
+
+  <div class="step">
+    <div class="step-head"><div class="num">3</div><h3>Lire les anomalies en mémoire</h3></div>
+    <p>Le bloc <b>Informations sur l'erreur</b> liste chaque anomalie enregistrée par le robot :</p>
+    <table class="cols">
+      <tr><th>Type d'anomalie</th><td>Libellé du problème (ex. capteur laser obstrué, serpillière tombée…)</td></tr>
+      <tr><th>Catégorie</th><td><b>Important</b> = défaut à traiter · <b>Scénario</b> = événement d'utilisation</td></tr>
+      <tr><th>Code d'erreur</th><td>Numéro du code (à croiser avec les codes erreur du hub)</td></tr>
+      <tr><th>Première / Dernière fois</th><td>Date et heure de la 1<sup>re</sup> et de la dernière apparition</td></tr>
+      <tr><th>Nombre</th><td>Nombre d'occurrences — un défaut répété est plus significatif qu'un événement isolé</td></tr>
+      <tr><th>Première / Dernière ver.</th><td>Version firmware lors de la 1<sup>re</sup> et de la dernière apparition</td></tr>
+    </table>
+    <div class="tip"><b>Exemple :</b> erreur <b>48</b> le 19/09/2026 — vérifier si le capteur de distance laser est obstrué (1 fois) ; erreur <b>69</b> le 05/08/2026 — la serpillière est tombée (1 fois).</div>
+    <div class="info">Les heures sont affichées sur le fuseau choisi en haut à droite (par défaut <b>UTC+8 Pékin</b>, soit +6 h par rapport à l'heure de Paris en été). Le bloc <b>Motif probable de recours au SAV</b> propose une cause quand l'outil en trouve une ; <b>Actualiser</b> recharge les données du robot.</div>
+    <img class="shot" src="diag-eu_info/img/etape4.jpg" alt="Résultat : informations sur l'erreur avec codes 48 et 69" onclick="zoom(this)">
+  </div>
+
+  <div class="src">Source : <a href="diag-eu_info/info_anomalie_en_memoire.pptx">SOP of After-Sale Diagnosis Tool</a> — Dreame Technical Support Team, 31/07/2026</div>
+</div>
+
+<div class="lightbox hidden" id="lb" onclick="this.classList.add('hidden')"><img id="lbImg" alt=""></div>
+<div class="toast" id="toast"></div>
+
+<script>
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('on'),1400);}
+function copy(id){
+  const v=document.getElementById(id).textContent.trim();
+  const done=()=>toast('Copié : '+v);
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(done,()=>fallback(v,done));}
+  else fallback(v,done);
+}
+function fallback(v,cb){const ta=document.createElement('textarea');ta.value=v;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');cb();}catch(e){toast('Copie impossible');}ta.remove();}
+function zoom(img){document.getElementById('lbImg').src=img.src;document.getElementById('lb').classList.remove('hidden');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('lb').classList.add('hidden');});
+</script>
+</body>
+</html>

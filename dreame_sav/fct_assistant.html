@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script src="../auth-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Dreame FCT Assistant — Test et calibrage</title>
+<!--
+  Vignette « Dreame FCT Assistant » (Robot laveur › Test et calibrage).
+  Même outil / mêmes identifiants que diag_eu.html (diag-eu.dreame.tech) — menu « FCT Serial Tool ».
+  Notice tirée de diag-eu_info/SOP of After-Sale Diagnosis.pptx (FCT Assistant).
+  Captures = slides rendues : fct-info/img/slideNN.jpg (slide 17 = doublon de la 15, non reprise).
+  Changement d'identifiants → modifier le bloc « IDENTIFIANTS » ci-dessous (et dans diag_eu.html).
+-->
+<style>
+:root{
+  --bg:#F3F4F6; --surface:#FFFFFF; --border:#E5E7EB; --border2:#D1D5DB;
+  --text:#111827; --text-2:#6B7280; --text-3:#9CA3AF;
+  --accent:#D4151B; --accent-h:#A30F14; --accent-bg:#FDECEC; --accent-bd:#F3B7B9;
+  --radius:12px; --radius-sm:8px;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+a{color:inherit;}
+
+.hero{background:var(--surface);border-bottom:1px solid var(--border);padding:36px 24px 28px;display:flex;flex-direction:column;align-items:center;}
+.hero-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent-h);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';flex:1;height:1px;background:var(--accent-bd);width:60px;}
+.hero h1{font-size:26px;font-weight:800;margin-bottom:6px;text-align:center;letter-spacing:-.4px;display:flex;align-items:center;gap:10px;}
+.hero h1 svg{color:var(--accent);flex:none;}
+.hero p{font-size:14px;color:var(--text-2);text-align:center;max-width:700px;line-height:1.55;}
+
+.content-wrap{max-width:960px;width:100%;margin:0 auto;padding:22px 16px 60px;}
+.back{display:inline-flex;align-items:center;gap:6px;margin-bottom:14px;font-size:.85rem;font-weight:700;color:#2669C2;text-decoration:none;}
+.back:hover{text-decoration:underline;}
+
+.tech-banner{display:flex;align-items:center;gap:12px;margin-bottom:18px;background:#FDECEC;border:1.5px solid #F3B7B9;border-left:5px solid var(--accent);border-radius:14px;padding:14px 18px;color:#8E0E12;font-size:.92rem;font-weight:600;line-height:1.45;}
+.tech-banner svg{flex:none;color:var(--accent);}
+
+/* Carte d'accès */
+.access{background:var(--surface);border:1px solid var(--border);border-top:4px solid var(--accent);border-radius:16px;box-shadow:var(--shadow);padding:22px 24px;display:grid;grid-template-columns:1fr auto;gap:18px 28px;align-items:center;}
+.access h2{font-size:15px;font-weight:700;margin-bottom:4px;}
+.access .url{font-family:Consolas,monospace;font-size:13px;color:var(--text-2);word-break:break-all;}
+.btn-go{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;background:var(--accent);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none;white-space:nowrap;transition:.15s;}
+.btn-go:hover{background:var(--accent-h);}
+.creds{grid-column:1 / -1;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.cred{background:#FFFBEB;border:1px solid #FDE68A;border-radius:var(--radius-sm);padding:10px 12px;display:flex;align-items:center;gap:10px;min-width:0;}
+.cred-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#92400E;flex-shrink:0;width:92px;}
+.cred-v{font-family:Consolas,monospace;font-size:16px;font-weight:700;color:#1f2937;flex:1;min-width:0;word-break:break-all;}
+.cp{border:1px solid #FDE68A;background:#fff;cursor:pointer;font-size:12px;font-weight:600;color:#92400E;padding:5px 10px;border-radius:6px;flex-shrink:0;font-family:inherit;}
+.cp:hover{background:#FEF3C7;}
+.confid{grid-column:1 / -1;font-size:12px;color:#d32f2f;font-weight:700;}
+.drv{grid-column:1 / -1;font-size:13px;color:var(--text-2);line-height:1.55;}
+.drv a{color:#2669C2;font-weight:600;}
+
+/* Sommaire */
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+.toc a{font-size:12.5px;font-weight:600;text-decoration:none;color:var(--accent-h);background:var(--accent-bg);border:1px solid var(--accent-bd);padding:5px 11px;border-radius:999px;}
+.toc a:hover{background:#FBD5D6;}
+
+/* Notice */
+.sec-h{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--accent-h);margin:30px 2px 12px;display:flex;align-items:center;gap:8px;scroll-margin-top:70px;}
+.sec-h::after{content:'';flex:1;height:1px;background:var(--accent-bd);}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.04);scroll-margin-top:70px;}
+.step-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.num{width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
+.step h3{font-size:16px;font-weight:700;}
+.step ol,.step ul{margin:6px 0 4px 22px;font-size:14px;line-height:1.7;}
+.step p{font-size:14px;line-height:1.6;color:var(--text);}
+.step .shot{display:block;width:100%;margin-top:12px;border:1px solid var(--border);border-radius:10px;cursor:zoom-in;background:#fff;}
+.tip{margin-top:10px;font-size:13px;color:#92400E;background:#FFFBEB;border-left:3px solid #F59E0B;padding:7px 11px;border-radius:0 6px 6px 0;line-height:1.55;}
+.info{margin-top:10px;font-size:13px;color:#1D4ED8;background:#EFF6FF;border-left:3px solid #3B82F6;padding:7px 11px;border-radius:0 6px 6px 0;line-height:1.55;}
+.warn{margin-top:10px;font-size:13px;color:#991B1B;background:#FEF2F2;border-left:3px solid #DC2626;padding:7px 11px;border-radius:0 6px 6px 0;line-height:1.55;}
+.k{font-family:Consolas,monospace;font-size:12px;background:var(--bg);border:1px solid var(--border2);border-radius:4px;padding:1px 6px;font-weight:600;}
+table.cols{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px;}
+table.cols th,table.cols td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--border);vertical-align:top;}
+table.cols th{color:var(--text-2);font-weight:600;width:190px;}
+.alert{background:#FEF2F2;border:2px solid #DC2626;border-radius:16px;padding:18px 20px;margin-top:22px;box-shadow:0 4px 16px rgba(220,38,38,.12);scroll-margin-top:70px;}
+.alert-h{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:800;color:#991B1B;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px;}
+.alert-h svg{flex:none;color:#DC2626;}
+.alert p{font-size:14.5px;line-height:1.6;color:#7F1D1D;}
+.alert ol{margin:8px 0 4px 22px;font-size:14px;line-height:1.7;color:#7F1D1D;}
+.alert .shot{display:block;width:100%;max-width:640px;margin:12px auto 0;border:1px solid #FCA5A5;border-radius:10px;cursor:zoom-in;background:#fff;}
+.src{margin-top:18px;font-size:12px;color:var(--text-3);text-align:center;}
+.src a{color:var(--accent-h);}
+
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#111827;color:#fff;padding:8px 16px;border-radius:8px;font-size:13px;z-index:900;opacity:0;transition:opacity .2s;pointer-events:none;}
+.toast.on{opacity:1;}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:10000;display:flex;align-items:center;justify-content:center;cursor:zoom-out;padding:20px;}
+.lightbox.hidden{display:none;}
+.lightbox img{max-width:96vw;max-height:92vh;background:#fff;border-radius:10px;}
+
+@media(max-width:640px){
+  .hero h1{font-size:20px;}
+  .access{grid-template-columns:1fr;}
+  .btn-go{justify-content:center;}
+  .creds{grid-template-columns:1fr;}
+  .cred-l{width:auto;}
+  table.cols th{width:auto;}
+}
+</style>
+<!-- ===== Compteur de consultations (GoatCounter) =====
+     Tableau de bord prive : https://hub-drive-fnac.goatcounter.com  -->
+<script data-goatcounter="https://hub-drive-fnac.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- ===== Fin compteur ===== -->
+</head>
+<body>
+
+<!-- HEADER -->
+<style id="fdhub-css">
+.fdtop{background:#D4151B;padding:8px 20px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:9999;box-shadow:0 2px 6px rgba(0,0,0,.15);font-family:'Segoe UI',Arial,sans-serif;}
+.fdtop .fdtop-home{display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0;}
+.fdtop .fdtop-home img{height:28px;background:#fff;padding:4px 8px;border-radius:5px;display:block;}
+.fdtop .fdtop-txt{color:#fff;font-weight:700;font-size:13px;letter-spacing:.3px;}
+.fdtop .fdtop-right{margin-left:auto;display:flex;align-items:center;gap:10px;}
+.fdband{background:linear-gradient(120deg,#1B4E97 0%,#2669C2 60%,#4A8AD4 100%);padding:22px 20px 18px;text-align:center;font-family:'Segoe UI',Arial,sans-serif;}
+.fdband .fdband-logo{height:44px;background:#fff;padding:7px 14px;border-radius:9px;box-shadow:0 4px 14px rgba(0,0,0,.2);display:block;margin:0 auto 14px;}
+.fdband nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.fdband nav a{color:#fff;text-decoration:none;font-size:.86rem;font-weight:600;padding:8px 18px;border-radius:8px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.45);transition:.15s;}
+.fdband nav a:hover{background:rgba(255,255,255,.28);}
+.fdband nav a.active{background:#fff;color:#1B4E97;border-color:#fff;}
+</style>
+<div class="fdtop">
+  <a class="fdtop-home" href="../index.html" title="Retour au HUB Drive Constructeurs">
+    <img src="assets/FNAC DARTY.png" alt="Fnac Darty"><span class="fdtop-txt">&larr; HUB Drive Constructeurs</span>
+  </a>
+  <div class="fdtop-right"></div>
+</div>
+<div class="fdband">
+  <img class="fdband-logo" src="assets/DREAME.png" alt="Dreame" onerror="this.style.display='none'">
+  <nav>
+    <a href="dreame.html">Recherche</a>
+    <a href="accessoires.html">🧩 Références Accessoires (consommable)</a>
+    <a href="robot_laveur.html" class="active">🤖 Robot laveur</a>
+    <a href="aspirateur_balai_laveur.html">🧹 Aspirateur balai laveur</a>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Serveur Web Dreame · FCT Serial Tool</div>
+  <h1>
+    <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="9" width="10" height="13" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 9V3h6v6M11 5.5h0M13 5.5h0"/></svg>
+    Dreame FCT Assistant
+  </h1>
+  <p>Tester toutes les fonctions du robot (moteurs, capteurs, batterie, LED, roues…) depuis le navigateur, robot relié au PC par l'outil de connexion. Plus pratique et intuitif que les outils de port série classiques.</p>
+</section>
+
+<div class="content-wrap">
+  <a class="back" href="test_calibrage.html">← Retour Test et calibrage</a>
+
+  <div class="tech-banner">
+    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+    <span>Uniquement pour les techniciens équipés des outils de connexion Bluetooth (adaptateur série USB fourni par Dreame).</span>
+  </div>
+
+  <!-- ===== ACCÈS + IDENTIFIANTS (identiques à diag_eu.html) ===== -->
+  <div class="access">
+    <div>
+      <h2>Outil constructeur « After-Sale Diag » → menu « FCT Serial Tool »</h2>
+      <div class="url">https://diag-eu.dreame.tech/#/</div>
+    </div>
+    <a class="btn-go" href="https://diag-eu.dreame.tech/#/" target="_blank" rel="noopener">🔗 Ouvrir FCT Assistant ↗</a>
+    <div class="creds">
+      <div class="cred"><span class="cred-l">Compte</span><span class="cred-v" id="cLogin">fct_eu_user_15</span><button class="cp" onclick="copy('cLogin')">Copier</button></div>
+      <div class="cred"><span class="cred-l">Mot de passe</span><span class="cred-v" id="cPwd">UB84DW8CSP</span><button class="cp" onclick="copy('cPwd')">Copier</button></div>
+    </div>
+    <div class="drv">💾 <b>Pilote de l'adaptateur</b> (CH341SER) à installer sur le PC avant la 1<sup>re</sup> utilisation : <a href="https://drive.google.com/drive/folders/1hF11N82oxaV28Kuaww-L7D0axoL5v7TY" target="_blank" rel="noopener">dossier de téléchargement Dreame ↗</a></div>
+    <div class="confid">🔒 Identifiants partagés Fnac Darty — usage interne SAV uniquement, ne pas communiquer au client.</div>
+  </div>
+
+  <div class="toc">
+    <a href="#s0" style="background:#DC2626;color:#fff;border-color:#DC2626">⚠ Déconnexion</a>
+    <a href="#s1">1. Présentation</a>
+    <a href="#s2">2. Installer & brancher</a>
+    <a href="#s3">3. Connexion série</a>
+    <a href="#s4">4. Mode test FCT</a>
+    <a href="#s5">5. Auto Test</a>
+    <a href="#s6">6. Étapes manuelles</a>
+    <a href="#s7">7. Rapport</a>
+    <a href="#s8">8. Tests unitaires</a>
+  </div>
+
+
+  <!-- ===== INFORMATION IMPORTANTE : déconnexion ===== -->
+  <div class="alert" id="s0">
+    <div class="alert-h">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+      Information importante — déconnexion obligatoire
+    </div>
+    <p>Avant de débrancher l'outil et de rendre le robot, il faut <b>impérativement déconnecter l'interface</b> en cliquant sur <b>« FCT »</b> puis sur <b>« Connect Serial »</b> :</p>
+    <ol>
+      <li><b>Fermer le mode diagnostic</b> : cliquer sur le bouton rouge <span class="k">■ FCT</span>.</li>
+      <li><b>Fermer la connexion entre les ports</b> : cliquer sur <span class="k">✓ Connected</span> → le bouton redevient bleu <span class="k">Connect Serial</span>.</li>
+      <li><b>Effectuer un test du robot</b> pour vérifier qu'il fonctionne normalement.</li>
+    </ol>
+    <img class="shot" src="diag-eu_info/img/deconnexion_robot.png" alt="Déconnexion : 1 fermer le mode diagnostic (FCT rouge), 2 fermer la connexion (Connected), 3 tester le robot" onclick="zoom(this)">
+  </div>
+
+  <!-- ===== NOTICE ===== -->
+  <div class="sec-h" id="s1">Présentation</div>
+  <div class="step">
+    <div class="step-head"><div class="num">1</div><h3>À quoi sert FCT Assistant</h3></div>
+    <p>L'assistant FCT permet de piloter et tester chaque organe du robot (roues motrices, brosses, ventilateur, pompe, serpillière, capteurs de vide / ultrason, bumpers, LED, IMU, LDS, carte mère, batterie…) et de lancer un <b>diagnostic automatique complet</b>.</p>
+    <div class="warn">Le test de fonctionnement de la <b>station</b> est encore en développement : pour la station, continuer à utiliser les outils de port série.</div>
+    <img class="shot" src="fct-info/img/slide02.jpg" alt="Interface Dreame FCT Assistant" onclick="zoom(this)" loading="lazy">
+  </div>
+
+  <div class="sec-h" id="s2">Préparation</div>
+  <div class="step">
+    <div class="step-head"><div class="num">2</div><h3>Installer le pilote et brancher l'outil</h3></div>
+    <ol>
+      <li>Installer d'abord le pilote de l'adaptateur sur le PC (lien ci-dessus) : ouvrir l'installeur <span class="k">CH341SER.INF</span> puis cliquer sur <b>安装</b> (Installer).</li>
+      <li>Brancher la petite carte de l'outil de connexion sur le port série du robot, et l'adaptateur USB sur le PC.</li>
+      <li>Se connecter à l'outil en ligne, puis ouvrir <b>FCT Serial Tool</b> dans le menu de gauche.</li>
+    </ol>
+    <img class="shot" src="fct-info/img/slide03.jpg" alt="Installation du pilote, branchement de l'outil sur le robot et menu FCT Serial Tool" onclick="zoom(this)" loading="lazy">
+  </div>
+
+  <div class="sec-h" id="s3">Connexion</div>
+  <div class="step">
+    <div class="step-head"><div class="num">3</div><h3>Connecter le robot (port série)</h3></div>
+    <ol>
+      <li>Régler le débit sur <span class="k">115200 bps</span> (liste en haut à droite).</li>
+      <li>Cliquer sur <b>Connect Serial</b>.</li>
+      <li>Sélectionner <b>USB Single Serial (COM XX)</b>.</li>
+      <li>Cliquer sur <b>OK</b> (连接). Le bouton passe au vert : <b>✓ Connected</b>.</li>
+    </ol>
+    <img class="shot" src="fct-info/img/slide04.jpg" alt="Connexion série : 115200 bps, Connect Serial, choix du port COM" onclick="zoom(this)" loading="lazy">
+  </div>
+
+  <div class="sec-h" id="s4">Mode test</div>
+  <div class="step">
+    <div class="step-head"><div class="num">4</div><h3>Entrer / sortir du mode test FCT</h3></div>
+    <ul>
+      <li><b>FCT vert</b> (<span class="k">✓ FCT</span>) : entrer en mode test.</li>
+      <li><b>FCT rouge</b> (<span class="k">■ Stop</span>) : sortir du mode test.</li>
+    </ul>
+    <div class="warn">Après le test, <b>ne pas oublier de quitter le mode test</b> ou de réinitialiser le robot avant de le rendre.</div>
+    <img class="shot" src="fct-info/img/slide05.jpg" alt="Boutons d'entrée et de sortie du mode test" onclick="zoom(this)" loading="lazy">
+  </div>
+
+  <div class="sec-h" id="s5">Diagnostic automatique</div>
+  <div class="step">
+    <div class="step-head"><div class="num">5</div><h3>Lancer l'Auto Test</h3></div>
+    <ol>
+      <li>Cliquer sur <b>Auto Test</b> dans le menu de gauche.</li>
+      <li>Cliquer sur <b>Start Auto Test</b> : le SN du robot s'affiche et les modules sont testés à la suite.</li>
+    </ol>
+    <img class="shot" src="fct-info/img/slide06.jpg" alt="Menu Auto Test et bouton Start Auto Test" onclick="zoom(this)" loading="lazy">
+    <p style="margin-top:14px"><b>7 modules testés automatiquement</b>, sans intervention :</p>
+    <table class="cols">
+      <tr><th>Core Board (carte mère)</th><td>Un bip retentit ; en cas de réussite, le numéro de carte s'affiche.</td></tr>
+      <tr><th>Side Brush (brosse latérale)</th><td>8,8 V en avant 5 s — courant attendu <b>20 à 100 mA</b>.</td></tr>
+      <tr><th>Fan (ventilateur)</th><td>10,0 V en avant 5 s — <b>15 000 à 25 000 tr/min</b>, courant <b>500 à 2 500 mA</b>.</td></tr>
+      <tr><th>Roller Brush (brosse rouleau)</th><td>8,0 V en avant 5 s — courant <b>80 à 550 mA</b>.</td></tr>
+      <tr><th>Cliff Sensor (capteurs de vide)</th><td>Lecture de 6 valeurs IR — OK si valeurs ≠ 4096 et ≠ -1.</td></tr>
+      <tr><th>Ultrasonic Sensor</th><td>Lecture de l'écho — attendu <b>500 à 5 000</b>.</td></tr>
+      <tr><th>Battery</th><td>Lecture ADC et température.</td></tr>
+    </table>
+    <div class="info">Chaque tuile indique son état : <b>Testing</b> (en cours), <b>Pass</b> (vert), <b>Fail</b> (rouge ✕).</div>
+    <img class="shot" src="fct-info/img/slide07.jpg" alt="Tuiles de l'Auto Test : Pass, Testing, Fail" onclick="zoom(this)" loading="lazy">
+  </div>
+
+  <div class="sec-h" id="s6">Étapes avec action du technicien</div>
+  <div class="step">
+    <div class="step-head"><div class="num">6</div><h3>Modules à confirmer manuellement</h3></div>
+    <p>Quand l'Auto Test arrive sur ces modules, une consigne apparaît sous les tuiles (en partie en chinois) : faire l'action puis cliquer sur le <b>bouton vert</b>.</p>
+    <table class="cols">
+      <tr><th>Button / Detector (bumpers)</th><td>Appuyer puis relâcher les bumpers gauche et droit (à deux mains), puis bouton vert <span class="k">已按压，开始检测</span>.</td></tr>
+      <tr><th>Dustbin Test (bac à poussière)</th><td>Bac en place au départ ; le retirer, puis bouton vert <span class="k">已取出，开始检测</span>.</td></tr>
+      <tr><th>Wheels In Place (roues en place)</th><td>Soulever le robot pour déclencher les capteurs de chute gauche et droit, puis bouton vert <span class="k">已抬起，开始检测</span>.</td></tr>
+      <tr><th>LDS Lift (levage LDS)</th><td>Robot équipé d'un LDS relevable ? <b>Vert</b> <span class="k">是，升降LDS</span> = oui, tester · <b>Rouge</b> <span class="k">否，跳过</span> = non, passer.</td></tr>
+      <tr><th>LED</th><td>7 effets s'affichent (Auto blanc/orange, Back blanc/orange, carte LED rouge/vert/bleu) : <b>Vert</b> <span class="k">正常</span> = normal · <b>Rouge</b> <span class="k">异常</span> = anormal.</td></tr>
+      <tr><th>Drive Wheel (roues motrices)</th><td>Soulever le robot (roues dans le vide), puis bouton vert <span class="k">已抬起，开始测试</span>. Roues en avant à 300 mm/s — attendu <b>285 à 315 mm/s</b> et courant <b>≥ 30 mA</b>.</td></tr>
+      <tr><th>Mop (serpillière)</th><td>Choisir le type selon le modèle : <b>Roller / Track</b> (rouleau/chenille) ou <b>DoubleDisc</b> (double disque).</td></tr>
+    </table>
+    <div class="warn"><b>Bac à poussière :</b> sur certains modèles il faut ouvrir le couvercle du bac pour le retirer — la petite carte du port série peut alors se débrancher. Être prudent, ou retirer complètement le couvercle.</div>
+    <img class="shot" src="fct-info/img/slide08.jpg" alt="Test Button/Detector : appuyer sur les bumpers" onclick="zoom(this)" loading="lazy">
+    <img class="shot" src="fct-info/img/slide09.jpg" alt="Test du bac à poussière" onclick="zoom(this)" loading="lazy">
+    <img class="shot" src="fct-info/img/slide10.jpg" alt="Test des roues en place" onclick="zoom(this)" loading="lazy">
+    <img class="shot" src="fct-info/img/slide11.jpg" alt="Test de levage LDS" onclick="zoom(this)" loading="lazy">
+    <img class="shot" src="fct-info/img/slide12.jpg" alt="Test LED" onclick="zoom(this)" loading="lazy">
+    <img class="shot" src="fct-info/img/slide13.jpg" alt="Tests roue motrice et serpillière" onclick="zoom(this)" loading="lazy">
+  </div>
+
+  <div class="sec-h" id="s7">Résultat</div>
+  <div class="step">
+    <div class="step-head"><div class="num">7</div><h3>Lire le rapport de diagnostic</h3></div>
+    <p>À la fin, un rapport est généré automatiquement :</p>
+    <ul>
+      <li>SN du robot et horodatage du test ;</li>
+      <li>résultat Pass / Fail et mesures détaillées de chaque module ;</li>
+      <li>recommandation de réparation pour chaque élément en échec (ex. « vérifier les connexions du moteur de brosse latérale ») ;</li>
+      <li>résumé total (ex. <span class="k">14/14 Pass</span>).</li>
+    </ul>
+    <div class="tip">Si tout est bon : « <b>所有项目通过！机器状态正常</b> » = <i>Tous les tests réussis ! L'unité fonctionne normalement.</i></div>
+    <div class="info">Une partie de l'interface n'est pas encore traduite (chinois) ; une version entièrement localisée est annoncée par Dreame.</div>
+    <img class="shot" src="fct-info/img/slide14.jpg" alt="Rapport de diagnostic 14/14 Pass" onclick="zoom(this)" loading="lazy">
+  </div>
+
+  <div class="sec-h" id="s8">Tests unitaires (menu de gauche)</div>
+  <div class="step">
+    <div class="step-head"><div class="num">8</div><h3>Piloter un organe à la main</h3></div>
+    <p>Chaque élément du menu <b>Test Items</b> peut aussi être testé seul, avec lecture des données en direct :</p>
+    <ul>
+      <li><b>Drive Wheel › Wheel Lift Control</b> : lever les roues (<span class="k">Front</span> / <span class="k">Mid</span> / <span class="k">Rear</span> / <span class="k">Lift Up</span>) — le levage ne peut démarrer que depuis la <b>position 0 (Front)</b>.</li>
+      <li><b>Drive Wheel Test</b> : régler la vitesse, <span class="k">Forward</span> / <span class="k">Reverse</span> / <span class="k">Stop</span>, et lire vitesse et courant de chaque roue.</li>
+      <li><b>Side Brush</b> : régler la tension, <span class="k">Forward</span> / <span class="k">Stop</span>, lire le courant ; <b>Side Extend Motor</b> : <span class="k">Extend Out</span> / <span class="k">Retract</span>.</li>
+    </ul>
+    <img class="shot" src="fct-info/img/slide15.jpg" alt="Contrôle du levage des roues : positions Front, Mid, Rear" onclick="zoom(this)" loading="lazy">
+    <img class="shot" src="fct-info/img/slide16.jpg" alt="Contrôle des roues en avant / arrière et données" onclick="zoom(this)" loading="lazy">
+    <img class="shot" src="fct-info/img/slide18.jpg" alt="Contrôle de la brosse latérale" onclick="zoom(this)" loading="lazy">
+  </div>
+
+  <div class="src">Source : <a href="diag-eu_info/SOP of After-Sale Diagnosis.pptx">SOP of After-Sale Diagnosis — FCT Assistant</a> — Dreame</div>
+</div>
+
+<div class="lightbox hidden" id="lb" onclick="this.classList.add('hidden')"><img id="lbImg" alt=""></div>
+<div class="toast" id="toast"></div>
+
+<script>
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('on'),1400);}
+function copy(id){
+  const v=document.getElementById(id).textContent.trim();
+  const done=()=>toast('Copié : '+v);
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(done,()=>fallback(v,done));}
+  else fallback(v,done);
+}
+function fallback(v,cb){const ta=document.createElement('textarea');ta.value=v;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');cb();}catch(e){toast('Copie impossible');}ta.remove();}
+function zoom(img){document.getElementById('lbImg').src=img.src;document.getElementById('lb').classList.remove('hidden');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('lb').classList.add('hidden');});
+</script>
+</body>
+</html>

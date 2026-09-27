@@ -1,0 +1,2030 @@
+[
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "*Et si le bot ne peut pas créer de cartes / Et si la carte est perdue ?",
+  "a": "R : Le L10 Pro dispose de capacités de reconnaissance environnementale, apprenant automatiquement de nouvelles cartes ou restaurant les anciennes en fonction des informations environnementales environnantes. Après le nettoyage terminé et le retour à la station de charge, la carte sera sauvegardée. Il est recommandé de ne pas déplacer la machine pendant le nettoyage pour assurer une cartographie fluide."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "*Et si le zonage cartographique de la machine ne correspond pas à la disposition réelle de la maison ?",
+  "a": "R : Dans les paramètres de carte de l'application, le robot aspirateur peut diviser et fusionner les cartes, et si les partitions sont déraisonnables, des ajustements manuels peuvent être effectués manuellement. Il est recommandé d'ouvrir toutes les zones de votre maison lors de la première création de la carte pour compléter la carte complète."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "*Invite vocale : Le capteur laser du L DS est-il anormal ?",
+  "a": "R : Veuillez vérifier si la version du firmware de la machine a été mise à jour vers la dernière version. Sinon, veuillez passer à la dernière version et observer. Si vous utilisez déjà la dernière version, veuillez essayer les étapes suivantes : J'ai doucement secoué l'ensemble du capteur laser L DS Après avoir déplacé l'unité principale à la station de recharge, réessayez Si cela ne fonctionne toujours pas, veuillez contacter le service après-vente de Dreame."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "*Le robot aspirateur sélectionne-t-il actuellement l'ordre de nettoyage de la pièce ?",
+  "a": "R : Il y a un réglage manuel ; actuellement, il ne prend en charge que le nettoyage séquentiel en session unique, ce qui vous permet de sélectionner des zones et de choisir l'ordre de nettoyage de la pièce pour accomplir la tâche."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "*Le robot se déplace-t-il parfois dans une autre pièce avant d'avoir fini de nettoyer ?",
+  "a": "R : Après que l'hôte ait créé la carte pour la première fois, elle nettoiera par pièce. Si cela arrive, veuillez vérifier le statut de la partition. S'il y a une partition incorrecte, vous pouvez rapidement ajuster la partition de la pièce dans l'application."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "*Le robot signale-t-il que son chemin est bloqué pendant le nettoyage ?",
+  "a": "R : Veuillez confirmer si le nettoyage de sélection est effectué. Si elle est sélectionnée, retirez les obstacles sur le chemin vers la zone désignée. Lors du nettoyage, si le passage de la machine est bloqué par des obstacles ou si la porte de la pièce est remarquée, veuillez retirer l'obstacle ou ouvrir la porte pour vous assurer que la machine nettoie correctement."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "*Les robots ne sont pas doués pour surmonter les obstacles / Quelle est leur capacité à contourner les obstacles ?",
+  "a": "R : La capacité de franchissement d'obstacles est de 2 cm Balayer et passer la serpillière avec un réservoir d'eau réduira légèrement la possibilité de franchir des obstacles. Si les marches sont verticales ou si la porte coulissante est suspendue au centre, les roues de l'aspirateur peuvent se coincer et ne pas pouvoir se croiser. Il est recommandé de construire une rampe ou d'installer un mur virtuel pour le nettoyage. Lorsque le balayeur fonctionne, la graisse de cuisine ou l'eau de la salle de bain peuvent coller aux roues, provoquant des glissades et des passages d'obstacles. Il est recommandé de nettoyer les roues avant de tenter de franchir les obstacles. Les chaises à tuyaux en acier ont un fond proche de 2 cm, ce qui peut coincer la machine après des montées fréquentes, car l'inclinaison fait qu'un côté de la roue reste suspendu dans les airs. Il est recommandé de mettre en place une zone restreinte ou un mur virtuel avant de nettoyer."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "*Pourquoi l'aspirateur L DS affiche-t-il une collision anormale avec les plaques ?",
+  "a": "R : Vous pouvez taper manuellement sur le couvercle LDS, replacer l'appareil dans la station de charge, puis réessayer. Veuillez vérifier s'il y a des objets étrangers fins entre la plaque de couvercle lidar et le couvercle supérieur sur le dessus de l'aspirateur. Si vous en trouvez, nettoyez-les rapidement."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "*Pourquoi l'efficacité de nettoyage du robot aspirateur est-elle si faible ?",
+  "a": "R : Vous pouvez essayer après avoir éteint et redémarré Il est recommandé d'ouvrir toutes les portes de votre maison avant le premier nettoyage et cartographie, et d'organiser vos affaires pour garantir un bon déplacement du robot. Par exemple, si une porte de pièce est fermée lors de la création d'une carte, ouvrez la porte lors du prochain nettoyage. Une fois le robot entré, la carte se met à jour automatiquement. Les personnes ou les animaux de compagnie ne doivent pas suivre l'opérateur aléatoire, car cela affecterait la cartographie machine et l'évitement des obstacles. Pour assurer la couverture de nettoyage, la machine principale balaie tous les coins ; si l'environnement est complexe, cela augmente les mouvements de virage et de bord, ce qui peut réduire l'efficacité du nettoyage."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "*Pourquoi la machine a-t-elle soudainement démarré toute seule ?",
+  "a": "A： Veuillez vérifier si vous avez activé vous-même le nettoyage chronométré ; la machine effectuera la tâche de nettoyage programmée. Si c'est le matin, veuillez confirmer que le scan a été terminé la veille au soir. Si la machine est en mode Ne pas déranger, la reprise du point d'arrêt sera terminée après la fin de la période Ne pas déranger Veuillez vérifier si l'appareil a touché l'appareil, car cela pourrait provoquer la déconnexion des pièces de l'électrode de charge et pousser la station de charge vers l'extérieur et la reconnecter. Veuillez confirmer si la machine partagée est utilisée par d'autres, et confirmer que l'autre partie l'utilise réellement."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "*Pourquoi le PP A ne peut-il pas charger ou charger lentement lorsqu'il contrôle la machine de nettoyage ?",
+  "a": "R : L'aspirateur commence à nettoyer depuis la station de charge, chargeant une grande quantité de données. Veuillez vérifier si votre réseau domestique fonctionne correctement. Quittez l'application et réessayez."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "*Pourquoi les aspirateurs ont-ils encore des peluches ?",
+  "a": "R : L'aspirateur robot possède une rangée de peignes dans la chambre de la brosse à rouleau, ce qui peut réduire les emmêlements et la fréquence de l'entretien. Cependant, dans les cas avec beaucoup de poils, des emmêlements peuvent toujours survenir et un nettoyage manuel est nécessaire. La brosse principale a un design amovible à double tête et est livrée avec un petit couteau à oiseaux, ce qui facilite le nettoyage. Il est également recommandé de nettoyer et inspecter régulièrement la brosse principale pour l'entretien quotidien."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "*Que dois-je faire si la machine commence à nettoyer et que la carte dans l'AP disparaît (déplacement échoué) ?",
+  "a": "R :  Déplacer la console vers des zones non nettoyées auparavant peut entraîner des échecs de repositionnement. Veuillez essayer de la déplacer vers des zones déjà nettoyées."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "*Que dois-je faire si le robot signale être piégé pendant le nettoyage ?",
+  "a": "R : 1. Lorsque le robot aspirateur rencontre des espaces étroits (comme des coins ou des espaces étroits) ou des chaises en forme de U, il peut rester coincé entre les objets. Si le robot mesure moins de 37 cm, il est plus difficile de sortir du piège et doit l'aider à le déplacer pour continuer le nettoyage. 2. Pendant le nettoyage, l'unité principale peut rester coincée dans des chaussons, des sacs plastiques et d'autres débris à la maison. Après avoir réglé le problème de blocage, essayez de placer l'unité principale dans la zone nettoyée à proximité et continuez le nettoyage. Il est recommandé d'utiliser des zones restreintes logicielles ou des murs virtuels pour isoler les zones où le balayage est susceptible de se coincer, ou de ranger le sol avant le nettoyage pour éviter que l'unité principale ne reste coincée pendant le nettoyage et pour rétablir le nettoyage normal de l'aspirateur."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "*Que dois-je faire si le réservoir tombe ou signale à plusieurs reprises que le réservoir a été installé pendant le lavage ?",
+  "a": "R :  Si le réservoir commence à fonctionner avant d'être correctement installé, cela provoquera la chute du réservoir. Veuillez prêter attention à la méthode d'installation correcte du radiateur. Lorsque vous installez les clips des deux côtés du réservoir, vous devriez entendre un bruit de « clic »."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "*Que faire si le chemin de nettoyage du robot est perturbé ?",
+  "a": "R : Trajectoire d'évitement des obstacles : Veuillez confirmer si le robot bouge ou déplace des objets devant la machine pendant le nettoyage ; le robot fera un cercle pour éviter les obstacles. Passage d'obstacles par marche : veuillez vérifier si la marche est un passage de barrière. Si elle est verticale ou si le milieu de la porte coulissante est suspendu, cela peut facilement coincer la roue balaieuse, entraînant une trajectoire désordonnée. Il est recommandé de construire une rampe ou d'installer un mur virtuel pour le nettoyage et le glissement De travers ou superposé : Veuillez vérifier si la carte du robot aspirateur ne correspond pas à la disposition de votre maison, montrant des signes de décalage ou de zones plus grandes. Vous pouvez la réinitialiser dans la fonction carte, et la carte sera recréée lors du prochain nettoyage."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "*Que faire si le robot fait du bruit ?",
+  "a": "R :  En tant qu'aspirateur, le bruit est inévitable pour garantir l'efficacité du nettoyage. Pour garantir la performance du nettoyage, nous avons mis en place de nombreuses optimisations pour réduire le bruit. Si vous êtes sensible au bruit, nous proposons plusieurs façons de l'utiliser : vous pouvez passer en mode silencieux via une application mobile, ou contrôler le nettoyage à distance lorsque personne n'est à la maison. Fixez des heures de nettoyage programmées quand personne n'est là, afin de ne pas avoir à vous soucier du bruit."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "*Que faut-il faire si le robot ne nettoie pas correctement les coins ?",
+  "a": "R : Le robot est équipé d'un capteur d'extension de bord et effectue un nettoyage des côtés des bords, principalement à l'aide d'une brosse latérale pour le nettoyage des coins, qui répond essentiellement aux besoins quotidiens de nettoyage. Les taches sur les murs et les coins nécessitent une assistance manuelle."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "1. Qu'est-ce qu'un robot tout-en-un aspirateur et serpillière ?",
+  "a": "R : Le robot intégré de balayage et de serpillière est un robot intelligent et planifié qui peut effectuer de manière autonome simultanément les tâches de balayage et de serpillière dans la disposition de la maison. Après le nettoyage, il retourne à la station de recharge pour se recharger, réduisant considérablement la charge sur les sols de la maison."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "2. Quelles sont les caractéristiques du robot intégré de balayage et de serpillière ?",
+  "a": "R : Le robot intégré de balayage et de serpillière est équipé de divers capteurs de mouvement de haute précision et doté d'algorithmes de positionnement visuel et de navigation pour enregistrer avec précision les trajectoires de déplacement et générer des cartes de nettoyage. Il peut aussi s'adapter à des environnements domestiques complexes, avec des capacités exceptionnelles de franchissement d'obstacles et d'évasion, se rechargeant automatiquement après le travail, vous gardant ainsi la tranquillité d'esprit jusqu'à la dernière étape. Pour le nettoyage, il utilise une méthode de balai avant et de serpillière arrière, avec une aspiration puissante combinée à un système de serpillière électrique pour un nettoyage plus approfondi. Vous pouvez consulter la carte de nettoyage à tout moment via l'application Mijia, programmer un nettoyage programmé, changer de mode de nettoyage et suivre la propreté de toute votre maison."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Info produit",
+  "q": "3. Qu'est-ce que la technologie LDS/navigation laser ?",
+  "a": "R : La technologie de navigation laser LDS mesure la position relative de la frontière et du corps de la machine en émettant un laser invisible et en recevant la lumière réfléchie. Sur cette base, la position de la machine sur la carte est déterminée lors du dessin d'une carte de frontière complète. Le robot de balayage et de serpillière est équipé de capteurs LiDAR professionnels, capables de scanner à 2080 points par seconde, avec une distance de balayage allant jusqu'à 8 mètres et une précision de balayage de 10 millimètres, permettant une cartographie et une navigation rapides et précises."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "4. Quels sont les avantages de la navigation laser LDS comparée au VSLAM/navigation visuelle ?",
+  "a": "R : Le robot intégré de balayage et de serpillière utilise une technologie de navigation laser et des capteurs laser, avec une hauteur corporelle de 968 cm, avec une précision de positionnement plus précise, et la cartographie est plus rapide que la navigation vSLAM/visuelle. Les fonctions cartographiques sont plus riches et plus stables à utiliser. 2. Introduction et utilisation du produit"
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Affichage du voyant lumineux.",
+  "a": "Pour mettre à niveau le micrologiciel, l'aspirateur robot doit être en charge avec un niveau de batterie ≥ 15 %. Nous vous recommandons de suivre ces étapes : \n 1. Retirez l'aspirateur robot de la station de charge, éteignez-le et redémarrez-le. Assurez-vous d'entendre le message « Démarrage de la charge » avant de tenter à nouveau la mise à niveau. \n 2. Si la batterie est faible ou déchargée, les mises à niveau du micrologiciel ne pourront pas être effectuées. Chargez l'appareil pendant environ 2 heures avant la mise à niveau. \n 3. Placez l'aspirateur robot et sa station de charge dans une zone avec un signal Wi-Fi puissant (à proximité du routeur) ou activez la 4G sur votre téléphone portable pour relancer la mise à niveau. De mauvaises conditions réseau à l'emplacement du robot peuvent entraîner des interruptions de téléchargement et des échecs de mise à niveau."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Alerte de niveau bas de solution de nettoyage dans le module de distribution automatique.",
+  "a": "Vérifiez la présence d'eau au fond de la station d'accueil. Si c'est le cas, effectuez les étapes suivantes :\nAprès le nettoyage, accédez à Station d’accueil > Paramètres de la station d’accueil > Nettoyage automatique de la base de la planche de nettoyage et appuyez sur Démarrer le nettoyage pour vidanger l’eau.\nAprès le nettoyage, accédez à Station d’accueil > Tâche de la station d’accueil et appuyez sur Laver pour vidanger l’eau.\nSi le problème persiste, veuillez contacter le service client."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Bruit important lors du vidage de la poussière, du lavage du sol ou du lavage de la serpillière.",
+  "a": "Veuillez nous excuser pour la gêne occasionnée. Veuillez suivre ces étapes de dépannage : \n  1. Définissez un niveau d'humidité de la serpillière plus sec dans l'application afin de réduire la teneur en eau de la serpillière. \n  2. Vérifiez que les pièces adjacentes avec des seuils sont correctement cloisonnées sur la carte. Si elles sont identifiées comme étant la même zone, cloisonnez manuellement la carte et ajoutez un seuil à l'emplacement correspondant. La serpillière se soulèvera automatiquement lors du franchissement des obstacles, améliorant ainsi la fluidité et réduisant les frottements. \n  3. La hauteur maximale de franchissement d'obstacles par le robot est de 2,2 cm. Si l'obstacle dépasse cette hauteur, le robot peut s'incliner excessivement, ce qui fait que la serpillière évacue une faible quantité d'eau."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Bruit important à l'ouverture ou à la fermeture du réservoir d'eau.",
+  "a": "Notre station adopte une conception innovante à trois réservoirs, inspirée d'un vaisseau spatial, alliant technologie et finition haut de gamme. Les réservoirs d'eau propre et usagée sont dotés d'une fixation segmentée spécialement conçue pour une expérience d'utilisation optimale. Un clic indique clairement si la fixation du réservoir d'eau est bien fermée."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Bruits forts ou anormaux pendant le fonctionnement.",
+  "a": "Veuillez nous excuser pour la gêne occasionnée. Si le robot manque une zone, veuillez tenir compte des points suivants : \n 1. Le robot ne peut pas entrer dans les espaces étroits d'une largeur inférieure à 40 cm. Pour les pièces contenant des espaces inférieurs à 40 cm de large, les performances de nettoyage dépendront de l'environnement domestique. \n 2. Pour les robots équipés d'une détection de tapis par ultrasons, si le mode d'évitement de tapis est activé pendant le nettoyage, le robot n'entrera pas dans la pièce s'il détecte un tapis à l'entrée. Retirez le tapis et réessayez. --Commutateur de reconnaissance des tapis. \n 3. Un chevauchement de la carte peut entraîner des problèmes de positionnement et des zones manquées. Dans ce cas, cartographiez à nouveau la zone. --Outre la nouvelle cartographie, une fonction de restauration de carte est également disponible. \n 4. Si des obstacles tels que des pantoufles ou des fils électriques se trouvent à l'entrée, le robot les évitera. Dégagez le sol avant le nettoyage. \n 5. Notre robot ne peut franchir que des obstacles d'une hauteur maximale de 2,2 cm. Si un seuil est supérieur à 2,2 cm, le robot ne pourra pas passer. \n 6. Lorsqu'un obstacle est détecté, le robot nettoie autour, ce qui peut entraîner des zones manquées à proximité. Ceci est normal. \n 7. Nettoyez régulièrement la lentille du capteur laser, car la saleté peut entraîner une mauvaise évaluation des obstacles par le robot et des zones manquées."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Cartes superposées ou désordonnées.",
+  "a": "Pour une utilisation plus pratique de la fonctionnalité de cartes multiples, notre robot aspirateur ne nécessite pas de déplacer la station à plusieurs reprises pour la création de nouvelles cartes. Pour créer une deuxième ou une troisième carte, il n'est pas nécessaire de déplacer la station. La nouvelle carte sera enregistrée lorsque le robot retourne au point de départ, ce qui est très pratique !"
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Cartographie incomplète (applicable aux aspirateurs robots LDS).",
+  "a": "État du voyant du robot : \n Trois voyants blancs fixes : \n Bouton de nettoyage localisé : \n Blanc fixe : tâche terminée/en pause ou en mode veille. \n Lorsque le robot est en mode allumé, correctement mis en marche, tâche terminée/en mode veille (aucune tâche à venir), en pause (avec des tâches en attente) ou tâche terminée (chargement terminé sur la station de charge) : les trois voyants Nettoyage localisé, Nettoyage et Retour à la station sont blancs fixes. \n Lorsque le robot est allumé et que le bouton d'alimentation est relâché : les trois voyants Nettoyage localisé, Nettoyage et Retour à la station clignotent lentement en blanc. \n Pendant le nettoyage (hors nettoyage localisé) : le voyant Nettoyage est blanc fixe, tandis que les voyants Nettoyage localisé et Retour à la station sont éteints. \n Pendant le nettoyage localisé : le voyant Nettoyage localisé est blanc fixe, tandis que les voyants Nettoyage et Retour à la station sont éteints. \n Hors de la station de charge, en pause/en veille en raison d'une batterie faible : les trois voyants Nettoyage localisé, Nettoyage localisé et Retour à la station sont orange fixes. \n En charge (tâche terminée, batterie suffisante) : le voyant Retour à la station clignote lentement en blanc, tandis que les voyants Nettoyage localisé et Nettoyage sont éteints. \n En charge (batterie faible) : le voyant Retour à la station clignote lentement en orange, tandis que les voyants Nettoyage localisé et Nettoyage sont éteints. \n Tâche terminée (sur la station de charge, en charge) : le voyant Nettoyage clignote en blanc, tandis que les voyants Nettoyage localisé et Retour à la station sont éteints. \n En charge avec batterie faible : le voyant Nettoyage clignote lentement en orange, tandis que les voyants Nettoyage localisé et Retour à la station sont éteints. \n Fonctionnement anormal ou erreur de charge :\n les trois voyants de Nettoyage localisé, Nettoyage et Retour à la station clignotent en orange. \n Pendant la mise à niveau OTA : les trois voyants Nettoyage localisé, Nettoyage et Retour à la station clignotent en blanc. \n Mode veille (activé après 10 minutes d'inactivité) : les trois voyants Nettoyage localisé, Nettoyage et Retour à la station s'éteignent."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Cheveux emmêlés dans la roue omnidirectionnelle.",
+  "a": "La station utilise un système d'aspiration-soufflage pour aspirer rapidement la poussière du bac à poussière. Un excès de poussière ou de peluches peut se fixer électrostatiquement au bac à poussière et laisser des résidus. Vous pouvez nettoyer le bac à poussière régulièrement, en fonction de votre utilisation. Le bac à poussière et le filtre sont lavables, mais nécessitent un séchage de 24 heures. Veuillez les nettoyer manuellement régulièrement."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Combien de temps dure un robot combo aspirateur-serpillière ?",
+  "a": "R : Aux réglages standards, il peut fonctionner plus de 150 minutes. Sur la base d'une utilisation de 80 % de la surface utilisable, on estime qu'environ 250㎡ de surface de bâtiment peuvent être nettoyés. Sous différentes températures, surfaces propres et autres facteurs, les données ci-dessus ne sont qu'à titre de référence."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Combien de temps faut-il à un robot pour charger complètement un robot aspirateur et serpillière ?",
+  "a": "R : Il faut environ 6 à 8 heures pour charger de 0 à 100 %."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment charger un robot qui combine balayage et serpillière ?",
+  "a": "R : Appuyez et maintenez le bouton d'alimentation, attendez que l'indicateur d'alimentation reste allumé, puis appuyez l'unité principale contre la station de charge pour charger. Remarque : Si la batterie est faible, l'appareil peut ne pas pouvoir s'allumer. Veuillez placer l'unité principale directement contre la station de charge."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment commencer à nettoyer avec un robot balayeur et serpillière ?",
+  "a": "R : Appuyez brièvement sur le bouton d'alimentation pour commencer le nettoyage. Appuyez sur n'importe quelle touche pour mettre en pause pendant le nettoyage. Note : Si la batterie est trop basse, le nettoyage ne peut pas commencer. Veuillez le charger avant de commencer le nettoyage. Si le temps de nettoyage est inférieur à 10 minutes, le nettoyage sera effectué deux fois par défaut."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Comment créer des cartes multi-étages ?",
+  "a": "Si votre cartographie initiale est incomplète, il n'est pas nécessaire de la réaliser à nouveau. Lors de la tâche suivante, le robot mettra automatiquement à jour et complétera la cartographie pendant son fonctionnement. Aucune inquiétude !"
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment devriez-vous gérer les surfaces bloquées sur le corps de la machine lors du nettoyage ?",
+  "a": "R : Lors du nettoyage de l'unité principale, si elle rencontre des meubles à la même hauteur que le corps de la machine, la surface de la machine peut s'y coincer. Veuillez installer le mur virtuel dans la zone restreinte du PP pour bloquer les meubles qui pourraient facilement bloquer la machine et empêcher l'hôte de rentrer à nouveau."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment définir un nettoyage personnalisé ?",
+  "a": "1. Ouvrez la page d'accueil du plug-in, entrez dans la section Nettoyage personnalisé via Mode de nettoyage > Nettoyage personnalisé > Paramètres.\n2. Réglage manuel : Dans la section Réglage personnalisé, vous pouvez sélectionner différentes zones pour avoir des réglages personnalisés, notamment l'aspiration, l'humidité de la serpillière, les temps de nettoyage, etc.\n3. Recommandation intelligente : Appuyez sur le bouton \"Recommandation intelligente\"dans la section des réglages personnalisés, les modèles de nettoyage personnalisés seront générés en fonction des types de pièces.\n4. Enregistrer les paramètres : Appuyez sur \"√\"dans le coin supérieur droit pour enregistrer vos paramètres."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment entretenez-vous les roues universelles dans un robot balayeur et à passer la serpillière ?",
+  "a": "A： 1. Retournez la machine et tirez la roue universelle vers le haut. 2. Nettoyer les cheveux et la saleté du corps de roue et de l'essieu. 3. Réinstallez la carrosserie de roue et resserrez-la. Note : Vous pouvez rincer avec de l'eau du robinet, laisser sécher et réinstaller."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment faire passer la serpillière au robot sans moquette ?",
+  "a": "R : Vous pouvez contrôler l'application pour définir une zone interdite de serpillière pour la moquette dans la fonction carte. Pendant le lavage, elle évitera la zone restreinte et évitera la moquette."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment faut-il gérer les emmêlements entre la brosse latérale et la brosse principale lors du nettoyage ?",
+  "a": "R : Lors du nettoyage de l'unité principale, les brosses latérales et les brosses à rouleaux peuvent s'emmêler avec les câbles d'alimentation, les câbles de charge, etc. La brosse principale à double extrémité est détachable et facile à nettoyer. Il est également recommandé de nettoyer et inspecter régulièrement la brosse principale et d'effectuer un entretien quotidien. Après avoir réglé la faille d'enchevêtrement, essayez de placer l'unité principale dans la zone nettoyée à proximité et continuez le nettoyage. Essayez de ranger votre maison avant de nettoyer pour éviter que l'unité principale ne s'emmêle pendant le nettoyage."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Comment gérer correctement la mousse ou l’eau qui dégoutte pendant le lavage du sol ?",
+  "a": "Veuillez vérifier les points suivants : \n1. Videz le bac à poussière rapidement lorsqu’il est plein. Il est recommandé d’activer la fonction de vidage automatique et de choisir une fréquence appropriée en fonction des besoins de votre foyer. Cela évite que le bac à poussière ne soit trop plein et que l’efficacité de l’aspiration soit réduite. \n2. Vérifiez si la brosse principale est emmêlée avec des débris. Si c’est le cas, nettoyez la brosse principale dès que possible. \n3. Inspectez l’évent de vidage automatique du robot pour vérifier qu’il n’est pas obstrué. Retirez tout obstacle de l’évent si nécessaire. \n4. Vérifiez si la brosse principale est très usée. Il est recommandé de la remplacer régulièrement. \n5. Vérifiez si le filtre du bac à poussière est sale ou obstrué. Si c’est le cas, nettoyez-le ou remplacez-le. Après le nettoyage, assurez-vous que toutes les pièces sont complètement sèches avant de les remonter. \n6. Essayez d’augmenter la puissance d’aspiration pour améliorer les performances de nettoyage. \n7. Sur la page de nettoyage personnalisé, essayez d’utiliser le nettoyage de pièces sélectionnées et augmentez le nombre de passages pour améliorer les performances de nettoyage. \n8. Accédez aux paramètres de nettoyage du sol et activez l’option « Boost pour grosses particules ». Après l’activation, le robot se concentrera sur le nettoyage de cette zone spécifique lorsqu’il en détecte, améliorant ainsi les résultats de nettoyage."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Comment gérer correctement le problème du robot qui ne nettoie pas les zones à faible hauteur ?",
+  "a": "Lorsque le robot effectue le nettoyage sur les tapis et que sa trajectoire de nettoyage en S est irrégulière, les raisons suivantes peuvent en être la cause : 1. Vérifiez si votre tapis est très fin ou très souple. Le robot peut glisser lorsqu’il se déplace sur le tapis, ce qui peut expliquer la trajectoire de nettoyage irrégulière. Il est recommandé de fixer légèrement le tapis en plaçant des objets un peu plus lourds sur ses quatre coins pendant le nettoyage. 2. Vérifiez les roues motrices : Vérifiez si les roues motrices sont très usées ou couvertes de poussière. Ce problème peut affecter la traction du robot sur le tapis, ce qui pourrait entraîner des trajectoires de nettoyage irrégulières. Il est recommandé de nettoyer les roues motrices dès que possible."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment gérer le blocage de l'unité principale pendant le nettoyage ?",
+  "a": "R : Lors du nettoyage, l'unité principale peut rester coincée dans des chaussons, des sacs plastiques et d'autres débris à la maison. Après avoir réglé le problème de blocage, essayez de placer l'unité principale dans la zone nettoyée à proximité pour continuer le nettoyage. Essayez de ranger votre maison avant de nettoyer pour éviter que l'unité principale ne reste coincée pendant le ménage."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment gérer les surfaces bloquées sur l'unité principale pendant le nettoyage ?",
+  "a": "R : Lors du nettoyage de l'unité principale, si elle rencontre des meubles à la même hauteur que le corps de la machine, la surface de la machine peut s'y coincer. Veuillez acheter un mur virtuel à bande magnétique pour empêcher la machine de rentrer dans la machine. Si vous n'avez pas acheté de mur virtuel à bande magnétique, utilisez des obstacles pour bloquer le bas du meuble afin d'empêcher l'hôte d'y entrer à nouveau."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment le robot aspirateur et serpillière balaye-t-il toute la maison ?",
+  "a": "R : Après le premier départ, l'unité principale utilisera la même méthode que le 4Après avoir étendu le bord d'une zone de 5 à 4,5 m, balayez en forme d'arc jusqu'à ce que toutes les zones soient entièrement couvertes. Après le début, l'animateur nettoie les pièces dans l'ordre, commençant par le nettoyage des bords, puis le balayage de la proue, en terminant le nettoyage de la pièce de façon ordonnée et efficace, avec une couverture complète sans omissions. Après le nettoyage, l'animateur retourne automatiquement à la poubelle pour charger."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment le robot aspirateur et serpillière entretient-il son chiffon ?",
+  "a": "A： Retirez le chiffon de serpillière du module de serpillière. Lavez le linge de serpillière et aérez-le. Conseil : Il est recommandé de nettoyer après chaque utilisation. Veillez à retirer le chiffon pour le nettoyage afin d'éviter que les reflux d'égouts ne bloquent la sortie ; Si la serpillière est trop sale, cela affectera l'effet de la serpillière. Veuillez la laver avant l'utilisation ; Il est recommandé de remplacer la serpillière tous les 3 à 6 mois pour assurer un nettoyage efficace."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment le robot aspirateur et serpillière intégrés doit-il être essuyé et entretenu quotidiennement ?",
+  "a": "R : Utilisez un chiffon sec et doux pour essuyer et nettoyer tous les capteurs de l'unité principale, y compris : 1. Quatre capteurs de falaise au bas de l'unité principale. 2. Capteur de décélération infrarouge à l'avant de l'unité principale. 3. L'électrode de charge au bas de l'unité principale. 4. Détecteur de suivi de mouvement en bas de l'unité principale."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment le robot de balayage et de serpillière ainsi que la poubelle doivent-ils être nettoyés et entretenus quotidiennement ?",
+  "a": "R : Utilisez un chiffon sec et doux pour essuyer et nettoyer tous les capteurs de l'unité principale, y compris : 1. Six capteurs de falaise au bas de l'unité principale. 2. Capteur d'évitement d'obstacles à l'avant de l'unité principale 3. Nettoyer le capteur de bord du capteur laser LDS"
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment le robot intégré de balayage et de serpillière entretient-il la poubelle et le filtre ?",
+  "a": "R : (1) Soulevez le couvercle supérieur de l'unité principale et appuyez sur le clip de la boîte à poussière pour retirer la boîte vers le haut ; (2) Ouvrir le couvercle de la flèche de la poubelle et vider les déchets ; (3) Verser de l'eau propre dans la poubelle, fermer le couvercle, secouer la poubelle à gauche et à droite, verser l'eau sale, et répéter cette étape plusieurs fois ; Conseil : Veuillez laver à l'eau propre ; n'ajoutez aucune lessive. N'utilisez pas de pinceaux ni de doigts pour nettoyer le filtre. (4) Veuillez retirer le filtre comme indiqué sur le schéma, secouer vigoureusement les gouttelettes d'eau et aérer le filtre jusqu'à ce qu'il soit complètement sec avant de le réinstaller. Conseil : Veuillez vous assurer de faire sécher à l'air libre avant l'utilisation (au moins 24 heures)."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment le robot intégré de balayage et de serpillière entretient-il le pinceau de bord ?",
+  "a": "A： 1. Retournez la machine, tirez le pinceau de bord vers le haut comme indiqué dans le schéma, et nettoyez-le. 2. Installer le pinceau de bord. Conseil : Il est recommandé de nettoyer une fois par mois et de remplacer les brosses latérales tous les 3 à 6 mois pour garantir un nettoyage efficace."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment le robot intégré de balayage et de serpillière maintient-il la brosse principale ?",
+  "a": "A： 1. Placez l'unité principale vers le bas, appuyez sur le clip pour retirer le couvercle principal du pinceau. 2. Retirez la brosse principale vers le haut et nettoyez le roulement de la brosse principale. 3. Retirez les extrémités de la brosse principale et nettoyez les cheveux emmêlés. 4. Utilisez l'outil de nettoyage de la brosse principale assortie pour couper les cheveux emmêlés sur la brosse principale. 5. Réinstaller la brosse principale et serrer le couvercle de la brosse principale pour fixer le loquet. Conseil : Il est recommandé de nettoyer chaque semaine et de remplacer la brosse principale tous les 6 à 12 mois pour garantir un nettoyage efficace."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment le robot intégré de balayage et de serpillière se connecte-t-il à l'application Mijia ?",
+  "a": "R : Ce produit est intégré à Mijia, peut être contrôlé via l'application Mijia et s'interconnecte avec d'autres produits. Scannez le code QR pour télécharger et installer l'application Mijia. Les utilisateurs qui ont déjà installé l'application accèderont directement à la page de connexion de l'appareil. Ou cherchez « Mijia » dans l'App Store pour télécharger et installer l'application Mijia. Ouvrez la page d'accueil de l'application Mijia, appuyez sur « + » en haut à droite, et suivez les instructions de l'application pour ajouter des appareils. Remarque : En raison des mises à jour et mises à jour de l'application Mijia, les opérations réelles peuvent différer légèrement des descriptions ci-dessus. Veuillez suivre les directives actuelles de l'application."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment mettre à jour le firmware du robot aspirateur et serpillière intégré ?",
+  "a": "R : Vous pouvez utiliser l'application Mijia pour mettre à jour le firmware de l'unité principale. Avant de faire une mise à jour, veuillez vous assurer que l'unité principale est sur la station de charge et que la batterie est supérieure à 15 %. Lors des mises à jour du firmware, les trois boutons clignotent en mode flash."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment nettoyer une maison à plusieurs étages ?",
+  "a": "Déplacez le robot vers l'étage à nettoyer et sélectionnez la carte correspondante pour commencer le nettoyage. Si cet étage est nettoyé pour la première fois, vous devez d'abord créer un plan en appuyant sur Gestion des cartes > Créer > Enregistrer sur la page d'accueil du plug-in. \n\nRemarque : pour le robot doté de la fonction d'auto-nettoyage, si vous souhaitez que le robot effectue l'auto-nettoyage, vous pouvez déplacer la base d'auto-nettoyage ou la station de base au même étage que le robot. Sinon, veuillez désactiver la fonction d'auto-nettoyage."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Batterie & charge",
+  "q": "Comment recharger le robot avec un aspirateur et une serpillière ?",
+  "a": "A： Après le nettoyage, l'unité principale revient automatiquement à la station de charge pour la charger. En pause, une pression courte recommence à charger. Le bouton d'alimentation clignote comme un souffle pendant la charge de l'unité principale. La batterie ≤ 15 % de clignote orange, la batterie > 15 % de clignote blanche. Conseil : Si l'unité principale ne trouve pas la station de charge, elle reviendra automatiquement à la position de démarrage du nettoyage. Veuillez replacer manuellement l'unité principale dans la station de charge pour la charger."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment restaurer le robot aspirateur et serpillière intégrés aux paramètres d'usine ?",
+  "a": "R : Si le système ne peut toujours pas être utilisé après un redémarrage, veuillez utiliser l'outil pour maintenir la touche reset jusqu'à ce que la voix affiche « Démarrer la réinitialisation d'usine ». L'unité principale reviendra alors aux paramètres d'usine. 4. *Problèmes d'évitement des obstacles au laser New Line"
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment retirer le réservoir d'eau du robot aspirateur et serpillière ?",
+  "a": "R : Après que l'unité principale ait fini de travailler et soit revenue à la station de chargement, appuyez sur les loquets des deux côtés vers l'intérieur avec votre main et traînez-la en arrière pour retirer le réservoir d'eau."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment réinitialiser le WiFi sur un robot aspirateur et serpillière Dreame ?",
+  "a": "R : Si le routeur change de configuration, oublie les mots de passe, ou pour d'autres raisons le téléphone ne peut pas se connecter à l'unité principale, ouvrez le couvercle pour révéler le voyant indicateur Wi-Fi, puis maintenez le bouton de nettoyage local et le bouton de recharge jusqu'à ce que la voix indique « Attendre la configuration réseau ». Attendez que le voyant indicateur Wi-Fi clignote lentement à nouveau, indiquant un réinitialisation réussie."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Comment résoudre le problème lié au manquement d'une zone par le robot ?",
+  "a": "1. Vérifiez que la prise est bien débranchée et que la station de charge est sous tension. \n 2. Placez le robot à 1 ou 2 mètres de la station de charge et appuyez brièvement sur le bouton de la station. S'il ne parvient pas à retourner à la station de charge, vous devrez peut-être l'envoyer en réparation. S'il retourne à la station de charge, vérifiez les points suivants : \n ① La station de charge doit être placée contre un mur, avec un espace libre d'au moins 5 cm de chaque côté et d'au moins 1 mètre devant. \n ② Éloignez-la des sources d'interférences, telles que les routeurs ou les téléviseurs. \n ③ Assurez-vous qu'aucune surface réfléchissante, comme un miroir ou une fenêtre, ne se trouve directement devant la station de charge. \n 3. Assurez-vous que le robot commence à nettoyer depuis la station de charge et que le capteur laser LDS situé sur le dessus du robot fonctionne correctement. \n 4. Vérifiez si les roues du robot patinent ou se bloquent pendant le fonctionnement. \n 5. Si aucun des problèmes ci-dessus ne se produit, essayez de redémarrer le robot et de relancer le nettoyage. \n 6. Si vous avez déplacé la station, placez le robot dessus, puis démarrez le nettoyage. \n 7. Si le problème persiste après le redémarrage, veuillez réinitialiser le robot, déplacer la station vers un espace dégagé et réessayer de démarrer le nettoyage."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Comment résoudre le problème lorsque l'application indique que l'appareil est hors ligne ?",
+  "a": "Notre robot utilise la lumière structurée pour éviter les obstacles. Nous vous recommandons de vérifier les points suivants : \n 1. Notre robot peut détecter les obstacles et ralentir avant la collision. Cependant, il est susceptible de ne pas détecter certains pieds de table et de chaises de couleur foncée, réfléchissants ou petits, ainsi que les obstacles de faible hauteur. \n 2. Essuyez régulièrement le capteur laser avant et la caméra avec un chiffon doux et sec afin d'éliminer les traces de doigts et la poussière. \n 3. Le robot ralentira et touchera délicatement les obstacles souples tels que les rideaux ou les portes entrouvertes, ce qui est normal. \n 4. Notre robot prend en charge les mises à jour OTA en ligne et MOVA optimise en permanence son évitement d'obstacles. Nous vous recommandons de vérifier régulièrement la version du micrologiciel et de la mettre à jour rapidement."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Comment résoudre un problème de positionnement ?",
+  "a": "Cinq raisons possibles d'un échec de la zone interdite : 1. Votre carte n'a pas été enregistrée correctement ou la zone interdite n'a pas été correctement définie. Veuillez vérifier dans l'application si la carte existe et si vous avez cliqué sur « √ » pour enregistrer la zone interdite après l'avoir définie.\n 2. Votre maison est peut-être grande et le réseau est instable ou ne couvre pas toute la zone. Le robot n'était pas connecté de manière stable au Wi-Fi domestique lors de la configuration de la zone interdite/du mur virtuel, ce qui a empêché l'enregistrement de la zone interdite.\n 3. Le robot est peut-être en mode de positionnement, ce qui l'amène à entrer dans la zone interdite. Une fois le positionnement terminé, il n'entrera plus dans la zone interdite.\n 4. Vérifiez si votre carte est mal alignée ou déformée. En cas de chevauchement, vous pouvez restaurer la carte à un format carré normal. Nos mises à jour logicielles incluront des optimisations pour résoudre ce problème.\n 5. Si vous avez enregistré plusieurs cartes, lorsque le robot utilise une carte spécifique, l'application doit basculer vers la carte correspondante ; sinon, la zone interdite risque de ne pas fonctionner."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Batterie & charge",
+  "q": "Comment un robot avec un aspirateur et une serpillière maintient-il sa batterie ?",
+  "a": "R :  Le robot intégré de balayage et de serpillière dispose d'un pack batterie lithium-ion rechargeable haute performance intégré. Pour maintenir les performances de la batterie, veuillez garder l'unité principale chargée pour une utilisation quotidienne. Conseil : Si vous ne l'utilisez pas longtemps, éteignez-le et stockez-le. Rechargez-le au moins une fois tous les trois mois pour éviter des dégâts de batterie dus à une surcharge."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment un robot balayeur et serpillier peut-il sauvegarder une carte complète ?",
+  "a": "R : Cliquez sur Démarrer le nettoyage dans l'application ou la console Mi Home. La carte apprendra automatiquement l'environnement domestique pendant le nettoyage et créera une carte complète. (Lors du nettoyage, veuillez ouvrir la porte de la zone à nettoyer pour garantir l'intégrité de la carte.) ）"
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment utiliser l'augmentation de la pression de la moquette dans un robot balayeur et serpillière ?",
+  "a": "R : Utilisez l'application Mijia, appuyez sur Paramètres - Fonction d'expérimentation, et activez la fonction « Boost de tapis ». La pressurisation de la moquette peut être activée ; la machine augmente automatiquement la succion lors de la détection de la moquette, améliorant ainsi les performances de nettoyage. Note : La pressurisation de la moquette peut être mal identifiée et parfois insensible."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment utiliser la fonction d'auto-nettoyage de la station de base ?",
+  "a": "1. Ajoutez de l'eau dans le réservoir d'eau propre. Appuyez sur le bouton Nettoyer de la base ou sur le bouton Démarrer de l'application pour reprendre le nettoyage de la serpillière.\n2. Si l'eau du réservoir d'eau propre est suffisante, débranchez la base d'auto-lavage, allumez la base dans 30 secondes et appuyez sur le bouton Nettoyer de la base. Si le problème persiste, veuillez contacter le service clientèle."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment utiliser la fonction de carte avancée du robot balayeur et serpillière ?",
+  "a": "R : Utilisez l'application Mijia et appuyez sur Démarrer le nettoyage. La carte apprendra automatiquement l'environnement domestique pendant le nettoyage et créera une carte complète. Vous pouvez également utiliser des zones automatiques, la partition manuelle, le nettoyage des zones, le nettoyage des zones sélectionnées et les murs virtuels."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment utiliser le robot intégré de balayage et de serpillière pour le nettoyage localisé ?",
+  "a": "R : Pendant que l'hôte est en mode veille, appuyez rapidement sur le bouton « Local Clean » le plus à gauche. Ce mode est utilisé pour nettoyer une zone carrée centrée sur l'unité principale avec des côtés mesurant 1,5 mètre. Après nettoyage, l'unité principale revient automatiquement à la position de départ et cesse de fonctionner."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment utiliser un robot aspirateur et serpillière pour un nettoyage programmé ?",
+  "a": "R : Vous pouvez définir des heures de nettoyage programmées dans l'application. L'unité principale commence automatiquement le nettoyage à l'heure indiquée et revient automatiquement à la station de charge pour recharger après le nettoyage."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment utilisez-vous la fonction de serpillière du robot intégré de balayage et de serpillière ?",
+  "a": "A： Installez la serpillière : mouillez le chiffon à serpillière, essorez-le jusqu'à ce qu'aucune goutte d'eau ne coule, insérez-le tout le long de la fente du réservoir d'eau, puis collez-le fermement. Remplissage du réservoir : Ouvrez le bouchon du réservoir, remplissez-le d'eau du robinet, puis remettez le bouchon. Installez le module : Poussez-le le long du plan de repérage d'alignement au sol à l'arrière de l'unité principale. Une fois installé, il fera un bruit de « clic ». Commencez à passer la serpillière : appuyez brièvement sur le bouton d'alimentation pour commencer à passer la serpillière. Note : N'utilisez pas la fonction de serpillière lorsque personne n'est à la maison ; Ne pas utiliser dans des environnements moquetés ; Utilisez des agents nettoyants avec soin pour éviter les filtres du radiateur bouchés ; Lorsque vous rechargez ou ne l'utilisez pas, retirez le module de serpillière, videz toute l'eau restante du réservoir et lavez le chiffon pour éviter la moisissure ou les odeurs."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "Comment utilisez-vous la poubelle à poussière ?",
+  "a": "R : Placez le bac à poussière contre le mur sur un sol plat, en veillant à ce qu'il y ait au moins 0,5 mètre de place de chaque côté du bac, puis connectez la prise à la prise électrique. Pour une meilleure expérience client mobile, placez la poubelle dans la couverture Wi-Fi. Remarque : Ne placez pas le bac à poussière en plein soleil ni ne couvrez la zone d'identification du bac avec un objet, car cela pourrait empêcher l'unité principale de revenir automatiquement dans le bac."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "Comment utilisez-vous la station de charge ?",
+  "a": "R : Placez la base de charge contre un mur sur un sol plat, en vous assurant qu'il y a au moins 0,5 mètre de place de chaque côté de la base de charge, puis connectez la prise à la prise électrique. Pour une meilleure expérience utilisateur sur votre application mobile, placez la station de recharge dans la couverture Wi-Fi. Remarque : Ne placez pas la station de recharge en plein soleil ni ne bloquez la zone d'identification de la station avec un quelconque objet, car cela pourrait empêcher l'unité principale de revenir automatiquement à la station de charge."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Comment utilisez-vous le mode Ne pas déranger dans un robot balayeur et serpillière ?",
+  "a": "R : Le mode Ne pas déranger est activé par défaut en usine, disponible de 22h00 à 08h00. Vous pouvez désactiver le mode Ne pas déranger ou changer la plage horaire Ne pas déranger via le client mobile. Pendant la période Ne pas déranger, l'unité principale ne continuera pas automatiquement à scanner ni à annoncer les messages vocaux, et le voyant d'alimentation s'éteindra."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Condensation dans le réservoir à poussière.",
+  "a": "Placez la planche de nettoyage dans la station pour l'installer. En cas d'obstruction, soulevez-la légèrement en l'inclinant et poussez-la, puis appuyez doucement pour assurer une installation correcte."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Connexion Wi-Fi interrompue.",
+  "a": "Les débris ménagers courants peuvent être éliminés par vidage automatique. Si le bac à poussière est obstrué par de nombreux déchets solides, essayez d’effectuer plusieurs cycles de vidage. Si cela ne fonctionne pas, nettoyez le bac à poussière manuellement."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "De l'eau fuit lorsque vous soulevez le réservoir d'eau propre.",
+  "a": "Si la roue omnidirectionnelle est emmêlée avec des cheveux, utilisez un outil approprié pour la retirer, éliminez les cheveux et réinstallez-la en appuyant fermement pour vous assurer qu'elle est bien fixée."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "De l'eau suinte de la serpillière lorsque le robot franchit un seuil.",
+  "a": "Avant de quitter l'usine, le robot est soumis à des tests fonctionnels complets, qui peuvent laisser de légères taches d'eau. Cela n'affecte pas le fonctionnement normal du robot."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Difficulté à ouvrir/fermer le réservoir d'eau.",
+  "a": "Veuillez nous excuser pour la gêne occasionnée. \n  1. La station est dotée d'un conduit d'air ultra-fluide innovant. Lors du vidage de la poussière, le moteur haute vitesse aspire efficacement les particules de poussière dans le sac en 10 secondes, offrant une puissance d'aspiration accrue. \n  Vous pouvez également régler la fréquence de dépoussiérage dans l'application et la configurer en mode Confort. \n  2. L'aspirateur robot dispose de quatre niveaux de puissance d'aspiration : Silencieuse, Standard, Puissante et Max. Plus la puissance d'aspiration augmente, plus le bruit de fonctionnement augmente."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Dois-je ranger les tapis lorsque je passe la serpillière ?",
+  "a": "1. Reconnaissance intelligente : Pour le robot doté de la fonction de reconnaissance des tapis, il peut reconnaître la moquette et soulever la serpillière pendant le nettoyage pour éviter que la moquette ne soit humidifiée. Si nécessaire, vous pouvez passer d'un mode de nettoyage de moquette à l'autre dans l'APP pour désactiver la fonction de reconnaissance du tapis ou permettre au robot d'éviter la moquette.\n2. Zones interdites : Avant de passer la serpillière, vous pouvez définir la zone où se trouve la moquette comme zone interdite dans la section Gestion des cartes, et le robot évitera la moquette pendant le nettoyage."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Dysfonctionnement des fonctionnalités de partage, comme l’impossibilité de partager le robot ou l’absence de notifications pour les utilisateurs partagés.",
+  "a": "Un niveau d'eau anormal dans la planche à laver est étroitement lié à la performance d’étanchéité du réservoir d'eau usagée. Pour garantir une bonne étanchéité lors de la vidange de l’eau usagée, nous vous recommandons les opérations suivantes : \n1. Vérifiez si la sortie d’évacuation de l’eau usagée et l’assemblage de filtre sont bouchés, et nettoyez-les rapidement si nécessaire. \n2. Ouvrez le capot du réservoir d’eau usagée et vérifiez si la bague d’étanchéité du capot est desserrée ou déformée. Si c’est le cas, repositionnez-la manuellement et essuyez-la avec une serpillière. \n3. Après avoir vidé l’eau usagée, assurez-vous que le clip du réservoir d'eau usagée est bien fixé. \n4. Après avoir placé le réservoir d’eau usagée dans la station d’accueil, appuyez doucement dessus pour vous assurer qu’il est correctement installé. \n5. Si le problème persiste, essuyez le capteur de niveau d’eau (contact métallique) dans la planche à laver avec un chiffon sec."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Débris résiduels dans la rainure de la brosse à rouleau.",
+  "a": "1. Si des flaques d'eau au sol pénètrent dans le bac à poussière, arrêtez immédiatement le robot, nettoyez le bac à poussière et laissez-le sécher complètement avant de le réutiliser. Dans le cas contraire, de l'eau risque d'être aspirée dans le réservoir à poussière pendant le vidage de la poussière. \n 2. Lors de l'aspiration et du lavage du sol quotidiens, une faible quantité d'eau peut pénétrer dans le bac à poussière. Veuillez nettoyer le bac à poussière rapidement en fonction de son niveau de saleté. Vous pouvez également utiliser le mode « Lavage du sol après aspiration » pour éviter ce problème."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Débris résiduels dans le bac à poussière.",
+  "a": "Le niveau de saleté dans le compartiment de la brosse à rouleau varie en fonction de l'état du sol de votre maison et de la fréquence d'utilisation. Nettoyez-le si nécessaire."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Découvrez-vous que de nouvelles versions de firmware doivent être mises à jour ?",
+  "a": "R : Chaque nouvelle version du firmware inclut des optimisations. Veuillez essayer de mettre à jour rapidement après avoir découvert le nouveau firmware pour garantir la meilleure expérience de nettoyage."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Dépoussiérez l'évent de vidage automatique.",
+  "a": "Le niveau d'accumulation de saleté sur la planche de nettoyage dépend de la propreté du sol de votre maison et de la fréquence d'utilisation. Vous pouvez la nettoyer selon les besoins. Le bac peut être retiré et lavé sous le robinet. Après le nettoyage, réinstallez-le correctement."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Eau dans le bac à poussière.",
+  "a": "1. Lors de l'aspiration et du lavage du sol quotidiens, une faible quantité d'eau peut pénétrer dans le bac à poussière. Cette eau peut être aspirée dans le bac à poussière lors du vidage de la poussière, provoquant de la condensation. En cas de condensation, essuyez-la rapidement avec un chiffon ou un mouchoir en papier. Vous pouvez également utiliser le mode « Lavage du sol après aspiration » pour atténuer ce problème. \n 2. Si des flaques d'eau sont présentes sur le sol, de l'eau peut pénétrer dans le bac à poussière et être aspirée dans le réservoir de la station pendant le vidage de la poussière. Veuillez nettoyer rapidement l'eau du réservoir à poussière afin de ne pas perturber le fonctionnement normal."
+ },
+ {
+  "m": [
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Entretien et maintenance du réservoir d'eau propre et du réservoir d'eau usée.",
+  "a": "Nettoyer le réservoir d'eau usée :\n1. Ouvrez le couvercle de la base d'auto-lavage ou de la station de base et sortez le réservoir d'eau sale.\n2. Ouvrez le couvercle du réservoir d'eau sale et déversez les eaux usées. S'il reste des saletés au fond du réservoir, vous pouvez utiliser un outil auxiliaire pour les nettoyer.\n3. Vérifiez si la bague d'étanchéité du réservoir d'eau sale est desserrée ou mal installée, si c'est le cas, réinstallez-la manuellement.\n4. Remettez le réservoir d'eau sale sur la base ou la station de base après l'avoir nettoyé.\n\nNettoyer le réservoir d'eau prore:\n1. Ouvrez le couvercle de la base d'auto-lavage ou de la station de base et sortez le réservoir d'eau propre.\n2. Remettez le réservoir neuf dans la base ou la station de base après l'avoir nettoyé."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Entrée forcée dans des zones à faible hauteur, ce qui cause des rayures ou un blocage.",
+  "a": "1. Assurez-vous que la station d’accueil est connectée à l’alimentation. Observez le voyant lumineux sur la station d’accueil. S’il s’allume, l’alimentation est correctement connectée. \n2. Poussez le robot dans la station d’accueil pour vous assurer qu’il est correctement connecté. Après 10 minutes, vérifiez si le robot s’allume. \nSi le problème persiste, veuillez contacter le service après-vente MOVA pour obtenir de l’aide."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Est-il normal que de l’eau s’écoule du point de connexion lorsque l’on soulève le réservoir d’eau propre de la station d’accueil ?",
+  "a": "Les raisons suivantes peuvent être la cause de ce problème. Veuillez vérifier les points suivants : \n1. Utilisez un chiffon doux et sec pour nettoyer la poussière sur le LDS (capteur de distance laser) dès que possible. Consultez le Manuel d’utilisation pour obtenir des instructions spécifiques. \n2. Utilisez un chiffon doux et sec pour nettoyer la poussière sur les détecteurs de dénivelé et les capteurs de bord sous le robot dès que possible. Consultez le Manuel d’utilisation pour obtenir des instructions spécifiques. \n3. Accédez à la page des paramètres de l’application, touchez « Mise à jour du micrologiciel » et activez l’option « Mise à jour automatique » pour vous assurer que vous utilisez la dernière version du logiciel. \n4. Vérifiez si un chevauchement des cartes se produit. Essayez d’éteindre puis de rallumer le robot. Ensuite, restaurez ou reconstruisez la carte, et observez si l’anomalie disparaît. \nSi le problème persiste, veuillez contacter le service après-vente local pour obtenir de l’aide."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Info produit",
+  "q": "Est-il normal que le robot dégoutte parfois de l’eau pendant le lavage du sol ?",
+  "a": "Le robot détermine la hauteur de la zone à nettoyer pour décider s’il peut y entrer. Il peut entrer et nettoyer les zones dont la hauteur est d’au moins 10 cm. \n1. Vérifiez la hauteur des zones à faible hauteur chez vous. Si elle est inférieure à 10 cm, le robot ne peut pas y entrer pour nettoyer. \n2. Lorsque la zone de nettoyage est d’au moins 10 cm, vérifiez sur la carte si le robot a correctement identifié la zone à faible hauteur. Si le robot n’a pas marqué la zone à faible hauteur sur la carte, ajoutez-la dans la section d’édition de cartes, puis relancez la tâche pour réessayer. \n3. Lorsque la zone de nettoyage est d’au moins 10 cm et que le robot n’y entre toujours pas pour nettoyer, accédez à la page des paramètres. Sélectionnez « Couverture extrême » sous « Levage automatique du LDS » et définissez la fréquence de nettoyage pour la zone de nettoyage. En mode Lavage du sol quotidien, le robot entre dans les zones à faible hauteur pour les nettoyer une fois tous les 7 jours."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Batterie & charge",
+  "q": "Faut-il recharger pendant 16 heures après les trois premières utilisations ?",
+  "a": "R : Les batteries lithium sont chargées sur place, n'ont aucun effet mémoire et sont prêtes à être utilisées immédiatement après une charge complète sans attendre 16 heures."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Fuite de poussière au niveau de l'orifice de la brosse à rouleau lors du vidage de la poussière.",
+  "a": "Veuillez nous excuser pour la gêne occasionnée. Vous pouvez d'abord replacer le robot sur sa station d'accueil et le redémarrer pour vérifier si la carte d'origine peut être restaurée. Si ce n'est pas le cas, cliquez sur l'icône « Gestion des cartes » et sélectionnez « Restaurer la carte » pour revenir à une carte normale. \n  Pour éviter de tels problèmes à l'avenir, veuillez vérifier les points suivants : \n  1. Assurez-vous que la disposition des pièces et du mobilier reste constante. \n  2. Vérifiez si le robot s'est bloqué pendant le nettoyage ou si les roues motrices sont encombrées de débris, car l'évitement des obstacles peut provoquer une superposition ou un mauvais alignement de la carte.\n 3. Si le débit d'eau défini est trop élevé ou si une quantité excessive de produit de nettoyage est utilisée, le robot peut glisser ou tourner sur place, ce qui entraîne des anomalies de carte. \n  4. Assurez-vous que le capteur LDS tourne normalement. Appuyez doucement sur le couvercle du capteur LDS pour vérifier qu'il remonte correctement."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Il reste des taches d’eau sur le sol.",
+  "a": "Du produit de nettoyage est ajouté lors du lavage de la serpillière. Des résidus restent après le séchage de solution, ce qui est normal. Ils seront éliminés au prochain lavage de la serpillière. Vous pouvez également les nettoyer manuellement avec une brosse si nécessaire."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Impossible de revenir à la charge/impossible de trouver la station de charge (applicable aux aspirateurs robots LDS).",
+  "a": "Notre robot est équipé de capteurs de proximité, ce qui lui permet de maintenir une certaine distance avec le mur lors du nettoyage des bords, ce qui est normal."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Batterie & charge",
+  "q": "Impossible d’allumer le robot, aucune réponse lorsque l’on appuie sur l’interrupteur, la batterie ne se charge pas, le voyant de charge reste éteint ou le temps de charge est anormalement long.",
+  "a": "Les brosses latérales ne s’étendent pas ni ne tournent. Cela peut être dû aux raisons suivantes. Veuillez vérifier les points suivants : \n1. Accédez à la page des paramètres de l’application, activez la fonction « SideReach piloté par l’IA » et réglez la fréquence sur « Élevée ». Une fois les réglages terminés, essayez de relancer une tâche de nettoyage et observez si les brosses latérales s’étendent. \n2. Retirez le robot et vérifiez si la brosse latérale est emmêlée avec des débris. Des corps étrangers peuvent faire échouer les fonctions d’extension et de rotation de la brosse latérale. Veuillez les nettoyer dès que possible. \nSi le problème persiste, veuillez contacter le service après-vente local pour obtenir de l’aide."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Je veux mettre à jour le micrologiciel.",
+  "a": "1. Assurez-vous que le robot est chargé et allumé.\n2. Assurez-vous que votre réseau Wi-Fi domestique est stable.\n3. Mettez à jour le micrologiciel via Paramètres > Mise à jour du micrologiciel.\n4. Pendant la mise à jour, les lumières du robot clignotent.\n5. Le micrologiciel ne sera mis à jour que si le niveau de la batterie est supérieur à 15 %."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Je veux partager mon robot avec d'autres personnes.",
+  "a": "1. Votre robot s'est connecté au réseau Wi-Fi.\n2. Veuillez confirmer que l'utilisateur avec lequel vous souhaitez partager votre maison s'est inscrit dans l'application Dreamehome. \n3. Ouvrez la page Mes appareils , cliquez sur \"---\" et sélectionnez \"Partage de l'appareil\" pour partager l'appareil avec d'autres utilisateurs de Dreamehome. \n4. Saisissez l'ID Dreame/Numéro de téléphone/Email de l'utilisateur partagé utilisé pour l'enregistrement. Une fois qu'ils ont accepté le robot, ils peuvent également le contrôler."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Je veux programmer un nettoyage.",
+  "a": "1. Entrez dans la page d'accueil du plug-in, appuyez tour à tour sur Paramètres (en haut à droite) > Nettoyage programmé > Ajouter (en bas à droite).\n 2. Vous pouvez définir les paramètres à l'avance, notamment la plage de nettoyage, l'heure de début et la répétition.\n 3. Appuyez sur \"√\" dans le coin supérieur droit pour enregistrer vos paramètres, et le nettoyage est programmé."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Je veux réinitialiser le système ou tous les paramètres.",
+  "a": "1. Lorsque le bouton fonctionne mal ou que vous ne pouvez pas éteindre votre robot, ouvrez le couvercle supérieur de votre robot, appuyez sur le bouton de réinitialisation, et votre robot redémarrera automatiquement.\n2. Note : la réinitialisation du système efface toutes les tâches de nettoyage programmées et les modes de nettoyage, et supprime les connexions au réseau Wi-Fi."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Je veux éteindre le robot ou la base.",
+  "a": "1. dans des conditions normales, la base ne s'éteint pas automatiquement mais éteint l'écran pour passer en mode de faible consommation.\n2. Si vous souhaitez mettre la base hors tension, débranchez le câble d'alimentation.\nNote : Si vous utilisez le robot quotidiennement, évitez de de mettre la base hors tension.\n3. Une fois la base éteinte, votre robot ne peut pas se charger et sa batterie s'épuise progressivement.\n4. Si votre base est hors tension, remettez-la sous tension avant de l'utiliser."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Info produit",
+  "q": "L'hôte peut-il opérer dans des environnements faiblement éclairés ?",
+  "a": "Il peut courir. Les capteurs laser LDS ne sont pas affectés par la lumière."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "L'hôte va-t-il aller dans une autre pièce avant que le nettoyage ne soit terminé ?",
+  "a": "R : Après que l'hôte ait créé la carte pour la première fois, elle nettoiera par pièce. Si cela arrive, veuillez vérifier le statut de la partition. S'il y a une partition incorrecte, vous pouvez rapidement ajuster la partition de la pièce dans l'application."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "L'hôte va-t-il réduire l'efficacité du nettoyage dans des environnements complexes ?",
+  "a": "R : Pour garantir la couverture du nettoyage, la machine principale balaie tous les coins. Dans des environnements complexes, les mouvements de virage et de bord sont augmentés, ce qui peut réduire l'efficacité du nettoyage."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "L'unité principale est-elle bruyante pendant le nettoyage ?",
+  "a": "R : Vérifiez si la brosse à rouleaux est prise par des objets étrangers ou fait du bruit. Nettoyez rapidement la brosse à rouleaux pour éviter les dommages. Pour garantir une efficacité de nettoyage, l'unité principale utilise un ventilateur à succion plus forte, ce qui permet une meilleure extraction de la poussière et un bruit légèrement plus fort. Vous pouvez utiliser un mode silencieux avec un volume plus faible pendant le nettoyage."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "L'unité principale fait-elle des bruits étranges pendant le nettoyage ?",
+  "a": "R : Lorsque l'unité principale travaille sur des sols carrelés lisses ou en bois, le grattoir du bas peut produire un léger bruit en frottant contre le sol. Lorsque l'unité principale traverse les joints carrelés et de sol, elle entre en contact et nettoie les joints du sol, ce qui peut produire un léger bruit de « clic-clic ». Les sons ci-dessus n'affectent pas le fonctionnement normal de la machine."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "L'écran de la base indique que le robot est déconnecté.",
+  "a": "1. Le robot n'est PAS allumé et la base ne peut pas se connecter au robot. Appuyez sur le bouton d'alimentation pour mettre le robot sous tension.\n2. Lors du nettoyage, le robot est trop éloigné pour se connecter. Mais le robot fonctionne toujours normalement. Veuillez patienter avant de reconnecter le robot.\n3. Erreur système. Redémarrez votre robot\n4. Si le problème n'est toujours pas résolu, reconnectez votre base sur le robot. Débranchez le câble d'alimentation de la base, rebranchez le câble d'alimentation une fois l'écran éteint. Votre robot se connectera à nouveau à la base."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "La brosse est emmêlée.",
+  "a": "1. Retirez le couvercle de la brosse, sortez la brosse et nettoyez les corps étrangers sur la brosse.\n2. Réinstallez la brosse après le nettoyage, faites-la tourner à la main pour vérifier si elle fonctionne correctement.\n3. Assurez-vous que le couvercle de la brosse s'enclenche en place lors de la réinstallation."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "La carte de la maison est incomplète ou certaines zones sont manquantes lors de la cartographie.",
+  "a": "Causes des cartes incomplètes :\n1. Il y a des objets à la porte de la pièce, ou la porte de la pièce n'est pas complètement ouverte. Lorsque votre robot scanne l'entrée, il se trompe en estimant qu'il ne peut pas passer et évite cette zone.\n2. Lorsque le robot effectue un scan et une cartographie, les personnes ou les animaux domestiques qui marchent autour du robot vont induire en erreur le scan et entraîner une création de carte incomplète."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "La litière pour chat ou la nourriture pour animaux de compagnie ne peut pas être complètement vidée après le vidage automatique.",
+  "a": "Pour maintenir la machine sèche et stérile, le V60 MOBIUS effectue un cycle de séchage complet de la serpillière, du bac à poussière et du sac à poussière, ce qui peut prendre du temps.\nVous pouvez régler la durée de séchage de la trappe dans « Paramètres de la station d’accueil » et configurer le séchage du bac à poussière et du sac à poussière dans les Paramètres."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "La planche de nettoyage se salit facilement.",
+  "a": "De légers chocs ou oscillations peuvent survenir en raison d'irrégularités ou du matériau des tapis ou moquettes, mais le robot aspirateur ne manquera aucune zone lors du nettoyage."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "La puissance d'aspiration semble plus faible ou les performances de nettoyage semblent se dégrader récemment.",
+  "a": "1. Le collecteur à poussière est plein et doit être nettoyé. La base de vidange videra le collecteur automatiquement, vous n'avez aucun souci.\n2. Le filtre est bouché et doit être nettoyé.\n3. La brosse principale est emmêlée et doit être nettoyée. \n4. Le niveau d'aspiration est faible et doit être commuté sur un niveau d'aspiration plus élevé."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "La reprise du nettoyage n'est pas effectuée.",
+  "a": "1. Vérifiez que la fonction de reprise du nettoyage est activée.\n2. La fonction de reprise du nettoyage ne peut pas être activée en mode DND (Do Not Disturb). \n3. Vérifiez si un message d'erreur est déclenché sur l'App lorsque le robot se charge. S'il y a un défaut, la fonction de reprise du nettoyage ne sera pas activée.\n4. Vérifiez si votre robot est redémarré ou réinitialisé après avoir activé la fonction de reprise du nettoyage."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "La serpillière est trop humide ou il y a trop d'eau dans le réservoir d'eau propre.",
+  "a": "La serpillière est trop humide : \nSi le climat local est relativement humide, ou si les taches d'eau ne sont pas faciles à sécher sur les sols intérieurs, vous pouvez sélectionner une serpillière légèrement sèche avant de l'utiliser via Paramètres de nettoyage > Humidité de la serpillière > Légèrement sèche."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "La serpillière n'est plus propre.",
+  "a": "Serpillière non propre :\n1. Ajouter le nettoyant : Il est recommandé d'ajouter le nettoyant pour sols à surfaces multiples afin d'avoir une meilleure performance de nettoyage.\n2. Fonction d'auto-nettoyage : Appuyez sur le bouton Auto-nettoyage du plug-in pour que vos serpillières soient lavées à nouveau.\n3. Saleté accumulée sur la planche à laver : Retirez et nettoyez la planche à laver. Si nécessaire, rincez la planche à laver avec de l'eau."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "La solution de nettoyage n’est pas distribuée.",
+  "a": "La station d’accueil ne distribue pas d’eau pour laver la serpillière. Cela peut être dû aux raisons suivantes. Veuillez vérifier les points suivants : \n1. Vérifiez si le réservoir d’eau propre est vide. \n2. Soulevez le réservoir d’eau propre, assurez-vous qu’il est rempli d’eau, puis replacez-le et appuyez fermement dessus. Relancez un lavage de la serpillière et observez l’état de celle-ci. \n3. Vérifiez si l’entrée d’eau du robot est obstruée par des corps étrangers. Si c’est le cas, retirez les débris dès que possible pour vous assurer que l’eau circule librement. \n4. Retirez la serpillière à rouleau et vérifiez si les trous de sortie d’eau à l’intérieur du compartiment du rouleau sont obstrués par des corps étrangers. Si c’est le cas, nettoyez rapidement les trous de sortie pour vous assurer que l’eau circule librement. \nSi le problème persiste, veuillez contacter le service après-vente local MOVA pour obtenir de l’aide."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "La station de charge consomme-t-elle constamment de l'énergie ?",
+  "a": "R : Lorsque l'unité principale est constamment dans la station de charge, la station de charge alimente l'unité principale. En mode veille, la consommation d'énergie est extrêmement faible, et à ce moment-là, la batterie passe en veille pour maintenir des performances optimales."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "La station d’accueil ne distribue pas d’eau pour laver la serpillière.",
+  "a": "Lorsque vous utilisez le robot pour la première fois, le niveau de poussière domestique peut être élevé. C’est pourquoi le robot est conçu pour retourner automatiquement à la station d’accueil pour vider la poussière et laver la serpillière tous les 20 mètres carrés nettoyés. Cela évite que le bac à poussière ne se remplisse pendant le nettoyage et que les performances de nettoyage soient affectées. Lors de la première utilisation, il est recommandé d’utiliser le mode Nettoyage en profondeur pour le nettoyage initial."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "La tâche de nettoyage en cours est interrompue de manière inattendue.",
+  "a": "1. Le robot passe en mode veille après avoir été piégé pendant un certain temps.\n2. La batterie est épuisée et le robot s'éteint automatiquement s'il ne parvient pas à la recharger. Les causes peuvent être que la base n'est PAS sous tension, ou que le robot et la base ne sont PAS connectés. \n3. Une exception peut se produire dans le système, veuillez contacter le service clientèle."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "Le bac à poussière consomme-t-il de l'électricité en permanence ?",
+  "a": "R : Lorsque l'unité principale est constamment dans la poubelle, celle-ci alimente l'unité principale. En mode veille, la consommation d'énergie est extrêmement faible, et à ce moment-là, la batterie entre en veille pour maintenir des performances optimales."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Le chemin de nettoyage de l'hôte va-t-il sans cesse ?",
+  "a": "R : L'unité principale nettoie le long du trajet prévu, en se dirigeant vers les zones non nettoyées. Visuellement, il y aura quelques allers-retours répétés, mais en réalité, ce n'est pas un nettoyage répété."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Le filtre est-il lavable ?",
+  "a": "1. Le filtre peut être lavé à l'eau manuellement et doit être soigneusement séché avant d'être réinstallé.\n2. Veuillew sécher le filtre pendant au moins 24 heures après l'avoir lavé."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Le motif de nettoyage en forme de S sur le tapis est irrégulier.",
+  "a": "Le phénomène de gouttes d’eau lors du lavage du sol peut être causé par les raisons suivantes. Veuillez vérifier les points suivants : \n1. Vérifiez si la boîte d’eau usagée du robot est correctement installée. Insérez la boîte d’eau usagée dans le robot. Lorsque vous entendez « Boîte d’eau usagée installée », cela signifie que la boîte est correctement installée. Si la boîte d’eau usagée n’est pas correctement installée, la fonction de lavage du sol peut causer un écoulement d’eau goutte à goutte. \n2. Vérifiez que vous utilisez bien la solution de nettoyage officielle MOVA. L’utilisation de solutions de nettoyage d’autres marques ou de solutions d’entretien pour parquet peut entraîner une mousse excessive pendant le lavage du sol. La mousse pourrait alors s’échapper par l’orifice d’évacuation situé au bas du robot, ce qui provoque un écoulement d’eau goutte à goutte pendant le lavage du sol. Il est recommandé de nettoyer d’abord la serpillière et la mousse dans le réservoir d’eau usagée, puis d’utiliser la solution de nettoyage officielle MOVA pour une nouvelle tentative. \n3. Vérifiez si la serpillière a été achetée via les canaux officiels MOVA. Évitez d’utiliser des serpillières tierces, car elles peuvent avoir une perméabilité inégale de l’eau, ce qui peut causer un écoulement d’eau goutte à goutte. \n4. Retirez la serpillère à rouleau et vérifiez si l’entrée d’aspiration du robot est obstruée (située au centre du compartiment du rouleau, près du filtre en maille d’acier inoxydable). Si le filtre est bouché, nettoyez rapidement les débris du filtre, puis testez à nouveau le robot pour voir si l’écoulement d’eau persiste pendant le lavage du sol. \n5. En raison des variations climatiques, le niveau d’humidité des sols peut varier d’une région à l’autre, ce qui peut entraîner un écoulement excessif d’eau pendant le lavage du sol et provoquer des gouttes d’eau. Il est recommandé de régler le débit d’eau à un niveau approprié via l’application MOVA afin d’éviter ce problème pendant le lavage du sol. \nSi le problème persiste, veuillez contacter le service après-vente MOVA et demander l’aide d’un technicien professionnel pour régler le problème."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Le parcours de nettoyage du robot est chaotique.\n Comment résoudre le problème si le robot tourne sans cesse sur place ?",
+  "a": "Le robot prend en charge la reconnaissance des tapis, qui est activée par défaut. Lorsqu'il passe sur des tapis, il aspire uniquement et soulève la serpillière. Cependant, la hauteur de levage est limitée à 7 mm, de sorte que les tapis plus épais risquent d'être légèrement touchés par la serpillière. Pour empêcher le robot de se déplacer sur les tapis avec la serpillière installée, sélectionnez « Éviter les tapis » dans l'application ou définissez une zone interdite pour empêcher le robot d'y entrer. \n Remarque : les tapis à poils longs d'une épaisseur supérieure à 2 cm peuvent être détectés comme des obstacles et évités."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Le robot a-t-il oublié un endroit pendant le nettoyage ?",
+  "a": "R : Si l'espace de nettoyage est trop petit, la machine peut ne pas pouvoir accéder à cet espace étroit. Veuillez confirmer qu'il n'y a ni mouvement ni déplacement des objets devant la machine, pendant le nettoyage. Les obstacles seront contournés pour éviter les obstacles, ce qui peut entraîner un petit nombre d'endroits oubliés pendant la tâche de nettoyage."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Le robot aspirateur et serpillière intégrés peut-il se connecter directement au chargeur ? Y a-t-il une protection contre la surcharge ?",
+  "a": "R : Le robot intégré de balayage et de serpillière assure la protection contre la surcharge ; lorsque la batterie est complètement chargée, elle passe automatiquement à un faible courant pour la charge."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Le robot balayeur et serpillière dispose-t-il d'une protection contre la surcharge des moteurs ?",
+  "a": "R : Tous les moteurs de la machine disposent d'une protection contre la surcharge, y compris le ventilateur d'aspiration à poussière, le moteur de la brosse principale, le moteur de la brosse latérale et le moteur de la roue principale. Si des objets étrangers entrent ou se bloquent sévèrement, provoquant une surcharge, la protection s'active automatiquement."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Le robot est hors ligne après s'être connecté au réseau.",
+  "a": "1. Vérifiez votre connexion réseau.\n2. Pendant le nettoyage, le robot sera déconnecté lorsqu'il se trouve dans une mauvaise couverture Wi-Fi.\n3. Le robot est déconnecté lorsqu'il ne se trouve pas sur la base et que sa batterie est épuisée."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Le robot fait un bruit étrange pendant le nettoyage.",
+  "a": "1. Un bruit étrange se fait entendre pendant le nettoyage si la brosse est emmêlée. Retirez la brosse, dégagez les corps étrangers et réinstallez la brosse.\n2. Redémarrez votre robot après avoir installé la brosse pour vérifier si le bruit disparaît.\n3. Si le bruit étrange persiste, vérifiez à nouveau la brosse ou contactez le service client."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Le robot manque une zone",
+  "a": "1. Le robot ne peut pas entrer dans l'espace étroit à moins qu'il ne soit 2 cm plus large que les deux côtés du robot.\n2. Le robot équipé du capteur à ultrasons est capable de reconnaître le tapis à la porte et n'entrera pas dans cette pièce pendant le nettoyage. Veuillez retirer le tapis.\n3. Si certaines zones se chevauchent sur la carte, le robot risque de ne pas réussir à s'autopositionner et manquer certaines zones pendant le nettoyage. Si c'est le cas, refaites la carte des zones à nettoyer ou restaurez la carte.\n4. Si un tapis à poils hauts ou des câbles se trouvent à l'entrée de la zone à nettoyer, le robot doté de la fonction d'évitement des obstacles évitera cette zone. Veuillez ranger les objets sur le sol avant d'utiliser le robot."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Le robot ne continue pas à nettoyer après avoir été rechargé.",
+  "a": "1. Votre robot peut être en mode DND (Do Not Disturb), dans lequel il ne reprendra pas le nettoyage.\n2. Si vous replacez votre robot sur la station d'accueil ou si vous le rechargez manuellement, il ne reprendra pas le nettoyage."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Le robot ne nettoie pas automatiquement à l'heure prévue.",
+  "a": "La batterie de votre robot est faible. Le nettoyage programmé ne commencera pas si le niveau de la batterie est supérieur à 15 %."
+ },
+ {
+  "m": [
+   "Tous modèles"
+  ],
+  "c": "Dépannage",
+  "q": "Le robot ne parvient pas à retourner à sa station de charge.",
+  "a": "Si la recharge échoue, veuillez suivre les étapes ci-dessous pour dépanner : Veuillez vérifier si la prise de la station de recharge est desserrée et que la station n'est pas allumée ; assurez-vous que la station de recharge est allumée ; Placez la machine à 2 mètres devant la station de recharge et appuyez sur le bouton de recharge. Si la recharge ne fonctionne pas correctement, il peut s'agir d'une défaillance matérielle de la base de charge ou de l'unité principale, et demandez une réparation. Veuillez vous assurer que la base de recharge est placée comme nécessaire, sans obstacles à 0,5 mètre à gauche ou à droite et à 1,5 mètre devant. Vous pouvez vous référer au schéma de placement de la base de recharge dans le manuel ; Veuillez vous assurer que le protecteur de caméra a été retiré avant utilisation, car cela pourrait affecter la position de l'unité principale. Veuillez vérifier si la caméra est sale. Gardez la caméra propre, car la saleté peut affecter la position de l'hôte. Veuillez vérifier si le capteur de débit optique situé en bas de l'unité principale est sale. Gardez le capteur de débit optique propre, car la saleté sur ce capteur peut affecter la position de l'unité principale. Veuillez vous assurer que le nettoyage se fait dans un environnement bien éclairé, car les conditions d'obscurité peuvent affecter la position de l'appareil ; Veuillez vérifier si les roues motrices de l'unité principale glissent pendant le fonctionnement. Si trop de taches d'eau sur le sol pendant le lavage de la serpillière, cela peut glisser et affecter la position de l'unité principale ; Si les problèmes ci-dessus sont résolus, veuillez essayer de redémarrer l'unité principale puis de nettoyer à nouveau ; Si le problème persiste après le redémarrage de l'unité principale, veuillez essayer de réinitialiser l'unité principale puis de le nettoyer à nouveau ; S'il y a encore des problèmes après la réinitialisation de l'hôte, veuillez renvoyer l'hôte au siège pour analyse."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Batterie & charge",
+  "q": "Le robot ne parvient pas à se recharger.",
+  "a": "1. Il y a peut-être trop d'obstacles autour de la station/la base. Dégagez les obstacles ou placez la station/la base dans une zone ouverte.\n2. Votre robot est peut-être trop éloigné de la station d'accueil. Placez votre robot plus près de la station d'accueil.\n3. Pendant le nettoyage, assurez-vous que votre robot se met en route à partir de la base/de la station pour que l'emplacement de la base/de la station soit précis sur la carte.\n4. Assurez-vous que la base ou la station de base est sous tension.\n5. Vérifiez si les cartes enregistrées dans l'application sont déformées ou se chevauchent, si c'est le cas, veuillez reconstruire les cartes."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Le robot ne peut pas mettre à jour le micrologiciel.",
+  "a": "Causes de l'échec de la mise à jour du micrologiciel\n1. Batterie faible. Le micrologiciel ne peut pas être mis à jour si le niveau de la batterie est inférieur à 15%.\n2. Signal Wi-Fi faible ou hors de portée du Wi-Fi. Si votre robot se trouve dans une zone où le signal Wi-Fi est faible ou hors de portée, la mise à jour peut échouer. Assurez-vous que votre robot et la station d'accueil/base se trouvent dans une bonne portée Wi-Fi."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Le robot ne peut pas reconnaître les obstacles",
+  "a": "1. Activez la fonction : Assurez-vous que la fonction de « Reconnaissance intelligente des obstacles » du robot est activée.\n2. Plage de reconnaissance : Actuellement, le robot peut reconnaître : les chaussures (pantoufles), les chaussettes (chiffons), les fils, les balances, les socles.\n3. Partie normale : Votre robot va ralentir et entrer en collision avec l'obstacle, ou éviter l'obstacle grâce à l'algorithme d'évitement des obstacles. Une légère collision de votre robot avec l'obstacle est normale.\n4. Éclairage anormal : un éclairage insuffisant dans l'environnement de travail affecte la reconnaissance visuelle du robot. Il est recommandé d'utiliser cette fonction dans un environnement bien éclairé.\n5. Environnement complexe : si l'environnement domestique est trop complexe ou si la forme de la cible est particulière, le robot mettra plus de temps à la reconnaître, ce qui peut entraîner des collisions."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Le robot ne peut pas s'allumer.",
+  "a": "Causes pour lesquelles le robot ne s'allume pas :\n1. Erreur système, et le bouton fonctionne mal.\n2. Le robot ne peut pas être allumé si sa batterie est faible. Placez votre robot sur la base/la station et chargez-le pendant un moment, puis allumez-le.\n3. Si le robot ne peut toujours pas être allumé après la charge, réinitialisez tous les paramètres. Si le problème n'est toujours pas résolu, veuillez contacter le service clientèle."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Batterie & charge",
+  "q": "Le robot ne peut pas se charger.",
+  "a": "1. La station d'accueil/la base n'est PAS sous tension. Assurez-vous que les deux extrémités du cordon d'alimentation de votre station d'accueil/base sont branchées.\n2. Les contacts de charge de la station d'accueil/base sont en mauvais contact avec ceux de votre robot. Mettez le robot hors tension et nettoyez les contacts de charge, ou ajustez leur position."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Le robot ne peut pas trouver la base ou la station de charge.",
+  "a": "Causes d'échec de l'amarrage :\n1. Le dock/base est éteint ou déplacé. Mettez-la sous tension et remettez-la en place.\n2. Il y a des obstacles autour de la station d'accueil/base. Supprimez les obstacles.\n3. Votre robot est coincé pendant le nettoyage. Placez-le sur la station d'accueil/base.\n4. La station d'accueil/base n'est PAS sur une surface plane. Placez-le sur une surface plane.\n5. Erreur système. Placez le robot à 1 mètre devant la station d'accueil/base et appuyez sur le bouton \"Rappel\". Si le robot ne peut pas retourner à la station d'accueil/base, veuillez contacter le service clientèle."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Le robot ne reprend pas le nettoyage.",
+  "a": "1. Le robot est peut-être mis en mode Ne pas déranger (DND), ce qui l'empêche de reprendre le nettoyage.\n2. Le robot ne reprend pas le nettoyage lorsqu'il est rechargé ou placé sur la base manuellement."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Le robot nettoie une zone à plusieurs reprises.",
+  "a": "1. Si la durée du nettoyage est inférieure à 10 minutes, le robot effectue à nouveau la tâche de nettoyage. (sauf pour le nettoyage d'une pièce sélectionnée)\n2. Si certaines zones se chevauchent sur la carte, le robot risque de ne pas réussir à s'autopositionner et manquer certaines zones pendant le nettoyage. Si c'est le cas, refaites la carte des zones à nettoyer ou restaurez la carte."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Le robot oscille ou heurte les murs sur les tapis et moquettes.",
+  "a": "Une légère fuite de poussière ou de peluches peut se produire, ce qui est normal. Si la fuite persiste, veuillez contacter le service clientèle."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Le robot présente un dysfonctionnement.",
+  "a": "Essayez les solutions suivantes :\n1. Redémarrez votre robot.\n2. Si le problème n'est toujours pas résolu, réinitialisez le système."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Le robot se déplace après être sorti de sa base.",
+  "a": "Une fois que votre robot est sorti de la base, il effectue premièrement une auto-localisation et une auto-vérification. Votre robot peut donc faire demi-tour sur place."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Le robot touche encore des obstacles lorsque la fonction de « Reconnaissance intelligente des obstacles » est activée.",
+  "a": "1. Fonction : la fonction de « Reconnaissance intelligente des obstacles » aide le robot à naviguer en douceur dans votre maison, évitant ainsi les perturbations et minimisant le risque de rester bloqué. Pour nettoyer davantage de zones, le robot s'approchera des obstacles tout en les évitant. En fonction de la situation, le robot peut ralentir pour heurter légèrement ou éviter complètement les obstacles. Ce comportement est normal.\n2. Environnement complexe : si l'environnement domestique est trop complexe ou si la forme de la cible est particulière, le robot mettra plus de temps à la reconnaître, ce qui peut entraîner des collisions.\n3. Éclairage anormal : un éclairage insuffisant dans l'environnement de travail affecte la reconnaissance visuelle du robot. Il est recommandé d'utiliser cette fonction dans un environnement bien éclairé."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Le robot tout-en-un aspirateur et serpillière a-t-il des consommables à remplacer régulièrement ?",
+  "a": "R : 3. Installation et maintenance"
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Le robot émet un signal sonore à haute fréquence dans les 5 premières secondes de la tâche de nettoyage.",
+  "a": "1. Retirez la planche à laver de la station de base et rincez-la à l'eau.\n2. Appuyez et maintenez le bouton Quitter pendant 3 secondes pour pomper l'eau propre du réservoir d'eau propre vers le plateau de la station de base.\n3. Nettoyez la station de base avec la brosse de nettoyage fournie.\n4. Appuyez et maintenez le bouton Quitter pendant 3 secondes pour pomper l'eau usée du plateau vers le réservoir d'eau sale. \n5. Essuyez le plateau de la station de base avec un chiffon doux.\n6. Remettez la planche à laver et le robot sur la station de base."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Le séchage du bac à poussière et du sac à poussière prend du temps.",
+  "a": "Vérifiez si le module de distribution automatique de solution contient suffisamment de produit de nettoyage. Assurez-vous que le module est bien enfoncé et correctement installé."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "Les aspirateurs ont des fonctions anti-peluches, alors pourquoi s'emmêlent-ils encore ?",
+  "a": "R : L'aspirateur robot possède une rangée de peignes dentés à l'intérieur de la chambre de la brosse à rouleau. Ces peignes peuvent grandement réduire l'emmêlement des cheveux, mais dans les cas avec plus de poils, des emmêlements peuvent toujours survenir. Veuillez nettoyer manuellement."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Les brosses latérales ne s’étendent pas vers l’extérieur ni ne tournent.",
+  "a": "Le robot peut franchir des obstacles d’une hauteur maximale de 2,2 cm pour une seule marche. Si le robot se bloque fréquemment, mesurez la hauteur de votre seuil. Si celle-ci dépasse sa capacité maximale, définissez le seuil comme infranchissable ou marquez la zone comme interdite."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Les cartes ne sont pas enregistrées/mises à jour.",
+  "a": "1. Pendant la cartographie, le robot apprend et cartographie votre environnement domestique, puis retourne à la station d'accueil/base. La carte ne sera pas enregistrée à moins que la voix vous indique que la cartographie est terminée.\n2. Si le robot est ramené à la station d'accueil/base pendant la cartographie , ou si la cartographie est interrompue, les cartes ne seront pas enregistrées ou mises à jour."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Les cartes sont perdues ou se chevauchent.",
+  "a": "1. Si le robot commence à nettoyer après avoir été déplacé, il effectue un auto-positionnement. Si l'autopositionnement échoue, le robot recrée le plan et le plan actuel sera recouvert.\n2. Si le robot est coincé ou glisse, certaines zones de la carte peuvent se chevaucher. Veuillez refaire la carte des zones à nettoyer ou restaurer la carte."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Les robots tournent-ils en rond pendant le nettoyage ?",
+  "a": "R : Veuillez vous assurer que le firmware du robot est à jour et à mettre à jour rapidement pour garantir la meilleure expérience de nettoyage. Veuillez vérifier s'il y a des obstacles dans la zone circulaire ; après que le robot ait évité les obstacles, le phénomène de cercle peut se produire."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Les trajectoires de nettoyage sont désordonnées.",
+  "a": "Cartographie pour la première fois\nLors de la cartographie, les chemins seront tellement désordonnés que votre robot pourra apprendre l'environnement autant que possible. Une fois la carte enregistrée, les chemins de nettoyage seront plus clairs. \nAprès l'enregistrement des cartes\nSi les trajectoires de nettoyage de votre robot sont désordonnées, veuillez vérifier les points suivants :\n1. Avant le nettoyage : Rangez les objets éparpillés sur le sol, tels que les multiprises, les jouets, les pantoufles, etc., afin d'éviter les collisions fréquentes et les trajectoires de nettoyage chaotiques. \n2. Pendant le nettoyage : Si les roues sont couvertes de saletés ou d'huile, ou si elles sont coincées par des objets étrangers, nettoyez-les pour que le robot se déplace normalement.\n3. Pendant le nettoyage : Si le robot entre en collision avec des objets à plusieurs reprises pendant le nettoyage, il nettoie brièvement le long des bords et des murs, puis reprend un schéma de nettoyage en forme de S.\n4. Récurrence : Si les trajectoires de nettoyage sont toujours désordonnées, mettez à jour le micrologiciel à la dernière version, réinitialisez les cartes et cartographiez à nouveau votre maison.\n5. Pour le robot doté de la fonction d'évitement des obstacles, vous pouvez essuyer la lentille du capteur."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "L’application signale une erreur : Impossible de détecter le réservoir de solution de nettoyage.",
+  "a": "Afin de garantir un pompage efficace de l’eau, le réservoir d’eau propre de la station d’accueil est conçu pour être hermétique. Lorsque l’on soulève le réservoir d’eau propre rapidement, une pression négative peut se former à la sortie d’eau, provoquant l’écoulement de quelques gouttes d’eau à l’intérieur de la station d’accueil, ce qui est normal. De plus, ces gouttes d’eau s’écouleront par le trop-plein sous le réservoir d’eau propre vers la planche à laver. Il n’y a donc pas lieu de s’inquiéter."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Mauvaises performances de nettoyage.",
+  "a": "Lorsque le bac à poussière est complètement bouché et ne peut pas être retiré, veuillez suivre les étapes suivantes pour le nettoyer : \n1. Ouvrez le capot du robot. \n2. Ouvrez le couvercle du bac à poussière. \n3. Retirez le filtre HEPA et utilisez un petit outil approprié pour nettoyer les débris qui bloquent l’intérieur du bac à poussière. \n4. Une fois les débris retirés, la plaque de capot de sortie de poussière située au fond du bac à poussière se remettra en place automatiquement. Une fois qu’elle est complètement enclenchée, fermez le couvercle du bac à poussière. Vous pourrez alors retirer le bac. \nComment éviter que cela ne se reproduise ? \nSi votre maison est très poussiéreuse ou si vous avez des animaux de compagnie, vous pouvez activer le mode « Vidage automatique à haute fréquence » dans l’application, sous « Paramètres de la station d’accueil → Paramètres de vidage automatique ». Ce mode est adapté aux environnements très poussiéreux ou contenant des poils d’animaux. Pendant le nettoyage, le robot retournera plusieurs fois à la station d’accueil pour vider la poussière, ce qui évitera le blocage du bac à poussière et le problème de ne pas pouvoir le retirer."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Niveau d'eau anormal dans la planche de nettoyage.",
+  "a": "Pour une commutation fluide de la serpillière, assurez-vous qu’elle est correctement installée, avec le côté serpillière face à la trappe.\nLa serpillière étant fixée magnétiquement, appuyez doucement sur la trappe lors de la fermeture pour éviter qu’elle ne se détache et ne tombe."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Niveau d'eau anormal/excès d'eau résiduelle dans la planche de nettoyage.",
+  "a": "Activez d'abord la fonction de détection des taches tenaces dans l'application. Le robot détectera automatiquement les taches tenaces en temps réel et effectuera un nettoyage ciblé sur ces zones."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Niveau d’eau anormal dans la planche à laver, excès d’eau résiduelle, fuite de la station d’accueil ou impossible de pomper l’eau usagée.",
+  "a": "L’application affiche « Solution de nettoyage non installée ». Veuillez vérifier les points suivants : \n1. Ouvrez le capot de la station d’accueil. \n2. Retirez le réservoir de solution de nettoyage et utilisez un chiffon sec pour essuyer les contacts des électrodes à l’arrière du récipient de solution. \n3. Réinstallez le réservoir de solution de nettoyage dans son compartiment et appuyez fermement dessus. \n4. Remettez le capot en place sur la station d’accueil en appuyant sur ses deux côtés pour vous assurer qu’il est bien installé. \n5. Ouvrez l’application et lancez un lavage de la serpillière pour vérifier si le problème a résolu. \nSi l’erreur « Solution de nettoyage non installée » persiste après avoir suivi ces étapes, veuillez contacter le service après-vente local pour obtenir de l’aide."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Placez le robot sur la zone spécifique et commencez à nettoyer.",
+  "a": "1. cartographie : Lors de la première cartographie ou d'une nouvelle cartographie, ne déplacez PAS votre robot au cas où la cartographie échouerait.\n2. Couverture de la carte : Si la zone à nettoyer n'est pas cartographiée, le robot ne peut pas nettoyer cette zone même si vous y placez votre robot.\n3. Nettoyage normal : Si la zone à nettoyer est cartographiée, vous pouvez placer votre robot dans cette zone et commencer le nettoyage."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Pourquoi l'unité principale consomme-t-elle plus d'énergie lors du nettoyage ?",
+  "a": "R :  Après que l'unité principale est complètement chargée et laissée sans surveillance pendant longtemps, la batterie peut chuter rapidement dans les premières minutes avant le nettoyage. C'est normal, mais la batterie revient à la normale après quelques minutes. En mode fort, l'alimentation de l'unité principale se décharge rapidement."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Pourquoi l'unité principale rencontre-t-elle des obstacles pendant le nettoyage sans ralentir ni entrer en collision ?",
+  "a": "R : L'unité principale est équipée d'un capteur laser LDS capable de détecter les obstacles et de décélérer à l'avance. Cependant, pour certaines jambes de table et de chaise plus sombres et plus petites, ainsi que certains obstacles plus bas, les collisions peuvent passer inaperçues, ce qui est normal."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Info produit",
+  "q": "Pourquoi l'évitement des obstacles est-il peu performant ?",
+  "a": "Notre robot prend uniquement en charge les réseaux Wi-Fi 2,4 G et non les réseaux Wi-Fi 5 G. Vous pouvez effectuer les vérifications simples suivantes : \n 1. Lors de la configuration du réseau, placez le robot dans une zone bénéficiant d'un signal Wi-Fi puissant. \n 2. Avant de configurer le réseau, assurez-vous que la localisation est activée sur votre téléphone et que l'application est autorisée à utiliser les services de localisation. \n 3. Lors de la connexion au point d'accès du robot, attendez l'invite vocale avant de revenir à l'application pour obtenir le résultat de la configuration réseau.\n 4. Nous vous recommandons de définir le nom et le mot de passe du Wi-Fi domestique uniquement avec des lettres ou des chiffres anglais. \n 5. L'échec de la connexion peut également être lié au modèle de téléphone. Essayez d'utiliser un autre téléphone pour vous connecter. \n Si aucune des méthodes ci-dessus ne fonctionne, vous pouvez utiliser un autre téléphone pour créer un point d'accès et configurer le réseau."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Batterie & charge",
+  "q": "Pourquoi la batterie est-elle faible pendant le nettoyage mais ne reprend pas le nettoyage ?",
+  "a": "Veuillez vous assurer que l'unité principale n'est pas en mode Ne pas déranger ; les scans ne reprendront pas pendant la période Ne pas déranger ; Recharger manuellement ou remettre l'unité principale dans la station de charge ne continuera pas le scan. 8. Problèmes matériels courants"
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Pourquoi la carte du robot est-elle différente d'avant ? Et s'il y a de la confusion, un biais ou des cartes qui se chevauchent ?",
+  "a": "R : 1. Chaos cartographique (biaisé/chevauchement, etc.) 1. Confirmer que la carte a été sauvegardée avec succès (la page de zone affiche une icône de partition et la fonction de zone fonctionne normalement). 2. Éteindre l'interrupteur d'alimentation, redémarrer la machine, puis placer manuellement la machine pour la charger et essayer de restaurer la carte. La récupération a échoué, donc la position du quai de charge a été modifiée et la carte recréée Recommandations d'utilisation : 1. Placez correctement la base de charge contre le mur (assurez-vous de laisser 0,5 m à gauche et à droite de la base de charge et 1 m devant la base sans obstacles). 2. Pendant le fonctionnement du robot aspirateur, ne pas bouger et ne pas assister manuellement le robot aspirateur 3. Si l'environnement domestique présente une lumière directe forte ou des reflets miroirs, cela peut perturber le dessin Lumière directe forte : Il est recommandé de tirer les rideaux ou de reporter le dessin à un autre moment Reflet du miroir : Il est recommandé de couvrir les 15 cm inférieurs 4. Vous pouvez la réinitialiser dans la fonction carte ; la carte sera recréée lors du prochain nettoyage. 5. Vérifier régulièrement les côtés du composant de navigation pour détecter de la saleté et essuyer avec un chiffon ou un mouchoir propre."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Pourquoi la carte est-elle incomplète après une cartographie rapide ?",
+  "a": "Veuillez nous excuser pour la gêne occasionnée. Veuillez suivre ces étapes de dépannage : \n 1. Vérifiez si les roues motrices sont encombrées de débris. \n 2. Assurez-vous que le capteur LDS tourne normalement. Appuyez doucement sur le couvercle du capteur LDS pour vérifier qu'il remonte correctement. \n 3. Vérifiez si des débris ou des cheveux sont coincés dans le LDS, ce qui pourrait entraîner une mauvaise rotation ou un arrêt de la rotation. Si vous en trouvez, essayez de les retirer. \n 4. Assurez-vous qu'aucun autocollant irrégulier ou déformé, ni aucun objet volumineux ne se trouve sur la surface du robot. \n 5. Appuyez sur le pare-chocs pour vérifier qu'il rebondit correctement. \n 6. Essuyez le capteur laser linéaire et le capteur de reconnaissance IA pour vous assurer qu'ils ne présentent aucune trace de doigts ni de poussière. \n 7. Redémarrez le robot et réessayez. Si le problème persiste, vous devrez peut-être renvoyer le robot pour inspection."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Pourquoi la zone interdite/le mur virtuel ne fonctionne-t-il pas ?",
+  "a": "Nous vous recommandons de vérifier d'abord si la station est bien sous tension. Assurez-vous que les deux extrémités du cordon d'alimentation de la station sont correctement branchées. Ensuite, vérifiez si les contacts de rechargement de la station et du robot sont poussiéreux, car la poussière peut entraîner des anomalies de charge. Veuillez les nettoyer avant l'utilisation. Vous pouvez également vérifier que le robot est correctement aligné avec la station. Vous pouvez placer manuellement le robot devant la station afin de déclencher le retour automatique pour la recharge. Si le problème persiste, vous devrez peut-être renvoyer le robot pour une inspection plus approfondie."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Pourquoi le boost de tapis du robot balayant et serpilleur est-il instable ?",
+  "a": "R : Lors de la rencontre de tapis à poils courts, il y a un risque que la reconnaissance ne soit pas efficace, ce qui provoque une instabilité dans la fonction de pressurisation du tapis. La fonction de pressurisation des aspirateurs robotiques est actuellement une fonctionnalité expérimentale et est en optimisation continue."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Pourquoi le nettoyage programmé ne fonctionne-t-il pas ?",
+  "a": "R : Cela peut être dû à une alimentation insuffisante ; la batterie restante ne commencera le nettoyage programmé que lorsque la batterie restante dépasse 15 %."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Pourquoi le robot s'éteint-il automatiquement ?",
+  "a": "Suivez ces étapes : \n 1. Assurez-vous que la station est sous tension, que le capot supérieur est fermé et que le sac à poussière est correctement installé pendant le processus de vidage de la poussière. \n 2. Vérifiez si le sac à poussière est plein. S'il est plein, remplacez-le et réessayez. \n 3. Inspectez l'évent de vidage automatique du robot et de la station, ainsi que la sortie du bac à poussière, à la recherche de toute obstruction. Nettoyez-les avant de réessayer. \n 4. Vérifiez si le commutateur de vidage de la poussière de l'application est désactivé. Si c'est le cas, activez-le et réessayez. \n 5. Vérifiez que le contact de rechargement n'est pas sale, car cela risquerait d'empêcher la transmission du signal. Nettoyez-les avec un chiffon sec et réessayez.\n 6. Si votre maison comporte une quantité importante de poussière ou de saletés, réglez la fréquence de vidage de la poussière sur « À chaque fois ».\n 7. Vérifiez si le mode « Ne pas déranger » est activé dans l'application. Le robot ne videra pas la poussière lorsque ce mode est activé. Ajustez les horaires du mode « Ne pas déranger » ou désactivez-le dans les paramètres de l'application."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Pourquoi le tapis reste-t-il mouillé même lorsque la reconnaissance des tapis est activée ?",
+  "a": "1. La reconnaissance des tapis du robot est activée par défaut. Il détecte automatiquement les matériaux des tapis, soulève la serpillière et augmente l'aspiration lorsqu'il passe sur un tapis, ce qui est normal. \n 2. Si vous souhaitez que le robot évite les tapis, sélectionnez « Éviter les tapis » dans l'application. \n 3. Si la reconnaissance des tapis est imprécise, désactivez-la et définissez manuellement une zone interdite dans les paramètres de la carte. Le robot évitera la zone interdite et ne se déplacera pas sur le tapis lors du passage de la serpillière."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Pourquoi les gens regardent-ils en arrière pendant le nettoyage ?",
+  "a": "R : Le robot aspirateur intègre une fonctionnalité linéaire d'évitement des obstacles en 3D par laser, avec une portée de reconnaissance orientée directement devant. Lorsque d'autres objets sur le côté tombent dans l'angle mort, le robot regarde en arrière pour vérifier une meilleure évitement des obstacles, ce qui est un phénomène courant."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Pourquoi les obstacles d'évitement du robot balayeur et serpillier heurtent-ils encore des pieds noirs ou très réfléchissants ?",
+  "a": "R : Objets noirs : Le laser linéaire des aspirateurs robots est infrarouge. Les objets noirs absorbent la lumière, et certains objets noirs peuvent être impactés, ce qui est normal. Objets hautement réfléchissants : Le laser linéaire des aspirateurs robots est infrarouge. Lorsque la lumière frappe un objet, elle peut provoquer une réflexion. Pour certains objets très réfléchissants, des collisions peuvent survenir, ce qui est normal."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Pourquoi les robots de balayage et de serpillière regardent-ils en arrière pendant le nettoyage ?",
+  "a": "R : Le robot aspirateur intègre une fonctionnalité linéaire de contournement des obstacles en 3D par laser. Sa portée de reconnaissance est directement devant. Lorsque d'autres objets sur le côté tombent dans les angles morts de l'évitement des obstacles, le robot regarde en arrière pour vérifier une meilleure évitement des obstacles, ce qui est un phénomène normal."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Pourquoi y a-t-il un espace entre le robot et le mur lors du nettoyage des bords ?",
+  "a": "Veuillez nous excuser pour la gêne occasionnée. Si le robot affiche un message d'erreur de positionnement et que la station n'a pas été déplacée, vous pouvez replacer le robot sur la station ; la carte sera automatiquement restaurée. Si la récupération de la carte échoue, vous pouvez relancer le nettoyage. Une fois le nettoyage terminé et le robot rechargé automatiquement, la carte sera enregistrée. \n Si la station a été déplacée ou que l'environnement a considérablement changé, le robot peut ne pas se positionner correctement. De plus, des roues motrices glissantes dues à un sol mouillé ou à un blocage du robot peuvent également entraîner un problème de positionnement. Veuillez vérifier en fonction de votre situation.\n Pour une meilleure expérience, nous vous recommandons de ne pas suivre le robot de trop près pendant son fonctionnement. Lors du passage de la serpillière sur les sols humides ou le carrelage, réglez le débit d'eau au minimum. Avant le démarrage du robot, rangez les objets éparpillés, les fils électriques, etc., et activez les murs virtuels/zones interdites pour réduire les risques de blocage. \n Si vous avez enregistré plusieurs cartes, assurez-vous que l'application bascule sur la carte correspondante lorsque le robot entre dans la zone concernée ; sinon, un problème de positionnement pourrait survenir."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "Pourquoi ça plante encore avec l'évitement des obstacles en 3D ?",
+  "a": "R : L'hôte est équipé d'un capteur laser LDS qui détecte les obstacles et ralentit à l'avance. Cependant, les collisions peuvent passer inaperçues pour des pieds de table et de chaise plus sombres et plus petits, ainsi que pour certains obstacles plus courts Objets noirs : Le laser linéaire des aspirateurs robots est infrarouge. Les objets noirs absorbent la lumière, et certains objets noirs peuvent être impactés. Objets hautement réfléchissants : Le laser linéaire des aspirateurs robots est infrarouge ; lorsque la lumière frappe un objet, elle peut être réfléchie, et certains objets très réfléchissants peuvent être impactés."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Présence de légère mousse blanche sur la planche de nettoyage.",
+  "a": "Vérifiez si le filtre de la planche de nettoyage est correctement installé et si des débris le bloquent. Si c’est le cas, retirez-les rapidement.\nEnsuite, assurez-vous que la bague d’étanchéité du réservoir d’eau usagée est bien en place."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Puis-je utiliser l'application Mi Home au lieu de l'application MOVAhome ?",
+  "a": "1. Avant que l'aspirateur robot ne commence à réaliser la cartographie, ouvrez toutes les portes de votre maison et rangez vos objets pour garantir un déplacement fluide. \n 2. Les seuils de porte hauts (> 2,2 cm), les sols sombres et une forte lumière directe peuvent entraîner une cartographie incomplète. \n Pour les seuils de porte hauts (> 2,2 cm) : nous vous recommandons de créer des murs virtuels ou d'utiliser des tapis de sol pour simplifier la tâche. \n Pour les sols sombres : nous vous recommandons de les recouvrir de tapis de sol. \n En cas de forte lumière directe : nous vous recommandons de fermer les rideaux ou de choisir un autre moment pour la cartographie. \n 3. Pendant la cartographie, évitez de laisser des personnes ou des animaux suivre le robot de trop près ou d'obstruer le composant LiDAR LDS."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Batterie & charge",
+  "q": "Qu'est-ce qui cause l'amarrage répétée à la station de charge lors de la recharge ?",
+  "a": "R : Si vous remarquez des problèmes, vérifiez si la station de charge et la base de charge de l'unité principale sont tachées de poussière. Si de la poussière s'accumule, des connexions répétées peuvent survenir. Veuillez essuyer avant utilisation."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Info produit",
+  "q": "Qu'est-ce qui cause les défaillances du repositionnement de l'hôte ?",
+  "a": "R :  Déplacer l'hôte vers des zones qui n'ont pas été nettoyées auparavant provoquera des échecs de repositionnement. Veuillez essayer de le déplacer vers des zones déjà nettoyées. Lorsque l'hôte est repositionné, quelqu'un se tient à côté. Essayez de ne pas vous tenir à côté de l'unité principale, et assurez-vous que la caméra capture parfaitement les points caractéristiques en haut de la pièce. Lors du repositionnement de l'unité principale, l'éclairage est tamisé ; veuillez vous assurer d'un éclairage suffisant avant de le repositionner."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Qu'est-ce qui cause une capacité de nettoyage réduite ou des fuites de poussière ?",
+  "a": "La poubelle est pleine ; veuillez la nettoyer ; Le filtre est bouché ; veuillez le nettoyer ; Le pinceau principal est emmêlé avec des objets étrangers ; veuillez le nettoyer."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Info produit",
+  "q": "Qu'est-ce qui peut provoquer une défaillance de la distribution réseau, et comment cela doit-il être géré ?",
+  "a": "R :  La configuration hôte ne prend en charge que les réseaux Wi-Fi 2,4G et ne prend pas en charge. 1. Veuillez vous assurer que l'unité principale et le téléphone sont proches du routeur, et assurer un bon signal Wi-Fi. 2. Lors de la connexion au point d'accès libéré par l'hôte, après avoir entendu l'annonce vocale de l'hôte, retournez dans l'application et attendez le résultat de configuration réseau. 3. Avant de configurer le réseau, assurez-vous que les autorisations de localisation de l'application sont activées ; le défaut d'activation des autorisations entraînera une échouement de la configuration réseau. 4. Si la configuration réseau échoue toujours, essayez de redémarrer l'hôte et le routeur. Si le problème n'est pas résolu, veuillez contacter rapidement Dreame After-Sales."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Batterie & charge",
+  "q": "Qu'est-ce qui provoque des connexions répétées au bac à poussière lors de la recharge ?",
+  "a": "R : Si des problèmes sont détectés, veuillez vérifier si le bac de collecte de poussière et le pad de charge de l'unité principale sont tachés de poussière. Si de la poussière s'accumule, cela peut provoquer des connexions répétées. Veuillez l'essuyer avant utilisation."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Qu'est-ce qui provoque la collision de l'unité principale contre le mur lors du nettoyage le long du bord ?",
+  "a": "R : L'unité principale est équipée de capteurs côté mur, donc lors du nettoyage sur les bords, elle maintient une certaine distance par rapport au mur, ce qui est normal."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Quand l'unité principale nettoie, pourquoi nettoie-t-elle la zone à plusieurs reprises après le déménagement ?",
+  "a": "R : Après le déplacement de l'unité principale, elle effectue le repositionnement. Si le repositionnement réussit, le nettoyage continue ; si le repositionnement échoue, le nettoyage reprend."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Que dois-je faire lorsque la base ne parvient pas à pomper les eaux usées dans le réservoir d'eau usée ou que le niveau d'eau dans la planche à laver est anormal ?",
+  "a": "1. Sortez le réservoir d'eau usée pour vérifier si la bague d'étanchéité est déformée ou mal installée, si c'est le cas, réinstallez la bague d'étanchéité manuellement. Si le  réservoir d'eau usée est cassé, veuillez contacter le service clientèle.\n2. Assurez-vous que le  réservoir d'eau usée est normal. Fermez ensuite le couvercle du réservoir, remettez le en place et  l'enfoncez pour vous assurer que le réservoir est bien installé au fond.\n3. Appuyez sur les clips des deux côtés de la planche à laver pour la sortir. Versez l'eau usée, et vérifiez si le filtre est bouché, si oui, nettoyez-le.\n4. Essuyez l'eau restée dans la base avec un chiffon sec, installez la planche à laver et fixez les clips des deux côtés.\n5. Nettoyez d'abord la planche à laver. Si l'erreur persiste, contactez le service client."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "Que dois-je faire si c'est difficile d'ouvrir la poubelle ?",
+  "a": "R :  Faites attention aux marques sur le point d'ouverture de la boîte à poussière. Ouvrez correctement la boîte à poussière ; ne l'ouvrez pas en retirant l'élément filtrant."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "Que dois-je faire si je ne peux pas allumer l'ordinateur ?",
+  "a": "R : Si la batterie est faible, veuillez vous appuyer contre la station de charge pour charger avant utilisation. Si la température ambiante est trop basse (en dessous de 0°C) ou trop élevée (au-dessus de 50°C), veuillez l'utiliser dans un environnement compris entre 0 et 40°C."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Batterie & charge",
+  "q": "Que dois-je faire si je ne peux pas recharger ?",
+  "a": "R : La station de charge n'est pas alimentée. Veuillez vérifier que les deux extrémités du câble d'alimentation de la station de charge sont correctement branchées. Si le contact est mauvais, veuillez nettoyer les ressorts de la station de charge et les contacts de charge de l'unité principale."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "Que dois-je faire si l'hôte se comporte de manière anormale ?",
+  "a": "R :  Appuyez et maintenez le bouton aspirateur pendant 6 secondes pour l'éteindre, puis redémarrez la machine."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Batterie & charge",
+  "q": "Que dois-je faire si les données ne peuvent pas se charger en utilisant l'application ?",
+  "a": "Veuillez vérifier si votre réseau domestique fonctionne correctement. Quittez l'application et réessayez."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Que faire en cas d'échec de la configuration réseau ?",
+  "a": "Ce son est normal. Il est émis lorsque le robot déverse rapidement de l’eau pour mouiller la serpillière."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Que faire en cas d'échec du vidage de la poussière ?",
+  "a": "Pendant la cartographie rapide, assurez-vous que toutes les portes sont bien ouvertes (ni entrouvertes ni à moitié ouvertes). Ne vous approchez pas trop du robot et ne le suivez pas. Si la carte est incomplète, vous pouvez la supprimer de la liste des cartes et re-cartographier la zone. Vous pouvez également effectuer un nettoyage global en utilisant la carte existante. La carte se mettra alors à jour automatiquement, en remplissant les zones manquantes et en ajustant les cloisons."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Que faire en cas d’échec du vidage automatique ?",
+  "a": "L’application affiche « Solution de nettoyage non installée ». Veuillez vérifier les points suivants : \n1. Ouvrez le capot de la station d’accueil. \n2. Retirez le réservoir de solution de nettoyage et utilisez un chiffon sec pour essuyer les contacts des électrodes à l’arrière du récipient de solution. \n3. Réinstallez le réservoir de solution de nettoyage dans son compartiment et appuyez fermement dessus. \n4. Remettez le capot en place sur la station d’accueil en appuyant sur ses deux côtés pour vous assurer qu’il est bien installé. \n5. Continuez à utiliser l’appareil pendant un certain temps et observez si la solution de nettoyage se consomme dans les deux compartiments. \nSi le problème persiste, veuillez contacter le service après-vente local pour obtenir de l’aide."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Que faire lorsque le robot intégré de balayage et de serpillière passe la serpillière sur le sol ?",
+  "a": "R : Vous pouvez contrôler l'application pour définir une zone interdite de serpillière pour la moquette dans la fonction carte. Pendant le lavage, elle évitera la zone restreinte et évitera la moquette. Pourquoi la carte de l'aspirateur robot et de la serpillière est-elle différente d'avant, montrant de la confusion, de l'inclinaison et des cartes qui se chevauchent ? R : 1. Chaos cartographique (biaisé/chevauchement, etc.) 1. Confirmer que la carte a été sauvegardée avec succès (la page de zone affiche une icône de partition et la fonction de zone fonctionne normalement). 2. Éteindre l'interrupteur d'alimentation, redémarrer la machine, puis placer manuellement la machine pour la charger et essayer de restaurer la carte. Si la récupération échoue, l'emplacement de la poubelle sera modifié et la carte recréée Recommandations d'utilisation : 1. Les bacs à poussière doivent être correctement placés contre le mur (assurez-vous que 0,5 m des côtés gauche et droit du bac, et que 1,5 m devant les bacs soient exempts d'obstacles). 2. Pendant le fonctionnement du robot aspirateur, ne pas bouger et ne pas assister manuellement le robot aspirateur 3. Si l'environnement domestique présente une lumière directe forte ou des reflets miroirs, cela peut perturber le dessin Lumière directe forte : Il est recommandé de tirer les rideaux ou de reporter le dessin à un autre moment Reflet du miroir : Il est recommandé de couvrir les 15 cm inférieurs 4. Vous pouvez la réinitialiser dans la fonction carte ; la carte sera recréée lors du prochain nettoyage. 5. Vérifier régulièrement les côtés du composant de navigation pour détecter de la saleté et essuyer avec un chiffon ou un mouchoir propre."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "Que faire s'il y a une fuite au sommet du couvercle du radiateur ?",
+  "a": "R : Il y a un trou d'aération sur le couvercle supérieur du réservoir d'eau pour équilibrer la pression de l'air à l'intérieur et à l'extérieur du réservoir. Après avoir ajouté de l'eau dans le réservoir, veuillez le placer horizontalement. De légères fuites peuvent survenir lors du chargement et du placement en biais, ce qui est normal."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Que faire si la carte avec un robot balayeur et serpillière n'a pas les bonnes zones ?",
+  "a": "R : Le robot aspirateur peut diviser et fusionner les cartes dans les paramètres de l'application, et ajuster manuellement les zones déraisonnables. J'ai hâte de découvrir le Z10 Pro"
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Que faire si la navigation est anormale, que le robot entre dans des zones interdites ou franchit des murs virtuels, tombe dans les escaliers, entre en collision avec des murs, ou est incapable de définir un nettoyage programmé ou par zone ?",
+  "a": "Notre robot MOVA puise l’eau dans la boîte d’eau située à l’arrière de l’appareil. Chaque fois que le robot retourne à la station d’accueil pour laver la serpillière et remplir la boîte d’eau, une petite quantité d’eau peut rester à l’entrée d’eau. De plus, lorsque le robot fonctionne et heurte des bosses ou des obstacles, quelques gouttes d’eau propre peuvent parfois s’écouler sur le sol, ce qui est normal. \nEn cas d’écoulement continu de gouttes d’eau, veuillez vérifier les points suivants : \n1. Suivez les instructions de démontage figurant sur l’étiquette située au bas du robot pour retirer le module de rouleau. \n2. Vérifiez si le filtre métallique à l’intérieur du compartiment du rouleau est obstrué par des débris. \n3. Nettoyez les débris autour du filtre et à l’intérieur du compartiment du rouleau. \n4. Réinstallez le module de rouleau. \nDe plus, essayez de réduire légèrement le niveau d’eau de lavage du sol et relancez un nettoyage pour voir si les gouttes persistent. Si le problème persiste, veuillez contacter le service après-vente MOVA pour obtenir de l’aide."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Que faire si le bac à poussière est bloqué par des débris et ne peut pas être retiré du robot ?",
+  "a": "Accédez à la page des paramètres de l’application → « Paramètres de nettoyage du sol » → « Levage automatique du LDS » → « Couverture de sécurité »."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Que faire si le robot aspirateur et serpillière intégrés reste coincé ?",
+  "a": "R : Le robot aspirateur peut rester coincé entre des objets dans certains petits espaces. Si le robot est plus petit que 37 cm, il sera plus difficile de sortir du piège, il faut donc aider le robot à continuer de nettoyer."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Que faire si le robot balayeur et serpillière ne peut parfois pas éviter les obstacles ?",
+  "a": "R : 1. Il est recommandé d'utiliser un chiffon propre et doux pour essuyer le capteur d'évitement d'obstacles au centre de la plaque de collision de la machine. Après avoir essuyé, démarrez la machine et réessayez ; Si votre machine est connectée en réseau et en ligne, ouvrez l'interface de l'application et cliquez sur « ... » en haut à droite« Entrez, vérifiez la liste pour voir si la fonction d'évitement des obstacles est désactivée. Si oui, ouvrez-la et démarrez la machine pour essayer ; Vérifiez si les objets au sol sont trop petits ; pour s'assurer que le sol est propre, des obstacles trop petits peuvent parfois être évités ; Le robot prend en charge les mises à jour OTA en ligne. Dreametech optimisera progressivement ses performances d'évitement des obstacles. Il est recommandé de vérifier régulièrement la version du firmware et de la mettre à jour rapidement."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Que faire si le robot passe la serpillère sur un tapis ou l'enroule ?",
+  "a": "• Bruits forts pendant le fonctionnement : \n1. Vérifiez le réglage de la puissance d’aspiration dans l’application. Saquez qu’une puissance d’aspiration plus élevée entraînera un bruit de fonctionnement plus fort. \n2. En mode Tapis Boost, le bruit augmente lorsque le robot augmente automatiquement sa puissance d’aspiration dès qu’il détecte un tapis. \n• Bruits inhabituels pendant le fonctionnement :\n1. Retirez la brosse latérale et le couvercle de la brosse principale, puis redémarrez le robot. \nSi le bruit de fonctionnement revient normal :\n① Réinstallez d’abord la brosse latérale et démarrez le robot. Si un bruit inhabituel persiste pendant le fonctionnement, vérifiez si la brosse latérale est déformée. \n② Si le robot fonctionne correctement après avoir réinstallé la brosse latérale : pour les robots neufs, un léger bruit peut être perçu initialement. Il est dû au frottement entre le ruban en caoutchouc du couvercle de la brosse principale et le sol. Veuillez utiliser le robot plusieurs fois pour qu’il s’adapte. \n③ Si un bruit inhabituel apparaît après avoir réinstallé la brosse principale : retirez la brosse principale et vérifiez si ses deux extrémités sont emmêlées. Assurez-vous que le couvercle est bien clipsé lors de la réinstallation. \nVérifiez si la serpillière à rouleau est emmêlé avec des cheveux. Si c’est le cas, nettoyez-la conformément aux instructions du Manuel d’utilisation, puis réinstallez-la et vérifiez si le bruit a disparu.\nSi le bruit persiste :\n① Après avoir éteint le robot, appuyez sur les deux côtés des roues principales et faites-les glisser pour vérifier leur rotation et leur rebond lorsqu'elles sont relâchées. Nettoyez les débris si nécessaire.\n② Faites tourner la roue omnidirectionnelle pour vous assurer qu’elle tourne sans résistance. Nettoyez-la si vous constatez une résistance. \n③ Si le filtre a été lavé, assurez-vous qu’il est complètement sec avant réutilisation. Un filtre humide peut provoquer des bruits inhabituels pendant le fonctionnement."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Que faire si le robot se bloque fréquemment sur les seuils de porte ?",
+  "a": "Il est normal qu’il reste un peu d’eau sur le sol après le nettoyage à la serpillière. Vous pouvez ajuster le niveau d’eau de nettoyage à la serpillière via l’application. Le sol sèche généralement en 30 secondes environ."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Batterie & charge",
+  "q": "Que faire si le robot se charge de façon anormale ?",
+  "a": "Nous vous recommandons de vérifier les situations suivantes : \n 1. L'application ne peut pas se connecter au robot s'il est éteint. \n 2. L'état en ligne et hors ligne du robot dépend de la puissance du signal réseau à l'endroit où il se trouve. Si le signal réseau est faible ou instable, le robot peut se déconnecter. \n 3. Le Wi-Fi domestique est peut-être déconnecté. \n Vous pouvez essayer les solutions suivantes : \n 1. Vérifiez que le robot est éteint. Si c'est le cas, maintenez le bouton d'alimentation enfoncé pour l'allumer, puis reconfigurez le réseau. \n 2. Si le robot se déconnecte pendant le nettoyage, il poursuivra la tâche en cours sans interruption. Une fois qu'un meilleur signal réseau est disponible, le robot se reconnectera automatiquement. \n 3. Vous pouvez réinitialiser les réseaux ou en ajouter pour le robot, et sélectionner un routeur plus proche du robot pour une meilleure configuration réseau. \n 4. Vérifiez que le Wi-Fi domestique fonctionne correctement. En cas de problème, résolvez les problèmes du réseau domestique et reconfigurez-le. \n 5. Vérifiez si l'option « Favoriser la 5G » est sélectionnée dans les paramètres réseau du robot. Si oui, veuillez désactiver ce paramètre."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Que faire si le réservoir d'eau tombe pendant le lavage ?",
+  "a": "R :  Si le réservoir commence à fonctionner avant d'être correctement installé, cela provoquera la chute du réservoir. Veuillez prêter attention à la méthode d'installation correcte du radiateur. Lorsque vous installez les clips des deux côtés du réservoir, vous devriez entendre un bruit de « clic »."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Que faire si le vidage automatique fonctionne mal ?",
+  "a": "Il est possible que le sac à poussière soit plein ou que le conduit d'air soit bloqué. \n1. Vérifiez si le sac à poussière est plein. Si c'est le cas, remplacez le sac. \n2. Vérifiez si le sac à poussière et les évents à vidange automatique sont obstrués. Si c'est le cas, nettoyez-les."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Que faire si les performances de nettoyage du robot baissent ou si des débris s’échappent pendant la collecte de la poussière ?",
+  "a": "Le robot peut perdre la connexion avec la station d’accueil si le signal Wi-Fi de celle-ci est faible. Veuillez déplacer la station d’accueil vers une zone où le signal est plus fort avant de lancer la tâche de nettoyage. Vous pouvez consulter l’application pour trouver l’emplacement optimal : Paramètres > Plus de fonctions > Gestion Wi-Fi > Carte Wi-Fi."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "Que faire si les taches tenaces ne peuvent pas être enlevées pendant le lavage ?",
+  "a": "R : Les taches tenaces ne peuvent pas être enlevées lors du lavage de l'unité principale ; une assistance manuelle est nécessaire."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Que faire si l’application affiche « Niveau d’eau anormal dans la planche de nettoyage » ou s’il y a une accumulation d’eau usée ?",
+  "a": "L'aspirateur robot utilise la pression négative pour remplir son réservoir d'eau propre depuis la station. Par conséquent, lorsque vous soulevez le réservoir d'eau propre de la station pendant son fonctionnement, une faible quantité d'eau peut déborder en raison de la pression négative. Cette fuite est minime et peut être essuyée avec un mouchoir en papier ou un chiffon, sans impact sur le fonctionnement."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Que faire si vous avez des taches d'eau en passant la serpillière ?",
+  "a": "R : Pendant le lavage de la serpillière, vous pouvez ajuster la quantité d'eau en fonction du degré de saleté sur le sol. Veuillez confirmer le niveau d'eau pendant le passage ; si vous êtes réglé au maximum, des taches d'eau peuvent persister."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Que faire si vous ne pouvez pas nettoyer ou si les taches tenaces ne sont pas éliminées ?",
+  "a": "R : Les robots conviennent au nettoyage quotidien du foyer. Si les taches tenaces ne peuvent pas être enlevées pendant le lavage de la serpillière, une assistance manuelle est nécessaire. Vous pouvez augmenter le volume du réservoir avant de passer la serpillière Il est recommandé de nettoyer la serpillière environ toutes les heures pour de meilleurs résultats de nettoyage. Le magasin officiel de Dreame vend des liquides nettoyants spécialisés qui peuvent être utilisés ensemble pendant le nettoyage. Ils sont riches en tensioactifs et aident à nettoyer les sols plus en profondeur."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "Que faut-il faire si l'unité principale rencontre des problèmes de charge ?",
+  "a": "R : Veuillez vérifier si le bac de collecte de poussière et le pad de recharge de l'unité principale sont tachés de poussière. Si la poussière en a, la charge peut se produire de manière anormale. Veuillez essuyer avant utilisation."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Que faut-il faire si le câble d'alimentation de la station de charge s'emmêle pendant le nettoyage de l'unité principale ?",
+  "a": "R : Avant de nettoyer, attachez le câble d'alimentation excédentaire de la station de charge avec des colliers à câbles. Ne le posez pas au sol pour éviter que l'aspirateur ne s'emmêle."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Que faut-il faire si le câble d'alimentation du bac à poussière s'emmêle pendant le nettoyage de l'unité principale ?",
+  "a": "R : Avant de nettoyer, attachez le câble d'alimentation excédentaire du bac à poussière avec des colliers de serrage ; ne le posez pas au sol."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Que faut-il faire si le robot émet des bruits étranges pendant le nettoyage ?",
+  "a": "R : Vérifiez si la brosse à rouleaux est prise par des objets étrangers ou fait du bruit. Nettoyez rapidement la brosse à rouleaux pour éviter les dommages. 2. Lorsque l'unité principale travaille sur des sols carrelés lisses ou en bois, le grattoir du bas peut produire un léger bruit en frottant contre le sol. Lorsque l'unité principale traverse les joints carrelés et de sol, elle entre en contact et nettoie les joints du sol, ce qui peut produire un léger bruit de « clic-clic ». Les sons ci-dessus n'affectent pas le fonctionnement normal de la machine."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Que faut-il faire si le réservoir d'eau ne coule pas ou si le volume d'eau est faible lors du lavage ?",
+  "a": "R : Veuillez vérifier s'il y a de l'eau dans le réservoir ; Veuillez suivre les instructions pour installer correctement la serpillière ; Veuillez laver rapidement le linge de serpillière. Avant de passer la serpillière, mouillez un chiffon pour assurer l'expérience de nettoyage avant que le réservoir d'eau ne soit retiré."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "Que faut-il faire si le sol devient de plus en plus sale à mesure que vous le passez ?",
+  "a": "R : Si le sol est très sale, veuillez nettoyer régulièrement le chiffon lors du passage à la serpillière."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Que se passe-t-il si les obstacles ne peuvent pas être évités lors du nettoyage ?",
+  "a": "R : 1. Il est recommandé d'utiliser un chiffon propre et doux pour essuyer le capteur d'évitement d'obstacles au centre de la plaque de collision de la machine. Après avoir essuyé, démarrez la machine et réessayez ; Si votre machine est connectée en réseau et en ligne, ouvrez l'interface de l'application et cliquez sur « ... » en haut à droite« Entrez, vérifiez la liste pour voir si la fonction d'évitement des obstacles est désactivée. Si oui, ouvrez-la et démarrez la machine pour essayer ; Le robot prend en charge les mises à jour OTA en ligne. Dreametech optimisera progressivement ses performances d'évitement des obstacles. Il est recommandé de vérifier régulièrement la version du firmware et de la mettre à jour rapidement. 5. Problèmes d'usage courant"
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Batterie & charge",
+  "q": "Quelle batterie utilise le robot combo aspirateur-serpillière ?",
+  "a": "R : Le robot intégré de balayage et de serpillière utilise un pack batterie lithium haute performance de 5200 mAh."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Batterie & charge",
+  "q": "Quelle est l'autonomie de la batterie de l'unité principale ?",
+  "a": "R : Bloc silencieux : environ 18minutes Vitesse standard : environ 150 minutes Bloc fort : Environ 120 minutes Super mode : environ 80 minutes"
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Batterie & charge",
+  "q": "Quelle est la courte autonomie du robot ?",
+  "a": "R : Lorsque le robot est complètement chargé, la puissance d'aspiration de l'aspirateur est réglée à une autonomie typique : Bloc silencieux : environ 17minutes Vitesse standard : environ 150 minutes Bloc fort : Environ 120 minutes Super mode : environ 80 minutes"
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Quelle est la taille du robot intégré aspirateur et serpillière ?",
+  "a": "R : Les dimensions de la carrosserie sont 353*350*96,8 mm, avec une hauteur de 9,68 cm."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Batterie & charge",
+  "q": "Quelle fonction a le bouton (recharge) du robot intégré de balayage et de serpillière ? Comment l'utiliser ?",
+  "a": "R : Comme indiqué dans le tableau ci-dessous Conseil : Appuyez sur n'importe quelle clé pour mettre en pause pendant le nettoyage, la recharge ou un nettoyage partiel."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Batterie & charge",
+  "q": "Quelle pourrait être la cause de la défaillance de la recharge ?",
+  "a": "R : 1. Il y a trop d'obstacles près de la base de recharge. Veuillez placer la base de recharge dans une zone dégagée, en veillant à ne pas avoir d'obstacles à moins de 0,5 mètre de chaque côté et à 1,5 mètre devant. 2. Si l'unité principale ne démarre pas depuis la station de recharge avant le nettoyage, et qu'aucune station de recharge n'est trouvée pendant le nettoyage, veuillez essayer de nettoyer l'unité principale en partant de la station de recharge. 3. Lors du nettoyage, l'unité principale a été déplacée ; lors d'un nettoyage supplémentaire, l'unité principale n'a pas réussi à se repositionner et une nouvelle tâche a été lancée. 4. Veuillez vérifier si la station de recharge comporte un film sur la station de recharge ; s'il y en a un, retirez-le avant de retester."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "Quelle pourrait être la raison de l'installation inégale d'un tissu ?",
+  "a": "R : Il y a un motif de fente à l'avant du tissu. Veuillez prêter attention à la méthode d'installation correcte afin de vous assurer que le tissu est bien installé. 6. Problèmes courants de l'APP"
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "Quelles fonctions le laser en ligne a-t-il ? Comment l'utiliser ?",
+  "a": "R : Le laser linéaire du robot aspirateur peut reconnaître les scènes et obstacles domestiques, permettant une évitement précis des obstacles et réduisant considérablement des problèmes tels que les emmêlements, les coincements et les poussées. Vous pouvez profiter de cette fonctionnalité en activant l'interrupteur d'évitement d'obstacles dans les paramètres de l'application. 2. Introduction et utilisation du produit"
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Quelles fonctions ont le bouton (allumage/allumage/nettoyage) du robot balayeur et serpillier ? Comment l'utiliser ?",
+  "a": "R : Comme indiqué dans le tableau ci-dessous Conseil : L'unité principale ne peut pas être éteinte pendant la recharge ; Appuyez sur n'importe quel bouton pour mettre en pause pendant le nettoyage, la recharge ou un nettoyage partiel."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Quelles pourraient être les raisons d'une mise à jour du firmware ratée ?",
+  "a": "Lors de la mise à niveau du micrologiciel, la charge de l'unité principale dans la poubelle doit dépasser 15 % pour pouvoir la mettre à niveau. Vérifiez votre réseau domestique."
+ },
+ {
+  "m": [
+   "L10 Pro"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Quelles pourraient être les raisons de l'échec de la mise à jour du firmware dans un PP ?",
+  "a": "Lors de la mise à jour du firmware, la batterie de la station de charge de l'unité principale doit être au moins à 15 % en même temps avant que la mise à niveau puisse être effectuée. Vérifiez votre réseau domestique. 7. Problèmes logiciels courants"
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "Quelles pourraient être les raisons des odeurs dans les chiffons et les poubelles ?",
+  "a": "R :  Si l'unité principale ne nettoie pas le chiffon rapidement après la serpillière, il peut développer des odeurs avec le temps. Veuillez nettoyer le chiffon rapidement après avoir passé la serpillière. L'unité principale peut absorber les liquides pendant le nettoyage. Si la poubelle n'est pas nettoyée à temps, elle peut produire des odeurs. Veuillez nettoyer la poubelle rapidement après la fin des travaux."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Quelles sont les causes d'une baisse des performances de nettoyage ou d'une fuite de poussière ?",
+  "a": "Raisons possibles : \n 1. Le robot s'éteint automatiquement lorsque le niveau de batterie descend en dessous de 10 %. \n 2. Si le robot reste inactif pendant plus de 12 heures sans aucune opération et qu'il n'est pas en charge sur la station, il s'éteint automatiquement. \n Solutions : \n 1. Nous vous recommandons de placer le robot sur sa station pour le garder chargé. \n 2. Si le robot s'éteint alors qu'il se trouve sur la station, vérifiez que la station est sous tension ou que le robot y est correctement connecté pour maintenir la charge."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Quelles sont les fonctions du laser linéaire du robot intégré de balayage et de serpillière ? Comment l'utiliser ?",
+  "a": "R : Le laser linéaire du robot aspirateur peut reconnaître les scènes et obstacles domestiques, permettant une évitement précis des obstacles et réduisant considérablement des problèmes tels que les emmêlements, les coincements et les poussées. Vous pouvez profiter de cette fonctionnalité en activant l'interrupteur d'évitement d'obstacles dans les paramètres de l'application."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Qu’est-ce que le Nettoyage en profondeur initial ?",
+  "a": "1. Les taches tenaces sur le sol nécessitent plusieurs passages. Utilisez la fonction de Nettoyage de pièces sélectionnées pour un nettoyage en profondeur ciblant des zones spécifiques, afin d’améliorer la qualité du nettoyage. De plus, le robot est équipé d’une fonction de reconnaissance des taches tenaces. En activant cette fonction dans l’application, il adoptera une stratégie de nettoyage ciblée pour les petites zones présentant des taches sombres et tenaces, assurant ainsi une propreté accrue. \n2. Vous pouvez sélectionner « Nettoyage en profondeur » dans « CleanGenius ». Le robot ajustera alors l’espacement de son nettoyage en forme de S pour obtenir de meilleurs résultats. \n3. En mode Nettoyage personnalisé, vous pouvez sélectionner « Serpillière × 2 » ou « Serpillière × 3 ». Le robot nettoiera en suivant un motif croisé, ce qui améliorera considérablement les performances de lavage du sol. \n4. Vous pouvez sélectionner le mode « Intensif » ou « En profondeur » sous « Lavage du sol » pour obtenir de meilleurs résultats de nettoyage. \n5. Pour les taches séchées ou très adhésives collées au sol, il est recommandé de procéder à un nettoyage manuel ou d’essayer un lavage du sol en suivant les étapes 2, 3 et 4."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Si la cartographie initiale est incomplète, dois-je la réaliser à nouveau ? Comment compléter la cartographie ?",
+  "a": "Non, nos produits fonctionnent uniquement avec l'application MOVAhome."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Taches tenaces détectées.",
+  "a": "Le niveau de saleté de l'évent de vidage automatique dépend de l'état de saleté du sol de votre maison et de la fréquence d'utilisation. Vous pouvez le nettoyer avec un chiffon doux si nécessaire."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Tâches d'eau constatées sur le robot au déballage.",
+  "a": "L'aspirateur robot offre 32 niveaux d'eau réglables. Si vous remarquez des taches d'eau excessives lors du nettoyage de routine, ajustez manuellement le niveau d'eau dans l'application pour l'adapter aux différents types de sol."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Tâches d'eau excessives sur le sol.",
+  "a": "Les taches tenaces sur le sol peuvent nécessiter plusieurs passages. Vous pouvez sélectionner une zone spécifique pour un nettoyage ciblé afin d'améliorer l'efficacité du nettoyage. De plus, le robot dispose d'une fonction de reconnaissance des taches. Activez la fonction de reconnaissance des taches tenaces dans l'application pour effectuer un nettoyage ciblé sur les taches foncées et un nettoyage en profondeur."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Un message s'affiche lorsque le robot nettoie la serpillière, signalant que le réservoir d'eau propre est insuffisant.",
+  "a": "1. Vérifiez si le filtre à déchets et le tuyau d'égout au niveau du siphon de sol se bouchent, nettoyez-les et vidangez-les.\n 2. Vérifiez si le couvercle du réservoir d'eau est bien scellé et installé en place.\n 3.Appuyez sur les clips des deux côtés de la planche à laver pour la sortir. Versez l'eau usée, et vérifiez si le filtre est bouché, si oui, nettoyez-le.\n 4. Essuyez les pièces métalliques élastiques du capteur de débordement à l'intérieur de la planche à laver avec un chiffon sec.\n 5.Nettoyez d'abord la planche à laver. Si l'erreur persiste, contactez le service client."
+ },
+ {
+  "m": [
+   "E40 Ultra",
+   "L10 Ultra"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Une odeur désagréable se produit sur la serpillière.",
+  "a": "Une odeur désagréable de la serpillière :\n1. Causes : Votre maison est humide, ou la serpillière n'est pas sèche et devient moisie.\n2. Utilisation quotidienne : Veuillez laver la serpillière avec du nettoyant afin de réduire la possibilité de moisissure.\n3. Stockage : Retirez la serpillière et séchez-la dans un environnement bien ventilé.\n4. Saleté accumulée sur la planche à laver : Retirez et nettoyez la planche à laver. Sinon, une odeur se dégagera lors du séchage de la serpillière.\nRemarque : pour le robot doté de la fonction de séchage de la serpillière, vous pouvez appuyer sur Paramètres d'Autonettoyage > Démarrer le séchage pour sécher à nouveau la serpillière."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Voyants lumineux de la station.",
+  "a": "Le voyant de la station à vidage automatique reste allumé pendant la charge. Le robot passe en mode veille une fois complètement chargé et le voyant de la station s'éteindra après environ 10 secondes. Pendant la charge, le voyant de l'aspirateur robot clignote lentement. Une fois la charge terminée, le robot passe en mode veille et le voyant s'éteint."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Dépannage",
+  "q": "Voyants lumineux du robot (général)",
+  "a": "État du voyant de la station à vidage automatique : \n Blanc fixe : la station est correctement connectée à l'alimentation et le voyant s'allume brièvement lorsque le robot est complètement chargé. \n Blanc clignotant lentement : le robot est en charge (hors plage horaire « Ne pas déranger »). \n Voyant éteint : le voyant s'éteint après 10 secondes une fois la charge complète et s'éteint également lorsque le robot entre dans la plage horaire « Ne pas déranger ». \n Bleu fixe : la station est en cours de stérilisation par UV. \n Orange clignotant : indique une panne."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "Y a-t-il un problème où certaines zones étroites ne sont pas accessibles pendant le nettoyage ?",
+  "a": "R :  L'espacement minimum pour l'unité principale est de 3,8cm ; les zones plus petites que cette distance peuvent ne pas être possibles à franchir."
+ },
+ {
+  "m": [
+   "Z10 Pro"
+  ],
+  "c": "Dépannage",
+  "q": "À quelle hauteur l'hôte peut franchir les obstacles ?",
+  "a": "R : L'unité principale peut traverser des obstacles pouvant atteindre 20 mm de haut."
+ },
+ {
+  "m": [
+   "L10 Pro",
+   "Z10 Pro"
+  ],
+  "c": "Consommables & entretien",
+  "q": "À quoi faut-il prêter attention avant de nettoyer ?",
+  "a": "R : Veuillez essayer de charger complètement l'unité principale avant de commencer le nettoyage depuis la station de charge. Avant de nettoyer, veuillez ranger vos meubles et ranger à l'avance les objets fragiles et les débris du sol."
+ },
+ {
+  "m": [
+   "E40 Ultra"
+  ],
+  "c": "Fonctions & réglages",
+  "q": "Échec de la mise à niveau du micrologiciel (applicable à tous les aspirateurs robots).",
+  "a": "Procédez comme suit pour résoudre le problème : \n 1. Si le bac à poussière est plein ou si le filtre est obstrué, nettoyez le bac à poussière et le filtre rapidement. Activez le vidage automatique de la poussière. \n 2. Si la brosse principale est encombrée de débris, retirez-les et nettoyez-la immédiatement. \n 3. Vérifiez si l'évent de vidage automatique du robot est obstrué par des corps étrangers et nettoyez-le si nécessaire."
+ }
+]

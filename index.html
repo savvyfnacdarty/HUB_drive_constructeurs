@@ -104,10 +104,43 @@
     object-fit:contain;
   }
   .tile span{
+    text-align:center;
     font-weight:600;
     font-size:1rem;
     letter-spacing:.5px;
   }
+  .tile .logos{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px 14px;
+    align-items:center;
+    justify-items:center;
+    width:100%;
+  }
+  .tile .logos img{
+    max-width:100%;
+    max-height:34px;
+  }
+  .tile .icones{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
+  }
+  .tile .ico{
+    width:34px;
+    height:34px;
+    border-radius:9px;
+    background:linear-gradient(135deg,#1667C7,#0B4EA2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    line-height:1;
+    box-shadow:0 2px 6px rgba(11,78,162,.25);
+    transition:transform .15s ease;
+  }
+  .tile .ico:hover{transform:translateY(-2px);}
   .tile.disabled{
     opacity:.75;
   }
@@ -152,6 +185,16 @@
   // === Liste des marques : ajoutez simplement une ligne pour une nouvelle marque ===
   // url : mettez "#" tant que le lien Drive/SharePoint n'est pas connu.
   const marques = [
+    { nom:"BEKO · WHIRLPOOL · HOTPOINT · INDESIT",
+      logos:["hub-beko/assets/brand-beko.webp","hub-beko/assets/brand-whirlpool.webp","hub-beko/assets/brand-hotpoint.webp","hub-beko/assets/brand-indesit.webp"],
+      icones:[
+        { e:"🔥", t:"Cuisson" },
+        { e:"❄️", t:"Froid" },
+        { e:"🌀", t:"Lave-linge & lave-linge séchant" },
+        { e:"🍽️", t:"Lave-vaisselle" },
+        { e:"♨️", t:"Sèche-linge" },
+      ],
+      url:"hub-beko/index.html", couleur:"#0B4EA2" },
     { nom:"DREAME",    logo:"IMAGES/DREAME.png",    url:"dreame_sav/dreame.html",    couleur:"#2669C2" },
     { nom:"IROBOT",    logo:"IMAGES/IROBOT.png",    url:"irobot.html",    couleur:"#64A70B" },
     { nom:"KITCHENAID", logo:"kitchenaid/logo_Kitchenaid.jpg", url:"kitchenaid.html", couleur:"#FF0055" },
@@ -170,8 +213,11 @@
     if (m.couleur) a.style.setProperty("--marque", m.couleur);
     if (externe) { a.target = "_blank"; a.rel = "noopener"; }
     a.innerHTML = `
-      <img src="${m.logo}" alt="${m.nom}" onerror="this.style.display='none'">
+      ${m.logos
+        ? `<div class="logos">${m.logos.map(l => `<img src="${l}" alt="" onerror="this.style.display='none'">`).join("")}</div>`
+        : `<img src="${m.logo}" alt="${m.nom}" onerror="this.style.display='none'">`}
       <span>${m.nom}</span>
+      ${m.icones ? `<div class="icones">${m.icones.map(i => `<div class="ico" title="${i.t}">${i.e}</div>`).join("")}</div>` : ""}
       ${actif ? "" : '<span class="badge">Lien à venir</span>'}
     `;
     if (!actif) a.addEventListener("click", e => e.preventDefault());

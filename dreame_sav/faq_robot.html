@@ -9,6 +9,7 @@
   :root{
     --rouge:#D4151B; --orange:#EEA31E;
     --dreame:#2669C2; --dreame-2:#1B4E97; --dreame-bg:#EAF1FB; --dreame-bd:#C4D9F4;
+    --vert:#1E9E4A; --vert-2:#178036; --vert-bg:#E3F5E9; --vert-bd:#A9DDB9;
     --bg:#F1F3F6; --surface:#FFFFFF; --border:#DDE1E8;
     --text:#1A1E2A; --text-2:#4A5068; --muted:#8891A8;
     --r-md:8px; --r-lg:14px; --tr:.16s cubic-bezier(.4,0,.2,1);
@@ -49,15 +50,23 @@
   .search .clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:none;background:none;
     color:var(--muted);cursor:pointer;font-size:1.2rem;line-height:1;padding:4px 8px;display:none;}
 
-  .filters{display:flex;flex-direction:column;gap:10px;}
-  .frow{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;}
+  .filters{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px 16px;}
+  .frow{display:flex;align-items:center;gap:8px;}
   .flabel{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);
-    padding-top:7px;min-width:64px;}
+    min-width:64px;}
   .chips{display:flex;gap:6px;flex-wrap:wrap;flex:1;}
   .chip{font-family:inherit;font-size:.8rem;font-weight:600;padding:6px 13px;border-radius:100px;cursor:pointer;
     background:#F4F6F9;border:1.5px solid var(--border);color:var(--text-2);transition:var(--tr);white-space:nowrap;}
   .chip:hover{border-color:var(--dreame);color:var(--dreame);}
   .chip.on{background:var(--dreame);border-color:var(--dreame);color:#fff;}
+  .fsel{font-family:inherit;font-size:.85rem;font-weight:600;padding:8px 14px;border-radius:var(--r-md);
+    border:1.5px solid var(--border);background:#FAFBFC;color:var(--text-2);cursor:pointer;min-width:190px;transition:var(--tr);}
+  .fsel:hover{border-color:var(--dreame);color:var(--dreame);}
+  .fsel:focus{border-color:var(--dreame);outline:none;box-shadow:0 0 0 3px rgba(38,105,194,.12);}
+  .reset-btn{font-family:inherit;font-size:.82rem;font-weight:700;padding:8px 15px;border-radius:var(--r-md);
+    border:1.5px solid var(--border);background:#fff;color:var(--text-2);cursor:pointer;transition:var(--tr);
+    display:inline-flex;align-items:center;gap:6px;}
+  .reset-btn:hover{border-color:var(--rouge);color:var(--rouge);background:#FFF5F5;}
 
   .count{font-size:.82rem;color:var(--text-2);margin:0 4px 12px;}
   .count b{color:var(--dreame);}
@@ -98,11 +107,43 @@
 
   @media(max-width:640px){
     .toolbar{position:static;} .flabel{min-width:auto;padding-top:0;}
-    .frow{flex-direction:column;gap:6px;} .hero h1{font-size:1.2rem;}
+    .filters{flex-direction:column;align-items:stretch;gap:10px;}
+    .frow{flex-direction:column;align-items:stretch;gap:6px;} .fsel{width:100%;}
+    .hero h1{font-size:1.2rem;}
   }
   @media print{
     .hubbar,.hero,.toolbar,footer{display:none;} .qa{break-inside:avoid;} .body{display:block!important;}
   }
+
+  /* ===== Dreame Support (Zendesk) — pannes illustrées (photos/vidéo) — thème VERT ===== */
+  .zd-panel{background:var(--surface);border:1.5px solid var(--vert-bd);border-radius:var(--r-lg);
+    padding:14px 18px 16px;box-shadow:0 2px 6px rgba(0,0,0,.05);margin-bottom:20px;}
+  .zd-panel > summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:2px 0;}
+  .zd-panel > summary::-webkit-details-marker{display:none;}
+  .zd-panel .zd-ttl{font-size:.98rem;font-weight:800;color:var(--vert-2);}
+  .zd-panel .zd-cnt{font-size:.76rem;font-weight:700;color:var(--vert);background:var(--vert-bg);
+    border:1px solid var(--vert-bd);padding:2px 9px;border-radius:100px;}
+  .zd-panel > summary::after{content:"";margin-left:auto;width:8px;height:8px;flex-shrink:0;
+    border-right:2px solid var(--vert);border-bottom:2px solid var(--vert);transform:rotate(45deg);transition:var(--tr);}
+  .zd-panel[open] > summary::after{transform:rotate(-135deg);}
+  .zd-sub{font-size:.82rem;color:var(--text-2);margin:8px 0 14px;line-height:1.5;}
+  .zd-sub a.zd-main{color:var(--vert);font-weight:700;text-decoration:none;}
+  .zd-sub a.zd-main:hover{text-decoration:underline;}
+  .zd-search{width:100%;padding:9px 12px;font-size:.85rem;font-family:inherit;margin-bottom:14px;
+    border:1.5px solid var(--border);border-radius:var(--r-md);background:#FAFBFC;color:var(--text);outline:none;transition:var(--tr);}
+  .zd-search:focus{border-color:var(--vert);background:#fff;box-shadow:0 0 0 3px rgba(30,158,74,.12);}
+  .zd-grp{margin-bottom:14px;}
+  .zd-grp:last-child{margin-bottom:0;}
+  .zd-gtitle{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin:0 2px 7px;}
+  .zd-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:7px;}
+  .zd-item{display:flex;align-items:flex-start;gap:8px;font-size:.83rem;line-height:1.4;padding:8px 11px;
+    border:1px solid var(--border);border-radius:var(--r-md);background:#FAFBFC;color:var(--text);text-decoration:none;transition:var(--tr);}
+  .zd-item:hover{border-color:var(--vert);background:var(--vert-bg);color:var(--vert-2);}
+  .zd-item svg{flex-shrink:0;margin-top:2px;color:var(--vert);}
+  .zd-empty{font-size:.83rem;color:var(--muted);padding:8px 2px;}
+  #fzm{border-color:var(--vert-bd);background:var(--vert-bg);color:var(--vert-2);}
+  #fzm:hover{border-color:var(--vert);color:var(--vert-2);}
+  #fzm:focus{border-color:var(--vert);box-shadow:0 0 0 3px rgba(30,158,74,.12);}
 </style>
 <script data-goatcounter="https://hub-drive-fnac.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
@@ -123,9 +164,10 @@
   <p>Questions fréquentes et dépannage — robots Dreame (D, E, L, P, S, X, Z).</p>
   <nav>
     <a href="dreame.html">Recherche</a>
-    <a href="lecteur_bom.html">Lecteur BOM</a>
+    <a href="accessoires.html">🧩 Références Accessoires (consommable)</a>
     <a href="robot_laveur.html" class="active">🤖 Robot laveur</a>
     <a href="aspirateur_balai_laveur.html">🧹 Aspirateur balai laveur</a>
+    <a href="https://dreametech.zendesk.com/hc/fr" target="_blank" rel="noopener">🌐 Dreame Support ↗</a>
   </nav>
 </div>
 
@@ -133,14 +175,24 @@
   <div class="toolbar">
     <div class="search">
       <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M20 20l-3.5-3.5"/></svg>
-      <input id="q" type="search" placeholder="Rechercher un symptôme, un modèle, une pièce…" autocomplete="off">
+      <input id="q" type="search" placeholder="Mot-clé (bruit, wifi, eau…), modèle… — ou utilisez les filtres Panne ci-dessous" autocomplete="off">
       <button class="clear" id="clr" title="Effacer">&times;</button>
     </div>
     <div class="filters">
-      <div class="frow"><div class="flabel">Modèle</div><div class="chips" id="fm"></div></div>
-      <div class="frow"><div class="flabel">Thème</div><div class="chips" id="fc"></div></div>
+      <div class="frow"><div class="flabel">Modèle</div><select class="fsel" id="fm"></select></div>
+      <div class="frow"><div class="flabel">Thème</div><select class="fsel" id="fc"></select></div>
+      <div class="frow"><div class="flabel">Panne</div><select class="fsel" id="fs"></select></div>
+      <div class="frow"><div class="flabel">Modèle (Support)</div><select class="fsel" id="fzm"></select></div>
+      <div class="frow"><button class="reset-btn" id="rst" type="button">↺ Réinitialiser les filtres</button></div>
     </div>
   </div>
+
+  
+  <details class="zd-panel" id="zd-robot-panel">
+    <summary><span class="zd-ttl">📷🎥 Dreame Support — pannes illustrées (photos &amp; vidéo officielles)</span><span class="zd-cnt">91</span></summary>
+    <div class="zd-sub">Centre d'aide officiel Dreame (Zendesk) — fiches pannes avec photos et vidéos pas-à-pas. <a class="zd-main" href="https://dreametech.zendesk.com/hc/fr" target="_blank" rel="noopener">Ouvrir le centre d'aide Dreame Support →</a></div>
+    <div id="zdrList"></div>
+  </details>
 
   <div class="count" id="cnt"></div>
   <div id="list"></div>
@@ -962,30 +1014,78 @@ const FAQ = [
 const MODELS = ["D9 Plus", "D10 Plus", "D10s", "D10s Plus", "D10s Pro", "D20", "D20 Plus", "D20 Pro", "D20 Pro Plus", "E20", "E20 Plus", "E40 Ultra", "L10 Pro", "L10 Ultra", "L10s Ultra", "P10 Ultra", "P10 Pro Ultra", "S20 Ultra", "X40 Ultra", "X50 Ultra", "X60 Ultra", "Z10 Pro", "Kit raccordement d'eau", "Tous modèles"];
 const CATS = ['Dépannage','Info produit','Fonctions & réglages','Consommables & entretien','Caractéristiques','Batterie & charge','Divers'];
 
-let fModel = null, fCat = null, query = '';
+let fModel = null, fCat = null, fSymptom = null, fZdModel = null, query = '';
 
 const $ = s => document.querySelector(s);
 const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/['\u2019\u02BC]/g,'').toLowerCase();
 
-function buildChips(el, items, get, set){
-  el.innerHTML = '';
-  const all = document.createElement('button');
-  all.className = 'chip'; all.textContent = 'Tous';
-  all.onclick = () => { set(null); render(); };
-  el.appendChild(all);
-  items.forEach(v => {
-    const b = document.createElement('button');
-    b.className = 'chip'; b.textContent = v; b.dataset.v = v;
-    b.onclick = () => { set(get() === v ? null : v); render(); };
-    el.appendChild(b);
-  });
+const SYMPTOMS = [
+  {l:"Ne s'allume pas", k:["sallume pas","nallume pas","impossible de sallumer","echec de mise sous tension"]},
+  {l:"Ne charge pas", k:["ne charge pas","ne peut pas se recharger","charge anormale","echec de charge","impossible de charger","ne se charge pas","charge lente","ne peut pas etre charge"]},
+  {l:"N'aspire pas / faible", k:["naspire pas","aspiration faible","aspiration insuffisante","force daspiration","neffectue pas laspiration","ne peut pas aspirer","aspiration ultra faible","naspire pas la poussiere"]},
+  {l:"Bruit anormal", k:["bruit","bruyant"]},
+  {l:"Fuite / niveau d'eau", k:["fuite deau","fuites deau","eau anormale","niveau deau","aucune eau","ne distribue pas deau","aucune sortie deau","aucune eau ne provient"]},
+  {l:"Wifi / réseau / hors ligne", k:["wifi","reseau","hors ligne","connexion","offline","echec de connexion","echec de la connexion"]},
+  {l:"Brosse / roue", k:["brosse","roue"]},
+  {l:"Serpillière / lavage", k:["serpilliere","lavage","lingette","detergent"]},
+  {l:"Erreur affichée", k:["erreur","code defaut","code derreur","message derreur","anomalie"]},
+  {l:"Amarrage / retour base", k:["amarrage","retour a la base","accoster","accostage","retour anormal a la base","retour anormal","ne revient pas"]},
+  {l:"Odeur", k:["odeur"]}
+];
+function symMatch(hayNorm, label){
+  const s = SYMPTOMS.find(x=>x.l===label);
+  return s ? s.k.some(k=>hayNorm.includes(k)) : true;
 }
 
-function syncChips(el, cur){
-  [...el.children].forEach((b,i) => {
-    b.classList.toggle('on', i === 0 ? cur === null : b.dataset.v === cur);
+const ZDR_DATA = [["Aqua20 Pro Ultra Roller X Complete : fonction de nettoyage à la vapeur", "https://dreametech.zendesk.com/hc/fr/articles/62504651232921-Aqua20-Pro-Ultra-Roller-X-Complete-fonction-de-nettoyage-%C3%A0-la-vapeur"], ["Aspirateur robot : Aucune eau ne provient du réservoir d'eau", "https://dreametech.zendesk.com/hc/fr/articles/60336067953049-Aspirateur-robot-Aucune-eau-ne-provient-du-r%C3%A9servoir-d-eau"], ["X60 Pro Ultra Complet : Optimisation du contour du plan d'étage", "https://dreametech.zendesk.com/hc/fr/articles/59479777670041-X60-Pro-Ultra-Complet-Optimisation-du-contour-du-plan-d-%C3%A9tage"], ["Matrix10 Pro – Brosse rotative bloquée par un corps étranger", "https://dreametech.zendesk.com/hc/fr/articles/59055472019481-Matrix10-Pro-Brosse-rotative-bloqu%C3%A9e-par-un-corps-%C3%A9tranger"], ["Matrix10 Pro – Autonomie de la batterie réduite", "https://dreametech.zendesk.com/hc/fr/articles/59055142439193-Matrix10-Pro-Autonomie-de-la-batterie-r%C3%A9duite"], ["Matrix10 Pro : Le Hôte Surchauffe", "https://dreametech.zendesk.com/hc/fr/articles/59052918085273-Matrix10-Pro-Le-H%C3%B4te-Surchauffe"], ["Matrix10 Pro – Bruit Fort Pendant le Fonctionnement", "https://dreametech.zendesk.com/hc/fr/articles/59052809365273-Matrix10-Pro-Bruit-Fort-Pendant-le-Fonctionnement"], ["Matrix10 Pro – Sol non propre après le nettoyage à la serpillière / Faible débit d'eau", "https://dreametech.zendesk.com/hc/fr/articles/59050193853593-Matrix10-Pro-Sol-non-propre-apr%C3%A8s-le-nettoyage-%C3%A0-la-serpilli%C3%A8re-Faible-d%C3%A9bit-d-eau"], ["Matrix10 Pro – La serpillière tombe / La serpillière ne se soulève pas", "https://dreametech.zendesk.com/hc/fr/articles/59049318380697-Matrix10-Pro-La-serpilli%C3%A8re-tombe-La-serpilli%C3%A8re-ne-se-soul%C3%A8ve-pas"], ["Matrix10 Pro : La reconnaissance par IA est inexacte", "https://dreametech.zendesk.com/hc/fr/articles/59048471261593-Matrix10-Pro-La-reconnaissance-par-IA-est-inexacte"], ["Matrix10 Pro : Charge lente en été", "https://dreametech.zendesk.com/hc/fr/articles/59047850689305-Matrix10-Pro-Charge-lente-en-%C3%A9t%C3%A9"], ["Matrix10 Pro : Pourquoi la serpillière est-elle lavée plusieurs fois malgré la petite zone de nettoyage ?", "https://dreametech.zendesk.com/hc/fr/articles/59041742631577-Matrix10-Pro-Pourquoi-la-serpilli%C3%A8re-est-elle-lav%C3%A9e-plusieurs-fois-malgr%C3%A9-la-petite-zone-de-nettoyage"], ["Matrix10 Pro : Problèmes liés à la solution de nettoyage", "https://dreametech.zendesk.com/hc/fr/articles/59041382328089-Matrix10-Pro-Probl%C3%A8mes-li%C3%A9s-%C3%A0-la-solution-de-nettoyage"], ["Matrix10 pro : Messages d'erreur d'installation de la serpillière", "https://dreametech.zendesk.com/hc/fr/articles/59040927035545-Matrix10-pro-Messages-d-erreur-d-installation-de-la-serpilli%C3%A8re"], ["Matrix10 Pro : Comment installer les ensembles de serpillières ?", "https://dreametech.zendesk.com/hc/fr/articles/59039621365017-Matrix10-Pro-Comment-installer-les-ensembles-de-serpilli%C3%A8res"], ["Matrix10 Pro : Résolution des problèmes de franchissement d'obstacles", "https://dreametech.zendesk.com/hc/fr/articles/59019616445977-Matrix10-Pro-R%C3%A9solution-des-probl%C3%A8mes-de-franchissement-d-obstacles"], ["Matrix10 Pro : Bruit anormal provenant de la station de base", "https://dreametech.zendesk.com/hc/fr/articles/59019244794009-Matrix10-Pro-Bruit-anormal-provenant-de-la-station-de-base"], ["Matrix10 Pro : Échec du remplacement de la lingette de la serpillière", "https://dreametech.zendesk.com/hc/fr/articles/59019124843673-Matrix10-Pro-%C3%89chec-du-remplacement-de-la-lingette-de-la-serpilli%C3%A8re"], ["Matrix10 Pro : Niveau d'eau anormal dans le bac de nettoyage", "https://dreametech.zendesk.com/hc/fr/articles/59018962467609-Matrix10-Pro-Niveau-d-eau-anormal-dans-le-bac-de-nettoyage"], ["Matrix10 Pro : Problème anormal de retour à la base", "https://dreametech.zendesk.com/hc/fr/articles/59018749077273-Matrix10-Pro-Probl%C3%A8me-anormal-de-retour-%C3%A0-la-base"], ["Matrix10 Pro : Erreur d'installation du bac à poussière", "https://dreametech.zendesk.com/hc/fr/articles/59018245254169-Matrix10-Pro-Erreur-d-installation-du-bac-%C3%A0-poussi%C3%A8re"], ["X60 Pro Ultra Complet : Pourquoi le robot hoche-t-il la tête lorsqu'il s'arrête ?", "https://dreametech.zendesk.com/hc/fr/articles/58667262995993-X60-Pro-Ultra-Complet-Pourquoi-le-robot-hoche-t-il-la-t%C3%AAte-lorsqu-il-s-arr%C3%AAte"], ["X60 Pro Ultra Problèmes courants complets avec la fonction d'extension", "https://dreametech.zendesk.com/hc/fr/articles/58666854635929-X60-Pro-Ultra-Probl%C3%A8mes-courants-complets-avec-la-fonction-d-extension"], ["X60 Pro Ultra Complet : Échec de l'installation de la serpillière", "https://dreametech.zendesk.com/hc/fr/articles/58666425007001-X60-Pro-Ultra-Complet-%C3%89chec-de-l-installation-de-la-serpilli%C3%A8re"], ["X60 Pro Ultra Complet : Bruit inhabituel de la brosse principale", "https://dreametech.zendesk.com/hc/fr/articles/58628269909913-X60-Pro-Ultra-Complet-Bruit-inhabituel-de-la-brosse-principale"], ["X60 Pro Ultra Problèmes complets de franchissement de seuils", "https://dreametech.zendesk.com/hc/fr/articles/58615532496153-X60-Pro-Ultra-Probl%C3%A8mes-complets-de-franchissement-de-seuils"], ["Robot aspirateur : Anomalie LDS", "https://dreametech.zendesk.com/hc/fr/articles/58075374537369-Robot-aspirateur-Anomalie-LDS"], ["Robot aspirateur : Appareil hors ligne", "https://dreametech.zendesk.com/hc/fr/articles/58074021995673-Robot-aspirateur-Appareil-hors-ligne"], ["D20 Pro Plus : Le robot ne peut pas être chargé", "https://dreametech.zendesk.com/hc/fr/articles/58073613773209-D20-Pro-Plus-Le-robot-ne-peut-pas-%C3%AAtre-charg%C3%A9"], ["Robot aspirateur : la brosse latérale ne tourne pas", "https://dreametech.zendesk.com/hc/fr/articles/58073245712793-Robot-aspirateur-la-brosse-lat%C3%A9rale-ne-tourne-pas"], ["Aspirateur Robot : L'application affiche \"Veuillez Ajouter du Détergent\"", "https://dreametech.zendesk.com/hc/fr/articles/58044782701465-Aspirateur-Robot-L-application-affiche-Veuillez-Ajouter-du-D%C3%A9tergent"], ["L10s Ultra Gen 3 Kit: Impossible de s’allumer", "https://dreametech.zendesk.com/hc/fr/articles/57056333447449-L10s-Ultra-Gen-3-Kit-Impossible-de-s-allumer"], ["D20 Plus : Bruit anormal pendant le nettoyage", "https://dreametech.zendesk.com/hc/fr/articles/57053793297945-D20-Plus-Bruit-anormal-pendant-le-nettoyage"], ["D20 Pro Plus : Impossible de s’allumer", "https://dreametech.zendesk.com/hc/fr/articles/57026471468057-D20-Pro-Plus-Impossible-de-s-allumer"], ["D20 Pro Plus : Le robot n’aspire pas", "https://dreametech.zendesk.com/hc/fr/articles/57018223232665-D20-Pro-Plus-Le-robot-n-aspire-pas"], ["D20 Air Plus : Erreur « brosse enchevêtrée »", "https://dreametech.zendesk.com/hc/fr/articles/56988560163353-D20-Air-Plus-Erreur-brosse-enchev%C3%AAtr%C3%A9e"], ["Robot aspirateur : la serpillière ne s’étend pas", "https://dreametech.zendesk.com/hc/fr/articles/56987887581337-Robot-aspirateur-la-serpilli%C3%A8re-ne-s-%C3%A9tend-pas"], ["D20 Air Plus : Le robot ne peut pas aspirer", "https://dreametech.zendesk.com/hc/fr/articles/56951407537561-D20-Air-Plus-Le-robot-ne-peut-pas-aspirer"], ["D20 Air Plus : Le robot ne se charge pas", "https://dreametech.zendesk.com/hc/fr/articles/56947120838809-D20-Air-Plus-Le-robot-ne-se-charge-pas"], ["D20 Air Plus : Le robot ne s’allume pas", "https://dreametech.zendesk.com/hc/fr/articles/56946468173593-D20-Air-Plus-Le-robot-ne-s-allume-pas"], ["L10s Ultra : Mise en pause automatique pendant la tâche de nettoyage", "https://dreametech.zendesk.com/hc/fr/articles/56160684605849-L10s-Ultra-Mise-en-pause-automatique-pendant-la-t%C3%A2che-de-nettoyage"], ["Série Roller : Fuite d’eau du robot dans la station de base", "https://dreametech.zendesk.com/hc/fr/articles/56154027508121-S%C3%A9rie-Roller-Fuite-d-eau-du-robot-dans-la-station-de-base"], ["X40 Ultra Complete : Échec de l’amarrage", "https://dreametech.zendesk.com/hc/fr/articles/56130278338969-X40-Ultra-Complete-%C3%89chec-de-l-amarrage"], ["L10s Ultra Gen 2 : Échec de mise sous tension", "https://dreametech.zendesk.com/hc/fr/articles/56118627507225-L10s-Ultra-Gen-2-%C3%89chec-de-mise-sous-tension"], ["L10s Ultra Gen 2 : Échec de l’amarrage", "https://dreametech.zendesk.com/hc/fr/articles/56080104531865-L10s-Ultra-Gen-2-%C3%89chec-de-l-amarrage"], ["X50 Ultra Complete : Échec de l’amarrage", "https://dreametech.zendesk.com/hc/fr/articles/56060171351961-X50-Ultra-Complete-%C3%89chec-de-l-amarrage"], ["Robot aspirateur : Niveau d’eau anormal sur le plateau de lavage", "https://dreametech.zendesk.com/hc/fr/articles/55645329001881-Robot-aspirateur-Niveau-d-eau-anormal-sur-le-plateau-de-lavage"], ["L10s Ultra Gen 2 : Le robot n’aspire pas", "https://dreametech.zendesk.com/hc/fr/articles/55536188895513-L10s-Ultra-Gen-2-Le-robot-n-aspire-pas"], ["Robot aspirateur : Dommages à la roue universelle", "https://dreametech.zendesk.com/hc/fr/articles/55535511169305-Robot-aspirateur-Dommages-%C3%A0-la-roue-universelle"], ["Robot aspirateur : Performances de nettoyage insuffisantes", "https://dreametech.zendesk.com/hc/fr/articles/55534904939673-Robot-aspirateur-Performances-de-nettoyage-insuffisantes"], ["Robot aspirateur : Échec de la connexion au réseau lors de la première configuration", "https://dreametech.zendesk.com/hc/fr/articles/55530202063897-Robot-aspirateur-%C3%89chec-de-la-connexion-au-r%C3%A9seau-lors-de-la-premi%C3%A8re-configuration"], ["X40 Series & L40 ultra Side : Brosse latérale ne tourne pas", "https://dreametech.zendesk.com/hc/fr/articles/55529715799705-X40-Series-L40-ultra-Side-Brosse-lat%C3%A9rale-ne-tourne-pas"], ["Matrix10 Ultra : Impossible de s’allumer", "https://dreametech.zendesk.com/hc/fr/articles/55140238486553-Matrix10-Ultra-Impossible-de-s-allumer"], ["L10s Ultra : Impossible de s’allumer", "https://dreametech.zendesk.com/hc/fr/articles/55119933591577-L10s-Ultra-Impossible-de-s-allumer"], ["L10s Ultra : Échec de l’amarrage", "https://dreametech.zendesk.com/hc/fr/articles/55114011643161-L10s-Ultra-%C3%89chec-de-l-amarrage"], ["L10s Ultra : Le robot ne peut pas se recharger", "https://dreametech.zendesk.com/hc/fr/articles/55082996558361-L10s-Ultra-Le-robot-ne-peut-pas-se-recharger"], ["L10s Ultra : Bruits anormaux pendant le nettoyage", "https://dreametech.zendesk.com/hc/fr/articles/55082177896601-L10s-Ultra-Bruits-anormaux-pendant-le-nettoyage"], ["L10s Ultra/L10 Ultra/L20 Ultra : Le réservoir d’eau ne distribue pas d’eau", "https://dreametech.zendesk.com/hc/fr/articles/55079801183513-L10s-Ultra-L10-Ultra-L20-Ultra-Le-r%C3%A9servoir-d-eau-ne-distribue-pas-d-eau"], ["L10s Ultra : Le robot n’aspire pas", "https://dreametech.zendesk.com/hc/fr/articles/55072958915993-L10s-Ultra-Le-robot-n-aspire-pas"], ["X40 Ultra Complete : Échec de la collecte de poussière", "https://dreametech.zendesk.com/hc/fr/articles/54805036158361-X40-Ultra-Complete-%C3%89chec-de-la-collecte-de-poussi%C3%A8re"], ["X40 Ultra Complete : Problèmes liés au support de serpillière", "https://dreametech.zendesk.com/hc/fr/articles/54792795297945-X40-Ultra-Complete-Probl%C3%A8mes-li%C3%A9s-au-support-de-serpilli%C3%A8re"], ["X50 Ultra Complete : Le support de serpillière se détache", "https://dreametech.zendesk.com/hc/fr/articles/54724191159193-X50-Ultra-Complete-Le-support-de-serpilli%C3%A8re-se-d%C3%A9tache"], ["X50 Ultra Complete : Impossible de trouver ou de retourner à la station de base", "https://dreametech.zendesk.com/hc/fr/articles/54687159682201-X50-Ultra-Complete-Impossible-de-trouver-ou-de-retourner-%C3%A0-la-station-de-base"], ["X50 Ultra Complete : Impossible de s’allumer", "https://dreametech.zendesk.com/hc/fr/articles/54680429760409-X50-Ultra-Complete-Impossible-de-s-allumer"], ["X50 Ultra Complete : N'aspire pas la poussière", "https://dreametech.zendesk.com/hc/fr/articles/54661364046745-X50-Ultra-Complete-N-aspire-pas-la-poussi%C3%A8re"], ["X50 Ultra Complete : Échec de la création de carte / Impossible d'enregistrer la carte", "https://dreametech.zendesk.com/hc/fr/articles/54160842252697-X50-Ultra-Complete-%C3%89chec-de-la-cr%C3%A9ation-de-carte-Impossible-d-enregistrer-la-carte"], ["L10s Ultra Gen 2 : Statut hors ligne affiché dans l'application", "https://dreametech.zendesk.com/hc/fr/articles/52088919015193-L10s-Ultra-Gen-2-Statut-hors-ligne-affich%C3%A9-dans-l-application"], ["L10s Ultra Gen 2 : Résolution des échecs de configuration Wi-Fi", "https://dreametech.zendesk.com/hc/fr/articles/51723348286745-L10s-Ultra-Gen-2-R%C3%A9solution-des-%C3%A9checs-de-configuration-Wi-Fi"], ["L10s Ultra Gen 2 : Charge anormale du robot", "https://dreametech.zendesk.com/hc/fr/articles/51722860342681-L10s-Ultra-Gen-2-Charge-anormale-du-robot"], ["L10s Ultra Gen 2 : Bruit anormal lors du nettoyage", "https://dreametech.zendesk.com/hc/fr/articles/51715508332057-L10s-Ultra-Gen-2-Bruit-anormal-lors-du-nettoyage"], ["L10s Ultra Gen2 LDS anormal", "https://dreametech.zendesk.com/hc/fr/articles/51715045160089-L10s-Ultra-Gen2-LDS-anormal"], ["X40 Ultra Complete : Indication de statut hors ligne dans l'application", "https://dreametech.zendesk.com/hc/fr/articles/51712224723225-X40-Ultra-Complete-Indication-de-statut-hors-ligne-dans-l-application"], ["X40 Ultra Complete : Robot ne s'allume pas", "https://dreametech.zendesk.com/hc/fr/articles/51710953914137-X40-Ultra-Complete-Robot-ne-s-allume-pas"], ["X40 Ultra Complete continue de tourner au même endroit", "https://dreametech.zendesk.com/hc/fr/articles/51709934096665-X40-Ultra-Complete-continue-de-tourner-au-m%C3%AAme-endroit"], ["X40 Ultra Complete Pourquoi le robot ne revient-il pas pour le charger?", "https://dreametech.zendesk.com/hc/fr/articles/51695701536025-X40-Ultra-Complete-Pourquoi-le-robot-ne-revient-il-pas-pour-le-charger"], ["X40 Ultra Complete : L’appareil n’effectue pas l’aspiration", "https://dreametech.zendesk.com/hc/fr/articles/51694630508697-X40-Ultra-Complete-L-appareil-n-effectue-pas-l-aspiration"], ["X40 Ultra Complete : Procédure en cas de recharge anormale du robot", "https://dreametech.zendesk.com/hc/fr/articles/51694079426201-X40-Ultra-Complete-Proc%C3%A9dure-en-cas-de-recharge-anormale-du-robot"], ["X40 Ultra Complete : explication du détachement du support de serpillère", "https://dreametech.zendesk.com/hc/fr/articles/51693185758489-X40-Ultra-Complete-explication-du-d%C3%A9tachement-du-support-de-serpill%C3%A8re"], ["X40 Ultra Complete : Dépannage pour bruits anormaux", "https://dreametech.zendesk.com/hc/fr/articles/51691386419737-X40-Ultra-Complete-D%C3%A9pannage-pour-bruits-anormaux"], ["X40 Ultra Complete : Anomalie du capteur LDS", "https://dreametech.zendesk.com/hc/fr/articles/51688428454681-X40-Ultra-Complete-Anomalie-du-capteur-LDS"], ["X50 Ultra Complete : Le support de serpillière tombe", "https://dreametech.zendesk.com/hc/fr/articles/51681629066521-X50-Ultra-Complete-Le-support-de-serpilli%C3%A8re-tombe"], ["X50 Ultra Complete : robot tournant en rond", "https://dreametech.zendesk.com/hc/fr/articles/51680774072345-X50-Ultra-Complete-robot-tournant-en-rond"], ["X50 Ultra Complete : Anomalie de charge du robot", "https://dreametech.zendesk.com/hc/fr/articles/51619606775833-X50-Ultra-Complete-Anomalie-de-charge-du-robot"], ["X50 Ultra Complete : Dépannage pour bruits anormaux", "https://dreametech.zendesk.com/hc/fr/articles/51616850114201-X50-Ultra-Complete-D%C3%A9pannage-pour-bruits-anormaux"], ["X50 Ultra Complete LDS ne peut pas être relevé ou abaissé", "https://dreametech.zendesk.com/hc/fr/articles/51615247612953-X50-Ultra-Complete-LDS-ne-peut-pas-%C3%AAtre-relev%C3%A9-ou-abaiss%C3%A9"], ["X50 Ultra Complete : Résolution des échecs de configuration Wi-Fi", "https://dreametech.zendesk.com/hc/fr/articles/51614136874265-X50-Ultra-Complete-R%C3%A9solution-des-%C3%A9checs-de-configuration-Wi-Fi"], ["Matrix10 Ultra – Niveau d'eau anormal dans le bac de nettoyage", "https://dreametech.zendesk.com/hc/fr/articles/58828513391897-Matrix10-Ultra-Niveau-d-eau-anormal-dans-le-bac-de-nettoyage"], ["Matrix10 Ultra – Résolution des problèmes de franchissement d'obstacles", "https://dreametech.zendesk.com/hc/fr/articles/58827088654745-Matrix10-Ultra-R%C3%A9solution-des-probl%C3%A8mes-de-franchissement-d-obstacles"], ["Matrix10 Ultra – Retour anormal à la station de base", "https://dreametech.zendesk.com/hc/fr/articles/58826695689369-Matrix10-Ultra-Retour-anormal-%C3%A0-la-station-de-base"], ["Matrix10 Ultra – Échec du remplacement de la lingette de la serpillière", "https://dreametech.zendesk.com/hc/fr/articles/58826513779609-Matrix10-Ultra-%C3%89chec-du-remplacement-de-la-lingette-de-la-serpilli%C3%A8re"], ["Matrix10 Ultra – Erreur d'installation de la poubelle", "https://dreametech.zendesk.com/hc/fr/articles/58826192165913-Matrix10-Ultra-Erreur-d-installation-de-la-poubelle"]];
+function zdGroup(title){
+  if(/^(Robot aspirateur|Aspirateur [Rr]obot|Série Roller|L?.?Aspirateur eau et poussière|Aspirateur laveur)\b/.test(title)) return "Généraliste (tous modèles)";
+  const m = title.match(/^([A-Za-zÀ-ÿ0-9]+(?:\s[A-Za-zÀ-ÿ0-9'’]+){0,3}?)\s*[:–-]/);
+  return m ? m[1].trim() : "Autres";
+}
+const ZD_MODELS = (() => {
+  const set = new Set(ZDR_DATA.map(([t]) => zdGroup(t)));
+  const arr = [...set].filter(g => g !== "Généraliste (tous modèles)" && g !== "Autres").sort((a,b)=>a.localeCompare(b,'fr'));
+  const out = [];
+  if (set.has("Généraliste (tous modèles)")) out.push("Généraliste (tous modèles)");
+  out.push(...arr);
+  if (set.has("Autres")) out.push("Autres");
+  return out;
+})();
+function zdRenderList(terms){
+  const list = document.getElementById('zdrList');
+  if(!list) return;
+  const filtered = ZDR_DATA.filter(([t]) => {
+    const hay = norm(t);
+    if (fZdModel && zdGroup(t) !== fZdModel) return false;
+    if (fSymptom && !symMatch(hay, fSymptom)) return false;
+    if (!terms.length) return true;
+    return terms.every(x=>hay.includes(x));
   });
+  const panel = document.getElementById('zd-robot-panel');
+  const badge = panel ? panel.querySelector('.zd-cnt') : null;
+  if (badge) badge.textContent = filtered.length;
+  if(!filtered.length){ list.innerHTML = '<div class="zd-empty">Aucune fiche ne correspond.</div>'; return; }
+  if((terms.length || fSymptom) && panel) panel.open = true;
+  const groups = {};
+  filtered.forEach(([t,u])=>{ const g = zdGroup(t); (groups[g] = groups[g]||[]).push([t,u]); });
+  const gnames = Object.keys(groups).sort((a,b)=> a==="Généraliste (tous modèles)" ? -1 : b==="Généraliste (tous modèles)" ? 1 : a.localeCompare(b,'fr'));
+  list.innerHTML = gnames.map(g=>{
+    const items = groups[g].map(([t,u])=>`<a class="zd-item" href="${u}" target="_blank" rel="noopener"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m5-3h6v6m0-6L10 14"/></svg><span>${esc(t)}</span></a>`).join('');
+    return `<div class="zd-grp"><div class="zd-gtitle">${esc(g)}</div><div class="zd-items">${items}</div></div>`;
+  }).join('');
+}
+
+function buildSelect(el, items, get, set){
+  el.innerHTML = '<option value="">Tous</option>' + items.map(v => '<option value="' + esc(v) + '">' + esc(v) + '</option>').join('');
+  el.value = get() || '';
+  el.addEventListener('change', () => { set(el.value || null); render(); });
+}
+
+function syncSelect(el, cur){
+  const v = cur || '';
+  if (el.value !== v) el.value = v;
 }
 
 function highlight(text, terms){
@@ -999,16 +1099,19 @@ function highlight(text, terms){
 }
 
 function render(){
-  syncChips($('#fm'), fModel);
-  syncChips($('#fc'), fCat);
+  syncSelect($('#fm'), fModel);
+  syncSelect($('#fc'), fCat);
+  syncSelect($('#fs'), fSymptom);
+  syncSelect($('#fzm'), fZdModel);
   $('#clr').style.display = query ? 'block' : 'none';
 
   const terms = norm(query).split(/\s+/).filter(Boolean);
   const hits = FAQ.filter(it => {
     if (fModel && !it.m.includes(fModel)) return false;
     if (fCat && it.c !== fCat) return false;
+    if (fSymptom && !symMatch(norm(it.q), fSymptom)) return false;
     if (!terms.length) return true;
-    const hay = norm(it.q + ' ' + it.a + ' ' + (it.en||'') + ' ' + it.m.join(' '));
+    const hay = norm(it.q + ' ' + it.m.join(' ') + ' ' + it.c);
     return terms.every(t => hay.includes(t));
   });
 
@@ -1038,12 +1141,27 @@ function render(){
     html += '</div>';
   });
   list.innerHTML = html;
+
+  zdRenderList(terms);
 }
 
-buildChips($('#fm'), MODELS, () => fModel, v => fModel = v);
-buildChips($('#fc'), CATS, () => fCat, v => fCat = v);
+const ZD_MODEL_ALIASES = { "X40 Ultra": "X40 Ultra Complete", "X50 Ultra": "X50 Ultra Complete", "X60 Ultra": "X60 Pro Ultra Complet" };
+function matchZdModel(v){
+  if (!v) return null;
+  if (ZD_MODELS.includes(v)) return v;
+  const alias = ZD_MODEL_ALIASES[v];
+  return (alias && ZD_MODELS.includes(alias)) ? alias : null;
+}
+buildSelect($('#fm'), MODELS, () => fModel, v => {
+  fModel = v;
+  fZdModel = matchZdModel(v);
+});
+buildSelect($('#fc'), CATS, () => fCat, v => fCat = v);
+buildSelect($('#fs'), SYMPTOMS.map(s=>s.l), () => fSymptom, v => fSymptom = v);
+buildSelect($('#fzm'), ZD_MODELS, () => fZdModel, v => fZdModel = v);
 $('#q').addEventListener('input', e => { query = e.target.value; render(); });
 $('#clr').onclick = () => { query = ''; $('#q').value = ''; $('#q').focus(); render(); };
+$('#rst').onclick = () => { fModel = null; fCat = null; fSymptom = null; fZdModel = null; query = ''; $('#q').value = ''; render(); };
 document.addEventListener('keydown', e => {
   if (e.key === '/' && document.activeElement !== $('#q')){ e.preventDefault(); $('#q').focus(); }
   if (e.key === 'Escape'){ $('#clr').onclick(); }

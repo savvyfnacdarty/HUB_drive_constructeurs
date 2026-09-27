@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script src="auth-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Calibrage — Drive constructeur Roborock</title>
+<style>
+/* ── TOKENS (identiques à roborock.html) ── */
+:root{
+  --bg:#F3F4F6; --surface:#FFFFFF; --border:#E5E7EB; --border2:#D1D5DB;
+  --text:#111827; --text-2:#6B7280; --text-3:#9CA3AF;
+  --accent:#EA0029; --accent-h:#B80020; --accent-bg:#FEECEF; --accent-bd:#F7C4CD;
+  --blue:#3B82F6; --blue-bg:#EFF6FF; --blue-bd:#BFDBFE; --blue-text:#1D4ED8;
+  --red:#EF4444; --red-bg:#FEF2F2; --green:#22C55E; --green-bg:#F0FDF4; --green-bd:#BBF7D0;
+  --orange:#F59E0B; --orange-bg:#FFFBEB; --orange-bd:#FDE68A; --orange-text:#92400E;
+  --radius:12px; --radius-sm:8px;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06);
+  --transition:all .18s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+/* HEADER BAND */
+.fdtop{background:#D4151B;padding:8px 20px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:9999;box-shadow:0 2px 6px rgba(0,0,0,.15);}
+.fdtop-home{display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0;}
+.fdtop-home img{height:26px;background:#fff;padding:4px 8px;border-radius:5px;display:block;}
+.fdtop-txt{color:#fff;font-weight:700;font-size:13px;letter-spacing:.3px;}
+.fdband{background:linear-gradient(120deg,#000 0%,#2a2a2a 55%,#EA0029 130%);padding:20px 20px 16px;text-align:center;}
+.fdband-logo{height:40px;background:#fff;padding:6px 12px;border-radius:9px;box-shadow:0 4px 14px rgba(0,0,0,.25);display:block;margin:0 auto 12px;}
+.fdband nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.fdband nav a{color:#fff;text-decoration:none;font-size:.86rem;font-weight:600;padding:8px 18px;border-radius:8px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.4);transition:.15s;}
+.fdband nav a:hover{background:rgba(255,255,255,.28);}
+.fdband nav a.active{background:#fff;color:#EA0029;border-color:#fff;}
+.fdband-sync{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px;}
+.badge{padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;background:rgba(34,197,94,.16);color:#EAFBEF;border:1px solid rgba(255,255,255,.35);}
+.badge.loading{background:rgba(255,255,255,.14);color:#fff;}
+.badge.error{background:rgba(239,68,68,.2);color:#fff;border-color:rgba(255,255,255,.4);}
+.btn-import{padding:6px 14px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:var(--transition);}
+.btn-import:hover{background:rgba(255,255,255,.28);}
+
+/* HERO */
+.hero{background:var(--surface);border-bottom:1px solid var(--border);padding:28px 24px 20px;display:flex;flex-direction:column;align-items:center;}
+.hero-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent-h);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';flex:1;height:1px;background:var(--accent-bd);max-width:60px;}
+.hero h1{font-size:25px;font-weight:800;margin-bottom:6px;text-align:center;letter-spacing:-.4px;}
+.hero p{font-size:14px;color:var(--text-2);margin-bottom:18px;text-align:center;max-width:680px;}
+.search-box{width:100%;max-width:640px;display:flex;align-items:center;background:var(--bg);border:2px solid var(--border2);border-radius:14px;overflow:hidden;transition:border-color .2s,box-shadow .2s;}
+.search-box:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px rgba(234,0,41,.12);}
+.search-icon{padding:0 14px;color:var(--text-3);font-size:17px;flex-shrink:0;}
+.search-input{flex:1;padding:14px 0;background:transparent;border:none;outline:none;font-size:16px;color:var(--text);font-family:inherit;}
+.search-input::placeholder{color:var(--text-3);}
+.btn-clear{padding:8px 14px;margin:6px;background:var(--surface);color:var(--text-3);border:none;border-radius:9px;cursor:pointer;font-size:14px;font-weight:700;transition:var(--transition);}
+.btn-clear:hover{background:var(--border);color:var(--text);}
+
+/* TABS */
+.tabs{display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap;}
+.tab-btn{padding:9px 20px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface);font-size:13.5px;font-weight:700;color:var(--text-2);cursor:pointer;transition:var(--transition);font-family:inherit;}
+.tab-btn:hover{border-color:var(--accent-bd);color:var(--accent-h);}
+.tab-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+
+/* MAIN */
+.content-wrap{max-width:900px;width:100%;margin:0 auto;padding:20px 16px 60px;}
+.tab-page{display:none;}
+.tab-page.on{display:block;}
+
+/* Blocs repliables */
+.block{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:14px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.block>summary{list-style:none;cursor:pointer;padding:13px 16px;display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;user-select:none;transition:var(--transition);}
+.block>summary::-webkit-details-marker{display:none;}
+.block>summary .arrow{margin-left:auto;font-size:12px;color:var(--text-3);transition:transform .18s;}
+.block[open]>summary .arrow{transform:rotate(90deg);}
+.block-body{padding:4px 18px 16px;font-size:13.5px;line-height:1.65;color:var(--text-2);}
+.block.access{border-color:var(--blue-bd);}
+.block.access>summary{background:var(--blue-bg);color:var(--blue-text);}
+.block.interv>summary{background:var(--accent-bg);color:var(--accent-h);}
+.block.env>summary{background:var(--bg);color:var(--text-2);}
+.note-li{margin-bottom:7px;padding-left:4px;}
+.note-li b{color:var(--text);}
+.subhead{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-3);margin:14px 0 8px;}
+.prep-note{background:var(--green-bg);border-left:3px solid var(--green);border-radius:6px;padding:9px 13px;margin-bottom:12px;color:#166534;font-size:13px;white-space:pre-line;}
+
+/* Table interventions & environnement */
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px;}
+.tbl th{background:var(--bg);color:var(--text-2);font-size:10.5px;text-transform:uppercase;letter-spacing:.4px;padding:7px 8px;text-align:left;border-bottom:2px solid var(--border2);}
+.tbl th.c,.tbl td.c{text-align:center;}
+.tbl td{padding:7px 8px;border-top:1px solid var(--border);vertical-align:top;color:var(--text);}
+.tbl td.check{color:var(--green);font-weight:800;font-size:14px;}
+.tbl-scroll{overflow-x:auto;border:1px solid var(--border);border-radius:8px;}
+.envtxt{white-space:pre-line;font-size:12px;color:var(--text-2);}
+.trad-fr{white-space:pre-line;font-size:12px;color:var(--blue-text);background:var(--blue-bg);border-left:3px solid var(--blue);border-radius:0 6px 6px 0;padding:6px 9px;margin-top:6px;}
+.trad-fr::before{content:'🇫🇷 ';}
+
+/* Cartes modèles */
+.serie-head{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--accent-h);margin:20px 2px 8px;display:flex;align-items:center;gap:8px;}
+.serie-head::after{content:'';flex:1;height:1px;background:var(--accent-bd);}
+.mcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;transition:var(--transition);box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.mcard:hover{border-color:var(--accent-bd);box-shadow:var(--shadow);}
+.mcard-head{display:flex;align-items:center;gap:12px;padding:13px 16px;cursor:pointer;user-select:none;flex-wrap:wrap;}
+.mcard-avatar{width:40px;height:40px;background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;}
+.mcard-name{font-size:15.5px;font-weight:700;}
+.mcard-sub{font-size:11.5px;color:var(--text-3);margin-top:1px;}
+.mcard-chips{display:flex;gap:5px;flex-wrap:wrap;margin-left:auto;}
+.chip{padding:3px 9px;border-radius:7px;font-size:11px;font-weight:700;background:var(--green-bg);color:#166534;border:1px solid var(--green-bd);display:inline-flex;align-items:center;gap:4px;}
+.chip .ord{background:#166534;color:#fff;border-radius:50%;width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;font-size:9.5px;}
+.mcard-arrow{font-size:12px;color:var(--text-3);transition:transform .18s;flex-shrink:0;}
+.mcard.open .mcard-arrow{transform:rotate(90deg);}
+.mcard-body{display:none;border-top:1px solid var(--border);padding:14px 16px;background:#FAFAFB;}
+.mcard.open .mcard-body{display:block;}
+.calib-row{display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid var(--border);border-radius:9px;background:var(--surface);margin-bottom:6px;font-size:13px;flex-wrap:wrap;}
+.calib-row.req{background:var(--green-bg);border-color:var(--green-bd);}
+.calib-row .ic{width:22px;text-align:center;flex-shrink:0;}
+.calib-row .nm{font-weight:600;flex:1;min-width:140px;}
+.calib-row .ord-badge{background:#166534;color:#fff;border-radius:20px;padding:1px 9px;font-size:10.5px;font-weight:700;}
+.calib-row.off{opacity:.38;}
+.seq-note{font-size:11.5px;color:var(--text-3);margin:8px 2px 12px;}
+.mnote{background:var(--orange-bg);border-left:3px solid var(--orange);border-radius:6px;padding:9px 13px;margin-top:10px;color:var(--orange-text);font-size:12.5px;white-space:pre-line;}
+.guide-bar{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+.gbtn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:9px;font-size:12.5px;font-weight:600;text-decoration:none;border:1px solid transparent;transition:var(--transition);cursor:pointer;}
+.gbtn.doc{background:var(--blue-bg);color:var(--blue-text);border-color:var(--blue-bd);}
+.gbtn.doc:hover{background:#DBEAFE;}
+.gbtn.dl{background:var(--accent);color:#fff;border-color:var(--accent);}
+.gbtn.dl:hover{background:var(--accent-h);}
+.gbtn.folder{background:var(--bg);color:var(--text-2);border-color:var(--border2);}
+.gbtn.folder:hover{border-color:var(--accent);color:var(--accent-h);}
+.guide-txt{font-size:12.5px;color:var(--text-2);font-style:italic;}
+.empty-state{background:var(--surface);border:1px dashed var(--border2);border-radius:var(--radius);padding:44px;text-align:center;}
+.empty-state-icon{font-size:42px;margin-bottom:12px;}
+.empty-state h3{font-size:16px;font-weight:600;color:var(--text-2);margin-bottom:4px;}
+.empty-state p{font-size:13px;color:var(--text-3);}
+.hl{background:rgba(234,0,41,.18);border-radius:2px;padding:0 2px;}
+
+/* Balais laveurs */
+.bcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.bcard h2{font-size:18px;font-weight:800;display:flex;align-items:center;gap:9px;margin-bottom:14px;}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;margin-bottom:16px;}
+.info-tile{border:1px solid var(--border);border-radius:9px;padding:11px 14px;background:var(--bg);}
+.info-tile .t{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text-3);margin-bottom:4px;}
+.info-tile .v{font-size:13px;color:var(--text);line-height:1.5;}
+.proc-block{border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden;}
+.proc-block>summary{list-style:none;cursor:pointer;padding:11px 14px;font-size:13.5px;font-weight:700;background:var(--accent-bg);color:var(--accent-h);display:flex;align-items:center;gap:8px;user-select:none;}
+.proc-block>summary::-webkit-details-marker{display:none;}
+.proc-block>summary .arrow{margin-left:auto;font-size:11px;transition:transform .18s;}
+.proc-block[open]>summary .arrow{transform:rotate(90deg);}
+.proc-steps{padding:14px 16px;}
+.step{display:flex;gap:10px;margin-bottom:9px;align-items:flex-start;font-size:13.5px;line-height:1.55;color:var(--text);}
+.step-num{background:var(--accent);color:#fff;border-radius:50%;width:21px;height:21px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+.foot-version{text-align:center;font-size:11.5px;color:var(--text-3);margin-top:26px;}
+
+/* MODAL IMPORT */
+.modal-backdrop{position:fixed;inset:0;background:rgba(17,24,39,.5);z-index:600;display:flex;align-items:center;justify-content:center;padding:16px;}
+.modal-backdrop.hidden{display:none;}
+.modal{background:var(--surface);border-radius:16px;padding:28px;width:100%;max-width:480px;box-shadow:0 4px 24px rgba(0,0,0,.12),0 16px 48px rgba(0,0,0,.08);position:relative;}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--text-3);font-size:17px;cursor:pointer;padding:6px;border-radius:7px;}
+.modal-close:hover{background:var(--bg);color:var(--text);}
+.modal h3{font-size:16px;font-weight:700;margin-bottom:5px;}
+.modal-sub{font-size:13px;color:var(--text-2);margin-bottom:16px;line-height:1.55;}
+.modal-sub code{background:var(--bg);padding:1px 5px;border-radius:4px;font-size:12px;}
+.import-drop{border:2px dashed var(--border2);border-radius:10px;padding:24px 20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);}
+.import-drop:hover,.import-drop.over{border-color:var(--accent);background:var(--accent-bg);}
+.import-result{font-size:13px;border-radius:8px;padding:11px 14px;line-height:1.6;margin-top:12px;}
+.import-result.ok{background:var(--green-bg);color:#166534;border:1px solid #BBF7D0;}
+.import-result.err{background:var(--red-bg);color:#991B1B;border:1px solid #FECACA;}
+
+@media(max-width:600px){.hero h1{font-size:20px;}.mcard-chips{margin-left:0;width:100%;}}
+</style>
+<!-- ===== Compteur de consultations (GoatCounter) =====
+     Tableau de bord prive : https://hub-drive-fnac.goatcounter.com  -->
+<script data-goatcounter="https://hub-drive-fnac.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- ===== Fin compteur ===== -->
+</head>
+<body>
+
+<div class="fdtop">
+  <a class="fdtop-home" href="index.html" title="Retour au HUB Drive Constructeurs">
+    <img src="IMAGES/FNAC DARTY.png" onerror="this.style.display='none'" alt="Fnac Darty"><span class="fdtop-txt">&larr; HUB Drive Constructeurs</span>
+  </a>
+</div>
+<div class="fdband">
+  <img class="fdband-logo" src="IMAGES/ROBOROCK.png" alt="Roborock" onerror="this.style.display='none'">
+  <nav>
+    <a href="roborock.html">Recherche SN</a>
+    <a href="roborock_calibrage.html" class="active">Calibrage</a>
+    <a href="FAQ_Roborock/faq_roborock.html">❓ FAQ Support</a>
+    <a href="https://zk.roborock.com/index/user/login.html" target="_blank" rel="noopener">石头智库 — Base technique Roborock ↗</a>
+    <a href="https://support.roborock.com/hc/fr" target="_blank" rel="noopener">🌐 Roborock Support ↗</a>
+  </nav>
+  <div class="fdband-sync">
+    <div class="badge loading" id="badge">&#8987; Chargement&#8230;</div>
+    <button class="btn-import" onclick="openImportModal()">&#128229; Importer un Excel</button>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-eyebrow">Guide de calibration SAV</div>
+  <h1>Calibrage des produits Roborock</h1>
+  <p>Recherchez un <b>modèle</b> pour connaître les <b>calibrations à effectuer</b> (et leur ordre), consulter les <b>guides &amp; vidéos</b>, l'<b>accès au mode calibrage</b> et les prérequis.</p>
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="q" class="search-input" placeholder="Modèle (ex. Saros 10, Qrevo Curv, Q8 Max, F25…)" oninput="onSearch()" autofocus autocomplete="off">
+    <button class="btn-clear" onclick="clearSearch()" title="Effacer">✕</button>
+  </div>
+  <div class="tabs">
+    <button class="tab-btn active" id="tabRobots" onclick="switchTab('robots')">🤖 Robots aspirateurs</button>
+    <button class="tab-btn" id="tabBalais" onclick="switchTab('balais')">🧹 Aspirateurs laveurs (balais)</button>
+  </div>
+</section>
+
+<div class="content-wrap">
+  <div class="tab-page on" id="pageRobots">
+    <div id="accessBlock"></div>
+    <div id="intervBlock"></div>
+    <div id="modelsList"></div>
+    <div id="envBlock"></div>
+  </div>
+  <div class="tab-page" id="pageBalais">
+    <div id="balaiWrap"></div>
+  </div>
+  <div class="foot-version" id="footVersion"></div>
+</div>
+
+<!-- IMPORT MODAL -->
+<div class="modal-backdrop hidden" id="importModal" onclick="if(event.target===this)closeImportModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeImportModal()">✕</button>
+    <h3>📥 Importer le fichier de calibration</h3>
+    <p class="modal-sub">Fichier attendu : <code>FR-FD-Calibration.xlsx</code> (export du Google Sheet Roborock — onglets Notes, Environnement, Liste des modèles, Gyroscope balai).</p>
+    <div class="import-drop" ondragover="event.preventDefault();this.classList.add('over')" ondragleave="this.classList.remove('over')" ondrop="dzDrop(event)" onclick="document.getElementById('fileInput').click()">
+      <div style="font-size:32px;margin-bottom:7px">📂</div>
+      <div style="font-size:13px;color:var(--text-2)">Glisse le fichier ici ou clique pour le sélectionner</div>
+    </div>
+    <div id="importResult" style="display:none"></div>
+  </div>
+</div>
+<input type="file" id="fileInput" accept=".xlsx,.xls,.xlsm" style="display:none">
+
+<script>
+// ══════════════════════════════════════════════════════
+//  CONFIG
+// ══════════════════════════════════════════════════════
+const CALIB_URL='Roborock/FR-FD-Calibration.xlsx';
+const SHEETJS_CDN='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+
+const CALS=[
+  {key:'camera',label:'Caméra / Vision',icon:'📷'},
+  {key:'servo', label:'Servomoteur',icon:'⚙️'},
+  {key:'mur',   label:'Capteur mural',icon:'📡'},
+  {key:'lds',   label:'LDS (laser)',icon:'🌀'},
+  {key:'cliff', label:'Capteur à vide / Cliff',icon:'⛰️'},
+  {key:'tof',   label:'Perception Sensor / TOF',icon:'🔦'},
+];
+const ORD_MAP={'①':1,'②':2,'③':3,'④':4,'⑤':5,'⑥':6};
+
+// Données de secours (générées depuis FR-FD-Calibration.xlsx — utilisées si l'Excel n'est pas joignable)
+const FALLBACK={"notes":{"source":"Source de référence: Calibration Notes","maj":"Dernière mise à jour: 10/03/1026","general":["1. BIT (Built-In Test) : Avant la calibration, le BIT du servo, du capteur de mur et de tous les autres éléments doit être normal.","2. Test servo BIT : Les roues latérales et la roue omnidirectionnelle doivent effectuer un mouvement de levage. Si ce n'est pas le cas, remplacez les pièces correspondantes ou vérifiez le faisceau de câbles.","3. Assemblage : Confirmez que la connexion FPC est sécurisée, que le connecteur TOF sur la carte mère est correctement branché et que le faisceau de câbles est normal.","4. Séquence : Ligne laser verticale (si applicable) → LDS → Caméra → Servo (l'étape suivante ne peut être effectuée qu'après la validation de l'étape précédente).","5. Matériels : L'ensemble servo de la roue omnidirectionnelle doit être remplacé en kit complet (incluant le support et le ressort).","6. Environnement : Évitez la lumière directe du soleil. Assurez-vous que la mire de calibration (damier) est plane et correctement fixée.","7. Calibration du capteur de mur : Lors de l'étape finale, assurez-vous que le composant de la ligne laser verticale fait face à une zone dégagée (à moins de 20 cm) et qu'il n'y a aucun objet à proximité (comme le pied d'une personne)."],"parModele":["1. En cas d'échecs répétés, veuillez contacter le support technique Roborock (après avoir exclu un remplacement de pièce incorrect/manquant ou un problème environnemental).","2. Qrevo Curv 2 Pro / ProX / Edge 2 Pro : Doivent être mis à jour avec le dernier firmware. Les anciennes versions ne supportent pas la calibration. Vérifiez également le pack vocal.Calibration Error Codes of Qrevo Curv 2 Pro  Qrevo Curv 2 ProX  Qrevo Edge 2 Pro","3.Qrevo CurvX : Si la calibration du servo rapporte une erreur (la roue se lève après un recul mais le robot ne bouge pas), restaurez les paramètres d'usine et recalibrez.","4.Module vision Qrevo Curv : Si les paramètres sont absents, sélectionnez les composants produits après septembre.","5. Nouvelle exigence LDS : Avant la calibration, dans l'application, réglez [Paramètres] → [Évitement d'obstacles réactif] → [Mode collision réduite] sur « Équilibré ».","6. Séquence TOF : Calibration TOF → Capteur de mur → Vision → Servo.","7. Séquence LDS : Suivi de mur → LDS → Vision → Servo.","8. Capteur de mur : La brosse latérale doit impérativement rester en position rétractée.","9. Erreur 507 (CurvX) : Priorisez le passage au firmware version 3460.","10. Erreur directe Saros Z70 : Passez au firmware version 02.63.20.","11. Saros 10R : Solution servo mise à jour dans le firmware 02.52.32. Si aucune invite vocale n'est entendue, mettez à jour le pack vocal via les paramètres de l'assistant vocal."]},"env":[{"type":"Test Station (Customised version)","equip":"","cond":"1.Disassemble and assemble the walk wheel module\n2.Replace the mainboard \n3.Disassemble and assemble visional sensors（Vision sensor was not replaced; only disassemble and assemble actions were performed）","prep":"Upgrade software and the voice package to the latest version.\nEnsure battery level is above 50%."},{"type":"Test Station (Simplified Version)","equip":"","cond":"","prep":""},{"type":"Wall Sensor Calibration (Customised version)","equip":"","cond":"1.Disassemble and assemble Wall Sensor 2.Replace the mainboard","prep":""},{"type":"Wall Sensor Calibration(Simplified Version)","equip":"","cond":"","prep":""},{"type":"LDS Calibration(Customised version)","equip":"","cond":"1.Disassemble and assemble LDS2.Replace the mainboard","prep":""},{"type":"Cliff Sensor Calibration (Ordinary tabletop and ensure no obstacles above the tabletop)","equip":"Ordinary tabletop\nCliff calibration after-sales test requires the use of a specific wifi , as follows: open the 2.4G frequency band, set the SSID to: NYBCCEYKVTMG; set the password to: dlMh5v7QUb9Adpqv. (Copy and paste, do not type manually)","cond":"1.Disassemble and assemble the cliff sensor assemblely 2.Replace the mainboard","prep":""}],"prep":"1. Mettre à jour le logiciel et le pack vocal vers la dernière version.\n2. S'assurer que le niveau de la batterie est supérieur à 50 %.","interventions":[{"cond":"Remplacer la carte mère.","checks":{"camera":"√","servo":"√","mur":"√","lds":"√","cliff":"√","tof":"√"}},{"cond":"Démonter et remonter le module de roue motrice.","checks":{"camera":"√","servo":"√","mur":"","lds":"","cliff":"","tof":""}},{"cond":"Démonter et remonter la roue omnidirectionnelle.","checks":{"camera":"√","servo":"√","mur":"","lds":"","cliff":"","tof":""}},{"cond":"Démonter et remonter le module LDS.","checks":{"camera":"","servo":"","mur":"","lds":"√","cliff":"","tof":""}},{"cond":"Démonter et remonter le capteur de mur.","checks":{"camera":"","servo":"","mur":"√","lds":"","cliff":"","tof":""}},{"cond":"Démonter et remonter le module servo.","checks":{"camera":"√","servo":"√","mur":"","lds":"","cliff":"","tof":""}},{"cond":"Démonter et remonter le capteur de vide.","checks":{"camera":"","servo":"","mur":"","lds":"","cliff":"√","tof":""}}],"models":[{"serie":"Q8 Max","model":"Q8 Max/Q8 Max+","checks":{"camera":"√","servo":"","mur":"","lds":"","cliff":"","tof":""},"guide":"","gtype":"","note":""},{"serie":"Qrevo","model":"Qrevo S/QR Series/QV Series","checks":{"camera":"√","servo":"","mur":"","lds":"","cliff":"","tof":""},"guide":"","gtype":"","note":""},{"serie":"Qrevo","model":"Qrevo MaxV","checks":{"camera":"√","servo":"","mur":"√","lds":"","cliff":"","tof":""},"guide":"","gtype":"","note":""},{"serie":"Qrevo","model":"Qrevo Plus","checks":{"camera":"√","servo":"","mur":"√","lds":"","cliff":"","tof":""},"guide":"","gtype":"","note":""},{"serie":"Qrevo","model":"QR 598","checks":{"camera":"√","servo":"","mur":"√","lds":"","cliff":"","tof":""},"guide":"","gtype":"","note":""},{"serie":"Qrevo","model":"Qrevo 5AE","checks":{"camera":"√","servo":"","mur":"√","lds":"","cliff":"","tof":""},"guide":"","gtype":"","note":""},{"serie":"Qrevo","model":"Qrevo C Pro","checks":{"camera":"√","servo":"","mur":"√","lds":"","cliff":"","tof":""},"guide":"","gtype":"","note":""},{"serie":"Qrevo","model":"Qrevo S ProX","checks":{"camera":"√","servo":"","mur":"√","lds":"","cliff":"","tof":""},"guide":"","gtype":"","note":""},{"serie":"Qrevo","model":"Qrevo Curv","checks":{"camera":"√","servo":"","mur":"√","lds":"","cliff":"√","tof":""},"guide":"Voir Qrevo CruvX","gtype":"","note":""},{"serie":"Qrevo","model":"Qrevo Edge 5V1","checks":{"camera":"√","servo":"","mur":"√","lds":"","cliff":"√","tof":""},"guide":"https://docs.google.com/document/d/1wRrfg5AYU9GZ-VhrJTbka_5aboACdX5h/edit?usp=drive_link&ouid=112124838505539347674&rtpof=true&sd=true\n\nhttps://drive.google.com/file/d/1dtRChbSrE06mHWIH3M5Wkp0c8HqEUJBN/view?usp=drive_link","gtype":"DOC\n&\nVideo","note":""},{"serie":"Qrevo","model":"Qrevo CurvX","checks":{"camera":"√","servo":"√","mur":"√","lds":"√","cliff":"√","tof":""},"guide":"https://docs.google.com/document/d/1YXNRxOr3aEOkbLDGiSF2DlzGZe576WKV/edit?usp=drive_link&ouid=112124838505539347674&rtpof=true&sd=true","gtype":"DOC","note":""},{"serie":"Qrevo","model":"Qrevo Curv 2 ProX/Qrevo Curv 2 Pro/Qrevo Edge 2 Pro","checks":{"camera":"√","servo":"√","mur":"√","lds":"√","cliff":"√","tof":""},"guide":"https://drive.google.com/file/d/1ku17Rlu5FBvQq6Hve8EKuYXqpemxoESn/view?usp=drive_link","gtype":"DOC","note":""},{"serie":"Qrevo","model":"Qrevo Curv 2 FlowX","checks":{"camera":"√","servo":"","mur":"√","lds":"√","cliff":"","tof":""},"guide":"","gtype":"","note":""},{"serie":"Saros","model":"Saros 10","checks":{"camera":"√③","servo":"√④","mur":"√①","lds":"√②","cliff":"√","tof":""},"guide":"https://docs.google.com/document/d/1KSRhzIjyNdQRQ7o10PV_yxQ5iIxc7fUm/edit?usp=sharing&ouid=112124838505539347674&rtpof=true&sd=true","gtype":"DOC","note":""},{"serie":"Saros","model":"Saros Z70","checks":{"camera":"√③","servo":"√②","mur":"√④","lds":"","cliff":"√","tof":"√①"},"guide":"https://docs.google.com/document/d/1Gb5f_nSoLBAs8cyTky1pcW9JBZ8qDoYv/edit?usp=drive_link&ouid=112124838505539347674&rtpof=true&sd=true","gtype":"DOC","note":"Veuillez conserver la version 02.63.48.\nSi la machine a déjà été mise à jour, veuillez contacter le support technique pour demander une version privée."},{"serie":"Saros","model":"Saros 20 Sonic/Saros 20 Sonic Complete","checks":{"camera":"√③","servo":"√④","mur":"√①","lds":"√②","cliff":"√","tof":""},"guide":"https://drive.google.com/drive/folders/17XFmHauyQx0aaeofmFNQXIEWKr5edW_U?usp=sharing","gtype":"Videos","note":""},{"serie":"Saros","model":"Saros 20X","checks":{"camera":"√③","servo":"√②","mur":"√④","lds":"","cliff":"√","tof":"√①"},"guide":"https://docs.google.com/document/d/1j9NPNeAGuFT-9ZtrMHQzPq7QTrUNnWoq/edit?usp=drive_link&ouid=112124838505539347674&rtpof=true&sd=true","gtype":"DOC","note":"Veuillez conserver la version 02.53.36.\nSi la machine a déjà été mise à jour, veuillez contacter le support technique pour demander une version privée."},{"serie":"Q10","model":"Q10 VF/Q10 VF+/Q10 max+","checks":{"camera":"√","servo":"","mur":"","lds":"√","cliff":"","tof":""},"guide":"https://docs.google.com/document/d/1uPWGGKPhZvJEG5Ai7_2x0i8fWBxwROUo/edit?usp=drive_link&ouid=112124838505539347674&rtpof=true&sd=true\n\nhttps://drive.google.com/file/d/1oj9HI5aLhwyjZ5L_5xWDRSqSroVaQJqr/view?usp=drive_link","gtype":"DOC\n&\nVideo","note":""},{"serie":"S9/Q10/Q8 MAX","model":"S9","checks":{"camera":"√","servo":"","mur":"","lds":"√","cliff":"","tof":""},"guide":"","gtype":"","note":""},{"serie":"S9/Q10/Q8 MAX","model":"Q8 Max Pro Gen2","checks":{"camera":"√","servo":"","mur":"","lds":"√","cliff":"","tof":""},"guide":"","gtype":"","note":""},{"serie":"S9/Q10/Q8 MAX","model":"Q8 Max Pro Gen2+","checks":{"camera":"√","servo":"","mur":"","lds":"√","cliff":"","tof":""},"guide":"","gtype":"","note":""},{"serie":"S9/Q10/Q8 MAX","model":"S9+/Q10 MAX","checks":{"camera":"√","servo":"","mur":"","lds":"√","cliff":"","tof":""},"guide":"","gtype":"","note":""}],"balai":{"titre":"Calibrage du gyroscope","prealable":"Remplacer la carte mère. OU Démonter/Assembler ou remplacer la coque arrière.","environnement":"Nécessite uniquement une surface plane.","procedures":[{"modele":"Autres modèles F25","etapes":["1.Allumez le robot et placez-le sur une surface plane et horizontale.","2.Déverrouillez la tête de brosse et mettez l'appareil en position à plat/inclinée.","3.Appuyez simultanément sur le bouton d'alimentation et le bouton de changement de mode pendant 3 secondes.","4.Vous entendrez l'invite vocale : « Calibrage du gyroscope » — cela indique que le calibrage est réussi.","5.Si aucune invite vocale n'est entendue après 10 secondes, le calibrage a échoué.","6.En cas d'échec, redémarrez le robot et répétez le processus de calibrage.","7.Si le calibrage échoue toujours après 3 tentatives, remplacez la carte mère et réessayez."]},{"modele":"F25 Ultra (Yaoguang) / F25 ACE Pro (Morph Pro X)","etapes":["1.Allumez le robot et placez-le sur une surface plane et horizontale.","2.Déverrouillez la tête de brosse et mettez l'appareil en position à plat/inclinée.","3. Appuyez simultanément sur les boutons d'alimentation, de changement de mode et d'auto-nettoyage pendant 3 secondes.","4.Vous entendrez l'invite vocale : « Calibrage du gyroscope » — cela indique que le calibrage est réussi.","5.Si aucune invite vocale n'est entendue après 10 secondes, le calibrage a échoué.","6.En cas d'échec, redémarrez le robot et répétez le processus de calibrage.","7.Si le calibrage échoue toujours après 3 tentatives, remplacez la carte mère et réessayez."]}],"video":"https://drive.google.com/file/d/14LumEnTQwSz2X_Fg6wUjtxoRdV1ZDvXb/view?usp=drive_link"},"version":{"v":"V1.4","date":"27/07/2026","contenu":"Mise à jour de la méthode calibration du Q10 MAX+"}};
+
+let DATA=null, FROM_XLSX=false;
+
+// ══════════════════════════════════════════════════════
+//  UTILITAIRES
+// ══════════════════════════════════════════════════════
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function hl(t,q){if(!q)return esc(t);const toks=q.split(/\s+/).filter(Boolean).map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));if(!toks.length)return esc(t);return esc(t).replace(new RegExp('('+toks.join('|')+')','gi'),'<span class="hl">$1</span>');}
+function loadScript(u){return new Promise((res,rej)=>{const s=document.createElement('script');s.src=u;s.onload=res;s.onerror=()=>rej(new Error('CDN '+u));document.head.appendChild(s);});}
+async function ensureSheetJS(){if(typeof XLSX==='undefined')await loadScript(SHEETJS_CDN);}
+
+// Liens Google Drive : aperçu + téléchargement direct
+function driveId(url){const m=String(url).match(/\/d\/([A-Za-z0-9_-]{10,})/)||String(url).match(/[?&]id=([A-Za-z0-9_-]{10,})/);return m?m[1]:null;}
+function docKind(url){if(/docs\.google\.com\/spreadsheets/.test(url))return 'spreadsheets';if(/docs\.google\.com\/presentation/.test(url))return 'presentation';if(/docs\.google\.com\/document/.test(url))return 'document';if(/\/folders\//.test(url))return 'folder';return 'file';}
+function previewUrl(url){const id=driveId(url);if(!id)return url;const k=docKind(url);if(k==='folder')return url;return k==='file'?'https://drive.google.com/file/d/'+id+'/preview':'https://docs.google.com/'+k+'/d/'+id+'/preview';}
+function downloadUrl(url){const id=driveId(url);if(!id)return url;return 'https://drive.google.com/uc?export=download&id='+id;}
+function urlsOf(text){return String(text||'').match(/https?:\/\/[^\s"<>]+/g)||[];}
+function urlLabel(url){const k=docKind(url);if(k==='folder')return {ic:'📁',lb:'Dossier Drive'};if(k==='document')return {ic:'📝',lb:'Guide (DOC)'};if(k==='spreadsheets')return {ic:'📊',lb:'Guide (Excel)'};if(k==='presentation')return {ic:'📑',lb:'Guide (PPT)'};return {ic:'🎬',lb:'Vidéo'};}
+
+// ══════════════════════════════════════════════════════
+//  PARSING DE L'EXCEL (mêmes règles que le générateur du secours)
+// ══════════════════════════════════════════════════════
+function sheetRows(wb,match){
+  const name=wb.SheetNames.find(n=>match.test(n.toLowerCase()));
+  if(!name)return null;
+  return XLSX.utils.sheet_to_json(wb.Sheets[name],{header:1,defval:''}).map(r=>r.map(x=>String(x==null?'':x)));
+}
+function parseWorkbook(wb){
+  const d={notes:{source:'',maj:'',general:[],parModele:[]},env:[],prep:'',interventions:[],models:[],balai:null,version:null};
+  // Notes
+  let rs=sheetRows(wb,/notes de calibration/);
+  if(rs){let cur=null;
+    for(const r of rs){const v=(r[0]||'').trim();if(!v)continue;const low=v.toLowerCase();
+      if(low.startsWith('source')){d.notes.source=v;continue;}
+      if(low.startsWith('dernière')||low.startsWith('derniere')){d.notes.maj=v;continue;}
+      if(low.includes('générales')||low.includes('generales')){cur='general';continue;}
+      if(low.includes('par modèle')||low.includes('par modele')){cur='parModele';continue;}
+      if(cur)d.notes[cur].push(v);}}
+  // Environnement
+  rs=sheetRows(wb,/environnement/);
+  if(rs)for(let i=1;i<rs.length;i++){const r=rs[i];if(!r.some(x=>x.trim()))continue;
+    d.env.push({type:(r[0]||'').trim(),equip:(r[1]||'').trim(),cond:(r[2]||'').trim(),prep:(r[3]||'').trim()});}
+  // Liste des modèles
+  rs=sheetRows(wb,/liste des mod/);
+  if(rs){
+    let hdr=-1;
+    for(let i=0;i<rs.length;i++){if((rs[i][0]||'').trim().toLowerCase().startsWith('séries')||(rs[i][0]||'').trim().toLowerCase().startsWith('series')){hdr=i;break;}}
+    // interventions (avant l'en-tête Séries)
+    for(let i=1;i<(hdr<0?0:hdr);i++){const r=rs[i];if(!r.some(x=>x.trim()))continue;
+      if((r[0]||'').trim())d.prep=(r[0]||'').trim();
+      const cond=(r[1]||'').trim();if(!cond)continue;
+      const checks={};CALS.forEach((c,j)=>checks[c.key]=(r[2+j]||'').trim());
+      d.interventions.push({cond,checks});}
+    // modèles
+    if(hdr>=0){let serie='';
+      for(let i=hdr+1;i<rs.length;i++){const r=rs[i];if(!r.some(x=>x.trim()))continue;
+        if((r[0]||'').trim())serie=(r[0]||'').trim();
+        const model=(r[1]||'').trim();if(!model)continue;
+        const checks={};CALS.forEach((c,j)=>checks[c.key]=(r[2+j]||'').trim());
+        d.models.push({serie,model,checks,guide:(r[8]||'').trim(),gtype:(r[9]||'').trim(),note:(r[10]||'').trim()});}}
+  }
+  // Gyroscope balai
+  rs=sheetRows(wb,/gyroscope/);
+  if(rs){const b={titre:(rs[0][0]||'').trim(),prealable:'',environnement:'',procedures:[],video:''};let cur=null;
+    for(let i=1;i<rs.length;i++){const a=(rs[i][0]||'').trim(),v=(rs[i][1]||'').trim();
+      if(a.startsWith('1)')){b.prealable=v;continue;}
+      if(a.startsWith('2)')){b.environnement=v;continue;}
+      if(a.startsWith('3)'))continue;
+      if(a.startsWith('4)')){const m=(a+' '+v).match(/https?:\/\/\S+/);if(m)b.video=m[0];continue;}
+      if(a){cur={modele:a,etapes:[]};b.procedures.push(cur);}
+      if(v&&cur)cur.etapes.push(v);}
+    d.balai=b;}
+  // Versions
+  rs=sheetRows(wb,/^versions?$/);
+  if(rs){const nz=rs.filter(r=>r.some(x=>x.trim()));const last=nz[nz.length-1];
+    if(last&&/^v/i.test((last[0]||'').trim()))d.version={v:(last[0]||'').trim(),date:(last[1]||'').trim(),contenu:(last[3]||'').trim()};}
+  if(!d.models.length)throw new Error('Onglet « Liste des modèles » introuvable ou vide');
+  return d;
+}
+
+// ══════════════════════════════════════════════════════
+//  CHARGEMENT
+// ══════════════════════════════════════════════════════
+async function autoLoad(){
+  const badge=document.getElementById('badge');
+  try{
+    await ensureSheetJS();
+    const resp=await fetch(CALIB_URL+'?_='+Date.now(),{cache:'no-store'});
+    if(!resp.ok)throw new Error('HTTP '+resp.status);
+    DATA=parseWorkbook(XLSX.read(await resp.arrayBuffer(),{type:'array'}));
+    FROM_XLSX=true;
+  }catch(e){
+    DATA=FALLBACK;FROM_XLSX=false;
+  }
+  renderAll();
+}
+function updateBadge(){
+  const badge=document.getElementById('badge');
+  const nm=DATA.models.length,nb=DATA.balai?DATA.balai.procedures.length:0;
+  if(FROM_XLSX){badge.className='badge';badge.textContent='✅ Excel lu · '+nm+' modèles robots · '+nb+' procédures balais';}
+  else{badge.className='badge error';badge.textContent='⚠ Excel injoignable — données intégrées ('+nm+' modèles). Utilisez « Importer » si besoin.';}
+  badge.title='Cliquer pour re-synchroniser';badge.style.cursor='pointer';
+  badge.onclick=()=>{badge.className='badge loading';badge.textContent='🔄 Synchronisation…';autoLoad();};
+}
+
+// ══════════════════════════════════════════════════════
+//  RENDU — onglet ROBOTS
+// ══════════════════════════════════════════════════════
+function reqOf(val){
+  // '√'/'√③' → {req:true, ord:3|null}
+  const v=String(val||'').trim();
+  if(!v)return {req:false,ord:null};
+  let ord=null;
+  for(const s in ORD_MAP)if(v.includes(s))ord=ORD_MAP[s];
+  return {req:true,ord};
+}
+function accessHtml(){
+  const n=DATA.notes;
+  let h='<details class="block access" open><summary>🔑 Accès au calibrage — prérequis &amp; notes<span class="arrow">▶</span></summary><div class="block-body">';
+  if(DATA.prep)h+='<div class="prep-note"><b>Préparation :</b>\n'+esc(DATA.prep)+'</div>';
+  if(n.general.length){h+='<div class="subhead">Notes générales</div>'+n.general.map(x=>'<div class="note-li">'+esc(x)+'</div>').join('');}
+  if(n.parModele.length){h+='<div class="subhead">Notes par modèle</div>'+n.parModele.map(x=>'<div class="note-li">'+esc(x)+'</div>').join('');}
+  if(n.maj)h+='<div style="font-size:11px;color:var(--text-3);margin-top:10px">'+esc(n.maj)+(n.source?' · '+esc(n.source):'')+'</div>';
+  return h+'</div></details>';
+}
+function intervHtml(){
+  if(!DATA.interventions.length)return '';
+  let h='<details class="block interv"><summary>🔧 Quelle calibration après quelle intervention ?<span class="arrow">▶</span></summary><div class="block-body"><div class="tbl-scroll"><table class="tbl"><thead><tr><th>Intervention / condition</th>';
+  CALS.forEach(c=>h+='<th class="c" title="'+esc(c.label)+'">'+c.icon+'<br>'+esc(c.label.split(' ')[0])+'</th>');
+  h+='</tr></thead><tbody>';
+  DATA.interventions.forEach(iv=>{
+    h+='<tr><td>'+esc(iv.cond)+'</td>';
+    CALS.forEach(c=>{const r=reqOf(iv.checks[c.key]);h+='<td class="c check">'+(r.req?'✓':'')+'</td>';});
+    h+='</tr>';});
+  return h+'</tbody></table></div></div></details>';
+}
+// Traduction française (affichée en bleu sous le texte anglais d'origine)
+const FR_TRAD=[
+  [/\(Ordinary tabletop and ensure no obstacles above the tabletop\)/gi,'(table ordinaire, sans obstacle au-dessus)'],
+  [/Cliff calibration after-sales test requires the use of a specific wifi\s*,?\s*as follows:\s*open the 2\.4G frequency band,\s*set the SSID to:/gi,'Le test SAV de calibration cliff nécessite un wifi spécifique : activer la bande 2,4 GHz, définir le SSID :'],
+  [/set the password to:/gi,'mot de passe :'],
+  [/\(Copy and paste, do not type manually\)/gi,'(copier-coller, ne pas saisir manuellement)'],
+  [/（?Vision sensor was not replaced;?\s*only disassemble and assemble actions were performed）?/gi,'(capteur de vision non remplacé ; uniquement démonté/remonté)'],
+  [/Disassemble and assemble the walk wheel module/gi,'Démonter et remonter le module de roue motrice'],
+  [/Disassemble and assemble visional sensors/gi,'Démonter et remonter les capteurs de vision'],
+  [/Disassemble and assemble the cliff sensor assembl\w*/gi,"Démonter et remonter l'ensemble capteur à vide (cliff)"],
+  [/Disassemble and assemble Wall Sensor/gi,'Démonter et remonter le capteur mural'],
+  [/Disassemble and assemble LDS/gi,'Démonter et remonter le LDS'],
+  [/Replace the mainboard/gi,'Remplacer la carte mère'],
+  [/Upgrade software and the voice package to the latest version\.?/gi,'Mettre à jour le logiciel et le pack vocal vers la dernière version.'],
+  [/Ensure battery level is above 50\s*%\.?/gi,"S'assurer que le niveau de batterie est supérieur à 50 %."],
+  [/Wall Sensor Calibration/gi,'Calibration du capteur mural'],
+  [/LDS Calibration/gi,'Calibration LDS'],
+  [/Cliff Sensor Calibration/gi,'Calibration du capteur à vide (cliff)'],
+  [/Test Station/gi,'Banc de test'],
+  [/\(Customised version\)/gi,'(version personnalisée)'],
+  [/\(Simplified Version\)/gi,'(version simplifiée)'],
+  [/Ordinary tabletop/gi,'Table ordinaire'],
+];
+function frTrad(text){
+  let t=String(text||'');
+  if(!t.trim())return '';
+  let changed=false;
+  FR_TRAD.forEach(([re,fr])=>{if(re.test(t)){t=t.replace(re,fr);changed=true;}re.lastIndex=0;});
+  if(!changed)return '';
+  // aère les listes numérotées collées ("…LDS2.Remplacer…")
+  t=t.replace(/([^\n\d])\s*(\d\.)(?=[A-ZÀ-ÖØ-Þ(])/g,'$1\n$2');
+  return t.trim();
+}
+function envCell(txt,bold){
+  if(!String(txt||'').trim())return '<td></td>';
+  const fr=frTrad(txt);
+  return '<td><div class="envtxt">'+(bold?'<b>'+esc(txt)+'</b>':esc(txt))+'</div>'+(fr?'<div class="trad-fr">'+esc(fr)+'</div>':'')+'</td>';
+}
+function envHtml(){
+  if(!DATA.env.length)return '';
+  let h='<details class="block env"><summary>🧪 Environnement de calibration (référence constructeur — <span style="color:var(--blue-text)">traduction 🇫🇷 en bleu</span>)<span class="arrow">▶</span></summary><div class="block-body"><div class="tbl-scroll"><table class="tbl"><thead><tr><th>Type</th><th>Équipement</th><th>Conditions</th><th>Préparations</th></tr></thead><tbody>';
+  DATA.env.forEach(e=>{h+='<tr>'+envCell(e.type,true)+envCell(e.equip)+envCell(e.cond)+envCell(e.prep)+'</tr>';});
+  return h+'</tbody></table></div></div></details>';
+}
+function guideBarHtml(m){
+  const urls=urlsOf(m.guide);
+  if(!urls.length)return m.guide?'<div class="guide-bar"><span class="guide-txt">ℹ️ '+esc(m.guide)+'</span></div>':'';
+  let h='<div class="guide-bar">';
+  urls.forEach(u=>{
+    const t=urlLabel(u);
+    h+='<a class="gbtn doc" href="'+esc(previewUrl(u))+'" target="_blank" rel="noopener">'+t.ic+' '+esc(t.lb)+' — Aperçu</a>';
+    if(docKind(u)!=='folder')h+='<a class="gbtn dl" href="'+esc(downloadUrl(u))+'" target="_blank" rel="noopener" title="Télécharger">⬇</a>';
+  });
+  return h+'</div>';
+}
+function modelCardHtml(m,idx,q){
+  const reqs=CALS.map(c=>({c,r:reqOf(m.checks[c.key])})).filter(x=>x.r.req);
+  const hasOrd=reqs.some(x=>x.r.ord);
+  const chips=reqs.map(x=>'<span class="chip">'+(x.r.ord?'<span class="ord">'+x.r.ord+'</span>':'')+x.c.icon+' '+esc(x.c.label.split(' /')[0].split(' (')[0])+'</span>').join('');
+  let body='';
+  if(hasOrd)body+='<div class="seq-note">🔢 Les numéros indiquent l\'<b>ordre</b> dans lequel effectuer les calibrations (l\'étape suivante seulement après validation de la précédente).</div>';
+  const sorted=CALS.map(c=>({c,r:reqOf(m.checks[c.key])})).sort((a,b)=>{
+    if(a.r.req!==b.r.req)return a.r.req?-1:1;
+    return (a.r.ord||99)-(b.r.ord||99);});
+  sorted.forEach(x=>{
+    body+='<div class="calib-row'+(x.r.req?' req':' off')+'"><span class="ic">'+x.c.icon+'</span><span class="nm">'+esc(x.c.label)+'</span>'+
+      (x.r.req?(x.r.ord?'<span class="ord-badge">Ordre '+x.r.ord+'</span>':'<span class="ord-badge" style="background:var(--green)">Requis</span>'):'<span style="font-size:11px">non requis</span>')+'</div>';});
+  if(m.note)body+='<div class="mnote">⚠️ '+esc(m.note)+'</div>';
+  body+=guideBarHtml(m);
+  return '<div class="mcard" id="mc'+idx+'">'+
+    '<div class="mcard-head" onclick="document.getElementById(\'mc'+idx+'\').classList.toggle(\'open\')">'+
+      '<div class="mcard-avatar">🤖</div>'+
+      '<div><div class="mcard-name">'+hl(m.model,q)+'</div><div class="mcard-sub">Série '+hl(m.serie,q)+' · '+reqs.length+' calibration'+(reqs.length>1?'s':'')+(urlsOf(m.guide).length?' · guide dispo':'')+'</div></div>'+
+      '<div class="mcard-chips">'+chips+'</div>'+
+      '<span class="mcard-arrow">▶</span>'+
+    '</div>'+
+    '<div class="mcard-body">'+body+'</div>'+
+  '</div>';
+}
+function renderModels(){
+  const q=document.getElementById('q').value.trim().toLowerCase();
+  const wrap=document.getElementById('modelsList');
+  const toks=q.split(/\s+/).filter(Boolean);
+  let list=DATA.models;
+  if(toks.length)list=list.filter(m=>{const h=(m.serie+' '+m.model+' '+m.note).toLowerCase();return toks.every(t=>h.includes(t));});
+  if(!list.length){wrap.innerHTML='<div class="empty-state"><div class="empty-state-icon">🤷</div><h3>Aucun modèle robot pour « '+esc(q)+' »</h3><p>Vérifiez l\'orthographe — ou consultez l\'onglet Aspirateurs laveurs (balais F25…).</p></div>';return;}
+  let h='',lastSerie=null;
+  list.forEach((m,i)=>{
+    if(m.serie!==lastSerie){h+='<div class="serie-head">Série '+esc(m.serie)+'</div>';lastSerie=m.serie;}
+    h+=modelCardHtml(m,i,q);});
+  wrap.innerHTML=h;
+  if(toks.length&&list.length<=2)list.forEach((m,i)=>{const el=document.getElementById('mc'+i);if(el)el.classList.add('open');});
+}
+
+// ══════════════════════════════════════════════════════
+//  RENDU — onglet BALAIS
+// ══════════════════════════════════════════════════════
+function renderBalai(){
+  const wrap=document.getElementById('balaiWrap');
+  const b=DATA.balai;
+  if(!b){wrap.innerHTML='<div class="empty-state"><div class="empty-state-icon">🧹</div><h3>Pas de données balais laveurs</h3></div>';return;}
+  const q=document.getElementById('q').value.trim().toLowerCase();
+  const toks=q.split(/\s+/).filter(Boolean);
+  let procs=b.procedures;
+  if(toks.length){const f=procs.filter(p=>toks.every(t=>p.modele.toLowerCase().includes(t)));if(f.length)procs=f;}
+  let h='<div class="bcard"><h2>🧭 '+esc(b.titre||'Calibrage du gyroscope')+'</h2><div class="info-grid">';
+  if(b.prealable)h+='<div class="info-tile"><div class="t">1 · Condition préalable</div><div class="v">'+esc(b.prealable)+'</div></div>';
+  if(b.environnement)h+='<div class="info-tile"><div class="t">2 · Exigence environnementale</div><div class="v">'+esc(b.environnement)+'</div></div>';
+  h+='</div>';
+  procs.forEach((p,i)=>{
+    h+='<details class="proc-block"'+(procs.length===1||toks.length?' open':'')+'><summary>🧹 '+hl(p.modele,q)+'<span class="arrow">▶</span></summary><div class="proc-steps">';
+    p.etapes.forEach((e2,j)=>{const txt=e2.replace(/^\d+[\.\)]\s*/,'');h+='<div class="step"><span class="step-num">'+(j+1)+'</span><span>'+esc(txt)+'</span></div>';});
+    h+='</div></details>';});
+  if(b.video)h+='<div class="guide-bar" style="margin-top:14px"><a class="gbtn doc" href="'+esc(previewUrl(b.video))+'" target="_blank" rel="noopener">🎬 Vidéo de la procédure — Aperçu</a><a class="gbtn dl" href="'+esc(downloadUrl(b.video))+'" target="_blank" rel="noopener">⬇ Télécharger</a></div>';
+  h+='</div>';
+  wrap.innerHTML=h;
+}
+
+// ══════════════════════════════════════════════════════
+//  RENDU GLOBAL / TABS / RECHERCHE
+// ══════════════════════════════════════════════════════
+function renderAll(){
+  updateBadge();
+  document.getElementById('accessBlock').innerHTML=accessHtml();
+  document.getElementById('intervBlock').innerHTML=intervHtml();
+  document.getElementById('envBlock').innerHTML=envHtml();
+  renderModels();
+  renderBalai();
+  const v=DATA.version;
+  document.getElementById('footVersion').textContent=v?('Guide de calibration Roborock · '+v.v+(v.date?' — '+String(v.date).replace(' 00:00:00',''):'')):'';
+}
+function switchTab(t){
+  document.getElementById('tabRobots').classList.toggle('active',t==='robots');
+  document.getElementById('tabBalais').classList.toggle('active',t==='balais');
+  document.getElementById('pageRobots').classList.toggle('on',t==='robots');
+  document.getElementById('pageBalais').classList.toggle('on',t==='balais');
+}
+function onSearch(){
+  if(!DATA)return;
+  const q=document.getElementById('q').value.trim().toLowerCase();
+  // bascule auto vers l'onglet balais si la recherche matche un modèle balai uniquement
+  if(q&&DATA.balai){
+    const mRobot=DATA.models.some(m=>(m.serie+' '+m.model).toLowerCase().includes(q));
+    const mBalai=DATA.balai.procedures.some(p=>p.modele.toLowerCase().includes(q))||/f25|balai|laveur/.test(q);
+    if(!mRobot&&mBalai)switchTab('balais');
+    else if(mRobot)switchTab('robots');
+  }
+  renderModels();renderBalai();
+}
+function clearSearch(){document.getElementById('q').value='';document.getElementById('q').focus();onSearch();}
+
+// ══════════════════════════════════════════════════════
+//  IMPORT MANUEL
+// ══════════════════════════════════════════════════════
+function openImportModal(){document.getElementById('importModal').classList.remove('hidden');document.getElementById('importResult').style.display='none';}
+function closeImportModal(){document.getElementById('importModal').classList.add('hidden');}
+document.getElementById('fileInput').addEventListener('change',e=>{if(e.target.files&&e.target.files.length)handleFile(e.target.files[0]);e.target.value='';});
+function dzDrop(e){e.preventDefault();e.currentTarget.classList.remove('over');if(e.dataTransfer.files.length)handleFile(e.dataTransfer.files[0]);}
+async function handleFile(file){
+  const rd=document.getElementById('importResult');rd.style.display='none';
+  try{
+    await ensureSheetJS();
+    DATA=parseWorkbook(XLSX.read(await file.arrayBuffer(),{type:'array'}));
+    FROM_XLSX=true;renderAll();
+    rd.className='import-result ok';rd.innerHTML='✅ <strong>'+DATA.models.length+' modèles robots</strong> chargés — <em>'+esc(file.name)+'</em>';rd.style.display='block';
+    setTimeout(closeImportModal,1200);
+  }catch(err){rd.className='import-result err';rd.innerHTML='⚠️ Erreur : '+esc(err.message||String(err));rd.style.display='block';}
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!document.getElementById('importModal').classList.contains('hidden'))closeImportModal();});
+document.addEventListener('DOMContentLoaded',autoLoad);
+</script>
+</body>
+</html>
