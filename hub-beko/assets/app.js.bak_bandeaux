@@ -63,7 +63,7 @@
       cnt.textContent=hits.length+" résultat"+(hits.length>1?"s":"")+" pour « "+q+" »";
       var qs=encodeURIComponent(q);
       res.innerHTML=hits.slice(0,120).map(function(h){var d=h[1].d;var ty=typeOf(d);var pv=(d.k==="pdf")?'<button type="button" class="pvb" data-s="'+d.s+'" data-p="'+d.p+'" aria-expanded="false">▸ Aperçu</button>':'';
-        return '<div class="hit '+ty.c+'"><a class="hl" href="doc/'+d.s+'.html?q='+qs+'">'+(d.b?'<img class="bd" src="img/'+d.s+'/bandeau.webp" alt="Bandeau de commande" loading="lazy">':'')+'<b class="t">'+escH(d.t)+'</b> <span class="chip ty">'+ty.l+'</span>'+d.f.map(function(f){var bc=BR[norm(f)];return '<span class="chip'+(bc?' br '+bc:'')+'">'+escH(f)+'</span>';}).join("")+'<div class="s">'+snippet(d,terms)+'</div></a>'+pv+'<div class="pvp" hidden></div></div>';}).join("")||'<p class="muted">Aucun document ne correspond. Essayez un terme plus court (ex. « E18 », « GNE », « PAC »).</p>';
+        return '<div class="hit '+ty.c+'"><a class="hl" href="doc/'+d.s+'.html?q='+qs+'"><b class="t">'+escH(d.t)+'</b> <span class="chip ty">'+ty.l+'</span>'+d.f.map(function(f){var bc=BR[norm(f)];return '<span class="chip'+(bc?' br '+bc:'')+'">'+escH(f)+'</span>';}).join("")+'<div class="s">'+snippet(d,terms)+'</div></a>'+pv+'<div class="pvp" hidden></div></div>';}).join("")||'<p class="muted">Aucun document ne correspond. Essayez un terme plus court (ex. « E18 », « GNE », « PAC »).</p>';
       res.querySelectorAll(".pvb").forEach(function(b){b.onclick=function(){togglePreview(b,terms,qs);};});
       var first=res.querySelector(".pvb");if(first&&hits.length<=3)togglePreview(first,terms,qs);};
     var togglePreview=function(b,terms,qs){var panel=b.nextElementSibling,open=b.getAttribute("aria-expanded")==="true";
