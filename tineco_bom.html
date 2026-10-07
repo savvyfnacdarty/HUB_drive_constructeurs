@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script src="auth-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Lecteur BOM — Spare Part List Tineco</title>
+<style>
+:root{
+  --bg:#f4f5f7; --card:#fff; --ink:#1a1d21; --muted:#6b7280; --line:#e2e5ea;
+  --accent:#00327D; --accent2:#0a63c9; --chip:#eef1f6; --lime:#F7FE8C; --fnac:#D4151B;
+  --green:#128a3a; --orange:#c77700; --imgh:168px; --cw:228px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.hubbar{background:var(--fnac);padding:12px 22px;display:flex;align-items:center;gap:16px;text-decoration:none;}
+.hubbar img{height:38px;background:#fff;padding:5px 9px;border-radius:6px;transition:transform .15s;}
+.hubbar:hover img{transform:scale(1.05);}
+.hubbar .txt{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.hide{display:none!important;}
+/* ---------- accueil ---------- */
+.hero{background:linear-gradient(120deg,#00214f 0%,#00327D 60%,#0a4aa3 100%);color:#fff;padding:30px 22px 26px;text-align:center;}
+.hero-logo{height:46px;background:#fff;padding:7px 14px;border-radius:10px;margin-bottom:12px;box-shadow:0 4px 16px rgba(0,0,0,.25);}
+.hero h1{font-size:1.35rem;margin-bottom:4px;} .hero p{opacity:.85;font-size:.88rem;margin-bottom:16px;}
+.hero input{width:100%;max-width:640px;padding:14px 18px;font-size:1rem;border:none;border-radius:12px;outline:none;box-shadow:0 6px 24px rgba(0,0,0,.3);font-family:inherit;}
+.hero input:focus{box-shadow:0 0 0 3px var(--lime),0 6px 24px rgba(0,0,0,.3);}
+main{max-width:1000px;margin:0 auto;padding:18px 22px 50px;}
+.drop{border:2px dashed #b9c3d6;border-radius:12px;background:#fff;padding:20px;text-align:center;color:var(--muted);font-size:.9rem;cursor:pointer;margin-bottom:16px;line-height:1.6;}
+.drop.over,.drop:hover{border-color:var(--accent2);background:#f3f8ff;color:var(--accent);}
+.drop b{color:var(--ink);}
+.warn{background:#fff7e6;border:1px solid #f5d28a;color:#6b4a00;border-radius:10px;padding:10px 14px;font-size:.85rem;margin-bottom:14px;line-height:1.55;}
+.warn a{color:var(--accent2);font-weight:600;}
+.lst .it{background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 14px;margin-bottom:7px;display:flex;gap:12px;align-items:center;}
+.lst .ico{flex:0 0 36px;height:36px;border-radius:8px;background:#1d7a45;color:#fff;font-size:.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.lst .inf{flex:1;min-width:0;} .lst .fn{font-size:.88rem;font-weight:600;word-break:break-word;}
+.lst .pa{font-size:.72rem;color:var(--muted);word-break:break-word;}
+.btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 12px;font-size:.8rem;cursor:pointer;font-family:inherit;color:var(--ink);text-decoration:none;white-space:nowrap;display:inline-block;}
+.btn:hover{border-color:var(--accent);color:var(--accent);}
+.btn.pri{background:var(--accent2);border-color:var(--accent2);color:#fff;font-weight:600;} .btn.pri:hover{background:var(--accent);color:#fff;}
+.sub-h{font-size:.9rem;color:var(--accent);font-weight:700;margin:6px 0 10px;}
+.muted{color:var(--muted);font-size:.8rem;font-weight:400;}
+.gpanel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:10px;}
+.gq{width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;}
+.gq:focus{outline:2px solid var(--accent2);}
+.lst .ico.fg{background:var(--accent2);}
+.more{display:block;margin:6px auto 30px;}
+.cardp .fgt{font-size:10.5px;color:var(--muted);}
+.cardp .sub{font-size:11px;color:var(--orange);}
+/* ---------- lecteur ---------- */
+header.hd{background:linear-gradient(90deg,#00214f,#00327D);color:#fff;padding:16px 22px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;}
+header.hd h2{font-size:19px;} header.hd .sub{font-size:12px;color:#cfd3da;margin-top:3px;word-break:break-all;}
+.refbar{display:flex;flex-wrap:wrap;gap:8px;margin-left:auto;}
+.refbar span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);padding:4px 9px;border-radius:6px;font-size:11px;}
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:11px 22px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5;}
+.toolbar input[type=text]{flex:1;min-width:170px;max-width:340px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;font-size:14px;}
+.toolbar select{padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px;max-width:260px;background:#fff;}
+.toolbar .count{font-size:13px;color:var(--muted);}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+.seg button{border:none;background:#fff;padding:8px 11px;font-size:12px;cursor:pointer;font-family:inherit;border-right:1px solid var(--line);}
+.seg button:last-child{border-right:none;} .seg button.on{background:var(--accent);color:#fff;}
+.chk{font-size:13px;display:flex;align-items:center;gap:5px;cursor:pointer;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(var(--cw),1fr));gap:14px;padding:18px 22px;}
+.cardp{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;break-inside:avoid;page-break-inside:avoid;}
+.imgwrap{height:var(--imgh);background:#fafbfc;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);padding:8px;cursor:zoom-in;position:relative;}
+.imgwrap img{max-width:100%;max-height:100%;object-fit:contain;}
+.imgwrap .noimg{color:var(--muted);font-size:12px;cursor:default;}
+.imgwrap .zm{position:absolute;right:6px;top:6px;background:rgba(0,0,0,.45);color:#fff;border-radius:6px;font-size:11px;padding:2px 6px;opacity:0;transition:.15s;}
+.imgwrap:hover .zm{opacity:1;}
+.pbody{padding:10px 12px 12px;display:flex;flex-direction:column;gap:6px;}
+.desig{font-size:14px;font-weight:600;line-height:1.25;}
+.desig small{display:block;font-weight:400;color:var(--muted);font-size:11px;margin-top:1px;}
+.cat{font-size:10.5px;background:var(--chip);color:var(--accent);border-radius:5px;padding:1px 7px;align-self:flex-start;font-weight:600;}
+.refline{font-size:12px;display:flex;gap:6px;align-items:baseline;} .refline .lbl{color:var(--muted);min-width:58px;}
+.code{font-family:Consolas,monospace;font-weight:700;color:var(--accent);font-size:13px;}
+.spare{font-family:Consolas,monospace;color:var(--accent2);font-weight:600;}
+mark{background:var(--lime);color:inherit;border-radius:2px;padding:0 1px;}
+.empty{text-align:center;color:var(--muted);padding:40px 12px;grid-column:1/-1;}
+footer.ft{padding:14px 22px;color:var(--muted);font-size:11px;border-top:1px solid var(--line);background:#fff;}
+/* ---------- lightbox ---------- */
+#lb{position:fixed;inset:0;background:rgba(10,14,22,.88);z-index:9999;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;}
+#lb.on{display:flex;}
+#lb img{max-width:min(92vw,1100px);max-height:76vh;object-fit:contain;background:#fff;border-radius:10px;}
+#lb .cap{color:#fff;margin-top:12px;text-align:center;font-size:14px;max-width:92vw;}
+#lb .cap small{display:block;opacity:.75;font-size:12px;margin-top:3px;font-family:Consolas,monospace;}
+#lb button{position:absolute;border:none;background:rgba(255,255,255,.15);color:#fff;font-size:26px;width:46px;height:46px;border-radius:50%;cursor:pointer;}
+#lb button:hover{background:rgba(255,255,255,.3);}
+#lb .x{top:16px;right:16px;} #lb .pv{left:16px;top:50%;} #lb .nx{right:16px;top:50%;}
+#topBtn{position:fixed;right:18px;bottom:18px;width:44px;height:44px;border-radius:50%;border:none;background:var(--accent);color:#fff;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:.2s;}
+#topBtn.show{opacity:1;pointer-events:auto;}
+@media print{
+  body{background:#fff;} .hubbar,.toolbar,#topBtn,#lb,.hero,main{display:none!important;}
+  #viewer{display:block!important;}
+  header.hd{background:#00327D!important;padding:10px 14px;}
+  .grid{grid-template-columns:repeat(3,1fr);gap:8px;padding:10px 12px;} .imgwrap{height:135px;} .cardp{border:1px solid #cfd3da;}
+  @page{size:A4;margin:10mm;}
+}
+@media(max-width:620px){:root{--cw:150px;--imgh:120px;} .grid{padding:12px;gap:10px;} .toolbar{padding:10px 12px;}}
+</style>
+<script data-goatcounter="https://hub-drive-fnac.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<a class="hubbar" href="index.html" title="Retour au HUB Drive Constructeurs">
+  <img src="IMAGES/FNAC DARTY.png" alt="Fnac Darty — Retour au HUB">
+  <span class="txt">← HUB Drive Constructeurs</span>
+</a>
+
+<!-- ===== ACCUEIL : choix du fichier ===== -->
+<div id="home">
+  <div class="hero">
+    <img class="hero-logo" src="IMAGES/TINECO.png" alt="Tineco" onerror="this.style.display='none'">
+    <h1>Pièces détachées Tineco — catalogue & photos</h1>
+    <p>Source : Global spare parts list EU (à jour) — photos chargées depuis les liens du fichier</p>
+    <input id="fq" type="text" placeholder="Filtrer les anciens fichiers Spare Part List SAVVY… ex : S7, CL2376" autocomplete="off">
+  </div>
+  <main>
+    <div id="warn"></div>
+    <div class="gpanel">
+      <div class="sub-h">📦 Catalogue pièces détachées EU <span class="muted" id="gmeta"></span></div>
+      <input id="gq" class="gq" type="text" placeholder="Appareil : nom, SKU FG, réf. technique… ex : S9, FW770100DE, CL2428" autocomplete="off">
+      <div style="margin:8px 0"><button class="btn pri" id="gall">🔎 Rechercher une pièce dans tout le catalogue</button></div>
+      <div class="lst" id="glst"></div>
+    </div>
+    <div class="sub-h" style="margin-top:22px">Ouvrir un autre fichier Excel Spare Part List</div>
+    <div class="drop" id="drop"><b>📥 Glissez ici un fichier Excel Spare Part List</b> ou cliquez pour le choisir<br>
+      <span style="font-size:.8rem">Le fichier reste sur votre poste : il est lu directement par le navigateur.</span></div>
+    <input type="file" id="fileInput" accept=".xlsx,.xlsm" style="display:none">
+    <div class="sub-h" id="lh" style="margin-top:14px"></div>
+    <div class="lst" id="lst"></div>
+  </main>
+</div>
+
+<!-- ===== LECTEUR ===== -->
+<div id="viewer" class="hide">
+  <header class="hd">
+    <div><h2 id="dTitle"></h2><div class="sub" id="dSub"></div></div>
+    <div class="refbar" id="dRefs"></div>
+  </header>
+  <div class="toolbar">
+    <button class="btn" id="back">← Recherche</button>
+    <input type="text" id="pq" placeholder="Filtrer les pièces (désignation, réf…)" autocomplete="off">
+    <select id="gsel" class="hide" title="Appareil"></select>
+    <select id="csel" class="hide" title="Catégorie"></select>
+    <label class="chk"><input type="checkbox" id="onlyImg"> 📷 Avec photo</label>
+    <span class="seg" title="Taille des photos"><button data-s="S">S</button><button data-s="M" class="on">M</button><button data-s="L">L</button></span>
+    <span class="count" id="pcount"></span>
+    <button class="btn" onclick="window.print()">🖨️ Imprimer</button>
+  </div>
+  <div class="grid" id="pgrid"></div>
+  <button class="btn more hide" id="more">Afficher plus de pièces</button>
+  <footer class="ft">Réf. pièce = SP SKU (9…) · Réf. SAV = SAP ID (114…) · Photos extraites du fichier Excel · Libellés chinois traduits automatiquement (glossaire).</footer>
+</div>
+
+<div id="lb"><button class="x" aria-label="Fermer">×</button><button class="pv" aria-label="Précédent">‹</button><img alt=""><div class="cap"></div><button class="nx" aria-label="Suivant">›</button></div>
+<button id="topBtn" title="Haut de page">↑</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="Tineco/data/cn_fr_glossaire.js"></script>
+<script>
+/* =====================================================================
+   Lecteur BOM Tineco — lit un fichier Excel « Spare Part List » (colonnes
+   SKU / SAP / désignation / photo) et affiche les pièces avec leurs photos,
+   comme le catalogue tineco.html. Les photos incluses dans l'Excel sont
+   extraites directement du fichier (.xlsx = archive ZIP).
+   Fichiers : Tineco/spare_parts/<nom>.xlsx (copie dans le hub) ou import manuel.
+   ===================================================================== */
+const SPARE_DIR = 'Tineco/spare_parts/';
+const SAV_URL   = 'Tineco/data/Tineco_sharepoint_savvy.xlsx';
+const SP = 'https://groupefnac.sharepoint.com/';
+const ROOT = 'Documents partages/Tineco';
+const NS_R = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships';
+const $ = id => document.getElementById(id);
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const CJK = /[㐀-鿿]/;
+const hn = s => String(s==null?'':s).toLowerCase().replace(/[\s_\-:：()（）\/\.]+/g,'');
+const sn = s => String(s==null?'':s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+const encPath = p => p.split('/').map(encodeURIComponent).join('/');
+function translateCN(text){
+  if(!text) return text; let out=String(text);
+  if(typeof CN_FR_TERMS==='undefined') return out;
+  if(!translateCN.s) translateCN.s = CN_FR_TERMS.slice().sort((a,b)=>b[0].length-a[0].length);
+  for(const [zh,fr] of translateCN.s){ if(out.indexOf(zh)!==-1) out=out.split(zh).join(fr); }
+  return out; }
+function loadScript(u){ return new Promise((ok,ko)=>{ const s=document.createElement('script'); s.src=u; s.onload=ok; s.onerror=()=>ko(new Error('Bibliothèque indisponible : '+u)); document.head.appendChild(s); }); }
+async function libs(){
+  if(typeof XLSX==='undefined') await loadScript('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js');
+  if(typeof JSZip==='undefined') await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js'); }
+
+/* ---------- extraction des photos (ZIP) ---------- */
+const resolveP = (baseDir, rel) => rel.startsWith('/') ? rel.slice(1) : new URL(rel,'http://x/'+baseDir).pathname.slice(1);
+const dirOf = p => p.slice(0,p.lastIndexOf('/')+1);
+async function xml(zip,p){ const f=zip.file(p); if(!f) return null; return new DOMParser().parseFromString(await f.async('string'),'application/xml'); }
+function rels(doc){ const m={}; if(!doc) return m; for(const r of doc.getElementsByTagName('Relationship')) m[r.getAttribute('Id')]={t:r.getAttribute('Target'),y:r.getAttribute('Type')||''}; return m; }
+const kids = (el,name) => [...el.getElementsByTagName('*')].filter(e=>e.localName===name);
+const embedOf = el => { const b=kids(el,'blip')[0]; return b ? (b.getAttributeNS(NS_R,'embed')||b.getAttribute('r:embed')) : null; };
+async function sheetImages(zip){
+  const out={rows:{},disp:{}};
+  const wb=await xml(zip,'xl/workbook.xml'), wr=rels(await xml(zip,'xl/_rels/workbook.xml.rels'));
+  if(wb){
+    for(const sh of kids(wb,'sheet')){
+      const name=sh.getAttribute('name'), rid=sh.getAttributeNS(NS_R,'id')||sh.getAttribute('r:id');
+      if(!wr[rid]) continue;
+      const sp=resolveP('xl/',wr[rid].t), sdir=dirOf(sp);
+      const sr=rels(await xml(zip,sdir+'_rels/'+sp.slice(sdir.length)+'.rels'));
+      const dr=Object.values(sr).find(r=>/\/drawing$/.test(r.y)); if(!dr) continue;
+      const dp=resolveP(sdir,dr.t), ddir=dirOf(dp);
+      const dd=await xml(zip,dp); if(!dd) continue;
+      const imgs=rels(await xml(zip,ddir+'_rels/'+dp.slice(ddir.length)+'.rels'));
+      const rows={};
+      for(const a of [...dd.getElementsByTagName('*')].filter(e=>/^(twoCellAnchor|oneCellAnchor)$/.test(e.localName))){
+        const emb=embedOf(a); if(!emb||!imgs[emb]) continue;
+        const from=kids(a,'from')[0]; if(!from) continue;
+        const row=parseInt(kids(from,'row')[0].textContent,10);
+        (rows[row]=rows[row]||[]).push(resolveP(ddir,imgs[emb].t)); }
+      out.rows[name]=rows; } }
+  /* images « dans la cellule » (WPS : =DISPIMG("ID_…",1)) */
+  const ci=await xml(zip,'xl/cellimages.xml');
+  if(ci){ const cr=rels(await xml(zip,'xl/_rels/cellimages.xml.rels'));
+    for(const pic of kids(ci,'pic')){ const nm=kids(pic,'cNvPr')[0]; const emb=embedOf(pic);
+      if(nm&&emb&&cr[emb]) out.disp[nm.getAttribute('name')]=resolveP('xl/',cr[emb].t); } }
+  return out; }
+
+/* ---------- lecture des colonnes ---------- */
+const MIME={png:'image/png',jpg:'image/jpeg',jpeg:'image/jpeg',gif:'image/gif',webp:'image/webp',bmp:'image/bmp',svg:'image/svg+xml'};
+function detectCols(row){
+  const c={}; row.forEach((v,i)=>{ const h=hn(v); if(!h) return;
+    const set=(k)=>{ if(c[k]===undefined) c[k]=i; };
+    if(h.includes('图片')||/(picture|image|photo|^pic$|illustration)/.test(h)) set('img');
+    else if(h.includes('sap')) set('sap');
+    else if(h.includes('大货sku')||/^fg(sku|code)/.test(h)||h.includes('finishedgood')) set('fg');
+    else if(h.includes('散备件sku')||/(sparepartsku|spsku|partnumber|partno|^pn$|partcode|物料编码|备件编码)/.test(h)) set('code');
+    else if(h.includes('大货产品名称')||/^(fg|finished)?(product)?name$/.test(h)&&c.fgn===undefined) set('fgn');
+    else if(h.includes('大货系列型号')||/(factorymodel|^series|^model)/.test(h)) set('model');
+    else if(h.includes('散备件产品名称')||/(category|parttype|^type$)/.test(h)) set('cat');
+    else if(h.includes('国内物料描述')) set('cnd');
+    else if(h.includes('国际物料描述')) set('intl');
+    else if(h==='english'||/(english|description|partname|designation)/.test(h)) set('en');
+    else if(CJK.test(h)&&/(名称|描述)/.test(h)) set('cn'); });
+  if(c.code===undefined){ const j=row.findIndex((v,i)=>{ const h=hn(v); return /sku/.test(h)&&i!==c.fg; }); if(j>=0) c.code=j; }
+  return c; }
+function findHeader(aoa){
+  let best=-1,bs=0;
+  for(let i=0;i<Math.min(aoa.length,15);i++){ const c=detectCols(aoa[i]||[]); const sc=Object.keys(c).length+(c.code!==undefined?3:0)+(c.sap!==undefined?2:0)+(c.img!==undefined?1:0);
+    if(sc>bs){ bs=sc; best=i; } }
+  return bs>=3?best:-1; }
+
+let ITEMS=[], GROUPS=[], BLOBS=[], CUR={name:'',zip:null}, GLOBAL=false;
+const GLOBAL_URL='Tineco/data/Global spare parts list-EU-update.xlsx', GLOBAL_NAME='Global spare parts list-EU-update.xlsx';
+let GDATA=null, GDEV=[], GDATE='';
+/* ---------- catalogue global EU : photos = liens « PICTURE LINK » ---------- */
+function parseGlobal(buf){
+  const wb=XLSX.read(buf,{type:'array',cellDates:true});
+  const ws=wb.Sheets['EU SP list']||wb.Sheets[wb.SheetNames.find(n=>/EU\s*SP/i.test(n))||wb.SheetNames[1]];
+  if(!ws) throw new Error('Feuille « EU SP list » introuvable dans le fichier global.');
+  const a=XLSX.utils.sheet_to_json(ws,{header:1,defval:'',raw:true});
+  const H=a[0].map(x=>String(x).toLowerCase().replace(/\s+/g,' '));
+  const ix=(...k)=>H.findIndex(h=>k.every(x=>h.includes(x)));
+  const C={date:ix('update time'),fg:ix('fg sku'),series:H.findIndex(h=>h.includes('系列型号')),country:ix('country'),name:ix('fg name'),color:ix('color'),status:ix('大货状态'),
+    sp:ix('sp sku'),sub:ix('substitute'),old:ix('old sap'),sap:ix('新sap')>=0?ix('新sap'):H.findIndex(h=>h.includes('sap')&&!h.includes('old')&&!h.includes('老')),des:ix('sp des'),pic:ix('picture'),note:ix('note'),cn:ix('中文描述')};
+  const t=v=>v==null?'':String(v).trim(), z=v=>{ v=t(v); return v==='0'?'':v; };
+  const items=[]; let dmax=0;
+  for(let i=1;i<a.length;i++){ const r=a[i]; const sp=t(r[C.sp]), fg=t(r[C.fg]); if(!sp&&!fg) continue;
+    if(r[C.date] instanceof Date&&+r[C.date]>dmax) dmax=+r[C.date];
+    let cn=t(r[C.cn]).replace(/^SP;[^;]*;/,''); const pic=t(r[C.pic]);
+    const o={code:sp,sap:z(r[C.sap])||z(r[C.old]),old:z(r[C.sap])?z(r[C.old]):'',en:t(r[C.des]).replace(/\s+/g,' '),cn,origin:'',cat:'',fg,fgn:t(r[C.name]),model:t(r[C.series]),
+      country:t(r[C.country]),color:t(r[C.color]),status:t(r[C.status]),sub:z(r[C.sub]),note:t(r[C.note]),sheet:'EU SP list',src:/^https?:\/\//i.test(pic)?pic:null};
+    o.fr=translateCN(o.cn); items.push(o); }
+  if(!items.length) throw new Error('Aucune pièce lue dans « EU SP list ».');
+  GDATE=dmax?new Date(dmax).toLocaleDateString('fr-FR'):'';
+  const dm=new Map(); for(const it of items){ const k=[it.fg,it.fgn,it.model].join('|'); if(!dm.has(k)) dm.set(k,{k,fg:it.fg,fgn:it.fgn,model:it.model,country:it.country,color:it.color,status:it.status,n:0,ph:0}); const d=dm.get(k); d.n++; if(it.src) d.ph++; }
+  GDEV=[...dm.values()].sort((x,y)=>x.fgn.localeCompare(y.fgn,'fr',{numeric:true})||x.fg.localeCompare(y.fg));
+  GDEV.forEach(d=>d.h=sn([d.fg,d.fgn,d.model,d.country,d.color].join(' ')));
+  GDATA=items; return items; }
+async function ensureGlobal(buf){
+  if(GDATA) return;
+  await libs();
+  if(!buf){ const r=await fetch(GLOBAL_URL+'?t='+Date.now(),{cache:'no-store'}); if(!r.ok) throw new Error('HTTP '+r.status); buf=await r.arrayBuffer(); }
+  parseGlobal(buf); }
+function renderGlobalList(){
+  const tk=sn($('gq').value).split(/\s+/).filter(Boolean);
+  const l=GDEV.filter(d=>tk.every(t=>d.h.includes(t)));
+  $('glst').innerHTML=l.slice(0,60).map(d=>'<div class="it"><div class="ico fg">FG</div><div class="inf"><div class="fn">'+esc(d.fgn||'(sans nom)')+'</div><div class="pa">'+esc([d.fg,d.model,d.country,d.color,d.status].filter(Boolean).join(' · '))+' — '+d.n+' pièces, 📷 '+d.ph+'</div></div>'+
+    '<button class="btn pri" data-fg="'+esc(d.k)+'">Voir les pièces</button></div>').join('')+(l.length>60?'<div class="muted" style="padding:8px">… '+(l.length-60)+' autres appareils : précisez la recherche.</div>':'')||'<div class="muted" style="padding:10px">Aucun appareil ne correspond.</div>'; }
+function openGlobal(opt){
+  opt=opt||{};
+  GLOBAL=true; ITEMS=GDATA; GROUPS=GDEV.map(d=>({k:d.k,fg:d.fg,fgn:d.fgn,model:d.model,n:d.n}));
+  BLOBS.forEach(u=>URL.revokeObjectURL(u)); BLOBS=[];
+  openViewer(GLOBAL_NAME,1,0,ITEMS);
+  $('dTitle').textContent='Catalogue pièces détachées EU';
+  $('dSub').textContent=GLOBAL_NAME+(GDATE?' · mise à jour '+GDATE:'');
+  if(opt.k){ const g=GDEV.find(d=>d.k===opt.k); if(g){ V.g=g.k; $('gsel').value=g.k; $('dTitle').textContent=(g.fgn||'Appareil')+' — '+g.fg; $('dRefs').innerHTML='<span>'+esc(g.model)+'</span><span>'+esc(g.country)+' · '+esc(g.color)+'</span><span>'+g.n+' pièces</span><span>📷 '+g.ph+' photos</span>'; } }
+  if(opt.q){ V.q=opt.q; $('pq').value=opt.q; }
+  render(); }
+$('gq').addEventListener('input',renderGlobalList);
+$('glst').addEventListener('click',e=>{ const b=e.target.closest('[data-fg]'); if(b) openGlobal({k:b.dataset.fg}); });
+$('gall').onclick=()=>openGlobal();
+async function initGlobal(){
+  $('gmeta').textContent='— chargement…';
+  try{ await ensureGlobal(); $('gmeta').textContent='— '+GDEV.length+' appareils · '+GDATA.length+' lignes'+(GDATE?' · mise à jour '+GDATE:'');
+    renderGlobalList();
+    const P=new URLSearchParams(location.search), fg=P.get('fg'), ref=P.get('ref'), q=P.get('q');
+    if(fg||ref||q){
+      let d=null; if(fg) d=GDEV.find(x=>x.fg.toLowerCase()===fg.toLowerCase());
+      else if(ref){ const r=sn(ref); const m=GDEV.filter(x=>sn(x.model).startsWith(r)||sn(x.model)===r||sn(x.fgn)===r); if(m.length===1) d=m[0]; else { $('gq').value=ref; renderGlobalList(); } }
+      if(d) openGlobal({k:d.k}); else if(q) openGlobal({q}); } }
+  catch(e){ $('gmeta').textContent=''; $('glst').innerHTML='<div class="warn">Catalogue global non chargé ('+esc(e.message||e)+'). Si la page est ouverte en local, glissez le fichier <b>Global spare parts list-EU-update.xlsx</b> dans le cadre ci-dessous.</div>'; } }
+async function loadBook(buf,fileName){
+  await libs();
+  $('dTitle').textContent='Lecture du fichier…';
+  const wb=XLSX.read(buf,{type:'array',cellFormula:true});
+  const zip=await JSZip.loadAsync(buf);
+  const im=await sheetImages(zip);
+  const items=[]; let usedSheets=0;
+  for(const sn_ of wb.SheetNames){
+    const ws=wb.Sheets[sn_]; if(!ws||!ws['!ref']) continue;
+    const rng=XLSX.utils.decode_range(ws['!ref']);
+    const aoa=XLSX.utils.sheet_to_json(ws,{header:1,defval:'',raw:false});
+    const hr=findHeader(aoa); if(hr<0) continue;
+    const C=detectCols(aoa[hr]); usedSheets++;
+    let last={fg:'',fgn:'',model:''};
+    for(let i=hr+1;i<aoa.length;i++){
+      const r=aoa[i]||[]; const g=k=>C[k]!==undefined?String(r[C[k]]==null?'':r[C[k]]).trim():'';
+      for(const k of ['fg','fgn','model']){ if(g(k)) last[k]=g(k); }
+      const code=g('code'), sap=g('sap'); let en=g('en'); let cn=g('cn'), origin='';
+      const cnd=g('cnd'); if(cnd){ const seg=cnd.split(';'); if(seg.length>=3){ origin=seg[1].trim(); if(!cn) cn=seg.slice(2).join(';').trim(); } else if(!cn&&CJK.test(cnd)) cn=cnd; }
+      if(!cn){ for(let j=0;j<r.length;j++){ if(j!==C.img&&CJK.test(String(r[j]))&&String(r[j]).length<40&&!String(r[j]).includes(';')){ cn=String(r[j]).trim(); break; } } }
+      if(!code&&!sap&&!en&&!cn) continue;
+      /* photo : ancre de dessin sur la ligne, sinon DISPIMG, sinon URL */
+      const row0=rng.s.r+i; let path=null,url=null;
+      const rowImgs=(im.rows[sn_]||{})[row0]; if(rowImgs&&rowImgs.length) path=rowImgs[0];
+      if(!path&&C.img!==undefined){
+        const cell=ws[XLSX.utils.encode_cell({r:row0,c:rng.s.c+C.img})]||ws[XLSX.utils.encode_cell({r:row0,c:C.img})];
+        const txt=String(cell?(cell.f||cell.v||''):''); const m=txt.match(/DISPIMG\(\s*"([^"]+)"/i);
+        if(m&&im.disp[m[1]]) path=im.disp[m[1]]; else if(/^https?:\/\//i.test(txt.trim())) url=txt.trim(); }
+      items.push({code,sap,en,cn,origin,cat:g('cat'),fg:last.fg,fgn:last.fgn,model:last.model,sheet:sn_,path,url,src:null}); } }
+  if(!items.length) throw new Error('Aucune pièce reconnue : colonnes SKU / SAP / désignation introuvables dans ce fichier.');
+  /* photos -> blobs */
+  BLOBS.forEach(u=>URL.revokeObjectURL(u)); BLOBS=[];
+  const paths=[...new Set(items.map(x=>x.path).filter(Boolean))], map={};
+  for(let i=0;i<paths.length;i+=8){
+    $('dTitle').textContent='Extraction des photos… '+Math.min(i+8,paths.length)+' / '+paths.length;
+    await Promise.all(paths.slice(i,i+8).map(async p=>{ const f=zip.file(p); if(!f) return; const ext=p.split('.').pop().toLowerCase(); if(!MIME[ext]) return;
+      const b=await f.async('blob'); const u=URL.createObjectURL(new Blob([b],{type:MIME[ext]})); BLOBS.push(u); map[p]=u; })); }
+  for(const it of items){ it.src = it.path ? (map[it.path]||null) : it.url; it.fr = translateCN(it.cn); }
+  GLOBAL=false; ITEMS=items; CUR={name:fileName,zip};
+  const gm=new Map(); for(const it of items){ const k=[it.fg,it.fgn,it.model].join('|'); if(!gm.has(k)) gm.set(k,{k,fg:it.fg,fgn:it.fgn,model:it.model,n:0}); gm.get(k).n++; }
+  GROUPS=[...gm.values()];
+  openViewer(fileName,usedSheets,paths.length,items); }
+
+/* ---------- affichage ---------- */
+const V={q:'',g:'',c:'',img:false,list:[]};
+function openViewer(fileName,nSheets,nImg,items){
+  const withImg=items.filter(i=>i.src).length;
+  const g0=GROUPS[0];
+  $('dTitle').textContent = GROUPS.length===1 ? ((g0.fgn||fileName.replace(/\.xlsx?$/i,''))+(g0.fg?' — '+g0.fg:'')) : fileName.replace(/\.xlsx?$/i,'');
+  $('dSub').textContent = fileName;
+  $('dRefs').innerHTML = (GROUPS.length===1?[g0.model&&'<span>'+esc(g0.model)+'</span>']:['<span>'+GROUPS.length+' appareils</span>']).filter(Boolean).join('')+
+    '<span>'+items.length+' pièces</span><span>📷 '+withImg+' photo'+(withImg>1?'s':'')+'</span>';
+  const gs=$('gsel'); if(GROUPS.length>1){ gs.innerHTML='<option value="">Tous les appareils ('+items.length+')</option>'+GROUPS.map(g=>'<option value="'+esc(g.k)+'">'+esc([g.fgn,g.fg,g.model].filter(Boolean).join(' · ')||'(sans nom)')+' ('+g.n+')</option>').join(''); gs.classList.remove('hide'); } else gs.classList.add('hide');
+  const cats=[...new Set(items.map(i=>i.cat).filter(Boolean))].sort();
+  const cs=$('csel'); if(cats.length>1){ cs.innerHTML='<option value="">Toutes les catégories</option>'+cats.map(c=>'<option>'+esc(c)+'</option>').join(''); cs.classList.remove('hide'); } else cs.classList.add('hide');
+  V.q='';V.g='';V.c='';V.img=false;V.lim=240; $('pq').value=''; $('onlyImg').checked=false; gs.value=''; cs.value='';
+  $('home').classList.add('hide'); $('viewer').classList.remove('hide'); window.scrollTo(0,0); render(); }
+function hl(t){ const tk=V.q.trim().split(/\s+/).filter(Boolean).map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')); let s=String(t==null?'':t);
+  if(tk.length){ s=s.replace(new RegExp('('+tk.join('|')+')','gi'),'\u0001$1\u0002'); } return esc(s).replace(/\u0001/g,'<mark>').replace(/\u0002/g,'</mark>'); }
+function render(){
+  const tk=sn(V.q).split(/\s+/).filter(Boolean);
+  V.all=ITEMS.filter(it=>{
+    if(V.g && [it.fg,it.fgn,it.model].join('|')!==V.g) return false;
+    if(V.c && it.cat!==V.c) return false;
+    if(V.img && !it.src) return false;
+    if(!tk.length) return true;
+    const h=sn([it.code,it.sap,it.en,it.cn,it.fr,it.cat,it.origin].join(' '));
+    return tk.every(t=>h.includes(t)); });
+  if(!V.lim) V.lim=240;
+  V.list=V.all.slice(0,V.lim);
+  $('more').classList.toggle('hide',V.all.length<=V.lim);
+  $('more').textContent='Afficher plus de pièces ('+(V.all.length-V.lim)+' restantes)';
+  $('pgrid').innerHTML = V.list.length ? V.list.map((p,i)=>`
+    <div class="cardp">
+      <div class="imgwrap" ${p.src?`data-i="${i}" title="Agrandir"`:''}>${p.src?`<img src="${esc(p.src)}" alt="${esc(p.en)}" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<span class=&quot;noimg&quot;>Image indisponible</span>')"><span class="zm">🔍</span>`:'<span class="noimg">Pas de photo</span>'}</div>
+      <div class="pbody">
+        <div class="desig">${hl(p.en||p.fr||p.cn||'—')}${(p.cn&&(p.en||p.fr!==p.cn))?`<small>${hl(p.fr||p.cn)}</small>`:''}</div>
+        ${p.cat?`<span class="cat">${hl(p.cat)}</span>`:''}
+        <div class="refline"><span class="lbl">Réf. pièce</span><span class="code">${hl(p.code||'—')}</span></div>
+        <div class="refline"><span class="lbl">Réf. SAV</span><span class="spare">${hl(p.sap||'—')}</span></div>
+        ${p.old?`<div class="refline"><span class="lbl">Ancien SAV</span><span class="spare">${hl(p.old)}</span></div>`:''}
+        ${p.origin?`<div class="refline"><span class="lbl">Origine</span><span>${hl(p.origin)}</span></div>`:''}
+        ${p.sub?`<div class="sub">↻ Remplace / substitut : ${hl(p.sub)}</div>`:''}
+        ${(!V.g&&p.fgn&&GLOBAL)?`<div class="fgt">${hl(p.fgn)} · ${hl(p.fg)}</div>`:''}
+      </div>
+    </div>`).join('') : '<div class="empty">Aucune pièce ne correspond.</div>';
+  $('pcount').textContent=V.all.length+' pièce'+(V.all.length>1?'s':''); }
+
+/* ---------- lightbox ---------- */
+let LB=-1;
+function lbShow(i){ const imgs=V.list.map((p,k)=>[p,k]).filter(x=>x[0].src); const pos=imgs.findIndex(x=>x[1]===i); if(pos<0) return;
+  LB=i; const p=V.list[i]; const L=$('lb'); L.querySelector('img').src=p.src;
+  L.querySelector('.cap').innerHTML=esc(p.en||p.fr||p.cn)+(p.fr&&p.en?' — '+esc(p.fr):'')+'<small>'+esc([p.code,p.sap].filter(Boolean).join(' · '))+' · '+(pos+1)+' / '+imgs.length+'</small>'; L.classList.add('on'); }
+function lbStep(d){ const idx=V.list.map((p,k)=>p.src?k:-1).filter(k=>k>=0); if(!idx.length) return; let pos=idx.indexOf(LB); pos=(pos+d+idx.length)%idx.length; lbShow(idx[pos]); }
+function lbClose(){ $('lb').classList.remove('on'); LB=-1; }
+$('lb').addEventListener('click',e=>{ if(e.target.id==='lb'||e.target.classList.contains('x')) lbClose(); else if(e.target.classList.contains('pv')) lbStep(-1); else if(e.target.classList.contains('nx')) lbStep(1); });
+document.addEventListener('keydown',e=>{ if(LB<0) return; if(e.key==='Escape') lbClose(); else if(e.key==='ArrowLeft') lbStep(-1); else if(e.key==='ArrowRight') lbStep(1); });
+$('pgrid').addEventListener('click',e=>{ const w=e.target.closest('.imgwrap[data-i]'); if(w) lbShow(+w.dataset.i); });
+
+/* ---------- événements ---------- */
+let tm; $('pq').addEventListener('input',e=>{ clearTimeout(tm); tm=setTimeout(()=>{ V.q=e.target.value; V.lim=240; render(); },120); });
+$('gsel').onchange=e=>{ V.g=e.target.value; V.lim=240; render(); };
+$('csel').onchange=e=>{ V.c=e.target.value; V.lim=240; render(); };
+$('onlyImg').onchange=e=>{ V.img=e.target.checked; V.lim=240; render(); };
+$('more').onclick=()=>{ V.lim+=480; render(); };
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{ document.querySelectorAll('.seg button').forEach(x=>x.classList.toggle('on',x===b));
+  const s=b.dataset.s; document.documentElement.style.setProperty('--imgh',{S:'120px',M:'168px',L:'270px'}[s]); document.documentElement.style.setProperty('--cw',{S:'180px',M:'228px',L:'330px'}[s]); });
+$('back').onclick=()=>{ if(!_P.has('accueil')){ if(document.referrer&&/tineco\.html/.test(document.referrer)) history.back(); else location.href='tineco.html'; return; } $('viewer').classList.add('hide'); $('home').classList.remove('hide'); history.replaceState(null,'',location.pathname); window.scrollTo(0,0); };
+window.addEventListener('scroll',()=>$('topBtn').classList.toggle('show',window.scrollY>400));
+$('topBtn').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+
+/* ---------- accueil : fichiers ---------- */
+async function importFile(f){ try{ $('warn').innerHTML='';
+    if(/global.*spare|EU.?SP/i.test(f.name)){ GDATA=null; await ensureGlobal(await f.arrayBuffer()); $('gmeta').textContent='— '+GDEV.length+' appareils (import manuel)'; renderGlobalList(); openGlobal(); return; }
+    await loadBook(await f.arrayBuffer(),f.name); } catch(e){ showWarn('⚠️ '+esc(e.message||e)); $('home').classList.remove('hide'); $('viewer').classList.add('hide'); } }
+function showWarn(h){ $('warn').innerHTML='<div class="warn">'+h+'</div>'; }
+const drop=$('drop');
+drop.onclick=()=>$('fileInput').click();
+$('fileInput').onchange=e=>{ if(e.target.files[0]) importFile(e.target.files[0]); e.target.value=''; };
+['dragover','dragenter'].forEach(ev=>drop.addEventListener(ev,e=>{ e.preventDefault(); drop.classList.add('over'); }));
+['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{ e.preventDefault(); drop.classList.remove('over'); }));
+drop.addEventListener('drop',e=>{ if(e.dataTransfer.files[0]) importFile(e.dataTransfer.files[0]); });
+document.addEventListener('dragover',e=>e.preventDefault()); document.addEventListener('drop',e=>{ if(!drop.contains(e.target)){ e.preventDefault(); if(e.dataTransfer.files[0]) importFile(e.dataTransfer.files[0]); } });
+
+let SAVLIST=[];
+function spLink(f){ return SP+encPath(f.p+'/'+f.n); }
+async function openByName(name){
+  const f=SAVLIST.find(x=>x.n.toLowerCase()===name.toLowerCase());
+  try{
+    $('warn').innerHTML=''; await libs();
+    const r=await fetch(SPARE_DIR+encodeURIComponent(name)+'?t='+Date.now(),{cache:'no-store'});
+    if(!r.ok) throw new Error('absent');
+    await loadBook(await r.arrayBuffer(),name);
+  }catch(e){
+    if(e.message!=='absent' && !/Failed to fetch|NetworkError/i.test(e.message||'')){ showWarn('⚠️ '+esc(e.message||e)); }
+    else showWarn('Le fichier <b>'+esc(name)+'</b> n\'est pas encore dans le hub (<code>'+SPARE_DIR+'</code>).<br>'+
+      (f?'Téléchargez-le depuis <a href="'+esc(spLink(f))+'" target="_blank" rel="noopener">SharePoint SAVVY</a>, puis glissez-le dans le cadre ci-dessus — ou copiez-le dans le dossier du hub pour qu\'il s\'ouvre directement.':'Glissez-le dans le cadre ci-dessus, ou copiez-le dans ce dossier du hub.'));
+    $('home').classList.remove('hide'); $('viewer').classList.add('hide'); window.scrollTo(0,0); } }
+function renderList(){
+  const tk=sn($('fq').value).split(/\s+/).filter(Boolean);
+  const l=SAVLIST.filter(f=>{ const h=sn(f.n+' '+f.rel); return tk.every(t=>h.includes(t)); });
+  $('lh').textContent = SAVLIST.length ? 'Spare Part List disponibles dans SAVVY — '+l.length+' fichier'+(l.length>1?'s':'') : '';
+  $('lst').innerHTML=l.map(f=>'<div class="it"><div class="ico">XLS</div><div class="inf"><div class="fn">'+esc(f.n)+'</div><div class="pa">'+esc(f.rel.replace(/\//g,' › '))+'</div></div>'+
+    '<button class="btn pri" data-open="'+esc(f.n)+'">Ouvrir le BOM</button><a class="btn" href="'+esc(spLink(f))+'" target="_blank" rel="noopener" title="Ouvrir dans SharePoint SAVVY">SharePoint ↗</a></div>').join('')||(SAVLIST.length?'<div class="muted" style="padding:10px">Aucun fichier ne correspond.</div>':''); }
+$('fq').addEventListener('input',renderList);
+$('lst').addEventListener('click',e=>{ const b=e.target.closest('[data-open]'); if(b) openByName(b.dataset.open); });
+async function init(){
+  try{ await libs(); const r=await fetch(SAV_URL+'?t='+Date.now(),{cache:'no-store'}); if(!r.ok) throw 0;
+    const wb=XLSX.read(await r.arrayBuffer(),{type:'array'}); const a=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,defval:''});
+    const H=a[0].map(x=>String(x).toLowerCase()); const iN=H.indexOf('nom'), iP=H.findIndex(c=>c.includes('chemin')), iT=H.findIndex(c=>c.includes('type'));
+    for(const r2 of a.slice(1)){ const n=String(r2[iN]||'').trim(), p=String(r2[iP]||'').trim();
+      if(!n||n.startsWith('~$')||String(r2[iT]).toLowerCase().startsWith('dossier')) continue;
+      if(!/\.xlsx?$/i.test(n)||!/spare\s*part/i.test(p+' '+n)) continue;
+      const k=p.indexOf(ROOT); SAVLIST.push({n,p,rel:(k>=0?p.slice(k+ROOT.length):p).replace(/^\/+|\/+$/g,'')}); }
+    SAVLIST.sort((a,b)=>a.n.localeCompare(b.n,'fr',{numeric:true}));
+  }catch(e){ showWarn('La liste des fichiers SAVVY n\'a pas pu être chargée (<code>Tineco/data/Tineco_sharepoint_savvy.xlsx</code>). Vous pouvez quand même glisser un fichier Spare Part List dans le cadre ci-dessous.'); }
+  renderList();
+  const f=new URLSearchParams(location.search).get('file'); if(f) openByName(f); }
+/* Point de recherche unique : l'accueil est tineco.html. Cette page n'est plus qu'un lecteur (?fg= ?ref= ?q= ?file=) ; ?accueil=1 réaffiche l'ancien accueil. */
+const _P=new URLSearchParams(location.search);
+if(!['fg','ref','q','file','accueil'].some(k=>_P.has(k))) location.replace('tineco.html');
+else { init(); initGlobal(); }
+</script>
+</body>
+</html>

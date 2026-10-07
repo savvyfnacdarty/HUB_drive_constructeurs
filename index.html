@@ -141,6 +141,9 @@
     transition:transform .15s ease;
   }
   .tile .ico:hover{transform:translateY(-2px);}
+  .tile .fns{display:flex;flex-direction:column;gap:6px;width:100%;margin-top:4px;}
+  .tile .fn{display:block;background:rgba(255,255,255,.92);color:var(--marque,#00327D);border:1px solid var(--marque,#00327D);border-radius:8px;padding:6px 10px;font-size:.78rem;font-weight:600;text-align:center;cursor:pointer;line-height:1.25;transition:background .15s,color .15s;}
+  .tile .fn:hover{background:var(--marque,#00327D);color:#fff;}
   .tile.disabled{
     opacity:.75;
   }
@@ -218,9 +221,15 @@
         : `<img src="${m.logo}" alt="${m.nom}" onerror="this.style.display='none'">`}
       <span>${m.nom}</span>
       ${m.icones ? `<div class="icones">${m.icones.map(i => `<div class="ico" title="${i.t}">${i.e}</div>`).join("")}</div>` : ""}
+      ${m.fns ? `<div class="fns">${m.fns.map(f => `<span class="fn" role="link" tabindex="0" data-u="${f.u}">${f.t}</span>`).join("")}</div>` : ""}
       ${actif ? "" : '<span class="badge">Lien à venir</span>'}
     `;
     if (!actif) a.addEventListener("click", e => e.preventDefault());
+    a.querySelectorAll(".fn").forEach(b => {
+      const go = e => { e.preventDefault(); e.stopPropagation(); location.href = b.dataset.u; };
+      b.addEventListener("click", go);
+      b.addEventListener("keydown", e => { if (e.key === "Enter") go(e); });
+    });
     grid.appendChild(a);
   });
 </script>
