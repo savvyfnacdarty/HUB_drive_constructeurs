@@ -1,0 +1,3074 @@
+{
+ "meta": {
+  "source": "SAVVY – « TINECO – Documentation technique et correspondance entre références commerciales et techniques » (Tableau de documentation)",
+  "articleUpdated": "2026-05-19",
+  "extracted": "2026-10-07",
+  "count": 143,
+  "note": "Rechercher par référence technique (plaque signalétique) : plusieurs documentations peuvent exister pour une même référence commerciale."
+ },
+ "rows": [
+  {
+   "id": 1,
+   "commercial": "FLOOR ONE i5 STRETCH",
+   "techRefs": [
+    "FW440300DE",
+    "FW440100US",
+    "FW440600AU",
+    "FW440800UK"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2376",
+   "manual": {
+    "label": "Floor One S7 & i5 Stretch Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20One%20S7%20%26%20i5%20Stretch%20Series%20Repair%20Manual.docx?d=w16a90753c2ca403ea85e012af02535da&csf=1&web=1&e=uqhXfX",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor One S7 & i5 Stretch Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "FLOOR ONE i5 STRETCH-CL2376H-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/FLOOR%20ONE%20i5%20STRETCH-CL2376H-01.xlsx?d=wdded4335509e4b88b40a7b0340fb1daf&csf=1&web=1&e=F8jHsH",
+     "path": "Tineco/Floor washer/3.Spare Part List/FLOOR ONE i5 STRETCH-CL2376H-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one i5 stretch fw440300de fw440100us fw440600au fw440800uk cl2376 floor one s7 i5 stretch series repair manual floor one i5 stretch cl2376h 01 xlsx"
+  },
+  {
+   "id": 2,
+   "commercial": "PURE ONE S15 Essentials",
+   "techRefs": [
+    "VS151900EU"
+   ],
+   "family": "Stick vacuum",
+   "factoryModel": "",
+   "manual": null,
+   "parts": [
+    {
+     "label": "Liste pièces détachées",
+     "url": "https://groupefnac.sharepoint.com/:b:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Stick%20vacuum/Stick%20Vacuum%20%20Spare%20Parts%20List/vs151900eu.pdf?csf=1&web=1&e=cFZLWt",
+     "path": "Tineco/Stick vacuum/Stick Vacuum  Spare Parts List/vs151900eu.pdf",
+     "type": "pdf"
+    }
+   ],
+   "search": "pure one s15 essentials vs151900eu liste pieces detachees"
+  },
+  {
+   "id": 3,
+   "commercial": "Floor one i5 stretch complete",
+   "techRefs": [
+    "FW441100DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S7 & i5 Stretch Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20One%20S7%20%26%20i5%20Stretch%20Series%20Repair%20Manual.docx?d=w16a90753c2ca403ea85e012af02535da&csf=1&web=1&e=uqhXfX",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor One S7 & i5 Stretch Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one i5 stretch complete fw441100de floor one s7 i5 stretch series repair manual"
+  },
+  {
+   "id": 4,
+   "commercial": "Floor One S6 // CL2223E-01",
+   "techRefs": [
+    "FW110700DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2223",
+   "manual": {
+    "label": "Manuel de réparation",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=IPySYg",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Liste pièces détachées",
+     "url": "https://groupefnac.sharepoint.com/:b:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/FW110700DE.pdf?csf=1&web=1&e=IbT0LD",
+     "path": "Tineco/Floor washer/3.Spare Part List/FW110700DE.pdf",
+     "type": "pdf"
+    }
+   ],
+   "search": "floor one s6 cl2223e 01 fw110700de cl2223 manuel de reparation liste pieces detachees"
+  },
+  {
+   "id": 5,
+   "commercial": "FLOOR ONE i5 STRETCH PLUS",
+   "techRefs": [
+    "FW441000VN",
+    "FW441500RU",
+    "FW440400DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2376",
+   "manual": {
+    "label": "Floor One S7 & i5 Stretch Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20One%20S7%20%26%20i5%20Stretch%20Series%20Repair%20Manual.docx?d=w16a90753c2ca403ea85e012af02535da&csf=1&web=1&e=uqhXfX",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor One S7 & i5 Stretch Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "FLOOR ONE i5 STRETCH PLUS-CL2376H-02.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/FLOOR%20ONE%20i5%20STRETCH%20PLUS-CL2376H-02.xlsx?d=w06600f8577c54661ac991db257714332&csf=1&web=1&e=Clb39k",
+     "path": "Tineco/Floor washer/3.Spare Part List/FLOOR ONE i5 STRETCH PLUS-CL2376H-02.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one i5 stretch plus fw441000vn fw441500ru fw440400de cl2376 floor one s7 i5 stretch series repair manual floor one i5 stretch plus cl2376h 02 xlsx"
+  },
+  {
+   "id": 6,
+   "commercial": "Floor One i6 Stretch",
+   "techRefs": [
+    "FW430600UK",
+    "FW431000AU",
+    "FW431300JP",
+    "FW430300DE",
+    "FW430100US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2458",
+   "manual": {
+    "label": "Floor One Stretch S6 Series &i6 Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20Stretch%20S6%20Series%20Repair%20Manual.docx?d=w580a77295577416abad3a3d8b6302666&csf=1&web=1&e=PqUJSO",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One Stretch S6 Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Floor One i6 Stretch-CL2458I-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Floor%20One%20i6%20Stretch-CL2458I-01.xlsx?d=w1471e0c4a5194d15ac5eb2e9041251c2&csf=1&web=1&e=t825ZJ",
+     "path": "Tineco/Floor washer/3.Spare Part List/Floor One i6 Stretch-CL2458I-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one i6 stretch fw430600uk fw431000au fw431300jp fw430300de fw430100us cl2458 floor one stretch s6 series i6 stretch repair manual floor one i6 stretch cl2458i 01 xlsx"
+  },
+  {
+   "id": 7,
+   "commercial": "Floor one i6 stretch complete",
+   "techRefs": [
+    "FW431100DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One Stretch S6 Series &i6 Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20Stretch%20S6%20Series%20Repair%20Manual.docx?d=w580a77295577416abad3a3d8b6302666&csf=1&web=1&e=PqUJSO",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One Stretch S6 Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one i6 stretch complete fw431100de floor one stretch s6 series i6 stretch repair manual"
+  },
+  {
+   "id": 8,
+   "commercial": "Floor One i6 Stretch Plus",
+   "techRefs": [
+    "FW430800VN",
+    "FW430400DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2458",
+   "manual": {
+    "label": "Floor One Stretch S6 Series &i6 Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20Stretch%20S6%20Series%20Repair%20Manual.docx?d=w580a77295577416abad3a3d8b6302666&csf=1&web=1&e=PqUJSO",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One Stretch S6 Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Floor One i6 Stretch Plus-CL2458I-02.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Floor%20One%20i6%20Stretch%20Plus-CL2458I-02.xlsx?d=wb6115b88b6254afda88d31bbf81a4633&csf=1&web=1&e=UzNeOy",
+     "path": "Tineco/Floor washer/3.Spare Part List/Floor One i6 Stretch Plus-CL2458I-02.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one i6 stretch plus fw430800vn fw430400de cl2458 floor one stretch s6 series i6 stretch repair manual floor one i6 stretch plus cl2458i 02 xlsx"
+  },
+  {
+   "id": 9,
+   "commercial": "Floor One S2",
+   "techRefs": [
+    "FW007300US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "iFLOOR 3 BREEZE Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/iFLOOR%203%20BREEZE%20Series%20Repair%20Manual%20240816.docx?d=w2ca3ff8772d943eeb99d8bfc6f766162&csf=1&web=1&e=FFxKUi",
+    "path": "Tineco/Floor washer/1.Repair Manual/iFLOOR 3 BREEZE Series Repair Manual 240816.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s2 fw007300us ifloor 3 breeze series repair manual"
+  },
+  {
+   "id": 10,
+   "commercial": "Floor One S2 Plus",
+   "techRefs": [
+    "FW008000CA",
+    "FW007800US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "iFLOOR 3 BREEZE Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/iFLOOR%203%20BREEZE%20Series%20Repair%20Manual%20240816.docx?d=w2ca3ff8772d943eeb99d8bfc6f766162&csf=1&web=1&e=FFxKUi",
+    "path": "Tineco/Floor washer/1.Repair Manual/iFLOOR 3 BREEZE Series Repair Manual 240816.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s2 plus fw008000ca fw007800us ifloor 3 breeze series repair manual"
+  },
+  {
+   "id": 11,
+   "commercial": "Floor One S3",
+   "techRefs": [
+    "FW050100US",
+    "FW050100EU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL1879",
+   "manual": {
+    "label": "Floor One S3 Series repair manual V1.1",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/FLOOR%20ONE%20S3/Repair%20Guide/Floor%20One%20S3%20Series%20repair%20manual%20V1.1.docx?d=w1cc7efb41bd64d9d8508f5bec9d509b8&csf=1&web=1&e=e7deAp",
+    "path": "Tineco/Floor washer/FLOOR ONE S3/Repair Guide/Floor One S3 Series repair manual V1.1.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "S3(CL1879-01).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/S3(CL1879-01).xlsx?d=wc8cb562871914f9a8b3bcd271ee65f13&csf=1&web=1&e=hfjvww",
+     "path": "Tineco/Floor washer/3.Spare Part List/S3(CL1879-01).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s3 fw050100us fw050100eu cl1879 floor one s3 series repair manual v1 1 s3 cl1879 01 xlsx"
+  },
+  {
+   "id": 12,
+   "commercial": "Floor One S3 Breeze",
+   "techRefs": [
+    "FW051600EU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S3 Series repair manual V1.1",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/FLOOR%20ONE%20S3/Repair%20Guide/Floor%20One%20S3%20Series%20repair%20manual%20V1.1.docx?d=w1cc7efb41bd64d9d8508f5bec9d509b8&csf=1&web=1&e=e7deAp",
+    "path": "Tineco/Floor washer/FLOOR ONE S3/Repair Guide/Floor One S3 Series repair manual V1.1.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s3 breeze fw051600eu floor one s3 series repair manual v1 1"
+  },
+  {
+   "id": 13,
+   "commercial": "Floor One S3 Extreme",
+   "techRefs": [
+    "FW050600US",
+    "FW050700DE",
+    "FW052500US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL1879",
+   "manual": {
+    "label": "Floor One S3 Series repair manual V1.1",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/FLOOR%20ONE%20S3/Repair%20Guide/Floor%20One%20S3%20Series%20repair%20manual%20V1.1.docx?d=w1cc7efb41bd64d9d8508f5bec9d509b8&csf=1&web=1&e=e7deAp",
+    "path": "Tineco/Floor washer/FLOOR ONE S3/Repair Guide/Floor One S3 Series repair manual V1.1.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "S3 Extreme(CL1879-09).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/S3%20Extreme(CL1879-09).xlsx?d=w9d04eb210c8948ec916b03e34b0d386b&csf=1&web=1&e=8z2vwi",
+     "path": "Tineco/Floor washer/3.Spare Part List/S3 Extreme(CL1879-09).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s3 extreme fw050600us fw050700de fw052500us cl1879 floor one s3 series repair manual v1 1 s3 extreme cl1879 09 xlsx"
+  },
+  {
+   "id": 14,
+   "commercial": "Floor One S3 Pro",
+   "techRefs": [
+    "FW052400US",
+    "FW051800US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S3 Series repair manual V1.1",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/FLOOR%20ONE%20S3/Repair%20Guide/Floor%20One%20S3%20Series%20repair%20manual%20V1.1.docx?d=w1cc7efb41bd64d9d8508f5bec9d509b8&csf=1&web=1&e=e7deAp",
+    "path": "Tineco/Floor washer/FLOOR ONE S3/Repair Guide/Floor One S3 Series repair manual V1.1.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s3 pro fw052400us fw051800us floor one s3 series repair manual v1 1"
+  },
+  {
+   "id": 15,
+   "commercial": "Floor One S3 Ultra",
+   "techRefs": [
+    "FW051300CA"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S3 Series repair manual V1.1",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/FLOOR%20ONE%20S3/Repair%20Guide/Floor%20One%20S3%20Series%20repair%20manual%20V1.1.docx?d=w1cc7efb41bd64d9d8508f5bec9d509b8&csf=1&web=1&e=e7deAp",
+    "path": "Tineco/Floor washer/FLOOR ONE S3/Repair Guide/Floor One S3 Series repair manual V1.1.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s3 ultra fw051300ca floor one s3 series repair manual v1 1"
+  },
+  {
+   "id": 16,
+   "commercial": "Floor one S5",
+   "techRefs": [
+    "FW104700UK",
+    "FW130300DE",
+    "FW130200US",
+    "FW103000US",
+    "FW103400EU",
+    "FW131200AE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2371",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Floor One S5-CL2371A-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Floor%20One%20S5-CL2371A-01.xlsx?d=wfd5ef2e6fff14a63accdf82f363a4c2d&csf=1&web=1&e=f0g9qc",
+     "path": "Tineco/Floor washer/3.Spare Part List/Floor One S5-CL2371A-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s5 fw104700uk fw130300de fw130200us fw103000us fw103400eu fw131200ae cl2371 floor one s5 s6 ifloor 5 series repair manual floor one s5 cl2371a 01 xlsx"
+  },
+  {
+   "id": 17,
+   "commercial": "Floor One S5 Combo",
+   "techRefs": [
+    "FW151700RU",
+    "FW150100JP",
+    "FW150100ID",
+    "FW150100US",
+    "FW150900IN",
+    "FW150100MY",
+    "FW150100EU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2020",
+   "manual": {
+    "label": "Floor One S5 combo Series Repair Manual v1240724",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20combo%20Series%20Repair%20Manual%20v1240724.docx?d=w1610d1df7b6a4595a0e0a93a09e70c86&csf=1&web=1&e=Ebkzi3",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 combo Series Repair Manual v1240724.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Floor One S5 Combo (CL2020H-01).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Floor%20One%20S5%20Combo%20(CL2020H-01).xlsx?d=w5114867b77504eca9311ab115688db43&csf=1&web=1&e=3pENu2",
+     "path": "Tineco/Floor washer/3.Spare Part List/Floor One S5 Combo (CL2020H-01).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s5 combo fw151700ru fw150100jp fw150100id fw150100us fw150900in fw150100my fw150100eu cl2020 floor one s5 combo series repair manual v1240724 floor one s5 combo cl2020h 01 xlsx"
+  },
+  {
+   "id": 18,
+   "commercial": "Floor One S5 Combo Plus",
+   "techRefs": [
+    "FW150300DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2020",
+   "manual": {
+    "label": "Floor One S5 combo Series Repair Manual v1240724",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20combo%20Series%20Repair%20Manual%20v1240724.docx?d=w1610d1df7b6a4595a0e0a93a09e70c86&csf=1&web=1&e=Ebkzi3",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 combo Series Repair Manual v1240724.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "S5 Combo Plus(CL2020H-06).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/S5%20Combo%20Plus(CL2020H-06).xlsx?d=wab803eab31f24ac082ed54aa5ee984dd&csf=1&web=1&e=mfJoNJ",
+     "path": "Tineco/Floor washer/3.Spare Part List/S5 Combo Plus(CL2020H-06).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s5 combo plus fw150300de cl2020 floor one s5 combo series repair manual v1240724 s5 combo plus cl2020h 06 xlsx"
+  },
+  {
+   "id": 19,
+   "commercial": "Floor One S5 Combo Power KIT",
+   "techRefs": [
+    "FW150400DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 combo Series Repair Manual v1240724",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20combo%20Series%20Repair%20Manual%20v1240724.docx?d=w1610d1df7b6a4595a0e0a93a09e70c86&csf=1&web=1&e=Ebkzi3",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 combo Series Repair Manual v1240724.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s5 combo power kit fw150400de floor one s5 combo series repair manual v1240724"
+  },
+  {
+   "id": 20,
+   "commercial": "Floor One S5 Extreme",
+   "techRefs": [
+    "FW132700AU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2019",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "S5 Extreme(CL2019F-05).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/S5%20Extreme(CL2019F-05).xlsx?d=wc8448de2c48d4115848f27efda930b3c&csf=1&web=1&e=cX8dLf",
+     "path": "Tineco/Floor washer/3.Spare Part List/S5 Extreme(CL2019F-05).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s5 extreme fw132700au cl2019 floor one s5 s6 ifloor 5 series repair manual s5 extreme cl2019f 05 xlsx"
+  },
+  {
+   "id": 21,
+   "commercial": "Floor One S5 Extreme",
+   "techRefs": [
+    "FW101600DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "SP LIST OF FLOOR ONE S5 EXTREME-FW101600DE.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/SP%20LIST%20OF%20FLOOR%20ONE%20S5%20EXTREME-FW101600DE.xlsx?d=wca6af4907b1e43a9b34b9273c7cb48e9&csf=1&web=1&e=3geedc",
+     "path": "Tineco/Floor washer/3.Spare Part List/SP LIST OF FLOOR ONE S5 EXTREME-FW101600DE.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s5 extreme fw101600de floor one s5 s6 ifloor 5 series repair manual sp list of floor one s5 extreme fw101600de xlsx"
+  },
+  {
+   "id": 22,
+   "commercial": "Floor One S5 Max",
+   "techRefs": [
+    "FW480100DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One Stretch S6 Series &i6 Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20Stretch%20S6%20Series%20Repair%20Manual.docx?d=w580a77295577416abad3a3d8b6302666&csf=1&web=1&e=PqUJSO",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One Stretch S6 Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s5 max fw480100de floor one stretch s6 series i6 stretch repair manual"
+  },
+  {
+   "id": 23,
+   "commercial": "Floor One S5 Plus",
+   "techRefs": [
+    "FW131800JP",
+    "FW131600MY",
+    "FW132000AU",
+    "FW132900IN",
+    "FW131400RU",
+    "FW131000IL",
+    "FW130700VN",
+    "FW133100KR"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s5 plus fw131800jp fw131600my fw132000au fw132900in fw131400ru fw131000il fw130700vn fw133100kr floor one s5 s6 ifloor 5 series repair manual"
+  },
+  {
+   "id": 24,
+   "commercial": "Floor One S5 Steam",
+   "techRefs": [
+    "SW100400US",
+    "SW100100EU",
+    "SW100800AU",
+    "SW100900MY",
+    "SW101100TR",
+    "SW101000UK"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2029",
+   "manual": {
+    "label": "Floor One S5 Steam Series repair manual V1.0",
+    "url": "https://groupefnac.sharepoint.com/:f:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/FLOOR%20ONE%20S5%20STEAM?csf=1&web=1&e=ADiBeX",
+    "path": "Tineco/Floor washer/FLOOR ONE S5 STEAM",
+    "type": "dossier"
+   },
+   "parts": [
+    {
+     "label": "FLOOR ONE S5 STEAM-CL2029F-01(2).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/FLOOR%20ONE%20S5%20STEAM-CL2029F-01(2).xlsx?d=wcb7061119cd6490888855c8118beb602&csf=1&web=1&e=TaAmsQ",
+     "path": "Tineco/Floor washer/3.Spare Part List/FLOOR ONE S5 STEAM-CL2029F-01(2).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s5 steam sw100400us sw100100eu sw100800au sw100900my sw101100tr sw101000uk cl2029 floor one s5 steam series repair manual v1 0 floor one s5 steam cl2029f 01 2 xlsx"
+  },
+  {
+   "id": 25,
+   "commercial": "Floor One S5 Stretch Extreme",
+   "techRefs": [
+    "FW412500DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2328",
+   "manual": {
+    "label": "Floor One Stretch S6 Series &i6 Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20Stretch%20S6%20Series%20Repair%20Manual.docx?d=w580a77295577416abad3a3d8b6302666&csf=1&web=1&e=PqUJSO",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One Stretch S6 Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Floor One S5 Stretch Extreme-CL2328R-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Floor%20One%20S5%20Stretch%20Extreme-CL2328R-01.xlsx?d=wbc7a3f74bca54645919428c31333d711&csf=1&web=1&e=D5P5vd",
+     "path": "Tineco/Floor washer/3.Spare Part List/Floor One S5 Stretch Extreme-CL2328R-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s5 stretch extreme fw412500de cl2328 floor one stretch s6 series i6 stretch repair manual floor one s5 stretch extreme cl2328r 01 xlsx"
+  },
+  {
+   "id": 26,
+   "commercial": "Floor One S5 Ultra",
+   "techRefs": [
+    "FW104100CA"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s5 ultra fw104100ca floor one s5 s6 ifloor 5 series repair manual"
+  },
+  {
+   "id": 27,
+   "commercial": "Floor One S6",
+   "techRefs": [
+    "FW160900DE",
+    "FW164900AU",
+    "FW111700AU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2331",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Floor One S6-CL2331I-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Floor%20One%20S6-CL2331I-01.xlsx?d=w31a7cb7fb4f24e59b948b1e50b5bf52b&csf=1&web=1&e=IbEAZ7",
+     "path": "Tineco/Floor washer/3.Spare Part List/Floor One S6-CL2331I-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s6 fw160900de fw164900au fw111700au cl2331 floor one s5 s6 ifloor 5 series repair manual floor one s6 cl2331i 01 xlsx"
+  },
+  {
+   "id": 28,
+   "commercial": "Floor One S6 Extreme Pro Dummy",
+   "techRefs": [
+    "FW111400US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s6 extreme pro dummy fw111400us floor one s5 s6 ifloor 5 series repair manual"
+  },
+  {
+   "id": 29,
+   "commercial": "Floor One S6 Flashdry",
+   "techRefs": [
+    "FW143600AU",
+    "FW360900AU",
+    "FW360300MY",
+    "FW143800TH",
+    "FW144500IL",
+    "FW144300HK",
+    "FW360500IL",
+    "FW360700RU",
+    "FW360400VN",
+    "FW361000AE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s6 flashdry fw143600au fw360900au fw360300my fw143800th fw144500il fw144300hk fw360500il fw360700ru fw360400vn fw361000ae floor one s5 s6 ifloor 5 series repair manual"
+  },
+  {
+   "id": 30,
+   "commercial": "FLOOR ONE S6 FLASHDRY PET",
+   "techRefs": [
+    "FW360100DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2457",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Floor One S6 Flashdry Pet-CL2457-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Floor%20One%20S6%20Flashdry%20Pet-CL2457-01.xlsx?d=w4dffaba3a17f429e9b93ddf78cb1b7c5&csf=1&web=1&e=7LuyFU",
+     "path": "Tineco/Floor washer/3.Spare Part List/Floor One S6 Flashdry Pet-CL2457-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s6 flashdry pet fw360100de cl2457 floor one s5 s6 ifloor 5 series repair manual floor one s6 flashdry pet cl2457 01 xlsx"
+  },
+  {
+   "id": 31,
+   "commercial": "FLOOR ONE S6 FLASHDRY PET",
+   "techRefs": [
+    "FW144000DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2331",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "S6 Flashdry Pet(CL2331K-02).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/S6%20Flashdry%20Pet(CL2331K-02).xlsx?d=w86992fbd668f4568823becdb426d85f6&csf=1&web=1&e=CjWkBF",
+     "path": "Tineco/Floor washer/3.Spare Part List/S6 Flashdry Pet(CL2331K-02).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s6 flashdry pet fw144000de cl2331 floor one s5 s6 ifloor 5 series repair manual s6 flashdry pet cl2331k 02 xlsx"
+  },
+  {
+   "id": 32,
+   "commercial": "Floor One S6 Pet",
+   "techRefs": [
+    "FW164800AU",
+    "FW111500FR"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2223",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "S6 Pet(CL2223E-02).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/S6%20Pet(CL2223E-02).xlsx?d=w2e6ea973364442ceaf58e49d2cc2c3ba&csf=1&web=1&e=8rFUaI",
+     "path": "Tineco/Floor washer/3.Spare Part List/S6 Pet(CL2223E-02).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s6 pet fw164800au fw111500fr cl2223 floor one s5 s6 ifloor 5 series repair manual s6 pet cl2223e 02 xlsx"
+  },
+  {
+   "id": 33,
+   "commercial": "Floor One S6 Plus",
+   "techRefs": [
+    "FW164300UK"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s6 plus fw164300uk floor one s5 s6 ifloor 5 series repair manual"
+  },
+  {
+   "id": 34,
+   "commercial": "Floor One S6 Pro Extreme",
+   "techRefs": [
+    "FW112000AU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s6 pro extreme fw112000au floor one s5 s6 ifloor 5 series repair manual"
+  },
+  {
+   "id": 35,
+   "commercial": "Floor One S6 Stretch Extreme",
+   "techRefs": [
+    "FW420400DE",
+    "FW423300VN"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2458",
+   "manual": {
+    "label": "Floor One Stretch S6 Series &i6 Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20Stretch%20S6%20Series%20Repair%20Manual.docx?d=w580a77295577416abad3a3d8b6302666&csf=1&web=1&e=PqUJSO",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One Stretch S6 Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Floor One S6 Stretch Extreme-CL2458A-02.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Floor%20One%20S6%20Stretch%20Extreme-CL2458A-02.xlsx?d=w67c68188876849f7ac9acb127d3c0f66&csf=1&web=1&e=6R7d5v",
+     "path": "Tineco/Floor washer/3.Spare Part List/Floor One S6 Stretch Extreme-CL2458A-02.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s6 stretch extreme fw420400de fw423300vn cl2458 floor one stretch s6 series i6 stretch repair manual floor one s6 stretch extreme cl2458a 02 xlsx"
+  },
+  {
+   "id": 36,
+   "commercial": "Floor One S6 Stretch Lite",
+   "techRefs": [
+    "FW410100US",
+    "FW410300DE",
+    "FW413100ID",
+    "FW412700AU",
+    "FW412800UK",
+    "FW413000MY",
+    "FW413300KR"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2328",
+   "manual": {
+    "label": "Floor One Stretch S6 Series &i6 Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20Stretch%20S6%20Series%20Repair%20Manual.docx?d=w580a77295577416abad3a3d8b6302666&csf=1&web=1&e=PqUJSO",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One Stretch S6 Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Floor One S6 Stretch Lite-CL2328T-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Floor%20One%20S6%20Stretch%20Lite-CL2328T-01.xlsx?d=w3bc4d7f3b1a64b40ba3c0d307477c289&csf=1&web=1&e=baNb2I",
+     "path": "Tineco/Floor washer/3.Spare Part List/Floor One S6 Stretch Lite-CL2328T-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s6 stretch lite fw410100us fw410300de fw413100id fw412700au fw412800uk fw413000my fw413300kr cl2328 floor one stretch s6 series i6 stretch repair manual floor one s6 stretch lite cl2328t 01 xlsx"
+  },
+  {
+   "id": 37,
+   "commercial": "Floor one S6 Stretch Lite complete",
+   "techRefs": [
+    "FW413400DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One Stretch S6 Series &i6 Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20Stretch%20S6%20Series%20Repair%20Manual.docx?d=w580a77295577416abad3a3d8b6302666&csf=1&web=1&e=PqUJSO",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One Stretch S6 Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s6 stretch lite complete fw413400de floor one stretch s6 series i6 stretch repair manual"
+  },
+  {
+   "id": 38,
+   "commercial": "Floor One S6 Stretch Pro",
+   "techRefs": [
+    "FW423100TW",
+    "FW420600MY",
+    "FW423000AU",
+    "FW422700RU",
+    "FW420800IL",
+    "FW420700ID"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One Stretch S6 Series &i6 Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20Stretch%20S6%20Series%20Repair%20Manual.docx?d=w580a77295577416abad3a3d8b6302666&csf=1&web=1&e=PqUJSO",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One Stretch S6 Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s6 stretch pro fw423100tw fw420600my fw423000au fw422700ru fw420800il fw420700id floor one stretch s6 series i6 stretch repair manual"
+  },
+  {
+   "id": 39,
+   "commercial": "Floor One S6 Stretch Steam",
+   "techRefs": [
+    "SW150300DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One Stretch S6 Series &i6 Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20Stretch%20S6%20Series%20Repair%20Manual.docx?d=w580a77295577416abad3a3d8b6302666&csf=1&web=1&e=PqUJSO",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One Stretch S6 Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s6 stretch steam sw150300de floor one stretch s6 series i6 stretch repair manual"
+  },
+  {
+   "id": 40,
+   "commercial": "Floor One S6 Stretch Ultra",
+   "techRefs": [
+    "FW061700AU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S7 & i5 Stretch Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20One%20S7%20%26%20i5%20Stretch%20Series%20Repair%20Manual.docx?d=w16a90753c2ca403ea85e012af02535da&csf=1&web=1&e=uqhXfX",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor One S7 & i5 Stretch Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s6 stretch ultra fw061700au floor one s7 i5 stretch series repair manual"
+  },
+  {
+   "id": 41,
+   "commercial": "Floor One S7 Artist",
+   "techRefs": [
+    "FW2D0100DE",
+    "FW2D0400US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one S9&S7 Artist Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20S9%20Artist%20Repair%20Manual%200409%20update.docx?d=wf930a6414b2e42f8a5d750bd8d10e301&csf=1&web=1&e=JP1bzV",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one S9 Artist Repair Manual 0409 update.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s7 artist fw2d0100de fw2d0400us floor one s9 s7 artist repair manual"
+  },
+  {
+   "id": 42,
+   "commercial": "Floor One S7 Artist Premium",
+   "techRefs": [
+    "FW2D0200DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one S9&S7 Artist Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20S9%20Artist%20Repair%20Manual%200409%20update.docx?d=wf930a6414b2e42f8a5d750bd8d10e301&csf=1&web=1&e=JP1bzV",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one S9 Artist Repair Manual 0409 update.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s7 artist premium fw2d0200de floor one s9 s7 artist repair manual"
+  },
+  {
+   "id": 43,
+   "commercial": "Floor One S7 Flashdry",
+   "techRefs": [
+    "FW222600AU",
+    "FW223000DE",
+    "FW222400VN",
+    "FW221700DE",
+    "FW222800MY",
+    "FW223600IL"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2335",
+   "manual": {
+    "label": "Floor One S7 Pro Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S7%20Pro%20Series%20Repair%20Manual%20240730.docx?d=wcfc44484b05c4c19aaacd8a9fbd8f16b&csf=1&web=1&e=8eaNht",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S7 Pro Series Repair Manual 240730.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Floor One S7 FlashDry-CL2335G-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Floor%20One%20S7%20FlashDry-CL2335G-01.xlsx?d=wc9a794287d724981bfeb0a86ed77b426&csf=1&web=1&e=iTO5n7",
+     "path": "Tineco/Floor washer/3.Spare Part List/Floor One S7 FlashDry-CL2335G-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s7 flashdry fw222600au fw223000de fw222400vn fw221700de fw222800my fw223600il cl2335 floor one s7 pro series repair manual floor one s7 flashdry cl2335g 01 xlsx"
+  },
+  {
+   "id": 44,
+   "commercial": "Floor One S7 Flashdry Pet",
+   "techRefs": [
+    "FW221800DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2335",
+   "manual": {
+    "label": "Floor One S7 Pro Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S7%20Pro%20Series%20Repair%20Manual%20240730.docx?d=wcfc44484b05c4c19aaacd8a9fbd8f16b&csf=1&web=1&e=8eaNht",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S7 Pro Series Repair Manual 240730.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "S7 Flashdry Pet(CL2335G-02).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/S7%20Flashdry%20Pet(CL2335G-02).xlsx?d=wb156108055614b46973e1f97f420c18e&csf=1&web=1&e=XEUdoO",
+     "path": "Tineco/Floor washer/3.Spare Part List/S7 Flashdry Pet(CL2335G-02).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s7 flashdry pet fw221800de cl2335 floor one s7 pro series repair manual s7 flashdry pet cl2335g 02 xlsx"
+  },
+  {
+   "id": 45,
+   "commercial": "Floor One S7 Max Pro",
+   "techRefs": [
+    "FW4A0100DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One Stretch S6 Series &i6 Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20Stretch%20S6%20Series%20Repair%20Manual.docx?d=w580a77295577416abad3a3d8b6302666&csf=1&web=1&e=PqUJSO",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One Stretch S6 Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s7 max pro fw4a0100de floor one stretch s6 series i6 stretch repair manual"
+  },
+  {
+   "id": 46,
+   "commercial": "Floor One S7 Pro // CL2335E-01",
+   "techRefs": [
+    "FW221300DE",
+    "FW222200UK"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2335",
+   "manual": {
+    "label": "Floor One S7 Pro Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S7%20Pro%20Series%20Repair%20Manual%20240730.docx?d=wcfc44484b05c4c19aaacd8a9fbd8f16b&csf=1&web=1&e=8eaNht",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S7 Pro Series Repair Manual 240730.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Floor One S7 Pro-CL2335E-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Floor%20One%20S7%20Pro-CL2335E-01.xlsx?d=w041459d16cc64d1795deaddc1019a039&csf=1&web=1&e=ilOC8A",
+     "path": "Tineco/Floor washer/3.Spare Part List/Floor One S7 Pro-CL2335E-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s7 pro cl2335e 01 fw221300de fw222200uk cl2335 floor one s7 pro series repair manual floor one s7 pro cl2335e 01 xlsx"
+  },
+  {
+   "id": 47,
+   "commercial": "Floor One S7 Pro // CL2123D-01",
+   "techRefs": [
+    "FW200700EU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2123",
+   "manual": {
+    "label": "Floor One S7 Pro Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S7%20Pro%20Series%20Repair%20Manual%20240730.docx?d=wcfc44484b05c4c19aaacd8a9fbd8f16b&csf=1&web=1&e=8eaNht",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S7 Pro Series Repair Manual 240730.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "S7 Premium（CL2123D-04）.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/S7%20Premium%EF%BC%88CL2123D-04%EF%BC%89.xlsx?d=w69b01a5e1ccc4c5fab130b93c2b34619&csf=1&web=1&e=jmtIbA",
+     "path": "Tineco/Floor washer/3.Spare Part List/S7 Premium（CL2123D-04）.xlsx",
+     "type": "xlsx"
+    },
+    {
+     "label": "SAVVY",
+     "url": "https://fnacdarty.mayday.fr/desk/parametric/default/contents/698afdada530b96692015a8b",
+     "path": "https://fnacdarty.mayday.fr/desk/parametric/default/contents/698afdada530b96692015a8b",
+     "type": ""
+    }
+   ],
+   "search": "floor one s7 pro cl2123d 01 fw200700eu cl2123 floor one s7 pro series repair manual s7 premium cl2123d 04 xlsx savvy"
+  },
+  {
+   "id": 48,
+   "commercial": "Floor One S7 Steam",
+   "techRefs": [
+    "SW110300EU",
+    "SW110500AU",
+    "SW110100US",
+    "SW111400IL",
+    "SW110900RU",
+    "SW111600IN",
+    "SW111800HK"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2203",
+   "manual": {
+    "label": "Floor One S7 Steam Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S7%20Steam%20Series%20Repair%20Manual.docx?d=w00e17372115f447da14bac810b5c21ee&csf=1&web=1&e=FuM1Kb",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S7 Steam Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Floor One S7 Steam-CL2203B-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Floor%20One%20S7%20Steam-CL2203B-01.xlsx?d=w2af9afbefe0b4731942612b2d419c25e&csf=1&web=1&e=xm3NF4",
+     "path": "Tineco/Floor washer/3.Spare Part List/Floor One S7 Steam-CL2203B-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s7 steam sw110300eu sw110500au sw110100us sw111400il sw110900ru sw111600in sw111800hk cl2203 floor one s7 steam series repair manual floor one s7 steam cl2203b 01 xlsx"
+  },
+  {
+   "id": 49,
+   "commercial": "Floor One S7 Steam Plus",
+   "techRefs": [
+    "SW110600DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2203",
+   "manual": {
+    "label": "Floor One S7 Steam Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S7%20Steam%20Series%20Repair%20Manual.docx?d=w00e17372115f447da14bac810b5c21ee&csf=1&web=1&e=FuM1Kb",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S7 Steam Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "S7 Steam Plus(CL2203B-02).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/S7%20Steam%20Plus(CL2203B-02).xlsx?d=wd3533c83b5be40e98da1751c67d9ff22&csf=1&web=1&e=dGaMhL",
+     "path": "Tineco/Floor washer/3.Spare Part List/S7 Steam Plus(CL2203B-02).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s7 steam plus sw110600de cl2203 floor one s7 steam series repair manual s7 steam plus cl2203b 02 xlsx"
+  },
+  {
+   "id": 50,
+   "commercial": "Floor One S7 Stretch",
+   "techRefs": [
+    "FW060400MY",
+    "FW061600AE",
+    "FW061200RU",
+    "FW061400IL",
+    "FW061000ID",
+    "FW060800AU",
+    "FW060200DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S7 & i5 Stretch Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20One%20S7%20%26%20i5%20Stretch%20Series%20Repair%20Manual.docx?d=w16a90753c2ca403ea85e012af02535da&csf=1&web=1&e=uqhXfX",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor One S7 & i5 Stretch Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Floor One S7 STRETCH-FW060200DE (2376P-02).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Floor%20One%20S7%20STRETCH-FW060200DE%20(2376P-02).xlsx?d=wd3434da07af6448d9172be4ac7d097a6&csf=1&web=1&e=lj4nyx",
+     "path": "Tineco/Floor washer/3.Spare Part List/Floor One S7 STRETCH-FW060200DE (2376P-02).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s7 stretch fw060400my fw061600ae fw061200ru fw061400il fw061000id fw060800au fw060200de floor one s7 i5 stretch series repair manual floor one s7 stretch fw060200de 2376p 02 xlsx"
+  },
+  {
+   "id": 51,
+   "commercial": "Floor one S7 stretch complete",
+   "techRefs": [
+    "FW062000DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S7 & i5 Stretch Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20One%20S7%20%26%20i5%20Stretch%20Series%20Repair%20Manual.docx?d=w16a90753c2ca403ea85e012af02535da&csf=1&web=1&e=uqhXfX",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor One S7 & i5 Stretch Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s7 stretch complete fw062000de floor one s7 i5 stretch series repair manual"
+  },
+  {
+   "id": 52,
+   "commercial": "Floor One S7 Stretch Deluxe",
+   "techRefs": [
+    "FW062100AU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S7 & i5 Stretch Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20One%20S7%20%26%20i5%20Stretch%20Series%20Repair%20Manual.docx?d=w16a90753c2ca403ea85e012af02535da&csf=1&web=1&e=uqhXfX",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor One S7 & i5 Stretch Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s7 stretch deluxe fw062100au floor one s7 i5 stretch series repair manual"
+  },
+  {
+   "id": 53,
+   "commercial": "Floor one S7 stretch steam",
+   "techRefs": [
+    "SW131300SG",
+    "SW131900VN",
+    "SW14090EUS",
+    "SW130100DE",
+    "SW131500AE",
+    "SW13060EAU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One Stretch S6 Series &i6 Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20Stretch%20S6%20Series%20Repair%20Manual.docx?d=w580a77295577416abad3a3d8b6302666&csf=1&web=1&e=PqUJSO",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One Stretch S6 Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s7 stretch steam sw131300sg sw131900vn sw14090eus sw130100de sw131500ae sw13060eau floor one stretch s6 series i6 stretch repair manual"
+  },
+  {
+   "id": 54,
+   "commercial": "Floor one S7 stretch steam plus",
+   "techRefs": [
+    "SW130200DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One Stretch S6 Series &i6 Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20Stretch%20S6%20Series%20Repair%20Manual.docx?d=w580a77295577416abad3a3d8b6302666&csf=1&web=1&e=PqUJSO",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One Stretch S6 Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s7 stretch steam plus sw130200de floor one stretch s6 series i6 stretch repair manual"
+  },
+  {
+   "id": 55,
+   "commercial": "FLOOR ONE S7 STRETCH ULTRA",
+   "techRefs": [
+    "FW060100DE",
+    "FW061800UK",
+    "FW060600US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S7 & i5 Stretch Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20One%20S7%20%26%20i5%20Stretch%20Series%20Repair%20Manual.docx?d=w16a90753c2ca403ea85e012af02535da&csf=1&web=1&e=uqhXfX",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor One S7 & i5 Stretch Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Floor One S7 STRETCH ultraCL2376P-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Floor%20One%20S7%20STRETCH%20ultraCL2376P-01.xlsx?d=wdd0402012a654d0e85886bf289041d96&csf=1&web=1&e=yLWpPB",
+     "path": "Tineco/Floor washer/3.Spare Part List/Floor One S7 STRETCH ultraCL2376P-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s7 stretch ultra fw060100de fw061800uk fw060600us floor one s7 i5 stretch series repair manual floor one s7 stretch ultracl2376p 01 xlsx"
+  },
+  {
+   "id": 56,
+   "commercial": "Floor One S9 Artist",
+   "techRefs": [
+    "FW2C1100TR",
+    "FW2C0400DE",
+    "FW2C1000AU",
+    "FW2C0800AE",
+    "FW2C0600IL",
+    "FW2C0200ID"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2343",
+   "manual": {
+    "label": "Floor one S9&S7 Artist Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20S9%20Artist%20Repair%20Manual%200409%20update.docx?d=wf930a6414b2e42f8a5d750bd8d10e301&csf=1&web=1&e=4yZUN2",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one S9 Artist Repair Manual 0409 update.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Floor One S9 Artist-CL2343M-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Floor%20One%20S9%20Artist-CL2343M-01.xlsx?d=w240516dbd2aa485caa3026e719e3fe0a&csf=1&web=1&e=ORlZ9w",
+     "path": "Tineco/Floor washer/3.Spare Part List/Floor One S9 Artist-CL2343M-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s9 artist fw2c1100tr fw2c0400de fw2c1000au fw2c0800ae fw2c0600il fw2c0200id cl2343 floor one s9 s7 artist repair manual floor one s9 artist cl2343m 01 xlsx"
+  },
+  {
+   "id": 57,
+   "commercial": "Floor One S9 Artist Breeze",
+   "techRefs": [
+    "FW2D0600MY"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one S9&S7 Artist Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20S9%20Artist%20Repair%20Manual%200409%20update.docx?d=wf930a6414b2e42f8a5d750bd8d10e301&csf=1&web=1&e=4yZUN2",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one S9 Artist Repair Manual 0409 update.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s9 artist breeze fw2d0600my floor one s9 s7 artist repair manual"
+  },
+  {
+   "id": 58,
+   "commercial": "Floor One S9 Artist Neo",
+   "techRefs": [
+    "FW2D0800RU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one S9&S7 Artist Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20S9%20Artist%20Repair%20Manual%200409%20update.docx?d=wf930a6414b2e42f8a5d750bd8d10e301&csf=1&web=1&e=4yZUN2",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one S9 Artist Repair Manual 0409 update.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s9 artist neo fw2d0800ru floor one s9 s7 artist repair manual"
+  },
+  {
+   "id": 59,
+   "commercial": "Floor One S9 Artist Premium",
+   "techRefs": [
+    "FW2C1200SG",
+    "FW2C0700DE",
+    "FW2C0100MY"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2343",
+   "manual": {
+    "label": "Floor one S9&S7 Artist Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20S9%20Artist%20Repair%20Manual%200409%20update.docx?d=wf930a6414b2e42f8a5d750bd8d10e301&csf=1&web=1&e=4yZUN2",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one S9 Artist Repair Manual 0409 update.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Floor One S9 Artist Premium-CL2343M-03.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Floor%20One%20S9%20Artist%20Premium-CL2343M-03.xlsx?d=w0460a6d357fd4ec4a45d91c0586275c4&csf=1&web=1&e=gLqAYh",
+     "path": "Tineco/Floor washer/3.Spare Part List/Floor One S9 Artist Premium-CL2343M-03.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s9 artist premium fw2c1200sg fw2c0700de fw2c0100my cl2343 floor one s9 s7 artist repair manual floor one s9 artist premium cl2343m 03 xlsx"
+  },
+  {
+   "id": 60,
+   "commercial": "Floor One S9 Artist Pro",
+   "techRefs": [
+    "FW2B0300AU",
+    "FW2B0500RU",
+    "FW2B0100IL",
+    "FW2B0200TW",
+    "FW2B0100US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one S9&S7 Artist Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20S9%20Artist%20Repair%20Manual%200409%20update.docx?d=wf930a6414b2e42f8a5d750bd8d10e301&csf=1&web=1&e=4yZUN2",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one S9 Artist Repair Manual 0409 update.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s9 artist pro fw2b0300au fw2b0500ru fw2b0100il fw2b0200tw fw2b0100us floor one s9 s7 artist repair manual"
+  },
+  {
+   "id": 61,
+   "commercial": "FLOOR ONE S9 Artist Steam",
+   "techRefs": [
+    "FW2A1400TR",
+    "FW2A1500AE",
+    "FW2A1000IL",
+    "FW2A0500US",
+    "FW2A0700AU",
+    "FW2A1200CL",
+    "FW2A0900ID",
+    "FW2A1100HK"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one S9&S7 Artist Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20S9%20Artist%20Repair%20Manual%200409%20update.docx?d=wf930a6414b2e42f8a5d750bd8d10e301&csf=1&web=1&e=4yZUN2",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one S9 Artist Repair Manual 0409 update.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one s9 artist steam fw2a1400tr fw2a1500ae fw2a1000il fw2a0500us fw2a0700au fw2a1200cl fw2a0900id fw2a1100hk floor one s9 s7 artist repair manual"
+  },
+  {
+   "id": 62,
+   "commercial": "Floor One Stretch S6",
+   "techRefs": [
+    "FW401000AU",
+    "FW401500TR",
+    "FW402200KR",
+    "FW420100US",
+    "FW400900JP",
+    "FW401800TW",
+    "FW401100UK",
+    "FW400700ID",
+    "FW401400UK",
+    "FW401700IL",
+    "FW400100US",
+    "FW401200DE",
+    "FW401300TR",
+    "FW400800SG"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2328",
+   "manual": {
+    "label": "Floor One Stretch S6 Series &i6 Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20Stretch%20S6%20Series%20Repair%20Manual.docx?d=w580a77295577416abad3a3d8b6302666&csf=1&web=1&e=PqUJSO",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One Stretch S6 Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "FLOOR ONE STRETCH S6-CL2328C-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/FLOOR%20ONE%20STRETCH%20S6-CL2328C-01.xlsx?d=w2ce77931bd76484ebb53968385f075bc&csf=1&web=1&e=DeXLAa",
+     "path": "Tineco/Floor washer/3.Spare Part List/FLOOR ONE STRETCH S6-CL2328C-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one stretch s6 fw401000au fw401500tr fw402200kr fw420100us fw400900jp fw401800tw fw401100uk fw400700id fw401400uk fw401700il fw400100us fw401200de fw401300tr fw400800sg cl2328 floor one stretch s6 series i6 stretch repair manual floor one stretch s6 cl2328c 01 xlsx"
+  },
+  {
+   "id": 63,
+   "commercial": "Floor One Stretch S6",
+   "techRefs": [
+    "FW420100US",
+    "FW421300UK",
+    "FW420300DE",
+    "FW421100AU",
+    "FW422900JP"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2458",
+   "manual": {
+    "label": "Floor One Stretch S6 Series &i6 Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20Stretch%20S6%20Series%20Repair%20Manual.docx?d=w580a77295577416abad3a3d8b6302666&csf=1&web=1&e=PqUJSO",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One Stretch S6 Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "FLOOR ONE STRETCH S6-CL2458A-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/FLOOR%20ONE%20STRETCH%20S6-CL2458A-01.xlsx?d=wbb6f64503de545c5a4b003acb1fd044d&csf=1&web=1&e=rTe9Lu",
+     "path": "Tineco/Floor washer/3.Spare Part List/FLOOR ONE STRETCH S6-CL2458A-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one stretch s6 fw420100us fw421300uk fw420300de fw421100au fw422900jp cl2458 floor one stretch s6 series i6 stretch repair manual floor one stretch s6 cl2458a 01 xlsx"
+  },
+  {
+   "id": 64,
+   "commercial": "Floor One Switch i5 Stretch",
+   "techRefs": [
+    "FW370100DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one Switch S6 S7 stretch Series& Breeze Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20Switch%20S6%20S7%20stretch%20Series%20Repair%20Manual%200409%20update.docx?d=w894340c7dab44d9683bfb2702ed63b95&csf=1&web=1&e=DV6cIM",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one Switch S6 S7 stretch Series Repair Manual 0409 update.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one switch i5 stretch fw370100de floor one switch s6 s7 stretch series breeze repair manual"
+  },
+  {
+   "id": 65,
+   "commercial": "Floor One Switch i5 Stretch Breeze",
+   "techRefs": [
+    "FW370300US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one Switch S6 S7 stretch Series& Breeze Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20Switch%20S6%20S7%20stretch%20Series%20Repair%20Manual%200409%20update.docx?d=w894340c7dab44d9683bfb2702ed63b95&csf=1&web=1&e=DV6cIM",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one Switch S6 S7 stretch Series Repair Manual 0409 update.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one switch i5 stretch breeze fw370300us floor one switch s6 s7 stretch series breeze repair manual"
+  },
+  {
+   "id": 66,
+   "commercial": "Floor One Switch i6 Power Kit",
+   "techRefs": [
+    "FW371600ID"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one Switch S6 S7 stretch Series& Breeze Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20Switch%20S6%20S7%20stretch%20Series%20Repair%20Manual%200409%20update.docx?d=w894340c7dab44d9683bfb2702ed63b95&csf=1&web=1&e=DV6cIM",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one Switch S6 S7 stretch Series Repair Manual 0409 update.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one switch i6 power kit fw371600id floor one switch s6 s7 stretch series breeze repair manual"
+  },
+  {
+   "id": 67,
+   "commercial": "Floor One Switch S6",
+   "techRefs": [
+    "FW301200JP",
+    "FW301300AU",
+    "FW301500SG",
+    "FW301600IN",
+    "FW302000KR",
+    "FW300800US",
+    "FW300700ID",
+    "FW300900DE",
+    "FW301700TW"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 combo Series Repair Manual v1240724",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20combo%20Series%20Repair%20Manual%20v1240724.docx?d=w1610d1df7b6a4595a0e0a93a09e70c86&csf=1&web=1&e=Ebkzi3",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 combo Series Repair Manual v1240724.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one switch s6 fw301200jp fw301300au fw301500sg fw301600in fw302000kr fw300800us fw300700id fw300900de fw301700tw floor one s5 combo series repair manual v1240724"
+  },
+  {
+   "id": 68,
+   "commercial": "Floor One Switch S6 Pet",
+   "techRefs": [
+    "FW301400FR"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2316",
+   "manual": {
+    "label": "Floor One S5 combo Series Repair Manual v1240724",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20combo%20Series%20Repair%20Manual%20v1240724.docx?d=w1610d1df7b6a4595a0e0a93a09e70c86&csf=1&web=1&e=Ebkzi3",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 combo Series Repair Manual v1240724.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Switch S6 Pet(CL2316G-02).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Switch%20S6%20Pet(CL2316G-02).xlsx?d=w3d58da18352a4eab956dd75fe0281f5b&csf=1&web=1&e=TeDIrp",
+     "path": "Tineco/Floor washer/3.Spare Part List/Switch S6 Pet(CL2316G-02).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one switch s6 pet fw301400fr cl2316 floor one s5 combo series repair manual v1240724 switch s6 pet cl2316g 02 xlsx"
+  },
+  {
+   "id": 69,
+   "commercial": "Floor One SWITCH S6 STRETCH",
+   "techRefs": [
+    "FW311500SA",
+    "FW310100US",
+    "FW311900JP",
+    "FW310300DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2348",
+   "manual": {
+    "label": "Floor one Switch S6 S7 stretch Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20Switch%20S6%20S7%20stretch%20Series%20Repair%20Manual%200409%20update.docx?d=w894340c7dab44d9683bfb2702ed63b95&csf=1&web=1&e=lr3Eog",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one Switch S6 S7 stretch Series Repair Manual 0409 update.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Floor One SWITCH S6 STRETCH-CL2348F-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Floor%20One%20SWITCH%20S6%20STRETCH-CL2348F-01.xlsx?d=w1bba2b807076436691e8924da2c8559e&csf=1&web=1&e=w83Ifa",
+     "path": "Tineco/Floor washer/3.Spare Part List/Floor One SWITCH S6 STRETCH-CL2348F-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one switch s6 stretch fw311500sa fw310100us fw311900jp fw310300de cl2348 floor one switch s6 s7 stretch series repair manual floor one switch s6 stretch cl2348f 01 xlsx"
+  },
+  {
+   "id": 70,
+   "commercial": "Floor One Switch S6 Stretch Breeze",
+   "techRefs": [
+    "FW340500DE",
+    "FW340700US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one Switch S6 S7 stretch Series& Breeze Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20Switch%20S6%20S7%20stretch%20Series%20Repair%20Manual%200409%20update.docx?d=w894340c7dab44d9683bfb2702ed63b95&csf=1&web=1&e=DV6cIM",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one Switch S6 S7 stretch Series Repair Manual 0409 update.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one switch s6 stretch breeze fw340500de fw340700us floor one switch s6 s7 stretch series breeze repair manual"
+  },
+  {
+   "id": 71,
+   "commercial": "FLOOR ONE SWITCH S6 STRETCH PLUS",
+   "techRefs": [
+    "FW311700TR",
+    "FW311000DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2348",
+   "manual": {
+    "label": "Floor one Switch S6 S7 stretch Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20Switch%20S6%20S7%20stretch%20Series%20Repair%20Manual%200409%20update.docx?d=w894340c7dab44d9683bfb2702ed63b95&csf=1&web=1&e=lr3Eog",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one Switch S6 S7 stretch Series Repair Manual 0409 update.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "FLOOR ONE SWITCH S6 STRETCH PLUS-CL2348F-04.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/FLOOR%20ONE%20SWITCH%20S6%20STRETCH%20PLUS-CL2348F-04.xlsx?d=w61c56e5020df41759dbb883c92d08617&csf=1&web=1&e=xf9SbF",
+     "path": "Tineco/Floor washer/3.Spare Part List/FLOOR ONE SWITCH S6 STRETCH PLUS-CL2348F-04.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one switch s6 stretch plus fw311700tr fw311000de cl2348 floor one switch s6 s7 stretch series repair manual floor one switch s6 stretch plus cl2348f 04 xlsx"
+  },
+  {
+   "id": 72,
+   "commercial": "Floor One Switch S7",
+   "techRefs": [
+    "FW251000DE",
+    "FW251700IN",
+    "FW251900DE",
+    "FW251200MY",
+    "FW251300VN",
+    "FW250800US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2220",
+   "manual": {
+    "label": "Floor One S7 combo&switch Series repair manual V1.1",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S7%20combo%26switch%20Series%20repair%20manual%20V1.1.docx?d=wb5408f009ef34f59932212ff268c95b2&csf=1&web=1&e=WyDrhc",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S7 combo&switch Series repair manual V1.1.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Floor One Switch S7-CL2220H-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Floor%20One%20Switch%20S7-CL2220H-01.xlsx?d=wd9faa8c5e5b8416895fd10b2ad211e76&csf=1&web=1&e=JEba5j",
+     "path": "Tineco/Floor washer/3.Spare Part List/Floor One Switch S7-CL2220H-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one switch s7 fw251000de fw251700in fw251900de fw251200my fw251300vn fw250800us cl2220 floor one s7 combo switch series repair manual v1 1 floor one switch s7 cl2220h 01 xlsx"
+  },
+  {
+   "id": 73,
+   "commercial": "Floor One Switch S7 Pet",
+   "techRefs": [
+    "FW251800DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2220",
+   "manual": {
+    "label": "Floor One S7 combo&switch Series repair manual V1.1",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S7%20combo%26switch%20Series%20repair%20manual%20V1.1.docx?d=wb5408f009ef34f59932212ff268c95b2&csf=1&web=1&e=WyDrhc",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S7 combo&switch Series repair manual V1.1.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Switch S7 Pet(CL2220H-03).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/Switch%20S7%20Pet(CL2220H-03).xlsx?d=w547964b3ef4741be94c8a35682328370&csf=1&web=1&e=poHvPc",
+     "path": "Tineco/Floor washer/3.Spare Part List/Switch S7 Pet(CL2220H-03).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one switch s7 pet fw251800de cl2220 floor one s7 combo switch series repair manual v1 1 switch s7 pet cl2220h 03 xlsx"
+  },
+  {
+   "id": 74,
+   "commercial": "Floor One Switch S7 Stretch",
+   "techRefs": [
+    "FW351500RU",
+    "FW350100IL",
+    "FW351300TW",
+    "FW351600CL",
+    "FW350300VN",
+    "FW351900DE",
+    "FW352200AE",
+    "FW352100AU",
+    "FW350500SG"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one Switch S6 S7 stretch Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20Switch%20S6%20S7%20stretch%20Series%20Repair%20Manual%200409%20update.docx?d=w894340c7dab44d9683bfb2702ed63b95&csf=1&web=1&e=lr3Eog",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one Switch S6 S7 stretch Series Repair Manual 0409 update.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floor one switch s7 stretch fw351500ru fw350100il fw351300tw fw351600cl fw350300vn fw351900de fw352200ae fw352100au fw350500sg floor one switch s6 s7 stretch series repair manual"
+  },
+  {
+   "id": 75,
+   "commercial": "FLOOR ONE SWITCH S7 STRETCH PREMIUM",
+   "techRefs": [
+    "FW351800DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one Switch S6 S7 stretch Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20Switch%20S6%20S7%20stretch%20Series%20Repair%20Manual%200409%20update.docx?d=w894340c7dab44d9683bfb2702ed63b95&csf=1&web=1&e=lr3Eog",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one Switch S6 S7 stretch Series Repair Manual 0409 update.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "Liste pièces détachées",
+     "url": "https://fnacdarty.mayday.fr/desk/parametric/default/contents/692ed4305ad591cfd84ce892",
+     "path": "https://fnacdarty.mayday.fr/desk/parametric/default/contents/692ed4305ad591cfd84ce892",
+     "type": ""
+    }
+   ],
+   "search": "floor one switch s7 stretch premium fw351800de floor one switch s6 s7 stretch series repair manual liste pieces detachees"
+  },
+  {
+   "id": 76,
+   "commercial": "FloorWasher (5 series)",
+   "techRefs": [
+    "FW104400US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floorwasher 5 series fw104400us floor one s5 s6 ifloor 5 series repair manual"
+  },
+  {
+   "id": 77,
+   "commercial": "FloorWasher 6 series",
+   "techRefs": [
+    "FW164400US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floorwasher 6 series fw164400us floor one s5 s6 ifloor 5 series repair manual"
+  },
+  {
+   "id": 78,
+   "commercial": "FloorWasher FlashDry (6 Series) dummy",
+   "techRefs": [
+    "FW144400US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floorwasher flashdry 6 series dummy fw144400us floor one s5 s6 ifloor 5 series repair manual"
+  },
+  {
+   "id": 79,
+   "commercial": "FloorWasher FlashDry(6 Series)",
+   "techRefs": [
+    "FW144100US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floorwasher flashdry 6 series fw144100us floor one s5 s6 ifloor 5 series repair manual"
+  },
+  {
+   "id": 80,
+   "commercial": "FloorWasher Home Kit (5 Series)",
+   "techRefs": [
+    "FW104600US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floorwasher home kit 5 series fw104600us floor one s5 s6 ifloor 5 series repair manual"
+  },
+  {
+   "id": 81,
+   "commercial": "FloorWasher Home Kit (6 Series)",
+   "techRefs": [
+    "FW164700US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floorwasher home kit 6 series fw164700us floor one s5 s6 ifloor 5 series repair manual"
+  },
+  {
+   "id": 82,
+   "commercial": "FloorWasher Home Kit（7 Series）",
+   "techRefs": [
+    "FW061900US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S7 & i5 Stretch Series Repair Manual.docx",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20One%20S7%20%26%20i5%20Stretch%20Series%20Repair%20Manual.docx?d=w16a90753c2ca403ea85e012af02535da&csf=1&web=1&e=uqhXfX",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor One S7 & i5 Stretch Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floorwasher home kit 7 series fw061900us floor one s7 i5 stretch series repair manual docx"
+  },
+  {
+   "id": 83,
+   "commercial": "FloorWasher Pet (5 Series)",
+   "techRefs": [
+    "FW104500US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floorwasher pet 5 series fw104500us floor one s5 s6 ifloor 5 series repair manual"
+  },
+  {
+   "id": 84,
+   "commercial": "FloorWasher Pet (5 Series) Dummy",
+   "techRefs": [
+    "FW104800US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floorwasher pet 5 series dummy fw104800us floor one s5 s6 ifloor 5 series repair manual"
+  },
+  {
+   "id": 85,
+   "commercial": "FLOORWASHER SWITCH PET 7 SERIES",
+   "techRefs": [
+    "FW252100US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S7 combo&switch Series repair manual V1.1",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S7%20combo%26switch%20Series%20repair%20manual%20V1.1.docx?d=wb5408f009ef34f59932212ff268c95b2&csf=1&web=1&e=WyDrhc",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S7 combo&switch Series repair manual V1.1.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "floorwasher switch pet 7 series fw252100us floor one s7 combo switch series repair manual v1 1"
+  },
+  {
+   "id": 86,
+   "commercial": "GH HammerHead Mess Detect Dummy TGT",
+   "techRefs": [
+    "FW1E230DUS"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20iFLOOR%20Y3%20Y5%20Stretch%20%26Yoniev%20U9%20%26%20iFLOOR%20U5Stretch%20Repair%20Manual.docx?d=wad0663ca93424b7e81890b9f19d0a700&csf=1&web=1&e=1vJ566",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "gh hammerhead mess detect dummy tgt fw1e230dus floor one ifloor y3 y5 stretch yoniev u9 ifloor u5stretch repair manual"
+  },
+  {
+   "id": 87,
+   "commercial": "GH HammerHead TGT Dummy",
+   "techRefs": [
+    "FW1E2200US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20iFLOOR%20Y3%20Y5%20Stretch%20%26Yoniev%20U9%20%26%20iFLOOR%20U5Stretch%20Repair%20Manual.docx?d=wad0663ca93424b7e81890b9f19d0a700&csf=1&web=1&e=1vJ566",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "gh hammerhead tgt dummy fw1e2200us floor one ifloor y3 y5 stretch yoniev u9 ifloor u5stretch repair manual"
+  },
+  {
+   "id": 88,
+   "commercial": "GO H20 XL+GO Mini",
+   "techRefs": [
+    "FW123800US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go h20 xl go mini fw123800us floor one s5 s6 ifloor 5 series repair manual"
+  },
+  {
+   "id": 89,
+   "commercial": "GO H2O HammerHead",
+   "techRefs": [
+    "FW1E0100US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20iFLOOR%20Y3%20Y5%20Stretch%20%26Yoniev%20U9%20%26%20iFLOOR%20U5Stretch%20Repair%20Manual.docx?d=wad0663ca93424b7e81890b9f19d0a700&csf=1&web=1&e=1vJ566",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go h2o hammerhead fw1e0100us floor one ifloor y3 y5 stretch yoniev u9 ifloor u5stretch repair manual"
+  },
+  {
+   "id": 90,
+   "commercial": "GO H2O HammerHead Dummy",
+   "techRefs": [
+    "FW1E0500US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20iFLOOR%20Y3%20Y5%20Stretch%20%26Yoniev%20U9%20%26%20iFLOOR%20U5Stretch%20Repair%20Manual.docx?d=wad0663ca93424b7e81890b9f19d0a700&csf=1&web=1&e=1vJ566",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go h2o hammerhead dummy fw1e0500us floor one ifloor y3 y5 stretch yoniev u9 ifloor u5stretch repair manual"
+  },
+  {
+   "id": 91,
+   "commercial": "GO H2O HammerHead Mess Detect",
+   "techRefs": [
+    "FW1E0300US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20iFLOOR%20Y3%20Y5%20Stretch%20%26Yoniev%20U9%20%26%20iFLOOR%20U5Stretch%20Repair%20Manual.docx?d=wad0663ca93424b7e81890b9f19d0a700&csf=1&web=1&e=1vJ566",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go h2o hammerhead mess detect fw1e0300us floor one ifloor y3 y5 stretch yoniev u9 ifloor u5stretch repair manual"
+  },
+  {
+   "id": 92,
+   "commercial": "GO H2O HammerHead Mess Detect Complete",
+   "techRefs": [
+    "FW1E2700US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20iFLOOR%20Y3%20Y5%20Stretch%20%26Yoniev%20U9%20%26%20iFLOOR%20U5Stretch%20Repair%20Manual.docx?d=wad0663ca93424b7e81890b9f19d0a700&csf=1&web=1&e=1vJ566",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go h2o hammerhead mess detect complete fw1e2700us floor one ifloor y3 y5 stretch yoniev u9 ifloor u5stretch repair manual"
+  },
+  {
+   "id": 93,
+   "commercial": "GO H2O HammerHead MessDetect Ultra",
+   "techRefs": [
+    "FW1E2900US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20iFLOOR%20Y3%20Y5%20Stretch%20%26Yoniev%20U9%20%26%20iFLOOR%20U5Stretch%20Repair%20Manual.docx?d=wad0663ca93424b7e81890b9f19d0a700&csf=1&web=1&e=1vJ566",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go h2o hammerhead messdetect ultra fw1e2900us floor one ifloor y3 y5 stretch yoniev u9 ifloor u5stretch repair manual"
+  },
+  {
+   "id": 94,
+   "commercial": "GO H2O HammerHead Ultra",
+   "techRefs": [
+    "FW1E2800US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20iFLOOR%20Y3%20Y5%20Stretch%20%26Yoniev%20U9%20%26%20iFLOOR%20U5Stretch%20Repair%20Manual.docx?d=wad0663ca93424b7e81890b9f19d0a700&csf=1&web=1&e=1vJ566",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go h2o hammerhead ultra fw1e2800us floor one ifloor y3 y5 stretch yoniev u9 ifloor u5stretch repair manual"
+  },
+  {
+   "id": 95,
+   "commercial": "GO H2O MAX",
+   "techRefs": [
+    "FW1D2100US",
+    "FW1D0100US",
+    "FW1D2200AU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "GO H2O MAX & i FLOOR Y2 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/GO%20H2O%20MAX%20Series%20Repair%20Manual%20240814.docx?d=w728f1d50bd3f4abd890ecd4247b3b603&csf=1&web=1&e=5PwZti",
+    "path": "Tineco/Floor washer/1.Repair Manual/GO H2O MAX Series Repair Manual 240814.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go h2o max fw1d2100us fw1d0100us fw1d2200au go h2o max i floor y2 series repair manual"
+  },
+  {
+   "id": 96,
+   "commercial": "GO H2O Sense",
+   "techRefs": [
+    "FW1A0100AU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Yoniev U5 & U5S & U7s Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/Yoniev%20U5%26U5S%26U7s/Yoniev%20U7s/Yoniev%20U7s%20CL2325ABC%20Repair%20Manual.docx?d=w1857e71e52f8458db2d5613cad3da10c&csf=1&web=1&e=FMO4gG",
+    "path": "Tineco/Floor washer/Yoniev U5&U5S&U7s/Yoniev U7s/Yoniev U7s CL2325ABC Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go h2o sense fw1a0100au yoniev u5 u5s u7s repair manual"
+  },
+  {
+   "id": 97,
+   "commercial": "GO H2O SENSE GH303 Dummy",
+   "techRefs": [
+    "FW1A0500US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Yoniev U5 & U5S & U7s Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/Yoniev%20U5%26U5S%26U7s/Yoniev%20U7s/Yoniev%20U7s%20CL2325ABC%20Repair%20Manual.docx?d=w1857e71e52f8458db2d5613cad3da10c&csf=1&web=1&e=FMO4gG",
+    "path": "Tineco/Floor washer/Yoniev U5&U5S&U7s/Yoniev U7s/Yoniev U7s CL2325ABC Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go h2o sense gh303 dummy fw1a0500us yoniev u5 u5s u7s repair manual"
+  },
+  {
+   "id": 98,
+   "commercial": "GO H2O Sense-GH301",
+   "techRefs": [
+    "FW1A0100US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Yoniev U5 & U5S & U7s Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/Yoniev%20U5%26U5S%26U7s/Yoniev%20U7s/Yoniev%20U7s%20CL2325ABC%20Repair%20Manual.docx?d=w1857e71e52f8458db2d5613cad3da10c&csf=1&web=1&e=FMO4gG",
+    "path": "Tineco/Floor washer/Yoniev U5&U5S&U7s/Yoniev U7s/Yoniev U7s CL2325ABC Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go h2o sense gh301 fw1a0100us yoniev u5 u5s u7s repair manual"
+  },
+  {
+   "id": 99,
+   "commercial": "GO H2O Sense-GH303",
+   "techRefs": [
+    "FW1A0200US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Yoniev U5 & U5S & U7s Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/Yoniev%20U5%26U5S%26U7s/Yoniev%20U7s/Yoniev%20U7s%20CL2325ABC%20Repair%20Manual.docx?d=w1857e71e52f8458db2d5613cad3da10c&csf=1&web=1&e=FMO4gG",
+    "path": "Tineco/Floor washer/Yoniev U5&U5S&U7s/Yoniev U7s/Yoniev U7s CL2325ABC Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go h2o sense gh303 fw1a0200us yoniev u5 u5s u7s repair manual"
+  },
+  {
+   "id": 100,
+   "commercial": "GO H2O XL Breeze",
+   "techRefs": [
+    "FW121700US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go h2o xl breeze fw121700us floor one s5 s6 ifloor 5 series repair manual"
+  },
+  {
+   "id": 101,
+   "commercial": "GO H2O XL-GH503",
+   "techRefs": [
+    "FW121600CA"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go h2o xl gh503 fw121600ca floor one s5 s6 ifloor 5 series repair manual"
+  },
+  {
+   "id": 102,
+   "commercial": "GO H2O XL-GH503 Dummy",
+   "techRefs": [
+    "FW123700US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go h2o xl gh503 dummy fw123700us floor one s5 s6 ifloor 5 series repair manual"
+  },
+  {
+   "id": 103,
+   "commercial": "GO H2O-GH201",
+   "techRefs": [
+    "FW1B0100US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Yoniev U5 & U5S & U7s Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/Yoniev%20U5%26U5S%26U7s/Yoniev%20U7s/Yoniev%20U7s%20CL2325ABC%20Repair%20Manual.docx?d=w1857e71e52f8458db2d5613cad3da10c&csf=1&web=1&e=FMO4gG",
+    "path": "Tineco/Floor washer/Yoniev U5&U5S&U7s/Yoniev U7s/Yoniev U7s CL2325ABC Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go h2o gh201 fw1b0100us yoniev u5 u5s u7s repair manual"
+  },
+  {
+   "id": 104,
+   "commercial": "GO H2O-GH203",
+   "techRefs": [
+    "FW1B0200US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Yoniev U5 & U5S & U7s Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/Yoniev%20U5%26U5S%26U7s/Yoniev%20U7s/Yoniev%20U7s%20CL2325ABC%20Repair%20Manual.docx?d=w1857e71e52f8458db2d5613cad3da10c&csf=1&web=1&e=FMO4gG",
+    "path": "Tineco/Floor washer/Yoniev U5&U5S&U7s/Yoniev U7s/Yoniev U7s CL2325ABC Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go h2o gh203 fw1b0200us yoniev u5 u5s u7s repair manual"
+  },
+  {
+   "id": 105,
+   "commercial": "GO H2O-GH208",
+   "techRefs": [
+    "FW1B0300US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Yoniev U5 & U5S & U7s Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/Yoniev%20U5%26U5S%26U7s/Yoniev%20U7s/Yoniev%20U7s%20CL2325ABC%20Repair%20Manual.docx?d=w1857e71e52f8458db2d5613cad3da10c&csf=1&web=1&e=FMO4gG",
+    "path": "Tineco/Floor washer/Yoniev U5&U5S&U7s/Yoniev U7s/Yoniev U7s CL2325ABC Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go h2o gh208 fw1b0300us yoniev u5 u5s u7s repair manual"
+  },
+  {
+   "id": 106,
+   "commercial": "Go HammerHead Mess Detect Dummy",
+   "techRefs": [
+    "FW1E0600US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20iFLOOR%20Y3%20Y5%20Stretch%20%26Yoniev%20U9%20%26%20iFLOOR%20U5Stretch%20Repair%20Manual.docx?d=wad0663ca93424b7e81890b9f19d0a700&csf=1&web=1&e=1vJ566",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go hammerhead mess detect dummy fw1e0600us floor one ifloor y3 y5 stretch yoniev u9 ifloor u5stretch repair manual"
+  },
+  {
+   "id": 107,
+   "commercial": "GO HammerHeadMess Detect",
+   "techRefs": [
+    "FW1E0400US",
+    "FW1E1600US",
+    "FW1E1500US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20iFLOOR%20Y3%20Y5%20Stretch%20%26Yoniev%20U9%20%26%20iFLOOR%20U5Stretch%20Repair%20Manual.docx?d=wad0663ca93424b7e81890b9f19d0a700&csf=1&web=1&e=1vJ566",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "go hammerheadmess detect fw1e0400us fw1e1600us fw1e1500us floor one ifloor y3 y5 stretch yoniev u9 ifloor u5stretch repair manual"
+  },
+  {
+   "id": 108,
+   "commercial": "Go Steam",
+   "techRefs": [
+    "SW010200US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 Steam Series repair manual V1.0",
+    "url": "https://groupefnac.sharepoint.com/:f:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/FLOOR%20ONE%20S5%20STEAM?csf=1&web=1&e=ADiBeX",
+    "path": "Tineco/Floor washer/FLOOR ONE S5 STEAM",
+    "type": "dossier"
+   },
+   "parts": [],
+   "search": "go steam sw010200us floor one s5 steam series repair manual v1 0"
+  },
+  {
+   "id": 109,
+   "commercial": "iFloor 2",
+   "techRefs": [
+    "FW011600MY",
+    "FW011500ID",
+    "FW011200DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2041",
+   "manual": {
+    "label": "iFloor and iFloor 2 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/iFloor%20Series%20Repair%20Manual.docx?d=w4691b258e13f443b9dc6a803292725ad&csf=1&web=1&e=DyqSll",
+    "path": "Tineco/Floor washer/1.Repair Manual/iFloor Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "ifloor2(CL2041B-03).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/ifloor2(CL2041B-03).xlsx?d=wc413c51e4d1e4ce79ef8414f99074ba5&csf=1&web=1&e=V0h6oE",
+     "path": "Tineco/Floor washer/3.Spare Part List/ifloor2(CL2041B-03).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "ifloor 2 fw011600my fw011500id fw011200de cl2041 ifloor and ifloor 2 series repair manual ifloor2 cl2041b 03 xlsx"
+  },
+  {
+   "id": 110,
+   "commercial": "iFloor 2",
+   "techRefs": [
+    "FW010400JP",
+    "FW010900AU",
+    "FW010100US",
+    "FW010100CA"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "iFloor and iFloor 2 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/iFloor%20Series%20Repair%20Manual.docx?d=w4691b258e13f443b9dc6a803292725ad&csf=1&web=1&e=DyqSll",
+    "path": "Tineco/Floor washer/1.Repair Manual/iFloor Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "SP LIST OF IFLOOR2.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/SP%20LIST%20OF%20IFLOOR2.xlsx?d=w2788591922ad43868aff16bef1ff921e&csf=1&web=1&e=d1Q2YF",
+     "path": "Tineco/Floor washer/3.Spare Part List/SP LIST OF IFLOOR2.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "ifloor 2 fw010400jp fw010900au fw010100us fw010100ca ifloor and ifloor 2 series repair manual sp list of ifloor2 xlsx"
+  },
+  {
+   "id": 111,
+   "commercial": "iFloor 2 Blue",
+   "techRefs": [
+    "FW012100US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "iFloor and iFloor 2 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/iFloor%20Series%20Repair%20Manual.docx?d=w4691b258e13f443b9dc6a803292725ad&csf=1&web=1&e=DyqSll",
+    "path": "Tineco/Floor washer/1.Repair Manual/iFloor Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "ifloor 2 blue fw012100us ifloor and ifloor 2 series repair manual"
+  },
+  {
+   "id": 112,
+   "commercial": "iFloor 2 Complete",
+   "techRefs": [
+    "FW011100CA"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "iFloor and iFloor 2 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/iFloor%20Series%20Repair%20Manual.docx?d=w4691b258e13f443b9dc6a803292725ad&csf=1&web=1&e=DyqSll",
+    "path": "Tineco/Floor washer/1.Repair Manual/iFloor Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "ifloor 2 complete fw011100ca ifloor and ifloor 2 series repair manual"
+  },
+  {
+   "id": 113,
+   "commercial": "iFloor 2 MAX",
+   "techRefs": [
+    "FW012400SA",
+    "FW011800US",
+    "FW012200CA",
+    "FW012900VN",
+    "FW012600RU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "iFloor and iFloor 2 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/iFloor%20Series%20Repair%20Manual.docx?d=w4691b258e13f443b9dc6a803292725ad&csf=1&web=1&e=DyqSll",
+    "path": "Tineco/Floor washer/1.Repair Manual/iFloor Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "ifloor 2 max fw012400sa fw011800us fw012200ca fw012900vn fw012600ru ifloor and ifloor 2 series repair manual"
+  },
+  {
+   "id": 114,
+   "commercial": "iFloor 2 Plus",
+   "techRefs": [
+    "FW011400DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2041",
+   "manual": {
+    "label": "iFloor and iFloor 2 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/iFloor%20Series%20Repair%20Manual.docx?d=w4691b258e13f443b9dc6a803292725ad&csf=1&web=1&e=DyqSll",
+    "path": "Tineco/Floor washer/1.Repair Manual/iFloor Series Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "iFloor 2 Plus(CL2041B-04).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/iFloor%202%20Plus(CL2041B-04).xlsx?d=wdc586a29a19f4ab2a3e6de47e56471dd&csf=1&web=1&e=6OwRL3",
+     "path": "Tineco/Floor washer/3.Spare Part List/iFloor 2 Plus(CL2041B-04).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "ifloor 2 plus fw011400de cl2041 ifloor and ifloor 2 series repair manual ifloor 2 plus cl2041b 04 xlsx"
+  },
+  {
+   "id": 115,
+   "commercial": "iFloor 3",
+   "techRefs": [
+    "FW030100US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL1879",
+   "manual": {
+    "label": "Floor One S3 Series repair manual V1.1",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/FLOOR%20ONE%20S3/Repair%20Guide/Floor%20One%20S3%20Series%20repair%20manual%20V1.1.docx?d=w1cc7efb41bd64d9d8508f5bec9d509b8&csf=1&web=1&e=e7deAp",
+    "path": "Tineco/Floor washer/FLOOR ONE S3/Repair Guide/Floor One S3 Series repair manual V1.1.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "iFloor 3(CL1879E-01).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/iFloor%203(CL1879E-01).xlsx?d=w4c710a5538c14bd5bbb3321bfac36430&csf=1&web=1&e=yAXnX3",
+     "path": "Tineco/Floor washer/3.Spare Part List/iFloor 3(CL1879E-01).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "ifloor 3 fw030100us cl1879 floor one s3 series repair manual v1 1 ifloor 3 cl1879e 01 xlsx"
+  },
+  {
+   "id": 116,
+   "commercial": "iFloor 3 Breeze",
+   "techRefs": [
+    "FW040100US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "iFLOOR 3 BREEZE Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/iFLOOR%203%20BREEZE%20Series%20Repair%20Manual%20240816.docx?d=w2ca3ff8772d943eeb99d8bfc6f766162&csf=1&web=1&e=FFxKUi",
+    "path": "Tineco/Floor washer/1.Repair Manual/iFLOOR 3 BREEZE Series Repair Manual 240816.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "ifloor 3 breeze fw040100us ifloor 3 breeze series repair manual"
+  },
+  {
+   "id": 117,
+   "commercial": "iFloor 3 Breeze Complete",
+   "techRefs": [
+    "FW040500US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "iFLOOR 3 BREEZE Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/iFLOOR%203%20BREEZE%20Series%20Repair%20Manual%20240816.docx?d=w2ca3ff8772d943eeb99d8bfc6f766162&csf=1&web=1&e=FFxKUi",
+    "path": "Tineco/Floor washer/1.Repair Manual/iFLOOR 3 BREEZE Series Repair Manual 240816.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "ifloor 3 breeze complete fw040500us ifloor 3 breeze series repair manual"
+  },
+  {
+   "id": 118,
+   "commercial": "iFloor 3 Breeze Dummy",
+   "techRefs": [
+    "FW040700US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "iFLOOR 3 BREEZE Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/iFLOOR%203%20BREEZE%20Series%20Repair%20Manual%20240816.docx?d=w2ca3ff8772d943eeb99d8bfc6f766162&csf=1&web=1&e=FFxKUi",
+    "path": "Tineco/Floor washer/1.Repair Manual/iFLOOR 3 BREEZE Series Repair Manual 240816.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "ifloor 3 breeze dummy fw040700us ifloor 3 breeze series repair manual"
+  },
+  {
+   "id": 119,
+   "commercial": "iFloor 3 Breeze Plus",
+   "techRefs": [
+    "FW040600EU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "iFLOOR 3 BREEZE Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/iFLOOR%203%20BREEZE%20Series%20Repair%20Manual%20240816.docx?d=w2ca3ff8772d943eeb99d8bfc6f766162&csf=1&web=1&e=FFxKUi",
+    "path": "Tineco/Floor washer/1.Repair Manual/iFLOOR 3 BREEZE Series Repair Manual 240816.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "ifloor 3 breeze plus fw040600eu ifloor 3 breeze series repair manual"
+  },
+  {
+   "id": 120,
+   "commercial": "iFloor 3 Complete",
+   "techRefs": [
+    "FW030200US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S3 Series repair manual V1.1",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/FLOOR%20ONE%20S3/Repair%20Guide/Floor%20One%20S3%20Series%20repair%20manual%20V1.1.docx?d=w1cc7efb41bd64d9d8508f5bec9d509b8&csf=1&web=1&e=e7deAp",
+    "path": "Tineco/Floor washer/FLOOR ONE S3/Repair Guide/Floor One S3 Series repair manual V1.1.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "ifloor 3 complete fw030200us floor one s3 series repair manual v1 1"
+  },
+  {
+   "id": 121,
+   "commercial": "iFloor 3 Ultra",
+   "techRefs": [
+    "FW030400US",
+    "FW031100CA"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S3 Series repair manual V1.",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/FLOOR%20ONE%20S3/Repair%20Guide/Floor%20One%20S3%20Series%20repair%20manual%20V1.1.docx?d=w1cc7efb41bd64d9d8508f5bec9d509b8&csf=1&web=1&e=e7deAp",
+    "path": "Tineco/Floor washer/FLOOR ONE S3/Repair Guide/Floor One S3 Series repair manual V1.1.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "ifloor 3 ultra fw030400us fw031100ca floor one s3 series repair manual v1"
+  },
+  {
+   "id": 122,
+   "commercial": "iFloor 5",
+   "techRefs": [
+    "FW123600RU",
+    "FW122600TW",
+    "FW123400AE",
+    "FW122400SG",
+    "FW123000AU",
+    "FW121300US",
+    "FW122300ID",
+    "FW122500IL",
+    "FW122800UK"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2347",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "iFloor 5-CL2347C-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/iFloor%205-CL2347C-01.xlsx?d=w2c3c625e71ee4ce29cbb1b51df2bd7e2&csf=1&web=1&e=8pEvOP",
+     "path": "Tineco/Floor washer/3.Spare Part List/iFloor 5-CL2347C-01.xlsx",
+     "type": "xlsx"
+    },
+    {
+     "label": "iFloor 5-CL2347C-02.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/iFloor%205-CL2347C-02.xlsx?d=wa1bfd56548504881a03885bcfeb223a4&csf=1&web=1&e=ssYXHW",
+     "path": "Tineco/Floor washer/3.Spare Part List/iFloor 5-CL2347C-02.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "ifloor 5 fw123600ru fw122600tw fw123400ae fw122400sg fw123000au fw121300us fw122300id fw122500il fw122800uk cl2347 floor one s5 s6 ifloor 5 series repair manual ifloor 5 cl2347c 01 xlsx ifloor 5 cl2347c 02 xlsx"
+  },
+  {
+   "id": 123,
+   "commercial": "iFloor 5",
+   "techRefs": [
+    "FW121900DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2347",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "iFloor 5-CL2347C-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/iFloor%205-CL2347C-01.xlsx?d=w2c3c625e71ee4ce29cbb1b51df2bd7e2&csf=1&web=1&e=8pEvOP",
+     "path": "Tineco/Floor washer/3.Spare Part List/iFloor 5-CL2347C-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "ifloor 5 fw121900de cl2347 floor one s5 s6 ifloor 5 series repair manual ifloor 5 cl2347c 01 xlsx"
+  },
+  {
+   "id": 124,
+   "commercial": "iFloor 5",
+   "techRefs": [
+    "FW123300DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2347",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "iFloor 5-CL2347C-02.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/iFloor%205-CL2347C-02.xlsx?d=wa1bfd56548504881a03885bcfeb223a4&csf=1&web=1&e=ssYXHW",
+     "path": "Tineco/Floor washer/3.Spare Part List/iFloor 5-CL2347C-02.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "ifloor 5 fw123300de cl2347 floor one s5 s6 ifloor 5 series repair manual ifloor 5 cl2347c 02 xlsx"
+  },
+  {
+   "id": 125,
+   "commercial": "iFloor 5 Steam",
+   "techRefs": [
+    "SW010600UK"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2029",
+   "manual": {
+    "label": "Floor One S5 Steam Series repair manual V1.0",
+    "url": "https://groupefnac.sharepoint.com/:f:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/FLOOR%20ONE%20S5%20STEAM?csf=1&web=1&e=ADiBeX",
+    "path": "Tineco/Floor washer/FLOOR ONE S5 STEAM",
+    "type": "dossier"
+   },
+   "parts": [
+    {
+     "label": "iFloor 5 Steam-CL2029I-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/iFloor%205%20Steam-CL2029I-01.xlsx?d=we957fba059cb41e0a6b93d315bdf5b04&csf=1&web=1&e=GHobDq",
+     "path": "Tineco/Floor washer/3.Spare Part List/iFloor 5 Steam-CL2029I-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "ifloor 5 steam sw010600uk cl2029 floor one s5 steam series repair manual v1 0 ifloor 5 steam cl2029i 01 xlsx"
+  },
+  {
+   "id": 126,
+   "commercial": "iFLOOR Y3 Stretch Lite",
+   "techRefs": [
+    "FW1I2100RU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20iFLOOR%20Y3%20Y5%20Stretch%20%26Yoniev%20U9%20%26%20iFLOOR%20U5Stretch%20Repair%20Manual.docx?d=wad0663ca93424b7e81890b9f19d0a700&csf=1&web=1&e=1vJ566",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "ifloor y3 stretch lite fw1i2100ru floor one ifloor y3 y5 stretch yoniev u9 ifloor u5stretch repair manual"
+  },
+  {
+   "id": 127,
+   "commercial": "LiteVak Wash",
+   "techRefs": [
+    "FW1D0900US"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "GO H2O MAX & i FLOOR Y2 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/GO%20H2O%20MAX%20Series%20Repair%20Manual%20240814.docx?d=w728f1d50bd3f4abd890ecd4247b3b603&csf=1&web=1&e=5PwZti",
+    "path": "Tineco/Floor washer/1.Repair Manual/GO H2O MAX Series Repair Manual 240814.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "litevak wash fw1d0900us go h2o max i floor y2 series repair manual"
+  },
+  {
+   "id": 128,
+   "commercial": "Yoniev U5",
+   "techRefs": [
+    "FW171200RU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Yoniev U5 & U5S & U7s Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/Yoniev%20U5%26U5S%26U7s/Yoniev%20U7s/Yoniev%20U7s%20CL2325ABC%20Repair%20Manual.docx?d=w1857e71e52f8458db2d5613cad3da10c&csf=1&web=1&e=FMO4gG",
+    "path": "Tineco/Floor washer/Yoniev U5&U5S&U7s/Yoniev U7s/Yoniev U7s CL2325ABC Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "yoniev u5 fw171200ru yoniev u5 u5s u7s repair manual"
+  },
+  {
+   "id": 129,
+   "commercial": "Yoniev U9",
+   "techRefs": [
+    "FW1H1800IL"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/Floor%20one%20iFLOOR%20Y3%20Y5%20Stretch%20%26Yoniev%20U9%20%26%20iFLOOR%20U5Stretch%20Repair%20Manual.docx?d=wad0663ca93424b7e81890b9f19d0a700&csf=1&web=1&e=1vJ566",
+    "path": "Tineco/Floor washer/1.Repair Manual/Floor one iFLOOR Y3 Y5 Stretch &Yoniev U9 & iFLOOR U5Stretch Repair Manual.docx",
+    "type": "docx"
+   },
+   "parts": [],
+   "search": "yoniev u9 fw1h1800il floor one ifloor y3 y5 stretch yoniev u9 ifloor u5stretch repair manual"
+  },
+  {
+   "id": 130,
+   "commercial": "iFloor 3 Plus",
+   "techRefs": [
+    "FW030500US",
+    "FW030600DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL1879",
+   "manual": {
+    "label": "Floor One S3 Series repair manual V1.1",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/FLOOR%20ONE%20S3/Repair%20Guide/Floor%20One%20S3%20Series%20repair%20manual%20V1.1.docx?d=w1cc7efb41bd64d9d8508f5bec9d509b8&csf=1&web=1&e=bo7EOF",
+    "path": "Tineco/Floor washer/FLOOR ONE S3/Repair Guide/Floor One S3 Series repair manual V1.1.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "iFloor 3 Plus(CL1879E-05).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/iFloor%203%20Plus(CL1879E-05).xlsx?d=w51729582a4a04529bb0e9e2d2b5d2b36&csf=1&web=1&e=LYg2E4",
+     "path": "Tineco/Floor washer/3.Spare Part List/iFloor 3 Plus(CL1879E-05).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "ifloor 3 plus fw030500us fw030600de cl1879 floor one s3 series repair manual v1 1 ifloor 3 plus cl1879e 05 xlsx"
+  },
+  {
+   "id": 131,
+   "commercial": "iFloor 5 Breeze Complete",
+   "techRefs": [
+    "FW070400US",
+    "FW071000AU",
+    "FW070800KR",
+    "FW070600UK",
+    "FW070200DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2453",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "iFloor 5 Breeze Complete-CL2453-02.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/iFloor%205%20Breeze%20Complete-CL2453-02.xlsx?d=wacb32b1c7fa4471ab06a08fa0de969b8&csf=1&web=1&e=ulFFIM",
+     "path": "Tineco/Floor washer/3.Spare Part List/iFloor 5 Breeze Complete-CL2453-02.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "ifloor 5 breeze complete fw070400us fw071000au fw070800kr fw070600uk fw070200de cl2453 floor one s5 s6 ifloor 5 series repair manual ifloor 5 breeze complete cl2453 02 xlsx"
+  },
+  {
+   "id": 132,
+   "commercial": "iFloor 5 Breeze Complete",
+   "techRefs": [
+    "FW121500US",
+    "FW122100DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2347",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "iFloor 5 Breeze Complete-CL2347B-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/iFloor%205%20Breeze%20Complete-CL2347B-01.xlsx?d=w14aa1265ee9a47de98ba528627c233cc&csf=1&web=1&e=SMJQ51",
+     "path": "Tineco/Floor washer/3.Spare Part List/iFloor 5 Breeze Complete-CL2347B-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "ifloor 5 breeze complete fw121500us fw122100de cl2347 floor one s5 s6 ifloor 5 series repair manual ifloor 5 breeze complete cl2347b 01 xlsx"
+  },
+  {
+   "id": 133,
+   "commercial": "iFloor 5 Breeze",
+   "techRefs": [
+    "FW070100DE",
+    "FW123200JP",
+    "FW071200ID"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2453",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "iFloor 5 Breeze-CL2453-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/iFloor%205%20Breeze-CL2453-01.xlsx?d=w76d89f931c1346e7938cec234b07ec47&csf=1&web=1&e=DjZA7X",
+     "path": "Tineco/Floor washer/3.Spare Part List/iFloor 5 Breeze-CL2453-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "ifloor 5 breeze fw070100de fw123200jp fw071200id cl2453 floor one s5 s6 ifloor 5 series repair manual ifloor 5 breeze cl2453 01 xlsx"
+  },
+  {
+   "id": 134,
+   "commercial": "iFloor Breeze",
+   "techRefs": [
+    "FW040400MY",
+    "FW040300IL",
+    "FW040200ID",
+    "FW040100EU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2011",
+   "manual": {
+    "label": "iFLOOR 3 BREEZE Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/iFLOOR%203%20BREEZE%20Series%20Repair%20Manual%20240816.docx?d=w2ca3ff8772d943eeb99d8bfc6f766162&csf=1&web=1&e=w7RqFK",
+    "path": "Tineco/Floor washer/1.Repair Manual/iFLOOR 3 BREEZE Series Repair Manual 240816.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "iFloor BREEZE(CL2011D-01).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/iFloor%20BREEZE(CL2011D-01).xlsx?d=wae4eb672ddf642f9b9dc1a93ae93352d&csf=1&web=1&e=igkAQn",
+     "path": "Tineco/Floor washer/3.Spare Part List/iFloor BREEZE(CL2011D-01).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "ifloor breeze fw040400my fw040300il fw040200id fw040100eu cl2011 ifloor 3 breeze series repair manual ifloor breeze cl2011d 01 xlsx"
+  },
+  {
+   "id": 135,
+   "commercial": "iFloor Y2",
+   "techRefs": [
+    "FW1D0300DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2378",
+   "manual": {
+    "label": "GO H2O MAX & i FLOOR Y2 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/GO%20H2O%20MAX%20Series%20Repair%20Manual%20240814.docx?d=w728f1d50bd3f4abd890ecd4247b3b603&csf=1&web=1&e=5PwZti",
+    "path": "Tineco/Floor washer/1.Repair Manual/GO H2O MAX Series Repair Manual 240814.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "iFloor Y2-CL2378B-01.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/iFloor%20Y2-CL2378B-01.xlsx?d=wcfd7f7c9f2f14a72bd38f0fd7edfbc76&csf=1&web=1&e=d7PeF1",
+     "path": "Tineco/Floor washer/3.Spare Part List/iFloor Y2-CL2378B-01.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "ifloor y2 fw1d0300de cl2378 go h2o max i floor y2 series repair manual ifloor y2 cl2378b 01 xlsx"
+  },
+  {
+   "id": 136,
+   "commercial": "iFloor Y2 Plus",
+   "techRefs": [
+    "FW1D1700DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2378",
+   "manual": {
+    "label": "GO H2O MAX & i FLOOR Y2 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/1.Repair%20Manual/GO%20H2O%20MAX%20Series%20Repair%20Manual%20240814.docx?d=w728f1d50bd3f4abd890ecd4247b3b603&csf=1&web=1&e=5PwZti",
+    "path": "Tineco/Floor washer/1.Repair Manual/GO H2O MAX Series Repair Manual 240814.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "iFloor Y2 Plus-CL2378B-02.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/iFloor%20Y2%20Plus-CL2378B-02.xlsx?d=w45d1702a8ad640b2b0b9edbbc6941383&csf=1&web=1&e=F0JEFG",
+     "path": "Tineco/Floor washer/3.Spare Part List/iFloor Y2 Plus-CL2378B-02.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "ifloor y2 plus fw1d1700de cl2378 go h2o max i floor y2 series repair manual ifloor y2 plus cl2378b 02 xlsx"
+  },
+  {
+   "id": 137,
+   "commercial": "Floor One S7 Premium",
+   "techRefs": [
+    "FW201200EU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "CL2123",
+   "manual": {
+    "label": "Floor One S7 Pro Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S7%20Pro%20Series%20Repair%20Manual%20240730.docx?d=wcfc44484b05c4c19aaacd8a9fbd8f16b&csf=1&web=1&e=5IuqZH",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S7 Pro Series Repair Manual 240730.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "S7 Premium（CL2123D-04）.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/S7%20Premium%EF%BC%88CL2123D-04%EF%BC%89.xlsx?d=w69b01a5e1ccc4c5fab130b93c2b34619&csf=1&web=1&e=sVYbbv",
+     "path": "Tineco/Floor washer/3.Spare Part List/S7 Premium（CL2123D-04）.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s7 premium fw201200eu cl2123 floor one s7 pro series repair manual s7 premium cl2123d 04 xlsx"
+  },
+  {
+   "id": 138,
+   "commercial": "Floor One S5 Pro",
+   "techRefs": [
+    "FW101500AU",
+    "FW100100US",
+    "FW102500IN",
+    "FW100300CA",
+    "FW100500EU",
+    "FW100800ID"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "SP LIST of FLOOR ONE S5 PRO(FW100500EU).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/SP%20LIST%20of%20FLOOR%20ONE%20S5%20PRO(FW100500EU).xlsx?d=w8fd5d8ed5a1540aebd9fb99b73d58d25&csf=1&web=1&e=kvFnAT",
+     "path": "Tineco/Floor washer/3.Spare Part List/SP LIST of FLOOR ONE S5 PRO(FW100500EU).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s5 pro fw101500au fw100100us fw102500in fw100300ca fw100500eu fw100800id floor one s5 s6 ifloor 5 series repair manual sp list of floor one s5 pro fw100500eu xlsx"
+  },
+  {
+   "id": 139,
+   "commercial": "Floor One S5 Pro 2",
+   "techRefs": [
+    "FW102700TH",
+    "FW101700DE",
+    "FW103200US",
+    "FW100600UK",
+    "FW101800US",
+    "FW103600EU",
+    "FW102100TW",
+    "FW102300HK"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "SP List of FLOOR ONE S5 PRO2(FW101700DE) (1).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/SP%20List%20of%20FLOOR%20ONE%20S5%20PRO2(FW101700DE)%20(1).xlsx?d=w28acfe15a7cd4db092d40a4f2a5af6eb&csf=1&web=1&e=82FbLw",
+     "path": "Tineco/Floor washer/3.Spare Part List/SP List of FLOOR ONE S5 PRO2(FW101700DE) (1).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s5 pro 2 fw102700th fw101700de fw103200us fw100600uk fw101800us fw103600eu fw102100tw fw102300hk floor one s5 s6 ifloor 5 series repair manual sp list of floor one s5 pro2 fw101700de 1 xlsx"
+  },
+  {
+   "id": 140,
+   "commercial": "Floor One S5",
+   "techRefs": [
+    "FW100200EU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "SP LIST of FLOOR ONE S5(FW100200EU)(2).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/SP%20LIST%20of%20FLOOR%20ONE%20S5(FW100200EU)(2).xlsx?d=w9a62e6b6dfab4cef825de25264839302&csf=1&web=1&e=etfV8E",
+     "path": "Tineco/Floor washer/3.Spare Part List/SP LIST of FLOOR ONE S5(FW100200EU)(2).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s5 fw100200eu floor one s5 s6 ifloor 5 series repair manual sp list of floor one s5 fw100200eu 2 xlsx"
+  },
+  {
+   "id": 141,
+   "commercial": "Floor One S5 Pro 2",
+   "techRefs": [
+    "FW101700DE"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "SP List of FLOOR ONE S5 PRO2(FW101700DE) (1).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/SP%20List%20of%20FLOOR%20ONE%20S5%20PRO2(FW101700DE)%20(1).xlsx?d=w28acfe15a7cd4db092d40a4f2a5af6eb&csf=1&web=1&e=97JuST",
+     "path": "Tineco/Floor washer/3.Spare Part List/SP List of FLOOR ONE S5 PRO2(FW101700DE) (1).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s5 pro 2 fw101700de floor one s5 s6 ifloor 5 series repair manual sp list of floor one s5 pro2 fw101700de 1 xlsx"
+  },
+  {
+   "id": 142,
+   "commercial": "Floor One S5 Pro",
+   "techRefs": [
+    "FW100500EU"
+   ],
+   "family": "Floor washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Floor One S5 & S6 & iFloor 5 Series Repair Manual",
+    "url": "https://groupefnac.sharepoint.com/:w:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Repair%20Manual%20for%20LMR%20Supplementary%20Model/Floor%20One%20S5%20and%20S6%20Series%20Repair%20Manual%20240619%20v1.4.docx?d=w3fc4bffdd1264538a0907a2c01420824&csf=1&web=1&e=KhaycS",
+    "path": "Tineco/Repair Manual for LMR Supplementary Model/Floor One S5 and S6 Series Repair Manual 240619 v1.4.docx",
+    "type": "docx"
+   },
+   "parts": [
+    {
+     "label": "SP LIST of FLOOR ONE S5 PRO(FW100500EU).xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Floor%20washer/3.Spare%20Part%20List/SP%20LIST%20of%20FLOOR%20ONE%20S5%20PRO(FW100500EU).xlsx?d=w8fd5d8ed5a1540aebd9fb99b73d58d25&csf=1&web=1&e=EfbVPx",
+     "path": "Tineco/Floor washer/3.Spare Part List/SP LIST of FLOOR ONE S5 PRO(FW100500EU).xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "floor one s5 pro fw100500eu floor one s5 s6 ifloor 5 series repair manual sp list of floor one s5 pro fw100500eu xlsx"
+  },
+  {
+   "id": 143,
+   "commercial": "Carpet One",
+   "techRefs": [
+    "CW100500EU",
+    "CW100900AU",
+    "CW101800SA",
+    "CW101400US",
+    "CW101200UK"
+   ],
+   "family": "Carpet washer",
+   "factoryModel": "",
+   "manual": {
+    "label": "Carpet One(CL2043) LCD TS.xlsx",
+    "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Carpet%20washer/Carpet%20One/Trouble%20Shooting/Carpet%20One(CL2043)%20LCD%20TS.xlsx?d=wd1487d1aef2f4e669d195fccbc48d04a&csf=1&web=1&e=OeMr9L",
+    "path": "Tineco/Carpet washer/Carpet One/Trouble Shooting/Carpet One(CL2043) LCD TS.xlsx",
+    "type": "xlsx"
+   },
+   "parts": [
+    {
+     "label": "SP LIST-CARPET ONE.xlsx",
+     "url": "https://groupefnac.sharepoint.com/:x:/r/sites/SAVVY_FNACDARTY/Documents%20partages/Tineco/Carpet%20washer/Spare%20Part%20List/SP%20LIST-CARPET%20ONE.xlsx?d=w7a9a2dd08d9f4f6b81067f6af4e198ec&csf=1&web=1&e=nRWsQB",
+     "path": "Tineco/Carpet washer/Spare Part List/SP LIST-CARPET ONE.xlsx",
+     "type": "xlsx"
+    }
+   ],
+   "search": "carpet one cw100500eu cw100900au cw101800sa cw101400us cw101200uk carpet one cl2043 lcd ts xlsx sp list carpet one xlsx"
+  }
+ ]
+}
