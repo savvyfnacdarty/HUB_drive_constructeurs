@@ -1,0 +1,342 @@
+290|Micro-switch
+291|Bouton de changement de mode défaillant
+292|Bouton de changement de mode défaillant
+293|Moteur
+294|Moteur défaillant
+295|Bruit du moteur
+296|Moteur / source d'alimentation
+297|Nouvelle version de la source d'alimentation et du câble
+298|NFF (aucun défaut constaté)
+299|Ne sèche pas
+300|Aucune réaction pendant la charge
+301|Aucune réponse pendant la charge
+302|Aucune réponse pendant la charge
+303|Pas de vapeur
+304|Pas de vapeur après appui sur le bouton vapeur, voyant bleu fixe
+305|Pas de vapeur après appui sur le bouton vapeur, voyant blanc fixe
+306|N'aspire pas l'eau
+307|Pas ou peu d'eau pulvérisée
+308|Pas ou peu de vapeur en mode vapeur
+309|Le bruit vient du corps de l'appareil, pas du moteur
+310|Bruit provenant de la partie brosse
+311|Pas de vapeur en mode vapeur
+312|Ancienne version : mauvais contact de la source d'alimentation
+313|Broche du corps opposé rouillée ou endommagée
+314|Carte électronique (PCBA)
+315|Carte électronique (PCBA) défaillante
+316|Carte électronique (PCBA) de la base de séchage
+317|Carte électronique (PCBA) de la base de séchage défaillante
+318|Carte électronique / carte de filtrage CEM (EMC)
+319|Carte électronique / carte de filtrage CEM (EMC) défaillante
+320|Tuyau
+321|Tuyau plié ou cassé
+322|Tuyau bouché
+323|Tuyau bouché, plié ou cassé
+324|Mauvais contact de charge
+325|Mauvais contact de charge (il faut secouer pour que ça charge)
+326|Mauvais contact pendant la charge
+327|Mauvais contact de la broche de contact de charge
+328|Brosse motorisée
+329|Brosse motorisée endommagée
+330|Brosse motorisée défaillante
+331|Cordon d'alimentation
+332|Cordon d'alimentation endommagé
+333|Cordon d'alimentation endommagé
+334|Cordon d'alimentation défaillant
+335|Mauvais contact entre le cordon d'alimentation et la prise murale
+336|Court-circuit d'alimentation
+337|Source d'alimentation
+338|Broche de contact de la source d'alimentation endommagée
+339|Broche de contact de la source d'alimentation sale / enfoncée / endommagée
+340|Source d'alimentation défaillante
+341|Source d'alimentation non connectée
+342|Source d'alimentation mal installée
+343|Système d'alimentation défaillant
+344|Appui prolongé de 3 s sur le bouton sans aucune réaction
+345|Appui sur le bouton marche : aucune réponse lorsque le cordon d'alimentation est branché
+346|Appui de 3 s sur le bouton marche/arrêt sans aucune réaction
+347|Appui sur le bouton marche/arrêt sans aucune réaction
+348|Appui sur le bouton d'auto-nettoyage sans réaction, mais le voyant clignote en bleu
+349|Appui sur le bouton d'auto-nettoyage sans aucune réaction
+350|Appui sur le bouton d'auto-nettoyage : l'annonce vocale demande d'installer la source d'alimentation
+351|Appui sur le bouton d'auto-nettoyage : l'annonce vocale demande de placer l'appareil sur la base
+352|Appui sur le bouton d'auto-nettoyage : l'annonce vocale dit « Veuillez placer l'appareil sur la base de charge »
+353|Appui sur le bouton d'auto-nettoyage : l'annonce vocale indique que la brosse motorisée n'est pas installée
+354|Appui sur le bouton d'auto-nettoyage : l'annonce vocale demande de brancher l'appareil à la base de charge / à l'adaptateur
+355|Appui sur le bouton d'auto-nettoyage : l'annonce vocale dit « Veuillez placer l'appareil sur la base de charge »
+356|Appui sur le bouton d'auto-nettoyage : l'annonce vocale dit « Veuillez placer l'appareil sur la base de charge » et l'auto-nettoyage ne démarre pas
+357|Appui sur le bouton d'auto-nettoyage : l'annonce vocale dit « Veuillez placer l'appareil sur la base de charge » et l'auto-nettoyage ne démarre pas ; arrêt en cours d'auto-nettoyage et écran éteint
+358|Appui sur le bouton d'auto-nettoyage : l'annonce vocale dit « Veuillez placer l'appareil sur la base de charge » et l'auto-nettoyage ne démarre pas
+359|Appui sur le bouton d'auto-nettoyage et l'auto-nettoyage ne démarre pas
+360|Problème résolu par le remplacement de la carte électronique (PCBA)
+361|Élément chauffant CTP (PTC)
+362|Élément chauffant CTP (PTC) défaillant
+363|Pompe
+364|Pompe défaillante
+365|Bruit de la pompe
+366|Rebrancher le tuyau d'eau
+367|Voyant rouge qui clignote pendant la charge
+368|Contacteur à lame (reed switch)
+369|Contacteur à lame (reed switch) défaillant
+370|Remplir le réservoir d'eau propre (CWT)
+371|Réinstaller correctement le filtre HEPA
+372|Réinstaller ou remplacer la poignée
+373|Réinstaller la source d'alimentation
+374|Réinstaller correctement le filtre éponge
+375|De l'eau reste sur la base de charge après l'auto-nettoyage
+376|Retirer l'obstruction
+377|Retirer l'obstruction et nettoyer le réservoir d'eau sale (DWT)
+378|Retirer l'obstruction de la brosse rouleau
+379|Retirer l'obstruction ou remplacer la vanne d'eau
+380|Retirer l'obstruction ou remplacer le tuyau d'eau
+381|Retirer l'obstruction et réinstaller la brosse rouleau
+382|Charge de réparation (Repair Charging)
+383|Charge de réparation (Repair Charging) et câble
+384|Puce de charge de réparation (Repair Charging Chip)
+385|Puce de charge de réparation : dommage esthétique
+386|Puce de charge de réparation défaillante
+387|Puce de charge de réparation rouillée ou en mauvais contact
+388|Charge de réparation : dommage esthétique
+389|Charge de réparation endommagée
+390|Charge de réparation ou base de charge
+391|Charge de réparation (Repair Charging) et câble
+392|
+393|Roue de réparation (repair wheel)
+394|Remplacer l'adaptateur secteur
+395|Remplacer la pompe à air
+396|Remplacer la roue d'assistance
+397|Remplacer la batterie
+398|Remplacer le bloc batterie
+399|Remplacer le bloc batterie / la source d'alimentation
+400|Remplacer la batterie / la source d'alimentation
+401|Remplacer le câble du corps de l'appareil
+402|Remplacer la chaudière
+403|Remplacer la brosse
+404|Remplacer le cache de la brosse
+405|Remplacer le moteur de brosse
+406|Remplacer la carte électronique de la brosse (Brush PCBA)
+407|Remplacer la brosse rouleau
+408|Remplacer le cache de la brosse rouleau
+409|Remplacer le moteur de la brosse rouleau
+410|Remplacer la brosse rouleau et le filtre HEPA
+411|Remplacer le câble
+412|Remplacer la base de charge
+413|Remplacer la base de charge ou la puce de charge de réparation
+414|Remplacer la broche de charge
+415|Remplacer le câble de charge
+416|Remplacer la broche de contact
+417|Remplacer le réservoir d'eau propre (CWT)
+418|Remplacer la vanne de vidange du réservoir d'eau propre (CWT)
+419|Remplacer le joint d'étanchéité du réservoir d'eau propre (CWT)
+420|Remplacer les réservoirs d'eau propre / sale (CWT/DWT)
+421|Remplacer le capteur de saleté
+422|Remplacer l'écran d'affichage
+423|Remplacer l'écran d'affichage / la source d'alimentation
+424|Remplacer la carte électronique de la base (Dock PCBA)
+425|Remplacer la base de séchage et de charge
+426|Remplacer la base de séchage
+427|Remplacer le réservoir d'eau sale (DWT)
+428|Remplacer le câble de signal du réservoir d'eau sale (DWT)
+429|Remplacer la pièce défaillante
+430|Remplacer l'ensemble ventilateur
+431|Remplacer le flexible d'extension souple
+432|Remplacer la poignée
+433|Remplacer l'ensemble poignée
+434|Remplacer l'élément chauffant de la base de séchage
+435|Remplacer le filtre HEPA
+436|Remplacer le flexible
+437|Remplacer le capteur d'humidité
+438|Remplacer le moteur principal
+439|Remplacer le moteur principal et le capteur de mise à plat
+440|Remplacer la carte électronique principale (PCBA)
+441|Remplacer le micro-switch
+442|Remplacer le micro-switch défaillant
+443|Remplacer le micro-switch défaillant
+444|Remplacer le moteur
+445|Remplacer le moteur / la source d'alimentation
+446|Remplacer par la nouvelle version de la source d'alimentation et du câble
+447|Remplacer ou nettoyer la puce de charge de réparation
+448|Remplacer la carte électronique (PCBA)
+449|Remplacer la carte électronique (PCBA) de la base de séchage
+450|Remplacer la carte électronique / carte de filtrage CEM (EMC)
+451|Remplacer le tuyau
+452|Remplacer la brosse motorisée
+453|Remplacer le cordon d'alimentation
+454|Remplacer la source d'alimentation
+455|Remplacer l'élément chauffant CTP (PTC)
+456|Remplacer la pompe
+457|Remplacer le contacteur à lame (reed switch)
+458|Remplacer la charge de réparation et le câble
+459|Remplacer la puce de charge de réparation
+460|Remplacer la charge de réparation ou la base de charge
+461|Remplacer la charge de réparation et le câble
+462|Remplacer la roue de réparation
+463|Remplacer le panneau lumineux RVB (RGB)
+464|Remplacer le raccord rotatif (rotary union)
+465|Remplacer le racloir
+466|Remplacer le tuyau de récupération des eaux sales
+467|Remplacer le capteur d'eau sale
+468|Remplacer l'électrovanne
+469|Remplacer le filtre éponge
+470|Remplacer la plaque de pulvérisation d'eau
+471|Remplacer le tuyau vapeur
+472|Remplacer la soupape de décharge de pression vapeur
+473|Remplacer la pompe à vapeur
+474|Remplacer l'interrupteur
+475|Remplacer la roue d'assistance
+476|Remplacer la charge de réparation
+477|Remplacer la puce de charge de réparation
+478|Remplacer la roue de réparation
+479|Remplacer la petite roue de réparation
+480|Remplacer l'ensemble d'électrolyse de l'eau
+481|Remplacer le capteur de niveau d'eau
+482|Remplacer le tuyau d'eau
+483|Remplacer la pompe à eau
+484|Remplacer la vanne d'eau
+485|Remplacer la vanne d'eau
+486|Remplacer le câble
+487|Remplacer le câble et la charge de réparation
+488|Remplacer l'ensemble de câblage du corps de l'appareil
+489|Remplacer l'ensemble de câblage de la source d'alimentation
+490|Remplacer le câblage de la base de séchage
+491|Remplacer le câblage de l'unité principale
+492|Rebrancher le tuyau d'eau
+493|Remettre le flotteur en place ou remplacer le réservoir d'eau sale (DWT)
+494|Panneau lumineux RVB (RGB)
+495|Panneau lumineux RVB (RGB) défaillant
+496|Panneau lumineux RVB (RGB) défaillant (aucune réaction / affichage incomplet / affichage qui clignote)
+497|Rincer et nettoyer le couvercle supérieur, le couvercle inférieur et la broche capteur du réservoir d'eau sale (DWT), puis sécher
+498|Rincer et nettoyer le couvercle supérieur, le couvercle inférieur et la broche capteur du réservoir d'eau sale (DWT), puis sécher
+499|Raccord rotatif (rotary union)
+500|Raccord rotatif cassé
+501|Raccord rotatif : dommage esthétique
+502|Raccord rotatif défaillant
+503|Bruit du raccord rotatif
+504|Raccord rotatif usé ou dommage esthétique
+505|Raccord rotatif usé ou endommagé
+506|Racloir
+507|Racloir cassé
+508|Racloir endommagé
+509|Racloir sale, usé ou endommagé
+510|Racloir encrassé
+511|Racloir bloqué
+512|Bruit du racloir
+513|Racloir très usé ou endommagé
+514|Racloir usé ou endommagé
+515|Dysfonctionnement de l'écran d'affichage
+516|L'écran clignote puis s'éteint pendant la charge
+517|Écran sans réaction / affichage incomplet / affichage qui clignote
+518|Écran sans réaction / affichage incomplet / affichage qui clignote
+519|L'auto-nettoyage ne s'arrête pas
+520|Dysfonctionnement de l'auto-nettoyage
+521|Tuyau de récupération des eaux sales endommagé
+522|Capteur d'eau sale
+523|Capteur d'eau sale défaillant
+524|Petite roue de réparation
+525|Problème logiciel
+526|Électrovanne
+527|Électrovanne défaillante
+528|
+529|Filtre éponge
+530|Filtre éponge endommagé
+531|Filtre éponge mal installé
+532|Trou de pulvérisation bouché
+533|Trou de pulvérisation endommagé
+534|Plaque de pulvérisation d'eau
+535|Plaque de pulvérisation d'eau défaillante
+536|Problème de vapeur
+537|Sortie vapeur
+538|Sortie vapeur bouchée ou endommagée
+539|Tuyau vapeur
+540|Tuyau vapeur bouché
+541|Tuyau vapeur endommagé
+542|Tuyau vapeur défaillant
+543|Tuyau vapeur ou trou de pulvérisation bouché
+544|Soupape de décharge de pression vapeur
+545|Soupape de décharge de pression vapeur défaillante
+546|Pompe à vapeur
+547|Pompe à vapeur défaillante
+548|Bouton vapeur défaillant
+549|S'arrête de fonctionner après quelques secondes
+550|S'arrête de fonctionner après quelques utilisations
+551|S'arrête après quelques utilisations et le voyant du réservoir d'eau sale (DWT) s'allume en alarme
+552|S'arrête après quelques utilisations et le voyant rouge clignote
+553|S'arrête après quelques utilisations et le voyant rouge reste fixe
+554|S'arrête après quelques utilisations et le voyant de la brosse rouleau signale une alarme
+555|S'arrête après quelques utilisations et le voyant s'éteint
+556|S'arrête après quelques utilisations et la barre « max » clignote
+557|S'arrête après quelques utilisations et l'écran s'éteint
+558|S'arrête après quelques utilisations, l'écran indique que le moteur est défectueux
+559|S'arrête de fonctionner et le voyant rouge clignote
+560|S'arrête de fonctionner sans aucune alarme
+561|S'arrête en cours d'auto-nettoyage et l'écran s'éteint
+562|S'arrête en cours d'auto-nettoyage avec fausse alarme du réservoir d'eau propre (CWT)
+563|S'arrête en cours d'auto-nettoyage avec fausse alarme du réservoir d'eau sale (DWT)
+564|S'arrête en cours d'auto-nettoyage et l'écran s'éteint
+565|Interrupteur
+566|Bouton interrupteur défaillant
+567|Bouton interrupteur du flexible défaillant
+568|Changement de mode mais l'appareil s'éteint tout seul
+569|Changement de mode sans aucune réaction
+570|Changement de mode mais l'appareil s'éteint automatiquement
+571|Passage en mode vapeur mais l'appareil s'éteint tout seul
+572|Interrupteur (détection d'inclinaison) défaillant
+573|Vanne en caoutchouc sous le réservoir d'eau propre (CWT) endommagée
+574|La petite roue est bruyante
+575|L'appareil ne réagit pas et l'écran ne s'allume pas
+576|La vanne (située dans le corps de l'appareil, reliée à la vanne sous le CWT) est bouchée
+577|Le capteur de niveau d'eau contient des bulles d'air
+578|Il reste de l'eau dans le capteur de niveau d'eau
+579|Il reste de l'eau dans le capteur de niveau d'eau
+580|Il reste de l'eau dans le capteur de niveau d'eau
+581|La vanne de sortie d'eau sous le réservoir d'eau propre (CWT) est bouchée
+582|Beaucoup d'eau sur la base de charge après l'auto-nettoyage
+583|Gâchette endommagée
+584|Mise sous tension sans réaction, le voyant ne s'allume pas
+585|Mise sous tension sans réaction, le voyant ne s'allume pas lorsque le cordon d'alimentation est branché
+586|Mise sous tension sans réaction, le voyant ne s'allume pas, et aucune réaction non plus pendant la charge
+587|Mise sous tension sans réaction, l'écran ne s'allume pas
+588|Mise sous tension sans réaction, l'écran ne s'allume pas, et aucune réaction non plus pendant la charge
+589|Mise sous tension sans réaction : l'écran s'allume mais l'appareil ne fonctionne pas une fois incliné
+590|Mise sous tension sans réaction : l'écran ne s'allume pas, et aucune réaction non plus pendant la charge
+591|Échec de la mise sous tension
+592|Impossible d'électrolyser l'eau du réservoir
+593|Filtre éponge sous le réservoir d'eau propre (CWT) bouché ou endommagé
+594|L'annonce vocale indique que l'appareil n'est pas à la verticale
+595|Circuit d'eau défaillant
+596|Ensemble d'électrolyse de l'eau
+597|Ensemble d'électrolyse de l'eau défaillant
+598|Circulation d'eau ou d'air bloquée
+599|Le réservoir n'est pas plein mais l'alarme persiste
+600|Capteur de niveau d'eau
+601|Capteur de niveau d'eau bouché
+602|Capteur de niveau d'eau bouché ou endommagé
+603|Capteur de niveau d'eau cassé
+604|Capteur de niveau d'eau endommagé
+605|Capteur de niveau d'eau défaillant
+606|De l'eau déborde sur le sol pendant l'auto-nettoyage
+607|Tuyau d'eau
+608|Tuyau d'eau endommagé
+609|Tuyau d'eau endommagé
+610|Tuyau d'eau bouché devant le capteur de niveau d'eau
+611|Tuyau d'eau mal enfoncé
+612|Pompe à eau
+613|De l'eau reste dans le capteur de niveau d'eau
+614|Vanne d'eau
+615|Vanne d'eau
+616|Vanne d'eau bouchée ou endommagée
+617|Vanne d'eau endommagée
+618|Joint caoutchouc de la vanne d'eau
+619|Bruit de roue
+620|Roue très usée ou endommagée
+621|Bouton WiFi / muet / langue sans réaction
+622|Câble
+623|Câble et charge de réparation
+624|Ensemble de câblage du corps de l'appareil
+625|Ensemble de câblage du corps de l'appareil défaillant
+626|Ensemble de câblage de la source d'alimentation
+627|Ensemble de câblage de la source d'alimentation défaillant
+628|Câble : dommage esthétique
+629|Câblage de la base de séchage
+630|Câblage de l'unité principale
+631|Câble (corps de l'appareil) endommagé

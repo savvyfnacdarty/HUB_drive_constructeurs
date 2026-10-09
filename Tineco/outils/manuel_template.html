@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" translate="yes">
+<head>
+<script src="../../auth-guard.js"></script>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<script src="../../confidentialite.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{TITLE}} — Tineco</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1a1d21;--muted:#6b7280;--line:#e2e5ea;--tineco:#00327D;--tineco2:#0a63c9;--fnac:#D4151B;}
+*{box-sizing:border-box;} body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;}
+.hubbar{background:var(--fnac);padding:12px 22px;display:flex;align-items:center;gap:16px;text-decoration:none;color:#fff;}
+.hubbar img{height:38px;background:#fff;padding:5px 9px;border-radius:6px;} .hubbar .txt{font-weight:700;font-size:15px;}
+.top{background:linear-gradient(120deg,#00214f,#00327D 60%,#0a4aa3);color:#fff;padding:18px 22px;}
+.top h1{font-size:1.2rem;margin:0 0 10px;} .top .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.btn{background:#fff;color:var(--tineco);border:0;border-radius:8px;padding:7px 13px;font-size:.85rem;font-weight:600;cursor:pointer;text-decoration:none;}
+.btn:hover{background:#F7FE8C;} .hint{font-size:.78rem;opacity:.85;margin-top:8px;}
+.wrap{display:flex;gap:22px;max-width:1400px;margin:18px auto;padding:0 16px;align-items:flex-start;}
+nav.toc{position:sticky;top:10px;flex:0 0 250px;max-height:calc(100vh - 20px);overflow:auto;background:var(--card);border-radius:10px;padding:10px;box-shadow:0 1px 3px rgba(0,0,0,.08);font-size:.82rem;}
+nav.toc a{display:block;padding:4px 8px;border-radius:6px;color:var(--ink);text-decoration:none;} nav.toc a:hover{background:#eef1f6;} nav.toc a.l1{font-weight:700;margin-top:4px;} nav.toc a.l2{padding-left:20px;color:#374151;}
+main.doc{flex:1;min-width:0;background:var(--card);border-radius:10px;padding:26px 32px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06);}
+main.doc h1{font-size:1.5rem;color:var(--tineco);border-bottom:2px solid var(--line);padding-bottom:6px;margin:30px 0 12px;} main.doc h2{font-size:1.2rem;color:var(--tineco2);margin:24px 0 8px;} main.doc h3{font-size:1.02rem;margin:18px 0 6px;}
+main.doc img{max-width:100%;height:auto;border-radius:6px;cursor:zoom-in;vertical-align:middle;} main.doc p{margin:8px 0;}
+main.doc table{border-collapse:collapse;margin:12px 0;display:block;overflow-x:auto;max-width:100%;} main.doc td,main.doc th{border:1px solid var(--line);padding:6px 10px;vertical-align:top;font-size:.9rem;} main.doc th{background:#eef1f6;}
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99;align-items:center;justify-content:center;cursor:zoom-out;} #lb.on{display:flex;} #lb img{max-width:95vw;max-height:95vh;}
+#gt{display:inline-block;} #gt .goog-te-gadget{font-size:.8rem;color:#fff;}
+@media(max-width:900px){nav.toc{display:none;} main.doc{padding:16px;}}
+@media print{.hubbar,.top .bar,.hint,nav.toc{display:none;} .wrap{display:block;margin:0;padding:0;} main.doc{box-shadow:none;padding:0;}}
+</style>
+</head>
+<body>
+<a class="hubbar" href="../../index.html"><img src="../../IMAGES/FNAC DARTY.png" alt="Fnac Darty"><span class="txt">← HUB Drive Constructeurs</span></a>
+<div class="top">
+  <h1>{{TITLE}}</h1>
+  <div class="bar">
+    <a class="btn" href="../../tineco.html">← Recherche Tineco</a>
+    <button class="btn" id="tr">🌐 Traduire en français</button>
+    <span id="gt"></span>
+    <button class="btn" onclick="window.print()">🖨 Imprimer</button>
+  </div>
+  <div class="hint">Manuel d'origine en anglais (Tineco). Traduction : bouton ci-dessus, ou clic droit → « Traduire en français » dans Chrome / Edge. Cliquer sur une image pour l'agrandir. Fichier source : {{DOCX}}</div>
+</div>
+<div class="wrap">
+  <nav class="toc" translate="yes">{{TOC}}</nav>
+  <main class="doc">
+{{BODY}}
+  </main>
+</div>
+<div id="lb"><img alt=""></div>
+<script>
+document.addEventListener('click',function(e){var L=document.getElementById('lb');
+  if(e.target.matches('main.doc img')&&e.target.getAttribute('src')){L.querySelector('img').src=e.target.src;L.classList.add('on');}
+  else if(L.classList.contains('on'))L.classList.remove('on');});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('lb').classList.remove('on');});
+/* Traduction : widget Google Translate, chargé seulement au clic (le texte du manuel est alors envoyé à Google). Sinon, traduction native du navigateur. */
+function gtInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'fr,en,es,de,it,nl,pt,zh-CN',autoDisplay:false},'gt');
+  var n=0,t=setInterval(function(){var s=document.querySelector('#gt select');if(s){s.value='fr';s.dispatchEvent(new Event('change'));clearInterval(t);}else if(++n>40)clearInterval(t);},250);}
+document.getElementById('tr').onclick=function(){this.disabled=true;this.textContent='Traduction en cours…';
+  var s=document.createElement('script');s.src='https://translate.google.com/translate_a/element.js?cb=gtInit';s.onerror=function(){document.getElementById('tr').textContent='Indisponible — utilisez la traduction de Chrome/Edge';};document.head.appendChild(s);};
+</script>
+</body>
+</html>

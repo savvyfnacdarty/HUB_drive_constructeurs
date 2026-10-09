@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script src="../auth-guard.js"></script>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<script src="../confidentialite.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>FAQ Support — SAV Roborock · Fnac Darty</title>
+<style>
+  :root{
+    --rouge:#D4151B; --noir:#111827;
+    --rr:#EA0029; --rr-2:#B80020; --rr-bg:#FEECEF; --rr-bd:#F7C4CD;
+    --bg:#F1F3F6; --surface:#FFFFFF; --border:#DDE1E8;
+    --text:#1A1E2A; --text-2:#4A5068; --muted:#8891A8;
+    --r-md:8px; --r-lg:14px; --tr:.16s cubic-bezier(.4,0,.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Segoe UI",system-ui,Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+  .hubbar{background:var(--rouge);padding:11px 22px;display:flex;align-items:center;gap:16px;
+    position:sticky;top:0;z-index:20;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+  .hubbar .home{display:flex;align-items:center;gap:14px;text-decoration:none;flex-shrink:0;}
+  .hubbar img{height:36px;background:#fff;padding:5px 9px;border-radius:6px;transition:transform .15s;}
+  .hubbar:hover img{transform:scale(1.05);}
+  .hubbar .txt{color:#fff;font-weight:700;font-size:14px;letter-spacing:.3px;}
+
+  .hero{background:linear-gradient(120deg,#000 0%,#2a2a2a 55%,var(--rr) 140%);
+    padding:34px 22px 26px;text-align:center;color:#fff;}
+  .hero-logo{height:46px;background:#fff;padding:7px 14px;border-radius:10px;margin-bottom:14px;
+    box-shadow:0 4px 16px rgba(0,0,0,.2);}
+  .hero .eyebrow{font-size:.9rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+  .hero h1{font-size:1.5rem;font-weight:800;margin-bottom:6px;}
+  .hero p{color:rgba(255,255,255,.9);font-size:.9rem;max-width:720px;margin:0 auto;}
+  .hero nav{display:flex;gap:8px;justify-content:center;margin-top:20px;flex-wrap:wrap;}
+  .hero nav a{color:#fff;text-decoration:none;font-size:.86rem;font-weight:600;padding:8px 16px;
+    border-radius:var(--r-md);background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.45);transition:var(--tr);}
+  .hero nav a:hover{background:rgba(255,255,255,.28);}
+  .hero nav a.active{background:#fff;color:var(--rr-2);border-color:#fff;}
+
+  main{max-width:1060px;margin:0 auto;padding:24px 20px 60px;}
+
+  .toolbar{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-lg);
+    padding:16px 18px;box-shadow:0 2px 6px rgba(0,0,0,.05);margin-bottom:20px;
+    position:sticky;top:58px;z-index:10;}
+  .search{position:relative;margin-bottom:14px;}
+  .search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted);}
+  .search input{width:100%;padding:11px 38px 11px 40px;font-size:.95rem;font-family:inherit;
+    border:1.5px solid var(--border);border-radius:var(--r-md);background:#FAFBFC;color:var(--text);outline:none;transition:var(--tr);}
+  .search input:focus{border-color:var(--rr);background:#fff;box-shadow:0 0 0 3px rgba(234,0,41,.12);}
+  .search .clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:none;background:none;
+    color:var(--muted);cursor:pointer;font-size:1.2rem;line-height:1;padding:4px 8px;display:none;}
+
+  .filters{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px 16px;}
+  .frow{display:flex;align-items:center;gap:8px;}
+  .flabel{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);min-width:64px;}
+  .fsel{font-family:inherit;font-size:.85rem;font-weight:600;padding:8px 14px;border-radius:var(--r-md);
+    border:1.5px solid var(--border);background:#FAFBFC;color:var(--text-2);cursor:pointer;min-width:220px;transition:var(--tr);}
+  .fsel:hover{border-color:var(--rr);color:var(--rr);}
+  .fsel:focus{border-color:var(--rr);outline:none;box-shadow:0 0 0 3px rgba(234,0,41,.12);}
+  .reset-btn{font-family:inherit;font-size:.82rem;font-weight:700;padding:8px 15px;border-radius:var(--r-md);
+    border:1.5px solid var(--border);background:#fff;color:var(--text-2);cursor:pointer;transition:var(--tr);
+    display:inline-flex;align-items:center;gap:6px;}
+  .reset-btn:hover{border-color:var(--rouge);color:var(--rouge);background:#FFF5F5;}
+
+  .tabs{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px;}
+  .tab{font-family:inherit;font-size:.84rem;font-weight:700;padding:9px 15px;border-radius:100px;cursor:pointer;
+    background:#F4F6F9;border:1.5px solid var(--border);color:var(--text-2);transition:var(--tr);white-space:nowrap;
+    display:inline-flex;align-items:center;gap:7px;}
+  .tab:hover{border-color:var(--rr);color:var(--rr);}
+  .tab.on{background:var(--rr);border-color:var(--rr);color:#fff;}
+  .tab .n{font-size:.72rem;font-weight:800;background:rgba(0,0,0,.12);padding:1px 7px;border-radius:100px;}
+  .tab.on .n{background:rgba(255,255,255,.28);}
+
+  .sub{font-size:.84rem;color:var(--text-2);margin:16px 2px 14px;line-height:1.5;}
+  .sub a.main{color:var(--rr);font-weight:700;text-decoration:none;}
+  .sub a.main:hover{text-decoration:underline;}
+
+  .status{display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--text-2);padding:14px 2px;}
+  .spin{width:16px;height:16px;border-radius:50%;border:2.5px solid var(--rr-bd);border-top-color:var(--rr);
+    animation:spin .7s linear infinite;flex-shrink:0;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .err{background:#FFF5F5;border:1.5px solid #F7C4CD;color:#8a1220;border-radius:var(--r-md);padding:12px 14px;font-size:.85rem;line-height:1.5;}
+  .err a{color:var(--rr-2);font-weight:700;}
+
+  .count{font-size:.82rem;color:var(--text-2);margin:0 4px 12px;}
+  .count b{color:var(--rr);}
+
+  .grp{margin-bottom:22px;}
+  .gtitle{display:flex;align-items:center;gap:9px;font-size:.78rem;font-weight:800;text-transform:uppercase;
+    letter-spacing:1px;color:var(--rr-2);margin:0 4px 10px;}
+  .gtitle::after{content:"";flex:1;height:1.5px;background:var(--rr-bd);}
+  .items{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px;}
+  .item{display:flex;align-items:flex-start;gap:8px;font-size:.85rem;line-height:1.4;padding:10px 12px;
+    background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-md);text-decoration:none;color:var(--text);transition:var(--tr);}
+  .item:hover{border-color:var(--rr);background:var(--rr-bg);color:var(--rr-2);}
+  .item svg{flex-shrink:0;margin-top:2px;color:var(--rr);}
+  .item .src{display:block;font-size:.72rem;color:var(--muted);font-weight:700;margin-top:2px;}
+  .item .tr{display:block;font-size:.79rem;color:#1D4ED8;font-weight:600;margin-top:3px;line-height:1.35;}
+  .item .tr .lg{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.4px;color:#1D4ED8;
+    background:#EFF6FF;border:1px solid #BFDBFE;border-radius:5px;padding:0 4px;margin-right:5px;vertical-align:1px;}
+  .empty{font-size:.85rem;color:var(--muted);padding:20px 4px;text-align:center;}
+
+  footer{text-align:center;padding:24px;font-size:.8rem;color:var(--muted);}
+  footer span{color:var(--rr);font-weight:700;}
+</style>
+</head>
+<body>
+
+<div class="hubbar">
+  <a class="home" href="../index.html">
+    <img src="../IMAGES/FNAC DARTY.png" onerror="this.style.display='none'" alt="Fnac Darty">
+    <span class="txt">&larr; HUB Drive Constructeurs</span>
+  </a>
+</div>
+
+<div class="hero">
+  <img class="hero-logo" src="../IMAGES/ROBOROCK.png" alt="Roborock" onerror="this.style.display='none'">
+  <div class="eyebrow">Petit Électro-Ménager</div>
+  <h1>FAQ Support Roborock</h1>
+  <p>Centre d'aide officiel Roborock (support.roborock.com) intégré ici en direct — manuels, tutoriels vidéo, dépannage et FAQ, pour tous les modèles (S, Q, Qrevo, Saros, F25, Dyad, H…).</p>
+  <nav>
+    <a href="../roborock.html">🔎 Recherche SN</a>
+    <a href="../roborock_calibrage.html">🎯 Calibrage</a>
+    <a href="faq_roborock.html" class="active">❓ FAQ Support</a>
+    <a href="https://support.roborock.com/hc/fr" target="_blank" rel="noopener">🌐 Roborock Support ↗</a>
+  </nav>
+</div>
+
+<main>
+  <div class="toolbar">
+    <div class="search">
+      <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M20 20l-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Mot-clé (wifi, serpillière, erreur 18…), modèle (Qrevo, S8, F25, Dyad…)…" autocomplete="off">
+      <button class="clear" id="clr" title="Effacer">&times;</button>
+    </div>
+    <div class="filters">
+      <div class="frow"><div class="flabel">Modèle</div><select class="fsel" id="fm"></select></div>
+      <div class="frow"><button class="reset-btn" id="rst" type="button">↺ Réinitialiser</button></div>
+    </div>
+    <div class="tabs" id="tabs"></div>
+  </div>
+
+  <div class="sub">Fiches rapatriées en direct depuis le centre d'aide officiel Roborock (Zendesk). <a class="main" href="https://support.roborock.com/hc/fr" target="_blank" rel="noopener">Ouvrir le centre d'aide Roborock Support →</a></div>
+
+  <div class="count" id="cnt"></div>
+  <div id="status"></div>
+  <div id="list"></div>
+</main>
+
+<footer>Espace interne <span>Fnac Darty</span> · SAV Roborock — FAQ Support (source : support.roborock.com/hc/fr)</footer>
+
+<script>
+// ===== Sections du centre d'aide Roborock (Zendesk, catégorie "Produits" 360001116932) =====
+const SECTIONS = [
+  {id:"all",        key:"all",        label:"🗂️ Toutes catégories", zid:null},
+  {id:360002673932, key:"telecharger", label:"📄 Télécharger (manuels)"},
+  {id:360004421492, key:"videos",      label:"🎥 Vidéos tutoriels"},
+  {id:360007120351, key:"depannage",   label:"🛠️ Dépannage"},
+  {id:360002673952, key:"faqs",        label:"❓ FAQs"}
+];
+const API = (sid, page) => `https://support.roborock.com/api/v2/help_center/fr/sections/${sid}/articles.json?per_page=100&page=${page}`;
+const CACHE_KEY = "rr_faq_cache_v1";
+const CACHE_TTL = 12*60*60*1000; // 12h
+
+let DATA = {}; // key -> [[title,url,sectionKey], ...]
+let activeTab = "all";
+let fModel = "";
+
+function esc(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function norm(s){ return String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
+
+async function fetchSection(sec){
+  let page = 1, all = [];
+  while(true){
+    const res = await fetch(API(sec.id, page));
+    if(!res.ok) throw new Error("HTTP " + res.status);
+    const j = await res.json();
+    (j.articles || []).forEach(a => all.push([a.title, a.html_url, sec.key]));
+    if(!j.next_page) break;
+    page++;
+    if(page > 20) break; // garde-fou
+  }
+  return all;
+}
+
+function loadCache(){
+  try{
+    const raw = localStorage.getItem(CACHE_KEY);
+    if(!raw) return null;
+    const j = JSON.parse(raw);
+    if(!j.ts || Date.now() - j.ts > CACHE_TTL) return null;
+    return j.data;
+  }catch(e){ return null; }
+}
+function saveCache(data){
+  try{ localStorage.setItem(CACHE_KEY, JSON.stringify({ts:Date.now(), data})); }catch(e){}
+}
+
+async function loadAll(){
+  const statusEl = document.getElementById('status');
+  const cached = loadCache();
+  if(cached){
+    DATA = cached;
+    render();
+  }
+  statusEl.innerHTML = '<div class="status"><div class="spin"></div><span>Synchronisation avec support.roborock.com/hc/fr…</span></div>';
+  try{
+    const real = SECTIONS.filter(s => s.id !== "all");
+    const results = await Promise.all(real.map(fetchSection));
+    const data = {};
+    real.forEach((s,i) => data[s.key] = results[i]);
+    data.all = real.flatMap(s => data[s.key]);
+    DATA = data;
+    saveCache(data);
+    statusEl.innerHTML = '';
+    render();
+  }catch(err){
+    if(!cached){
+      statusEl.innerHTML = '<div class="err">⚠️ Impossible de charger le centre d\'aide Roborock en direct depuis ce navigateur (connexion ou blocage réseau). '
+        + 'Ouvrez-le directement : <a href="https://support.roborock.com/hc/fr" target="_blank" rel="noopener">support.roborock.com/hc/fr ↗</a></div>';
+    } else {
+      statusEl.innerHTML = '<div class="err" style="margin-top:8px">⚠️ Échec de la synchronisation, affichage des données en cache local. <a href="https://support.roborock.com/hc/fr" target="_blank" rel="noopener">Ouvrir le site officiel ↗</a></div>';
+    }
+  }
+}
+
+// ===== Groupement par modèle =====
+const MODEL_PATTERNS = [
+  "Qrevo Curv 2 Pro","Qrevo Curv S5X","Qrevo CurvX","Qrevo Edge S5A","Qrevo EdgeC","Qrevo EdgeT","Qrevo MaxV",
+  "Qrevo Master","Qrevo Slim","Qrevo Plus","Qrevo S5V","Qrevo 35A","Qrevo Curv","Qrevo Edge","Qrevo Pro","Qrevo L",
+  "Qrevo C","Qrevo S",
+  "Saros Z70","Saros 10R","Saros 10",
+  "F25 Ultra","F25 ACE Combo","F25 ACE","F25 ALT","F25 XT","F25 GT","F25 BX","F25 LT","F25 RT","F25 Combo","F25",
+  "Dyad Pro Combo","Dyad Pro","Dyad Air","Dyad",
+  "H60 Hub Ultra","H60 Hub Pro","H60 Hub","H60 Ultra","H60 Pro","H60","H7","H6","H5",
+  "S8 Pro Ultra","S8 MaxV Ultra","S8 Pro","S8 MaxV","S8",
+  "S7MaxV Ultra","S7 Max Ultra","S7 Pro Ultra","S7MaxV","S7 MaxV","S7",
+  "S6 MaxV","S6 Pure","S6",
+  "S5 Max","S5",
+  "S4 Max","S4",
+  "Q10P","Q10V","Q10 X5","Q10 S5","Q10",
+  "Q8 Max Pro","Q8 Max","Q8+","Q8",
+  "Q7T","Q7B","Q7 Max","Q7",
+  "Q5 Pro","Q5 Max","Q5",
+  "E2/E3","E2","E3","E4",
+  "Flexi Lite","Flexi Pro","Flexi",
+  "QR 798","QR 598","QV 35S",
+  "Station de vidage automatique","Auto-Empty Dock"
+];
+// ===== Traduction (FR) des fiches en anglais / italien =====
+const KNOWN_TR = {
+  "Connecting Roborock robots to Roborock App (IOS)": "Connexion des robots Roborock à l'application Roborock (iOS)",
+  "Connecting Roborock robot to Roborock App (Android)": "Connexion du robot Roborock à l'application Roborock (Android)",
+  "Connecting Roborock robots to Mi Home (IOS)": "Connexion des robots Roborock à Mi Home (iOS)",
+  "Connecting Roborock robots to Mi Home (Android)": "Connexion des robots Roborock à Mi Home (Android)",
+  "How to Use the Disposable Dust Bag": "Comment utiliser le sac à poussière jetable",
+  "Emptying and Maintenance of Roborock Auto-Empty Dock": "Vidage et entretien de la base de vidage automatique Roborock",
+  "How Roborock Auto-Empty Dock Works": "Fonctionnement de la base de vidage automatique Roborock",
+  "Setting up Roborock Auto-Empty Dock": "Configuration de la base de vidage automatique Roborock",
+  "Cosa devo fare se il filtro è otturato o se l'aspirapolvere non aspira?": "Que dois-je faire si le filtre est colmaté ou si l'aspirateur n'aspire pas ?",
+  "Cosa devo fare se la modalità Potenziamento per tappeti si attiva su superfici dure?": "Que dois-je faire si le mode Renfort tapis s'active sur des sols durs ?",
+  "Cosa devo fare se lo schermo non si accende?": "Que dois-je faire si l'écran ne s'allume pas ?",
+  "Perché la spazzola multisuperficie e la mini-spazzola motorizzata smettono automaticamente di ruotare?": "Pourquoi la brosse multi-surfaces et la mini-brosse motorisée s'arrêtent-elles automatiquement de tourner ?"
+};
+// Modèles "User Manual" : traduction générée par motif (couvre les nouveaux manuels ajoutés par Roborock)
+const MANUAL_RE = /^(.+?)\s+CE\s*(?:EN\/FR|FR\/EN|EN|FR)?\s*(?:User\s+)?Manual$/i;
+function frWords(t){
+  return /[àâäéèêëîïôöùûüçœ]/i.test(t) || /\b(le|la|les|du|des|est-il|est-ce|puis-je|comment|pourquoi|que\s|quel|quelle|quels|quelles|dois-je|d'un|d'une|à\s)\b/i.test(t);
+}
+function looksEnglish(t){
+  return /\b(the|is|are|how|what|when|connecting|manual|user|setting up|emptying|maintenance|works|works\?|to\s)\b/i.test(t);
+}
+function looksItalian(t){
+  return /\b(che|come|perché|è\s|non\s|della|del\s|questo|questa|spazzola|aspirapolvere|schermo|filtro)\b/i.test(t);
+}
+function translateTitle(title){
+  if(KNOWN_TR[title]) return {text:KNOWN_TR[title], lg:/[a-zàâäéèêëîïôöùûüçœ]/i.test(title) && looksItalian(title) ? "IT" : "EN"};
+  const m = title.match(MANUAL_RE);
+  if(m) return {text:"Manuel utilisateur — " + m[1].replace(/\s+CE$/i,""), lg:"EN"};
+  if(!frWords(title)){
+    if(looksItalian(title)) return {text:null, lg:"IT"};
+    if(looksEnglish(title)) return {text:null, lg:"EN"};
+  }
+  return null;
+}
+
+function groupModel(title){
+  const t = title;
+  for(const m of MODEL_PATTERNS){
+    const re = new RegExp("(^|[^A-Za-z0-9])" + m.replace(/[.*+?^${}()|[\]\\]/g,"\\$&").replace(/ /g,"\\s+") + "([^A-Za-z0-9]|$)", "i");
+    if(re.test(t)) return m;
+  }
+  return "Autres / non identifié";
+}
+
+function currentList(){
+  return DATA[activeTab] || [];
+}
+
+function buildModelSelect(){
+  const sel = document.getElementById('fm');
+  const set = new Set(currentList().map(([t]) => groupModel(t)));
+  const arr = [...set].filter(g => g !== "Autres / non identifié").sort((a,b) => a.localeCompare(b,'fr'));
+  if(set.has("Autres / non identifié")) arr.push("Autres / non identifié");
+  const prev = fModel;
+  sel.innerHTML = '<option value="">Tous les modèles</option>' + arr.map(v => `<option value="${esc(v)}">${esc(v)}</option>`).join('');
+  sel.value = arr.includes(prev) ? prev : "";
+  fModel = sel.value;
+}
+
+function renderTabs(){
+  const wrap = document.getElementById('tabs');
+  wrap.innerHTML = SECTIONS.map(s => {
+    const n = DATA[s.key] ? DATA[s.key].length : (s.key === "all" && !DATA.all ? "…" : "…");
+    const count = DATA[s.key] ? DATA[s.key].length : "…";
+    return `<button type="button" class="tab ${s.key===activeTab?'on':''}" data-k="${s.key}">${s.label}<span class="n">${count}</span></button>`;
+  }).join('');
+  wrap.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => {
+    activeTab = b.dataset.k; fModel = ""; buildModelSelect(); render();
+  }));
+}
+
+function render(){
+  renderTabs();
+  buildModelSelect();
+  const q = norm(document.getElementById('q').value.trim());
+  const terms = q ? q.split(/\s+/).filter(Boolean) : [];
+  const list = currentList().filter(([t]) => {
+    if(fModel && groupModel(t) !== fModel) return false;
+    if(!terms.length) return true;
+    const hay = norm(t);
+    return terms.every(x => hay.includes(x));
+  });
+  const cnt = document.getElementById('cnt');
+  cnt.innerHTML = DATA[activeTab] ? `<b>${list.length}</b> fiche(s) — sur ${DATA[activeTab].length} au total dans cette catégorie` : '';
+  const listEl = document.getElementById('list');
+  if(!DATA[activeTab]){
+    listEl.innerHTML = '';
+    return;
+  }
+  if(!list.length){
+    listEl.innerHTML = '<div class="empty">Aucune fiche ne correspond à cette recherche.</div>';
+    return;
+  }
+  const groups = {};
+  list.forEach(([t,u,sk]) => { const g = groupModel(t); (groups[g] = groups[g]||[]).push([t,u,sk]); });
+  const gnames = Object.keys(groups).sort((a,b) => a==="Autres / non identifié" ? 1 : b==="Autres / non identifié" ? -1 : a.localeCompare(b,'fr'));
+  const secLabel = k => (SECTIONS.find(s=>s.key===k)||{}).label || k;
+  listEl.innerHTML = gnames.map(g => {
+    const items = groups[g].map(([t,u,sk]) => {
+    const tr = translateTitle(t);
+    const trLine = tr ? `<span class="tr"><span class="lg">${tr.lg}→FR</span>${tr.text ? esc(tr.text) : "Fiche en " + (tr.lg==='IT'?'italien':'anglais') + " — pas de traduction automatique fiable disponible"}</span>` : '';
+    return `<a class="item" href="${u}" target="_blank" rel="noopener">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m5-3h6v6m0-6L10 14"/></svg>
+      <span>${esc(t)}${trLine}${activeTab==='all' ? `<span class="src">${esc(secLabel(sk))}</span>` : ''}</span></a>`;
+  }).join('');
+    return `<div class="grp"><div class="gtitle">${esc(g)}</div><div class="items">${items}</div></div>`;
+  }).join('');
+}
+
+document.getElementById('q').addEventListener('input', () => {
+  document.getElementById('clr').style.display = document.getElementById('q').value ? 'block' : 'none';
+  render();
+});
+document.getElementById('clr').addEventListener('click', () => {
+  document.getElementById('q').value = '';
+  document.getElementById('clr').style.display = 'none';
+  render();
+});
+document.getElementById('fm').addEventListener('change', e => { fModel = e.target.value; render(); });
+document.getElementById('rst').addEventListener('click', () => {
+  document.getElementById('q').value = '';
+  document.getElementById('clr').style.display = 'none';
+  fModel = "";
+  render();
+});
+
+renderTabs();
+loadAll();
+</script>
+</body>
+</html>

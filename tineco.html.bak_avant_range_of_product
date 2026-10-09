@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script src="auth-guard.js"></script>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<script src="confidentialite.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Tineco — Documentation, fichiers et pièces détachées</title>
+<style>
+:root{
+  --bg:#f4f5f7; --card:#fff; --ink:#1a1d21; --muted:#6b7280; --line:#e2e5ea;
+  --tineco:#00327D; --tineco2:#0a63c9; --chip:#eef1f6; --lime:#F7FE8C;
+  --fnac:#D4151B; --green:#128a3a; --orange:#c77700;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
+a{color:inherit;}
+.hubbar{background:var(--fnac);padding:12px 22px;display:flex;align-items:center;gap:16px;text-decoration:none;}
+.hubbar img{height:38px;background:#fff;padding:5px 9px;border-radius:6px;transition:transform .15s;}
+.hubbar:hover img{transform:scale(1.05);}
+.hubbar .txt{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.hero{background:linear-gradient(120deg,#00214f 0%,#00327D 60%,#0a4aa3 100%);color:#fff;padding:30px 22px 26px;text-align:center;}
+.hero-logo{height:46px;background:#fff;padding:7px 14px;border-radius:10px;margin-bottom:12px;box-shadow:0 4px 16px rgba(0,0,0,.25);}
+.hero h1{font-size:1.35rem;font-weight:700;margin-bottom:4px;}
+.hero p{opacity:.85;font-size:.88rem;margin-bottom:16px;}
+.searchbox{max-width:760px;margin:0 auto;position:relative;}
+.searchbox input{width:100%;padding:15px 46px 15px 18px;font-size:1.05rem;border:none;border-radius:12px;outline:none;box-shadow:0 6px 24px rgba(0,0,0,.3);font-family:inherit;}
+.searchbox input:focus{box-shadow:0 0 0 3px var(--lime),0 6px 24px rgba(0,0,0,.3);}
+.searchbox .clr{position:absolute;right:10px;top:50%;transform:translateY(-50%);border:none;background:var(--chip);color:var(--muted);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:1rem;display:none;}
+.searchbox.has .clr{display:block;}
+.tip{max-width:760px;margin:12px auto 0;font-size:.8rem;opacity:.9;background:rgba(255,255,255,.12);border-radius:8px;padding:8px 12px;text-align:left;}
+.tip b{color:var(--lime);}
+main{max-width:1080px;margin:0 auto;padding:18px 22px 60px;}
+.status{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:.76rem;color:var(--muted);margin-bottom:12px;}
+.status .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:5px;}
+.status .dot.ko{background:var(--fnac);} .status .dot.wait{background:var(--orange);}
+.btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 12px;font-size:.78rem;cursor:pointer;font-family:inherit;color:var(--ink);}
+.btn:hover{border-color:var(--tineco);color:var(--tineco);}
+.warn{background:#fff7e6;border:1px solid #f5d28a;color:#6b4a00;border-radius:10px;padding:10px 14px;font-size:.84rem;margin-bottom:14px;line-height:1.5;}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px;}
+.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font-size:.82rem;cursor:pointer;font-family:inherit;}
+.tab.on{background:var(--tineco);color:#fff;border-color:var(--tineco);}
+.tab small{opacity:.75;margin-left:4px;}
+.sep{width:1px;height:22px;background:var(--line);margin:0 4px;}
+.fchip{border:1px solid var(--line);background:var(--chip);border-radius:999px;padding:4px 11px;font-size:.76rem;cursor:pointer;font-family:inherit;color:var(--ink);}
+.fchip.on{background:var(--lime);border-color:#c9d36a;font-weight:600;}
+h2.sec{font-size:.95rem;color:var(--tineco);margin:20px 0 8px;display:flex;align-items:center;gap:8px;}
+h2.sec small{color:var(--muted);font-weight:400;font-size:.78rem;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:13px 16px;margin-bottom:9px;}
+.doc .top{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;}
+.doc .nm{font-weight:700;font-size:.98rem;}
+.badge{font-size:.68rem;background:var(--chip);color:var(--tineco);border-radius:6px;padding:2px 8px;font-weight:600;}
+.badge.fm{background:#e6f0ff;}
+.refs{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 2px;}
+.ref{font-family:Consolas,"Courier New",monospace;font-size:.78rem;background:#f1f5fb;border:1px solid #d8e2f2;border-radius:6px;padding:2px 7px;cursor:pointer;}
+.ref:hover{background:var(--lime);}
+.links{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px;}
+.lk{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;text-decoration:none;border-radius:8px;padding:6px 11px;border:1px solid var(--line);background:#fff;max-width:100%;}
+.lk span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:430px;}
+.lk.man{border-color:#bcd0ee;background:#f4f8ff;color:var(--tineco);}
+.lk.par{border-color:#cbe6d3;background:#f3fbf5;color:var(--green);}
+.lk:hover{box-shadow:0 2px 8px rgba(0,0,0,.12);}
+.lk.none{color:var(--muted);background:#fafafa;border-style:dashed;cursor:default;}
+.lk.none:hover{box-shadow:none;}
+.lk.bom,.bomb{border:1px solid #f0d98c;background:#fffbe8;color:#7a5a00;font-weight:600;text-decoration:none;border-radius:8px;font-size:.78rem;padding:6px 10px;white-space:nowrap;}
+.lk.bom:hover,.bomb:hover{background:var(--lime);}
+.file .bomb{flex:0 0 auto;}
+.lk.rel{border-color:#e4e0f5;background:#f8f6ff;color:#5b3fbf;cursor:pointer;font-family:inherit;}
+.file{display:flex;gap:12px;align-items:center;padding:9px 14px;}
+.ico{flex:0 0 38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.66rem;font-weight:800;color:#fff;background:#8a93a2;}
+.ico.xls{background:#1d7a45;} .ico.doc{background:#2b5fb4;} .ico.pdf{background:#c62828;} .ico.ppt{background:#d2562a;} .ico.vid{background:#6a3fb5;} .ico.fold{background:#e0a800;font-size:1.1rem;}
+.file .info{flex:1;min-width:0;}
+.file .fn{font-size:.9rem;font-weight:600;text-decoration:none;word-break:break-word;}
+.file .fn:hover{color:var(--tineco2);text-decoration:underline;}
+.file .pa{font-size:.72rem;color:var(--muted);margin-top:2px;word-break:break-word;}
+.file .dt{font-size:.72rem;color:var(--muted);white-space:nowrap;text-align:right;}
+.file .dt a{color:var(--tineco2);text-decoration:none;display:block;margin-top:3px;}
+.pcard{display:flex;gap:12px;align-items:center;padding:9px 12px;}
+.pth{flex:0 0 84px;height:84px;border:1px solid var(--line);border-radius:8px;background:#fafbfc;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:zoom-in;font-size:.68rem;color:var(--muted);text-align:center;}
+.pth img{max-width:100%;max-height:100%;object-fit:contain;}
+.pth.no{cursor:default;}
+.pinfo{flex:1;min-width:0;} .pdes{font-size:.92rem;font-weight:600;} .pdes small{display:block;font-weight:400;color:var(--muted);font-size:.74rem;}
+.prefs{font-size:.76rem;margin-top:3px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 12px;} .prefs b{font-family:Consolas,monospace;color:var(--tineco);} .prefs .sp{color:var(--tineco2);}
+.psub{font-size:.72rem;color:#c77700;margin-top:2px;}
+.dev .top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;} .dev .meta{font-size:.78rem;color:var(--muted);margin-top:5px;}
+#lb{position:fixed;inset:0;background:rgba(10,14,22,.88);z-index:9999;display:none;align-items:center;justify-content:center;flex-direction:column;padding:20px;cursor:zoom-out;}
+#lb.on{display:flex;} #lb img{max-width:min(92vw,1100px);max-height:80vh;background:#fff;border-radius:10px;object-fit:contain;} #lb .cap{color:#fff;margin-top:12px;font-size:.9rem;text-align:center;}
+mark{background:var(--lime);color:inherit;padding:0 1px;border-radius:2px;}
+.more{text-align:center;margin:10px 0 4px;}
+.empty,.intro{text-align:center;color:var(--muted);padding:34px 12px;font-size:.92rem;line-height:1.6;}
+.intro b{color:var(--ink);}
+.ex{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:12px;}
+#topBtn{position:fixed;right:18px;bottom:18px;width:44px;height:44px;border-radius:50%;border:none;background:var(--tineco);color:#fff;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:.2s;}
+#topBtn.show{opacity:1;pointer-events:auto;}
+@media(max-width:620px){.file .dt{display:none;}.hero h1{font-size:1.1rem;}main{padding:14px 12px 60px;}.lk span{max-width:220px;}}
+</style>
+<script data-goatcounter="https://hub-drive-fnac.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<a class="hubbar" href="index.html" title="Retour au HUB Drive Constructeurs">
+  <img src="IMAGES/FNAC DARTY.png" alt="Fnac Darty — Retour au HUB">
+  <span class="txt">← HUB Drive Constructeurs</span>
+</a>
+
+<div class="hero">
+  <img class="hero-logo" src="IMAGES/TINECO.png" alt="Tineco" onerror="this.style.display='none'">
+  <h1>Rechercher chez Tineco</h1>
+  <p>Documentation, fichiers SAVVY, appareils et pièces détachées (avec photos) — un seul point de recherche</p>
+  <div class="searchbox" id="sbox">
+    <input id="q" type="text" autocomplete="off" spellcheck="false" placeholder="Ex. FW440300DE, S7 Pro, CL2376, brush roller, 9FWBR060000, 114-23761801…" autofocus>
+    <button class="clr" id="clr" title="Effacer" aria-label="Effacer">×</button>
+  </div>
+  <div class="tip">💡 Privilégiez la <b>référence technique</b> de la plaque signalétique : plusieurs documentations peuvent exister pour une même référence commerciale.</div>
+</div>
+
+<main>
+  <div class="status" id="status"><span><span class="dot wait"></span>Chargement des fichiers Excel…</span></div>
+  <div id="warn"></div>
+  <input type="file" id="fileInput" accept=".xlsx,.xls,.xlsm" multiple style="display:none">
+  <div class="toolbar" id="toolbar" style="display:none"></div>
+  <div id="results"></div>
+</main>
+<div id="lb"><img alt=""><div class="cap"></div></div>
+<div style="text-align:center;font-size:.78rem;color:#6b7280;padding:0 12px 28px">Pièces détachées : synchronisées depuis <code>Tineco/data/Global spare parts list-EU-update.xlsx</code> · Manuels : <code>Tineco/data/tineco_manuels.js</code> + tableau de documentation</div>
+<button id="topBtn" title="Haut de page">↑</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="Tineco/data/cn_fr_glossaire.js"></script>
+<script src="Tineco/data/tineco_manuels.js"></script>
+<script>
+/* =====================================================================
+   Tineco — recherche dans les 2 fichiers Excel du dossier Tineco/data/ :
+   1) Tineco_Tableau_documentation.xlsx : correspondance référence commerciale /
+      référence technique + manuel + pièces (tableau de l'article SAVVY)
+   2) Tineco_sharepoint_savvy.xlsx : export de la bibliothèque SharePoint SAVVY
+      (Nom | Modifié | Modifié par | État | Type d'élément | Chemin d'accès)
+   Les liens SAVVY sont reconstruits depuis le chemin (comme kitchenaid.html).
+   ===================================================================== */
+const GLOB_URL = 'Tineco/data/Global spare parts list-EU-update.xlsx';
+let GSER = [], GFG = new Map(), GP = [], GD = [], GDATE = '';
+const DOC_URL = 'Tineco/data/Tineco_Tableau_documentation.xlsx';
+const SAV_URL = 'Tineco/data/Tineco_sharepoint_savvy.xlsx';
+const ROOT    = 'Documents partages/Tineco';
+const SP  = 'https://groupefnac.sharepoint.com/';
+const LIB = SP + 'sites/SAVVY_FNACDARTY/Documents%20partages/Forms/AllItems.aspx';
+const VIEW = '4B095B6C-E238-4145-AEAC-58FC81495ECD';
+
+let DOCS = [], SAV = [], loaded = {doc:null, sav:null, glob:null};
+const S = {q:'', tab:'all', fam:'', ext:'', nDoc:30, nSav:40, nDev:20, nPar:40};
+
+/* ---------- utilitaires ---------- */
+const $ = id => document.getElementById(id);
+function norm(x){ return String(x==null?'':x).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim(); }
+function esc(s){ return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function safeUrl(u){ return /^https:\/\//i.test(u||'') ? u : ''; }
+function encPath(p){ return p.split('/').map(encodeURIComponent).join('/'); }
+function fileLink(p,n){ return SP + encPath(p + '/' + n); }
+function folderLink(full){ return LIB + '?id=' + encodeURIComponent('/' + full) + '&viewid=' + VIEW; }
+function fmtDate(d){
+  if(d instanceof Date && !isNaN(d)) return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear();
+  return d ? String(d).slice(0,10) : ''; }
+function loadScript(u){ return new Promise((ok,ko)=>{ const s=document.createElement('script'); s.src=u; s.onload=ok; s.onerror=()=>ko(new Error('SheetJS indisponible')); document.head.appendChild(s); }); }
+function tokens(q){ return norm(q).split(' ').filter(Boolean); }
+function hl(text){
+  const raw = S.q.trim().split(/\s+/).filter(Boolean).map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));
+  let t = String(text);
+  if(raw.length){ const re = new RegExp('('+raw.join('|')+')','gi'); t = t.replace(re,'\u0001$1\u0002'); }
+  return esc(t).replace(/\u0001/g,'<mark>').replace(/\u0002/g,'</mark>'); }
+
+/* ---------- lecture des classeurs ---------- */
+function aoaOf(ws){ return XLSX.utils.sheet_to_json(ws,{header:1,defval:'',raw:true}); }
+function parseDocs(wb){
+  for(const name of wb.SheetNames){
+    const a = aoaOf(wb.Sheets[name]);
+    let hr = -1;
+    for(let i=0;i<Math.min(a.length,10);i++){
+      const h = (a[i]||[]).map(norm);
+      if(h.some(c=>c.includes('technique')) && h.some(c=>c.includes('commercial'))){ hr=i; break; } }
+    if(hr<0) continue;
+    const H = a[hr].map(norm);
+    const ix = (...keys)=>H.findIndex(c=>keys.every(k=>c.includes(k)));
+    const iCom=ix('commercial'), iRef=ix('techniques')>=0?ix('techniques'):ix('technique'), iFam=ix('famille'), iFm=ix('modele');
+    const iML=ix('manuel','libelle'), iMU=ix('manuel','lien');
+    const parts=[]; for(let k=1;k<=4;k++){ const l=ix('pieces',String(k),'libelle'), u=ix('pieces',String(k),'lien'); if(l>=0||u>=0) parts.push([l,u]); }
+    const out=[];
+    for(let i=hr+1;i<a.length;i++){
+      const r=a[i]||[]; const com=String(r[iCom]==null?'':r[iCom]).trim(); if(!com) continue;
+      const refs=String(r[iRef]==null?'':r[iRef]).split(/[;\s,]+/).filter(Boolean);
+      const g=(j)=>j>=0&&r[j]!=null?String(r[j]).trim():'';
+      const man = (g(iML)||g(iMU)) ? {l:g(iML)||'Manuel de réparation',u:safeUrl(g(iMU))} : null;
+      const par = parts.map(([l,u])=>({l:g(l)||'Pièces détachées',u:safeUrl(g(u)),has:!!(g(l)||g(u))})).filter(p=>p.has);
+      const o={com,refs,fam:g(iFam),fm:g(iFm),man,par};
+      o.hay = norm([com,refs.join(' '),o.fm,man?man.l:'',par.map(p=>p.l).join(' ')].join(' '));
+      o.refsN = refs.map(norm); o.comN = norm(com);
+      out.push(o); }
+    return out; }
+  throw new Error('Tableau de documentation introuvable (colonnes « Référence commerciale » et « Références techniques »).'); }
+
+function translateCN(text){
+  if(!text) return text; let out=String(text);
+  if(typeof CN_FR_TERMS==='undefined') return out;
+  if(!translateCN.s) translateCN.s = CN_FR_TERMS.slice().sort((a,b)=>b[0].length-a[0].length);
+  for(const [zh,fr] of translateCN.s){ if(out.indexOf(zh)!==-1) out=out.split(zh).join(fr); }
+  return out; }
+function manualOf(series){
+  const m=/^([A-Z]{2}\d{4})/.exec(String(series||'').toUpperCase()); if(!m||typeof MANUAL_BY_FACTORY_MODEL==='undefined') return null;
+  const name=MANUAL_BY_FACTORY_MODEL[m[1]]; if(!name) return null;
+  return {fm:m[1],name,url:(MANUAL_LINKS[name]||''),approx:APPROX_MANUALS.has(name)}; }
+function parseGlobal(wb){
+  const nm=wb.SheetNames.find(n=>n==='EU SP list')||wb.SheetNames.find(n=>/EU\s*SP/i.test(n));
+  if(!nm) throw new Error('Feuille « EU SP list » introuvable.');
+  const a=XLSX.utils.sheet_to_json(wb.Sheets[nm],{header:1,defval:'',raw:true});
+  const H=a[0].map(x=>String(x).toLowerCase().replace(/\s+/g,' '));
+  const ix=(...k)=>H.findIndex(h=>k.every(x=>h.includes(x)));
+  const C={date:ix('update time'),fg:H.findIndex(h=>/^fg sku/.test(h)),series:H.findIndex(h=>h.includes('系列型号')),country:ix('country'),name:ix('fg name'),color:ix('color'),status:ix('大货状态'),
+    sp:ix('sp sku'),sub:ix('substitute'),old:ix('old sap'),sap:H.findIndex(h=>h.includes('sap')&&!h.includes('old')&&!h.includes('老')),des:ix('sp des'),pic:ix('picture'),cn:ix('中文描述')};
+  if(C.sp<0||C.fg<0) throw new Error('Colonnes « FG SKU » / « SP SKU » introuvables.');
+  const t=v=>v==null?'':String(v).trim(), z=v=>{ v=t(v); return v==='0'?'':v; };
+  const P=[], dm=new Map(); let dmax=0;
+  for(let i=1;i<a.length;i++){ const r=a[i]; const sp=t(r[C.sp]), fg=t(r[C.fg]); if(!sp&&!fg) continue;
+    if(r[C.date] instanceof Date&&+r[C.date]>dmax) dmax=+r[C.date];
+    const pic=t(r[C.pic]), cn=t(r[C.cn]).replace(/^SP;[^;]*;/,'');
+    const o={code:sp,sap:z(r[C.sap])||z(r[C.old]),en:t(r[C.des]).replace(/\s+/g,' '),cn,fr:translateCN(cn),fg,fgn:t(r[C.name]),model:t(r[C.series]),
+      country:t(r[C.country]),color:t(r[C.color]),status:t(r[C.status]),sub:z(r[C.sub]),src:/^https?:\/\//i.test(pic)?pic:''};
+    o.hay=norm([o.code,o.sap,z(r[C.old]),o.en,o.cn,o.fr,o.fg,o.fgn,o.model,o.sub].join(' ')); o.codeN=norm(o.code); o.sapN=norm(o.sap);
+    P.push(o);
+    if(!dm.has(fg)) dm.set(fg,{fg,fgn:o.fgn,model:o.model,country:o.country,color:o.color,status:o.status,n:0,ph:0});
+    const d=dm.get(fg); d.n++; if(o.src) d.ph++; }
+  if(!P.length) throw new Error('Aucune pièce lue dans « EU SP list ».');
+  GP=P; GD=[...dm.values()].sort((x,y)=>x.fgn.localeCompare(y.fgn,'fr',{numeric:true})||x.fg.localeCompare(y.fg));
+  GD.forEach(d=>{ d.hay=norm([d.fg,d.fgn,d.model,d.country,d.color].join(' ')); d.fgN=norm(d.fg); d.mN=norm(d.model); d.man=manualOf(d.model); if(d.man) d.hay+=' '+norm(d.man.name+' manuel manual repair reparation'); });
+  GFG=new Map(GD.map(d=>[d.fgN,d.fg])); GSER=[...new Set(GD.map(d=>d.mN))];
+  GDATE=dmax?new Date(dmax).toLocaleDateString('fr-FR'):''; }
+function bomDev(fg){ return 'tineco_bom.html?fg='+encodeURIComponent(fg); }
+
+function parseSav(wb){
+  const a = aoaOf(wb.Sheets[wb.SheetNames[0]]);
+  let hr=-1;
+  for(let i=0;i<Math.min(a.length,10);i++){
+    const h=(a[i]||[]).map(norm);
+    if(h.includes('nom') && h.some(c=>c.includes('chemin'))){ hr=i; break; } }
+  if(hr<0) throw new Error('En-têtes « Nom / Chemin d\'accès » introuvables.');
+  const H=a[hr].map(norm);
+  const iN=H.indexOf('nom'), iP=H.findIndex(c=>c.includes('chemin')), iT=H.findIndex(c=>c.includes('type')), iD=H.findIndex(c=>c==='modifie');
+  const out=[], seen=new Set();
+  for(let i=hr+1;i<a.length;i++){
+    const r=a[i]||[]; const n=String(r[iN]==null?'':r[iN]).trim(); if(!n||n.startsWith('~$')) continue;
+    const p=String(r[iP]==null?'':r[iP]).trim(); if(!p) continue;
+    const f=norm(r[iT]).startsWith('dossier');
+    const key=p+'/'+n; if(seen.has(key)) continue; seen.add(key);
+    const k=p.indexOf(ROOT); let rel=k>=0?p.slice(k+ROOT.length):p; rel=rel.replace(/^\/+|\/+$/g,'');
+    const m=n.toLowerCase().match(/\.([a-z0-9]+)$/);
+    const o={n,p,f,rel,ext:f?'':(m?m[1]:''),d:iD>=0?r[iD]:'',u:f?folderLink(p+'/'+n):fileLink(p,n),pu:folderLink(p)};
+    o.hay=norm(n+' '+rel); o.nN=norm(n);
+    out.push(o); }
+  return out; }
+
+function kind(o){
+  if(o.f) return {c:'fold',t:'📁',l:'Dossier'};
+  const e=o.ext;
+  if(e==='pdf') return {c:'pdf',t:'PDF',l:'PDF'};
+  if(e==='doc'||e==='docx') return {c:'doc',t:'DOC',l:'Word'};
+  if(e==='xls'||e==='xlsx'||e==='csv') return {c:'xls',t:'XLS',l:'Excel'};
+  if(e==='ppt'||e==='pptx') return {c:'ppt',t:'PPT',l:'PowerPoint'};
+  if(['mp4','mov','avi','mkv','wmv'].includes(e)) return {c:'vid',t:'VID',l:'Vidéo'};
+  return {c:'oth',t:(e||'DOC').toUpperCase().slice(0,4),l:'Autre'}; }
+
+/* ---------- chargement ---------- */
+async function ensureSheetJS(){ if(typeof XLSX==='undefined') await loadScript('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js'); }
+async function fetchWb(url){
+  const r = await fetch(url+'?t='+Date.now(),{cache:'no-store'});
+  if(!r.ok) throw new Error('HTTP '+r.status);
+  return XLSX.read(await r.arrayBuffer(),{type:'array',cellDates:true}); }
+async function init(){
+  try{ await ensureSheetJS(); }catch(e){ return fail(e.message); }
+  const res = await Promise.allSettled([fetchWb(DOC_URL),fetchWb(SAV_URL),fetchWb(GLOB_URL)]);
+  if(res[0].status==='fulfilled'){ try{ DOCS=parseDocs(res[0].value); loaded.doc='auto'; }catch(e){ loaded.doc='ERR: '+e.message; } } else loaded.doc='ERR: '+res[0].reason.message;
+  if(res[1].status==='fulfilled'){ try{ SAV=parseSav(res[1].value); loaded.sav='auto'; }catch(e){ loaded.sav='ERR: '+e.message; } } else loaded.sav='ERR: '+res[1].reason.message;
+  if(res[2].status==='fulfilled'){ try{ parseGlobal(res[2].value); loaded.glob='auto'; }catch(e){ loaded.glob='ERR: '+e.message; } } else loaded.glob='ERR: '+res[2].reason.message;
+  afterLoad();
+  const Q=new URLSearchParams(location.search).get('q'); if(Q){ S.q=Q; $('q').value=Q; render(); } }
+function globalHref(refs){ for(const r of refs){ const n=norm(r); if(GFG.has(n)) return 'tineco_bom.html?fg='+encodeURIComponent(GFG.get(n)); }
+  for(const r of refs){ const n=norm(r); if(n.length>=6 && GSER.some(s=>s===n||s.startsWith(n))) return 'tineco_bom.html?ref='+encodeURIComponent(r); } return ''; }
+function fail(msg){ $('status').innerHTML='<span><span class="dot ko"></span>'+esc(msg)+'</span>'; }
+async function importFiles(files){
+  try{ await ensureSheetJS(); }catch(e){ return fail(e.message); }
+  for(const f of files){
+    try{
+      const wb=XLSX.read(await f.arrayBuffer(),{type:'array',cellDates:true});
+      try{ parseGlobal(wb); loaded.glob='manuel : '+f.name; continue; }catch(_){}
+      try{ DOCS=parseDocs(wb); loaded.doc='manuel : '+f.name; continue; }catch(_){}
+      try{ SAV=parseSav(wb); loaded.sav='manuel : '+f.name; continue; }catch(_){}
+      alert('« '+f.name+' » n\'est ni le tableau de documentation, ni l\'export SharePoint SAVVY, ni le Global spare parts list.');
+    }catch(e){ alert('Lecture impossible : '+f.name); } }
+  afterLoad(); }
+/* ---------- liens SharePoint : reconstruits depuis le chemin (comme kitchenaid.html) ----------
+   Les liens « partage » (/:w:/r/…?d=…) du tableau de documentation cassent (404) quand le fichier est
+   remplacé ou renommé. On les remplace par le lien direct bâti sur le chemin réel de l'export SAVVY. */
+let _idx=null,_idxN=-1;
+function savIndex(){ if(_idx&&_idxN===SAV.length) return _idx; _idx=new Map(); _idxN=SAV.length;
+  for(const f of SAV){ if(f.f) continue; _idx.set(String(f.p+'/'+f.n).replace(/^\/+/,'').toLowerCase(),f); } return _idx; }
+function resolveLink(url,label){
+  if(!url||!SAV.length) return url;
+  if(label){ const L=norm(String(label).replace(/\.[a-z0-9]{2,4}$/i,'')); const ex=SAV.filter(x=>!x.f&&norm(x.n.replace(/\.[a-z0-9]{2,4}$/i,''))===L);
+    if(ex.length){ const f=ex.find(x=>/1\.repair manual/i.test(x.p))||ex[0]; return fileLink(f.p,f.n)+(/\.(docx?|xlsx?|pptx?)$/i.test(f.n)?'?web=1':''); } }
+  const m=/\/sites\/SAVVY_FNACDARTY\/([^?#]+)/i.exec(url); if(!m) return url;
+  let path; try{ path=decodeURIComponent(m[1]); }catch(_){ return url; }
+  const key=('sites/SAVVY_FNACDARTY/'+path).toLowerCase(), I=savIndex();
+  let f=I.get(key);
+  if(!f){ const name=path.split('/').pop(); const cand=SAV.filter(x=>!x.f&&norm(x.n)===norm(name)); if(cand.length) f=cand.find(x=>/1\.repair manual|repair manual/i.test(x.p))||cand[0]; }
+  if(!f) return url;
+  return fileLink(f.p,f.n)+(/\.(docx?|xlsx?|pptx?)$/i.test(f.n)?'?web=1':''); }
+function fixLinks(){
+  for(const d of DOCS){ if(d.man&&d.man.u) d.man.u=resolveLink(d.man.u,d.man.l); d.par.forEach(p=>{ if(p.u) p.u=resolveLink(p.u,p.l); }); }
+  if(typeof MANUAL_LINKS!=='undefined'){ if(!fixLinks.o) fixLinks.o=Object.assign({},MANUAL_LINKS); for(const k in fixLinks.o) MANUAL_LINKS[k]=resolveLink(fixLinks.o[k],k); }
+  GD.forEach(d=>{ d.man=manualOf(d.model); }); }
+function afterLoad(){
+  fixLinks();
+  const ok=(v)=>v&&!String(v).startsWith('ERR');
+  const dotc=(ok(loaded.doc)&&ok(loaded.sav)&&ok(loaded.glob))?'':'ko';
+  const nF=SAV.filter(x=>!x.f).length, nD=SAV.filter(x=>x.f).length;
+  const latest=SAV.reduce((m,x)=>x.d instanceof Date&&x.d>m?x.d:m,new Date(0));
+  $('status').innerHTML =
+    '<span><span class="dot '+dotc+'"></span><b>'+DOCS.length+'</b> références (tableau de documentation)</span>'+
+    '<span><b>'+nF+'</b> fichiers · <b>'+nD+'</b> dossiers (SharePoint SAVVY'+(latest.getTime()?', dernière modif. '+fmtDate(latest):'')+')</span>'+
+    '<span><b>'+GP.length+'</b> pièces · <b>'+GD.length+'</b> appareils (catalogue EU'+(GDATE?', maj '+GDATE:'')+')</span>'+
+    '<button class="btn" id="imp">📥 Importer un Excel</button>';
+  $('imp').onclick=()=>$('fileInput').click();
+  let w='';
+  if(!ok(loaded.doc)) w+='⚠️ <b>Tineco_Tableau_documentation.xlsx</b> non chargé'+(loaded.doc?' ('+esc(String(loaded.doc).replace(/^ERR: /,''))+')':'')+'. ';
+  if(!ok(loaded.sav)) w+='⚠️ <b>Tineco_sharepoint_savvy.xlsx</b> non chargé'+(loaded.sav?' ('+esc(String(loaded.sav).replace(/^ERR: /,''))+')':'')+'. ';
+  if(!ok(loaded.glob)) w+='⚠️ <b>Global spare parts list-EU-update.xlsx</b> non chargé'+(loaded.glob?' ('+esc(String(loaded.glob).replace(/^ERR: /,''))+')':'')+'. ';
+  if(w) w+='<br>Si la page est ouverte en local (fichier), les navigateurs bloquent la lecture automatique : utilisez <b>« Importer un Excel »</b> et sélectionnez les fichiers du dossier <code>Tineco/data</code>.';
+  $('warn').innerHTML = w?'<div class="warn">'+w+'</div>':'';
+  render(); }
+
+/* ---------- recherche ---------- */
+function searchDocs(tk){
+  const out=[];
+  for(const d of DOCS){
+    if(S.fam && d.fam!==S.fam) continue;
+    if(!tk.every(t=>d.hay.includes(t))) continue;
+    let sc=0;
+    for(const t of tk){
+      if(d.refsN.includes(t)) sc+=12; else if(d.refsN.some(r=>r.startsWith(t))) sc+=8; else if(d.refsN.some(r=>r.includes(t))) sc+=5;
+      if(d.comN===t) sc+=10; else if(d.comN.startsWith(t)) sc+=4; else if(d.comN.includes(t)) sc+=3;
+      if(d.fm && norm(d.fm)===t) sc+=6; }
+    out.push([sc,d]); }
+  out.sort((a,b)=>b[0]-a[0]||a[1].com.localeCompare(b[1].com,'fr'));
+  return out.map(x=>x[1]); }
+function searchSav(tk){
+  const out=[];
+  for(const f of SAV){
+    if(isParts(f)) continue;
+    if(S.ext && kind(f).l!==S.ext) continue;
+    if(!tk.every(t=>f.hay.includes(t))) continue;
+    let sc=0;
+    for(const t of tk){ if(f.nN.includes(t)) sc+=3; if(f.nN.startsWith(t)) sc+=2; }
+    if(!f.f) sc+=1;
+    out.push([sc,f]); }
+  out.sort((a,b)=>b[0]-a[0]||(b[1].d instanceof Date&&a[1].d instanceof Date?b[1].d-a[1].d:0)||a[1].n.localeCompare(b[1].n,'fr'));
+  return out.map(x=>x[1]); }
+function searchDev(tk){
+  const out=[];
+  for(const d of GD){ if(!tk.every(t=>d.hay.includes(t))) continue; let sc=0;
+    for(const t of tk){ if(d.fgN===t) sc+=12; else if(d.fgN.startsWith(t)) sc+=6; if(d.mN===t||d.mN.startsWith(t)) sc+=5; if(norm(d.fgn).includes(t)) sc+=2; }
+    out.push([sc,d]); }
+  out.sort((a,b)=>b[0]-a[0]); return out.map(x=>x[1]); }
+function searchParts(tk){
+  const out=[];
+  for(const p of GP){ if(!tk.every(t=>p.hay.includes(t))) continue; let sc=0;
+    for(const t of tk){ if(p.codeN===t||p.sapN===t) sc+=12; else if(p.codeN.startsWith(t)||p.sapN.startsWith(t)) sc+=6; if(norm(p.en).includes(t)) sc+=2; }
+    if(p.src) sc+=1; out.push([sc,p]); }
+  out.sort((a,b)=>b[0]-a[0]); return out.map(x=>x[1]); }
+function relatedCount(fm){ if(!fm) return 0; const t=norm(fm); return SAV.filter(f=>!f.f&&f.hay.includes(t)).length; }
+
+/* ---------- affichage ---------- */
+function docCard(d){
+  const refs=d.refs.map(r=>'<span class="ref" data-q="'+esc(r)+'" title="Rechercher cette référence">'+hl(r)+'</span>').join('');
+  let links='';
+  links += d.man ? (d.man.u?'<a class="lk man" href="'+esc(d.man.u)+'" target="_blank" rel="noopener">📘 <span>'+hl(d.man.l)+'</span></a>':'<span class="lk none">📘 '+esc(d.man.l)+'</span>')
+                 : '<span class="lk none">📘 Pas de manuel référencé</span>';
+  const gh=GFG.size?globalHref(d.refs):'';
+  if(gh) links += '<a class="lk bom" href="'+gh+'" title="Liste de pièces détachées EU avec photos (Global spare parts list)">🔧 Pièces détachées &amp; photos</a>';
+  return '<div class="card doc"><div class="top"><span class="nm">'+hl(d.com)+'</span>'+(d.fam?'<span class="badge">'+esc(d.fam)+'</span>':'')+(d.fm?'<span class="badge fm">'+hl(d.fm)+'</span>':'')+'</div>'+
+         (refs?'<div class="refs">'+refs+'</div>':'')+'<div class="links">'+links+'</div></div>'; }
+function fileCard(f){
+  const k=kind(f);
+  return '<div class="card file"><div class="ico '+k.c+'">'+k.t+'</div><div class="info"><a class="fn" href="'+esc(f.u)+'" target="_blank" rel="noopener">'+hl(f.n)+'</a>'+
+         '<div class="pa">'+(f.rel?hl(f.rel.replace(/\//g,' › ')):'Tineco')+'</div></div>'+
+         '<div class="dt">'+fmtDate(f.d)+(f.f?'':'<a href="'+esc(f.pu)+'" target="_blank" rel="noopener">📂 dossier</a>')+'</div>'+
+         '</div>'; }
+function devMan(d){
+  let h='';
+  if(d.man){ h+= d.man.url ? '<a class="lk man" href="'+esc(d.man.url)+'" target="_blank" rel="noopener" title="Manuel de réparation (SAVVY)'+(d.man.approx?' — rapprochement approximatif, à vérifier':'')+'">📘 <span>'+esc(d.man.name)+(d.man.approx?' ⚠️':'')+'</span></a>'
+                          : '<span class="lk none">📘 '+esc(d.man.name)+' (lien SAVVY à venir)</span>'; }
+  else h+='<span class="lk none">📘 Pas de manuel référencé</span>';
+  const doc=DOCS.find(x=>x.refs.some(r=>norm(r)===d.fgN));
+  if(doc){ if(doc.man&&doc.man.u&&(!d.man||(doc.man.u!==d.man.url&&norm(doc.man.l)!==norm(d.man.name)))) h+='<a class="lk man" href="'+esc(doc.man.u)+'" target="_blank" rel="noopener">📘 <span>'+esc(doc.man.l)+'</span></a>'; }
+  return h; }
+function devCard(d){
+  return '<div class="card doc dev"><div class="top"><span class="nm">'+hl(d.fgn||'(sans nom)')+'</span><span class="badge">'+hl(d.fg)+'</span>'+(d.model?'<span class="badge fm">'+hl(d.model)+'</span>':'')+'</div>'+
+    '<div class="meta">'+esc([d.country,d.color,d.status].filter(Boolean).join(' · '))+' — '+d.n+' pièces · 📷 '+d.ph+' photos</div>'+
+    '<div class="links">'+devMan(d)+'<a class="lk bom" href="'+bomDev(d.fg)+'">🔧 Pièces détachées &amp; photos</a><button class="lk rel" data-q="'+esc(d.fg)+'" data-tab="par">Voir les pièces ici</button></div></div>'; }
+function partCard(p,i){
+  return '<div class="card pcard"><div class="pth'+(p.src?'':' no')+'"'+(p.src?' data-big="'+esc(p.src)+'" data-cap="'+esc(p.en+' — '+p.code)+'" title="Agrandir"':'')+'>'+
+    (p.src?'<img src="'+esc(p.src)+'" alt="" referrerpolicy="no-referrer" loading="lazy" onerror="this.parentNode.classList.add(\'no\');this.parentNode.textContent=\'Image indisponible\'">':'Pas de photo')+'</div>'+
+    '<div class="pinfo"><div class="pdes">'+hl(p.en||p.fr||p.cn||'—')+((p.fr&&p.fr!==p.en)?'<small>'+hl(p.fr)+'</small>':'')+'</div>'+
+    '<div class="prefs"><span>Réf. pièce <b>'+hl(p.code||'—')+'</b></span><span>Réf. SAV <b class="sp">'+hl(p.sap||'—')+'</b></span><span><a href="'+bomDev(p.fg)+'" title="Toutes les pièces de cet appareil">'+hl(p.fgn)+' · '+hl(p.fg)+'</a></span></div>'+
+    (p.sub?'<div class="psub">↻ Remplace / substitut : '+hl(p.sub)+'</div>':'')+'</div></div>'; }
+function bomLink(name){ return 'tineco_bom.html?file='+encodeURIComponent(name); }
+function isParts(f){ return /spare\s*part|\bSP\s*LIST|sp\s*list\s*of/i.test((f.rel||'')+' '+f.n); }
+function isBom(f){ return !f.f && /^xlsx?$/.test(f.ext) && /spare\s*part|\bSP\s*LIST|spare parts/i.test(f.rel+' '+f.n); }
+
+function render(){
+  const active = S.q.trim() || S.fam || S.ext;
+  const tk = tokens(S.q);
+  $('sbox').classList.toggle('has', !!S.q);
+  if(!DOCS.length && !SAV.length && !GP.length){ $('toolbar').style.display='none'; $('results').innerHTML='<div class="empty">Aucune donnée chargée.<br>Utilisez « Importer un Excel » pour charger les deux fichiers.</div>'; return; }
+  if(!active){
+    $('toolbar').style.display='none';
+    const ex=[]; [0,25,60,100].forEach(i=>{ const d=DOCS[i]; if(d&&d.refs[0]) ex.push(d.refs[0]); });
+    const fams=[...new Set(DOCS.map(d=>d.fam).filter(Boolean))];
+    $('results').innerHTML='<div class="intro">Tapez une référence, un nom d\'appareil ou une pièce pour lancer la recherche partout :<br>correspondance références commerciales / techniques &amp; manuels, fichiers SAVVY, appareils et <b>pièces détachées avec photos</b>.'+
+      '<div class="ex">'+ex.map(e=>'<button class="fchip" data-q="'+esc(e)+'">'+esc(e)+'</button>').join('')+'<button class="fchip" data-q="brush roller">brush roller</button><button class="fchip" data-q="spare part list">spare part list</button><button class="fchip" data-q="repair manual">repair manual</button></div>'+
+      (fams.length?'<div class="ex">'+fams.map(f=>'<button class="fchip" data-fam="'+esc(f)+'">'+esc(f)+'</button>').join('')+'</div>':'')+'</div>';
+    return; }
+  const rd = searchDocs(tk);
+  const rs = (S.fam && !S.q.trim()) ? [] : searchSav(tk);
+  const savAll = searchSav(tk);
+  const rv = GD.length?searchDev(tk):[], rp = GP.length?searchParts(tk):[];
+  const exts=[...new Set(savAll.map(f=>kind(f).l))];
+  const fams=[...new Set(DOCS.map(d=>d.fam).filter(Boolean))];
+  let tb='';
+  tb+='<button class="tab '+(S.tab==='all'?'on':'')+'" data-tab="all">Tout<small>'+(rd.length+rs.length+rv.length+rp.length)+'</small></button>';
+  tb+='<button class="tab '+(S.tab==='doc'?'on':'')+'" data-tab="doc">Correspondance<small>'+rd.length+'</small></button>';
+  tb+='<button class="tab '+(S.tab==='sav'?'on':'')+'" data-tab="sav">Fichiers SAVVY<small>'+rs.length+'</small></button>';
+  if(GP.length){ tb+='<button class="tab '+(S.tab==='dev'?'on':'')+'" data-tab="dev">Appareils<small>'+rv.length+'</small></button><button class="tab '+(S.tab==='par'?'on':'')+'" data-tab="par">Pièces &amp; photos<small>'+rp.length+'</small></button>'; }
+  if(fams.length>1){ tb+='<span class="sep"></span>'+fams.map(f=>'<button class="fchip '+(S.fam===f?'on':'')+'" data-fam="'+esc(f)+'">'+esc(f)+'</button>').join(''); }
+  if(S.tab!=='doc' && (exts.length>1||S.ext)){ tb+='<span class="sep"></span>'+exts.map(e=>'<button class="fchip '+(S.ext===e?'on':'')+'" data-ext="'+esc(e)+'">'+esc(e)+'</button>').join(''); }
+  $('toolbar').innerHTML=tb; $('toolbar').style.display='flex';
+  let h='';
+  if(S.tab==='all'||S.tab==='doc'){
+    h+='<h2 class="sec">Correspondance &amp; documentation <small>'+rd.length+' résultat'+(rd.length>1?'s':'')+'</small></h2>';
+    if(!rd.length) h+='<div class="empty" style="padding:14px">Aucune référence ne correspond dans le tableau de documentation.</div>';
+    h+=rd.slice(0,S.nDoc).map(docCard).join('');
+    if(rd.length>S.nDoc) h+='<div class="more"><button class="btn" data-more="doc">Afficher plus ('+(rd.length-S.nDoc)+')</button></div>'; }
+  if(GP.length && (S.tab==='all'||S.tab==='dev') && rv.length){
+    const lim=S.tab==='all'?4:S.nDev;
+    h+='<h2 class="sec">Appareils (catalogue pièces EU) <small>'+rv.length+' résultat'+(rv.length>1?'s':'')+'</small></h2>'+rv.slice(0,lim).map(devCard).join('');
+    if(rv.length>lim) h+='<div class="more"><button class="btn" '+(S.tab==='all'?'data-tab="dev"':'data-more="dev"')+'>Afficher plus ('+(rv.length-lim)+')</button></div>'; }
+  if(GP.length && (S.tab==='all'||S.tab==='par') && rp.length){
+    const lim=S.tab==='all'?6:S.nPar;
+    h+='<h2 class="sec">Pièces détachées &amp; photos <small>'+rp.length+' résultat'+(rp.length>1?'s':'')+'</small></h2>'+rp.slice(0,lim).map(partCard).join('');
+    if(rp.length>lim) h+='<div class="more"><button class="btn" '+(S.tab==='all'?'data-tab="par"':'data-more="par"')+'>Afficher plus ('+(rp.length-lim)+')</button></div>'; }
+  if((S.tab==='dev'&&!rv.length)||(S.tab==='par'&&!rp.length)) h+='<div class="empty">Aucun résultat dans le catalogue de pièces EU.</div>';
+  if(S.tab==='all'||S.tab==='sav'){
+    h+='<h2 class="sec">Fichiers SharePoint SAVVY <small>'+rs.length+' résultat'+(rs.length>1?'s':'')+'</small></h2>';
+    if(!rs.length) h+='<div class="empty" style="padding:14px">Aucun fichier ni dossier SAVVY ne correspond.</div>';
+    const lim=S.tab==='all'?Math.min(S.nSav,12):S.nSav;
+    h+=rs.slice(0,lim).map(fileCard).join('');
+    if(rs.length>lim) h+='<div class="more"><button class="btn" data-more="sav">Afficher plus ('+(rs.length-lim)+')</button></div>'; }
+  $('results').innerHTML=h; }
+
+/* ---------- événements ---------- */
+let timer;
+$('q').addEventListener('input',e=>{ clearTimeout(timer); timer=setTimeout(()=>{ S.q=e.target.value; S.nDoc=30; S.nSav=40; S.nDev=20; S.nPar=40; render(); },120); });
+$('clr').onclick=()=>{ $('q').value=''; S.q=''; S.fam=''; S.ext=''; render(); $('q').focus(); };
+$('fileInput').addEventListener('change',e=>{ importFiles([...e.target.files]); e.target.value=''; });
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-q],[data-tab],[data-fam],[data-ext],[data-more]'); if(!t) return;
+  if(t.dataset.q!==undefined){ S.q=t.dataset.q; $('q').value=S.q; S.fam=''; S.ext=''; S.nDoc=30; S.nSav=40; S.nDev=20; S.nPar=40; if(t.dataset.tab) S.tab=t.dataset.tab; window.scrollTo({top:0,behavior:'smooth'}); }
+  else if(t.dataset.tab!==undefined){ S.tab=t.dataset.tab; }
+  else if(t.dataset.fam!==undefined){ S.fam=(S.fam===t.dataset.fam)?'':t.dataset.fam; if(S.fam && S.tab==='sav') S.tab='all'; }
+  else if(t.dataset.ext!==undefined){ S.ext=(S.ext===t.dataset.ext)?'':t.dataset.ext; }
+  else if(t.dataset.more){ if(t.dataset.more==='doc') S.nDoc+=40; else if(t.dataset.more==='dev') S.nDev+=20; else if(t.dataset.more==='par') S.nPar+=60; else S.nSav+=60; }
+  render(); });
+document.addEventListener('click',e=>{ const b=e.target.closest('.pth[data-big]'); const L=$('lb');
+  if(b){ L.querySelector('img').src=b.dataset.big; L.querySelector('.cap').textContent=b.dataset.cap; L.classList.add('on'); } else if(L.classList.contains('on')) L.classList.remove('on'); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') $('lb').classList.remove('on'); });
+window.addEventListener('scroll',()=>$('topBtn').classList.toggle('show',window.scrollY>400));
+$('topBtn').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+init();
+</script>
+</body>
+</html>

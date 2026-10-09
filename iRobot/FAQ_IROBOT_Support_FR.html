@@ -2,9 +2,15 @@
 <html lang="fr">
 <head>
 <script src="../auth-guard.js"></script>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<script src="../confidentialite.js"></script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Base de connaissances FAQ — Liens support FR</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>FAQ Support iRobot (FR) — Drive constructeur iRobot</title>
 <style>
 :root{
   --bg:#FFFFFF; --surface:#FFFFFF; --surface-2:#F3F4F6; --border:#E5E7EB; --border2:#D1D5DB;
@@ -77,6 +83,24 @@ a.card:hover .arrow{opacity:1;color:var(--accent);}
 .empty-state{text-align:center;color:var(--text-2);padding:60px 20px;font-size:.95rem;}
 footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--border);color:var(--text-3);font-size:.78rem;text-align:center;}
 @media (max-width:640px){.card-list{grid-template-columns:1fr;}}
+
+/* BANDEAU BULLETIN + DOCUMENTS (repris du hub) */
+.warn-banner{max-width:820px;margin:20px auto 0;padding:14px 18px;background:#FFF7E6;border:1px solid #FDE1A6;border-radius:var(--radius);display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.warn-banner .wi{font-size:22px;flex-shrink:0;}
+.warn-banner .wt{flex:1;min-width:200px;font-size:13px;color:#92400E;line-height:1.5;}
+.warn-banner .wt b{display:block;font-size:14px;margin-bottom:2px;}
+.warn-banner a.wbtn{padding:8px 14px;background:#F59E0B;color:#fff;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;}
+.warn-banner a.wbtn:hover{background:#D97E06;}
+.docs-section{max-width:820px;margin:34px auto 0;padding:0 16px;}
+.docs-title{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.docs-title h2{font-size:15px;font-weight:800;color:#fff;background:var(--tech);padding:8px 16px;border-radius:8px 8px 0 0;}
+.docs-panel{background:var(--tech);border-radius:0 12px 12px 12px;padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;}
+.doc-card{background:#fff;border-radius:9px;padding:12px 14px;display:flex;align-items:center;gap:10px;text-decoration:none;transition:var(--transition);box-shadow:0 1px 3px rgba(0,0,0,.1);}
+.doc-card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.18);}
+.doc-icon{font-size:22px;flex-shrink:0;}
+.doc-txt{min-width:0;}
+.doc-name{font-size:12.5px;font-weight:700;color:var(--text);line-height:1.3;}
+.doc-sub{font-size:11px;color:var(--text-3);margin-top:2px;}
 </style>
 </head>
 <body>
@@ -89,7 +113,6 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--border);color
 <div class="fdband">
   <img class="fdband-logo" src="../IMAGES/IROBOT.png" alt="iRobot" onerror="this.style.display='none'">
   <nav>
-    <a href="../irobot.html">Recherche KB articles</a>
     <a href="../irobot-bom.html">Lecteur de BOM (codic)</a>
     <a href="FAQ_IROBOT_Support_FR.html" class="active">FAQ Support (FR)</a>
     <a href="https://assistance.irobot.fr" target="_blank" rel="noopener">Assistance iRobot officielle ↗</a>
@@ -106,6 +129,12 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--border);color
     <button class="btn-clear" onclick="searchInput.value='';render();searchInput.focus()" title="Effacer">✕</button>
   </div>
 </section>
+
+<div class="warn-banner">
+  <div class="wi">⚠️</div>
+  <div class="wt"><b>Bulletin de service en cours</b>Erreurs 33 / 1010 / Error 16 — Roomba® Combo, modèles 2025 &amp; 2026.</div>
+  <a class="wbtn" href="Service%20Bulletin%20-%20Errors%2033%201010%20%26%2016%20-%20Combo%202025%20%26%202026%20Models%20-%203%20June%202026.en.fr.pdf">📥 Télécharger le bulletin (FR)</a>
+</div>
 
 <div class="wrap">
 
@@ -125,6 +154,32 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--border);color
 
   <div id="results"></div>
   <div class="empty-state" id="emptyState" style="display:none;">Aucun article ne correspond à votre recherche.</div>
+
+  <div class="docs-section">
+    <div class="docs-title"><h2>📁 Documents du dossier iRobot</h2></div>
+    <div class="docs-panel">
+      <a class="doc-card" href="Roomba%C2%AE%20205%20Vac%20Combo.docx">
+        <div class="doc-icon">📄</div>
+        <div class="doc-txt"><div class="doc-name">Roomba® 205 Vac Combo</div><div class="doc-sub">Fiche produit · .docx</div></div>
+      </a>
+      <a class="doc-card" href="Erreur%20517%20Roomba.docx">
+        <div class="doc-icon">📄</div>
+        <div class="doc-txt"><div class="doc-name">Erreur 517 Roomba</div><div class="doc-sub">Procédure · .docx</div></div>
+      </a>
+      <a class="doc-card" href="Tarifs%20Darty%20%20Roomba%20Combo%20705c.xlsx">
+        <div class="doc-icon">📊</div>
+        <div class="doc-txt"><div class="doc-name">Tarifs Darty Roomba Combo 705c</div><div class="doc-sub">Grille tarifaire · .xlsx</div></div>
+      </a>
+      <a class="doc-card" href="Service%20Bulletin%20-%20Errors%2033%201010%20%26%2016%20-%20Combo%202025%20%26%202026%20Models%20-%203%20June%202026.en.fr.pdf">
+        <div class="doc-icon">📕</div>
+        <div class="doc-txt"><div class="doc-name">Bulletin de service — Erreurs 33/1010/16 (FR)</div><div class="doc-sub">Combo 2025 &amp; 2026 · .pdf</div></div>
+      </a>
+      <a class="doc-card" href="Service%20Bulletin%20-%20Errors%2033%201010%20%26%2016%20-%20Combo%202025%20%26%202026%20Models%20-%203%20June%202026.pdf">
+        <div class="doc-icon">📕</div>
+        <div class="doc-txt"><div class="doc-name">Service Bulletin — Errors 33/1010/16 (EN)</div><div class="doc-sub">Combo 2025 &amp; 2026 · .pdf</div></div>
+      </a>
+    </div>
+  </div>
 
   <footer>Source : liste KB 2026 — liens filtrés sur les Home Support Links FR uniquement.</footer>
 </div>

@@ -1,3 +1,6 @@
 *.tmp
 ~$*
 .DS_Store
+
+# gros fichiers (>100 Mo refuses par GitHub) : import KitchenAid en cours
+kitchenaid/kitchenaid_new/

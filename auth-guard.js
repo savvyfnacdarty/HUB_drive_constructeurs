@@ -19,8 +19,11 @@
     s.src = url;
     s.onload = cb;
     s.onerror = function () {
-      // En cas d'échec de chargement, on réaffiche pour ne pas bloquer (mode dégradé)
+      // Mode strict : si l'authentification ne peut pas être vérifiée, la page reste inaccessible
       document.documentElement.style.visibility = "";
+      document.body.innerHTML = '<div style="font:16px system-ui,Arial,sans-serif;max-width:520px;margin:15vh auto;padding:24px;text-align:center">' +
+        '<h2 style="color:#D4151B">Accès impossible</h2><p>Le service d\'authentification est injoignable. ' +
+        'Vérifiez votre connexion (réseau Fnac Darty / VPN) puis rechargez la page.</p></div>';
     };
     document.head.appendChild(s);
   }
@@ -34,9 +37,27 @@
           return;
         }
         firebase.initializeApp(window.FIREBASE_CONFIG);
+        var from = encodeURIComponent(location.pathname + location.search);
+        function expulser() {
+          document.documentElement.style.visibility = "hidden";
+          firebase.auth().signOut().then(function () {
+            location.replace(base + "login.html?expired=1&from=" + from);
+          });
+        }
         firebase.auth().onAuthStateChanged(function (user) {
-          if (user) {
+          if (user && window.hubSessionExpiree && window.hubSessionExpiree(user)) {
+            expulser();
+          } else if (user) {
             document.documentElement.style.visibility = "";
+            // Page restée ouverte au-delà de minuit : re-vérification périodique
+            var verif = function () {
+              var u = firebase.auth().currentUser;
+              if (u && window.hubSessionExpiree(u)) expulser();
+            };
+            setInterval(verif, 60000);
+            document.addEventListener("visibilitychange", function () {
+              if (!document.hidden) verif();
+            });
           } else {
             location.replace(base + "login.html?from=" + encodeURIComponent(location.pathname + location.search));
           }

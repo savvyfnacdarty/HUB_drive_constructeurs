@@ -1,0 +1,290 @@
+0|1. Nettoyer le canal à débris obstrué, les débris enroulés autour de la brosse rouleau et dans son logement ; 2. Sécher et nettoyer le filtre HEPA ; 3. Vider et nettoyer le réservoir d'eau sale (DWT)
+1|1. Nettoyer le canal à débris obstrué, les débris enroulés autour de la brosse rouleau et la buse d'aspiration obstruée ; 2. Sécher et nettoyer le filtre HEPA ; 3. Vider et nettoyer le réservoir d'eau sale (DWT)
+2|1. Nettoyer le canal à débris obstrué, les débris enroulés autour de la brosse rouleau et la buse d'aspiration obstruée ; 2. Sécher et nettoyer le filtre HEPA ; 3. Vider et nettoyer le réservoir d'eau sale (DWT)
+3|1. Déboucher le canal à débris, autour de la brosse rouleau et le flexible d'aspiration ; 2. Sécher et nettoyer le filtre HEPA ; 3. Vider et nettoyer le réservoir d'eau sale (DWT)
+4|1. Déboucher le canal à débris, autour de la brosse rouleau et le flexible d'aspiration ; 2. Sécher et nettoyer le filtre HEPA ; 3. Vider et nettoyer le réservoir d'eau sale (DWT)
+5|1. Déboucher le canal à débris, autour de la brosse rouleau et le flexible d'aspiration ; 2. Sécher et nettoyer le filtre HEPA ; 3. Vider et nettoyer le réservoir d'eau sale (DWT)
+6|1. Retirer l'obstruction ou la saleté du canal à débris, autour de la brosse rouleau et du flexible d'aspiration ; 2. Sécher et nettoyer le filtre HEPA ; 3. Vider et nettoyer le réservoir d'eau sale (DWT)
+7|1. Rebrancher la fiche ; 2. Remplacer la carte électronique de la brosse (Brush PCBA)
+8|1. Rebrancher la fiche ; 2. Remplacer la puce de charge de réparation (Repair Charging Chip)
+9|
+10|Beaucoup d'eau reste sur la base de charge après l'auto-nettoyage
+11|Bruit anormal
+12|Bruit anormal pendant la charge
+13|Bruit anormal pendant la charge
+14|Adaptateur secteur
+15|Adaptateur secteur : dommage esthétique
+16|Adaptateur secteur défaillant
+17|Après la fin du programme d'auto-nettoyage, l'appareil demande toujours « Veuillez lancer le cycle d'auto-nettoyage »
+18|Après appui sur le bouton marche/arrêt, l'écran s'allume mais l'appareil ne fonctionne pas après relâchement du micro-switch
+19|Après appui sur le bouton marche, l'écran s'allume mais l'appareil ne fonctionne pas une fois incliné
+20|Après appui sur le bouton marche, l'écran s'allume mais l'appareil ne fonctionne pas après relâchement du micro-switch
+21|Après appui sur le bouton marche, l'écran s'allume mais l'appareil ne fonctionne pas
+22|Après appui sur le bouton marche, le voyant s'allume mais l'appareil ne fonctionne pas après relâchement du micro-switch
+23|Après appui sur le bouton marche, l'appareil ne réagit pas
+24|Après appui sur le bouton marche, l'appareil ne réagit pas et l'écran ne s'allume pas
+25|Pompe à air
+26|Pompe à air défaillante
+27|L'appareil ne parvient pas à se connecter au réseau
+28|Roue d'assistance (Assist Repair Wheel)
+29|Roue d'assistance
+30|Roue d'assistance défaillante
+31|Problème de roue d'assistance
+32|Roue d'assistance bruyante
+33|Rotation anormale de la roue d'assistance
+34|Batterie
+35|Batterie défaillante
+36|Le voyant de batterie clignote plusieurs fois puis s'éteint, et l'appareil arrête de charger ; charge interrompue
+37|Le niveau de batterie baisse pendant la charge
+38|Le voyant de niveau de batterie clignote plusieurs fois puis s'éteint, et l'appareil arrête de charger
+39|Le voyant de niveau de batterie clignote plusieurs fois puis s'éteint et l'appareil arrête de charger ; niveau de batterie inférieur à 100 % et voyant qui n'augmente plus
+40|Le voyant de niveau de batterie clignote plusieurs fois puis s'éteint et l'appareil arrête de charger ; niveau de batterie inférieur à 100 % et voyant qui n'augmente plus ; le niveau baisse pendant la charge
+41|Le niveau de batterie n'augmente plus
+42|Niveau de batterie inférieur à 100 % et voyant qui n'augmente plus
+43|Bloc batterie
+44|Bloc batterie défaillant
+45|Bloc batterie / source d'alimentation
+46|Batterie et carte électronique (PCBA)
+47|Chaudière (boiler)
+48|Chaudière endommagée
+49|Chaudière défaillante
+50|Brosse
+51|Cache de la brosse rouleau endommagé
+52|Cache de la brosse endommagé
+53|Brosse endommagée
+54|Moteur de brosse
+55|Moteur de brosse défaillant
+56|Bruit de brosse
+57|Carte électronique de la brosse (Brush PCBA)
+58|Carte électronique de la brosse défaillante
+59|Brosse rouleau
+60|Brosse rouleau et filtre HEPA usés ou endommagés
+61|Brosse rouleau bloquée
+62|Brosse rouleau bloquée par des débris
+63|Brosse rouleau bloquée ou très usée
+64|Brosse rouleau bloquée, usée ou endommagée
+65|Brosse rouleau bloquée / emmêlée
+66|Cache de la brosse rouleau
+67|Cache de la brosse rouleau bloqué
+68|Cache de la brosse rouleau endommagé
+69|Cache de la brosse rouleau endommagé
+70|Cache de la brosse rouleau très sale
+71|Cache de la brosse rouleau très usé ou endommagé
+72|Brosse rouleau endommagée
+73|Brosse rouleau endommagée / déformée
+74|La brosse rouleau est bloquée ou n'est pas installée
+75|Brosse rouleau très usée
+76|Le voyant de la brosse rouleau clignote
+77|Le voyant de la brosse rouleau clignote mais la brosse tourne normalement
+78|La brosse rouleau est bloquée
+79|La brosse rouleau est bloquée ou très usée
+80|Moteur de la brosse rouleau
+81|Moteur de la brosse rouleau défaillant
+82|Bruit de la brosse rouleau
+83|Brosse rouleau non sèche après le séchage
+84|Brosse rouleau non sèche après l'auto-nettoyage
+85|La brosse rouleau ne tourne pas
+86|La brosse rouleau ne tourne pas, sans alarme
+87|Brosse rouleau très usée ou endommagée
+88|La brosse rouleau s'arrête de tourner et le voyant clignote en rouge
+89|La brosse rouleau s'arrête de tourner et l'appareil signale une anomalie de brosse
+90|La brosse rouleau s'arrête de tourner et le voyant reste rouge fixe
+91|Brosse rouleau très sale
+92|Brosse rouleau et filtre HEPA
+93|Odeur de brûlé dans la base de séchage/charge pendant la charge
+94|Odeur de brûlé dans le corps de l'appareil pendant la charge
+95|Odeur de brûlé dans le corps de l'appareil pendant la charge
+96|Odeur de brûlé au branchement du cordon d'alimentation
+97|Odeur de brûlé pendant la charge
+98|Odeur de brûlé pendant la charge
+99|Câble
+100|Câble défaillant
+101|Pas de détection lorsque l'appareil est couché à plat ; la puissance d'aspiration ne change pas
+102|Ne sèche pas ou séchage insuffisant
+103|Base de charge
+104|Base de charge (uniquement pour Carpet One Spot)
+105|Base de charge : dommage esthétique
+106|Base de charge endommagée
+107|Base de charge endommagée
+108|Base de charge défaillante
+109|Base de charge ou puce de charge de réparation (Repair Charging Chip)
+110|Broches de la base de charge rouillées / endommagées
+111|Base de charge : mauvais contact
+112|Câble de la base de charge défaillant
+113|Échec de la charge
+114|Le voyant de charge clignote plusieurs fois puis s'éteint, et l'appareil arrête de charger
+115|Broche de charge
+116|Broche de charge rouillée
+117|Broche de charge rouillée / endommagée
+118|Broches de charge de la base de séchage endommagées
+119|Broches de charge de la base de charge endommagées
+120|Broches de charge du corps de l'appareil endommagées
+121|Charge : mauvais contact
+122|Système de charge défaillant
+123|Câble de charge
+124|Câble de charge : dommage esthétique
+125|Câble de charge endommagé
+126|Câble de charge défaillant
+127|Déboucher le canal à débris, autour de la brosse rouleau et le flexible d'aspiration, ou remplacer la brosse rouleau
+128|Déboucher le canal à débris, autour de la brosse rouleau et le flexible d'aspiration ; sécher et nettoyer le filtre HEPA ; vider et nettoyer le réservoir d'eau sale (DWT)
+129|Nettoyer la brosse rouleau
+130|Nettoyer la brosse rouleau et retirer l'obstruction
+131|Nettoyer la brosse rouleau ou remplacer le réservoir d'eau propre (CWT)
+132|Nettoyer le canal à débris et la brosse rouleau
+133|Nettoyer la broche du réservoir d'eau sale (DWT) ; remplacer le réservoir d'eau sale (DWT)
+134|Nettoyer la broche du corps opposé ; remplacer le câble de signal du réservoir d'eau sale (DWT)
+135|Nettoyer ou remplacer
+136|Nettoyer ou remplacer la brosse rouleau
+137|Nettoyer ou remplacer la vanne de vidange du réservoir d'eau propre (CWT)
+138|Nettoyer ou remplacer le filtre éponge
+139|Nettoyer ou remplacer la sortie vapeur
+140|Nettoyer le tuyau d'eau sale
+141|Nettoyer le trou de pulvérisation
+142|Nettoyer la brosse rouleau
+143|Nettoyer le canal à débris obstrué, les débris enroulés autour de la brosse rouleau et la buse d'aspiration obstruée
+144|Nettoyer les impuretés présentes sur la vanne
+145|Nettoyer le racloir
+146|Nettoyer la vanne
+147|Brancher sur le secteur
+148|Échec de la connexion au réseau
+149|Broche de contact
+150|Réservoir d'eau propre (CWT)
+151|Réservoir d'eau propre (CWT) endommagé
+152|Réservoir d'eau propre (CWT) endommagé
+153|Vanne de vidange du réservoir d'eau propre (CWT)
+154|Vanne de vidange du CWT défaillante
+155|Vanne de vidange du CWT défaillante
+156|Réservoir d'eau propre (CWT) vide
+157|Réservoir d'eau propre (CWT) vide : le remplir
+158|Réservoir d'eau propre (CWT) vide : le remplir
+159|Réservoir d'eau propre (CWT) défaillant
+160|Fausse alarme CWT : le réservoir d'eau propre contient assez d'eau mais l'alarme persiste, et l'appareil ne pulvérise pas d'eau
+161|Fausse alarme CWT : le réservoir d'eau propre contient assez d'eau mais l'alarme persiste, l'appareil pulvérise de l'eau
+162|Fausse alarme CWT : le réservoir d'eau propre est vide mais aucune alarme
+163|Fausse alarme CWT : le réservoir d'eau propre contient assez d'eau mais l'alarme persiste, et l'appareil ne pulvérise pas d'eau
+164|Fausse alarme CWT : le réservoir d'eau propre contient assez d'eau mais l'alarme persiste, l'appareil pulvérise de l'eau
+165|Fausse alarme CWT : le réservoir d'eau propre est vide mais aucune alarme
+166|Le réservoir d'eau propre est vide : c'est le bruit de la pompe qui aspire de l'eau
+167|Le réservoir d'eau propre contient assez d'eau mais l'alarme persiste
+168|Le réservoir d'eau propre contient assez d'eau mais l'alarme persiste, et aucune eau ne sort de la sortie
+169|Le réservoir d'eau propre contient assez d'eau mais l'alarme persiste, et peu ou pas d'eau sort de la sortie
+170|Le réservoir d'eau propre contient assez d'eau mais l'alarme persiste, et l'appareil pulvérise normalement
+171|Le réservoir d'eau propre contient assez d'eau mais l'alarme persiste, et l'appareil pulvérise normalement ; le réservoir est vide mais aucune alarme
+172|Le réservoir d'eau propre est vide mais aucune alarme
+173|Fuite d'eau du réservoir d'eau propre (CWT)
+174|Joint d'étanchéité du réservoir d'eau propre (CWT)
+175|Joint d'étanchéité du CWT défaillant (caoutchouc)
+176|Vanne d'eau du CWT défaillante
+177|Réservoirs d'eau propre / sale (CWT/DWT)
+178|Réservoir d'eau propre (CWT) avec couvercle
+179|Canal à débris / conduit d'air obstrué
+180|Canal à débris / conduit d'air obstrué ou sale
+181|Canal à débris sale
+182|Le canal à débris ou le flexible est encore sale
+183|Tuyau à débris endommagé
+184|Capteur de saleté (iLoop)
+185|Capteur de saleté défaillant
+186|Écran d'affichage
+187|Écran d'affichage défaillant
+188|Écran d'affichage / source d'alimentation
+189|Carte électronique de la base (Dock PCBA)
+190|Carte électronique de la base défaillante
+191|L'appareil ne s'arrête pas lorsqu'on le met à la verticale
+192|Base de séchage et de charge
+193|Base de séchage et de charge : dommage esthétique
+194|Base de séchage et de charge défaillante
+195|Base de séchage et de charge : mauvais contact
+196|Fonction de séchage / charge de la base défaillante
+197|Base de séchage
+198|Base de séchage défaillante
+199|Réservoir d'eau sale (DWT)
+200|Réservoir d'eau sale (DWT) cassé
+201|Réservoir d'eau sale (DWT) endommagé
+202|Réservoir d'eau sale (DWT) endommagé
+203|Réservoir d'eau sale (DWT) défaillant
+204|Fausse alarme DWT : le réservoir d'eau sale n'est pas plein mais l'alarme persiste
+205|Fausse alarme DWT : le réservoir d'eau sale est plein mais aucune alarme
+206|Fausse alarme DWT : le réservoir d'eau sale n'est pas plein mais l'alarme persiste
+207|Flotteur du réservoir d'eau sale (DWT) bloqué
+208|Flotteur du réservoir d'eau sale (DWT) coincé ou endommagé
+209|Réservoir d'eau sale (DWT) plein
+210|Réservoir d'eau sale (DWT) plein ou brosse bloquée
+211|Le réservoir d'eau sale (DWT) est bouché
+212|Le réservoir d'eau sale (DWT) est installé mais l'alarme demande toujours de l'installer
+213|Réservoir d'eau sale (DWT) très sale
+214|Broche du réservoir d'eau sale (DWT) endommagée
+215|Broche du réservoir d'eau sale (DWT) rouillée
+216|Broche du réservoir d'eau sale (DWT) rouillée ou endommagée
+217|Câble de signal du réservoir d'eau sale (DWT)
+218|Câble de signal du réservoir d'eau sale (DWT) défaillant
+219|Le réservoir d'eau sale est plein mais aucune alarme
+220|Le réservoir d'eau sale est plein mais aucune alarme / n'est pas plein mais l'alarme persiste
+221|Électrolyse de l'eau
+222|Vider le réservoir d'eau sale (DWT) ; nettoyer la brosse, vérifier l'absence d'obstruction dans la buse d'aspiration ; nettoyer le filtre sous le réservoir d'eau propre (CWT)
+223|Vider le réservoir d'eau sale (DWT) ; nettoyer la brosse, vérifier l'absence d'obstruction dans la buse d'aspiration ; nettoyer le filtre sous le CWT / DWT
+224|Vider le réservoir d'eau sale (DWT) ; nettoyer la brosse motorisée (brosse rouleau et son cache), vérifier l'absence d'obstruction dans la buse d'aspiration ; nettoyer le filtre coton sous le CWT et le filtre sous le DWT
+225|Vider / nettoyer le réservoir d'eau sale (DWT)
+226|
+227|
+228|
+229|Fausse alarme
+230|Ensemble ventilateur
+231|Ensemble ventilateur de la base de séchage défaillant
+232|Remplir le réservoir d'eau propre (CWT)
+233|Remplir le réservoir d'eau propre (CWT)
+234|Mise à jour du firmware
+235|Réparer ou remplacer le tuyau
+236|Flexible d'extension souple
+237|Flexible d'extension souple endommagé
+238|Flexible d'extension souple endommagé
+239|Poignée
+240|Ensemble poignée
+241|Poignée défaillante
+242|Poignée / bouton interrupteur défaillant
+243|Poignée défaillante
+244|Élément chauffant de la base de séchage
+245|Élément chauffant de la base de séchage défaillant
+246|Filtre HEPA
+247|Filtre HEPA endommagé
+248|Filtre HEPA endommagé
+249|Filtre HEPA défaillant
+250|Filtre HEPA mal installé
+251|Filtre HEPA mal installé
+252|Filtre HEPA très usé ou endommagé
+253|Flexible
+254|Flexible endommagé
+255|Capteur d'humidité
+256|Capteur d'humidité défaillant
+257|Si rien de ce qui précède ne résout le problème, il peut s'agir d'une défaillance de la carte principale (PCBA)
+258|Si le problème persiste, il peut s'agir d'une défaillance de la carte principale (PCBA)
+259|L'anneau iLoop reste toujours bleu
+260|L'anneau iLoop reste bleu même en aspirant de l'eau sale (ou un liquide d'une autre couleur)
+261|L'anneau iLoop reste bleu lorsqu'on n'aspire rien de sale
+262|L'anneau iLoop reste toujours rouge
+263|L'anneau iLoop reste rouge lorsqu'on n'aspire rien de sale
+264|L'anneau iLoop reste rouge lorsqu'on n'aspire rien de sale ; l'anneau iLoop reste bleu même en aspirant de l'eau sale (ou un liquide coloré)
+265|L'anneau iLoop ne change pas de couleur
+266|Des impuretés bouchent la vanne de vidange du réservoir d'eau propre (CWT)
+267|Des impuretés bouchent la vanne de sortie d'eau sous le réservoir d'eau propre (CWT)
+268|Test OK après avoir poussé l'appareil au mode maximum pendant 30 s
+269|Test OK après avoir poussé l'appareil au réglage maximum pendant 30 s
+270|Pas ou peu de vapeur pulvérisée
+271|Problème de mise à plat (lay flat)
+272|Fuite d'eau
+273|Fuite d'eau (en fonctionnement, posé sur la base, pendant l'auto-nettoyage)
+274|Câble de charge du corps de l'appareil défaillant
+275|Câble du corps de l'appareil endommagé
+276|Câble du corps de l'appareil endommagé
+277|Moteur principal
+278|Moteur principal et capteur de mise à plat (voir note)
+279|Moteur principal défaillant
+280|Bruit du moteur principal
+281|Carte électronique principale (PCBA)
+282|Carte électronique principale (PCBA) défaillante
+283|Entretien
+284|Entretien ; réservoir d'eau sale (DWT)
+285|Entretien ; câble de signal du réservoir d'eau sale (DWT)
+286|Entretien ou remplacement du réservoir d'eau propre (CWT)
+287|S'assurer que le CWT est plein, le DWT vide, l'appareil branché et la brosse non bloquée
+288|Micro-switch
+289|Micro-switch défaillant

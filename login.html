@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<script src="confidentialite.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Connexion — HUB Drive Constructeurs</title>
@@ -10,11 +13,11 @@
     font-family: 'Segoe UI', system-ui, sans-serif;
     min-height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column; /* carte centrée, bandeau de confidentialité en bas */
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
   }
   .card {
+    margin: auto;
     background: #fff;
     border-radius: 16px;
     padding: 40px 36px;
@@ -67,9 +70,23 @@
   if (/^\/\/|^https?:/i.test(dest)) dest = "index.html";
 
   // Déjà connecté → redirection directe
+  // Session d'un jour précédent → déconnexion forcée, nouvelle saisie du mot de passe
   firebase.auth().onAuthStateChanged(function (user) {
-    if (user) location.replace(dest);
+    if (user && window.hubSessionExpiree && window.hubSessionExpiree(user)) {
+      firebase.auth().signOut().then(function () {
+        var err = document.getElementById("error");
+        err.textContent = "Votre session a expiré (déconnexion quotidienne). Merci de vous reconnecter.";
+        err.style.display = "block";
+      });
+    } else if (user) {
+      location.replace(dest);
+    }
   });
+  if (new URLSearchParams(location.search).get("expired")) {
+    var e0 = document.getElementById("error");
+    e0.textContent = "Votre session a expiré (déconnexion quotidienne). Merci de vous reconnecter.";
+    e0.style.display = "block";
+  }
 
   document.getElementById("loginForm").addEventListener("submit", function (e) {
     e.preventDefault();

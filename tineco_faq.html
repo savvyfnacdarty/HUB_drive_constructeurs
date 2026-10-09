@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script src="auth-guard.js"></script>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<script src="confidentialite.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Tineco — FAQ panne : symptôme et causes possibles</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1a1d21;--muted:#6b7280;--line:#e2e5ea;--tineco:#00327D;--tineco2:#0a63c9;--chip:#eef1f6;--lime:#F7FE8C;--fnac:#D4151B;--green:#128a3a;--orange:#c77700;--shadow:0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;line-height:1.45;}
+a{color:inherit;}
+.hubbar{background:var(--fnac);padding:12px 22px;display:flex;align-items:center;gap:16px;text-decoration:none;}
+.hubbar img{height:38px;background:#fff;padding:5px 9px;border-radius:6px;} .hubbar .txt{color:#fff;font-weight:700;font-size:15px;}
+.hero{background:linear-gradient(120deg,#00214f 0%,#00327D 60%,#0a4aa3 100%);color:#fff;padding:26px 22px 24px;text-align:center;}
+.hero-logo{height:46px;background:#fff;padding:7px 14px;border-radius:10px;margin-bottom:10px;}
+.hero h1{font-size:1.35rem;margin-bottom:4px;} .hero p{opacity:.85;font-size:.88rem;margin-bottom:14px;}
+.steps{display:flex;gap:10px;max-width:760px;margin:0 auto;flex-wrap:wrap;justify-content:center;}
+.step{flex:1 1 320px;text-align:left;}
+.step label{display:block;font-size:.76rem;font-weight:700;letter-spacing:.4px;opacity:.9;margin-bottom:4px;text-transform:uppercase;}
+.sbox{position:relative;} .sbox input{width:100%;padding:13px 40px 13px 14px;font-size:1rem;border:0;border-radius:10px;outline:none;color:var(--ink);}
+.sbox .clr{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:#e5e7eb;width:24px;height:24px;border-radius:50%;cursor:pointer;display:none;}
+.sbox.has .clr{display:block;}
+.tip{max-width:760px;margin:12px auto 0;font-size:.8rem;opacity:.85;}
+main{max-width:1000px;margin:0 auto;padding:18px 16px 50px;}
+.sec{font-size:1rem;color:var(--tineco);margin:20px 0 8px;display:flex;align-items:baseline;gap:8px;} .sec small{color:var(--muted);font-weight:400;font-size:.78rem;}
+.card{background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:12px 14px;margin-bottom:8px;}
+.prod{display:flex;flex-wrap:wrap;gap:8px;align-items:center;cursor:pointer;border:2px solid transparent;} .prod:hover{border-color:var(--tineco2);}
+.prod .nm{font-weight:700;} .badge{background:var(--chip);border-radius:6px;padding:2px 8px;font-size:.76rem;font-weight:600;} .badge.fm{background:#e8f0fe;color:var(--tineco);}
+.prod .mn{flex-basis:100%;font-size:.78rem;color:var(--muted);}
+.sel{background:#e8f6ee;border:1px solid #bfe3cc;display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+.sel .nm{font-weight:700;} .btn{border:0;background:var(--chip);border-radius:8px;padding:6px 12px;font-size:.82rem;font-weight:600;cursor:pointer;text-decoration:none;color:var(--ink);display:inline-block;} .btn:hover{background:var(--lime);}
+.btn.pri{background:var(--tineco);color:#fff;}
+.sys{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin:16px 0 6px;}
+.sym{background:var(--card);border-radius:12px;box-shadow:var(--shadow);margin-bottom:8px;overflow:hidden;}
+.sym>.h{display:flex;gap:10px;align-items:center;padding:12px 14px;cursor:pointer;} .sym>.h:hover{background:#f8fafc;}
+.sym .t{font-weight:600;flex:1;} .sym .c{font-size:.76rem;color:var(--muted);white-space:nowrap;} .sym .ar{color:var(--tineco2);transition:transform .15s;} .sym.open .ar{transform:rotate(90deg);}
+.sym .body{display:none;padding:2px 14px 14px;border-top:1px solid var(--line);} .sym.open .body{display:block;}
+ol.causes{list-style:none;counter-reset:c;margin-top:8px;} ol.causes li{counter-increment:c;position:relative;padding:9px 10px 9px 38px;border-radius:8px;} ol.causes li:nth-child(odd){background:#f8fafc;}
+ol.causes li::before{content:counter(c);position:absolute;left:8px;top:9px;width:22px;height:22px;border-radius:50%;background:var(--tineco);color:#fff;font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.cause{font-weight:600;} .sol{font-size:.9rem;margin-top:2px;} .sol b{color:var(--green);font-weight:600;} .en{font-size:.76rem;color:var(--muted);font-style:italic;}
+.part{display:inline-block;margin-top:4px;font-size:.78rem;background:#fff4e0;color:var(--orange);border-radius:6px;padding:2px 8px;text-decoration:none;font-weight:600;} a.part:hover{background:var(--lime);}
+.nb{font-size:.72rem;color:var(--muted);margin-left:6px;font-weight:400;}
+.empty{text-align:center;color:var(--muted);padding:22px;} .intro{background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:16px 18px;font-size:.92rem;} .intro ol{margin:8px 0 0 20px;}
+.tools{display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:.8rem;color:var(--muted);margin:8px 0;} .tools label{cursor:pointer;}
+mark{background:var(--lime);padding:0 2px;border-radius:3px;}
+.warn{background:#fff7e6;border:1px solid #ffe0a3;border-radius:10px;padding:10px 14px;font-size:.82rem;margin-top:14px;}
+</style>
+<script data-goatcounter="https://hub-drive-fnac.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<a class="hubbar" href="index.html"><img src="IMAGES/FNAC DARTY.png" alt="Fnac Darty"><span class="txt">← HUB Drive Constructeurs</span></a>
+<div class="hero">
+  <img class="hero-logo" src="IMAGES/TINECO.png" alt="Tineco" onerror="this.style.display='none'">
+  <h1>FAQ panne Tineco : du symptôme aux causes possibles</h1>
+  <p>Tiré du chapitre « Repair Guide » des manuels de réparation Tineco (traduit en français)</p>
+  <div class="steps">
+    <div class="step"><label>① Produit</label><div class="sbox" id="b1"><input id="qp" type="text" autocomplete="off" spellcheck="false" placeholder="Nom, SKU (FW…), modèle usine (CL…)"><button class="clr" data-clr="qp" aria-label="Effacer">×</button></div></div>
+    <div class="step"><label>② Symptôme du client</label><div class="sbox" id="b2"><input id="qs" type="text" autocomplete="off" spellcheck="false" placeholder="Ex. fuite, ne chauffe pas, brosse bloquée, ne charge pas…"><button class="clr" data-clr="qs" aria-label="Effacer">×</button></div></div>
+  </div>
+  <div class="tip">💡 Le produit est facultatif : sans produit, la recherche porte sur tous les manuels Tineco. Les causes sont données dans l'ordre du manuel constructeur.</div>
+</div>
+<main>
+  <div id="status" class="empty" style="padding:6px">Chargement…</div>
+  <div id="out"></div>
+</main>
+<script src="Tineco/data/tineco_range_of_product.js"></script>
+<script src="Tineco/data/tineco_faq.js"></script>
+<script>
+/* FAQ panne : produit (Range of Product) -> manuel -> symptômes -> causes (Repair Guide). Données : Tineco/data/tineco_faq.js */
+const $=id=>document.getElementById(id);
+const norm=x=>String(x==null?'':x).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const STOP=new Set('ne pas de du des le la les un une et en au aux a l d qui que ou sur sans avec plus mais est'.split(' '));
+const tk=q=>{const w=norm(q).split(' ').filter(Boolean), k=w.filter(x=>!STOP.has(x)); return k.length?k:w;};
+const MIDX=new Map(FAQ.map((m,i)=>[m.n,i]));
+const fr=i=>i>=0?FAQ_T[i][1]:'', en=i=>i>=0?FAQ_T[i][0]:'';
+const PRODS=ROP.map(r=>{const m=ROP_MANUALS[r[4]]; return {nm:r[0],fm:r[1],sku:r[2],man:m.n,mi:MIDX.has(m.n)?MIDX.get(m.n):-1,
+  skuN:r[2].toLowerCase().replace(/[^a-z0-9]/g,''),fmN:norm(r[1]),hay:norm([r[0],r[1],r[2],m.n].join(' '))};}).filter(p=>p.mi>=0&&FAQ[p.mi].r.length);
+const S={prod:null,qp:'',qs:'',open:new Set(),en:false,all:false};
+
+function hl(text,tokens){ let t=esc(text); if(!tokens.length) return t;
+  for(const k of tokens.filter(k=>k.length>1)){ t=t.replace(new RegExp('('+k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark>$1</mark>'); } return t; }
+
+/* symptômes d'un ensemble de manuels : Map(clé symptôme -> {p, sys, rows[], mans:Set}) */
+function symptoms(mis){
+  const mp=new Map();
+  for(const mi of mis){ for(const r of FAQ[mi].r){ const k=r[1]; let o=mp.get(k);
+    if(!o){ o={p:k,sys:r[0],rows:[],mans:new Set(),ord:mp.size}; mp.set(k,o); }
+    o.rows.push(r); o.mans.add(mi); } }
+  return [...mp.values()];
+}
+function causesOf(sym){ /* dédoublonne cause+solution+pièce, compte les manuels */
+  const seen=new Map(); const out=[];
+  for(const r of sym.rows){ const key=r[2]+'|'+r[3]+'|'+r[4]; if(seen.has(key)){ seen.get(key).n++; continue; } const o={c:r[2],s:r[3],p:r[4],n:1}; seen.set(key,o); out.push(o); }
+  return out; }
+function partLink(p){
+  const e=en(p); if(!e||/^(maintenance|nff)$/i.test(e.trim())) return '';
+  const q=encodeURIComponent(e.split(';')[0].trim());
+  const href=(S.prod&&S.prod.sku)?'tineco_bom.html?fg='+encodeURIComponent(S.prod.sku)+'&q='+q:'tineco.html?q='+q;
+  return '<a class="part" href="'+href+'" title="Chercher cette pièce dans le catalogue pièces détachées">🔧 '+esc(fr(p))+'</a>'; }
+function causesHtml(sym,T){
+  const cs=causesOf(sym), multi=sym.mans.size>1;
+  return '<ol class="causes">'+cs.map(c=>'<li><div class="cause">'+(c.c>=0?esc(fr(c.c)):'<i>Cause non précisée</i>')+(multi&&c.n>1?'<span class="nb">('+c.n+' manuels)</span>':'')+'</div>'+
+    (c.s>=0?'<div class="sol"><b>Solution :</b> '+esc(fr(c.s))+'</div>':'')+(c.p>=0?partLink(c.p):'')+
+    (S.en?'<div class="en">'+esc([en(c.c),en(c.s)].filter(Boolean).join(' → '))+'</div>':'')+'</li>').join('')+'</ol>'; }
+function symHtml(sym,T){
+  const open=S.open.has(sym.p), nC=causesOf(sym).length, nm=sym.mans.size;
+  return '<div class="sym'+(open?' open':'')+'"><div class="h" data-k="'+sym.p+'"><span class="ar">▶</span><span class="t">'+hl(fr(sym.p),T)+(S.en?' <span class="en">'+esc(en(sym.p))+'</span>':'')+'</span><span class="c">'+nC+' cause'+(nC>1?'s':'')+(!S.prod&&nm>1?' · '+nm+' manuels':'')+'</span></div>'+
+    (open?'<div class="body">'+causesHtml(sym,T)+'</div>':'')+'</div>'; }
+
+function searchProds(q){ const t=tk(q), qn=t.join(' '), out=[];
+  for(const p of PRODS){ if(!t.every(x=>p.hay.includes(x))) continue; let sc=(p.skuN===qn.replace(/ /g,'')||p.fmN===qn)?30:0;
+    for(const x of t){ if(p.skuN.startsWith(x)) sc+=6; if(p.fmN.startsWith(x)) sc+=5; if(norm(p.nm).includes(x)) sc+=2; } out.push([sc,p]); }
+  out.sort((a,b)=>b[0]-a[0]||a[1].nm.localeCompare(b[1].nm,'fr',{numeric:true})); return out.map(x=>x[1]); }
+
+function render(){
+  const T=tk(S.qs), out=$('out'); $('b1').classList.toggle('has',!!S.qp); $('b2').classList.toggle('has',!!S.qs);
+  let h='';
+  /* étape 1 : choix du produit */
+  if(!S.prod && !S.all && S.qp.trim()){
+    const rs=searchProds(S.qp);
+    h+='<h2 class="sec">Produits trouvés <small>'+rs.length+' résultat'+(rs.length>1?'s':'')+' — cliquez pour choisir</small></h2>';
+    if(!rs.length) h+='<div class="empty">Aucun produit ne correspond. Essayez le SKU (FW…) ou le modèle usine (CL…) de la plaque signalétique.</div>';
+    h+=rs.slice(0,20).map((p,i)=>'<div class="card prod" data-p="'+PRODS.indexOf(p)+'"><span class="nm">'+hl(p.nm,tk(S.qp))+'</span><span class="badge">'+hl(p.sku||'—',tk(S.qp))+'</span><span class="badge fm">'+hl(p.fm||'—',tk(S.qp))+'</span><span class="mn">📘 '+esc(p.man)+'</span></div>').join('');
+    if(rs.length>20) h+='<div class="empty" style="padding:8px">… et '+(rs.length-20)+' autres : précisez la recherche.</div>';
+    h+='<div style="text-align:center;margin-top:10px"><button class="btn" data-all="1">Chercher sans choisir de produit (tous les manuels)</button></div>';
+    out.innerHTML=h; return; }
+  if(S.prod){
+    const m=FAQ[S.prod.mi];
+    h+='<div class="card sel"><span class="nm">'+esc(S.prod.nm)+'</span><span class="badge">'+esc(S.prod.sku||'—')+'</span><span class="badge fm">'+esc(S.prod.fm||'—')+'</span>'+
+       '<a class="btn" href="'+esc(m.p+(m.a?'#'+m.a:''))+'" target="_blank">📖 Lire le manuel (chapitre réparation)</a><button class="btn" data-chg="1">Changer de produit</button><span style="flex-basis:100%;font-size:.78rem;color:var(--muted)">📘 '+esc(m.n)+'</span></div>';
+  } else if(S.all){ h+='<div class="card sel"><span class="nm">Tous les produits Tineco</span><span class="badge">'+FAQ.length+' manuels</span><button class="btn" data-chg="1">Choisir un produit</button></div>'; }
+  if(!S.prod && !S.all){
+    h+='<div class="intro"><b>Comment ça marche</b><ol><li>Saisissez le <b>produit</b> (nom, SKU « FW… » ou modèle usine « CL… » de la plaque signalétique) — facultatif.</li><li>Décrivez le <b>symptôme</b> dans la 2<sup>e</sup> zone (ex. « fuite », « ne charge pas »), ou parcourez la liste.</li><li>Cliquez sur un symptôme : les <b>causes possibles</b>, la solution et la pièce concernée s\'affichent.</li></ol></div>';
+    if(!S.qs.trim()){ out.innerHTML=h+'<div class="empty">Choisissez un produit ci-dessus, ou tapez un symptôme pour chercher dans tous les manuels.</div>'; return; }
+  }
+  const mis=S.prod?[S.prod.mi]:FAQ.map((m,i)=>i).filter(i=>FAQ[i].r.length);
+  let syms=symptoms(mis);
+  if(T.length){
+    const sc=[];
+    for(const s of syms){ const hp=norm(fr(s.p)+' '+en(s.p)+' '+fr(s.rows[0][0])); let ha=hp;
+      if(!T.every(x=>hp.includes(x))){ ha=hp+' '+norm(s.rows.map(r=>fr(r[2])+' '+en(r[2])+' '+fr(r[3])).join(' ')); if(!T.every(x=>ha.includes(x))) continue; sc.push([1,s]); continue; }
+      sc.push([10+(T.length===1&&norm(fr(s.p)).startsWith(T[0])?3:0),s]); }
+    sc.sort((a,b)=>b[0]-a[0]||b[1].mans.size-a[1].mans.size||a[1].ord-b[1].ord); syms=sc.map(x=>x[1]);
+  }
+  h+='<div class="tools"><label><input type="checkbox" id="en" '+(S.en?'checked':'')+'> Afficher le texte anglais d\'origine</label><span>'+syms.length+' symptôme'+(syms.length>1?'s':'')+(T.length?' pour « '+esc(S.qs)+' »':'')+'</span></div>';
+  if(!syms.length) h+='<div class="empty">Aucun symptôme ne correspond. Essayez un autre mot (ex. « eau », « bruit », « charge », « voyant », « brosse »).</div>';
+  else if(S.prod && !T.length){
+    let cur=null; for(const s of syms){ if(s.sys!==cur){ cur=s.sys; h+='<div class="sys">'+esc(fr(s.sys))+'</div>'; } h+=symHtml(s,T); }
+  } else h+=syms.slice(0,60).map(s=>symHtml(s,T)).join('')+(syms.length>60?'<div class="empty">… précisez la recherche pour affiner ('+(syms.length-60)+' autres).</div>':'');
+  h+='<div class="warn">ℹ️ Ces causes sont celles du chapitre « Repair Guide » des manuels Tineco (traduction française automatique à titre d\'aide) : à confirmer avec le manuel d\'origine avant remplacement de pièce.</div>';
+  out.innerHTML=h; }
+
+document.addEventListener('click',e=>{ const t=e.target;
+  const clr=t.closest('[data-clr]'); if(clr){ const id=clr.dataset.clr; $(id).value=''; if(id==='qp'){S.qp='';} else S.qs=''; render(); $(id).focus(); return; }
+  const p=t.closest('[data-p]'); if(p){ S.prod=PRODS[+p.dataset.p]; S.all=false; $('qp').value=S.prod.nm+' '+S.prod.sku; S.qp=$('qp').value; S.open.clear(); history.replaceState(null,'','?sku='+encodeURIComponent(S.prod.sku)); render(); return; }
+  if(t.closest('[data-chg]')){ S.prod=null; S.all=false; S.qp=''; $('qp').value=''; S.open.clear(); history.replaceState(null,'','tineco_faq.html'); render(); $('qp').focus(); return; }
+  if(t.closest('[data-all]')){ S.all=true; S.prod=null; S.open.clear(); render(); $('qs').focus(); return; }
+  const k=t.closest('.sym>.h'); if(k){ const key=+k.dataset.k; S.open.has(key)?S.open.delete(key):S.open.add(key); render(); return; }
+  if(t.id==='en'){ S.en=t.checked; render(); } });
+let tm; $('qp').addEventListener('input',e=>{ clearTimeout(tm); tm=setTimeout(()=>{ S.qp=e.target.value; if(S.prod&&S.qp!==S.prod.nm+' '+S.prod.sku){ S.prod=null; S.open.clear(); } S.all=false; render(); },120); });
+$('qs').addEventListener('input',e=>{ clearTimeout(tm); tm=setTimeout(()=>{ S.qs=e.target.value; S.open.clear(); render(); },150); });
+(function init(){
+  const nS=FAQ.reduce((a,m)=>a+m.r.length,0);
+  $('status').innerHTML='<b>'+FAQ.filter(m=>m.r.length).length+'</b> manuels · <b>'+nS+'</b> causes référencées · <b>'+PRODS.length+'</b> produits (SKU / modèles usine)';
+  const P=new URLSearchParams(location.search), sku=P.get('sku')||P.get('ref'), q=P.get('q');
+  if(sku){ const n=sku.toLowerCase().replace(/[^a-z0-9]/g,''); const p=PRODS.find(x=>x.skuN===n)||PRODS.find(x=>x.fmN===norm(sku))||PRODS.find(x=>x.fmN.startsWith(norm(sku))); if(p){ S.prod=p; $('qp').value=p.nm+' '+p.sku; S.qp=$('qp').value; } else { $('qp').value=sku; S.qp=sku; } }
+  if(q){ $('qs').value=q; S.qs=q; }
+  render(); })();
+</script>
+</body>
+</html>

@@ -2,6 +2,9 @@
 <html lang="fr">
 <head>
 <script src="auth-guard.js"></script>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<script src="confidentialite.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -83,6 +86,7 @@ h2.sec small{color:var(--muted);font-weight:400;font-size:.78rem;}
 .pinfo{flex:1;min-width:0;} .pdes{font-size:.92rem;font-weight:600;} .pdes small{display:block;font-weight:400;color:var(--muted);font-size:.74rem;}
 .prefs{font-size:.76rem;margin-top:3px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 12px;} .prefs b{font-family:Consolas,monospace;color:var(--tineco);} .prefs .sp{color:var(--tineco2);}
 .psub{font-size:.72rem;color:#c77700;margin-top:2px;}
+.rop .top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;} .rop .meta{font-size:.78rem;color:var(--muted);margin-top:5px;}
 .dev .top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;} .dev .meta{font-size:.78rem;color:var(--muted);margin-top:5px;}
 #lb{position:fixed;inset:0;background:rgba(10,14,22,.88);z-index:9999;display:none;align-items:center;justify-content:center;flex-direction:column;padding:20px;cursor:zoom-out;}
 #lb.on{display:flex;} #lb img{max-width:min(92vw,1100px);max-height:80vh;background:#fff;border-radius:10px;object-fit:contain;} #lb .cap{color:#fff;margin-top:12px;font-size:.9rem;text-align:center;}
@@ -108,9 +112,10 @@ mark{background:var(--lime);color:inherit;padding:0 1px;border-radius:2px;}
   <h1>Rechercher chez Tineco</h1>
   <p>Documentation, fichiers SAVVY, appareils et pièces détachées (avec photos) — un seul point de recherche</p>
   <div class="searchbox" id="sbox">
-    <input id="q" type="text" autocomplete="off" spellcheck="false" placeholder="Ex. FW440300DE, S7 Pro, CL2376, brush roller, 9FWBR060000, 114-23761801…" autofocus>
+    <input id="q" type="text" autocomplete="off" spellcheck="false" placeholder="Ex. FW440300DE, CL2331S-01, S7 Pro, CL2376, brush roller, 9FWBR060000, 114-23761801…" autofocus>
     <button class="clr" id="clr" title="Effacer" aria-label="Effacer">×</button>
   </div>
+  <div class="tip" style="margin-bottom:8px"><a href="tineco_faq.html" style="color:#F7FE8C;font-weight:700">🩺 FAQ panne : trouver les causes possibles à partir du produit et du symptôme client →</a></div>
   <div class="tip">💡 Privilégiez la <b>référence technique</b> de la plaque signalétique : plusieurs documentations peuvent exister pour une même référence commerciale.</div>
 </div>
 
@@ -122,12 +127,14 @@ mark{background:var(--lime);color:inherit;padding:0 1px;border-radius:2px;}
   <div id="results"></div>
 </main>
 <div id="lb"><img alt=""><div class="cap"></div></div>
-<div style="text-align:center;font-size:.78rem;color:#6b7280;padding:0 12px 28px">Pièces détachées : synchronisées depuis <code>Tineco/data/Global spare parts list-EU-update.xlsx</code> · Manuels : <code>Tineco/data/tineco_manuels.js</code> + tableau de documentation</div>
+<div style="text-align:center;font-size:.78rem;color:#6b7280;padding:0 12px 28px">Pièces détachées : synchronisées depuis <code>Tineco/data/Global spare parts list-EU-update.xlsx</code> · Manuels : <code>Tineco/data/tineco_manuels.js</code> + <code>tineco_range_of_product.js</code> (Range of Product des manuels) + tableau de documentation</div>
 <button id="topBtn" title="Haut de page">↑</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="Tineco/data/cn_fr_glossaire.js"></script>
 <script src="Tineco/data/tineco_manuels.js"></script>
+<script src="Tineco/data/tineco_range_of_product.js"></script>
+<script src="Tineco/data/tineco_manuels_hub.js"></script>
 <script>
 /* =====================================================================
    Tineco — recherche dans les 2 fichiers Excel du dossier Tineco/data/ :
@@ -146,8 +153,13 @@ const SP  = 'https://groupefnac.sharepoint.com/';
 const LIB = SP + 'sites/SAVVY_FNACDARTY/Documents%20partages/Forms/AllItems.aspx';
 const VIEW = '4B095B6C-E238-4145-AEAC-58FC81495ECD';
 
+/* Range of Product des manuels : recherche par Factory Serial Model et SKU */
+const ROPD = (typeof ROP!=='undefined'?ROP:[]).map(r=>{ const m=ROP_MANUALS[r[4]]; return {nm:r[0],fm:r[1],sku:r[2],note:r[3],man:m,
+  skuN:r[2]?r[2].toLowerCase().replace(/[^a-z0-9]/g,''):'', fmN:r[1].toLowerCase().replace(/[^a-z0-9]+/g,' ').trim(),
+  hay:(r[0]+' '+r[1]+' '+r[2]+' '+r[3]+' '+m.n).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}; });
+const ROPSKU = new Map(); ROPD.forEach(r=>{ if(r.skuN && !ROPSKU.has(r.skuN)) ROPSKU.set(r.skuN,r); });
 let DOCS = [], SAV = [], loaded = {doc:null, sav:null, glob:null};
-const S = {q:'', tab:'all', fam:'', ext:'', nDoc:30, nSav:40, nDev:20, nPar:40};
+const S = {q:'', tab:'all', fam:'', ext:'', nDoc:30, nSav:40, nRop:30, nDev:20, nPar:40};
 
 /* ---------- utilitaires ---------- */
 const $ = id => document.getElementById(id);
@@ -316,6 +328,7 @@ function fixLinks(){
   if(typeof MANUAL_LINKS!=='undefined'){ if(!fixLinks.o) fixLinks.o=Object.assign({},MANUAL_LINKS); for(const k in fixLinks.o) MANUAL_LINKS[k]=resolveLink(fixLinks.o[k],k); }
   GD.forEach(d=>{ d.man=manualOf(d.model); }); }
 function afterLoad(){
+  ROP_MANUALS.forEach(m=>{ delete m._r; });
   fixLinks();
   const ok=(v)=>v&&!String(v).startsWith('ERR');
   const dotc=(ok(loaded.doc)&&ok(loaded.sav)&&ok(loaded.glob))?'':'ko';
@@ -323,6 +336,7 @@ function afterLoad(){
   const latest=SAV.reduce((m,x)=>x.d instanceof Date&&x.d>m?x.d:m,new Date(0));
   $('status').innerHTML =
     '<span><span class="dot '+dotc+'"></span><b>'+DOCS.length+'</b> références (tableau de documentation)</span>'+
+    '<span><b>'+ROPD.length+'</b> modèles usine / SKU (manuels)</span>'+
     '<span><b>'+nF+'</b> fichiers · <b>'+nD+'</b> dossiers (SharePoint SAVVY'+(latest.getTime()?', dernière modif. '+fmtDate(latest):'')+')</span>'+
     '<span><b>'+GP.length+'</b> pièces · <b>'+GD.length+'</b> appareils (catalogue EU'+(GDATE?', maj '+GDATE:'')+')</span>'+
     '<button class="btn" id="imp">📥 Importer un Excel</button>';
@@ -373,6 +387,27 @@ function searchParts(tk){
     for(const t of tk){ if(p.codeN===t||p.sapN===t) sc+=12; else if(p.codeN.startsWith(t)||p.sapN.startsWith(t)) sc+=6; if(norm(p.en).includes(t)) sc+=2; }
     if(p.src) sc+=1; out.push([sc,p]); }
   out.sort((a,b)=>b[0]-a[0]); return out.map(x=>x[1]); }
+function searchRop(tk){
+  const out=[], qn=tk.join(' ');
+  for(const r of ROPD){ if(!tk.every(t=>r.hay.includes(t))) continue; let sc=(r.fmN===qn||r.skuN===qn.replace(/ /g,''))?30:0;
+    for(const t of tk){ if(r.skuN===t) sc+=12; else if(r.skuN.startsWith(t)) sc+=7; if(r.fmN===t) sc+=10; else if(r.fmN.startsWith(t)) sc+=6; else if(r.fmN.includes(t)) sc+=3; if(norm(r.nm).includes(t)) sc+=2; }
+    out.push([sc,r]); }
+  out.sort((a,b)=>b[0]-a[0]||a[1].nm.localeCompare(b[1].nm,'fr',{numeric:true})); return out.map(x=>x[1]); }
+function ropUrl(m){ /* lien SAVVY du manuel : cherché par nom de fichier dans l'export SharePoint (Tineco_sharepoint_savvy.xlsx), dossier « Repair manual/1.Repair manual » en priorité */
+  if(m._r!==undefined) return m._r;
+  const t=norm(m.n+'.docx'); let best=null;
+  for(const f of SAV){ if(f.f||f.nN!==t) continue; if(!best||norm(f.rel)==='repair manual 1 repair manual') best=f; }
+  return m._r=best?best.u:''; }
+function ropHub(m){ const h=(typeof MANUAL_HUB!=='undefined'&&m)?MANUAL_HUB[m.n]:''; return h?'<a class="lk man hub" href="'+esc(h)+'" title="Lire le manuel directement dans le hub (traduction possible)">📖 <span>Lire dans le hub · traduire</span></a>':''; }
+function ropMan(r,noSp){ const m=r.man; if(!m) return '';
+  if(noSp) return ropHub(m);
+  const u=ropUrl(m), fb=!u&&m.u, url=u||m.u;
+  return (url ? '<a class="lk man" href="'+esc(url)+'" target="_blank" rel="noopener" title="Manuel de réparation (SAVVY)'+(fb&&m.a?' — rapprochement approximatif (nom du fichier modifié), à vérifier':'')+'">📘 <span>'+esc(m.n)+(fb&&m.a?' ⚠️':'')+'</span></a>'
+              : '<span class="lk none">📘 '+esc(m.n)+' (fichier absent de l\'export SAVVY)</span>')+ropHub(m); }
+function ropCard(r){
+  const gh=(r.skuN&&GFG.has(r.skuN))?'<a class="lk bom" href="'+bomDev(GFG.get(r.skuN))+'">🔧 Pièces détachées &amp; photos</a>':'';
+  return '<div class="card doc rop"><div class="top"><span class="nm">'+hl(r.nm||'(sans nom)')+'</span>'+(r.sku?'<span class="badge">'+hl(r.sku)+'</span>':'')+(r.fm?'<span class="badge fm">'+hl(r.fm)+'</span>':'')+'</div>'+
+    '<div class="meta">SKU · modèle usine (Factory Serial Model)'+(r.note?' · '+esc(r.note):'')+'</div><div class="links">'+ropMan(r)+gh+(r.skuN?'<a class="lk bom" href="tineco_faq.html?sku='+encodeURIComponent(r.sku)+'" title="Causes possibles selon le symptôme (Repair Guide)">🩺 FAQ panne</a>':'')+'</div></div>'; }
 function relatedCount(fm){ if(!fm) return 0; const t=norm(fm); return SAV.filter(f=>!f.f&&f.hay.includes(t)).length; }
 
 /* ---------- affichage ---------- */
@@ -381,6 +416,8 @@ function docCard(d){
   let links='';
   links += d.man ? (d.man.u?'<a class="lk man" href="'+esc(d.man.u)+'" target="_blank" rel="noopener">📘 <span>'+hl(d.man.l)+'</span></a>':'<span class="lk none">📘 '+esc(d.man.l)+'</span>')
                  : '<span class="lk none">📘 Pas de manuel référencé</span>';
+  const seenU=new Set(d.man&&d.man.u?[d.man.u]:[]), seenN=new Set(d.man?[d.man.l]:[]);
+  for(const rn of d.refsN){ const hits=ROPD.filter(x=>x.skuN===rn.replace(/ /g,'')||x.fmN===rn); for(const x of hits){ const m=x.man; const key=ropUrl(m)||m.u||m.n; if(seenU.has(key)||seenN.has(m.n)){ if(!seenU.has('hub'+m.n)){ seenU.add('hub'+m.n); links+=ropMan(x,1); } continue; } seenU.add(key); seenU.add('hub'+m.n); links+=ropMan(x); } }
   const gh=GFG.size?globalHref(d.refs):'';
   if(gh) links += '<a class="lk bom" href="'+gh+'" title="Liste de pièces détachées EU avec photos (Global spare parts list)">🔧 Pièces détachées &amp; photos</a>';
   return '<div class="card doc"><div class="top"><span class="nm">'+hl(d.com)+'</span>'+(d.fam?'<span class="badge">'+esc(d.fam)+'</span>':'')+(d.fm?'<span class="badge fm">'+hl(d.fm)+'</span>':'')+'</div>'+
@@ -396,13 +433,14 @@ function devMan(d){
   if(d.man){ h+= d.man.url ? '<a class="lk man" href="'+esc(d.man.url)+'" target="_blank" rel="noopener" title="Manuel de réparation (SAVVY)'+(d.man.approx?' — rapprochement approximatif, à vérifier':'')+'">📘 <span>'+esc(d.man.name)+(d.man.approx?' ⚠️':'')+'</span></a>'
                           : '<span class="lk none">📘 '+esc(d.man.name)+' (lien SAVVY à venir)</span>'; }
   else h+='<span class="lk none">📘 Pas de manuel référencé</span>';
+  const rp=ROPSKU.get(d.fgN); if(rp&&rp.man){ const ru=ropUrl(rp.man)||rp.man.u; h+=ropMan(rp,!!(d.man&&ru&&ru===d.man.url)); }
   const doc=DOCS.find(x=>x.refs.some(r=>norm(r)===d.fgN));
   if(doc){ if(doc.man&&doc.man.u&&(!d.man||(doc.man.u!==d.man.url&&norm(doc.man.l)!==norm(d.man.name)))) h+='<a class="lk man" href="'+esc(doc.man.u)+'" target="_blank" rel="noopener">📘 <span>'+esc(doc.man.l)+'</span></a>'; }
   return h; }
 function devCard(d){
   return '<div class="card doc dev"><div class="top"><span class="nm">'+hl(d.fgn||'(sans nom)')+'</span><span class="badge">'+hl(d.fg)+'</span>'+(d.model?'<span class="badge fm">'+hl(d.model)+'</span>':'')+'</div>'+
     '<div class="meta">'+esc([d.country,d.color,d.status].filter(Boolean).join(' · '))+' — '+d.n+' pièces · 📷 '+d.ph+' photos</div>'+
-    '<div class="links">'+devMan(d)+'<a class="lk bom" href="'+bomDev(d.fg)+'">🔧 Pièces détachées &amp; photos</a><button class="lk rel" data-q="'+esc(d.fg)+'" data-tab="par">Voir les pièces ici</button></div></div>'; }
+    '<div class="links">'+devMan(d)+(ROPSKU.has(d.fgN)?'<a class="lk bom" href="tineco_faq.html?sku='+encodeURIComponent(d.fg)+'" title="Causes possibles selon le symptôme (Repair Guide)">🩺 FAQ panne</a>':'')+'<a class="lk bom" href="'+bomDev(d.fg)+'">🔧 Pièces détachées &amp; photos</a><button class="lk rel" data-q="'+esc(d.fg)+'" data-tab="par">Voir les pièces ici</button></div></div>'; }
 function partCard(p,i){
   return '<div class="card pcard"><div class="pth'+(p.src?'':' no')+'"'+(p.src?' data-big="'+esc(p.src)+'" data-cap="'+esc(p.en+' — '+p.code)+'" title="Agrandir"':'')+'>'+
     (p.src?'<img src="'+esc(p.src)+'" alt="" referrerpolicy="no-referrer" loading="lazy" onerror="this.parentNode.classList.add(\'no\');this.parentNode.textContent=\'Image indisponible\'">':'Pas de photo')+'</div>'+
@@ -429,11 +467,12 @@ function render(){
   const rd = searchDocs(tk);
   const rs = (S.fam && !S.q.trim()) ? [] : searchSav(tk);
   const savAll = searchSav(tk);
-  const rv = GD.length?searchDev(tk):[], rp = GP.length?searchParts(tk):[];
+  const rv = GD.length?searchDev(tk):[], rp = GP.length?searchParts(tk):[], rr = (S.fam&&!S.q.trim())?[]:searchRop(tk);
   const exts=[...new Set(savAll.map(f=>kind(f).l))];
   const fams=[...new Set(DOCS.map(d=>d.fam).filter(Boolean))];
   let tb='';
-  tb+='<button class="tab '+(S.tab==='all'?'on':'')+'" data-tab="all">Tout<small>'+(rd.length+rs.length+rv.length+rp.length)+'</small></button>';
+  tb+='<button class="tab '+(S.tab==='all'?'on':'')+'" data-tab="all">Tout<small>'+(rd.length+rr.length+rs.length+rv.length+rp.length)+'</small></button>';
+  if(ROPD.length) tb+='<button class="tab '+(S.tab==='rop'?'on':'')+'" data-tab="rop">Modèles &amp; SKU<small>'+rr.length+'</small></button>';
   tb+='<button class="tab '+(S.tab==='doc'?'on':'')+'" data-tab="doc">Correspondance<small>'+rd.length+'</small></button>';
   tb+='<button class="tab '+(S.tab==='sav'?'on':'')+'" data-tab="sav">Fichiers SAVVY<small>'+rs.length+'</small></button>';
   if(GP.length){ tb+='<button class="tab '+(S.tab==='dev'?'on':'')+'" data-tab="dev">Appareils<small>'+rv.length+'</small></button><button class="tab '+(S.tab==='par'?'on':'')+'" data-tab="par">Pièces &amp; photos<small>'+rp.length+'</small></button>'; }
@@ -446,6 +485,12 @@ function render(){
     if(!rd.length) h+='<div class="empty" style="padding:14px">Aucune référence ne correspond dans le tableau de documentation.</div>';
     h+=rd.slice(0,S.nDoc).map(docCard).join('');
     if(rd.length>S.nDoc) h+='<div class="more"><button class="btn" data-more="doc">Afficher plus ('+(rd.length-S.nDoc)+')</button></div>'; }
+  if(ROPD.length && (S.tab==='all'||S.tab==='rop')){
+    const lim=S.tab==='all'?6:S.nRop;
+    h+='<h2 class="sec">Modèles usine &amp; SKU (manuels de réparation) <small>'+rr.length+' résultat'+(rr.length>1?'s':'')+'</small></h2>';
+    if(!rr.length) h+='<div class="empty" style="padding:14px">Aucun modèle usine / SKU ne correspond dans les manuels.</div>';
+    h+=rr.slice(0,lim).map(ropCard).join('');
+    if(rr.length>lim) h+='<div class="more"><button class="btn" '+(S.tab==='all'?'data-tab="rop"':'data-more="rop"')+'>Afficher plus ('+(rr.length-lim)+')</button></div>'; }
   if(GP.length && (S.tab==='all'||S.tab==='dev') && rv.length){
     const lim=S.tab==='all'?4:S.nDev;
     h+='<h2 class="sec">Appareils (catalogue pièces EU) <small>'+rv.length+' résultat'+(rv.length>1?'s':'')+'</small></h2>'+rv.slice(0,lim).map(devCard).join('');
@@ -465,16 +510,16 @@ function render(){
 
 /* ---------- événements ---------- */
 let timer;
-$('q').addEventListener('input',e=>{ clearTimeout(timer); timer=setTimeout(()=>{ S.q=e.target.value; S.nDoc=30; S.nSav=40; S.nDev=20; S.nPar=40; render(); },120); });
+$('q').addEventListener('input',e=>{ clearTimeout(timer); timer=setTimeout(()=>{ S.q=e.target.value; S.nDoc=30; S.nSav=40; S.nDev=20; S.nPar=40; S.nRop=30; render(); },120); });
 $('clr').onclick=()=>{ $('q').value=''; S.q=''; S.fam=''; S.ext=''; render(); $('q').focus(); };
 $('fileInput').addEventListener('change',e=>{ importFiles([...e.target.files]); e.target.value=''; });
 document.addEventListener('click',e=>{
   const t=e.target.closest('[data-q],[data-tab],[data-fam],[data-ext],[data-more]'); if(!t) return;
-  if(t.dataset.q!==undefined){ S.q=t.dataset.q; $('q').value=S.q; S.fam=''; S.ext=''; S.nDoc=30; S.nSav=40; S.nDev=20; S.nPar=40; if(t.dataset.tab) S.tab=t.dataset.tab; window.scrollTo({top:0,behavior:'smooth'}); }
+  if(t.dataset.q!==undefined){ S.q=t.dataset.q; $('q').value=S.q; S.fam=''; S.ext=''; S.nDoc=30; S.nSav=40; S.nDev=20; S.nPar=40; S.nRop=30; if(t.dataset.tab) S.tab=t.dataset.tab; window.scrollTo({top:0,behavior:'smooth'}); }
   else if(t.dataset.tab!==undefined){ S.tab=t.dataset.tab; }
   else if(t.dataset.fam!==undefined){ S.fam=(S.fam===t.dataset.fam)?'':t.dataset.fam; if(S.fam && S.tab==='sav') S.tab='all'; }
   else if(t.dataset.ext!==undefined){ S.ext=(S.ext===t.dataset.ext)?'':t.dataset.ext; }
-  else if(t.dataset.more){ if(t.dataset.more==='doc') S.nDoc+=40; else if(t.dataset.more==='dev') S.nDev+=20; else if(t.dataset.more==='par') S.nPar+=60; else S.nSav+=60; }
+  else if(t.dataset.more){ if(t.dataset.more==='doc') S.nDoc+=40; else if(t.dataset.more==='rop') S.nRop+=40; else if(t.dataset.more==='dev') S.nDev+=20; else if(t.dataset.more==='par') S.nPar+=60; else S.nSav+=60; }
   render(); });
 document.addEventListener('click',e=>{ const b=e.target.closest('.pth[data-big]'); const L=$('lb');
   if(b){ L.querySelector('img').src=b.dataset.big; L.querySelector('.cap').textContent=b.dataset.cap; L.classList.add('on'); } else if(L.classList.contains('on')) L.classList.remove('on'); });

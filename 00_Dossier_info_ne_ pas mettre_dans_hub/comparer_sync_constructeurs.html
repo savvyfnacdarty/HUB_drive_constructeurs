@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Comparer et synchroniser – Hub constructeurs</title>
+<style>
+:root{--red:#FF0055;--blush:#B14866;--rose:#6A0008;--bg:#faf7f7;--card:#fff;--txt:#222;--mut:#777;--line:#e6dede}
+*{box-sizing:border-box}
+body{font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--txt);margin:0;padding:20px}
+h1{color:var(--rose);margin:0 0 4px;font-size:22px}
+.sub{color:var(--mut);margin:0 0 16px;font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:14px}
+.row{display:flex;gap:14px;flex-wrap:wrap}
+.pick{flex:1;min-width:280px}
+button{background:var(--red);color:#fff;border:0;border-radius:6px;padding:9px 14px;font-size:14px;cursor:pointer}
+button.sec{background:#fff;color:var(--rose);border:1px solid var(--blush)}
+button:disabled{opacity:.4;cursor:not-allowed}
+.name{margin-top:8px;font-size:13px;color:var(--mut);word-break:break-all}
+.tag{font-size:12px;border-radius:10px;padding:2px 8px;white-space:nowrap}
+.t-new{background:#e2f6e6;color:#176b2c}.t-newer{background:#fff1d6;color:#8a5a00}
+.t-older{background:#fde3e3;color:#a11}.t-diff{background:#fde3e3;color:#a11}
+.t-same{background:#eee;color:#555}.t-only{background:#e5ecff;color:#2a4aa8}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#f4eded;position:sticky;top:0}
+td.p{word-break:break-all}
+.wrap{max-height:55vh;overflow:auto;border:1px solid var(--line);border-radius:6px}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:10px 0}
+.sum span{margin-right:10px}
+#log{font-size:13px;white-space:pre-wrap;color:var(--rose);margin-top:8px}
+label{font-size:13px}
+.warn{background:#fff4f6;border:1px solid var(--blush);color:var(--rose);padding:8px 12px;border-radius:6px;font-size:13px}
+</style>
+</head>
+<body>
+<h1>Comparer et synchroniser deux dossiers</h1>
+<p class="sub">Outil commun à tous les constructeurs du hub. Source = dossier du ZIP dézippé · Destination = dossier SharePoint synchronisé (OneDrive). Rien n'est supprimé, jamais.</p>
+
+<div id="unsupported" class="warn" style="display:none">Ce navigateur ne permet pas l'accès aux dossiers. Ouvrez cette page dans Chrome ou Edge.</div>
+
+<div class="row">
+  <div class="card pick">
+    <b>1. Source (ZIP dézippé)</b><br><br>
+    <button id="bSrc">Choisir le dossier source</button>
+    <div class="name" id="nSrc">Aucun dossier choisi</div>
+  </div>
+  <div class="card pick">
+    <b>2. Destination (SharePoint via OneDrive)</b><br><br>
+    <button id="bDst">Choisir le dossier destination</button>
+    <div class="name" id="nDst">Aucun dossier choisi</div>
+  </div>
+</div>
+
+<div class="card">
+  <label><input type="checkbox" id="optHash" checked> Vérifier le contenu (SHA-256) quand la taille est identique mais que la date diffère</label><br>
+  <div style="font-size:12px;color:var(--mut);margin-top:4px">Évite de remplacer des fichiers identiques dont seule la date a changé (re-téléchargement). Peut être lent sur de gros fichiers.</div>
+  <div class="bar"><button id="bCmp" disabled>3. Comparer</button><span id="prog" style="font-size:13px;color:var(--mut)"></span></div>
+</div>
+
+<div class="card" id="res" style="display:none">
+  <div class="sum" id="sum"></div>
+  <div class="bar">
+    <label><input type="checkbox" id="fNew" checked> Nouveaux</label>
+    <label><input type="checkbox" id="fNewer" checked> Plus récents</label>
+    <label><input type="checkbox" id="fOlder"> Plus anciens</label>
+    <label><input type="checkbox" id="fDiff"> Contenu différent (date identique)</label>
+    <label><input type="checkbox" id="fSame"> Identiques</label>
+    <label><input type="checkbox" id="fOnly" checked> Absents du ZIP</label>
+    <span style="font-size:12px;color:var(--mut)">(filtre l'affichage ; seules les lignes cochées dans le tableau sont copiées)</span>
+  </div>
+  <div class="wrap"><table><thead><tr>
+    <th><input type="checkbox" id="all" title="Tout cocher/décocher (visibles)"></th><th>Fichier</th><th>État</th><th>ZIP (date · taille)</th><th>SharePoint (date · taille)</th>
+  </tr></thead><tbody id="tb"></tbody></table></div>
+  <div class="bar">
+    <button id="bSync">4. Synchroniser la sélection</button>
+    <button class="sec" id="bCsv">Exporter le rapport (CSV)</button>
+  </div>
+  <div id="log"></div>
+</div>
+
+<div class="card">
+  <b>5. Export de la liste pour la page du constructeur</b>
+  <div style="font-size:13px;color:var(--mut);margin:4px 0 10px">Génère le .xlsx lu par la page HTML du constructeur (même format que l'export SharePoint : Nom · Modifié · Modifié par · État de validation · Type d'élément · Chemin d'accès) à partir du dossier <b>destination</b>. À faire après la synchronisation, une fois OneDrive à jour. Choisissez le constructeur : racine et nom de fichier se remplissent seuls.</div>
+  <div class="bar">
+    <label>Constructeur : <select id="xPreset"></select></label>
+    <label>Modifié par : <input id="xBy" size="18" value="LECONTE Jerome"></label>
+  </div>
+  <div class="bar">
+    <label>Racine SharePoint : <input id="xRoot" size="60"></label>
+  </div>
+  <div class="bar">
+    <label>Nom du fichier : <input id="xFile" size="44"></label>
+    <label>Feuille : <input id="xSheet" size="14"></label>
+  </div>
+  <div class="bar">
+    <button id="bXlsx" disabled>Enregistrer dans le dossier du constructeur…</button>
+    <button class="sec" id="bXlsxDl" disabled>Télécharger le .xlsx</button>
+    <span id="xMsg" style="font-size:13px;color:var(--rose)"></span>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+const IGNORE = /^(desktop\.ini|thumbs\.db|\.ds_store)$/i;
+let srcDir=null, dstDir=null, rows=[];
+const $=id=>document.getElementById(id);
+if(!window.showDirectoryPicker){ $('unsupported').style.display='block'; $('bSrc').disabled=$('bDst').disabled=true; }
+
+async function pick(mode){
+  try{ return await window.showDirectoryPicker({mode}); }catch(e){ return null; }
+}
+$('bSrc').onclick=async()=>{ const d=await pick('read'); if(d){srcDir=d;$('nSrc').textContent=d.name;upd();} };
+$('bDst').onclick=async()=>{ const d=await pick('readwrite'); if(d){dstDir=d;$('nDst').textContent=d.name;upd();} };
+function upd(){ $('bCmp').disabled=!(srcDir&&dstDir); $('bXlsx').disabled=$('bXlsxDl').disabled=!dstDir; }
+
+async function scan(dir,prefix,out){
+  for await(const [name,h] of dir.entries()){
+    if(h.kind==='directory'){ await scan(h,prefix+name+'/',out); }
+    else{
+      if(IGNORE.test(name)||name.startsWith('~$')) continue;
+      const f=await h.getFile();
+      out.set((prefix+name).toLowerCase(),{path:prefix+name,handle:h,file:f,size:f.size,mtime:f.lastModified});
+    }
+  }
+}
+async function sha(file){
+  const b=await file.arrayBuffer();
+  const d=await crypto.subtle.digest('SHA-256',b);
+  return [...new Uint8Array(d)].map(x=>x.toString(16).padStart(2,'0')).join('');
+}
+const fmtD=t=>new Date(t).toLocaleString('fr-FR',{dateStyle:'short',timeStyle:'short'});
+const fmtS=n=>n>1048576?(n/1048576).toFixed(1)+' Mo':n>1024?Math.round(n/1024)+' Ko':n+' o';
+const cell=x=>x?fmtD(x.mtime)+' · '+fmtS(x.size):'—';
+
+const STATES={new:['Nouveau','t-new'],newer:['Plus récent (ZIP)','t-newer'],older:['Plus ancien (ZIP)','t-older'],diff:['Contenu différent','t-diff'],same:['Identique','t-same'],only:['Absent du ZIP','t-only']};
+const SKEW=3000; // tolérance 3 s (OneDrive/ZIP)
+
+$('bCmp').onclick=async()=>{
+  $('bCmp').disabled=true; $('res').style.display='none'; $('log').textContent='';
+  try{
+    $('prog').textContent='Lecture de la source…';
+    const S=new Map(); await scan(srcDir,'',S);
+    $('prog').textContent='Lecture de la destination…';
+    const D=new Map(); await scan(dstDir,'',D);
+    rows=[]; const keys=new Set([...S.keys(),...D.keys()]); let i=0;
+    for(const k of [...keys].sort()){
+      const s=S.get(k), d=D.get(k); let st;
+      i++; $('prog').textContent='Comparaison '+i+' / '+keys.size;
+      if(s&&!d) st='new';
+      else if(!s&&d) st='only';
+      else{
+        const same=s.size===d.size;
+        const dt=s.mtime-d.mtime;
+        if(same && Math.abs(dt)<=SKEW) st='same';
+        else if(same && $('optHash').checked){
+          st=(await sha(s.file))===(await sha(d.file))?'same':(dt>0?'newer':'older');
+        } else st = same ? (dt>0?'newer':'older') : (dt>0?'newer':(dt<0?'older':'diff'));
+        if(st==='same'&&(s.size!==d.size)) st='diff';
+      }
+      rows.push({k,st,s,d,path:(s||d).path,sel:st==='new'||st==='newer'});
+    }
+    render(); $('res').style.display='block'; $('prog').textContent='Terminé.';
+  }catch(e){ $('prog').textContent='Erreur : '+e.message; }
+  $('bCmp').disabled=false;
+};
+
+const filt={new:'fNew',newer:'fNewer',older:'fOlder',diff:'fDiff',same:'fSame',only:'fOnly'};
+function render(){
+  const cnt={}; rows.forEach(r=>cnt[r.st]=(cnt[r.st]||0)+1);
+  $('sum').innerHTML=Object.keys(STATES).map(k=>`<span class="tag ${STATES[k][1]}">${STATES[k][0]} : ${cnt[k]||0}</span>`).join(' ');
+  const tb=$('tb'); tb.innerHTML='';
+  rows.forEach((r,idx)=>{
+    if(!$(filt[r.st]).checked) return;
+    const tr=document.createElement('tr');
+    const can=r.st!=='only'&&r.st!=='same';
+    tr.innerHTML=`<td>${can?`<input type="checkbox" data-i="${idx}" ${r.sel?'checked':''}>`:''}</td><td class="p">${esc(r.path)}</td><td><span class="tag ${STATES[r.st][1]}">${STATES[r.st][0]}</span></td><td>${cell(r.s)}</td><td>${cell(r.d)}</td>`;
+    tb.appendChild(tr);
+  });
+  tb.querySelectorAll('input[data-i]').forEach(c=>c.onchange=()=>{rows[c.dataset.i].sel=c.checked;});
+}
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+Object.values(filt).forEach(id=>$(id).onchange=render);
+$('all').onchange=e=>{
+  document.querySelectorAll('#tb input[data-i]').forEach(c=>{c.checked=e.target.checked;rows[c.dataset.i].sel=c.checked;});
+};
+
+async function dirFor(root,path){
+  const parts=path.split('/'); const name=parts.pop(); let d=root;
+  // respecte la casse existante côté destination quand le dossier existe déjà
+  for(const p of parts){
+    let found=null;
+    for await(const [n,h] of d.entries()){ if(h.kind==='directory'&&n.toLowerCase()===p.toLowerCase()){found=n;break;} }
+    d=await d.getDirectoryHandle(found||p,{create:true});
+  }
+  return [d,name];
+}
+$('bSync').onclick=async()=>{
+  const todo=rows.filter(r=>r.sel&&r.s&&(r.st==='new'||r.st==='newer'||r.st==='older'||r.st==='diff'));
+  if(!todo.length){ $('log').textContent='Rien de coché à copier.'; return; }
+  const ol=todo.filter(r=>r.st==='older').length;
+  let msg=`Copier ${todo.length} fichier(s) vers « ${dstDir.name} » ?`;
+  if(ol) msg+=`\n\nATTENTION : ${ol} fichier(s) cochés sont plus anciens que ceux de SharePoint et les remplaceront.`;
+  if(!confirm(msg)) return;
+  $('bSync').disabled=true; let ok=0,ko=0,out='';
+  for(const r of todo){
+    try{
+      const [d,name]=await dirFor(dstDir,r.path);
+      let target=name;
+      if(r.d){ target=r.d.handle.name; }
+      const fh=await d.getFileHandle(target,{create:true});
+      const w=await fh.createWritable(); await w.write(r.s.file); await w.close();
+      ok++; out+='✔ '+r.path+'\n';
+    }catch(e){ ko++; out+='✘ '+r.path+' — '+e.message+'\n'; }
+    $('log').textContent=`Copie… ${ok+ko} / ${todo.length}`;
+  }
+  $('log').textContent=`Terminé : ${ok} copié(s), ${ko} erreur(s).\nOneDrive va maintenant envoyer les fichiers vers SharePoint ; attendez la fin avant de refaire l'export de la liste.\n\n`+out;
+  $('bSync').disabled=false;
+};
+
+$('bCsv').onclick=()=>{
+  const lines=['Fichier;État;ZIP date;ZIP taille;SharePoint date;SharePoint taille'];
+  rows.forEach(r=>lines.push([r.path,STATES[r.st][0],r.s?fmtD(r.s.mtime):'',r.s?r.s.size:'',r.d?fmtD(r.d.mtime):'',r.d?r.d.size:''].map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')));
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob(['﻿'+lines.join('\r\n')],{type:'text/csv'}));
+  a.download='rapport_comparaison.csv'; a.click();
+};
+
+/* ---------- Export xlsx (étape 5) ---------- */
+/* Pour ajouter un constructeur : une ligne ici (racine SharePoint exacte, nom du .xlsx lu par sa page, nom de feuille). */
+const PRESETS={
+  'KitchenAid':{root:'sites/SAVVY_FNACDARTY/Documents partages/KitchenAid',file:'Kitchenaid Service Playbook - Export.xlsx',sheet:'query (10)'},
+  'Laurastar':{root:'sites/SAVVY_FNACDARTY/Documents partages/Laurastar Distributor Lounge',file:'Laurastar_SAVVY.xlsx',sheet:'Laurastar_SAVVY'},
+  'Autre (saisie libre)':{root:'sites/SAVVY_FNACDARTY/Documents partages/',file:'Export.xlsx',sheet:'query'}
+};
+(function(){
+  const sel=$('xPreset'); Object.keys(PRESETS).forEach(k=>{const o=document.createElement('option');o.textContent=k;sel.appendChild(o);});
+  const apply=()=>{const p=PRESETS[sel.value];$('xRoot').value=p.root;$('xFile').value=p.file;$('xSheet').value=p.sheet;};
+  sel.onchange=apply; apply();
+})();
+async function scanAll(dir,prefix,out){
+  let latest=0;
+  for await(const [name,h] of dir.entries()){
+    if(h.kind==='directory'){
+      const sub=await scanAll(h,prefix+name+'/',out);
+      out.push({name,path:prefix.replace(/\/$/,''),folder:true,mtime:sub});
+      latest=Math.max(latest,sub);
+    }else{
+      if(IGNORE.test(name)||name.startsWith('~$')) continue;
+      const f=await h.getFile();
+      out.push({name,path:prefix.replace(/\/$/,''),folder:false,mtime:f.lastModified});
+      latest=Math.max(latest,f.lastModified);
+    }
+  }
+  return latest||Date.now();
+}
+/* date locale -> numéro de série Excel (heure locale, comme l'export SharePoint) */
+function xlSerial(t){const d=new Date(t);return (Date.UTC(d.getFullYear(),d.getMonth(),d.getDate(),d.getHours(),d.getMinutes(),d.getSeconds())/86400000)+25569;}
+async function buildXlsx(){
+  const root=$('xRoot').value.trim().replace(/^\/+|\/+$/g,'');
+  if(!root) throw new Error('Racine SharePoint vide.');
+  const by=$('xBy').value.trim(); const items=[];
+  await scanAll(dstDir,'',items);
+  items.sort((a,b)=>(a.path+'/'+a.name).localeCompare(b.path+'/'+b.name,'fr',{numeric:true}));
+  const aoa=[['Nom','Modifié','Modifié par','État de validation',"Type d'élément","Chemin d'accès"]];
+  items.forEach(it=>aoa.push([it.name,xlSerial(it.mtime),by,null,it.folder?'Dossier':'Élément\u00a0',it.path?root+'/'+it.path:root]));
+  const ws=XLSX.utils.aoa_to_sheet(aoa);
+  for(let r=1;r<aoa.length;r++){const c=ws[XLSX.utils.encode_cell({r,c:1})];c.t='n';c.z='dd/mm/yyyy hh:mm';}
+  ws['!cols']=[{wch:50},{wch:18},{wch:18},{wch:18},{wch:14},{wch:80}];
+  const wb=XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,ws,($('xSheet').value||'query').slice(0,31));
+  return {data:XLSX.write(wb,{bookType:'xlsx',type:'array'}),n:items.length,
+          files:items.filter(i=>!i.folder).length};
+}
+const xName=()=>$('xFile').value.trim()||'Export.xlsx';
+$('bXlsx').onclick=async()=>{
+  $('xMsg').textContent='';
+  try{
+    const out=await window.showDirectoryPicker({mode:'readwrite'});
+    $('xMsg').textContent='Génération…';
+    const x=await buildXlsx();
+    const fh=await out.getFileHandle(xName(),{create:true});
+    const w=await fh.createWritable(); await w.write(x.data); await w.close();
+    $('xMsg').textContent=`✔ « ${xName()} » enregistré dans « ${out.name} » (${x.files} fichiers, ${x.n-x.files} dossiers). Vérifiez que le nom correspond à celui lu par la page du constructeur, puis push.`;
+  }catch(e){ if(e.name!=='AbortError') $('xMsg').textContent='Erreur : '+e.message; }
+};
+$('bXlsxDl').onclick=async()=>{
+  $('xMsg').textContent='';
+  try{
+    const x=await buildXlsx();
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([x.data],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}));
+    a.download=xName(); a.click();
+    $('xMsg').textContent=`✔ ${x.files} fichiers, ${x.n-x.files} dossiers exportés.`;
+  }catch(e){ $('xMsg').textContent='Erreur : '+e.message; }
+};
+</script>
+</body>
+</html>
