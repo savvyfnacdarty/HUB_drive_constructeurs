@@ -170,6 +170,7 @@
     <a href="accessoires.html">🧩 Références Accessoires (consommable)</a>
     <a href="robot_laveur.html" class="active">🤖 Robot laveur</a>
     <a href="aspirateur_balai_laveur.html">🧹 Aspirateur balai laveur</a>
+    <a href="../fiche_inspection_robot_laveur.html">📋 Fiche d'inspection</a>
     <a href="https://dreametech.zendesk.com/hc/fr" target="_blank" rel="noopener">🌐 Dreame Support ↗</a>
   </nav>
 </div>
@@ -1170,6 +1171,12 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape'){ $('#clr').onclick(); }
 });
 render();
+</script>
+<script>
+/* Hub : recherche pré-remplie via ?q= (depuis les fiches d'inspection) */
+(function(){try{var q=new URLSearchParams(location.search).get('q');if(!q)return;
+var i=document.getElementById('q')||document.getElementById('searchInput')||document.getElementById('search');
+if(!i)return;i.value=q;i.dispatchEvent(new Event('input',{bubbles:true}));}catch(e){}})();
 </script>
 </body>
 </html>
