@@ -1,7 +1,7 @@
 {
  "source": "https://docs.google.com/spreadsheets/d/15u69yfrqn3HqEwoemv8_UUgd-74wPeFdJhsD0YMc4dQ/edit",
  "sheetId": "15u69yfrqn3HqEwoemv8_UUgd-74wPeFdJhsD0YMc4dQ",
- "generated": "2026-10-02",
+ "generated": "2026-10-20",
  "families": [
   {
    "name": "Robot Vacuum",
@@ -80,7 +80,7 @@
    },
    "rows": [
     {
-     "no": "1",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -93,8 +93,8 @@
      ],
      "bom": [
       {
-       "t": "新模板【西南欧】L10s Ultra Gen2_R2469 Spare Parts BOM List 1.3.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1BcwJRXA3vnEZX4zQNCXArwuXu2J5Uhxr/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+       "t": "新模板【西南欧】L10s Ultra Gen2_R2469 Spare Parts BOM List 1.4.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1-bkcSdIR2CSGi14s_ZrXk04QEatqTLR7/edit?gid=565602000#gid=565602000"
       }
      ],
      "repair": [
@@ -128,7 +128,7 @@
      "extra": []
     },
     {
-     "no": "2",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -140,8 +140,8 @@
      ],
      "bom": [
       {
-       "t": "新模板【西南欧】L10s Ultra Gen2_R2469降本版 Cost-reduced version Spare Parts BOM List 1.1.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1dkp1JhPxnacy1H5dhjwD62oXyIB96BE0/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+       "t": "新模板【西南欧】L10s Ultra Gen2_R2469降本版 Cost-reduced version Spare Parts BOM List 1.2.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1Janz6HYAPhGpxtfLSxaGlbot28DyEBzR/edit?gid=523825840#gid=523825840"
       }
      ],
      "repair": [
@@ -175,7 +175,7 @@
      "extra": []
     },
     {
-     "no": "4",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -247,7 +247,7 @@
      "extra": []
     },
     {
-     "no": "5",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -285,7 +285,7 @@
      "extra": []
     },
     {
-     "no": "6",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -334,7 +334,7 @@
      "extra": []
     },
     {
-     "no": "7",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -381,7 +381,7 @@
      "extra": []
     },
     {
-     "no": "8",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -420,7 +420,7 @@
      "extra": []
     },
     {
-     "no": "9",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -471,7 +471,7 @@
      "extra": []
     },
     {
-     "no": "10",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -513,7 +513,7 @@
      "extra": []
     },
     {
-     "no": "11",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -578,7 +578,7 @@
      "extra": []
     },
     {
-     "no": "12",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -634,7 +634,7 @@
      "extra": []
     },
     {
-     "no": "13",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -681,7 +681,7 @@
      "extra": []
     },
     {
-     "no": "14",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -756,7 +756,7 @@
      "extra": []
     },
     {
-     "no": "15",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -823,7 +823,7 @@
      "extra": []
     },
     {
-     "no": "16",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -856,7 +856,7 @@
      "extra": []
     },
     {
-     "no": "17",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -891,7 +891,7 @@
      "extra": []
     },
     {
-     "no": "18",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -925,7 +925,7 @@
      "extra": []
     },
     {
-     "no": "19",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -969,7 +969,7 @@
      "extra": []
     },
     {
-     "no": "20",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1001,7 +1001,7 @@
      "extra": []
     },
     {
-     "no": "21",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1035,7 +1035,7 @@
      "extra": []
     },
     {
-     "no": "22",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1051,8 +1051,8 @@
      ],
      "bom": [
       {
-       "t": "新模板【西南欧】L50s Pro Ultra&L50s Pro Ultra Complete_R5039 Spare Parts BOM List V1.5,xlsx.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1JSiYHl-D_MkuZ2dvc5VcttB-nlNyGF-I/edit?gid=1135490988#gid=1135490988"
+       "t": "新模板【西南欧】L50s Pro Ultra&L50s Pro Ultra Complete_R5039 Spare Parts BOM List V1.6.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1jw0Hw6jw6FnTICL7icTdvv2DsXN4xj-T/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "repair": [
@@ -1082,7 +1082,7 @@
      "extra": []
     },
     {
-     "no": "23",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1137,7 +1137,7 @@
      "extra": []
     },
     {
-     "no": "24",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1166,7 +1166,7 @@
      "extra": []
     },
     {
-     "no": "25",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1181,8 +1181,8 @@
      ],
      "bom": [
       {
-       "t": "新模板【西南欧】X50s Ultra& X50s Ultra-A&X50s Ultra Select_R5089 Spare Parts Bom List_V1.3.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1UgDCZIYNNbDK_sekufOkyY-nkJWtC6ES/edit?gid=926713219#gid=926713219"
+       "t": "新模板【西南欧】X50s Ultra& X50s Ultra-A&X50s Ultra Select_R5089 Spare Parts Bom List_V1.4.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1ShVDq2wW4amdBZkY3X0YZtDLRsmoAVq-/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "repair": [
@@ -1248,7 +1248,7 @@
      "extra": []
     },
     {
-     "no": "26",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1292,7 +1292,7 @@
      "extra": []
     },
     {
-     "no": "27",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1305,8 +1305,8 @@
      ],
      "bom": [
       {
-       "t": "西南欧 X50 Ultra Complete 降本版_R5048 Spare Parts BOM List 1.2.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1u8n9YrfSyJhVmBmfqarQJ1DweHlQAZ6J/edit?gid=57610594#gid=57610594"
+       "t": "新模板【西南欧】X50 Ultra Complete 降本版_R5048 Spare Parts BOM List 1.2.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1I9GB2SD-miNZP1zwyCoJX5AY5Egcq0bl/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "repair": [
@@ -1380,7 +1380,7 @@
      "extra": []
     },
     {
-     "no": "28",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1402,7 +1402,7 @@
      "extra": []
     },
     {
-     "no": "29",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1423,7 +1423,7 @@
      "extra": []
     },
     {
-     "no": "30",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1447,7 +1447,7 @@
      "extra": []
     },
     {
-     "no": "32",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1471,7 +1471,7 @@
      "extra": []
     },
     {
-     "no": "33",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1489,8 +1489,8 @@
      ],
      "bom": [
       {
-       "t": "新模板【西南欧】MOVA Z60 Ultra Roller Complete _R9540 Spare Parts BOM List V1.7.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1Z3xyYzMwcEpy6_wyT7No5H9O0AFvbBVu/edit?usp=drive_web&ouid=105729334306758008218&rtpof=true"
+       "t": "新模板【西南欧】MOVA Z60 Ultra Roller Complete _R9540 Spare Parts BOM List V1.8.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1y94pHIGorkFMxwphNInFrm_Bz8mQn4UX/edit?gid=367098884#gid=367098884"
       }
      ],
      "repair": [
@@ -1524,7 +1524,7 @@
      "extra": []
     },
     {
-     "no": "34",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1562,7 +1562,7 @@
      "extra": []
     },
     {
-     "no": "35",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1612,7 +1612,7 @@
      "extra": []
     },
     {
-     "no": "36",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1641,7 +1641,7 @@
      "extra": []
     },
     {
-     "no": "37",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1656,8 +1656,8 @@
      ],
      "bom": [
       {
-       "t": "新模板【西南欧】X40 Ultra Complete_R2449 Spare Parts BOM List V1.9.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1b5gYV4yMHYlPoT7R33FznabzDg9dNzVb/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+       "t": "新模板【西南欧】X40 Ultra Complete_R2449 Spare Parts BOM List V2.0.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1N7wgjD6ivtt4_dOZONgKsOn54Ru0Tl8I/edit?gid=2102240905#gid=2102240905"
       }
      ],
      "repair": [
@@ -1711,7 +1711,7 @@
      "extra": []
     },
     {
-     "no": "38",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1753,7 +1753,7 @@
      "extra": []
     },
     {
-     "no": "39",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1796,7 +1796,7 @@
      "extra": []
     },
     {
-     "no": "40",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1852,7 +1852,7 @@
      "extra": []
     },
     {
-     "no": "41",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1951,11 +1951,24 @@
        "u": "https://drive.google.com/drive/folders/1z88dRIe3BdglvabZSkpcTQ1JMPnfGHjV?usp=drive_link"
       }
      ],
-     "notif": [],
+     "notif": [
+      {
+       "t": "X40 L40 series side brush motor short circuit problem.pptx",
+       "u": "https://docs.google.com/presentation/d/1MxP70CCuPflzJGdEBnZhhl7kxeWJn0u7/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      },
+      {
+       "t": "Mother board repair notice for model ：X40 Ultra、X40 Ultra Complete、L40 Ultra.pptx",
+       "u": "https://docs.google.com/presentation/d/1ZHMyDDeTk4dx5cdUfFt1JJI4H0csCxwx/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      },
+      {
+       "t": "Base Station Charging Contact Oxidation Issue.pptx",
+       "u": "https://docs.google.com/presentation/d/1SQMs4WCBLVhU5kjZOl4YG8qeCNN4pRVb/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      }
+     ],
      "extra": []
     },
     {
-     "no": "42",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -1994,7 +2007,7 @@
      "extra": []
     },
     {
-     "no": "43",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2058,7 +2071,7 @@
      "extra": []
     },
     {
-     "no": "44",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2076,7 +2089,7 @@
      "bom": [
       {
        "t": "新模板【西南欧】X50 Ultra Complete_R2532 Spare Parts BOM List 1.11.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1C6d_kYmFBa9XfciraP_uZh-Gyk-_4-mB/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+       "u": "https://docs.google.com/spreadsheets/d/1KXp4-0PZ8TxSg9WqjxaSRz4Nn9VqBScg/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "repair": [
@@ -2162,7 +2175,7 @@
      "extra": []
     },
     {
-     "no": "45",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2253,7 +2266,7 @@
      "extra": []
     },
     {
-     "no": "46",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2273,7 +2286,7 @@
      "extra": []
     },
     {
-     "no": "47",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2297,7 +2310,7 @@
      "extra": []
     },
     {
-     "no": "48",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2308,8 +2321,8 @@
      ],
      "bom": [
       {
-       "t": "西南欧D20 Ultra_R9507A Spare Parts BOM List V1.4.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1Qml19EoWq_lLovDq6i1UtW90XiR3-KuW/edit?gid=972559331#gid=972559331"
+       "t": "西南欧D20 Ultra_R9507 Spare Parts BOM List V1.5.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1N8DB8b0NLQ7ovZd7YLzymNOibkoxYDhg/edit?gid=761613615#gid=761613615"
       }
      ],
      "repair": [],
@@ -2317,7 +2330,7 @@
      "extra": []
     },
     {
-     "no": "49",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2337,7 +2350,7 @@
      "extra": []
     },
     {
-     "no": "50",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2357,7 +2370,7 @@
      "extra": []
     },
     {
-     "no": "51",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2400,7 +2413,7 @@
      "extra": []
     },
     {
-     "no": "52",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2438,7 +2451,7 @@
      "extra": []
     },
     {
-     "no": "53",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2475,7 +2488,7 @@
      "extra": []
     },
     {
-     "no": "54",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2512,7 +2525,7 @@
      "extra": []
     },
     {
-     "no": "55",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2537,7 +2550,7 @@
      "extra": []
     },
     {
-     "no": "56",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2564,7 +2577,7 @@
      "extra": []
     },
     {
-     "no": "57",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2590,7 +2603,7 @@
      "extra": []
     },
     {
-     "no": "58",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2599,13 +2612,14 @@
      "project": [
       "R50573",
       "R50574",
+      "R5057D",
       "R502JL",
       "R502JY"
      ],
      "bom": [
       {
-       "t": "新模板【西南欧】D30 Ultra_R5057 Spare Parts BOM List V1.5.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1lVVntnV30xqexbhnFa95s33Z-l-dlGG6/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+       "t": "新模板【西南欧】D30 Ultra_R5057 Spare Parts BOM List V1.6.xlsx - Google 表格",
+       "u": "https://docs.google.com/spreadsheets/d/13M_FyywDI9ezEBpFehMtNyQJ5w0vmLZK/edit?gid=1902548233#gid=1902548233"
       }
      ],
      "repair": [],
@@ -2613,7 +2627,7 @@
      "extra": []
     },
     {
-     "no": "59",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2672,7 +2686,7 @@
      "extra": []
     },
     {
-     "no": "60",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2736,7 +2750,7 @@
      "extra": []
     },
     {
-     "no": "61",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2796,7 +2810,7 @@
      "extra": []
     },
     {
-     "no": "62",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2833,7 +2847,7 @@
      "extra": []
     },
     {
-     "no": "63",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2870,7 +2884,7 @@
      "extra": []
     },
     {
-     "no": "64",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2958,7 +2972,7 @@
      "extra": []
     },
     {
-     "no": "65",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -2983,7 +2997,7 @@
      "extra": []
     },
     {
-     "no": "66",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3012,7 +3026,7 @@
      "extra": []
     },
     {
-     "no": "67",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3037,7 +3051,7 @@
      "extra": []
     },
     {
-     "no": "68",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3057,14 +3071,34 @@
      "extra": []
     },
     {
-     "no": "69",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
-      "D9 Max"
+      "D9 Max（old）"
      ],
      "project": [
       "P2259"
+     ],
+     "bom": [
+      {
+       "t": "D9 Max_P2259 Spare Parts Price List_V1.4_2024716.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1gkpBQRpVf4hgc3yLkyo3M64xMcYMOQnz/edit?gid=2116870340#gid=2116870340"
+      }
+     ],
+     "repair": [],
+     "notif": [],
+     "extra": []
+    },
+    {
+     "no": "",
+     "brand": "",
+     "cat": "",
+     "model": [
+      "D9 Max（new）"
+     ],
+     "project": [
+      "R2312"
      ],
      "bom": [
       {
@@ -3077,7 +3111,7 @@
      "extra": []
     },
     {
-     "no": "70",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3110,7 +3144,7 @@
      "extra": []
     },
     {
-     "no": "71",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3130,7 +3164,7 @@
      "extra": []
     },
     {
-     "no": "72",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3163,7 +3197,7 @@
      "extra": []
     },
     {
-     "no": "73",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3201,7 +3235,7 @@
      "extra": []
     },
     {
-     "no": "74",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3238,7 +3272,7 @@
      "extra": []
     },
     {
-     "no": "75",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3275,7 +3309,7 @@
      "extra": []
     },
     {
-     "no": "76",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3316,7 +3350,7 @@
      "extra": []
     },
     {
-     "no": "77",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3357,7 +3391,7 @@
      "extra": []
     },
     {
-     "no": "78",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3394,7 +3428,7 @@
      "extra": []
     },
     {
-     "no": "79",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3431,7 +3465,7 @@
      "extra": []
     },
     {
-     "no": "80",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3465,7 +3499,7 @@
      "extra": []
     },
     {
-     "no": "81",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3506,7 +3540,7 @@
      "extra": []
     },
     {
-     "no": "82",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3539,7 +3573,7 @@
      "extra": []
     },
     {
-     "no": "83",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3588,7 +3622,7 @@
      "extra": []
     },
     {
-     "no": "84",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3651,7 +3685,7 @@
      "extra": []
     },
     {
-     "no": "85",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3692,7 +3726,7 @@
      "extra": []
     },
     {
-     "no": "86",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3751,7 +3785,7 @@
      "extra": []
     },
     {
-     "no": "87",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3801,7 +3835,7 @@
      "extra": []
     },
     {
-     "no": "88",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3845,7 +3879,7 @@
      "extra": []
     },
     {
-     "no": "89",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3867,7 +3901,7 @@
      "extra": []
     },
     {
-     "no": "90",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3904,7 +3938,7 @@
      "extra": []
     },
     {
-     "no": "91",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3941,7 +3975,7 @@
      "extra": []
     },
     {
-     "no": "92",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -3975,7 +4009,7 @@
      "extra": []
     },
     {
-     "no": "93",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4008,7 +4042,7 @@
      "extra": []
     },
     {
-     "no": "94",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4028,7 +4062,7 @@
      "extra": []
     },
     {
-     "no": "95",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4051,7 +4085,7 @@
      "extra": []
     },
     {
-     "no": "96",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4076,7 +4110,7 @@
      "extra": []
     },
     {
-     "no": "97",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4098,7 +4132,7 @@
      "extra": []
     },
     {
-     "no": "98",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4139,7 +4173,7 @@
      "extra": []
     },
     {
-     "no": "99",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4180,7 +4214,7 @@
      "extra": []
     },
     {
-     "no": "100",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4235,7 +4269,7 @@
      "extra": []
     },
     {
-     "no": "101",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4260,7 +4294,7 @@
      "extra": []
     },
     {
-     "no": "103",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4311,7 +4345,7 @@
      "extra": []
     },
     {
-     "no": "104",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4335,7 +4369,7 @@
      "extra": []
     },
     {
-     "no": "105",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4362,7 +4396,7 @@
      "extra": []
     },
     {
-     "no": "106",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4391,7 +4425,7 @@
      "extra": []
     },
     {
-     "no": "107",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4412,7 +4446,7 @@
      "extra": []
     },
     {
-     "no": "108",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4433,7 +4467,7 @@
      "extra": []
     },
     {
-     "no": "109",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4458,7 +4492,7 @@
      "extra": []
     },
     {
-     "no": "110",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4479,7 +4513,7 @@
      "extra": []
     },
     {
-     "no": "112",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4500,7 +4534,7 @@
      "extra": []
     },
     {
-     "no": "113",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4520,7 +4554,7 @@
      "extra": []
     },
     {
-     "no": "114",
+     "no": "",
      "brand": "",
      "cat": "",
      "model": [
@@ -4571,8 +4605,12 @@
       "u": "https://drive.google.com/drive/folders/1lGrFROF-TP2Xs5NsX7SMkHbnn6AtTiSq?usp=drive_link"
      },
      {
-      "t": "Wet&Dry Vacuum Diagnostic Tool",
-      "u": "https://drive.google.com/drive/folders/1WF25mYblIVV0qL70aCzzYTSvggdRaV9F?usp=drive_link"
+      "t": "Dreame Wet&Dry Vacuum Tooling Fault Diagnosis System User Manual.pptx",
+      "u": "https://docs.google.com/presentation/d/1oNhQpCow015tlLDblrjOWfTRxdTuoUNj/edit?slide=id.p1#slide=id.p1"
+     },
+     {
+      "t": "Error code(Wet&Dry).xlsx",
+      "u": "https://docs.google.com/spreadsheets/d/1rSPyCGazyCVS1XcKwdN3QAbgcxcUcFlV/edit?gid=1946621264#gid=1946621264"
      }
     ],
     "notif": [],
@@ -4704,7 +4742,7 @@
      "bom": [
       {
        "t": "H12 Dual_W2221A_Spare Parts BOM List_V2.3.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1aPtyqeUqpt01fNCg6jxmI-hLp_SPiFeH/edit?usp=drive_web&ouid=105729334306758008218&rtpof=true"
+       "u": "https://docs.google.com/spreadsheets/d/1WbNaxP54N4WZz0h_zQC4NLcc7dqynwnz/edit?gid=238747731#gid=238747731"
       }
      ],
      "repair": [
@@ -4736,7 +4774,7 @@
      "notif": [
       {
        "t": "H12 Dual Handheld Vacuum and Connection Board Thimble Compatibility.pptx",
-       "u": "https://docs.google.com/presentation/d/1lNXKZ1vIFyrQDWdwdud0dZvKV92Pn0WA/edit?usp=sharing&ouid=105729334306758008218&rtpof=true&sd=true"
+       "u": "https://docs.google.com/presentation/d/1tvEWnWMVWixmZgtm1Pd-pbUsDzIx7XEf/edit?usp=drive_web&ouid=105729334306758008218&rtpof=true"
       }
      ],
      "extra": []
@@ -5370,22 +5408,22 @@
      ],
      "bom": [
       {
-       "t": "Bom List",
-       "u": "https://drive.google.com/drive/folders/118DfAEOHPc-QlGaSOHlWYrEQUPqerERV?usp=drive_link"
+       "t": "BOM",
+       "u": "https://drive.google.com/drive/folders/1Z7XTLlrbz29NkfJlsyAnC9XXlrB_figD?usp=drive_link"
       }
      ],
      "repair": [
       {
-       "t": "maintenance manual",
-       "u": "https://drive.google.com/drive/folders/14hZ7Yo32Oo48ciXZPW7w085PrYVRBkGu?usp=drive_link"
+       "t": "Maintenance Guide",
+       "u": "https://drive.google.com/drive/folders/1xUvC7C5bJtOmB9WI5jNI32Dvx-45qf9m?usp=drive_link"
       },
       {
-       "t": "FAQ",
-       "u": "https://drive.google.com/drive/folders/1FD4OK2faQeTYUW50aZepV7-bhPAGmqpu?usp=drive_link"
+       "t": "Disassemble Video",
+       "u": "https://drive.google.com/drive/folders/1ovpstalrk-H4oIA8fjfXBwGn4B1mqEYh?usp=drive_link"
       },
       {
-       "t": "user manual",
-       "u": "https://drive.google.com/drive/folders/1OgGp5-dgvn6ni1Jbd7OmnCu3QMM9-jna?usp=drive_link"
+       "t": "User Manual",
+       "u": "https://drive.google.com/drive/folders/1zlcAoUZ4SZ8rS1PgwWJb8VVHQZUv3TNa?usp=drive_link"
       }
      ],
      "notif": [
@@ -6829,7 +6867,16 @@
        "u": "https://drive.google.com/drive/folders/1bT_FnEjjXktR0X2efcyIIA32yj84Eiry?usp=drive_link"
       }
      ],
-     "notif": [],
+     "notif": [
+      {
+       "t": "Technical notification 2026.0917.pptx",
+       "u": "https://docs.google.com/presentation/d/1YSFbxFib2LhDY3y3f7VaDpFoxZ11W0Zs/edit?slide=id.p2#slide=id.p2"
+      },
+      {
+       "t": "Technical Notification 2026.1008.pptx",
+       "u": "https://docs.google.com/presentation/d/1DhuDZuy-wEkfy-hM8FvhIQa1fGajyP7e/edit?usp=drive_web&ouid=105729334306758008218&rtpof=true"
+      }
+     ],
      "extra": []
     },
     {
@@ -7101,7 +7148,16 @@
        "u": "https://drive.google.com/drive/folders/1vEs4sXh7WTvvpvLt7sQAjmyeDZdkeQjd?usp=drive_link"
       }
      ],
-     "notif": [],
+     "notif": [
+      {
+       "t": "Technical notification 2026.0917.pptx",
+       "u": "https://docs.google.com/presentation/d/1YSFbxFib2LhDY3y3f7VaDpFoxZ11W0Zs/edit?slide=id.p2#slide=id.p2"
+      },
+      {
+       "t": "Technical Notification 2026.1008.pptx",
+       "u": "https://docs.google.com/presentation/d/1DhuDZuy-wEkfy-hM8FvhIQa1fGajyP7e/edit?usp=drive_web&ouid=105729334306758008218&rtpof=true"
+      }
+     ],
      "extra": []
     },
     {
@@ -7142,7 +7198,16 @@
        "u": "https://drive.google.com/drive/folders/1vEs4sXh7WTvvpvLt7sQAjmyeDZdkeQjd?usp=drive_link"
       }
      ],
-     "notif": [],
+     "notif": [
+      {
+       "t": "Technical notification 2026.0917.pptx",
+       "u": "https://docs.google.com/presentation/d/1YSFbxFib2LhDY3y3f7VaDpFoxZ11W0Zs/edit?slide=id.p2#slide=id.p2"
+      },
+      {
+       "t": "Technical Notification 2026.1008.pptx",
+       "u": "https://docs.google.com/presentation/d/1DhuDZuy-wEkfy-hM8FvhIQa1fGajyP7e/edit?usp=drive_web&ouid=105729334306758008218&rtpof=true"
+      }
+     ],
      "extra": []
     },
     {
@@ -7373,7 +7438,12 @@
        "u": "https://drive.google.com/drive/folders/16BXON-aK2w2JVz8T2Yt051Mc8p-fFNij?usp=drive_link"
       }
      ],
-     "notif": [],
+     "notif": [
+      {
+       "t": "Technical notification 2026.0917.pptx",
+       "u": "https://docs.google.com/presentation/d/1YSFbxFib2LhDY3y3f7VaDpFoxZ11W0Zs/edit?slide=id.p2#slide=id.p2"
+      }
+     ],
      "extra": []
     },
     {
@@ -7655,10 +7725,6 @@
        "u": "https://drive.google.com/drive/folders/1kfcaMOTXtmU8BumoQTi9oW3miE50Blct?usp=drive_link"
       },
       {
-       "t": "h",
-       "u": null
-      },
-      {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
       },
@@ -7728,9 +7794,22 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "Product Introduction",
+       "u": "https://drive.google.com/drive/u/0/folders/1vjYlxKI9aTGbZbcVfGxJtc4uC4yq7Wey"
+      },
+      {
+       "t": "User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1docDuKenXgFFuOGXRENVR2ODXisFlgWq"
       }
      ],
-     "notif": [],
+     "notif": [
+      {
+       "t": "Technical notification 2026.0917.pptx",
+       "u": "https://docs.google.com/presentation/d/1YSFbxFib2LhDY3y3f7VaDpFoxZ11W0Zs/edit?slide=id.p2#slide=id.p2"
+      }
+     ],
      "extra": []
     },
     {
@@ -7754,6 +7833,14 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "Product Introduction",
+       "u": "https://drive.google.com/drive/u/0/folders/1AOAKvDEUeFrmp1fv04-LpJJsFCAPTq64"
+      },
+      {
+       "t": "User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/10_lrdBjmgHKWIOuDcGdAHw7fjXc8c5xC"
       }
      ],
      "notif": [],
@@ -7783,6 +7870,14 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/16dUlvHGDt_DF7HOMBceb6IHa9_F8hgBY"
+      },
+      {
+       "t": "Product Introduction",
+       "u": "https://drive.google.com/drive/u/0/folders/1AqvhQq59RECeXHMil-JhkkQcRuam5fSv"
       }
      ],
      "notif": [],
@@ -7808,6 +7903,30 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "Product Inroduction",
+       "u": "https://drive.google.com/drive/u/0/folders/1b8UGrAmCSzwrIAN0ESxIAvu293K6hI6U"
+      },
+      {
+       "t": "FAQ",
+       "u": "https://drive.google.com/drive/u/0/folders/1nEeympJzkJBZulac5H07cJSMJ3osht6S"
+      },
+      {
+       "t": "User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1od5AjnZD7urLxt2LBaDdTG-CtWKi3ApM"
+      },
+      {
+       "t": "Maintenance Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1f43fNM13KAO3MkEQpHvoNrp-c4kGAk3D"
+      },
+      {
+       "t": "exploded view",
+       "u": "https://drive.google.com/drive/u/0/folders/1j-uNRAkGxenD6YstVn3_CEYh-uB0Ww1i"
+      },
+      {
+       "t": "disassembly&assembly",
+       "u": "https://drive.google.com/drive/u/0/folders/1jPpkrPSxCN5EgvXphdotHCdVIU1-X6ag"
       }
      ],
      "notif": [],
@@ -7833,6 +7952,22 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "V9&V10-User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/13HRui5MnPLle0l7YBvGpcNbIS6VrrkSJ"
+      },
+      {
+       "t": "V8&V9&V10 Maintenance Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1-7VMmyztf_wrxpy3MXPWQ_hgpNzgc5es"
+      },
+      {
+       "t": "V9&V10 - Assemble&Disassemble Video",
+       "u": "https://drive.google.com/drive/u/0/folders/185baPipEt5Viw2b2-bai6sI6DOOVnV7A"
+      },
+      {
+       "t": "V9-Product Introduction",
+       "u": "https://drive.google.com/drive/u/0/folders/1H6FjsqA0oW3hXpNRq7ImNZ0u_EnVMZKO"
       }
      ],
      "notif": [],
@@ -7858,6 +7993,22 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "V9&V10-User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/13HRui5MnPLle0l7YBvGpcNbIS6VrrkSJ"
+      },
+      {
+       "t": "V8&V9&V10 Maintenance Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1-7VMmyztf_wrxpy3MXPWQ_hgpNzgc5es"
+      },
+      {
+       "t": "V9&V10 - Assemble&Disassemble Video",
+       "u": "https://drive.google.com/drive/u/0/folders/185baPipEt5Viw2b2-bai6sI6DOOVnV7A"
+      },
+      {
+       "t": "V10-Production Introduction",
+       "u": "https://drive.google.com/drive/u/0/folders/1Qe-MR8_FvtPtnF8rjPs7oWQtSe3AoOky"
       }
      ],
      "notif": [],
@@ -7908,6 +8059,14 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "V10Pro&V11&V11SE&V12 Product Introduction",
+       "u": "https://drive.google.com/drive/u/0/folders/1naY6goovMndx9nf0YLep19XFIFQgr-dz"
+      },
+      {
+       "t": "V11&V12 Assemble & Disassemble Videos",
+       "u": "https://drive.google.com/drive/u/0/folders/1yQkxxlF5KN2rlxlqalHsg2VjMYgu2T4t"
       }
      ],
      "notif": [],
@@ -7933,6 +8092,26 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "V11 SE User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/15-Wq7n75anTfALOuWtEaDkNW8dN-YEgG"
+      },
+      {
+       "t": "V10Pro&V11&V11SE&V12 Product Guide",
+       "u": "https://drive.google.com/drive/u/0/folders/1VrcioNVjSAeHQTIjG_R9uWIvTUj6zAE6"
+      },
+      {
+       "t": "V11 SE Repair Guide",
+       "u": "https://drive.google.com/drive/u/0/folders/1rj8P4nM0YQAutd7yFsHsFuXGPV2fNXrm"
+      },
+      {
+       "t": "V11 SE FAQ",
+       "u": "https://drive.google.com/drive/u/0/folders/1pmT2N9gjrT7ZPC30RlqIcG-XpEDh6hgB"
+      },
+      {
+       "t": "V11&V11SE&V12 Assemble&Disassemble Videos",
+       "u": "https://drive.google.com/drive/u/0/folders/1Oh7i48aeEUSKq_y4vo7N5B7inMcc5ARX"
       }
      ],
      "notif": [],
@@ -7958,6 +8137,26 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "V12 Maintenance Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1DF2ec81CHklwThBCwUhpp-Dsc1B28E6b"
+      },
+      {
+       "t": "V12 User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1vksyfQy6VEkXPnhNF3YRRJvK9FuZdPzP"
+      },
+      {
+       "t": "V10Pro&V11&V11SE&V12 Product Guide",
+       "u": "https://drive.google.com/drive/u/0/folders/1f4OTOTdq8h5l-5U5QM47tFK5C-bF_8A8"
+      },
+      {
+       "t": "V12 FAQ",
+       "u": "https://drive.google.com/drive/u/0/folders/18IqavpmwugEdDng839rlkLN_ewH2NlRA"
+      },
+      {
+       "t": "V11&V11SE&V12 Assemble&Disassemble Videos",
+       "u": "https://drive.google.com/drive/u/0/folders/1erKAMzLqiIfb35iN7Dn2hvj76nCWsKBR"
       }
      ],
      "notif": [],
@@ -7983,6 +8182,18 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "V12 Pro User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1yk70Klw9agbSMhfPGKX4rsg1R1YPI5VO"
+      },
+      {
+       "t": "V12 Pro Repair Guide",
+       "u": "https://drive.google.com/drive/u/0/folders/1cEA4ogf6bR6vBgC1qv9MT3_IRZdpdVUU"
+      },
+      {
+       "t": "V12 Pro Product Introduction",
+       "u": "https://drive.google.com/drive/u/0/folders/1WgDF_xiO3irmfj3qygUibyx_2dezn8yH"
       }
      ],
      "notif": [],
@@ -8008,6 +8219,26 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "视频_Video",
+       "u": "https://drive.google.com/drive/u/0/folders/1Zc5XqCdak9OjSA2Mg5vq9Ka_HVGTricH"
+      },
+      {
+       "t": "培训文档_training materials",
+       "u": "https://drive.google.com/drive/u/0/folders/13j0V_nKTan3KO7epQfEuKuvCnA_9R-DN"
+      },
+      {
+       "t": "维修指南_Serivce manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1h61s6kG64Y0U9U9td1jA42oSDwxmXJva"
+      },
+      {
+       "t": "产品使用说明书_user manual",
+       "u": "https://drive.google.com/drive/u/0/folders/12mihb82glwtJEHaF-MRyFnojSwZ1Cc38"
+      },
+      {
+       "t": "FAQ",
+       "u": "https://drive.google.com/drive/u/0/folders/1i1JIEBNu8dLKEqT-aum78FyMmibivgRF"
       }
      ],
      "notif": [],
@@ -8034,6 +8265,26 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "视频Video",
+       "u": "https://drive.google.com/drive/u/0/folders/1KW7ue-fiLdJbXb0174fZj5-G2qEyl6CJ"
+      },
+      {
+       "t": "培训文档Training material",
+       "u": "https://drive.google.com/drive/u/0/folders/162eE2FfCRoFuYeibxHdJCpDMka_aCagm"
+      },
+      {
+       "t": "维修指南service manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1RLnGu2el1EIdY0eg96Rc_YGyLirwT0Nq"
+      },
+      {
+       "t": "使用说明书User manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1utaCbcAdkH2fPnm-kfV2Zd4cenR0JhZx"
+      },
+      {
+       "t": "FAQ",
+       "u": "https://drive.google.com/drive/u/0/folders/1yfeGb_aWp1dQxeBd3P6QgddsZ5XOQhqf"
       }
      ],
      "notif": [],
@@ -8084,6 +8335,26 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "视频Video",
+       "u": "https://drive.google.com/drive/u/0/folders/1NgAlNLIAQ-_N75zG-J64i3lGXD55SX3N"
+      },
+      {
+       "t": "培训文档Training material",
+       "u": "https://drive.google.com/drive/u/0/folders/1lynA46YMUDDSeJpGu-fxgEvc9lIKt_yT"
+      },
+      {
+       "t": "维修指南Service manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1gjiH3hOJkFw8UD6N5k2OoCQqY-8x1FT3"
+      },
+      {
+       "t": "使用说明书User manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1Xp8b3NZ3sBgyKIAz5jSb3GAOk4BmiSg3"
+      },
+      {
+       "t": "FAQ",
+       "u": "https://drive.google.com/drive/u/0/folders/154n0zLTQHQf5mefV3lMc-lP6wcWYvt42"
       }
      ],
      "notif": [],
@@ -8109,6 +8380,10 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "T30 Neo User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/13KK3DJe4qCeU0zx84K5YPCoViqi8Alkc"
       }
      ],
      "notif": [],
@@ -8134,6 +8409,30 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/10HsxKx3vTFhDA3Y9a4IatlSSEBJzoX62"
+      },
+      {
+       "t": "Product Guide",
+       "u": "https://drive.google.com/drive/u/0/folders/1zIIfOafClIAljfAxuMdASPTcJwPhJ-sl"
+      },
+      {
+       "t": "Maintenance Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/12bjGGgdutoCR8gjaV4c5HmqWsKFuSOie"
+      },
+      {
+       "t": "Assemble&Disassemble Videos",
+       "u": "https://drive.google.com/drive/u/0/folders/1RpR6w6al4BSFgDHyw6Bvt0FRW4fj4eB5"
+      },
+      {
+       "t": "Exploded View",
+       "u": "https://drive.google.com/drive/u/0/folders/1GGneR_Y1i2AXT_OgZfMhNZRQ8UfVnfKt"
+      },
+      {
+       "t": "FAQ",
+       "u": "https://drive.google.com/drive/u/0/folders/1SZTwPshQdhzT-9IRWXUa4_4EWVidmSQ5"
       }
      ],
      "notif": [],
@@ -8159,6 +8458,22 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "Maintenance Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1255EtMrJFh_wD2NydFhS5w2g8U2lXOBT"
+      },
+      {
+       "t": "Product Guide",
+       "u": "https://drive.google.com/drive/u/0/folders/1D3-8YaOYejAYbYRwrKUd4dVvH45yMtfh"
+      },
+      {
+       "t": "Assemble&Disassemble Videos",
+       "u": "https://drive.google.com/drive/u/0/folders/1YHJZA7P9dSJkdIvDkJZ2PaT8aGjmwW5y"
+      },
+      {
+       "t": "User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1vJgX5owZVlsb-ax16-jg7hs44C1_2H8H"
       }
      ],
      "notif": [],
@@ -8184,6 +8499,22 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "Maintenance Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1255EtMrJFh_wD2NydFhS5w2g8U2lXOBT"
+      },
+      {
+       "t": "Product Guide",
+       "u": "https://drive.google.com/drive/u/0/folders/1D3-8YaOYejAYbYRwrKUd4dVvH45yMtfh"
+      },
+      {
+       "t": "Assemble&Disassemble Videos",
+       "u": "https://drive.google.com/drive/u/0/folders/1YHJZA7P9dSJkdIvDkJZ2PaT8aGjmwW5y"
+      },
+      {
+       "t": "User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1vJgX5owZVlsb-ax16-jg7hs44C1_2H8H"
       }
      ],
      "notif": [],
@@ -8214,6 +8545,14 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "Product Guide",
+       "u": "https://drive.google.com/drive/u/0/folders/1mEzfE9HNovOiMCJ-Fv8OEqlFKmvwPTpe"
+      },
+      {
+       "t": "User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1FXRqi_EXVY1HMJkLT3_ClBKk7DjQIQ78"
       }
      ],
      "notif": [],
@@ -8239,6 +8578,14 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "Product Guide",
+       "u": "https://drive.google.com/drive/u/0/folders/1mEzfE9HNovOiMCJ-Fv8OEqlFKmvwPTpe"
+      },
+      {
+       "t": "User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1FXRqi_EXVY1HMJkLT3_ClBKk7DjQIQ78"
       }
      ],
      "notif": [],
@@ -8267,6 +8614,14 @@
       {
        "t": "Universal Stick Repair Guide.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?gid=1827424635#gid=1827424635"
+      },
+      {
+       "t": "Product Guide",
+       "u": "https://drive.google.com/drive/u/0/folders/19glApUUVv-DDTWVxT_01FK9F6OwMaFxc"
+      },
+      {
+       "t": "User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1ZgeA7RrfJZOXoOYss0CFxLlD4gAP2Fv4"
       }
      ],
      "notif": [],
@@ -8352,6 +8707,10 @@
      {
       "t": "Dreame Lawnmover Unbind and Pin removal instruction.pptx",
       "u": "https://docs.google.com/presentation/d/1QOIyKzFncih3GVO036qdx2C4ZOMyOj6O/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+     },
+     {
+      "t": "MOVA Lawn Mover Unbind and Pin removal instruction.pptx",
+      "u": "https://docs.google.com/presentation/d/1S4wU6cKLcejJCa8v6tl49fYRobl8F6zy/edit?slide=id.p2#slide=id.p2"
      }
     ],
     "extra": []
@@ -9174,6 +9533,247 @@
    ]
   },
   {
+   "name": "Hair dryer",
+   "general": {
+    "bom": [
+     {
+      "t": "Hair dryer BOM List V1.4-20260409.xlsx",
+      "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+     }
+    ],
+    "repair": [
+     {
+      "t": "Airstyle Pro",
+      "u": "https://drive.google.com/drive/folders/1HvPrbukNEQezCk1EooaQYwtaybt7O5F9?usp=sharing"
+     }
+    ],
+    "notif": [],
+    "extra": []
+   },
+   "rows": [
+    {
+     "no": "1",
+     "brand": "",
+     "cat": "",
+     "model": [
+      "AirStylePro 1&2"
+     ],
+     "project": [
+      "P2403"
+     ],
+     "bom": [
+      {
+       "t": "Hair dryer BOM List V1.4-20260409.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      }
+     ],
+     "repair": [],
+     "notif": [],
+     "extra": []
+    },
+    {
+     "no": "2",
+     "brand": "",
+     "cat": "",
+     "model": [
+      "MiraclePro"
+     ],
+     "project": [
+      "P2506"
+     ],
+     "bom": [
+      {
+       "t": "Hair dryer BOM List V1.4-20260409.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      }
+     ],
+     "repair": [],
+     "notif": [],
+     "extra": []
+    },
+    {
+     "no": "3",
+     "brand": "",
+     "cat": "",
+     "model": [
+      "AirStyleShine"
+     ],
+     "project": [
+      "P2309D"
+     ],
+     "bom": [
+      {
+       "t": "Hair dryer BOM List V1.4-20260409.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      }
+     ],
+     "repair": [],
+     "notif": [],
+     "extra": []
+    },
+    {
+     "no": "4",
+     "brand": "",
+     "cat": "",
+     "model": [
+      "ALL Pocket Series"
+     ],
+     "project": [
+      "P2306A"
+     ],
+     "bom": [
+      {
+       "t": "Hair dryer BOM List V1.4-20260409.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      }
+     ],
+     "repair": [],
+     "notif": [],
+     "extra": []
+    },
+    {
+     "no": "5",
+     "brand": "",
+     "cat": "",
+     "model": [
+      "Dazzle"
+     ],
+     "project": [
+      "P2414"
+     ],
+     "bom": [
+      {
+       "t": "Hair dryer BOM List V1.4-20260409.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      }
+     ],
+     "repair": [],
+     "notif": [],
+     "extra": []
+    },
+    {
+     "no": "6",
+     "brand": "",
+     "cat": "",
+     "model": [
+      "AirStyle Era 1&2"
+     ],
+     "project": [
+      "P2403P"
+     ],
+     "bom": [
+      {
+       "t": "Hair dryer BOM List V1.4-20260409.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      }
+     ],
+     "repair": [],
+     "notif": [],
+     "extra": []
+    },
+    {
+     "no": "7",
+     "brand": "",
+     "cat": "",
+     "model": [
+      "Glory Combo"
+     ],
+     "project": [
+      "P2287Z"
+     ],
+     "bom": [
+      {
+       "t": "Hair dryer BOM List V1.4-20260409.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      }
+     ],
+     "repair": [],
+     "notif": [],
+     "extra": []
+    },
+    {
+     "no": "8",
+     "brand": "",
+     "cat": "",
+     "model": [
+      "Miracle Essence"
+     ],
+     "project": [
+      "P2618"
+     ],
+     "bom": [
+      {
+       "t": "Hair dryer BOM List V1.4-20260409.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      }
+     ],
+     "repair": [],
+     "notif": [],
+     "extra": []
+    },
+    {
+     "no": "9",
+     "brand": "",
+     "cat": "",
+     "model": [
+      "Air Auto"
+     ],
+     "project": [
+      "P2607"
+     ],
+     "bom": [
+      {
+       "t": "No repairs required. If a fault is confirmed, please SWAP",
+       "u": null
+      }
+     ],
+     "repair": [],
+     "notif": [],
+     "extra": []
+    },
+    {
+     "no": "10",
+     "brand": "",
+     "cat": "",
+     "model": [
+      "ALL Mini Series"
+     ],
+     "project": [
+      "P2510"
+     ],
+     "bom": [
+      {
+       "t": "No repairs required. If a fault is confirmed, please SWAP",
+       "u": null
+      }
+     ],
+     "repair": [],
+     "notif": [],
+     "extra": []
+    },
+    {
+     "no": "11",
+     "brand": "",
+     "cat": "",
+     "model": [
+      "AeroStraight Pro"
+     ],
+     "project": [
+      "P2503"
+     ],
+     "bom": [
+      {
+       "t": "No repairs required. If a fault is confirmed, please SWAP",
+       "u": null
+      }
+     ],
+     "repair": [],
+     "notif": [],
+     "extra": []
+    }
+   ]
+  },
+  {
    "name": "Home appliances",
    "general": {
     "bom": [],
@@ -9248,7 +9848,7 @@
      "bom": [
       {
        "t": "KF2501_DREAME Auto coffee machine FCM60 Service BOM.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/11kHUCzX9n73YAQgvh1L7xqSmzoIu2E93/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+       "u": "https://docs.google.com/spreadsheets/d/1rSOjHFb_zm_EhqOYY_C-QuWkW_egvEFp/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "repair": [
@@ -9938,247 +10538,6 @@
    ]
   },
   {
-   "name": "Hair dryer",
-   "general": {
-    "bom": [
-     {
-      "t": "Hair dryer BOM List V1.4-20260409.xlsx",
-      "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
-     }
-    ],
-    "repair": [
-     {
-      "t": "Airstyle Pro",
-      "u": "https://drive.google.com/drive/folders/1HvPrbukNEQezCk1EooaQYwtaybt7O5F9?usp=sharing"
-     }
-    ],
-    "notif": [],
-    "extra": []
-   },
-   "rows": [
-    {
-     "no": "1",
-     "brand": "",
-     "cat": "",
-     "model": [
-      "AirStylePro 1&2"
-     ],
-     "project": [
-      "P2403"
-     ],
-     "bom": [
-      {
-       "t": "Hair dryer BOM List V1.4-20260409.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
-      }
-     ],
-     "repair": [],
-     "notif": [],
-     "extra": []
-    },
-    {
-     "no": "2",
-     "brand": "",
-     "cat": "",
-     "model": [
-      "MiraclePro"
-     ],
-     "project": [
-      "P2506"
-     ],
-     "bom": [
-      {
-       "t": "Hair dryer BOM List V1.4-20260409.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
-      }
-     ],
-     "repair": [],
-     "notif": [],
-     "extra": []
-    },
-    {
-     "no": "3",
-     "brand": "",
-     "cat": "",
-     "model": [
-      "AirStyleShine"
-     ],
-     "project": [
-      "P2309D"
-     ],
-     "bom": [
-      {
-       "t": "Hair dryer BOM List V1.4-20260409.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
-      }
-     ],
-     "repair": [],
-     "notif": [],
-     "extra": []
-    },
-    {
-     "no": "4",
-     "brand": "",
-     "cat": "",
-     "model": [
-      "ALL Pocket Series"
-     ],
-     "project": [
-      "P2306A"
-     ],
-     "bom": [
-      {
-       "t": "Hair dryer BOM List V1.4-20260409.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
-      }
-     ],
-     "repair": [],
-     "notif": [],
-     "extra": []
-    },
-    {
-     "no": "5",
-     "brand": "",
-     "cat": "",
-     "model": [
-      "Dazzle"
-     ],
-     "project": [
-      "P2414"
-     ],
-     "bom": [
-      {
-       "t": "Hair dryer BOM List V1.4-20260409.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
-      }
-     ],
-     "repair": [],
-     "notif": [],
-     "extra": []
-    },
-    {
-     "no": "6",
-     "brand": "",
-     "cat": "",
-     "model": [
-      "AirStyle Era 1&2"
-     ],
-     "project": [
-      "P2403P"
-     ],
-     "bom": [
-      {
-       "t": "Hair dryer BOM List V1.4-20260409.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
-      }
-     ],
-     "repair": [],
-     "notif": [],
-     "extra": []
-    },
-    {
-     "no": "7",
-     "brand": "",
-     "cat": "",
-     "model": [
-      "Glory Combo"
-     ],
-     "project": [
-      "P2287Z"
-     ],
-     "bom": [
-      {
-       "t": "Hair dryer BOM List V1.4-20260409.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
-      }
-     ],
-     "repair": [],
-     "notif": [],
-     "extra": []
-    },
-    {
-     "no": "8",
-     "brand": "",
-     "cat": "",
-     "model": [
-      "Miracle Essence"
-     ],
-     "project": [
-      "P2618"
-     ],
-     "bom": [
-      {
-       "t": "Hair dryer BOM List V1.4-20260409.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
-      }
-     ],
-     "repair": [],
-     "notif": [],
-     "extra": []
-    },
-    {
-     "no": "9",
-     "brand": "",
-     "cat": "",
-     "model": [
-      "Air Auto"
-     ],
-     "project": [
-      "P2607"
-     ],
-     "bom": [
-      {
-       "t": "No repairs required. If a fault is confirmed, please SWAP",
-       "u": null
-      }
-     ],
-     "repair": [],
-     "notif": [],
-     "extra": []
-    },
-    {
-     "no": "10",
-     "brand": "",
-     "cat": "",
-     "model": [
-      "ALL Mini Series"
-     ],
-     "project": [
-      "P2510"
-     ],
-     "bom": [
-      {
-       "t": "No repairs required. If a fault is confirmed, please SWAP",
-       "u": null
-      }
-     ],
-     "repair": [],
-     "notif": [],
-     "extra": []
-    },
-    {
-     "no": "11",
-     "brand": "",
-     "cat": "",
-     "model": [
-      "AeroStraight Pro"
-     ],
-     "project": [
-      "P2503"
-     ],
-     "bom": [
-      {
-       "t": "No repairs required. If a fault is confirmed, please SWAP",
-       "u": null
-      }
-     ],
-     "repair": [],
-     "notif": [],
-     "extra": []
-    }
-   ]
-  },
-  {
    "name": "Water Hookup Kit for Auto Refil",
    "general": {
     "bom": [],
@@ -10580,7 +10939,11 @@
      "bom": [
       {
        "t": "U2407 Food waste disposer SF25 service BOM.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1lmoCdWibEGc-2IpiQfESKhcHIcoLaA30/edit?gid=1736319694#gid=1736319694"
+       "u": "https://docs.google.com/spreadsheets/d/1geHsreEX1XfTT5cgpOijB0mWSSck0sG4/edit?usp=drive_web&ouid=105729334306758008218&rtpof=true"
+      },
+      {
+       "t": "No repair required. If the fault is confirmed to be caused by a sale accessory, please replace the defective part (SWAP).",
+       "u": null
       }
      ],
      "repair": [
@@ -10610,6 +10973,47 @@
     },
     {
      "no": "5",
+     "brand": "",
+     "cat": "",
+     "model": [
+      "SF25 WIFI"
+     ],
+     "project": [
+      "U2527"
+     ],
+     "bom": [
+      {
+       "t": "SF25 WIFI U2527_E_B_W Spare Parts BOM List_V1.1.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1X3eJedvCPFOs-oR_7HLXXcuiDoZJtnwg/edit?usp=drive_web&ouid=105729334306758008218&rtpof=true"
+      },
+      {
+       "t": "No repair required. If the fault is confirmed to be caused by a sale accessory, please replace the defective part (SWAP).",
+       "u": null
+      }
+     ],
+     "repair": [
+      {
+       "t": "FAQ",
+       "u": "https://drive.google.com/drive/u/0/folders/139CTPJb5P00im8cQcaOx-oGB4iMM50sK"
+      },
+      {
+       "t": "Product Introduction",
+       "u": "https://drive.google.com/drive/u/0/folders/1fC3Oq7cK-S87q5u5BzmBpbnvO_hemQ0l"
+      },
+      {
+       "t": "User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1NBs1OFbohNYPJAFVM0I8tLDXwK8R8mV0"
+      },
+      {
+       "t": "Videos-How to Use",
+       "u": "https://drive.google.com/drive/u/0/folders/1CHzR3fpoFyyS3obpsovIrzTBSk82V4Zm"
+      }
+     ],
+     "notif": [],
+     "extra": []
+    },
+    {
+     "no": "6",
      "brand": "",
      "cat": "",
      "model": [
@@ -10654,7 +11058,7 @@
      "extra": []
     },
     {
-     "no": "6",
+     "no": "7",
      "brand": "",
      "cat": "",
      "model": [
@@ -10699,7 +11103,7 @@
      "extra": []
     },
     {
-     "no": "7",
+     "no": "8",
      "brand": "",
      "cat": "",
      "model": [
@@ -10748,7 +11152,7 @@
      "extra": []
     },
     {
-     "no": "8",
+     "no": "9",
      "brand": "",
      "cat": "",
      "model": [
@@ -10801,7 +11205,7 @@
      "extra": []
     },
     {
-     "no": "9",
+     "no": "10",
      "brand": "",
      "cat": "",
      "model": [
@@ -10850,7 +11254,7 @@
      "extra": []
     },
     {
-     "no": "10",
+     "no": "11",
      "brand": "",
      "cat": "",
      "model": [
@@ -10887,7 +11291,7 @@
      "extra": []
     },
     {
-     "no": "11",
+     "no": "12",
      "brand": "",
      "cat": "",
      "model": [
@@ -10936,7 +11340,7 @@
      "extra": []
     },
     {
-     "no": "12",
+     "no": "13",
      "brand": "",
      "cat": "",
      "model": [
@@ -10985,7 +11389,7 @@
      "extra": []
     },
     {
-     "no": "13",
+     "no": "14",
      "brand": "",
      "cat": "",
      "model": [
@@ -11022,15 +11426,39 @@
      "extra": []
     },
     {
-     "no": "14",
+     "no": "15",
      "brand": "",
      "cat": "",
      "model": [
       "TP5"
      ],
-     "project": [],
-     "bom": [],
-     "repair": [],
+     "project": [
+      "U2633"
+     ],
+     "bom": [
+      {
+       "t": "No repair required, if fault is confirmed, please SWAP",
+       "u": null
+      }
+     ],
+     "repair": [
+      {
+       "t": "FAQ",
+       "u": "https://drive.google.com/drive/u/0/folders/1kEf_5nWDWtFLmag4yrSVWUNP1Ic0p5O7"
+      },
+      {
+       "t": "Product Introduction",
+       "u": "https://drive.google.com/drive/u/0/folders/1sZwiZeNymkOoCvdsBmC92cuMrZ9NMKJK"
+      },
+      {
+       "t": "User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/14oF5sbDcCBKNzzJT4uP3w7BX46mRply8"
+      },
+      {
+       "t": "Videos-How to Use",
+       "u": "https://drive.google.com/drive/u/0/folders/1Rw-1znQlYFThtRPNeIx8UkVyMo0pt2zx"
+      }
+     ],
      "notif": [],
      "extra": []
     }
