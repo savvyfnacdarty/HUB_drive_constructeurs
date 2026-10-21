@@ -142,3 +142,4 @@ img.inl{display:inline;vertical-align:middle;border:1px solid var(--line);border
 .hit .bd{float:right;width:230px;max-width:42%;height:auto;max-height:96px;object-fit:contain;margin:0 0 6px 14px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:2px}
 .hit .hl::after{content:"";display:block;clear:both}
 @media (max-width:720px){.hit .bd{width:130px;max-height:70px}}
+.capsule{max-width:980px;margin:-6px auto 22px;background:#fff;border:1px solid var(--line);border-left:4px solid #1667c7;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.06);overflow:hidden}.capsule figcaption{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:9px 14px;font-weight:600;font-size:.95rem}.capsule figcaption a{margin-left:auto;font-weight:400;font-size:.85rem}.capsule video{display:block;width:100%;background:#000}
