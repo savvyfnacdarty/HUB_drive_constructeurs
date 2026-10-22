@@ -1,7 +1,7 @@
 {
  "source": "https://docs.google.com/spreadsheets/d/15u69yfrqn3HqEwoemv8_UUgd-74wPeFdJhsD0YMc4dQ/edit",
  "sheetId": "15u69yfrqn3HqEwoemv8_UUgd-74wPeFdJhsD0YMc4dQ",
- "generated": "2026-10-20",
+ "generated": "2026-10-22",
  "families": [
   {
    "name": "Robot Vacuum",
@@ -242,6 +242,10 @@
       {
        "t": "Aqua10 Ultra complete Exploded View updated.pptx",
        "u": "https://docs.google.com/presentation/d/1_wtmvOCvXtrM8Fwgqd8eQwuTH7HGoEiN/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      },
+      {
+       "t": "Aqua10 Ultra Roller Mop error issue.pptx",
+       "u": "https://docs.google.com/presentation/d/1tAnD3UT-E7FAZhEky36z0FXi4JEoUraj/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "extra": []
@@ -808,10 +812,6 @@
        "u": "https://docs.google.com/presentation/d/1BMxDsJQxzYD27UUHd8rf-Nt1ndsFT-yD/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       },
       {
-       "t": "Aqua10 Series common issues——Robot water leakage problem.pptx",
-       "u": "https://docs.google.com/presentation/d/1HSEry8bC2ojvI0J1KMym3dlGDW1axKOe/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
-      },
-      {
        "t": "Dreame Aqua 10 Ultra Track Maintenance Guide (1).pptx",
        "u": "https://docs.google.com/presentation/d/1kTpzylSQzxNgg59pUzQ-f675GX0I0l0D/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       },
@@ -1245,7 +1245,12 @@
        "u": "https://docs.google.com/presentation/d/1VKxgU0l9jb7WEYAgPHpAlnsvbzpxl7M3/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
-     "extra": []
+     "extra": [
+      {
+       "t": "X50 series stops automatically issues.pptx",
+       "u": "https://docs.google.com/presentation/d/1VOznnAkFC-78haW28fW_3Zv0XegSbzSH/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      }
+     ]
     },
     {
      "no": "",
@@ -1377,7 +1382,12 @@
        "u": "https://docs.google.com/presentation/d/1p88WlVJoFpdRnCX3OxYHaAVHT9BwZb6k/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
-     "extra": []
+     "extra": [
+      {
+       "t": "X50 series stops automatically issues.pptx",
+       "u": "https://docs.google.com/presentation/d/1VOznnAkFC-78haW28fW_3Zv0XegSbzSH/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      }
+     ]
     },
     {
      "no": "",
@@ -2172,7 +2182,12 @@
        "u": "https://docs.google.com/presentation/d/1NEEgKxC4rcLKoHHRr_oJn7Z-YZbids1f/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
-     "extra": []
+     "extra": [
+      {
+       "t": "X50 series stops automatically issues.pptx",
+       "u": "https://docs.google.com/presentation/d/1VOznnAkFC-78haW28fW_3Zv0XegSbzSH/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      }
+     ]
     },
     {
      "no": "",
@@ -2263,7 +2278,12 @@
        "u": "https://docs.google.com/presentation/d/1I7ecWzmqKqdx5llO2RGbyVShqbMqZsI2/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
-     "extra": []
+     "extra": [
+      {
+       "t": "X50 series stops automatically issues.pptx",
+       "u": "https://docs.google.com/presentation/d/1VOznnAkFC-78haW28fW_3Zv0XegSbzSH/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      }
+     ]
     },
     {
      "no": "",
@@ -2681,6 +2701,10 @@
       {
        "t": "Aqua10 Series common issues——Robot water leakage problem.pptx",
        "u": "https://docs.google.com/presentation/d/1HSEry8bC2ojvI0J1KMym3dlGDW1axKOe/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      },
+      {
+       "t": "Aqua10 Ultra Roller Mop error issue.pptx",
+       "u": "https://docs.google.com/presentation/d/1tAnD3UT-E7FAZhEky36z0FXi4JEoUraj/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "extra": []
@@ -2841,7 +2865,7 @@
      "notif": [
       {
        "t": "Dreame Aqua20 Roller Series Maintenance Guide.pptx",
-       "u": "https://docs.google.com/presentation/d/1gMWHyWSd5RC4OfySOgcGEFx6bBoptlmv/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+       "u": "https://docs.google.com/presentation/d/1RP7db_BF0KrCkBq60gYbJEHwX051mgBe/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "extra": []
@@ -5139,10 +5163,6 @@
       {
        "t": "M50 Ultra Handle&Mainboard Update.pptx",
        "u": "https://docs.google.com/presentation/d/1iJtDLdd1BPyqr4aq8vmYim7yAgK6W_oB/edit?usp=sharing&ouid=105729334306758008218&rtpof=true&sd=true"
-      },
-      {
-       "t": "Handle & Main Board PCBA Update.pptx",
-       "u": "https://docs.google.com/presentation/d/1o4OXSQYLqH_WQwywpO-tpGgAYFc3abl7/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "extra": []
@@ -5638,8 +5658,8 @@
      ],
      "bom": [
       {
-       "t": "H11 Core_【W2334】_Spare Parts BOM List_V1.3.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1p5Q2-CgUchTbGNQcVlBIA5L-JuE9N050/edit?usp=drive_web&ouid=105729334306758008218&rtpof=true"
+       "t": "H11 Core_【W2334】_Spare Parts BOM List_V1.4.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1X1CEI5bXXlFYIudLqLTFoHWYSYDsZt8N/edit?gid=1016265125#gid=1016265125"
       }
      ],
      "repair": [
@@ -5660,7 +5680,12 @@
        "u": "https://drive.google.com/drive/folders/17VRYUf321hCFXipBhkMfRrsN-KRL1rp3?usp=drive_link"
       }
      ],
-     "notif": [],
+     "notif": [
+      {
+       "t": "H11 Core Main Board and Water Pump Compatibility.pptx",
+       "u": "https://docs.google.com/presentation/d/13uhwHqBxtaLZwmcgL4dQhIAMsx17TftN/edit?slide=id.p4#slide=id.p4"
+      }
+     ],
      "extra": []
     },
     {
@@ -8766,6 +8791,10 @@
       {
        "t": "Dreame Lawnmover Unbind and Pin removal instruction.pptx",
        "u": "https://docs.google.com/presentation/d/1QOIyKzFncih3GVO036qdx2C4ZOMyOj6O/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      },
+      {
+       "t": "The SoC boardcannot be used issue(G2540, G2422, G2568, G2408, G2420).pptx",
+       "u": "https://docs.google.com/presentation/d/1LhaJxjz_bxkfLemuTGpe-K2uP6h4aeHJ/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "extra": [
@@ -8815,6 +8844,10 @@
       {
        "t": "Dreame Lawnmover Unbind and Pin removal instruction.pptx",
        "u": "https://docs.google.com/presentation/d/1QOIyKzFncih3GVO036qdx2C4ZOMyOj6O/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      },
+      {
+       "t": "The SoC boardcannot be used issue(G2540, G2422, G2568, G2408, G2420).pptx",
+       "u": "https://docs.google.com/presentation/d/1LhaJxjz_bxkfLemuTGpe-K2uP6h4aeHJ/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "extra": [
@@ -9065,6 +9098,10 @@
       {
        "t": "Radar & Camera Joint Calibration Operation Guide (JT16 radar + camera).mp4",
        "u": "https://drive.google.com/file/d/1V_jy4-avL_n7C7CPgZ-DQpPpkfghabAT/view?usp=drive_link"
+      },
+      {
+       "t": "LawnMover Drive wheel screw loosening & wire wrapping.pptx",
+       "u": "https://docs.google.com/presentation/d/1iEOPmJmvYla8OxXQUqYhPDBtjNM8eR1n/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "extra": []
@@ -9097,6 +9134,10 @@
       {
        "t": "MOVA VIAX Series Lawn Mower Running Test.pptx",
        "u": "https://docs.google.com/presentation/d/1TnIf9T5vjP1uPXVleT1K1Taf6Lafjuo2/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      },
+      {
+       "t": "The SoC boardcannot be used issue(G2540, G2422, G2568, G2408, G2420).pptx",
+       "u": "https://docs.google.com/presentation/d/1LhaJxjz_bxkfLemuTGpe-K2uP6h4aeHJ/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "extra": []
@@ -9199,6 +9240,10 @@
       {
        "t": "ViDAR 3000 AWD拆装机视频-Disassembly and Assembly Instructional Video.mp4",
        "u": "https://drive.google.com/file/d/1egQ2Hgo3gj2mfcadUQPwzXCA0XmNNKIG/view?usp=drive_link"
+      },
+      {
+       "t": "LawnMover Drive wheel screw loosening & wire wrapping.pptx",
+       "u": "https://docs.google.com/presentation/d/1iEOPmJmvYla8OxXQUqYhPDBtjNM8eR1n/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "extra": []
