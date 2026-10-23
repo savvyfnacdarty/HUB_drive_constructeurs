@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr"><head><script src="auth-guard.js"></script>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<script src="confidentialite.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lecteur de fiches d'inspection</title>
+<style>
+:root{--red:#d6231a;--orange:#f08a00}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:#e9e9e9;font-family:Arial,Helvetica,sans-serif;display:flex;flex-direction:column}
+.toolbar{background:#333;color:#fff;padding:8px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13px}
+.toolbar a{color:#fff;text-decoration:none;font-weight:bold}
+.toolbar button,.toolbar label.tb{background:var(--orange);border:0;color:#fff;padding:6px 14px;border-radius:4px;cursor:pointer;font-weight:bold}
+.toolbar input[type=file]{display:none}
+.toolbar select{padding:5px;border-radius:4px;max-width:340px}
+#msg{opacity:.85}
+#drop{margin:30px auto;max-width:640px;width:calc(100% - 28px);border:3px dashed #aaa;border-radius:14px;background:#fff;padding:50px 24px;text-align:center;color:#555}
+#drop.over{border-color:var(--red);background:#fff4f3}
+#drop h2{margin:0 0 8px;color:var(--red)}
+#drop p{margin:6px 0}
+#frame{flex:1;width:100%;border:0;display:none;background:#e9e9e9}
+</style></head><body>
+<div class="toolbar">
+  <a href="fiches_inspection.html">&larr; Fiches</a>
+  <label class="tb">&#128194; Ouvrir des .json<input type="file" id="f" accept=".json,application/json" multiple></label>
+  <select id="sel" style="display:none"></select>
+  <button id="pr" style="display:none">Imprimer / PDF</button>
+  <span id="msg"></span>
+</div>
+<div id="drop">
+  <h2>Lecteur de fiches d'inspection</h2>
+  <p>Glissez ici un ou plusieurs fichiers <b>.json</b> enregistrés depuis une fiche (téléphone, robot laveur, balai laveur, machine à café, trottinette, générique).</p>
+  <p>Le type de fiche est reconnu automatiquement et la fiche s'ouvre pré-remplie.</p>
+</div>
+<iframe id="frame" title="Fiche"></iframe>
+<script>
+var REG={
+ 'fiche-inspection-telephone':'fiche_inspection_telephone.html',
+ 'fiche-inspection-robot-laveur':'fiche_inspection_robot_laveur.html',
+ 'fiche-inspection-balai-laveur':'fiche_inspection_balai_laveur.html',
+ 'fiche-inspection-machine-cafe':'fiche_inspection_machine_cafe.html',
+ 'fiche-inspection-trottinette':'fiche_inspection_trottinette.html',
+ 'fiche-inspection-generique':'fiche_inspection_generique.html'
+};
+var NOM={'fiche-inspection-telephone':'Téléphone','fiche-inspection-robot-laveur':'Robot laveur','fiche-inspection-balai-laveur':'Balai laveur','fiche-inspection-machine-cafe':'Machine à café','fiche-inspection-trottinette':'Trottinette','fiche-inspection-generique':'Générique'};
+var items=[],frame=document.getElementById('frame'),sel=document.getElementById('sel'),msg=document.getElementById('msg');
+function say(t){msg.textContent=t||'';}
+function readFile(f){return new Promise(function(ok){var r=new FileReader();r.onload=function(){
+  try{var st=JSON.parse(r.result);if(!st||!REG[st.app])throw 0;ok({name:f.name,st:st});}
+  catch(e){ok({name:f.name,err:1});}};r.onerror=function(){ok({name:f.name,err:1});};r.readAsText(f);});}
+function add(files){
+  Promise.all(Array.prototype.map.call(files,readFile)).then(function(res){
+    var bad=res.filter(function(x){return x.err;}).map(function(x){return x.name;});
+    res=res.filter(function(x){return !x.err;});
+    if(bad.length)say('Non reconnu : '+bad.join(', '));
+    if(!res.length)return;
+    items=res;sel.innerHTML='';
+    res.forEach(function(x,i){var o=document.createElement('option');o.value=i;o.textContent=x.name+'  ('+NOM[x.st.app]+')';sel.appendChild(o);});
+    sel.style.display=res.length>1?'':'none';
+    document.getElementById('pr').style.display='';
+    show(0);
+  });
+}
+function show(i){
+  var it=items[i];if(!it)return;
+  document.getElementById('drop').style.display='none';frame.style.display='block';
+  say('Chargement…');
+  frame.onload=function(){
+    try{
+      var w=frame.contentWindow;
+      w.onbeforeunload=null;
+      w.applyState(it.st);
+      w.dirty=false;
+      say(it.name+' — '+NOM[it.st.app]);
+    }catch(e){say('Impossible d\'appliquer ce fichier (version de fiche différente ?)');}
+  };
+  frame.src=REG[it.st.app]+'?lecteur='+Date.now();
+}
+sel.onchange=function(){show(+sel.value);};
+document.getElementById('pr').onclick=function(){try{frame.contentWindow.print();}catch(e){}};
+document.getElementById('f').addEventListener('change',function(e){var fl=e.target.files;if(fl.length)add(fl);e.target.value='';});
+var d=document.getElementById('drop');
+['dragenter','dragover'].forEach(function(ev){document.addEventListener(ev,function(e){e.preventDefault();d.classList.add('over');});});
+['dragleave','drop'].forEach(function(ev){document.addEventListener(ev,function(e){e.preventDefault();d.classList.remove('over');});});
+document.addEventListener('drop',function(e){if(e.dataTransfer&&e.dataTransfer.files.length)add(e.dataTransfer.files);});
+</script>
+</body></html>

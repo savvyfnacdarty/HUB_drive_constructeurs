@@ -91,6 +91,8 @@ if "%sel%"=="0" (
     )
 )
 
+:: --- Securite : ne jamais synchroniser les dossiers "00_..." (infos internes, sauvegardes) ---
+for /d %%D in (00_*) do git reset -q -- "%%D" >nul 2>&1
 echo.
 git diff --cached --quiet
 if not errorlevel 1 (

@@ -102,6 +102,8 @@ if "%sel%"=="0" (
     )
 )
 
+:: --- Securite : ne jamais synchroniser les dossiers "00_..." (infos internes, sauvegardes) ---
+for /d %%D in (00_*) do git reset -q -- "%%D" >nul 2>&1
 echo.
 git diff --cached --quiet
 if not errorlevel 1 (
@@ -137,7 +139,15 @@ if not defined REMOTE_HAS_BRANCH (
 )
 echo Recuperation des modifications presentes sur GitHub...
 :: Les "n" envoyes repondent automatiquement a toutes les questions "Should I try again? (y/n)" (dossier verrouille par OneDrive/Explorateur)
-(for /l %%i in (1,1,500) do @echo n) | git pull --rebase --autostash origin %BRANCH%
+git fetch origin %BRANCH% >nul 2>&1
+set "BEHIND=0"
+for /f %%C in ('git rev-list --count HEAD..origin/%BRANCH% 2^>nul') do set "BEHIND=%%C"
+if "!BEHIND!"=="0" (
+    echo Rien de nouveau sur GitHub : pas de fusion necessaire.
+    ver >nul
+) else (
+    (for /l %%i in (1,1,500) do @echo n) | git pull --rebase --autostash origin %BRANCH%
+)
 if errorlevel 1 (
     echo.
     echo [ERREUR] Conflit entre tes fichiers et ceux de GitHub.

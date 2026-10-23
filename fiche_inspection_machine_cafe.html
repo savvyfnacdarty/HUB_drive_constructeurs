@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="fr"><head><script src="auth-guard.js"></script>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<script src="confidentialite.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Inspection visuelle – Machine à café grain</title>
+<style>
+:root{--red:#d6231a;--orange:#f08a00;--grey:#777;--line:#bdbdbd;--ink:#222}
+*{box-sizing:border-box}
+body{margin:0;background:#e9e9e9;font-family:Arial,Helvetica,sans-serif;color:var(--ink);font-size:10.5pt}
+.toolbar{position:sticky;top:0;z-index:5;background:#333;color:#fff;padding:8px 14px;display:flex;gap:10px;align-items:center;font-size:13px}
+.toolbar button{background:var(--orange);border:0;color:#fff;padding:6px 14px;border-radius:4px;cursor:pointer;font-weight:bold}
+.toolbar button.sec{background:#666}
+.toolbar span{opacity:.75}
+.toolbar label.tb{background:var(--orange);color:#fff;padding:6px 14px;border-radius:4px;cursor:pointer;font-weight:bold}
+.page{width:210mm;min-height:297mm;margin:12px auto;background:#fff;padding:11mm 12mm;box-shadow:0 1px 6px rgba(0,0,0,.25)}
+header{display:flex;justify-content:space-between;align-items:flex-start}
+.ttl{border-left:4mm solid var(--orange);padding-left:4mm;color:var(--red);font-weight:bold;font-size:16pt;line-height:1.15;text-transform:uppercase}
+.logos{height:15mm}
+.ident{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm 5mm;margin:5mm 0 2mm}
+.ident label.f{display:flex;gap:2mm;align-items:center;font-weight:bold;font-size:10pt}
+.ident label.f.w2{grid-column:span 2}.ident label.f.w3{grid-column:span 3}
+input.box{flex:1;min-width:0;border:1px solid var(--line);border-radius:2px;padding:1.6mm 2mm;font:inherit;font-weight:normal;height:7.5mm}
+input.line{border:0;border-bottom:1px solid #888;font:inherit;padding:0 1mm;height:5mm;background:transparent}
+.brands{display:flex;flex-wrap:wrap;gap:1.2mm 5mm;margin:1mm 0 1mm}
+.warn{color:var(--red);font-weight:bold;font-size:10pt;margin:4mm 0 3mm}
+h2{font-size:10.5pt;margin:3mm 0 1.5mm}h2 em{font-weight:normal;color:var(--grey);font-size:9pt}
+.views{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);background:#f6f6f6}
+.view{position:relative;border-right:1px solid var(--line);text-align:center;cursor:crosshair;padding:2mm 1mm 0}
+.view:last-child{border-right:0}
+.view svg{width:100%;height:40mm;display:block}
+.view .cap{font-size:8pt;font-weight:bold;padding:0 0 1.5mm}
+.mk{position:absolute;width:5mm;height:5mm;margin:-2.5mm 0 0 -2.5mm;border-radius:50%;background:var(--red);color:#fff;font-size:8pt;font-weight:bold;display:flex;align-items:center;justify-content:center;border:1px solid #fff;cursor:pointer}
+.hint{font-size:8pt;color:var(--grey);margin:1mm 0 0}
+.cb{display:inline-flex;align-items:center;gap:1.8mm;cursor:pointer;font-size:9.5pt;line-height:1.25;margin:.6mm 0}
+.cb input[type=checkbox]{position:absolute;opacity:0;pointer-events:none}
+.cb i{flex:none;width:3.3mm;height:3.3mm;border:1.1px solid #333;display:inline-block;position:relative;background:#fff}
+.cb input:checked + i::after{content:"";position:absolute;left:.55mm;top:-.5mm;width:1.2mm;height:2.8mm;border:solid var(--red);border-width:0 .6mm .6mm 0;transform:rotate(40deg)}
+.states{display:grid;grid-template-columns:1fr 1fr;gap:0 6mm;margin:2mm 0 3mm}.states>div{display:flex;flex-direction:column}
+.states .cb{display:flex}
+.recu{display:grid;grid-template-columns:repeat(5,1fr);gap:0 3mm;margin:1mm 0 3mm}
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:22mm 50mm 1fr;gap:3mm;padding:1.5mm 0;border-bottom:1px solid var(--line);break-inside:avoid}
+.ico{width:22mm;height:17.5mm;border:1px solid var(--line);background:#fafafa;border-radius:2px;display:flex;align-items:center;justify-content:center}
+.ico svg{width:19mm;height:15mm}
+.txt h3{margin:0 0 1mm;font-size:10pt;color:var(--red);text-transform:uppercase}
+.txt p{margin:0;font-size:8.8pt;color:var(--grey);line-height:1.3}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:1.5mm 4mm;align-content:start}
+.grp{display:flex;flex-direction:column}
+.gt{font-size:8pt;font-style:italic;color:var(--grey);margin-bottom:.4mm}
+.verdict{border:1.4px solid var(--red);border-radius:2px;padding:2.5mm 4mm;margin:3mm 0 2mm;break-inside:avoid}
+.verdict h3{margin:0 0 2mm;color:var(--red);font-size:10.5pt;text-transform:uppercase}
+.verdict .cb{display:flex}
+textarea{width:100%;height:14mm;border:1px solid var(--line);border-radius:2px;padding:2mm;font:inherit;font-size:10pt;resize:vertical}
+.foot{margin-top:2mm;font-size:7.5pt;color:#999;text-align:center}
+
+.phbar{display:flex;gap:3mm;flex-wrap:wrap;margin:1mm 0 2mm}
+.btn{display:inline-flex;align-items:center;gap:2mm;background:var(--orange);color:#fff;font-weight:bold;font-size:10pt;padding:2.2mm 4mm;border-radius:2mm;cursor:pointer}
+.btn.sec{background:#666}
+.phgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm}
+.ph{position:relative;border:1px solid var(--line);border-radius:2px;padding:1.5mm;break-inside:avoid;background:#fff}
+.ph img{width:100%;height:46mm;object-fit:cover;display:block}
+.ph input{width:100%;border:0;border-bottom:1px solid #999;font:inherit;font-size:9pt;margin-top:1.5mm;padding:.5mm 0;background:transparent}
+.ph .x{position:absolute;top:2.5mm;right:2.5mm;width:6mm;height:6mm;border-radius:50%;border:0;background:rgba(0,0,0,.65);color:#fff;font-size:11pt;line-height:1;cursor:pointer}
+.phn{position:absolute;top:2.5mm;left:2.5mm;background:var(--red);color:#fff;font-weight:bold;font-size:8pt;padding:.4mm 1.8mm;border-radius:2mm}
+#photos{margin-top:3mm}
+#photos h2{break-after:avoid}
+
+.ident .sn{display:flex;gap:3mm;align-items:center}
+input[type=date].box{width:36mm;flex:none}
+.snbtn{padding:1.6mm 3mm;font-size:9pt;white-space:nowrap}
+.snres{grid-column:span 3;font-size:9pt;color:var(--grey);margin-top:-1.5mm}
+.snres:empty{display:none}
+.snres b{color:var(--ink)}
+.chip{display:inline-block;border:1px solid var(--orange);color:#333;background:#fff7ea;border-radius:10px;padding:.4mm 2.5mm;margin:.5mm 1.5mm .5mm 0;font:inherit;font-size:9pt;cursor:pointer}
+.snres .err{color:var(--red)}
+
+.icol{width:22mm}
+.rowcam{width:22mm;justify-content:center;margin-top:1.2mm;padding:.9mm 0;font-size:8.5pt;gap:1.2mm}
+.rowcam .n:not(:empty){background:#fff;color:var(--red);border-radius:50%;min-width:4.2mm;height:4.2mm;display:inline-flex;align-items:center;justify-content:center;font-size:8pt}
+.gcam{margin:0 0 2mm;display:flex;align-items:center;gap:3mm;font-size:9pt;color:var(--grey)}
+.gcam .rowcam{margin:0;width:auto;padding:.9mm 3mm}
+
+.sign{display:grid;grid-template-columns:1fr 1fr;gap:2.5mm 5mm;margin-top:3mm;font-size:9pt;color:var(--grey)}
+.sdate{grid-column:span 2;display:flex;align-items:center;gap:3mm}
+.sg{border:1px solid var(--line);padding:1.5mm 2mm;position:relative;break-inside:avoid}
+.sg .sl{font-size:7.5pt;text-align:center;color:#999}
+.pad{display:block;width:100%;aspect-ratio:8/1;touch-action:none;cursor:crosshair;border-bottom:1px dashed #bbb;margin-top:1mm;background:#fcfcfc}
+.clr{font-size:8pt;border:1px solid #bbb;background:#f4f4f4;border-radius:2px;padding:.4mm 2mm;cursor:pointer}
+.sg .clr{position:absolute;bottom:1.5mm;right:2mm}
+.pb{break-before:page}
+@media print{
+ body{background:#fff;font-size:10pt}.toolbar,.hint.screen{display:none}
+ .page{margin:0;box-shadow:none;width:auto;min-height:0;padding:0}
+ @page{size:A4;margin:9mm 11mm}
+ .view{cursor:default}
+ textarea{resize:none}
+ #photos.empty,.phbar,.ph .x,.snbtn,.snres,.rowcam,.gcam,.clr{display:none!important}
+ .ph input::placeholder{color:transparent}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media screen and (max-width:800px){.page{width:auto;padding:5mm}.row{grid-template-columns:1fr}.opts{grid-template-columns:1fr 1fr}.recu{grid-template-columns:1fr 1fr}.ident{grid-template-columns:1fr}.ident label.f.w2,.ident label.f.w3{grid-column:auto}}
+
+/* ---- N° de série : grand champ (smartphone) + QR ---- */
+#snInp{height:11mm;font-size:15pt;font-weight:bold;letter-spacing:.4px}
+.ident .sn .btn{flex:none}
+#qrOv{display:none;position:fixed;inset:0;z-index:99;background:rgba(0,0,0,.92);flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:12px}
+#qrOv video{width:100%;max-width:520px;max-height:62vh;border:3px solid var(--orange);border-radius:8px;background:#000;object-fit:cover}
+#qrOv .qrst{color:#fff;font-size:15px;text-align:center}
+#qrOv button{background:#666;color:#fff;border:0;border-radius:6px;padding:12px 26px;font-size:16px;font-weight:bold}
+@media screen and (max-width:800px){
+ #snInp{height:16mm;font-size:22px;padding:2mm 3mm;border:2px solid var(--orange);letter-spacing:.8px}
+ .ident .sn{flex-direction:column;align-items:stretch;gap:2.5mm}
+ .ident .sn>label.f{flex-direction:column;align-items:stretch;gap:1.5mm;font-size:12pt}
+ .ident .sn .btn{justify-content:center;font-size:13pt;padding:3.2mm 4mm}
+ .snres{font-size:11pt}.chip{font-size:12pt;padding:1.2mm 3.5mm}
+}
+@media print{#qrOv,#snQr{display:none!important}#snInp{height:8mm;font-size:11pt}}
+
+/* ---- bloc identification : plus de débordement ---- */
+.ident>*{min-width:0}
+.ident{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ident label.f{min-width:0}
+.ident input.box{max-width:100%}
+@media screen and (max-width:800px){
+ .ident{grid-template-columns:minmax(0,1fr)}
+ .ident label.f{flex-direction:column;align-items:stretch;gap:1.5mm;font-size:12pt}
+ .ident input.box{width:100%;height:13mm;font-size:18px;padding:2mm 3mm}
+ .ident input[type=date].box{width:100%;-webkit-appearance:none;appearance:none;min-width:0}
+ .ident .sn>label.f input.box{height:16mm}
+}
+
+/* ---- N° de série : pleine largeur, boutons sous le champ ---- */
+.ident .sn{grid-column:1/-1;flex-wrap:wrap;gap:2.5mm 3mm}
+.ident .sn>label.f:first-child{flex:1 1 100%;white-space:nowrap}
+.ident .sn>label.f:first-child input.box{min-width:0}
+.ident .sn .btn{flex:0 0 auto}
+@media screen and (max-width:800px){.ident .sn>label.f:first-child{white-space:normal}}
+@media print{.ident .sn{flex-wrap:nowrap}.ident .sn>label.f:first-child{flex:1 1 auto}}
+
+/* ---- Éléments reçus : Présent / Absent (prise en charge comptoir) ---- */
+.recu{display:grid;grid-template-columns:1fr 1fr;gap:1mm 8mm;margin:1mm 0 3mm}
+.rc{display:flex;align-items:center;gap:3mm;border-bottom:1px dotted var(--line);padding:.8mm 0;break-inside:avoid}
+.rc .rn{flex:1;font-size:10pt;font-weight:bold;min-width:0}
+.rc .cb{margin:0;font-size:9.5pt}
+.rc .ab input:checked ~ span{color:var(--red);font-weight:bold}
+.rc .pr input:checked ~ span{font-weight:bold}
+.rc .ab input:checked + i{border-color:var(--red)}
+.rcall{margin:0 0 1.5mm;font-size:9pt;padding:1mm 3mm}
+.obs textarea{height:24mm}
+@media screen and (max-width:800px){
+ .recu{grid-template-columns:minmax(0,1fr)}
+ .rc{padding:2.2mm 0;gap:4mm}.rc .rn{font-size:12pt}
+ .rc .cb{font-size:12pt;gap:2.4mm;padding:1mm 2mm}
+ .rc .cb i{width:6mm;height:6mm}
+ .rc .cb input:checked + i::after{left:1.3mm;top:-.6mm;width:2mm;height:4.6mm}
+ .obs textarea{height:34mm;font-size:16px}
+}
+@media print{.rcall{display:none!important}}
+
+/* ---- Symptôme de panne ---- */
+.sympt{margin:2mm 0 1mm}
+.sympt label{display:block;font-weight:bold;font-size:10pt;margin-bottom:1mm}
+.sympt textarea{height:16mm}
+@media screen and (max-width:800px){.sympt label{font-size:12pt}.sympt textarea{height:30mm;font-size:16px}}
+
+/* ---- Recherche FAQ / résolution de panne ---- */
+.faqbtn{margin:1.5mm 0 0;font-size:10pt;padding:2mm 4mm;border:0}
+#faqPanel{display:none;border:1.5px solid var(--orange);border-radius:3px;background:#fffaf2;padding:3mm 4mm;margin:2mm 0 3mm}
+#faqPanel h4{margin:2mm 0 1mm;font-size:9.5pt;color:var(--red)}
+#faqPanel .fch{display:inline-block;border:1px solid var(--orange);background:#fff;color:#333;border-radius:12px;padding:.8mm 3mm;margin:.6mm 1.2mm .6mm 0;font:inherit;font-size:9.5pt;cursor:pointer}
+#faqPanel .fch.on{background:var(--orange);color:#fff;font-weight:bold}
+#faqPanel input.fq{width:100%;border:1px solid var(--line);border-radius:2px;padding:1.6mm 2mm;font:inherit;font-size:11pt;height:9mm;margin:1mm 0 2mm}
+#faqPanel .fl{display:flex;flex-wrap:wrap;gap:2mm}
+#faqPanel .fl a{background:var(--red);color:#fff;text-decoration:none;font-weight:bold;font-size:10pt;padding:2mm 4mm;border-radius:2mm}
+#faqPanel .fl a.sec{background:#666}
+#faqPanel .fnote{font-size:9pt;color:var(--grey);margin-top:1.5mm}
+@media screen and (max-width:800px){
+ .faqbtn{font-size:13pt;padding:3.2mm 4mm;width:100%;justify-content:center}
+ #faqPanel .fch{font-size:12pt;padding:1.6mm 3.5mm}
+ #faqPanel input.fq{font-size:16px;height:13mm}
+ #faqPanel .fl a{font-size:12pt;padding:3mm 4mm;flex:1 1 100%;text-align:center}
+}
+@media print{.faqbtn,#faqPanel{display:none!important}}
+
+/* ---- Photo de l'ensemble des accessoires ---- */
+.gcam.acc{margin:2mm 0 3mm;padding:2mm 3mm;border:1.5px dashed var(--orange);border-radius:3px;background:#fffaf2;flex-wrap:wrap}
+.gcam.acc .rowcam{font-size:10pt;padding:1.8mm 4mm}
+.gcam.acc .accth{display:flex;gap:2mm;flex-wrap:wrap}
+.gcam.acc .accth img{height:14mm;width:auto;border:1px solid var(--line);border-radius:2px;display:block}
+@media screen and (max-width:800px){.gcam.acc{font-size:11pt}.gcam.acc .rowcam{font-size:13pt;padding:3.2mm 4mm;flex:1 1 100%;justify-content:center}.gcam.acc .accth img{height:20mm}}
+
+/* ---- Couleurs : vert = point positif / conforme, rouge = anomalie ---- */
+.cb.pos i,.cb.neg i{border-width:1.5px}
+.cb.pos i{border-color:#1a7f37}
+.cb.neg i{border-color:#c62828}
+.cb.pos input:checked + i{background:#e3f5e8;border-color:#1a7f37}
+.cb.neg input:checked + i{background:#fdeaea;border-color:#c62828}
+.cb.pos input:checked + i::after{border-color:#1a7f37}
+.cb.neg input:checked + i::after{border-color:#c62828}
+.cb.pos input:checked ~ span{color:#1a7f37;font-weight:bold}
+.cb.neg input:checked ~ span{color:#c62828;font-weight:bold}
+.legend{font-size:8pt;color:var(--grey);margin:1mm 0 2mm}.legend b.g{color:#1a7f37}.legend b.r{color:#c62828}
+</style></head>
+<body>
+<div id="qrOv"><video id="qrVid" playsinline muted></video><div class="qrst" id="qrSt"></div><button type="button" id="qrClose">Fermer</button></div>
+<div class="toolbar"><a href="index.html" style="color:#fff;text-decoration:none;font-weight:bold">&larr; Hub</a><button onclick="window.print()">Imprimer / PDF</button><button onclick="saveFile()">&#128190; Enregistrer</button><label class="tb">&#128194; Ouvrir<input type="file" id="openFile" accept=".json,application/json" hidden></label><button class="sec" onclick="resetAll()">Réinitialiser</button><span id="msg">Cases cliquables (vert = conforme, rouge = anomalie) · repères sur schéma · photos · signatures</span></div>
+
+<div class="page" id="p1">
+<header>
+  <div class="ttl">Inspection visuelle<br>Machine à café grain</div>
+  <img class="logos" alt="Fnac Darty" src="data:image/png;base64,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">
+</header>
+
+<div class="ident">
+  <label class="f w2">N° dossier : <input class="box" type="text"></label>
+  <label class="f">Date : <input class="box" type="date"></label>
+  <label class="f">Modèle : <input class="box" type="text" id="mdlInp" placeholder="ex. Saeco Xelsis, Jura E8, Magnifica S"></label>
+  <div class="f w2 sn"><label class="f" style="flex:1">N° de série : <input class="box" type="text" id="snInp" autocomplete="off"></label>
+  <button type="button" class="btn snbtn" id="snQr">&#9638; Scanner le QR code</button>
+  <label class="btn snbtn sec">&#128247; Photo de l'étiquette (modèle / n° de série)<input id="snCam" type="file" accept="image/*" capture="environment" hidden></label></div>
+<label class="f">Compteur (cafés) : <input class="box" type="text" inputmode="numeric"></label>
+  <label class="f">Dernier détartrage : <input class="box" type="text" placeholder="date ou « jamais »"></label>
+  <label class="f">Eau / filtre : <input class="box" type="text" placeholder="robinet, filtrée, dureté…"></label>
+<div class="w3 snres" id="snRes"></div>
+</div>
+<div style="font-weight:bold;font-size:10pt">Marque :</div>
+<div class="brands"><label class="cb"><input type="checkbox"><i></i><span>Philips</span></label><label class="cb"><input type="checkbox"><i></i><span>Saeco</span></label><label class="cb"><input type="checkbox"><i></i><span>Jura</span></label><label class="cb"><input type="checkbox"><i></i><span>De'Longhi</span></label><label class="cb"><input type="checkbox"><i></i><span>Beko</span></label><label class="cb"><input type="checkbox"><i></i><span>Melitta</span></label><label class="cb"><input type="checkbox"><i></i><span>Krups</span></label><label class="cb"><input type="checkbox"><i></i><span>Siemens</span></label><label class="cb"><input type="checkbox"><i></i><span>Bosch</span></label><label class="cb"><input type="checkbox"><i></i><span>Nivona</span></label><label class="cb"><input type="checkbox"><i></i><span>Gaggia</span></label><label class="cb"><input type="checkbox"><i></i><span>Autre</span></label> <input class="line" type="text" placeholder="préciser" style="width:30mm"></div>
+
+<div class="sympt"><label for="symp">Symptôme de panne (déclaré par le client) :</label><textarea id="symp" placeholder="ex. ne démarre plus, fuite d'eau, pas de café, bruit broyeur, erreur groupe…"></textarea></div>
+
+<div class="warn">Tout défaut d'entretien (détartrage, nettoyage du groupe café, grains non conformes…) peut entraîner une exclusion de garantie et l'émission d'un devis.</div>
+
+<h2>Éléments reçus avec le produit</h2>
+<button type="button" class="btn sec rcall" id="rcAll">&#10003; Tout présent</button>
+<div class="recu"><div class="rc"><span class="rn">Machine</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div><div class="rc"><span class="rn">Cordon secteur</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div><div class="rc"><span class="rn">Réservoir d'eau</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div><div class="rc"><span class="rn">Couvercle bac à grains</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div><div class="rc"><span class="rn">Groupe café (amovible)</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div><div class="rc"><span class="rn">Bac à marc</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div><div class="rc"><span class="rn">Plateau / grille d'égouttage</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div><div class="rc"><span class="rn">Carafe à lait / tuyau</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div><div class="rc"><span class="rn">Buse vapeur / cappuccinatore</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div><div class="rc"><span class="rn">Filtre à eau (cartouche)</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div><div class="rc"><span class="rn">Accessoires (cuillère, pinceau, tablettes…)</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div></div>
+<div class="gcam acc"><label class="btn rowcam" data-sec="Ensemble des accessoires">&#128247; Photo de l'ensemble des accessoires<span class="n"></span><input type="file" accept="image/*" capture="environment" hidden></label><span>Tous les accessoires remis, réunis sur une seule photo.</span><span class="accth"></span></div>
+
+<h2>Schéma global <em>(À compléter si nécessaire — cliquer sur le schéma pour repérer un défaut, re-cliquer sur le repère pour le retirer)</em></h2>
+<div class="views">
+  <div class="view" data-v="front"><svg viewBox="0 0 200 170"><rect x="42" y="22" width="116" height="118" rx="8" fill="#fff" stroke="#333" stroke-width="1.5"/><path d="M62 22l8-16h60l8 16" fill="#f1f1f1" stroke="#333" stroke-width="1.5"/><rect x="82" y="34" width="36" height="16" rx="2" fill="#dfe8f0" stroke="#333"/><rect x="94" y="62" width="12" height="14" fill="#444"/><path d="M84 112h32l-4 22H88z" fill="#fff" stroke="#333" stroke-width="1.5"/><rect x="50" y="140" width="100" height="12" rx="2" fill="#fff" stroke="#333" stroke-width="1.5"/><text x="100" y="14" font-size="7" text-anchor="middle" fill="#888">bac à grains</text><text x="100" y="164" font-size="7" text-anchor="middle" fill="#888">plateau d'égouttage</text></svg><div class="cap">Vue de face</div></div>
+  <div class="view" data-v="top"><svg viewBox="0 0 200 170"><rect x="40" y="20" width="120" height="130" rx="8" fill="#fff" stroke="#333" stroke-width="1.5"/><circle cx="100" cy="62" r="30" fill="#f1f1f1" stroke="#333" stroke-width="1.5"/><circle cx="100" cy="62" r="10" fill="none" stroke="#333"/><rect x="62" y="104" width="76" height="34" rx="3" fill="none" stroke="#333" stroke-width="1.2"/><text x="100" y="124" font-size="7" text-anchor="middle" fill="#888">commandes / écran</text><text x="100" y="14" font-size="7" text-anchor="middle" fill="#888">couvercle grains / broyeur</text></svg><div class="cap">Vue de dessus</div></div>
+  <div class="view" data-v="back"><svg viewBox="0 0 200 170"><rect x="42" y="22" width="86" height="118" rx="8" fill="#fff" stroke="#333" stroke-width="1.5"/><rect x="132" y="30" width="34" height="104" rx="4" fill="#fff" stroke="#333" stroke-width="1.5"/><path d="M134 76q5-4 8 0t8 0 8 0 6 0v56H134z" fill="#9cc4e4" stroke="#333" stroke-width="1.2"/><rect x="56" y="60" width="58" height="44" rx="3" fill="#f6f6f6" stroke="#333" stroke-dasharray="4 3"/><rect x="50" y="146" width="80" height="12" rx="2" fill="#fff" stroke="#333" stroke-width="1.5"/><text x="85" y="84" font-size="7" text-anchor="middle" fill="#888">groupe café</text><text x="149" y="26" font-size="7" text-anchor="middle" fill="#888">réservoir</text><text x="90" y="168" font-size="7" text-anchor="middle" fill="#888">bac à marc</text></svg><div class="cap">Côté / arrière (réservoir, groupe, bac à marc)</div></div>
+</div>
+<div class="states">
+  <div>
+    <label class="cb pos"><input type="checkbox"><i></i><span>Intact</span></label>
+    <label class="cb neg"><input type="checkbox"><i></i><span>Cassé</span></label>
+    <label class="cb neg"><input type="checkbox"><i></i><span>Traces d'ouverture du boîtier</span></label>
+    <label class="cb neg"><input type="checkbox"><i></i><span>Traces de liquide / humidité à l'intérieur</span></label>
+  </div>
+  <div>
+    <label class="cb neg"><input type="checkbox"><i></i><span>Rayures</span></label>
+    <label class="cb neg"><input type="checkbox"><i></i><span>Traces d'oxydation</span></label>
+    <label class="cb neg"><input type="checkbox"><i></i><span>Câbles ou contacts arrachés / désoudés</span></label>
+    <label class="cb neg"><input type="checkbox"><i></i><span>Déformation / traces de chaleur</span></label>
+  </div>
+</div>
+
+<div class="obs"><h2>Observations <em>(décrire les repères du schéma : n° → défaut)</em></h2>
+<textarea></textarea></div>
+
+<div class="rows"><section class="row"><div class="icol"><div class="ico"><svg viewBox="0 0 60 48"><rect x="14" y="6" width="32" height="36" rx="5" fill="none" stroke="#444" stroke-width="2"/><path d="M16 26q4-4 7 0t7 0 7 0 7 0v14H16z" fill="#9cc4e4" stroke="#444" stroke-width="1.5"/></svg></div><label class="btn rowcam" data-sec="RÉSERVOIR D&#39;EAU & FILTRE">&#128247;<span class="n"></span><input type="file" accept="image/*" capture="environment" hidden></label></div>
+<div class="txt"><h3>RÉSERVOIR D&#39;EAU & FILTRE</h3><p>Vérifier le réservoir, le clapet / joint, la cartouche filtrante : calcaire, algues, fissures, fuite.</p></div>
+<div class="opts"><div class="grp"><div class="gt">Réservoir d'eau</div><label class="cb pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Calcaire / dépôts</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Algues / moisissure / odeur</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Fissuré / cassé</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Clapet ou joint absent / abîmé</span></label></div><div class="grp"><div class="gt">Filtre à eau (cartouche)</div><label class="cb pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Absent</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Usé / saturé</span></label><label class="cb"><input type="checkbox"><i></i><span>Non concerné</span></label></div></div></section>
+<section class="row"><div class="icol"><div class="ico"><svg viewBox="0 0 60 48"><path d="M12 8h36l-6 30H18z" fill="#f3e6d3" stroke="#444" stroke-width="2"/><ellipse cx="26" cy="22" rx="4" ry="6" fill="#7a4a24"/><ellipse cx="36" cy="26" rx="4" ry="6" fill="#7a4a24"/><ellipse cx="30" cy="32" rx="4" ry="5" fill="#7a4a24"/></svg></div><label class="btn rowcam" data-sec="BAC À GRAINS & BROYEUR">&#128247;<span class="n"></span><input type="file" accept="image/*" capture="environment" hidden></label></div>
+<div class="txt"><h3>BAC À GRAINS & BROYEUR</h3><p>Contrôler la nature et l'état des grains, l'absence de corps étranger et le fonctionnement du broyeur.</p></div>
+<div class="opts"><div class="grp"><div class="gt">Bac à grains</div><label class="cb pos"><input type="checkbox"><i></i><span>Présent (couvercle en place)</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Grains non conformes (caramélisés / aromatisés)</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Grains très gras / bac encrassé</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Corps étranger (pierre, vis…)</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Couvercle absent / cassé</span></label></div><div class="grp"><div class="gt">Broyeur</div><label class="cb pos"><input type="checkbox"><i></i><span>Tourne normalement</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Bruit anormal / bloqué</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Poudre agglomérée / humide</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Réglage de mouture bloqué</span></label><label class="cb"><input type="checkbox"><i></i><span>Non testé</span></label></div></div></section>
+<section class="row"><div class="icol"><div class="ico"><svg viewBox="0 0 60 48"><rect x="12" y="8" width="36" height="32" rx="4" fill="#f6f6f6" stroke="#444" stroke-width="2"/><circle cx="30" cy="24" r="9" fill="none" stroke="#444" stroke-width="1.6"/><path d="M30 15v18M21 24h18" stroke="#888" stroke-width="1.4"/></svg></div><label class="btn rowcam" data-sec="GROUPE CAFÉ (UNITÉ DE PERCOLATION)">&#128247;<span class="n"></span><input type="file" accept="image/*" capture="environment" hidden></label></div>
+<div class="txt"><h3>GROUPE CAFÉ (UNITÉ DE PERCOLATION)</h3><p>Retirer le groupe si amovible : propreté, résidus de café, graissage, joints, mouvement libre du mécanisme.</p></div>
+<div class="opts"><div class="grp"><div class="gt">Groupe café</div><label class="cb pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Absent</span></label><label class="cb pos"><input type="checkbox"><i></i><span>Propre</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Marc collé / résidus</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Huileux / jamais nettoyé</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Cassé / déformé</span></label></div><div class="grp"><div class="gt">Mécanisme / joints</div><label class="cb pos"><input type="checkbox"><i></i><span>Mouvement libre</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Bloqué / mal positionné</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Graisse absente / sèche</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Joints usés / fuite</span></label></div></div></section>
+<section class="row"><div class="icol"><div class="ico"><svg viewBox="0 0 60 48"><rect x="10" y="26" width="40" height="14" rx="3" fill="#f6f6f6" stroke="#444" stroke-width="2"/><path d="M16 26v-6h28v6" fill="#d9c4a8" stroke="#444" stroke-width="1.6"/><path d="M14 33h32" stroke="#888"/></svg></div><label class="btn rowcam" data-sec="BAC À MARC & PLATEAU D&#39;ÉGOUTTAGE">&#128247;<span class="n"></span><input type="file" accept="image/*" capture="environment" hidden></label></div>
+<div class="txt"><h3>BAC À MARC & PLATEAU D&#39;ÉGOUTTAGE</h3><p>Vérifier la présence, l'état et la propreté du bac à marc, du plateau, de la grille et du flotteur.</p></div>
+<div class="opts"><div class="grp"><div class="gt">Bac à marc</div><label class="cb pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Plein / non vidé</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Moisi / odeur</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Fissuré / cassé</span></label></div><div class="grp"><div class="gt">Plateau / grille</div><label class="cb pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Plein / eau stagnante</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Flotteur ou indicateur bloqué</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Absent / cassé</span></label></div></div></section>
+<section class="row"><div class="icol"><div class="ico"><svg viewBox="0 0 60 48"><path d="M18 10h18l4 6v24H18z" fill="#fff" stroke="#444" stroke-width="2"/><path d="M20 24h18v14H20z" fill="#e8f0ff" stroke="#444" stroke-width="1.4"/><path d="M40 20h6v10" fill="none" stroke="#444" stroke-width="2"/></svg></div><label class="btn rowcam" data-sec="LAIT & VAPEUR">&#128247;<span class="n"></span><input type="file" accept="image/*" capture="environment" hidden></label></div>
+<div class="txt"><h3>LAIT & VAPEUR</h3><p>Si carafe, tuyau, cappuccinatore ou buse vapeur présents : résidus de lait, obstruction, pièces manquantes.</p></div>
+<div class="opts"><div class="grp"><div class="gt">Carafe / circuit lait</div><label class="cb pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Absent</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Résidus de lait / odeur</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Tuyau ou raccord manquant / abîmé</span></label><label class="cb"><input type="checkbox"><i></i><span>Non concerné</span></label></div><div class="grp"><div class="gt">Buse vapeur / cappuccinatore</div><label class="cb pos"><input type="checkbox"><i></i><span>Propre</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Obstrué / entartré</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Encrassé de lait séché</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Absent</span></label><label class="cb"><input type="checkbox"><i></i><span>Non concerné</span></label></div></div></section>
+<section class="row"><div class="icol"><div class="ico"><svg viewBox="0 0 60 48"><path d="M12 40V14l8-6h20l8 6v26z" fill="#fff" stroke="#444" stroke-width="2"/><path d="M16 30l6-4 5 5 6-6 9 8" fill="none" stroke="#d6231a" stroke-width="1.8"/><circle cx="24" cy="18" r="2" fill="#bbb"/><circle cx="36" cy="20" r="2.5" fill="#bbb"/></svg></div><label class="btn rowcam" data-sec="DÉTARTRAGE & ENTRETIEN">&#128247;<span class="n"></span><input type="file" accept="image/*" capture="environment" hidden></label></div>
+<div class="txt"><h3>DÉTARTRAGE & ENTRETIEN</h3><p>Évaluer le niveau d'entartrage visible et la régularité de l'entretien (détartrage, tablettes, nettoyage).</p></div>
+<div class="opts"><div class="grp"><div class="gt">Entartrage</div><label class="cb pos"><input type="checkbox"><i></i><span>Faible / normal</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Important (dépôts blancs)</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Détartrant non conforme (traces)</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Message détartrage ignoré</span></label></div><div class="grp"><div class="gt">Entretien</div><label class="cb pos"><input type="checkbox"><i></i><span>Régulier (traces d'entretien)</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Négligé (café / lait séché)</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Produits non adaptés</span></label></div></div></section>
+<section class="row"><div class="icol"><div class="ico"><svg viewBox="0 0 60 48"><rect x="10" y="16" width="28" height="20" rx="4" fill="#fff" stroke="#444" stroke-width="2"/><path d="M38 22h8M38 30h8M46 20v12" stroke="#444" stroke-width="2"/><path d="M26 18l-5 9h6l-3 9" fill="none" stroke="#f08a00" stroke-width="2"/></svg></div><label class="btn rowcam" data-sec="ALIMENTATION & COMMANDES">&#128247;<span class="n"></span><input type="file" accept="image/*" capture="environment" hidden></label></div>
+<div class="txt"><h3>ALIMENTATION & COMMANDES</h3><p>Vérifier le cordon, la mise sous tension, l'écran, les voyants et les boutons.</p></div>
+<div class="opts"><div class="grp"><div class="gt">Alimentation</div><label class="cb pos"><input type="checkbox"><i></i><span>Mise sous tension normale</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Ne s'allume pas</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Cordon / prise abîmé</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Odeur de brûlé / surchauffe</span></label></div><div class="grp"><div class="gt">Écran / commandes</div><label class="cb pos"><input type="checkbox"><i></i><span>Fonctionnels</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Écran ou voyants HS / erreur affichée</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Boutons non réactifs</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Face avant fissurée / rayée</span></label></div></div></section>
+</div>
+
+<div class="verdict">
+  <h3>Conclusion de l'inspection</h3>
+  <label class="cb pos"><input type="checkbox"><i></i><span>Entretien conforme — aucun défaut d'entretien constaté</span></label>
+  <label class="cb"><input type="checkbox"><i></i><span>Défaut d'entretien mineur — nettoyage effectué, sans impact sur la prise en charge</span></label>
+  <label class="cb neg"><input type="checkbox"><i></i><span>Défaut d'entretien avéré — exclusion de garantie / émission d'un devis</span></label>
+  <label class="cb neg"><input type="checkbox"><i></i><span>Dommage non couvert (choc, chute, liquide, ouverture, oxydation)</span></label>
+</div>
+
+<div style="margin-top:3mm;display:flex;gap:6mm;align-items:center;flex-wrap:wrap">
+  <label class="cb"><input type="checkbox" id="phChk"><i></i><span>Photos jointes au dossier</span></label>
+  <label style="font-size:9.5pt">Nombre : <input class="line" type="text" id="phN" style="width:14mm"></label>
+  <label class="cb"><input type="checkbox"><i></i><span>Machine nettoyée avant test</span></label>
+  <label class="cb"><input type="checkbox"><i></i><span>Test de préparation (café) effectué</span></label>
+</div>
+
+
+<section id="photos" class="empty">
+<h2>Photos <em>(légende possible : n° du repère du schéma, pièce concernée…)</em></h2>
+<div class="phbar">
+  <label class="btn">&#128247; Prendre une photo<input id="phCam" type="file" accept="image/*" capture="environment" hidden></label>
+  <label class="btn sec">&#128444; Ajouter depuis la galerie / fichiers<input id="phFile" type="file" accept="image/*" multiple hidden></label>
+</div>
+<div id="phGrid" class="phgrid"></div>
+</section>
+
+<div class="sign">
+    <div class="sg"><label>Technicien (nom) : <input class="line" type="text" style="width:30%"></label> <label style="margin-left:3mm">Date / heure : <input class="line" type="text" id="sgDate" style="width:27%"></label><button type="button" class="clr" onclick="clearPad(this)">Effacer</button><canvas class="pad" width="900" height="150"></canvas><div class="sl">Signature du technicien</div></div>
+  <div class="sg"><label>Client / réceptionnaire (nom) : <input class="line" type="text" style="width:40%"></label><button type="button" class="clr" onclick="clearPad(this)">Effacer</button><canvas class="pad" width="900" height="150"></canvas><div class="sl">Signature du client (le cas échéant)</div></div>
+</div>
+</div>
+
+<script>
+var n=0;
+document.querySelectorAll('.view').forEach(function(v){
+  v.addEventListener('click',function(e){
+    if(e.target.classList.contains('mk')){e.target.remove();renum();return;}
+    var r=v.getBoundingClientRect(),m=document.createElement('div');
+    m.className='mk';m.style.left=((e.clientX-r.left)/r.width*100)+'%';m.style.top=((e.clientY-r.top)/r.height*100)+'%';
+    v.appendChild(m);renum();
+  });
+});
+
+function loadImg(file){return new Promise(function(res,rej){var u=URL.createObjectURL(file),im=new Image();im.onload=function(){res({im:im,url:u})};im.onerror=function(){rej(new Error('image'))};im.src=u;});}
+function toCanvas(im,max,gray){
+  var s=Math.min(1,max/Math.max(im.naturalWidth,im.naturalHeight)),c=document.createElement('canvas');
+  c.width=Math.round(im.naturalWidth*s);c.height=Math.round(im.naturalHeight*s);
+  var x=c.getContext('2d');x.drawImage(im,0,0,c.width,c.height);
+  if(gray){var d=x.getImageData(0,0,c.width,c.height),p=d.data;
+    for(var i=0;i<p.length;i+=4){var g=.299*p[i]+.587*p[i+1]+.114*p[i+2];g=Math.max(0,Math.min(255,(g-128)*1.5+128));p[i]=p[i+1]=p[i+2]=g;}
+    x.putImageData(d,0,0);}
+  return c;
+}
+function addPhotos(files){
+  Array.prototype.forEach.call(files,function(f){
+    if(!f.type||f.type.indexOf('image')!==0)return;
+    loadImg(f).then(function(o){addPhotoData(toCanvas(o.im,1400).toDataURL('image/jpeg',.8));URL.revokeObjectURL(o.url);});
+  });
+}
+function addPhotoData(d,caption,sec){
+  var fig=document.createElement('div');fig.className='ph';fig.dataset.sec=sec||'';
+  fig.innerHTML='<span class="phn"></span><img alt="photo"><button type="button" class="x" title="Supprimer">&times;</button><input type="text" placeholder="Légende (repère n°, pièce…)">';
+  fig.querySelector('img').src=d;
+  if(caption)fig.querySelector('input').value=caption;
+  fig.querySelector('.x').onclick=function(){fig.remove();phSync();};
+  document.getElementById('phGrid').appendChild(fig);phSync();
+}
+document.querySelectorAll('.rowcam input').forEach(function(inp){
+  inp.addEventListener('change',function(){
+    var f=inp.files[0],sec=inp.parentNode.dataset.sec;inp.value='';if(!f)return;
+    loadImg(f).then(function(o){addPhotoData(toCanvas(o.im,1400).toDataURL('image/jpeg',.8),sec,sec);URL.revokeObjectURL(o.url);});
+  });
+});
+/* ---- N° de série : code-barres + OCR ---- */
+function parseSerials(text){
+  var out=[],seen={};
+  function add(s){s=(s||'').toUpperCase().replace(/^[-.]+|[-.]+$/g,'');if(s.length>=6&&s.length<=28&&!seen[s]){seen[s]=1;out.push(s);}}
+  var re=/(?:S\s*\/?\s*N|SERIAL(?:\s*(?:NO|NUMBER|N°))?|N\s*°?\s*DE\s*S[ÉE]RIE)\s*[:#.\-]?\s*([A-Z0-9][A-Z0-9\-]{5,})/gi,m;
+  while((m=re.exec(text)))add(m[1]);
+  (text.toUpperCase().match(/[A-Z0-9][A-Z0-9\-]{7,}/g)||[]).forEach(function(w){
+    if(/\d/.test(w)&&(/[A-Z]/.test(w)||w.length>=10))add(w);});
+  return out;
+}
+function loadTess(){return new Promise(function(res,rej){
+  if(window.Tesseract)return res();
+  var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.1.0/tesseract.min.js';
+  s.onload=res;s.onerror=function(){rej(new Error('offline'))};document.head.appendChild(s);});}
+function showSerials(list,msg,err){
+  var box=document.getElementById('snRes'),inp=document.getElementById('snInp');
+  box.innerHTML='';
+  if(msg){var sp=document.createElement('span');sp.className=err?'err':'';sp.textContent=msg+' ';box.appendChild(sp);}
+  list.forEach(function(s){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=s;
+    b.onclick=function(){inp.value=s;};box.appendChild(b);});
+}
+document.getElementById('snCam').addEventListener('change',function(e){
+  var f=e.target.files[0];e.target.value='';if(!f)return;
+  loadImg(f).then(function(o){
+    addPhotoData(toCanvas(o.im,1400).toDataURL('image/jpeg',.8),'Étiquette N° de série');
+    return LabelReader.run(o.im).then(function(){URL.revokeObjectURL(o.url);});
+  }).catch(function(){var b=document.getElementById('snRes');if(b)b.textContent='Image illisible.';});
+});
+
+/* ---- QR code : lecture directe (caméra) et sur photo ---- */
+function snFromQr(v){
+  v=String(v||'').trim();
+  try{var u=new URL(v),found='';
+    u.searchParams.forEach(function(val,k){if(!found&&/^(sn|s\/n|serial|serialno|serialnumber|serial_number|numero_serie)$/i.test(k))found=val;});
+    if(found)return found.toUpperCase();
+    var last=u.pathname.split('/').filter(Boolean).pop();
+    if(last&&last.length>=6&&/\d/.test(last))return decodeURIComponent(last).toUpperCase();
+  }catch(e){}
+  var m=/(?:S\s*\/?\s*N|SERIAL(?:\s*(?:NO|NUMBER|N°))?|N\s*°?\s*DE\s*S[ÉE]RIE)\s*[:#=.\-]?\s*([A-Z0-9][A-Z0-9\-]{3,})/i.exec(v);
+  if(m)return m[1].toUpperCase();
+  if(/^[A-Za-z0-9\-_.\/]{4,40}$/.test(v))return v.toUpperCase();
+  var l=parseSerials(v);return l.length?l[0]:v.toUpperCase();
+}
+function loadScript(u){return new Promise(function(res,rej){var s=document.createElement('script');s.src=u;s.onload=res;s.onerror=function(){rej(new Error('load'))};document.head.appendChild(s);});}
+function loadJsQR(){
+  if(window.jsQR)return Promise.resolve();
+  return loadScript('lib/jsQR.min.js').catch(function(){return loadScript('https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js');}).then(function(){if(!window.jsQR)throw new Error('jsqr');});
+}
+function decodeCanvas(c){var x=c.getContext('2d'),d=x.getImageData(0,0,c.width,c.height);
+  var r=jsQR(d.data,d.width,d.height,{inversionAttempts:'attemptBoth'});return r?r.data:null;}
+function qrFromImg(im){
+  return loadJsQR().then(function(){
+    var W=im.naturalWidth||im.width,H=im.naturalHeight||im.height,v=null,sizes=[1600,2400,1000];
+    for(var i=0;i<sizes.length&&!v;i++){try{v=decodeCanvas(toCanvas(im,sizes[i]));}catch(e){}}
+    if(!v){ /* étiquette petite dans la photo : on essaie des zones agrandies (3x3 se chevauchant) */
+      var tw=Math.round(W*.5),th=Math.round(H*.5);
+      for(var yy=0;yy<3&&!v;yy++)for(var xx=0;xx<3&&!v;xx++){
+        var sx=Math.round((W-tw)*xx/2),sy=Math.round((H-th)*yy/2),c=document.createElement('canvas');
+        var sc=Math.min(1,1400/Math.max(tw,th));c.width=Math.round(tw*sc);c.height=Math.round(th*sc);
+        c.getContext('2d').drawImage(im,sx,sy,tw,th,0,0,c.width,c.height);
+        try{v=decodeCanvas(c);}catch(e){}
+      }
+    }
+    return v;
+  }).catch(function(){return null;});
+}
+var qrStream=null,qrRun=false;
+function qrStop(){qrRun=false;if(qrStream){qrStream.getTracks().forEach(function(t){t.stop();});qrStream=null;}
+  document.getElementById('qrOv').style.display='none';}
+function qrFail(msg){qrRun=false;if(qrStream){qrStream.getTracks().forEach(function(t){t.stop();});qrStream=null;}
+  var st=document.getElementById('qrSt');if(st)st.textContent=msg;var v=document.getElementById('qrVid');if(v)v.style.display='none';}
+function qrStart(){
+  var ov=document.getElementById('qrOv'),vd=document.getElementById('qrVid'),st=document.getElementById('qrSt'),inp=document.getElementById('snInp');
+  vd.style.display='';ov.style.display='flex';st.textContent='Ouverture de la caméra…';
+  var ua=navigator.userAgent||'';
+  if(!window.isSecureContext||!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
+    qrFail('Caméra non disponible dans ce navigateur'+(/Teams|Outlook|FBAN|FBAV|Instagram|Line\/|; wv\)/i.test(ua)?' (navigateur intégré à une application)':'')+'. Ouvrez la fiche dans Safari, ou utilisez « Photo de l\'étiquette ».');return;}
+  navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false}).then(function(s){
+    qrStream=s;vd.setAttribute('playsinline','');vd.setAttribute('webkit-playsinline','');vd.muted=true;vd.srcObject=s;
+    var pl=vd.play();if(pl&&pl.catch)pl.catch(function(){});
+    qrRun=true;st.textContent='Chargement du lecteur QR…';
+    var det=null;try{if('BarcodeDetector' in window)det=new BarcodeDetector({formats:['qr_code','data_matrix','code_128','code_39','ean_13']});}catch(e){det=null;}
+    var cv=document.createElement('canvas'),cx=cv.getContext('2d',{willReadFrequently:true});
+    (det?Promise.resolve():loadJsQR()).then(function(){
+      st.textContent='Cadrez le QR code de l\'étiquette (bien net, sans reflet)…';
+      var t0=Date.now();
+      (function tick(){
+        if(!qrRun)return;
+        if(vd.readyState<2||!vd.videoWidth){if(Date.now()-t0>8000){qrFail('La caméra ne renvoie pas d\'image. Fermez et réessayez, ou utilisez « Photo de l\'étiquette ».');return;}requestAnimationFrame(tick);return;}
+        var p;
+        if(det){p=det.detect(vd).then(function(r){return r.length?r[0].rawValue:null;}).catch(function(){return null;});}
+        else{var sc=Math.min(1,900/vd.videoWidth);cv.width=Math.round(vd.videoWidth*sc);cv.height=Math.round(vd.videoHeight*sc);
+          cx.drawImage(vd,0,0,cv.width,cv.height);var d=cx.getImageData(0,0,cv.width,cv.height);
+          var c=jsQR(d.data,d.width,d.height,{inversionAttempts:'attemptBoth'});p=Promise.resolve(c?c.data:null);}
+        p.then(function(v){
+          if(!qrRun)return;
+          if(v){var sn=snFromQr(v);qrStop();inp.value=sn;inp.dispatchEvent(new Event('input',{bubbles:true}));
+            showSerials([],'QR lu : '+sn+(sn!==String(v).trim().toUpperCase()?' (contenu : '+String(v).slice(0,80)+')':'')+' — vérifiez le numéro.');
+            if(navigator.vibrate)navigator.vibrate(80);}
+          else setTimeout(function(){requestAnimationFrame(tick);},90);
+        });
+      })();
+    },function(){qrFail('Lecteur QR introuvable (fichier lib/jsQR.min.js non publié et pas de connexion). Utilisez « Photo de l\'étiquette » ou saisissez à la main.');});
+  }).catch(function(e){
+    var n=e&&e.name;
+    qrFail(n==='NotAllowedError'||n==='SecurityError'?'Accès à la caméra refusé. Sur iPhone : Réglages > Safari > Caméra > Autoriser (ou « Demander »), puis rouvrez la fiche. Sinon utilisez « Photo de l\'étiquette ».':
+      n==='NotFoundError'||n==='OverconstrainedError'?'Aucune caméra trouvée. Utilisez « Photo de l\'étiquette ».':
+      'Caméra impossible à ouvrir ('+(n||'erreur')+'). Utilisez « Photo de l\'étiquette ».');
+  });
+}
+document.getElementById('snQr').addEventListener('click',qrStart);
+document.getElementById('qrClose').addEventListener('click',qrStop);
+
+/* ---- Présent / Absent : exclusifs ---- */
+document.querySelectorAll('.rc input').forEach(function(c){
+  c.addEventListener('change',function(){
+    if(c.checked){var o=c.closest('.rc').querySelectorAll('input');o.forEach(function(x){if(x!==c)x.checked=false;});}
+  });
+});
+var rcAll=document.getElementById('rcAll');
+if(rcAll)rcAll.addEventListener('click',function(){
+  document.querySelectorAll('.rc').forEach(function(r){var i=r.querySelectorAll('input');i[0].checked=true;i[1].checked=false;});
+});
+
+function phSync(){
+  var l=document.querySelectorAll('#phGrid .ph');
+  document.querySelectorAll('.accth').forEach(function(t){t.innerHTML='';l.forEach(function(p){if(p.dataset.sec==='Ensemble des accessoires'){var im=document.createElement('img');im.src=p.querySelector('img').src;im.alt='accessoires';t.appendChild(im);}});});
+  l.forEach(function(p,i){p.querySelector('.phn').textContent='Photo '+(i+1);});
+  document.getElementById('photos').classList.toggle('empty',l.length===0&&false);
+  document.querySelectorAll('.rowcam').forEach(function(b){var n=0;l.forEach(function(p){if(p.dataset.sec&&p.dataset.sec===b.dataset.sec)n++;});b.querySelector('.n').textContent=n||'';});
+  document.getElementById('phN').value=l.length?l.length:'';
+  document.getElementById('phChk').checked=l.length>0;
+  document.getElementById('photos').dataset.n=l.length;
+  document.getElementById('photos').classList.toggle('empty',l.length===0);
+}
+['phCam','phFile'].forEach(function(id){
+  var el=document.getElementById(id);
+  el.addEventListener('change',function(){addPhotos(el.files);el.value='';});
+});
+function renum(){var i=0;document.querySelectorAll('.mk').forEach(function(m){m.textContent=++i;});}
+
+var dirty=false;
+function nowStr(){return new Date().toLocaleString('fr-FR',{dateStyle:'short',timeStyle:'short'});}
+function setMsg(s){var m=document.getElementById('msg');m.textContent=s;}
+/* --- signatures --- */
+function initPad(c){
+  var x=c.getContext('2d'),on=false,last;
+  x.lineWidth=4;x.lineCap='round';x.lineJoin='round';x.strokeStyle='#14286e';
+  function pos(e){var r=c.getBoundingClientRect();return{x:(e.clientX-r.left)*c.width/r.width,y:(e.clientY-r.top)*c.height/r.height};}
+  c.addEventListener('pointerdown',function(e){on=true;last=pos(e);c.setPointerCapture(e.pointerId);x.beginPath();x.moveTo(last.x,last.y);x.lineTo(last.x+.1,last.y);x.stroke();c.dataset.s='1';dirty=true;e.preventDefault();});
+  c.addEventListener('pointermove',function(e){if(!on)return;var p=pos(e);x.beginPath();x.moveTo(last.x,last.y);x.lineTo(p.x,p.y);x.stroke();last=p;e.preventDefault();});
+  function end(){if(!on)return;on=false;var d=document.getElementById('sgDate');if(!d.value)d.value=nowStr();}
+  c.addEventListener('pointerup',end);c.addEventListener('pointercancel',end);
+}
+function clearPadEl(c){c.getContext('2d').clearRect(0,0,c.width,c.height);delete c.dataset.s;}
+function clearPad(btn){clearPadEl(btn.parentNode.querySelector('canvas'));dirty=true;}
+function getSig(c){return c.dataset.s?c.toDataURL('image/png'):null;}
+function setSig(c,d){clearPadEl(c);if(!d)return;var im=new Image();im.onload=function(){c.getContext('2d').drawImage(im,0,0,c.width,c.height);c.dataset.s='1';};im.src=d;}
+document.querySelectorAll('.pad').forEach(initPad);
+/* --- sauvegarde / ouverture --- */
+function statics(){return Array.prototype.filter.call(document.querySelectorAll('input[type=text],input[type=date],textarea'),function(i){return !i.closest('#phGrid');});}
+function collect(){
+  var st={app:'fiche-inspection-machine-cafe',v:1,saved:new Date().toISOString()};
+  st.cb=Array.prototype.map.call(document.querySelectorAll('input[type=checkbox]'),function(c){return c.checked?1:0;});
+  st.tx=statics().map(function(i){return i.value;});
+  st.mk={};document.querySelectorAll('.view').forEach(function(v){st.mk[v.dataset.v]=Array.prototype.map.call(v.querySelectorAll('.mk'),function(m){return[m.style.left,m.style.top];});});
+  st.ph=Array.prototype.map.call(document.querySelectorAll('#phGrid .ph'),function(p){return{d:p.querySelector('img').src,c:p.querySelector('input').value,s:p.dataset.sec||''};});
+  st.sg=Array.prototype.map.call(document.querySelectorAll('.pad'),getSig);
+  return st;
+}
+/* nom des fichiers (.json et PDF) : date_N°dossier */
+function fileBase(){
+  var s=statics(),dos=((s[0]&&s[0].value)||'').trim().replace(/[^\wÀ-ÿ\-]+/g,'_').replace(/^_+|_+$/g,'')||'sans-dossier',
+  dt=(s[1]&&/^\d{4}-\d{2}-\d{2}$/.test(s[1].value))?s[1].value:(function(){var d=new Date(),p=function(n){return(n<10?'0':'')+n;};return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate());})();
+  return dt+'_'+dos;
+}
+(function(){var old=null;
+  window.addEventListener('beforeprint',function(){old=document.title;document.title=fileBase();});
+  window.addEventListener('afterprint',function(){if(old!==null)document.title=old;old=null;});
+})();
+function saveFile(){
+  var st=collect(),name=fileBase()+'.json';
+  var blob=new Blob([JSON.stringify(st)],{type:'application/json'}),a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},500);
+  dirty=false;setMsg('Enregistré : '+name+' (dossier Téléchargements)');
+}
+function clearAll(){
+  document.querySelectorAll('input[type=checkbox]').forEach(function(c){c.checked=false});
+  statics().forEach(function(c){c.value=''});document.getElementById('snRes').innerHTML='';
+  document.querySelectorAll('.mk').forEach(function(m){m.remove()});
+  document.querySelectorAll('#phGrid .ph').forEach(function(p){p.remove()});
+  document.querySelectorAll('.pad').forEach(clearPadEl);phSync();
+}
+function resetAll(){if(!confirm('Effacer toute la fiche ?'))return;clearAll();dirty=false;setMsg('Fiche réinitialisée');}
+function applyState(st){
+  if(!st||st.app!=='fiche-inspection-machine-cafe')throw new Error('format');
+  clearAll();
+  var cbs=document.querySelectorAll('input[type=checkbox]'),tx=statics(),warn=false;
+  if(st.cb.length!==cbs.length||st.tx.length!==tx.length)warn=true;
+  st.cb.forEach(function(v,i){if(cbs[i])cbs[i].checked=!!v;});
+  st.tx.forEach(function(v,i){if(tx[i])tx[i].value=v;});
+  document.querySelectorAll('.view').forEach(function(v){(st.mk[v.dataset.v]||[]).forEach(function(q){var m=document.createElement('div');m.className='mk';m.style.left=q[0];m.style.top=q[1];v.appendChild(m);});});
+  renum();
+  (st.ph||[]).forEach(function(p){addPhotoData(p.d,p.c,p.s);});
+  var pads=document.querySelectorAll('.pad');(st.sg||[]).forEach(function(d,i){if(pads[i])setSig(pads[i],d);});
+  phSync();
+  dirty=false;
+  setMsg(warn?'Fiche ouverte (version différente : restauration partielle)':'Fiche ouverte (enregistrée le '+new Date(st.saved).toLocaleString('fr-FR')+')');
+}
+document.getElementById('openFile').addEventListener('change',function(e){
+  var f=e.target.files[0];e.target.value='';if(!f)return;
+  if(dirty&&!confirm('Remplacer la fiche en cours par le fichier ouvert ?'))return;
+  var r=new FileReader();
+  r.onload=function(){try{applyState(JSON.parse(r.result));}catch(x){setMsg('Fichier non reconnu : ce n\'est pas une fiche enregistrée.');}};
+  r.readAsText(f);
+});
+['input','change','click'].forEach(function(ev){document.querySelector('.page').addEventListener(ev,function(){dirty=true;});});
+window.addEventListener('beforeunload',function(e){if(dirty){e.preventDefault();e.returnValue='';}});
+</script>
+<script src="lib/label-reader.js"></script>
+<script src="lib/relay-crypto.js"></script>
+<script src="lib/qrcode-generator.js"></script>
+<script src="lib/relay-photos.js"></script>
+</body></html>

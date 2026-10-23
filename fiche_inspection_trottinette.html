@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="fr"><head><script src="auth-guard.js"></script>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<script src="confidentialite.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Inspection visuelle – Trottinette électrique</title>
+<style>
+:root{--red:#d6231a;--orange:#f08a00;--grey:#777;--line:#bdbdbd;--ink:#222}
+*{box-sizing:border-box}
+body{margin:0;background:#e9e9e9;font-family:Arial,Helvetica,sans-serif;color:var(--ink);font-size:10.5pt}
+.toolbar{position:sticky;top:0;z-index:5;background:#333;color:#fff;padding:8px 14px;display:flex;gap:10px;align-items:center;font-size:13px}
+.toolbar button{background:var(--orange);border:0;color:#fff;padding:6px 14px;border-radius:4px;cursor:pointer;font-weight:bold}
+.toolbar button.sec{background:#666}
+.toolbar span{opacity:.75}
+.toolbar label.tb{background:var(--orange);color:#fff;padding:6px 14px;border-radius:4px;cursor:pointer;font-weight:bold}
+.page{width:210mm;min-height:297mm;margin:12px auto;background:#fff;padding:11mm 12mm;box-shadow:0 1px 6px rgba(0,0,0,.25)}
+header{display:flex;justify-content:space-between;align-items:flex-start}
+.ttl{border-left:4mm solid var(--orange);padding-left:4mm;color:var(--red);font-weight:bold;font-size:16pt;line-height:1.15;text-transform:uppercase}
+.logos{height:15mm}
+.ident{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm 5mm;margin:5mm 0 2mm}
+.ident label.f{display:flex;gap:2mm;align-items:center;font-weight:bold;font-size:10pt}
+.ident label.f.w2{grid-column:span 2}.ident label.f.w3{grid-column:span 3}
+input.box{flex:1;min-width:0;border:1px solid var(--line);border-radius:2px;padding:1.6mm 2mm;font:inherit;font-weight:normal;height:7.5mm}
+input.line{border:0;border-bottom:1px solid #888;font:inherit;padding:0 1mm;height:5mm;background:transparent}
+.brands{display:flex;flex-wrap:wrap;gap:1.2mm 5mm;margin:1mm 0 1mm}
+.warn{color:var(--red);font-weight:bold;font-size:10pt;margin:4mm 0 3mm}
+h2{font-size:10.5pt;margin:3mm 0 1.5mm}h2 em{font-weight:normal;color:var(--grey);font-size:9pt}
+.views{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);background:#f6f6f6}
+.view{position:relative;border-right:1px solid var(--line);text-align:center;cursor:crosshair;padding:2mm 1mm 0}
+.view:last-child{border-right:0}
+.view svg{width:100%;height:40mm;display:block}
+.view .cap{font-size:8pt;font-weight:bold;padding:0 0 1.5mm}
+.mk{position:absolute;width:5mm;height:5mm;margin:-2.5mm 0 0 -2.5mm;border-radius:50%;background:var(--red);color:#fff;font-size:8pt;font-weight:bold;display:flex;align-items:center;justify-content:center;border:1px solid #fff;cursor:pointer}
+.hint{font-size:8pt;color:var(--grey);margin:1mm 0 0}
+.cb{display:inline-flex;align-items:center;gap:1.8mm;cursor:pointer;font-size:9.5pt;line-height:1.25;margin:.6mm 0}
+.cb input[type=checkbox]{position:absolute;opacity:0;pointer-events:none}
+.cb i{flex:none;width:3.3mm;height:3.3mm;border:1.1px solid #333;display:inline-block;position:relative;background:#fff}
+.cb input:checked + i::after{content:"";position:absolute;left:.55mm;top:-.5mm;width:1.2mm;height:2.8mm;border:solid var(--red);border-width:0 .6mm .6mm 0;transform:rotate(40deg)}
+.states{display:grid;grid-template-columns:1fr 1fr;gap:0 6mm;margin:2mm 0 3mm}.states>div{display:flex;flex-direction:column}
+.states .cb{display:flex}
+.recu{display:grid;grid-template-columns:repeat(5,1fr);gap:0 3mm;margin:1mm 0 3mm}
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:22mm 50mm 1fr;gap:3mm;padding:1.5mm 0;border-bottom:1px solid var(--line);break-inside:avoid}
+.ico{width:22mm;height:17.5mm;border:1px solid var(--line);background:#fafafa;border-radius:2px;display:flex;align-items:center;justify-content:center}
+.ico svg{width:19mm;height:15mm}
+.txt h3{margin:0 0 1mm;font-size:10pt;color:var(--red);text-transform:uppercase}
+.txt p{margin:0;font-size:8.8pt;color:var(--grey);line-height:1.3}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:1.5mm 4mm;align-content:start}
+.grp{display:flex;flex-direction:column}
+.gt{font-size:8pt;font-style:italic;color:var(--grey);margin-bottom:.4mm}
+.verdict{border:1.4px solid var(--red);border-radius:2px;padding:2.5mm 4mm;margin:3mm 0 2mm;break-inside:avoid}
+.verdict h3{margin:0 0 2mm;color:var(--red);font-size:10.5pt;text-transform:uppercase}
+.verdict .cb{display:flex}
+textarea{width:100%;height:14mm;border:1px solid var(--line);border-radius:2px;padding:2mm;font:inherit;font-size:10pt;resize:vertical}
+.foot{margin-top:2mm;font-size:7.5pt;color:#999;text-align:center}
+
+.phbar{display:flex;gap:3mm;flex-wrap:wrap;margin:1mm 0 2mm}
+.btn{display:inline-flex;align-items:center;gap:2mm;background:var(--orange);color:#fff;font-weight:bold;font-size:10pt;padding:2.2mm 4mm;border-radius:2mm;cursor:pointer}
+.btn.sec{background:#666}
+.phgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm}
+.ph{position:relative;border:1px solid var(--line);border-radius:2px;padding:1.5mm;break-inside:avoid;background:#fff}
+.ph img{width:100%;height:46mm;object-fit:cover;display:block}
+.ph input{width:100%;border:0;border-bottom:1px solid #999;font:inherit;font-size:9pt;margin-top:1.5mm;padding:.5mm 0;background:transparent}
+.ph .x{position:absolute;top:2.5mm;right:2.5mm;width:6mm;height:6mm;border-radius:50%;border:0;background:rgba(0,0,0,.65);color:#fff;font-size:11pt;line-height:1;cursor:pointer}
+.phn{position:absolute;top:2.5mm;left:2.5mm;background:var(--red);color:#fff;font-weight:bold;font-size:8pt;padding:.4mm 1.8mm;border-radius:2mm}
+#photos{margin-top:3mm}
+#photos h2{break-after:avoid}
+
+.ident .sn{display:flex;gap:3mm;align-items:center}
+input[type=date].box{width:36mm;flex:none}
+.snbtn{padding:1.6mm 3mm;font-size:9pt;white-space:nowrap}
+.snres{grid-column:span 3;font-size:9pt;color:var(--grey);margin-top:-1.5mm}
+.snres:empty{display:none}
+.snres b{color:var(--ink)}
+.chip{display:inline-block;border:1px solid var(--orange);color:#333;background:#fff7ea;border-radius:10px;padding:.4mm 2.5mm;margin:.5mm 1.5mm .5mm 0;font:inherit;font-size:9pt;cursor:pointer}
+.snres .err{color:var(--red)}
+
+.icol{width:22mm}
+.rowcam{width:22mm;justify-content:center;margin-top:1.2mm;padding:.9mm 0;font-size:8.5pt;gap:1.2mm}
+.rowcam .n:not(:empty){background:#fff;color:var(--red);border-radius:50%;min-width:4.2mm;height:4.2mm;display:inline-flex;align-items:center;justify-content:center;font-size:8pt}
+.gcam{margin:0 0 2mm;display:flex;align-items:center;gap:3mm;font-size:9pt;color:var(--grey)}
+.gcam .rowcam{margin:0;width:auto;padding:.9mm 3mm}
+
+.sign{display:grid;grid-template-columns:1fr 1fr;gap:2.5mm 5mm;margin-top:3mm;font-size:9pt;color:var(--grey)}
+.sdate{grid-column:span 2;display:flex;align-items:center;gap:3mm}
+.sg{border:1px solid var(--line);padding:1.5mm 2mm;position:relative;break-inside:avoid}
+.sg .sl{font-size:7.5pt;text-align:center;color:#999}
+.pad{display:block;width:100%;aspect-ratio:8/1;touch-action:none;cursor:crosshair;border-bottom:1px dashed #bbb;margin-top:1mm;background:#fcfcfc}
+.clr{font-size:8pt;border:1px solid #bbb;background:#f4f4f4;border-radius:2px;padding:.4mm 2mm;cursor:pointer}
+.sg .clr{position:absolute;bottom:1.5mm;right:2mm}
+.pb{break-before:page}
+@media print{
+ body{background:#fff;font-size:10pt}.toolbar,.hint.screen{display:none}
+ .page{margin:0;box-shadow:none;width:auto;min-height:0;padding:0}
+ @page{size:A4;margin:9mm 11mm}
+ .view{cursor:default}
+ textarea{resize:none}
+ #photos.empty,.phbar,.ph .x,.snbtn,.snres,.rowcam,.gcam,.clr{display:none!important}
+ .ph input::placeholder{color:transparent}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media screen and (max-width:800px){.page{width:auto;padding:5mm}.row{grid-template-columns:1fr}.opts{grid-template-columns:1fr 1fr}.recu{grid-template-columns:1fr 1fr}.ident{grid-template-columns:1fr}.ident label.f.w2,.ident label.f.w3{grid-column:auto}}
+
+/* ---- N° de série : grand champ (smartphone) + QR ---- */
+#snInp{height:11mm;font-size:15pt;font-weight:bold;letter-spacing:.4px}
+.ident .sn .btn{flex:none}
+#qrOv{display:none;position:fixed;inset:0;z-index:99;background:rgba(0,0,0,.92);flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:12px}
+#qrOv video{width:100%;max-width:520px;max-height:62vh;border:3px solid var(--orange);border-radius:8px;background:#000;object-fit:cover}
+#qrOv .qrst{color:#fff;font-size:15px;text-align:center}
+#qrOv button{background:#666;color:#fff;border:0;border-radius:6px;padding:12px 26px;font-size:16px;font-weight:bold}
+@media screen and (max-width:800px){
+ #snInp{height:16mm;font-size:22px;padding:2mm 3mm;border:2px solid var(--orange);letter-spacing:.8px}
+ .ident .sn{flex-direction:column;align-items:stretch;gap:2.5mm}
+ .ident .sn>label.f{flex-direction:column;align-items:stretch;gap:1.5mm;font-size:12pt}
+ .ident .sn .btn{justify-content:center;font-size:13pt;padding:3.2mm 4mm}
+ .snres{font-size:11pt}.chip{font-size:12pt;padding:1.2mm 3.5mm}
+}
+@media print{#qrOv,#snQr{display:none!important}#snInp{height:8mm;font-size:11pt}}
+
+/* ---- bloc identification : plus de débordement ---- */
+.ident>*{min-width:0}
+.ident{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ident label.f{min-width:0}
+.ident input.box{max-width:100%}
+@media screen and (max-width:800px){
+ .ident{grid-template-columns:minmax(0,1fr)}
+ .ident label.f{flex-direction:column;align-items:stretch;gap:1.5mm;font-size:12pt}
+ .ident input.box{width:100%;height:13mm;font-size:18px;padding:2mm 3mm}
+ .ident input[type=date].box{width:100%;-webkit-appearance:none;appearance:none;min-width:0}
+ .ident .sn>label.f input.box{height:16mm}
+}
+
+/* ---- N° de série : pleine largeur, boutons sous le champ ---- */
+.ident .sn{grid-column:1/-1;flex-wrap:wrap;gap:2.5mm 3mm}
+.ident .sn>label.f:first-child{flex:1 1 100%;white-space:nowrap}
+.ident .sn>label.f:first-child input.box{min-width:0}
+.ident .sn .btn{flex:0 0 auto}
+@media screen and (max-width:800px){.ident .sn>label.f:first-child{white-space:normal}}
+@media print{.ident .sn{flex-wrap:nowrap}.ident .sn>label.f:first-child{flex:1 1 auto}}
+
+
+/* ---- Étapes TRÈS IMPORTANTES : désactiver la localisation / verrouillage avant dépôt ---- */
+.loc{margin:3mm 0;border:2px solid var(--red);border-radius:3px;background:#fff6f5;padding:2.5mm 3.5mm;break-inside:avoid}
+.loc h2{margin:0 0 1.5mm;color:var(--red);font-size:11.5pt;text-transform:uppercase}
+.loc .why{font-size:9pt;font-weight:bold;margin:0 0 2mm}
+.loc .cols{display:grid;grid-template-columns:1fr 1fr;gap:2mm 5mm}
+.loc .os{border:1px solid #e0a29d;border-radius:3px;background:#fff;padding:1.8mm 2.5mm}
+.loc .os>b:first-child{display:block;font-size:10pt;margin-bottom:1mm}
+.loc .cb{display:flex;align-items:flex-start;gap:2mm;font-size:9pt;margin:.9mm 0}
+.loc .cb span{flex:1}
+.loc .ok{margin-top:2mm;padding-top:1.5mm;border-top:1px dashed #e0a29d;font-weight:bold}
+@media screen and (max-width:800px){.loc .cols{grid-template-columns:1fr}.loc .cb{font-size:11.5pt}}
+/* ---- Éléments reçus : Présent / Absent (prise en charge comptoir) ---- */
+.recu{display:grid;grid-template-columns:1fr 1fr;gap:1mm 8mm;margin:1mm 0 3mm}
+.rc{display:flex;align-items:center;gap:3mm;border-bottom:1px dotted var(--line);padding:.8mm 0;break-inside:avoid}
+.rc .rn{flex:1;font-size:10pt;font-weight:bold;min-width:0}
+.rc .cb{margin:0;font-size:9.5pt}
+.rc.rfree .rn{flex:0 0 auto}.rc.rfree input.box{flex:1;min-width:0;height:6.5mm;padding:.8mm 2mm}
+.rc .ab input:checked ~ span{color:var(--red);font-weight:bold}
+.rc .pr input:checked ~ span{font-weight:bold}
+.rc .ab input:checked + i{border-color:var(--red)}
+.rcall{margin:0 0 1.5mm;font-size:9pt;padding:1mm 3mm}
+.obs textarea{height:24mm}
+@media screen and (max-width:800px){
+ .recu{grid-template-columns:minmax(0,1fr)}
+ .rc{padding:2.2mm 0;gap:4mm}.rc .rn{font-size:12pt}
+ .rc .cb{font-size:12pt;gap:2.4mm;padding:1mm 2mm}
+ .rc .cb i{width:6mm;height:6mm}
+ .rc .cb input:checked + i::after{left:1.3mm;top:-.6mm;width:2mm;height:4.6mm}
+ .obs textarea{height:34mm;font-size:16px}
+}
+@media print{.rcall{display:none!important}}
+
+/* ---- Symptôme de panne ---- */
+.sympt{margin:2mm 0 1mm}
+.sympt label{display:block;font-weight:bold;font-size:10pt;margin-bottom:1mm}
+.sympt textarea{height:16mm}
+@media screen and (max-width:800px){.sympt label{font-size:12pt}.sympt textarea{height:30mm;font-size:16px}}
+
+/* ---- Recherche FAQ / résolution de panne ---- */
+.faqbtn{margin:1.5mm 0 0;font-size:10pt;padding:2mm 4mm;border:0}
+#faqPanel{display:none;border:1.5px solid var(--orange);border-radius:3px;background:#fffaf2;padding:3mm 4mm;margin:2mm 0 3mm}
+#faqPanel h4{margin:2mm 0 1mm;font-size:9.5pt;color:var(--red)}
+#faqPanel .fch{display:inline-block;border:1px solid var(--orange);background:#fff;color:#333;border-radius:12px;padding:.8mm 3mm;margin:.6mm 1.2mm .6mm 0;font:inherit;font-size:9.5pt;cursor:pointer}
+#faqPanel .fch.on{background:var(--orange);color:#fff;font-weight:bold}
+#faqPanel input.fq{width:100%;border:1px solid var(--line);border-radius:2px;padding:1.6mm 2mm;font:inherit;font-size:11pt;height:9mm;margin:1mm 0 2mm}
+#faqPanel .fl{display:flex;flex-wrap:wrap;gap:2mm}
+#faqPanel .fl a{background:var(--red);color:#fff;text-decoration:none;font-weight:bold;font-size:10pt;padding:2mm 4mm;border-radius:2mm}
+#faqPanel .fl a.sec{background:#666}
+#faqPanel .fnote{font-size:9pt;color:var(--grey);margin-top:1.5mm}
+@media screen and (max-width:800px){
+ .faqbtn{font-size:13pt;padding:3.2mm 4mm;width:100%;justify-content:center}
+ #faqPanel .fch{font-size:12pt;padding:1.6mm 3.5mm}
+ #faqPanel input.fq{font-size:16px;height:13mm}
+ #faqPanel .fl a{font-size:12pt;padding:3mm 4mm;flex:1 1 100%;text-align:center}
+}
+@media print{.faqbtn,#faqPanel{display:none!important}}
+
+/* ---- Photo de l'ensemble des accessoires ---- */
+.gcam.acc{margin:2mm 0 3mm;padding:2mm 3mm;border:1.5px dashed var(--orange);border-radius:3px;background:#fffaf2;flex-wrap:wrap}
+.gcam.acc .rowcam{font-size:10pt;padding:1.8mm 4mm}
+.gcam.acc .accth{display:flex;gap:2mm;flex-wrap:wrap}
+.gcam.acc .accth img{height:14mm;width:auto;border:1px solid var(--line);border-radius:2px;display:block}
+@media screen and (max-width:800px){.gcam.acc{font-size:11pt}.gcam.acc .rowcam{font-size:13pt;padding:3.2mm 4mm;flex:1 1 100%;justify-content:center}.gcam.acc .accth img{height:20mm}}
+
+/* ---- Téléphone : 4 vues du schéma, IMEI ---- */
+.views.v4{grid-template-columns:repeat(4,1fr)}
+.views.v4 .view svg{height:44mm}
+@media screen and (max-width:800px){.views.v4{grid-template-columns:repeat(2,1fr)}.views.v4 .view{border-bottom:1px solid var(--line)}}
+.ident .imeis{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:inherit}
+.ident .imeis label.f{min-width:0;flex-direction:column;align-items:stretch;gap:1mm}
+.ident input.imei{letter-spacing:.6px;font-size:14pt;font-weight:bold;height:11mm;min-width:0;width:100%;box-sizing:border-box}
+@media screen and (max-width:800px){.ident>.w3,.ident>.w2,.ident>.imeis{grid-column:1/-1}.ident .imeis{grid-template-columns:1fr}.ident input.imei{height:16mm;font-size:20px;border:2px solid var(--orange);padding:2mm 3mm}}
+@media print{.ident input.imei{height:8mm;font-size:11.5pt}}
+.opts .grp:empty{display:none}
+
+
+/* ---- Couleurs : vert = point positif / conforme, rouge = anomalie ---- */
+.cb.pos i,.cb.neg i{border-width:1.5px}
+.cb.pos i{border-color:#1a7f37}
+.cb.neg i{border-color:#c62828}
+.cb.pos input:checked + i{background:#e3f5e8;border-color:#1a7f37}
+.cb.neg input:checked + i{background:#fdeaea;border-color:#c62828}
+.cb.pos input:checked + i::after{border-color:#1a7f37}
+.cb.neg input:checked + i::after{border-color:#c62828}
+.cb.pos input:checked ~ span{color:#1a7f37;font-weight:bold}
+.cb.neg input:checked ~ span{color:#c62828;font-weight:bold}
+.legend{font-size:8pt;color:var(--grey);margin:1mm 0 2mm}.legend b.g{color:#1a7f37}.legend b.r{color:#c62828}
+</style><style id="printCompact">
+/* ---- impression : fiche compacte (2 pages max) ; la taille des photos n'est PAS modifiée ---- */
+@media print{
+ @page{size:A4;margin:6mm 8mm}
+ body{font-size:8.6pt}
+ .ttl{font-size:13pt;padding-left:3mm;border-left-width:3mm}.logos{height:10mm}
+ header{margin-bottom:0}
+ .ident{margin:2mm 0 1mm;gap:1.5mm 4mm}
+ .ident label.f{font-size:8.6pt;gap:1.5mm}
+ input.box{height:5.8mm;padding:.5mm 1.5mm;font-size:8.6pt}
+ #snInp{height:6.5mm;font-size:10.5pt}
+ .ident input.imei{height:7mm;font-size:11pt}
+ .brands{gap:.5mm 3.5mm;margin:.5mm 0}
+ .cb{font-size:8.3pt;margin:.2mm 0;gap:1.4mm}.cb i{width:3mm;height:3mm}
+ .warn{font-size:8.4pt;margin:1.2mm 0}
+ h2{font-size:9.3pt;margin:1.6mm 0 .8mm}h2 em{font-size:7.6pt}
+ textarea{height:9mm;font-size:8.4pt;padding:.8mm 1.5mm}
+ .loc{margin:1.4mm 0;padding:1.3mm 2.2mm;border-width:1.5px}
+ .loc h2{font-size:9.2pt;margin:0 0 .6mm}.loc .why{font-size:7.4pt;margin:0 0 1mm}
+ .loc .cols{gap:1.2mm 3mm}.loc .os{padding:.8mm 1.6mm}.loc .os>b:first-child{font-size:8.4pt;margin-bottom:.4mm}
+ .loc .cb{font-size:7.5pt;margin:.15mm 0;gap:1.4mm}.loc .ok{margin-top:1mm!important;padding-top:.6mm}
+ .recu{margin:.5mm 0 1.5mm}.rc{padding:.2mm 0;gap:2mm}.rc .rn{font-size:8.5pt}.rc .cb{font-size:8.1pt}
+ .rc.rfree input.box{height:5mm}
+ .views .view svg,.views.v4 .view svg{height:29mm}
+ .view{padding:1mm 1mm 0}.view .cap{font-size:7.4pt;padding:0 0 .8mm}
+ .mk{width:4.4mm;height:4.4mm;margin:-2.2mm 0 0 -2.2mm;font-size:7.4pt}
+ .states{margin:1mm 0 1.5mm;gap:0 5mm}
+ .row{grid-template-columns:16mm 44mm 1fr;gap:2mm;padding:.8mm 0}
+ .ico{width:16mm;height:11.5mm}.ico svg{width:13mm;height:10mm}
+ .txt h3{font-size:8.4pt;margin:0 0 .3mm}.txt p{font-size:7.2pt;line-height:1.18}
+ .opts{gap:.4mm 3mm}.gt{font-size:7pt}
+ .verdict{padding:1.5mm 3mm;margin:1.5mm 0}.verdict h3{font-size:9pt;margin:0 0 1mm}
+ #photos{margin-top:1.5mm}
+ h2{break-after:avoid}textarea{break-inside:avoid}
+ .sign{margin-top:1.5mm;gap:1.5mm 4mm;font-size:8pt}.pad{aspect-ratio:12/1}.sg{padding:1mm 1.5mm}
+ .foot{margin-top:1mm}
+}
+</style>
+</head>
+<body>
+<div id="qrOv"><video id="qrVid" playsinline muted></video><div class="qrst" id="qrSt"></div><button type="button" id="qrClose">Fermer</button></div>
+<div class="toolbar"><a href="index.html" style="color:#fff;text-decoration:none;font-weight:bold">&larr; Hub</a><button onclick="window.print()">Imprimer / PDF</button><button onclick="saveFile()">&#128190; Enregistrer</button><label class="tb">&#128194; Ouvrir<input type="file" id="openFile" accept=".json,application/json" hidden></label><button class="sec" onclick="resetAll()">Réinitialiser</button><span id="msg">Cases cliquables (vert = conforme, rouge = anomalie) · repères sur schéma · photos · signatures</span></div>
+
+<div class="page" id="p1">
+<header>
+  <div class="ttl">Inspection visuelle<br>Trottinette électrique</div>
+  <img class="logos" alt="Fnac Darty" src="data:image/png;base64,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">
+</header>
+
+<div class="ident">
+  <label class="f w2">N° dossier : <input class="box" type="text"></label>
+  <label class="f">Date : <input class="box" type="date" id="dateInp"></label>
+  <label class="f w3">Modèle : <input class="box" type="text" id="mdlInp" placeholder="ex. Xiaomi 4 Pro, Ninebot Max G2"></label>
+  <div class="f w3 sn"><label class="f" style="flex:1">N° de série : <input class="box" type="text" id="snInp" autocomplete="off"></label>
+  <button type="button" class="btn snbtn" id="snQr">&#9638; Scanner le QR code</button>
+  <label class="btn snbtn sec">&#128247; Photo de l'étiquette (modèle / n° de série)<input id="snCam" type="file" accept="image/*" capture="environment" hidden></label></div>
+<div class="w3 snres" id="snRes"></div>
+  <label class="f">Date d'achat : <input class="box" type="date"></label>
+  <label class="f">Kilométrage : <input class="box" type="text" placeholder="compteur, ex. 350 km"></label>
+</div>
+<div style="font-weight:bold;font-size:10pt">Marque :</div>
+<div class="brands"><label class="cb"><input type="checkbox"><i></i><span>Xiaomi</span></label><label class="cb"><input type="checkbox"><i></i><span>Segway-Ninebot</span></label><label class="cb"><input type="checkbox"><i></i><span>Cecotec</span></label><label class="cb"><input type="checkbox"><i></i><span>Navee</span></label><label class="cb"><input type="checkbox"><i></i><span>Pure</span></label><label class="cb"><input type="checkbox"><i></i><span>Hiboy</span></label><label class="cb"><input type="checkbox"><i></i><span>Ducati</span></label><label class="cb"><input type="checkbox"><i></i><span>Kaabo</span></label><label class="cb"><input type="checkbox"><i></i><span>Dualtron</span></label><label class="cb"><input type="checkbox"><i></i><span>Autre :</span></label> <input class="line" type="text" placeholder="préciser" style="width:30mm"></div>
+
+<div class="sympt"><label for="symp">Symptôme de panne (déclaré par le client) :</label><textarea id="symp" placeholder="ex. ne s'allume plus, ne charge pas, plus d'assistance moteur, freins qui ne répondent pas, crevaison, code d'erreur…"></textarea></div>
+
+<div class="warn">Tout défaut d'entretien, choc, passage dans l'eau ou utilisation hors cadre (surcharge, modification, débridage) peut entraîner une exclusion de garantie et l'émission d'un devis.</div>
+
+<div class="loc">
+<h2>⚠ Étapes très importantes : sécurité de la batterie et verrouillage de la trottinette</h2>
+<p class="why">À faire <u>avec le client, avant tout dépôt</u> : une batterie lithium abîmée est un risque d'incendie, et un antivol / compte appli encore actif empêche les tests et la restitution. Ne jamais recharger ni démonter au comptoir une batterie douteuse.</p>
+<div class="cols">
+<div class="os"><b>🔋 Batterie (contrôle visuel avant dépôt)</b><label class="cb pos"><input type="checkbox"><i></i><span>Batterie / carter <b>sans déformation, gonflement, fuite ni odeur</b> de brûlé ou de chimique</span></label><label class="cb pos"><input type="checkbox"><i></i><span>Pas de chaleur anormale, de traces de brûlure ou de choc violent sur la batterie</span></label><label class="cb pos"><input type="checkbox"><i></i><span>Trottinette <b>éteinte</b>, chargeur débranché, aucune charge en cours</span></label><label class="cb pos"><input type="checkbox"><i></i><span>Batterie amovible (si présente) : retirée, étiquetée au nom du client et déposée avec le dossier</span></label></div>
+<div class="os"><b>📲 Compte appli &amp; antivol</b><label class="cb pos"><input type="checkbox"><i></i><span>Antivol / verrouillage dans l'appli (Mi Home, Ninebot-Segway, Navee…) <b>désactivé</b></span></label><label class="cb pos"><input type="checkbox"><i></i><span>Trottinette <b>dissociée du compte</b> du client (ou code d'appairage communiqué)</span></label><label class="cb pos"><input type="checkbox"><i></i><span>Code de démarrage / mot de passe / PIN retiré ou communiqué</span></label><label class="cb pos"><input type="checkbox"><i></i><span>Réglages modifiés (vitesse débridée, mode sport forcé…) : le signaler dans les observations</span></label></div>
+</div>
+<div class="os ok" style="margin-top:2mm"><b>Contrôles communs</b><label class="cb pos"><input type="checkbox"><i></i><span>Désactivations <b>vérifiées avec le client</b> (antivol, compte, code)</span></label><label class="cb pos"><input type="checkbox"><i></i><span>Client informé que les <b>réglages, l'historique et le micrologiciel</b> peuvent être réinitialisés</span></label><label class="cb pos"><input type="checkbox"><i></i><span>Batterie gonflée / endommagée / fuite : <b>ne pas charger, ne pas stocker en zone client</b>, isoler sur surface non inflammable et prévenir le responsable</span></label><label class="cb pos"><input type="checkbox"><i></i><span>Client n'a pas pu désactiver l'antivol / le compte : <b>dépôt refusé / signalé au responsable</b></span></label></div>
+</div>
+<h2>Éléments reçus avec le produit</h2>
+<button type="button" class="btn sec rcall" id="rcAll">&#10003; Tout présent</button>
+<div class="recu"><div class="rc"><span class="rn">Trottinette</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div><div class="rc"><span class="rn">Chargeur secteur</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div><div class="rc"><span class="rn">Câble d&#39;alimentation</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div><div class="rc"><span class="rn">Clé(s) / antivol</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div><div class="rc"><span class="rn">Batterie amovible (si présente)</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div><div class="rc"><span class="rn">Support téléphone</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div><div class="rc"><span class="rn">Sacoche / accessoires</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div><div class="rc"><span class="rn">Boîte d&#39;origine</span><label class="cb pr pos"><input type="checkbox"><i></i><span>Présent</span></label><label class="cb ab neg"><input type="checkbox"><i></i><span>Absent</span></label></div><div class="rc rfree"><span class="rn">Autres accessoires</span><input class="box line" type="text" placeholder="à préciser (ex. clignotants, siège, cadenas…)"></div></div>
+<div class="gcam acc"><label class="btn rowcam" data-sec="Ensemble des accessoires">&#128247; Photo de l'ensemble des accessoires<span class="n"></span><input type="file" accept="image/*" capture="environment" hidden></label><span>Tous les accessoires remis, réunis sur une seule photo.</span><span class="accth"></span></div>
+
+<h2>Schéma global <em>(À compléter si nécessaire — cliquer sur le schéma pour repérer un défaut, re-cliquer sur le repère pour le retirer)</em></h2>
+<div class="views v4">
+  <div class="view" data-v="left"><svg viewBox="0 0 200 170"><line x1="10" y1="152" x2="190" y2="152" stroke="#ddd" stroke-width="1.5"/><circle cx="42" cy="130" r="20" fill="#fff" stroke="#333" stroke-width="5"/><circle cx="42" cy="130" r="6" fill="#999" stroke="#333"/><circle cx="160" cy="130" r="20" fill="#fff" stroke="#333" stroke-width="5"/><circle cx="160" cy="130" r="6" fill="#999" stroke="#333"/><path d="M16 128a26 26 0 0 1 52 0" fill="none" stroke="#333" stroke-width="2.5"/><path d="M134 128a26 26 0 0 1 52 0" fill="none" stroke="#333" stroke-width="2.5"/><rect x="52" y="116" width="96" height="10" rx="4" fill="#e8e8e8" stroke="#333" stroke-width="1.8"/><path d="M148 118L134 30" stroke="#333" stroke-width="6" stroke-linecap="round"/><rect x="126" y="21" width="16" height="9" rx="3" fill="#333"/><rect x="118" y="12" width="24" height="9" rx="3" fill="#9cc4e4" stroke="#333"/><rect x="140" y="40" width="10" height="6" rx="2" fill="#f5c542" stroke="#333"/><circle cx="141" cy="82" r="4" fill="#f5c542" stroke="#333"/><rect x="18" y="112" width="6" height="5" fill="#d6231a"/><path d="M72 126l12 24" stroke="#333" stroke-width="2.5" stroke-linecap="round"/></svg><div class="cap">Profil gauche</div></div>
+  <div class="view" data-v="right"><svg viewBox="0 0 200 170"><line x1="10" y1="152" x2="190" y2="152" stroke="#ddd" stroke-width="1.5"/><g transform="translate(200 0) scale(-1 1)"><circle cx="42" cy="130" r="20" fill="#fff" stroke="#333" stroke-width="5"/><circle cx="42" cy="130" r="6" fill="#999" stroke="#333"/><circle cx="160" cy="130" r="20" fill="#fff" stroke="#333" stroke-width="5"/><circle cx="160" cy="130" r="6" fill="#999" stroke="#333"/><path d="M16 128a26 26 0 0 1 52 0" fill="none" stroke="#333" stroke-width="2.5"/><path d="M134 128a26 26 0 0 1 52 0" fill="none" stroke="#333" stroke-width="2.5"/><rect x="52" y="116" width="96" height="10" rx="4" fill="#e8e8e8" stroke="#333" stroke-width="1.8"/><path d="M148 118L134 30" stroke="#333" stroke-width="6" stroke-linecap="round"/><rect x="126" y="21" width="16" height="9" rx="3" fill="#333"/><rect x="118" y="12" width="24" height="9" rx="3" fill="#9cc4e4" stroke="#333"/><rect x="140" y="40" width="10" height="6" rx="2" fill="#f5c542" stroke="#333"/><circle cx="141" cy="82" r="4" fill="#f5c542" stroke="#333"/><rect x="18" y="112" width="6" height="5" fill="#d6231a"/><path d="M72 126l12 24" stroke="#333" stroke-width="2.5" stroke-linecap="round"/></g></svg><div class="cap">Profil droit</div></div>
+  <div class="view" data-v="front"><svg viewBox="0 0 200 170"><line x1="10" y1="152" x2="190" y2="152" stroke="#ddd" stroke-width="1.5"/><rect x="60" y="138" width="80" height="8" rx="4" fill="#e8e8e8" stroke="#333" stroke-width="1.8"/><rect x="94" y="110" width="12" height="42" rx="6" fill="#fff" stroke="#333" stroke-width="2"/><rect x="89" y="102" width="22" height="9" rx="3" fill="#ddd" stroke="#333"/><rect x="96" y="30" width="8" height="74" rx="2" fill="#fff" stroke="#333" stroke-width="1.8"/><rect x="40" y="19" width="120" height="7" rx="3.5" fill="#fff" stroke="#333" stroke-width="1.8"/><rect x="30" y="17" width="12" height="11" rx="4" fill="#444"/><rect x="158" y="17" width="12" height="11" rx="4" fill="#444"/><rect x="50" y="26" width="5" height="16" rx="2" fill="#d6231a"/><rect x="145" y="26" width="5" height="16" rx="2" fill="#d6231a"/><rect x="86" y="8" width="28" height="11" rx="3" fill="#9cc4e4" stroke="#333"/><circle cx="100" cy="56" r="6" fill="#f5c542" stroke="#333"/></svg><div class="cap">Face avant (guidon, phare)</div></div>
+  <div class="view" data-v="top"><svg viewBox="0 0 200 170"><text x="100" y="8" font-size="7" text-anchor="middle" fill="#888">avant</text><rect x="36" y="13" width="128" height="7" rx="3.5" fill="#fff" stroke="#333" stroke-width="1.8"/><rect x="28" y="11" width="12" height="11" rx="4" fill="#444"/><rect x="160" y="11" width="12" height="11" rx="4" fill="#444"/><rect x="96" y="20" width="8" height="18" fill="#fff" stroke="#333"/><rect x="94" y="36" width="12" height="32" rx="6" fill="#ddd" stroke="#333"/><rect x="72" y="66" width="56" height="78" rx="8" fill="#e8e8e8" stroke="#333" stroke-width="1.8"/><g stroke="#bbb"><path d="M78 80h44M78 90h44M78 100h44M78 110h44M78 120h44M78 130h44"/></g><rect x="120" y="68" width="6" height="8" rx="1.5" fill="#444"/><rect x="94" y="144" width="12" height="22" rx="6" fill="#ddd" stroke="#333"/><rect x="96" y="162" width="8" height="4" fill="#d6231a"/></svg><div class="cap">Dessus (guidon &amp; plateau)</div></div>
+</div>
+<div class="gcam"><label class="btn rowcam" data-sec="Schéma global / état général">&#128247; Photo<span class="n"></span><input type="file" accept="image/*" capture="environment" hidden></label><span>Photo de l'aspect général (rayures, chocs…)</span></div>
+<div class="states">
+  <div><label class="cb pos"><input type="checkbox"><i></i><span>Cadre intact</span></label><label class="cb pos"><input type="checkbox"><i></i><span>Plateau &amp; revêtement antidérapant intacts</span></label><label class="cb pos"><input type="checkbox"><i></i><span>Guidon et potence intacts</span></label><label class="cb pos"><input type="checkbox"><i></i><span>Pneus en bon état</span></label><label class="cb pos"><input type="checkbox"><i></i><span>Batterie / carter intacts</span></label></div>
+  <div><label class="cb neg"><input type="checkbox"><i></i><span>Rayures / impacts</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Traces d'oxydation (eau / humidité)</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Traces d'ouverture / de démontage</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Modifications (débridage, pièces non d'origine)</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Câbles apparents endommagés</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Garde-boue cassé / manquant</span></label></div>
+</div>
+
+<div class="obs"><h2>Observations <em>(décrire les repères du schéma : n° → défaut)</em></h2>
+<textarea></textarea></div>
+
+<div class="rows"><section class="row"><div class="icol"><div class="ico"><svg viewBox="0 0 60 48"><circle cx="30" cy="25" r="15" fill="#fff" stroke="#444" stroke-width="4"/><circle cx="30" cy="25" r="4" fill="#444"/><path d="M30 10v30M15 25h30M19 14l22 22M41 14L19 36" stroke="#bbb" stroke-width="1.2"/></svg></div><label class="btn rowcam" data-sec="Pneus &amp; roues">&#128247;<span class="n"></span><input type="file" accept="image/*" capture="environment" hidden></label></div>
+<div class="txt"><h3>Pneus &amp; roues</h3><p>Contrôle visuel, trottinette à l'arrêt : état et pression des pneus, usure, jante, roulements, valve.</p></div>
+<div class="opts"><div class="grp"><label class="cb pos"><input type="checkbox"><i></i><span>OK</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Pneu crevé / à plat</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Pneu usé / lisse</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Pneu fendu / hernie</span></label></div><div class="grp"><label class="cb neg"><input type="checkbox"><i></i><span>Jante voilée / abîmée</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Jeu ou bruit de roulement</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Valve endommagée / manquante</span></label></div></div></section>
+<section class="row"><div class="icol"><div class="ico"><svg viewBox="0 0 60 48"><circle cx="28" cy="25" r="14" fill="#f6f6f6" stroke="#444" stroke-width="2"/><circle cx="28" cy="25" r="3" fill="#444"/><circle cx="28" cy="15" r="1.4" fill="#444"/><circle cx="28" cy="35" r="1.4" fill="#444"/><rect x="39" y="15" width="9" height="14" rx="2" fill="#d6231a"/></svg></div><label class="btn rowcam" data-sec="Freinage">&#128247;<span class="n"></span><input type="file" accept="image/*" capture="environment" hidden></label></div>
+<div class="txt"><h3>Freinage</h3><p>Vérifier les leviers, câbles, disques / patins et le frein électronique (levier tiré, trottinette à l'arrêt).</p></div>
+<div class="opts"><div class="grp"><label class="cb pos"><input type="checkbox"><i></i><span>OK</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Frein avant inefficace</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Frein arrière inefficace</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Levier déformé / jeu excessif</span></label></div><div class="grp"><label class="cb neg"><input type="checkbox"><i></i><span>Disque voilé / patins usés</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Câble détendu / coupé</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Frein électronique défaillant</span></label></div></div></section>
+<section class="row"><div class="icol"><div class="ico"><svg viewBox="0 0 60 48"><rect x="10" y="8" width="40" height="4" rx="2" fill="#444"/><rect x="28" y="11" width="4" height="27" fill="#444"/><circle cx="30" cy="27" r="3.2" fill="#f5c542" stroke="#444"/><rect x="14" y="38" width="32" height="5" rx="2" fill="#bbb" stroke="#444"/></svg></div><label class="btn rowcam" data-sec="Direction, cadre &amp; pliage">&#128247;<span class="n"></span><input type="file" accept="image/*" capture="environment" hidden></label></div>
+<div class="txt"><h3>Direction, cadre &amp; pliage</h3><p>Vérifier le guidon, la potence, le mécanisme de pliage, le plateau, la béquille et les fixations.</p></div>
+<div class="opts"><div class="grp"><label class="cb pos"><input type="checkbox"><i></i><span>OK</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Jeu dans la direction</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Potence / guidon tordu</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Pliage : jeu ou blocage défectueux</span></label></div><div class="grp"><label class="cb neg"><input type="checkbox"><i></i><span>Cadre / plateau fissuré ou déformé</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Béquille cassée</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Revêtement du plateau abîmé</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Vis / fixations manquantes</span></label></div></div></section>
+<section class="row"><div class="icol"><div class="ico"><svg viewBox="0 0 60 48"><rect x="8" y="16" width="36" height="18" rx="3" fill="#fff" stroke="#444" stroke-width="2"/><rect x="44" y="21" width="5" height="8" fill="#444"/><path d="M27 18l-6 9h5l-3 7" fill="none" stroke="#f08a00" stroke-width="2"/></svg></div><label class="btn rowcam" data-sec="Batterie &amp; recharge">&#128247;<span class="n"></span><input type="file" accept="image/*" capture="environment" hidden></label></div>
+<div class="txt"><h3>Batterie &amp; recharge</h3><p>Vérifier la charge, le port, le chargeur et l'état de la batterie (sans jamais charger une batterie gonflée ou chaude).</p></div>
+<div class="opts"><div class="grp"><label class="cb pos"><input type="checkbox"><i></i><span>OK</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Ne charge pas</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Charge intermittente / incomplète</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Autonomie anormale</span></label></div><div class="grp"><label class="cb neg"><input type="checkbox"><i></i><span>Batterie gonflée / déformée / fuite</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Chaleur anormale / odeur</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Port de charge endommagé / oxydé</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Chargeur défectueux</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Batterie à remplacer</span></label></div></div></section>
+<section class="row"><div class="icol"><div class="ico"><svg viewBox="0 0 60 48"><circle cx="30" cy="24" r="16" fill="#fff" stroke="#444" stroke-width="2"/><circle cx="30" cy="24" r="8" fill="#f6f6f6" stroke="#444" stroke-width="2"/><path d="M31 17l-5 8h4l-2 7 7-10h-4z" fill="#f08a00"/></svg></div><label class="btn rowcam" data-sec="Moteur &amp; accélération">&#128247;<span class="n"></span><input type="file" accept="image/*" capture="environment" hidden></label></div>
+<div class="txt"><h3>Moteur &amp; accélération</h3><p>Vérifier la réponse du moteur, l'accélérateur (gâchette ou poignée) et les bruits anormaux.</p></div>
+<div class="opts"><div class="grp"><label class="cb pos"><input type="checkbox"><i></i><span>OK</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Pas d'assistance moteur</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Moteur bruyant / à-coups</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Coupure en roulant</span></label></div><div class="grp"><label class="cb neg"><input type="checkbox"><i></i><span>Accélérateur défectueux</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Surchauffe</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Vitesse limitée anormalement</span></label></div></div></section>
+<section class="row"><div class="icol"><div class="ico"><svg viewBox="0 0 60 48"><rect x="8" y="10" width="26" height="16" rx="3" fill="#9cc4e4" stroke="#444" stroke-width="2"/><circle cx="40" cy="34" r="6" fill="#f5c542" stroke="#444" stroke-width="2"/><path d="M48 28l6-2M49 34h7M48 40l6 2" stroke="#f5c542" stroke-width="1.6"/></svg></div><label class="btn rowcam" data-sec="Écran, commandes &amp; éclairage">&#128247;<span class="n"></span><input type="file" accept="image/*" capture="environment" hidden></label></div>
+<div class="txt"><h3>Écran, commandes &amp; éclairage</h3><p>Vérifier l'afficheur, les boutons, le phare, le feu arrière / stop, les clignotants et la sonnette.</p></div>
+<div class="opts"><div class="grp"><label class="cb pos"><input type="checkbox"><i></i><span>OK</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Écran / afficheur HS</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Boutons défectueux</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Sonnette / avertisseur HS</span></label></div><div class="grp"><label class="cb neg"><input type="checkbox"><i></i><span>Phare avant HS</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Feu arrière / stop HS</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Clignotants HS (si présents)</span></label></div></div></section>
+<section class="row"><div class="icol"><div class="ico"><svg viewBox="0 0 60 48"><path d="M22 15a12 12 0 1 0 16 0" fill="none" stroke="#444" stroke-width="2.4" stroke-linecap="round"/><path d="M30 9v15" stroke="#444" stroke-width="2.6" stroke-linecap="round"/></svg></div><label class="btn rowcam" data-sec="Démarrage, appli &amp; sécurité">&#128247;<span class="n"></span><input type="file" accept="image/*" capture="environment" hidden></label></div>
+<div class="txt"><h3>Démarrage, appli &amp; sécurité</h3><p>Vérifier l'allumage, les codes d'erreur, l'appairage Bluetooth / appli, l'antivol et les mises à jour.</p></div>
+<div class="opts"><div class="grp"><label class="cb pos"><input type="checkbox"><i></i><span>OK</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Ne s'allume pas</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Code d'erreur affiché (le noter en observations)</span></label></div><div class="grp"><label class="cb neg"><input type="checkbox"><i></i><span>Bluetooth / appli : connexion impossible</span></label><label class="cb"><input type="checkbox"><i></i><span>Compte appli associé</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Antivol actif / code oublié</span></label><label class="cb neg"><input type="checkbox"><i></i><span>Mise à jour du micrologiciel échouée</span></label></div></div></section>
+</div>
+
+<div class="obs"><h2>Détails complémentaires / Motif de prise en charge</h2>
+<textarea></textarea></div>
+
+<div style="margin-top:3mm;display:flex;gap:6mm;align-items:center;flex-wrap:wrap">
+  <label class="cb"><input type="checkbox" id="phChk"><i></i><span>Photos jointes au dossier</span></label>
+  <label style="font-size:9.5pt">Nombre : <input class="line" type="text" id="phN" style="width:14mm"></label>
+</div>
+
+<section id="photos" class="empty">
+<h2>Photos <em>(légende possible : n° du repère du schéma, pièce concernée…)</em></h2>
+<div class="phbar">
+  <label class="btn">&#128247; Prendre une photo<input id="phCam" type="file" accept="image/*" capture="environment" hidden></label>
+  <label class="btn sec">&#128444; Ajouter depuis la galerie / fichiers<input id="phFile" type="file" accept="image/*" multiple hidden></label>
+</div>
+<div id="phGrid" class="phgrid"></div>
+</section>
+
+<div class="foot" style="margin:0 0 2mm;font-size:8pt;color:#777;text-align:left">Fiche à imprimer en deux exemplaires.</div>
+<div class="sign">
+    <div class="sg"><label>Technicien (nom) : <input class="line" type="text" style="width:30%"></label> <label style="margin-left:3mm">Date / heure : <input class="line" type="text" id="sgDate" style="width:27%"></label><button type="button" class="clr" onclick="clearPad(this)">Effacer</button><canvas class="pad" width="900" height="150"></canvas><div class="sl">Signature du technicien</div></div>
+  <div class="sg"><label>Client / réceptionnaire (nom) : <input class="line" type="text" style="width:40%"></label><button type="button" class="clr" onclick="clearPad(this)">Effacer</button><canvas class="pad" width="900" height="150"></canvas><div class="sl">Signature du client</div></div>
+</div>
+</div>
+
+<script>
+/* repères sur le schéma : numérotés dans l'ordre des clics (1, 2, 3…), jamais renumérotés */
+function mkMax(){var x=0;document.querySelectorAll('.mk').forEach(function(m){var k=+m.dataset.n||0;if(k>x)x=k;});return x;}
+function mkAdd(v,l,t,k){var m=document.createElement('div');m.className='mk';m.style.left=l;m.style.top=t;m.dataset.n=k;m.textContent=k;v.appendChild(m);return m;}
+document.querySelectorAll('.view').forEach(function(v){
+  v.addEventListener('click',function(e){
+    if(e.target.classList.contains('mk')){e.target.remove();return;}
+    var r=v.getBoundingClientRect();
+    mkAdd(v,((e.clientX-r.left)/r.width*100)+'%',((e.clientY-r.top)/r.height*100)+'%',mkMax()+1);
+  });
+});
+
+function loadImg(file){return new Promise(function(res,rej){var u=URL.createObjectURL(file),im=new Image();im.onload=function(){res({im:im,url:u})};im.onerror=function(){rej(new Error('image'))};im.src=u;});}
+function toCanvas(im,max,gray){
+  var s=Math.min(1,max/Math.max(im.naturalWidth,im.naturalHeight)),c=document.createElement('canvas');
+  c.width=Math.round(im.naturalWidth*s);c.height=Math.round(im.naturalHeight*s);
+  var x=c.getContext('2d');x.drawImage(im,0,0,c.width,c.height);
+  if(gray){var d=x.getImageData(0,0,c.width,c.height),p=d.data;
+    for(var i=0;i<p.length;i+=4){var g=.299*p[i]+.587*p[i+1]+.114*p[i+2];g=Math.max(0,Math.min(255,(g-128)*1.5+128));p[i]=p[i+1]=p[i+2]=g;}
+    x.putImageData(d,0,0);}
+  return c;
+}
+function addPhotos(files){
+  Array.prototype.forEach.call(files,function(f){
+    if(!f.type||f.type.indexOf('image')!==0)return;
+    loadImg(f).then(function(o){addPhotoData(toCanvas(o.im,1400).toDataURL('image/jpeg',.8));URL.revokeObjectURL(o.url);});
+  });
+}
+function addPhotoData(d,caption,sec){
+  var fig=document.createElement('div');fig.className='ph';fig.dataset.sec=sec||'';
+  fig.innerHTML='<span class="phn"></span><img alt="photo"><button type="button" class="x" title="Supprimer">&times;</button><input type="text" placeholder="Légende (repère n°, pièce…)">';
+  fig.querySelector('img').src=d;
+  if(caption)fig.querySelector('input').value=caption;
+  fig.querySelector('.x').onclick=function(){fig.remove();phSync();};
+  document.getElementById('phGrid').appendChild(fig);phSync();
+}
+document.querySelectorAll('.rowcam input').forEach(function(inp){
+  inp.addEventListener('change',function(){
+    var f=inp.files[0],sec=inp.parentNode.dataset.sec;inp.value='';if(!f)return;
+    loadImg(f).then(function(o){addPhotoData(toCanvas(o.im,1400).toDataURL('image/jpeg',.8),sec,sec);URL.revokeObjectURL(o.url);});
+  });
+});
+/* ---- N° de série : code-barres + OCR ---- */
+function parseSerials(text){
+  var out=[],seen={};
+  function add(s){s=(s||'').toUpperCase().replace(/^[-.]+|[-.]+$/g,'');if(s.length>=6&&s.length<=28&&!seen[s]){seen[s]=1;out.push(s);}}
+  var re=/(?:S\s*\/?\s*N|SERIAL(?:\s*(?:NO|NUMBER|N°))?|N\s*°?\s*DE\s*S[ÉE]RIE)\s*[:#.\-]?\s*([A-Z0-9][A-Z0-9\-]{5,})/gi,m;
+  while((m=re.exec(text)))add(m[1]);
+  (text.toUpperCase().match(/[A-Z0-9][A-Z0-9\-]{7,}/g)||[]).forEach(function(w){
+    if(/\d/.test(w)&&(/[A-Z]/.test(w)||w.length>=10))add(w);});
+  return out;
+}
+function loadTess(){return new Promise(function(res,rej){
+  if(window.Tesseract)return res();
+  var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.1.0/tesseract.min.js';
+  s.onload=res;s.onerror=function(){rej(new Error('offline'))};document.head.appendChild(s);});}
+function isImei(s){return false;}
+function fillImei(list){var a=document.getElementById('imei1'),b=document.getElementById('imei2');if(!a||!b)return;
+  list.forEach(function(s){if(a.value===s||b.value===s)return;if(!a.value)a.value=s;else if(!b.value)b.value=s;});}
+function showSerials(list,msg,err){
+  var box=document.getElementById('snRes'),inp=document.getElementById('snInp');
+  box.innerHTML='';
+  if(msg){var sp=document.createElement('span');sp.className=err?'err':'';sp.textContent=msg+' ';box.appendChild(sp);}
+  list.forEach(function(s){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=s;
+    b.onclick=function(){if(isImei(s))fillImei([s]);else inp.value=s;};box.appendChild(b);});
+}
+document.getElementById('snCam').addEventListener('change',function(e){
+  var f=e.target.files[0];e.target.value='';if(!f)return;
+  loadImg(f).then(function(o){
+    addPhotoData(toCanvas(o.im,1400).toDataURL('image/jpeg',.8),'Étiquette N° de série');
+    return LabelReader.run(o.im).then(function(){URL.revokeObjectURL(o.url);});
+  }).catch(function(){var b=document.getElementById('snRes');if(b)b.textContent='Image illisible.';});
+});
+
+/* ---- QR code : lecture directe (caméra) et sur photo ---- */
+function snFromQr(v){
+  v=String(v||'').trim();
+  try{var u=new URL(v),found='';
+    u.searchParams.forEach(function(val,k){if(!found&&/^(sn|s\/n|serial|serialno|serialnumber|serial_number|numero_serie)$/i.test(k))found=val;});
+    if(found)return found.toUpperCase();
+    var last=u.pathname.split('/').filter(Boolean).pop();
+    if(last&&last.length>=6&&/\d/.test(last))return decodeURIComponent(last).toUpperCase();
+  }catch(e){}
+  var m=/(?:S\s*\/?\s*N|SERIAL(?:\s*(?:NO|NUMBER|N°))?|N\s*°?\s*DE\s*S[ÉE]RIE)\s*[:#=.\-]?\s*([A-Z0-9][A-Z0-9\-]{3,})/i.exec(v);
+  if(m)return m[1].toUpperCase();
+  if(/^[A-Za-z0-9\-_.\/]{4,40}$/.test(v))return v.toUpperCase();
+  var l=parseSerials(v);return l.length?l[0]:v.toUpperCase();
+}
+function loadScript(u){return new Promise(function(res,rej){var s=document.createElement('script');s.src=u;s.onload=res;s.onerror=function(){rej(new Error('load'))};document.head.appendChild(s);});}
+function loadJsQR(){
+  if(window.jsQR)return Promise.resolve();
+  return loadScript('lib/jsQR.min.js').catch(function(){return loadScript('https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js');}).then(function(){if(!window.jsQR)throw new Error('jsqr');});
+}
+function decodeCanvas(c){var x=c.getContext('2d'),d=x.getImageData(0,0,c.width,c.height);
+  var r=jsQR(d.data,d.width,d.height,{inversionAttempts:'attemptBoth'});return r?r.data:null;}
+function qrFromImg(im){
+  return loadJsQR().then(function(){
+    var W=im.naturalWidth||im.width,H=im.naturalHeight||im.height,v=null,sizes=[1600,2400,1000];
+    for(var i=0;i<sizes.length&&!v;i++){try{v=decodeCanvas(toCanvas(im,sizes[i]));}catch(e){}}
+    if(!v){ /* étiquette petite dans la photo : on essaie des zones agrandies (3x3 se chevauchant) */
+      var tw=Math.round(W*.5),th=Math.round(H*.5);
+      for(var yy=0;yy<3&&!v;yy++)for(var xx=0;xx<3&&!v;xx++){
+        var sx=Math.round((W-tw)*xx/2),sy=Math.round((H-th)*yy/2),c=document.createElement('canvas');
+        var sc=Math.min(1,1400/Math.max(tw,th));c.width=Math.round(tw*sc);c.height=Math.round(th*sc);
+        c.getContext('2d').drawImage(im,sx,sy,tw,th,0,0,c.width,c.height);
+        try{v=decodeCanvas(c);}catch(e){}
+      }
+    }
+    return v;
+  }).catch(function(){return null;});
+}
+var qrStream=null,qrRun=false;
+function qrStop(){qrRun=false;if(qrStream){qrStream.getTracks().forEach(function(t){t.stop();});qrStream=null;}
+  document.getElementById('qrOv').style.display='none';}
+function qrFail(msg){qrRun=false;if(qrStream){qrStream.getTracks().forEach(function(t){t.stop();});qrStream=null;}
+  var st=document.getElementById('qrSt');if(st)st.textContent=msg;var v=document.getElementById('qrVid');if(v)v.style.display='none';}
+function qrStart(){
+  var ov=document.getElementById('qrOv'),vd=document.getElementById('qrVid'),st=document.getElementById('qrSt'),inp=document.getElementById('snInp');
+  vd.style.display='';ov.style.display='flex';st.textContent='Ouverture de la caméra…';
+  var ua=navigator.userAgent||'';
+  if(!window.isSecureContext||!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
+    qrFail('Caméra non disponible dans ce navigateur'+(/Teams|Outlook|FBAN|FBAV|Instagram|Line\/|; wv\)/i.test(ua)?' (navigateur intégré à une application)':'')+'. Ouvrez la fiche dans Safari, ou utilisez « Photo de l\'étiquette ».');return;}
+  navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false}).then(function(s){
+    qrStream=s;vd.setAttribute('playsinline','');vd.setAttribute('webkit-playsinline','');vd.muted=true;vd.srcObject=s;
+    var pl=vd.play();if(pl&&pl.catch)pl.catch(function(){});
+    qrRun=true;st.textContent='Chargement du lecteur QR…';
+    var det=null;try{if('BarcodeDetector' in window)det=new BarcodeDetector({formats:['qr_code','data_matrix','code_128','code_39','ean_13']});}catch(e){det=null;}
+    var cv=document.createElement('canvas'),cx=cv.getContext('2d',{willReadFrequently:true});
+    (det?Promise.resolve():loadJsQR()).then(function(){
+      st.textContent='Cadrez le QR code de l\'étiquette (bien net, sans reflet)…';
+      var t0=Date.now();
+      (function tick(){
+        if(!qrRun)return;
+        if(vd.readyState<2||!vd.videoWidth){if(Date.now()-t0>8000){qrFail('La caméra ne renvoie pas d\'image. Fermez et réessayez, ou utilisez « Photo de l\'étiquette ».');return;}requestAnimationFrame(tick);return;}
+        var p;
+        if(det){p=det.detect(vd).then(function(r){return r.length?r[0].rawValue:null;}).catch(function(){return null;});}
+        else{var sc=Math.min(1,900/vd.videoWidth);cv.width=Math.round(vd.videoWidth*sc);cv.height=Math.round(vd.videoHeight*sc);
+          cx.drawImage(vd,0,0,cv.width,cv.height);var d=cx.getImageData(0,0,cv.width,cv.height);
+          var c=jsQR(d.data,d.width,d.height,{inversionAttempts:'attemptBoth'});p=Promise.resolve(c?c.data:null);}
+        p.then(function(v){
+          if(!qrRun)return;
+          if(v){var sn=snFromQr(v);qrStop();if(isImei(sn))fillImei([sn]);else inp.value=sn;inp.dispatchEvent(new Event('input',{bubbles:true}));
+            showSerials([],'QR lu : '+sn+(sn!==String(v).trim().toUpperCase()?' (contenu : '+String(v).slice(0,80)+')':'')+' — vérifiez le numéro.');
+            if(navigator.vibrate)navigator.vibrate(80);}
+          else setTimeout(function(){requestAnimationFrame(tick);},90);
+        });
+      })();
+    },function(){qrFail('Lecteur QR introuvable (fichier lib/jsQR.min.js non publié et pas de connexion). Utilisez « Photo de l\'étiquette » ou saisissez à la main.');});
+  }).catch(function(e){
+    var n=e&&e.name;
+    qrFail(n==='NotAllowedError'||n==='SecurityError'?'Accès à la caméra refusé. Sur iPhone : Réglages > Safari > Caméra > Autoriser (ou « Demander »), puis rouvrez la fiche. Sinon utilisez « Photo de l\'étiquette ».':
+      n==='NotFoundError'||n==='OverconstrainedError'?'Aucune caméra trouvée. Utilisez « Photo de l\'étiquette ».':
+      'Caméra impossible à ouvrir ('+(n||'erreur')+'). Utilisez « Photo de l\'étiquette ».');
+  });
+}
+document.getElementById('snQr').addEventListener('click',qrStart);
+document.getElementById('qrClose').addEventListener('click',qrStop);
+
+/* ---- Présent / Absent : exclusifs ---- */
+document.querySelectorAll('.rc input').forEach(function(c){
+  c.addEventListener('change',function(){
+    if(c.checked){var o=c.closest('.rc').querySelectorAll('input');o.forEach(function(x){if(x!==c)x.checked=false;});}
+  });
+});
+var rcAll=document.getElementById('rcAll');
+if(rcAll)rcAll.addEventListener('click',function(){
+  document.querySelectorAll('.rc').forEach(function(r){var i=r.querySelectorAll('input');i[0].checked=true;i[1].checked=false;});
+});
+
+function phSync(){
+  var l=document.querySelectorAll('#phGrid .ph');
+  document.querySelectorAll('.accth').forEach(function(t){t.innerHTML='';l.forEach(function(p){if(p.dataset.sec==='Ensemble des accessoires'){var im=document.createElement('img');im.src=p.querySelector('img').src;im.alt='accessoires';t.appendChild(im);}});});
+  l.forEach(function(p,i){p.querySelector('.phn').textContent='Photo '+(i+1);});
+  document.getElementById('photos').classList.toggle('empty',l.length===0&&false);
+  document.querySelectorAll('.rowcam').forEach(function(b){var n=0;l.forEach(function(p){if(p.dataset.sec&&p.dataset.sec===b.dataset.sec)n++;});b.querySelector('.n').textContent=n||'';});
+  document.getElementById('phN').value=l.length?l.length:'';
+  document.getElementById('phChk').checked=l.length>0;
+  document.getElementById('photos').dataset.n=l.length;
+  document.getElementById('photos').classList.toggle('empty',l.length===0);
+}
+['phCam','phFile'].forEach(function(id){
+  var el=document.getElementById(id);
+  el.addEventListener('change',function(){addPhotos(el.files);el.value='';});
+});
+
+var dirty=false;
+function nowStr(){return new Date().toLocaleString('fr-FR',{dateStyle:'short',timeStyle:'short'});}
+function setMsg(s){var m=document.getElementById('msg');m.textContent=s;}
+/* --- signatures --- */
+function initPad(c){
+  var x=c.getContext('2d'),on=false,last;
+  x.lineWidth=4;x.lineCap='round';x.lineJoin='round';x.strokeStyle='#14286e';
+  function pos(e){var r=c.getBoundingClientRect();return{x:(e.clientX-r.left)*c.width/r.width,y:(e.clientY-r.top)*c.height/r.height};}
+  c.addEventListener('pointerdown',function(e){on=true;last=pos(e);c.setPointerCapture(e.pointerId);x.beginPath();x.moveTo(last.x,last.y);x.lineTo(last.x+.1,last.y);x.stroke();c.dataset.s='1';dirty=true;e.preventDefault();});
+  c.addEventListener('pointermove',function(e){if(!on)return;var p=pos(e);x.beginPath();x.moveTo(last.x,last.y);x.lineTo(p.x,p.y);x.stroke();last=p;e.preventDefault();});
+  function end(){if(!on)return;on=false;var d=document.getElementById('sgDate');if(!d.value)d.value=nowStr();}
+  c.addEventListener('pointerup',end);c.addEventListener('pointercancel',end);
+}
+function clearPadEl(c){c.getContext('2d').clearRect(0,0,c.width,c.height);delete c.dataset.s;}
+function clearPad(btn){clearPadEl(btn.parentNode.querySelector('canvas'));dirty=true;}
+function getSig(c){return c.dataset.s?c.toDataURL('image/png'):null;}
+function setSig(c,d){clearPadEl(c);if(!d)return;var im=new Image();im.onload=function(){c.getContext('2d').drawImage(im,0,0,c.width,c.height);c.dataset.s='1';};im.src=d;}
+document.querySelectorAll('.pad').forEach(initPad);
+/* --- sauvegarde / ouverture --- */
+function today(){var d=new Date(),p=function(n){return(n<10?'0':'')+n;};return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate());}
+function setToday(){var e=document.getElementById('dateInp');if(e&&!e.value)e.value=today();}
+setToday();
+function statics(){return Array.prototype.filter.call(document.querySelectorAll('input[type=text],input[type=date],textarea'),function(i){return !i.closest('#phGrid');});}
+function collect(){
+  var st={app:'fiche-inspection-trottinette',v:1,saved:new Date().toISOString()};
+  st.cb=Array.prototype.map.call(document.querySelectorAll('input[type=checkbox]'),function(c){return c.checked?1:0;});
+  st.tx=statics().map(function(i){return i.value;});
+  st.mk={};document.querySelectorAll('.view').forEach(function(v){st.mk[v.dataset.v]=Array.prototype.map.call(v.querySelectorAll('.mk'),function(m){return[m.style.left,m.style.top,+m.dataset.n||0];});});
+  st.ph=Array.prototype.map.call(document.querySelectorAll('#phGrid .ph'),function(p){return{d:p.querySelector('img').src,c:p.querySelector('input').value,s:p.dataset.sec||''};});
+  st.sg=Array.prototype.map.call(document.querySelectorAll('.pad'),getSig);
+  return st;
+}
+/* nom des fichiers (.json et PDF) : date_N°dossier */
+function fileBase(){
+  var s=statics(),dos=((s[0]&&s[0].value)||'').trim().replace(/[^\wÀ-ÿ\-]+/g,'_').replace(/^_+|_+$/g,'')||'sans-dossier',
+  dt=(s[1]&&/^\d{4}-\d{2}-\d{2}$/.test(s[1].value))?s[1].value:(function(){var d=new Date(),p=function(n){return(n<10?'0':'')+n;};return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate());})();
+  return dt+'_'+dos;
+}
+(function(){var old=null;
+  window.addEventListener('beforeprint',function(){old=document.title;document.title=fileBase();});
+  window.addEventListener('afterprint',function(){if(old!==null)document.title=old;old=null;});
+})();
+function saveFile(){
+  var st=collect(),name=fileBase()+'.json';
+  var blob=new Blob([JSON.stringify(st)],{type:'application/json'}),a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},500);
+  dirty=false;setMsg('Enregistré : '+name+' (dossier Téléchargements)');
+}
+function clearAll(){
+  document.querySelectorAll('input[type=checkbox]').forEach(function(c){c.checked=false});
+  statics().forEach(function(c){c.value=''});setToday();document.getElementById('snRes').innerHTML='';
+  document.querySelectorAll('.mk').forEach(function(m){m.remove()});
+  document.querySelectorAll('#phGrid .ph').forEach(function(p){p.remove()});
+  document.querySelectorAll('.pad').forEach(clearPadEl);phSync();
+}
+function resetAll(){if(!confirm('Effacer toute la fiche ?'))return;clearAll();dirty=false;setMsg('Fiche réinitialisée');}
+function applyState(st){
+  if(!st||st.app!=='fiche-inspection-trottinette')throw new Error('format');
+  clearAll();
+  var cbs=document.querySelectorAll('input[type=checkbox]'),tx=statics(),warn=false;
+  if(st.cb.length!==cbs.length||st.tx.length!==tx.length)warn=true;
+  st.cb.forEach(function(v,i){if(cbs[i])cbs[i].checked=!!v;});
+  st.tx.forEach(function(v,i){if(tx[i])tx[i].value=v;});
+  var all=[];document.querySelectorAll('.view').forEach(function(v){(st.mk[v.dataset.v]||[]).forEach(function(q){all.push([v,q]);});});
+  var nx=0;all.forEach(function(a){if(+a[1][2]>nx)nx=+a[1][2];});
+  all.forEach(function(a){mkAdd(a[0],a[1][0],a[1][1],+a[1][2]||++nx);});
+  (st.ph||[]).forEach(function(p){addPhotoData(p.d,p.c,p.s);});
+  var pads=document.querySelectorAll('.pad');(st.sg||[]).forEach(function(d,i){if(pads[i])setSig(pads[i],d);});
+  phSync();
+  dirty=false;
+  setMsg(warn?'Fiche ouverte (version différente : restauration partielle)':'Fiche ouverte (enregistrée le '+new Date(st.saved).toLocaleString('fr-FR')+')');
+}
+document.getElementById('openFile').addEventListener('change',function(e){
+  var f=e.target.files[0];e.target.value='';if(!f)return;
+  if(dirty&&!confirm('Remplacer la fiche en cours par le fichier ouvert ?'))return;
+  var r=new FileReader();
+  r.onload=function(){try{applyState(JSON.parse(r.result));}catch(x){setMsg('Fichier non reconnu : ce n\'est pas une fiche enregistrée.');}};
+  r.readAsText(f);
+});
+['input','change','click'].forEach(function(ev){document.querySelector('.page').addEventListener(ev,function(){dirty=true;});});
+window.addEventListener('beforeunload',function(e){if(dirty){e.preventDefault();e.returnValue='';}});
+</script>
+<script src="lib/label-reader.js"></script>
+<script src="lib/relay-crypto.js"></script>
+<script src="lib/qrcode-generator.js"></script>
+<script src="lib/relay-photos.js"></script>
+</body></html>

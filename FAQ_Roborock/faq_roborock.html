@@ -127,6 +127,7 @@
     <a href="../roborock.html">🔎 Recherche SN</a>
     <a href="../roborock_calibrage.html">🎯 Calibrage</a>
     <a href="faq_roborock.html" class="active">❓ FAQ Support</a>
+    <a href="../fiche_inspection_robot_laveur.html">📋 Fiche d'inspection</a>
     <a href="https://support.roborock.com/hc/fr" target="_blank" rel="noopener">🌐 Roborock Support ↗</a>
   </nav>
 </div>
@@ -382,6 +383,12 @@ document.getElementById('rst').addEventListener('click', () => {
 
 renderTabs();
 loadAll();
+</script>
+<script>
+/* Hub : recherche pré-remplie via ?q= (depuis les fiches d'inspection) */
+(function(){try{var q=new URLSearchParams(location.search).get('q');if(!q)return;
+var i=document.getElementById('q')||document.getElementById('searchInput')||document.getElementById('search');
+if(!i)return;i.value=q;i.dispatchEvent(new Event('input',{bubbles:true}));}catch(e){}})();
 </script>
 </body>
 </html>

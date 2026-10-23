@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script src="auth-guard.js"></script>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<script src="confidentialite.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiches d'inspection</title>
+<style>
+  :root{--rouge:#D4151B;--orange:#EEA31E;--noir:#000;--blanc:#fff;--gris:#777}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",Arial,Helvetica,sans-serif;background:#fff;color:var(--noir);min-height:100vh;display:flex;flex-direction:column}
+  header{background:var(--rouge);color:#fff;padding:18px 32px;display:flex;align-items:center;gap:20px;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+  header img.brand{height:44px;background:#fff;padding:6px 10px;border-radius:6px}
+  header h1{font-size:1.5rem;font-weight:700;letter-spacing:.5px;flex:1}
+  header a.back{color:#fff;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.7);border-radius:8px;padding:8px 14px;white-space:nowrap}
+  header a.back:hover{background:rgba(255,255,255,.18)}
+  .intro{text-align:center;padding:34px 20px 6px}
+  .intro h2{font-size:1.35rem;font-weight:600}
+  .intro p{color:var(--gris);margin-top:8px;font-size:.95rem}
+  .grid{flex:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px;padding:30px clamp(20px,5vw,64px) 56px;max-width:1100px;margin:0 auto;width:100%;align-content:start}
+  .card{position:relative;background:#fff;border:2px solid #eee;border-top:6px solid var(--c,var(--orange));border-radius:14px;padding:26px 22px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;text-decoration:none;color:var(--noir);box-shadow:0 3px 10px rgba(0,0,0,.06);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;min-height:230px}
+  .card:hover{transform:scale(1.03);border-color:var(--c,var(--orange));box-shadow:0 8px 22px rgba(0,0,0,.14)}
+  .card .ic{font-size:54px;line-height:1}
+  .card h3{font-size:1.2rem;color:var(--c,var(--rouge))}
+  .card p{font-size:.88rem;color:var(--gris);line-height:1.35}
+  .card .go{margin-top:auto;background:var(--c,var(--orange));color:#fff;font-weight:700;border-radius:20px;padding:8px 20px;font-size:.95rem}
+  .note{text-align:center;color:var(--gris);font-size:.82rem;padding:0 20px 28px}
+  footer{background:#000;color:#fff;text-align:center;padding:14px;font-size:.8rem}
+  footer span{color:var(--orange);font-weight:600}
+  @media (max-width:640px){
+    header{padding:12px 14px;gap:10px;flex-wrap:wrap}
+    header img.brand{height:34px}
+    header h1{font-size:1.15rem;flex:1 1 60%}
+    .grid{gap:16px;padding:20px 16px 36px}
+    .card{min-height:0;padding:20px 16px}
+    .card .ic{font-size:46px}
+    .card .go{font-size:1.05rem;padding:12px 26px;width:100%}
+  }
+</style>
+<script data-goatcounter="https://hub-drive-fnac.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+
+<header>
+  <img class="brand" src="IMAGES/FNAC DARTY.png" alt="Fnac Darty">
+  <h1>Fiches d'inspection</h1>
+  <a class="back" href="index.html">&larr; Hub</a>
+</header>
+
+<section class="intro">
+  <h2>Prise en charge du produit au comptoir</h2>
+  <p>Choisissez le type de produit pour ouvrir la fiche d'inspection à remplir avec le client.</p>
+</section>
+
+<main class="grid">
+  <a class="card" style="--c:#2669C2" href="fiche_inspection_robot_laveur.html">
+    <div class="ic">🤖</div>
+    <h3>Robot laveur</h3>
+    <p>Robots aspirateurs / laveurs : réservoir, pads, brosses, capteurs, roues, charge, station.</p>
+    <span class="go">Ouvrir la fiche</span>
+  </a>
+  <a class="card" style="--c:#00327D" href="fiche_inspection_balai_laveur.html">
+    <div class="ic">🧹</div>
+    <h3>Balai laveur</h3>
+    <p>Aspirateurs balais laveurs : réservoirs, rouleau brosse, bac &amp; filtres, batterie, station.</p>
+    <span class="go">Ouvrir la fiche</span>
+  </a>
+  <a class="card" style="--c:#7A4A24" href="fiche_inspection_machine_cafe.html">
+    <div class="ic">☕</div>
+    <h3>Machine à café grain</h3>
+    <p>Broyeur : bac à grains, groupe café, bac à marc, lait &amp; vapeur, détartrage.</p>
+    <span class="go">Ouvrir la fiche</span>
+  </a>
+  <a class="card" style="--c:#6B3FA0" href="fiche_inspection_telephone.html">
+    <div class="ic">📱</div>
+    <h3>Téléphone</h3>
+    <p>Smartphones : écran, photo, son, boutons, réseau &amp; SIM, batterie &amp; recharge, démarrage &amp; sécurité.</p>
+    <span class="go">Ouvrir la fiche</span>
+  </a>
+  <a class="card" style="--c:#0F8A5F" href="fiche_inspection_trottinette.html">
+    <div class="ic">🛴</div>
+    <h3>Trottinette électrique</h3>
+    <p>Trottinettes : pneus &amp; roues, freinage, direction &amp; pliage, batterie &amp; recharge, moteur, éclairage, appli &amp; antivol.</p>
+    <span class="go">Ouvrir la fiche</span>
+  </a>
+  <a class="card" style="--c:#555B66" href="fiche_inspection_generique.html">
+    <div class="ic">🔍</div>
+    <h3>Autre produit (générique)</h3>
+    <p>Tout autre produit : grille-pain, blender, moniteur, robot laveur vitre… aspect, alimentation, fonctionnement, commandes, mécanique, chauffe, connectique.</p>
+    <span class="go">Ouvrir la fiche</span>
+  </a>
+  <a class="card" style="--c:#1B5FAA" href="lecteur_fiches.html">
+    <div class="ic">📂</div>
+    <h3>Lecteur de fiches (.json)</h3>
+    <p>Ouvrir n'importe quelle fiche enregistrée : le type est reconnu automatiquement (téléphone, robot, balai, café, trottinette, générique).</p>
+    <span class="go">Ouvrir un .json</span>
+  </a>
+</main>
+
+<p class="note">Chaque fiche peut être enregistrée (fichier) et rouverte plus tard, ou imprimée en PDF.</p>
+
+<footer>Espace interne <span>Fnac Darty</span></footer>
+</body>
+</html>

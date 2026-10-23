@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script src="../auth-guard.js"></script>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<script src="../confidentialite.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>FAQ &amp; Vidéos Support — SAV Narwal · Fnac Darty</title>
+<script data-goatcounter="https://hub-drive-fnac.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+  :root{
+    --rouge:#D4151B;
+    /* couleurs relevées sur fr.narwal.com : noir #000, texte #1D1D1F, gris #5A5A5A, fond #F8F8F8 */
+    --ev:#1D1D1F; --ev-2:#000000; --ev-bg:#F0F0F2; --ev-bd:#C9C9CE; --navy:#1D1D1F;
+    --bg:#F8F8F8; --surface:#FFFFFF; --border:#DDDDE1;
+    --text:#1D1D1F; --text-2:#5A5A5A; --muted:#8A8A8F;
+    --r-md:8px; --r-lg:14px; --tr:.16s cubic-bezier(.4,0,.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:Poppins,"Segoe UI",system-ui,Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+  .hubbar{background:var(--rouge);padding:11px 22px;display:flex;align-items:center;gap:16px;
+    position:sticky;top:0;z-index:20;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+  .hubbar .home{display:flex;align-items:center;gap:14px;text-decoration:none;flex-shrink:0;}
+  .hubbar img{height:36px;background:#fff;padding:5px 9px;border-radius:6px;transition:transform .15s;}
+  .hubbar:hover img{transform:scale(1.05);}
+  .hubbar .txt{color:#fff;font-weight:700;font-size:14px;letter-spacing:.3px;}
+
+  .hero{background:linear-gradient(120deg,#000000 0%,var(--navy) 55%,#5A5A5A 150%);
+    padding:34px 22px 26px;text-align:center;color:#fff;}
+  .hero .brand{display:inline-block;font-weight:900;letter-spacing:6px;font-size:1.5rem;background:#fff;color:#000;
+    padding:8px 20px 8px 26px;border-radius:10px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,.25);}
+  .hero .eyebrow{font-size:.9rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+  .hero h1{font-size:1.5rem;font-weight:800;margin-bottom:6px;}
+  .hero p{color:rgba(255,255,255,.9);font-size:.9rem;max-width:800px;margin:0 auto;}
+  .hero nav{display:flex;gap:8px;justify-content:center;margin-top:20px;flex-wrap:wrap;}
+  .hero nav a,.hero nav button{color:#fff;text-decoration:none;font-size:.86rem;font-weight:600;padding:8px 16px;font-family:inherit;cursor:pointer;
+    border-radius:var(--r-md);background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.45);transition:var(--tr);}
+  .hero nav a:hover,.hero nav button:hover{background:rgba(255,255,255,.28);}
+  .hero nav button.active{background:#fff;color:#000;border-color:#fff;}
+
+  main{max-width:1100px;margin:0 auto;padding:24px 20px 60px;}
+
+  .toolbar{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-lg);
+    padding:16px 18px;box-shadow:0 2px 6px rgba(0,0,0,.05);margin-bottom:20px;position:sticky;top:58px;z-index:10;}
+  .search{position:relative;margin-bottom:14px;}
+  .search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted);}
+  .search input{width:100%;padding:11px 38px 11px 40px;font-size:.95rem;font-family:inherit;
+    border:1.5px solid var(--border);border-radius:var(--r-md);background:#FAFAFB;color:var(--text);outline:none;transition:var(--tr);}
+  .search input:focus{border-color:var(--ev);background:#fff;box-shadow:0 0 0 3px rgba(29,29,31,.14);}
+  .search .clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:none;background:none;
+    color:var(--muted);cursor:pointer;font-size:1.2rem;line-height:1;padding:4px 8px;display:none;}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;}
+  .tab{border:1.5px solid var(--border);background:#fff;color:var(--text-2);padding:7px 14px;border-radius:999px;
+    font-size:.84rem;font-weight:600;cursor:pointer;font-family:inherit;transition:var(--tr);}
+  .tab:hover{border-color:var(--ev);color:var(--ev-2);}
+  .tab.on{background:var(--ev);border-color:var(--ev);color:#fff;}
+  .tab small{opacity:.8;font-weight:500;margin-left:4px;}
+  select{flex:1;min-width:230px;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--r-md);
+    font-family:inherit;font-size:.88rem;background:#FAFAFB;color:var(--text);}
+  .count{margin-left:auto;font-size:.82rem;color:var(--muted);}
+
+  .list{display:flex;flex-direction:column;gap:8px;}
+  .list.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;}
+  .item{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-md);padding:12px 16px;transition:var(--tr);}
+  .item:hover{border-color:var(--ev-bd);box-shadow:0 2px 8px rgba(0,0,0,.06);}
+  .item .t{font-size:.95rem;font-weight:600;line-height:1.4;color:var(--navy);}
+  .item .meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px;font-size:.78rem;}
+  .badge{padding:2px 9px;border-radius:999px;font-weight:700;font-size:.72rem;letter-spacing:.3px;}
+  .b-0{background:#E8EEF8;color:#1F4C9C;} .b-1{background:#E1F5F2;color:#0B7A70;} .b-2{background:#FFF1DC;color:#9A5B00;}
+  .b-3{background:#F3E8FA;color:#6B2A94;} .b-4{background:#ECECEE;color:#3B3B40;} .b-5{background:#FDE8E8;color:#9C1C1C;}
+  .src{font-weight:600;color:var(--muted);}
+  .item a.open{margin-left:auto;color:var(--ev-2);font-weight:700;text-decoration:none;font-size:.8rem;}
+  .item a.open:hover{text-decoration:underline;}
+  details.mod{margin-top:6px;font-size:.8rem;color:var(--text-2);}
+  details.mod summary{cursor:pointer;color:var(--muted);font-weight:600;}
+  details.mod ul{margin:6px 0 0 18px;columns:2;column-gap:24px;}
+
+  /* vidéos */
+  .vid{padding:0;overflow:hidden;display:flex;flex-direction:column;}
+  .vid .player{position:relative;aspect-ratio:16/9;background:#000;cursor:pointer;}
+  .vid .player img{width:100%;height:100%;object-fit:cover;display:block;opacity:.92;transition:var(--tr);}
+  .vid .player:hover img{opacity:1;transform:scale(1.02);}
+  .vid .player .play{position:absolute;left:50%;top:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;
+    background:rgba(0,0,0,.85);box-shadow:0 4px 14px rgba(0,0,0,.35);border:2px solid #fff;}
+  .vid .player .play::after{content:"";position:absolute;left:21px;top:15px;border-left:19px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent;}
+  .vid .player iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .vid .body{padding:12px 14px 12px;}
+
+  .more{display:block;margin:18px auto 0;padding:10px 26px;border:1.5px solid var(--ev);background:#fff;color:var(--ev-2);
+    border-radius:var(--r-md);font-weight:700;cursor:pointer;font-family:inherit;}
+  .more:hover{background:var(--ev-bg);}
+  .empty{text-align:center;color:var(--muted);padding:40px 0;grid-column:1/-1;}
+  mark{background:#FFF3A8;padding:0 1px;border-radius:2px;}
+  footer{text-align:center;padding:24px;font-size:.8rem;color:var(--muted);}
+  footer span{color:var(--ev);font-weight:700;}
+  @media(max-width:640px){details.mod ul{columns:1;} .item a.open{margin-left:0;} .count{margin-left:0;width:100%;}}
+</style>
+</head>
+<body>
+
+<div class="hubbar">
+  <a class="home" href="../index.html">
+    <img src="../IMAGES/FNAC DARTY.png" onerror="this.style.display='none'" alt="Fnac Darty">
+    <span class="txt">&larr; HUB Drive Constructeurs</span>
+  </a>
+</div>
+
+<div class="hero">
+  <div class="brand">NARWAL</div>
+  <div class="eyebrow">Petit Électro-Ménager</div>
+  <h1>FAQ &amp; Vidéos Support Narwal</h1>
+  <p>FAQ du site <b>fr.narwal.com</b> (livraison, retours, garantie, guides produits) et du centre d'aide <b>support.narwal.com</b> (dépannage, accessoires, application, manuels), classées par modèle. Les titres sont en français ; les articles du centre d'aide s'ouvrent sur le site officiel <b>en anglais</b>. Les <b>vidéos tutoriels</b> se lisent directement dans la page.</p>
+  <nav>
+    <button id="navFaq" class="active">❓ FAQ Support</button>
+    <button id="navVid">▶️ Vidéos tutoriels</button>
+    <a href="https://fr.narwal.com/pages/support-center" target="_blank" rel="noopener">🌐 Narwal FR ↗</a>
+    <a href="https://support.narwal.com/hc/en-us" target="_blank" rel="noopener">🌐 Centre d'aide ↗</a>
+  </nav>
+</div>
+
+<main>
+  <div class="toolbar">
+    <div class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="q" type="search" placeholder="Rechercher (ex : station, brosse, carte, Wi-Fi, garantie…)" autocomplete="off">
+      <button class="clear" id="clr" title="Effacer">×</button>
+    </div>
+    <div class="row">
+      <div class="tabs" id="tabs"></div>
+      <select id="mod" aria-label="Filtrer par modèle"></select>
+      <span class="count" id="cnt"></span>
+    </div>
+  </div>
+  <div class="list" id="list"></div>
+  <button class="more" id="more" style="display:none">Afficher plus</button>
+</main>
+
+<footer>Données Narwal · <span id="maj"></span> · synchronisation mensuelle via <code>outils/sync_narwal.py</code></footer>
+
+<script src="data/narwal_faq.js"></script>
+<script>
+(function(){
+  var D=window.NARWAL_DATA; if(!D){document.getElementById('list').innerHTML='<div class="empty">Données introuvables (data/narwal_faq.js).</div>';return;}
+  var norm=function(s){return (s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();};
+  var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
+  var PAGE_FAQ=100, PAGE_VID=24;
+  var prods=D.produits, VIDS=D.videos||[];
+  var $=function(i){return document.getElementById(i);};
+  // familles : ordre fixe connu, puis les éventuelles nouvelles familles
+  var FAM=['Robots Freo / Flow','Série S (Vacuum Mop)','Application','Commande & SAV','Manuels'];
+  prods.forEach(function(p){if(FAM.indexOf(p.famille)<0)FAM.push(p.famille);});
+  var fi=function(f){return FAM.indexOf(f);};
+  var ZD='https://support.narwal.com/hc/en-us/articles/';
+
+  /* ---- index FAQ ---- */
+  var faqItems=[], byId={};
+  Object.keys(D.faq).forEach(function(id){byId[id]={id:id,t:D.faq[id].t,n:norm(D.faq[id].t),p:[],fam:{},fr:id.charAt(0)==='f'};});
+  prods.forEach(function(p,pi){p.faq.forEach(function(id){var f=byId[id];if(!f)return;f.p.push(pi);f.fam[fi(p.famille)]=1;});});
+  Object.keys(byId).forEach(function(id){var f=byId[id];f.n+=' '+norm(f.p.map(function(i){return prods[i].nom;}).join(' '));faqItems.push(f);});
+
+  /* ---- index vidéos ---- */
+  var vidItems=VIDS.map(function(v,i){return {id:i,y:v.y,t:v.t,n:norm(v.t),p:[],fam:{}};});
+  prods.forEach(function(p,pi){(p.vid||[]).forEach(function(i){var v=vidItems[i];if(!v)return;v.p.push(pi);v.fam[fi(p.famille)]=1;});});
+  vidItems.forEach(function(v){v.n+=' '+norm(v.p.map(function(i){return prods[i].nom;}).join(' '));});
+
+  var st={sec:'faq',fam:'TOUS',mod:'',q:'',shown:PAGE_FAQ};
+  function items(){return st.sec==='faq'?faqItems:vidItems;}
+  function page(){return st.sec==='faq'?PAGE_FAQ:PAGE_VID;}
+
+  function tabs(){
+    var it=items(), c={TOUS:it.length}; FAM.forEach(function(f,i){c[i]=it.filter(function(x){return x.fam[i];}).length;});
+    var h='<button class="tab'+(st.fam==='TOUS'?' on':'')+'" data-f="TOUS">Toutes<small>'+c.TOUS+'</small></button>';
+    FAM.forEach(function(f,i){if(c[i])h+='<button class="tab'+(st.fam===String(i)?' on':'')+'" data-f="'+i+'">'+esc(f)+'<small>'+c[i]+'</small></button>';});
+    $('tabs').innerHTML=h;
+  }
+  function modSelect(){
+    var key=st.sec==='faq'?'faq':'vid';
+    var h='<option value="">Tous les modèles / rubriques</option>';
+    FAM.forEach(function(f){
+      var l=prods.map(function(p,i){return [p,i];}).filter(function(x){return x[0].famille===f && (x[0][key]||[]).length;});
+      if(!l.length) return;
+      h+='<optgroup label="'+esc(f)+' — '+l.length+'">'+l.map(function(x){return '<option value="'+x[1]+'">'+esc(x[0].nom)+' ('+x[0][key].length+')</option>';}).join('')+'</optgroup>';
+    });
+    $('mod').innerHTML=h; $('mod').value=st.mod;
+  }
+  function match(f){
+    if(st.fam!=='TOUS' && !f.fam[st.fam]) return false;
+    if(st.mod!=='' && f.p.indexOf(+st.mod)<0) return false;
+    if(st.q){var w=norm(st.q).split(/\s+/).filter(Boolean);for(var i=0;i<w.length;i++){if(f.n.indexOf(w[i])<0)return false;}}
+    return true;
+  }
+  function hl(t){
+    if(!st.q) return esc(t);
+    var w=norm(st.q).split(/\s+/).filter(Boolean), nt=norm(t), out='',i=0,ranges=[];
+    if(nt.length!==t.length) return esc(t);
+    w.forEach(function(x){var k=0,j;while((j=nt.indexOf(x,k))>=0){ranges.push([j,j+x.length]);k=j+x.length;}});
+    ranges.sort(function(a,b){return a[0]-b[0];});
+    var m=[];ranges.forEach(function(r){if(m.length&&r[0]<=m[m.length-1][1])m[m.length-1][1]=Math.max(m[m.length-1][1],r[1]);else m.push(r.slice());});
+    m.forEach(function(r){out+=esc(t.slice(i,r[0]))+'<mark>'+esc(t.slice(r[0],r[1]))+'</mark>';i=r[1];});
+    return out+esc(t.slice(i));
+  }
+  function meta(f,extra){
+    var fams=Object.keys(f.fam).map(function(x){return '<span class="badge b-'+(+x%6)+'">'+esc(FAM[x])+'</span>';}).join(' ');
+    return '<div class="meta">'+fams+'<span>'+f.p.length+' modèle'+(f.p.length>1?'s':'')+' / rubrique'+(f.p.length>1?'s':'')+'</span>'+extra+'</div>'+
+      '<details class="mod"><summary>Modèles / rubriques concernés</summary><ul>'+f.p.map(function(i){return '<li>'+esc(prods[i].nom)+'</li>';}).join('')+'</ul></details>';
+  }
+  // lien vers la source officielle : article Zendesk (anglais) ou page fr.narwal.com du modèle
+  function link(f){
+    if(!f.fr) return ZD+f.id.slice(1);
+    var l=f.p.map(function(i){return prods[i].u;}).filter(Boolean);
+    if(st.mod!==''&&prods[+st.mod].u) return prods[+st.mod].u;
+    return l[0]||'https://fr.narwal.com/pages/support-center';
+  }
+  function cardFaq(f){
+    var src=f.fr?'<span class="src">Site FR</span>':'<span class="src">Centre d\'aide (EN)</span>';
+    return '<div class="item"><div class="t">'+hl(f.t)+'</div>'+meta(f,src+'<a class="open" href="'+esc(link(f))+'" target="_blank" rel="noopener">Ouvrir sur Narwal'+(f.fr?'':' (anglais)')+' ↗</a>')+'</div>';
+  }
+  function cardVid(v){
+    return '<div class="item vid"><div class="player" data-y="'+v.y+'" title="Lire la vidéo">'+
+      '<img loading="lazy" alt="" src="https://i.ytimg.com/vi/'+v.y+'/mqdefault.jpg" onerror="this.style.display=\'none\'"><span class="play"></span></div>'+
+      '<div class="body"><div class="t">'+hl(v.t)+'</div>'+meta(v,'<a class="open" href="https://youtu.be/'+v.y+'" target="_blank" rel="noopener">YouTube ↗</a>')+'</div></div>';
+  }
+  function render(){
+    var l=items().filter(match), n=page();
+    $('cnt').textContent=l.length+(st.sec==='faq'?' FAQ':' vidéo'+(l.length>1?'s':''));
+    $('list').className='list'+(st.sec==='vid'?' grid':'');
+    var h=l.slice(0,st.shown).map(st.sec==='faq'?cardFaq:cardVid).join('');
+    $('list').innerHTML=h||'<div class="empty">Aucun résultat pour votre recherche.</div>';
+    $('more').style.display=l.length>st.shown?'block':'none';
+    $('more').textContent='Afficher plus ('+Math.min(n,l.length-st.shown)+' sur '+(l.length-st.shown)+' restants)';
+    $('clr').style.display=st.q?'block':'none';
+  }
+  function section(s){
+    st.sec=s;st.fam='TOUS';st.mod='';st.shown=page();
+    $('navFaq').className=s==='faq'?'active':'';$('navVid').className=s==='vid'?'active':'';
+    $('q').placeholder=s==='faq'?'Rechercher dans les FAQ (ex : station, brosse, carte, Wi-Fi, garantie…)':'Rechercher une vidéo (ex : brosse, station, installation, entretien…)';
+    try{history.replaceState(null,'','#'+s);}catch(e){}
+    modSelect();tabs();render();
+  }
+  $('navFaq').addEventListener('click',function(){section('faq');});
+  $('navVid').addEventListener('click',function(){section('vid');});
+  $('tabs').addEventListener('click',function(e){var b=e.target.closest('.tab');if(!b)return;st.fam=b.dataset.f;st.shown=page();tabs();render();});
+  $('mod').addEventListener('change',function(){st.mod=this.value;st.shown=page();render();});
+  $('q').addEventListener('input',function(){st.q=this.value.trim();st.shown=page();render();});
+  $('clr').addEventListener('click',function(){$('q').value='';st.q='';st.shown=page();render();$('q').focus();});
+  $('more').addEventListener('click',function(){st.shown+=page();render();});
+  // lecture de la vidéo directement dans la carte
+  $('list').addEventListener('click',function(e){
+    var p=e.target.closest('.player');if(!p||p.querySelector('iframe'))return;
+    p.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+p.dataset.y+'?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+  });
+  $('maj').textContent='mise à jour le '+D.maj.split('-').reverse().join('/')+' · '+prods.length+' modèles/rubriques · '+faqItems.length+' FAQ · '+vidItems.length+' vidéos';
+  section(location.hash==='#vid'?'vid':'faq');
+})();
+</script>
+<script>
+/* Hub : recherche pré-remplie via ?q= (depuis les fiches d'inspection) */
+(function(){try{var q=new URLSearchParams(location.search).get('q');if(!q)return;
+var i=document.getElementById('q')||document.getElementById('searchInput')||document.getElementById('search');
+if(!i)return;i.value=q;i.dispatchEvent(new Event('input',{bubbles:true}));}catch(e){}})();
+</script>
+</body>
+</html>

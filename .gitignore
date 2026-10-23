@@ -4,3 +4,10 @@
 
 # gros fichiers (>100 Mo refuses par GitHub) : import KitchenAid en cours
 kitchenaid/kitchenaid_new/
+
+# sauvegardes de travail (.bak) : jamais synchronisées
+00_Sauvegardes_BAK/
+*.bak
+*.bak_*
+*.bak[0-9]
+00_*/
