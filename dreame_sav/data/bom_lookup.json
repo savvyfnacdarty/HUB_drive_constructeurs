@@ -1,7 +1,7 @@
 {
  "source": "https://docs.google.com/spreadsheets/d/15u69yfrqn3HqEwoemv8_UUgd-74wPeFdJhsD0YMc4dQ/edit",
  "sheetId": "15u69yfrqn3HqEwoemv8_UUgd-74wPeFdJhsD0YMc4dQ",
- "generated": "2026-10-22",
+ "generated": "2026-10-27",
  "families": [
   {
    "name": "Robot Vacuum",
@@ -64,16 +64,12 @@
       "u": "https://docs.google.com/presentation/d/1mnkdL1O4gZj1D-Z-4fZ0vJWGZ5YuX05u/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
      },
      {
+      "t": "Diagnosis & FCT test SOP.pptx",
+      "u": "https://docs.google.com/presentation/d/1BSvJfMIswFHfzVY2FuYv-n6J05zSs_nT/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+     },
+     {
       "t": "Diagnosis system release.pptx",
       "u": "https://docs.google.com/presentation/d/1VBg3ZcdWajEcGVRR1VStHEyVUuuv1svG/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
-     },
-     {
-      "t": "FCT serial tool.pptx",
-      "u": "https://docs.google.com/presentation/d/1IVZpC39r4Cuvd5ECfHUNRV3WpIv-o4RE/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
-     },
-     {
-      "t": "SOP of After-Sale Diagnosis.pptx",
-      "u": "https://docs.google.com/presentation/d/11qsEKHzA9vy4DLirZ05Z8QOlXI7NtNMD/edit?slide=id.p20#slide=id.p20"
      }
     ],
     "extra": []
@@ -258,12 +254,13 @@
       "MOVA P50 Pro Ultra"
      ],
      "project": [
-      "R2587A"
+      "R2587A",
+      "R2587D"
      ],
      "bom": [
       {
-       "t": "新模板【西南欧】P50 Pro Ultra_R2587 Spare Parts BOM V1.0.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1ei99qb3GX3xWuLd912vgPhvs4ijsWkAq/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+       "t": "新模板【西南欧】P50 Pro Ultra_R2587 Spare Parts BOM V1.1.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/16cHw0JqUR11-gm2P0qyD3l-DOqPhoo7F/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "repair": [
@@ -1243,14 +1240,13 @@
       {
        "t": "Dual camera calibration stereo-rectify failure issue.pptx",
        "u": "https://docs.google.com/presentation/d/1VKxgU0l9jb7WEYAgPHpAlnsvbzpxl7M3/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
-      }
-     ],
-     "extra": [
+      },
       {
        "t": "X50 series stops automatically issues.pptx",
        "u": "https://docs.google.com/presentation/d/1VOznnAkFC-78haW28fW_3Zv0XegSbzSH/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
-     ]
+     ],
+     "extra": []
     },
     {
      "no": "",
@@ -1380,14 +1376,13 @@
       {
        "t": "X50 Ultra complete does not turn on.pptx",
        "u": "https://docs.google.com/presentation/d/1p88WlVJoFpdRnCX3OxYHaAVHT9BwZb6k/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
-      }
-     ],
-     "extra": [
+      },
       {
        "t": "X50 series stops automatically issues.pptx",
        "u": "https://docs.google.com/presentation/d/1VOznnAkFC-78haW28fW_3Zv0XegSbzSH/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
-     ]
+     ],
+     "extra": []
     },
     {
      "no": "",
@@ -2180,14 +2175,13 @@
       {
        "t": "X50 ultra completeExploded View updated.pptx",
        "u": "https://docs.google.com/presentation/d/1NEEgKxC4rcLKoHHRr_oJn7Z-YZbids1f/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
-      }
-     ],
-     "extra": [
+      },
       {
        "t": "X50 series stops automatically issues.pptx",
        "u": "https://docs.google.com/presentation/d/1VOznnAkFC-78haW28fW_3Zv0XegSbzSH/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
-     ]
+     ],
+     "extra": []
     },
     {
      "no": "",
@@ -2202,8 +2196,8 @@
      ],
      "bom": [
       {
-       "t": "【New Template】 X50 Master_R9434 Spare Parts BOM List V1.8.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1xaZM2lcPHXVYDfuTC810J09iBHY4IHV0/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+       "t": "新模板【西南欧】 X50 Master_R9434 Spare Parts BOM List V1.8.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1LWMB5hPDaiw1Hg06EK0KUr6423PDNrXc/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "repair": [
@@ -2276,14 +2270,13 @@
       {
        "t": "The motherboards and core boards of the above models have new and old versions.pptx",
        "u": "https://docs.google.com/presentation/d/1I7ecWzmqKqdx5llO2RGbyVShqbMqZsI2/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
-      }
-     ],
-     "extra": [
+      },
       {
        "t": "X50 series stops automatically issues.pptx",
        "u": "https://docs.google.com/presentation/d/1VOznnAkFC-78haW28fW_3Zv0XegSbzSH/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
-     ]
+     ],
+     "extra": []
     },
     {
      "no": "",
@@ -2345,7 +2338,20 @@
        "u": "https://docs.google.com/spreadsheets/d/1N8DB8b0NLQ7ovZd7YLzymNOibkoxYDhg/edit?gid=761613615#gid=761613615"
       }
      ],
-     "repair": [],
+     "repair": [
+      {
+       "t": "Exploded view",
+       "u": "https://drive.google.com/drive/folders/1nVwG39g0jMrp5pUrqyHrYpPFRPe91__b?usp=drive_link"
+      },
+      {
+       "t": "User Manual",
+       "u": "https://drive.google.com/drive/folders/1OCthqS8kTe0OtOGcZnTpnHQej3lU2qT5?usp=drive_link"
+      },
+      {
+       "t": "Disassembly&Assembly video",
+       "u": "https://drive.google.com/drive/folders/1f_tOoX1KRLp66tCUj1tctKB3z4OvzqWH?usp=drive_link"
+      }
+     ],
      "notif": [],
      "extra": []
     },
@@ -2365,7 +2371,20 @@
        "u": "https://docs.google.com/spreadsheets/d/1kSsnxEu0jEstXc0npzh9eFhWJdn1RiJH/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
-     "repair": [],
+     "repair": [
+      {
+       "t": "Exploded view",
+       "u": "https://drive.google.com/drive/folders/1nVwG39g0jMrp5pUrqyHrYpPFRPe91__b?usp=drive_link"
+      },
+      {
+       "t": "User Manual",
+       "u": "https://drive.google.com/drive/folders/1OCthqS8kTe0OtOGcZnTpnHQej3lU2qT5?usp=drive_link"
+      },
+      {
+       "t": "Disassembly&Assembly video",
+       "u": "https://drive.google.com/drive/folders/1f_tOoX1KRLp66tCUj1tctKB3z4OvzqWH?usp=drive_link"
+      }
+     ],
      "notif": [],
      "extra": []
     },
@@ -2864,8 +2883,12 @@
      ],
      "notif": [
       {
-       "t": "Dreame Aqua20 Roller Series Maintenance Guide.pptx",
-       "u": "https://docs.google.com/presentation/d/1RP7db_BF0KrCkBq60gYbJEHwX051mgBe/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+       "t": "Aqua20 Pro Ultra Roller X – Leaves significant water streaks when mopping.pptx",
+       "u": "https://docs.google.com/presentation/d/1oyA890fkuZcgvxq50BrDB-iqZizpa3Et/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      },
+      {
+       "t": "Dreame Aqua20 Roller Series Leakage Investigation Guide.pptx",
+       "u": "https://docs.google.com/presentation/d/1qEPpdix_cDL42VmBmrVaDG83KqQ5kWJE/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "extra": []
@@ -4411,8 +4434,8 @@
      ],
      "bom": [
       {
-       "t": "新模板【西南欧】L10s Ultra Gen3_R501H Spare Parts BOM List 1.2.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1ONDNeQAd20jAw03HQAgQnVP-3h710UJ5/edit?gid=2013550156#gid=2013550156"
+       "t": "新模板【西南欧】L10s Ultra Gen3_R501H Spare Parts BOM List 1.3.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1D9CQIgOqpQLY-4ua-xySGnB-kgIKH_3w/edit?gid=445190230#gid=445190230"
       }
      ],
      "repair": [],
@@ -6172,12 +6195,13 @@
       "H12 Pro FlexLite"
      ],
      "project": [
-      "W2534E"
+      "W2534E",
+      "W2534Z"
      ],
      "bom": [
       {
-       "t": "H12 Pro FlexLite_W2534E Spare Part List_V1.1.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1KulVAycqKFLtOpM9a3KkuFVo9FbyYpg8/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+       "t": "H12 Pro FlexLite_W2534E_Z spare Part List_V1.2.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1ykdkpx5yxi4eG4Qih1SPfFBeZlaHyAke/edit?gid=1577512646#gid=1577512646"
       }
      ],
      "repair": [
@@ -8550,6 +8574,39 @@
      "brand": "",
      "cat": "",
      "model": [
+      "R10S Flex"
+     ],
+     "project": [
+      "V2533A"
+     ],
+     "bom": [
+      {
+       "t": "【新模板】R10s Flex_V2553A_Spare Parts BOM List_V1.0.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1_MOqvV4cQg8j67a8u2JnKts7r2VX6fxB/edit?usp=drive_web&ouid=105729334306758008218&rtpof=true"
+      }
+     ],
+     "repair": [
+      {
+       "t": "Universal Stick Repair Guide.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1nqoCX9qs7dDa3iTK2rHZd5wUWUZxFH8V/edit?usp=drive_web&ouid=105729334306758008218&rtpof=true"
+      },
+      {
+       "t": "User Manual",
+       "u": "https://drive.google.com/drive/u/0/folders/1ICvU2BR-vDTEsVLJfcruGsKU1jgIX-EX"
+      },
+      {
+       "t": "Product Guide",
+       "u": "https://drive.google.com/drive/u/0/folders/1GcnLs3RSydfZu5RyQSQmLZsO_1HSAwpF"
+      }
+     ],
+     "notif": [],
+     "extra": []
+    },
+    {
+     "no": "48",
+     "brand": "",
+     "cat": "",
+     "model": [
       "R10S Lite"
      ],
      "project": [
@@ -8584,7 +8641,7 @@
      "extra": []
     },
     {
-     "no": "48",
+     "no": "49",
      "brand": "",
      "cat": "",
      "model": [
@@ -8617,7 +8674,7 @@
      "extra": []
     },
     {
-     "no": "49",
+     "no": "50",
      "brand": "",
      "cat": "",
      "model": [
@@ -8653,7 +8710,7 @@
      "extra": []
     },
     {
-     "no": "50",
+     "no": "51",
      "brand": "",
      "cat": "",
      "model": [
