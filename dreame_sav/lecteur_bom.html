@@ -1188,6 +1188,16 @@ function parseSheet(sheetName){
       return;
     }
     const {headerRow,colMap}=detection;
+    // Contrôle de la colonne référence par son CONTENU (ex. R5765H : « Product SKU » rempli sur 1 seule ligne)
+    (function(){
+      const hdr=rawData[headerRow]||[]; const body=rawData.slice(headerRow+1);
+      const stat=c=>{let f=0,m=0;body.forEach(row=>{const v=String((row&&row[c])||'').split(/[\r\n]+/)[0].trim();if(v){f++;if(looksLikeRef(v))m++;}});return {m,f};};
+      const cand=new Set([colMap.ref,DEFAULT_COL_ORDER.ref]);
+      hdr.forEach((h,c)=>{const v=normalize(String(h||''));if(v&&v.length<=120&&KW.ref.some(k=>v.includes(k)))cand.add(c);});
+      const cur=stat(colMap.ref); let best=colMap.ref,bs=cur;
+      cand.forEach(c=>{if(c==null||c<0||c>=hdr.length)return;const st=stat(c);if(st.m>bs.m||(st.m===bs.m&&st.f>bs.f*2)){best=c;bs=st;}});
+      if(best!==colMap.ref&&bs.m>cur.m||best!==colMap.ref&&bs.f>cur.f*2){console.warn('Colonne référence corrigée',colMap.ref,'→',best,cur,bs);colMap.ref=best;}
+    })();
     // Colonne images : ancres du fichier prioritaires sur le nom d'en-tête
     if(imgCol>=0) colMap.img=imgCol;
     const rawHeaders=rawData[headerRow];
