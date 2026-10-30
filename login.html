@@ -66,8 +66,11 @@
   firebase.initializeApp(window.FIREBASE_CONFIG);
 
   var dest = new URLSearchParams(location.search).get("from") || "index.html";
-  // Sécurité : uniquement des chemins relatifs internes
-  if (/^\/\/|^https?:/i.test(dest)) dest = "index.html";
+  // Sécurité : uniquement des pages de ce site (refuse aussi javascript:, data:, etc.)
+  try {
+    var cible = new URL(dest, location.href);
+    if (cible.protocol !== location.protocol || cible.origin !== location.origin) dest = "index.html";
+  } catch (e) { dest = "index.html"; }
 
   // Déjà connecté → redirection directe
   // Session d'un jour précédent → déconnexion forcée, nouvelle saisie du mot de passe
