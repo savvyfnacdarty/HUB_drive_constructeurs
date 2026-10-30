@@ -13,3 +13,12 @@ kitchenaid/kitchenaid_new/
 00_*/
 *.bak-*
 *.bak[0-9]-*
+
+# outils et archives : restent sur le PC, jamais publiés
+*.bat
+*.py
+_outils/
+outils/
+Ancien/
+_bom_build/
+_faq_build/
