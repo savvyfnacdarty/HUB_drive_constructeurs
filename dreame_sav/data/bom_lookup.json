@@ -1,7 +1,7 @@
 {
  "source": "https://docs.google.com/spreadsheets/d/15u69yfrqn3HqEwoemv8_UUgd-74wPeFdJhsD0YMc4dQ/edit",
  "sheetId": "15u69yfrqn3HqEwoemv8_UUgd-74wPeFdJhsD0YMc4dQ",
- "generated": "2026-10-27",
+ "generated": "2026-11-07",
  "families": [
   {
    "name": "Robot Vacuum",
@@ -184,7 +184,9 @@
       "R9547H",
       "R9547Y",
       "R9547W",
-      "R95478"
+      "R95478",
+      "R95476",
+      "R95477"
      ],
      "bom": [
       {
@@ -532,8 +534,8 @@
      ],
      "bom": [
       {
-       "t": "新模板【西南欧】L40 Ultra AE_R2579_Spare_Parts_BOM_List_V1.11.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1HnIppObIOnQktFPUQAVMem4QYbL_6us3/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+       "t": "新模板【西南欧】L40 Ultra AE_R2579_Spare_Parts_BOM_List_V1.12.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/18eSwAVmC8gQvWV7-cMtYGhmG1zVUZ-a0/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "repair": [
@@ -752,6 +754,10 @@
       {
        "t": "Robot Vacuum serial tool operation guide.pptx",
        "u": "https://docs.google.com/presentation/d/1_lqztYRQrXkRIItfTEmIc1tzBAoq_NFi/edit?usp=drive_link&ouid=116875433900449959912&rtpof=true&sd=true"
+      },
+      {
+       "t": "Solution for R2513 Matrix 10 Ultra Line Laser Calibration Failure (Checkerboard Calibration & Light Plane Calibration).pptx",
+       "u": "https://docs.google.com/presentation/d/1PRgedXfwPZpJnnKVnhHK9DeQ_H_9VGhr/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "extra": []
@@ -930,13 +936,54 @@
      ],
      "project": [
       "R5057A",
-      "R5057H",
-      "R502J5"
+      "R5057H"
      ],
      "bom": [
       {
        "t": "新模板【西南欧】L40 Ultra A_R5057 Spare Parts BOM List V1.2.xlsx",
        "u": "https://docs.google.com/spreadsheets/d/1mbAdC2oOf2NEMIRBCAp4nNPwgRKLGAUj/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      }
+     ],
+     "repair": [
+      {
+       "t": "User Manual",
+       "u": "https://drive.google.com/drive/folders/1ULJkBsPVc9D8cCtVCWTmL3WCjLA0Xz8Z?usp=drive_link"
+      },
+      {
+       "t": "Maintenance",
+       "u": "https://drive.google.com/drive/folders/1DWatwmvC0vVq5MI7NuRMwVFVF6aHU8l9?usp=drive_link"
+      },
+      {
+       "t": "exploded view",
+       "u": "https://drive.google.com/drive/folders/1YZYgFbn9U4nubBvuX8OrUtMthHJ1liGg?usp=drive_link"
+      },
+      {
+       "t": "Maintenance guide",
+       "u": "https://drive.google.com/drive/folders/1S2CW8t-OHYvuEJf3C0x1PBGy1_NCReqh?usp=drive_link"
+      }
+     ],
+     "notif": [
+      {
+       "t": "X40 L40 series side brush motor short circuit problem.pptx",
+       "u": "https://docs.google.com/presentation/d/1MxP70CCuPflzJGdEBnZhhl7kxeWJn0u7/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      }
+     ],
+     "extra": []
+    },
+    {
+     "no": "",
+     "brand": "",
+     "cat": "",
+     "model": [
+      "L40 Ultra A"
+     ],
+     "project": [
+      "R502J"
+     ],
+     "bom": [
+      {
+       "t": "新模板【西南欧】L40 Ultra A_R502J Spare Parts BOM List V1.0.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1F3pLxvzdsHgPRMm-DV5LfvqdTgF9XHZE/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "repair": [
@@ -1194,10 +1241,6 @@
      ],
      "notif": [
       {
-       "t": "Motherboard Different platforms.pptx",
-       "u": "https://docs.google.com/presentation/d/1AznpxHFh6BhpGQcohhcDqzaye6kHRgln/edit?usp=sharing&ouid=105729334306758008218&rtpof=true&sd=true"
-      },
-      {
        "t": "X50 L50 Matrix10 series side brush motor short circuit problem.pptx",
        "u": "https://docs.google.com/presentation/d/1dXaiAQebIL10B9qaw_85ZBoGag2jzl9x/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       },
@@ -1236,10 +1279,6 @@
       {
        "t": "Mop Washing Noise Repair Case&Robot water outlet Repair Case.pptx",
        "u": "https://docs.google.com/presentation/d/1prZxrDVrUGBwTo4MY6rUD9YwCS1Hqc3a/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
-      },
-      {
-       "t": "Dual camera calibration stereo-rectify failure issue.pptx",
-       "u": "https://docs.google.com/presentation/d/1VKxgU0l9jb7WEYAgPHpAlnsvbzpxl7M3/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       },
       {
        "t": "X50 series stops automatically issues.pptx",
@@ -2652,13 +2691,14 @@
       "R50573",
       "R50574",
       "R5057D",
+      "R5057B",
       "R502JL",
       "R502JY"
      ],
      "bom": [
       {
-       "t": "新模板【西南欧】D30 Ultra_R5057 Spare Parts BOM List V1.6.xlsx - Google 表格",
-       "u": "https://docs.google.com/spreadsheets/d/13M_FyywDI9ezEBpFehMtNyQJ5w0vmLZK/edit?gid=1902548233#gid=1902548233"
+       "t": "新模板【西南欧】D30 Ultra_R5057 Spare Parts BOM List V1.7.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1D5OQ9G_WDCJTAySSuoBakXcTPuQG4ZWf/edit?gid=1055545927#gid=1055545927"
       }
      ],
      "repair": [],
@@ -2871,8 +2911,8 @@
      ],
      "bom": [
       {
-       "t": "新模板【西南欧】Aqua20 Pro Ultra Roller X Complete R501U Spare Parts BOM List V1.0.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1wgqiSiydxrHatSJ2QYPP5SBQ__J2HZaA/edit?gid=882168824#gid=882168824"
+       "t": "新模板【西南欧】Aqua20 Pro Ultra Roller X Complete R501U Spare Parts BOM List V1.3.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1tKeqhhrUJsmj5nokuScfhV98E1zcgoKu/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "repair": [
@@ -2889,6 +2929,18 @@
       {
        "t": "Dreame Aqua20 Roller Series Leakage Investigation Guide.pptx",
        "u": "https://docs.google.com/presentation/d/1qEPpdix_cDL42VmBmrVaDG83KqQ5kWJE/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      },
+      {
+       "t": "Dreame Aqua20 Roller Series Maintenance Guide.pptx",
+       "u": "https://docs.google.com/presentation/d/1UxEt46ItvWisiA4kO6IkK_gcTVjn3KHp/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      },
+      {
+       "t": "Download link:",
+       "u": null
+      },
+      {
+       "t": "【R501U】Aqua20 Pro Ultra Roller X Complete",
+       "u": "https://drive.google.com/drive/folders/1x3VMzc_mM-u4o4doNEfeOcew2tqKfw0J?usp=drive_link"
       }
      ],
      "extra": []
@@ -4239,8 +4291,8 @@
      ],
      "bom": [
       {
-       "t": "新模板【西南欧】MOVA V70 Ultra Complete_R5979_Spare_Parts_BOM_List_V1.4 .xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1YBelGURa9pXlsPTTqW6rIMUuhxdIa-02/edit?gid=571561196#gid=571561196"
+       "t": "新模板【西南欧】MOVA V70 Ultra Complete_R5979_Spare_Parts_BOM_List_V1.5.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/13gjWOJ41mL05MrNT6wXJfsYkVgh6_8tD/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "repair": [
@@ -4867,8 +4919,7 @@
       "H12 Pro Ultra"
      ],
      "project": [
-      "W2335D",
-      "W2335Z"
+      "W2335D"
      ],
      "bom": [
       {
@@ -5199,13 +5250,13 @@
       "H15S (CH)"
      ],
      "project": [
-      "W2459F",
-      "W2448B"
+      "W2459E",
+      "W2448F"
      ],
      "bom": [
       {
-       "t": "【New Template】H15S W2459E&F_ Spare Parts Bom List_V2.1.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1CBPLZqDddkW3QrdFVQx6wnlUPQ73Mz-z/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+       "t": "H15S W2459E&F_ Spare Parts Bom List_V2.2.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1t--iBnvkykuDtI17kxQrWyzMTFvSxIDD/edit?gid=1232999358#gid=1232999358"
       }
      ],
      "repair": [
@@ -5991,8 +6042,8 @@
      ],
      "bom": [
       {
-       "t": "H15 Mix_Spare Parts BOM List_V1.2.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1VHHien20tkgDZi-eU0EFLFp10Ba4DXRt/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+       "t": "H15 Mix_Spare Parts BOM List_V1.3.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1VDiAxKU3xMC9WfASD4ocfkkJos8WDbNt/edit?usp=drive_web&ouid=105729334306758008218&rtpof=true"
       }
      ],
      "repair": [
@@ -7555,12 +7606,7 @@
      "project": [
       "V2405F"
      ],
-     "bom": [
-      {
-       "t": "Z20 New Spare_Parts_BOM_List_V1.4.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/119-GmQFotec1zwB0vdFABaRuBaiL6oZ9/edit?usp=drive_web&ouid=105729334306758008218&rtpof=true"
-      }
-     ],
+     "bom": [],
      "repair": [
       {
        "t": "Exploded View",
@@ -8577,7 +8623,7 @@
       "R10S Flex"
      ],
      "project": [
-      "V2533A"
+      "V2553A"
      ],
      "bom": [
       {
@@ -9669,7 +9715,12 @@
        "u": "https://docs.google.com/spreadsheets/d/1ATpN1gXaJz6ZJRDoUi58GSUMic4Xt16Q/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
-     "repair": [],
+     "repair": [
+      {
+       "t": "Airstyle Pro",
+       "u": "https://drive.google.com/drive/folders/1HvPrbukNEQezCk1EooaQYwtaybt7O5F9?usp=sharing"
+      }
+     ],
      "notif": [],
      "extra": []
     },
