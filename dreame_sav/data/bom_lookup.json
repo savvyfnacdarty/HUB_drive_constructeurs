@@ -1,7 +1,7 @@
 {
  "source": "https://docs.google.com/spreadsheets/d/15u69yfrqn3HqEwoemv8_UUgd-74wPeFdJhsD0YMc4dQ/edit",
  "sheetId": "15u69yfrqn3HqEwoemv8_UUgd-74wPeFdJhsD0YMc4dQ",
- "generated": "2026-11-07",
+ "generated": "2026-11-16",
  "families": [
   {
    "name": "Robot Vacuum",
@@ -1533,8 +1533,8 @@
      ],
      "bom": [
       {
-       "t": "新模板【西南欧】MOVA Z60 Ultra Roller Complete _R9540 Spare Parts BOM List V1.8.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1y94pHIGorkFMxwphNInFrm_Bz8mQn4UX/edit?gid=367098884#gid=367098884"
+       "t": "新模板【西南欧】MOVA Z60 Ultra Roller Complete _R9540 Spare Parts BOM List V1.9.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1yPMgJ4v2FjfJ86dwlv-FNSVgPr3pTH_g/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "repair": [
@@ -2132,8 +2132,8 @@
      ],
      "bom": [
       {
-       "t": "新模板【西南欧】X50 Ultra Complete_R2532 Spare Parts BOM List 1.11.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1KXp4-0PZ8TxSg9WqjxaSRz4Nn9VqBScg/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+       "t": "新模板【西南欧】X50 Ultra Complete_R2532 Spare Parts BOM List 1.12.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1Z46gTYfE9ONezXXQj8jA75aN6HQVNNZS/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "repair": [
@@ -2624,7 +2624,12 @@
       }
      ],
      "repair": [],
-     "notif": [],
+     "notif": [
+      {
+       "t": "D20 Air plus wrong motherboard version issue.pptx",
+       "u": "https://docs.google.com/presentation/d/1MrA6MGAkImFpDGFBEDYWK-DJFGi85fzh/edit?slide=id.p1#slide=id.p1"
+      }
+     ],
      "extra": []
     },
     {
@@ -2663,12 +2668,14 @@
      ],
      "project": [
       "R9504A",
-      "R9504Y"
+      "R9504Y",
+      "R95047",
+      "R9504D"
      ],
      "bom": [
       {
-       "t": "新模板【西南欧】E40 Ultra_R9504 Spare Parts BOM List V1.2.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1WYGNAEGPhw8iqcdy3sz35dKafoe0dEJN/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+       "t": "新模板【西南欧】E40 Ultra_R9504 Spare Parts BOM List V1.3.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1mvuY7r25a1Ph9ayDB3PdRyenOV7RRKBD/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "repair": [
@@ -2927,12 +2934,12 @@
        "u": "https://docs.google.com/presentation/d/1oyA890fkuZcgvxq50BrDB-iqZizpa3Et/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       },
       {
-       "t": "Dreame Aqua20 Roller Series Leakage Investigation Guide.pptx",
-       "u": "https://docs.google.com/presentation/d/1qEPpdix_cDL42VmBmrVaDG83KqQ5kWJE/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
-      },
-      {
        "t": "Dreame Aqua20 Roller Series Maintenance Guide.pptx",
        "u": "https://docs.google.com/presentation/d/1UxEt46ItvWisiA4kO6IkK_gcTVjn3KHp/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      },
+      {
+       "t": "Aqua20 leakage & large water stains issue.pptx",
+       "u": "https://docs.google.com/presentation/d/1_5w0_cQlx2rPVdYFR4vIstBgQLGmElkL/edit?slide=id.p1#slide=id.p1"
       },
       {
        "t": "Download link:",
@@ -4246,8 +4253,8 @@
      ],
      "bom": [
       {
-       "t": "【西南欧】L50 Ultra AE_R5061_Spare_Parts_BOM_List_V1.4.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1DH08WnjnE2mT_rbFknxTgeg09a_jNeRx/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+       "t": "【西南欧】L50 Ultra AE_R5061_Spare_Parts_BOM_List_V1.5.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1eAgOFdTzIhxR1RqudS5yCWH8iORgMD4U/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
       }
      ],
      "repair": [
@@ -4460,7 +4467,7 @@
      "bom": [
       {
        "t": "新模板【西南欧】Mova E50 Ultra R6709 Spare Parts BOM List V1.2.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1JUgqZia7stztnd8H75p3B27oVRpratEK/edit?gid=1553482910#gid=1553482910"
+       "u": "https://docs.google.com/spreadsheets/d/1nxK1sbEscOOYppDZp1MK3g-n4pwLEVUu/edit?gid=67939933#gid=67939933"
       }
      ],
      "repair": [],
@@ -4482,7 +4489,8 @@
       "R501H8",
       "R501H2",
       "R501H7",
-      "R501H1"
+      "R501H1",
+      "R501H9"
      ],
      "bom": [
       {
@@ -7323,8 +7331,8 @@
      ],
      "bom": [
       {
-       "t": "Z30_V2406_Spare_Parts_BOM_List_V1.5.xlsx",
-       "u": "https://docs.google.com/spreadsheets/d/1NKspMVxTnr_t6DT-XYLrLU9lSmly2C4w/edit?usp=sharing&ouid=105729334306758008218&rtpof=true&sd=true"
+       "t": "Z30_V2406_Spare_Parts_BOM_List_V1.6.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1lP2nXYfiVE38RzCIYEN9EcyVSAzj61k7/edit?usp=drive_web&ouid=105729334306758008218&rtpof=true"
       }
      ],
      "repair": [
@@ -7606,7 +7614,12 @@
      "project": [
       "V2405F"
      ],
-     "bom": [],
+     "bom": [
+      {
+       "t": "Z20 New Spare_Parts_BOM_List_V1.5.xlsx",
+       "u": "https://docs.google.com/spreadsheets/d/1Fb30ffaxo5NJ0sUwV6BVk-ucA3twFh6M/edit?gid=707731453#gid=707731453"
+      }
+     ],
      "repair": [
       {
        "t": "Exploded View",
@@ -7633,6 +7646,10 @@
       {
        "t": "Z20, Z30, Z40 series Main suction port is loose problem.pptx",
        "u": "https://docs.google.com/presentation/d/1o844o9OFVo3YsU0SrNCqXZsEq2GgpIpy/edit?usp=drive_link&ouid=105729334306758008218&rtpof=true&sd=true"
+      },
+      {
+       "t": "Z20 New Main Motor Component Update — Matched Use Required.pptx",
+       "u": "https://docs.google.com/presentation/d/1HG_bbUcfI6gvsMLSTXRFC8XXUurAzqIl/edit?usp=drive_web&ouid=105729334306758008218&rtpof=true"
       }
      ],
      "extra": []
